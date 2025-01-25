@@ -231,13 +231,41 @@ def process_message(service, message):
         return None
 
 # Atualizar o arquivo index.html
-def update_root_index(all_links):
-    index_path = os.path.join("index.html")
+# def update_root_index(all_links):
+#    index_path = os.path.join("index.html")
+#    with open(index_path, "w") as index_file:
+#        index_file.write("<html><body><h1>E-mails Processados</h1><ul>\n")
+#        for link in all_links:
+#            index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
+#        index_file.write("</ul></body></html>\n")
+
+# Atualizar o arquivo index.html
+def update_root_index():
+    # Caminho do repositório onde os arquivos .html estão armazenados
+    repo_root = os.getcwd()  # Usando o diretório atual (root do repositório)
+    
+    # Lista para armazenar os links dos arquivos .html encontrados
+    all_links = []
+
+    # Percorrer todas as subpastas e arquivos no repositório
+    for root, dirs, files in os.walk(repo_root):
+        for file in files:
+            if file.endswith('.html'):  # Verifica se o arquivo é .html
+                # Gerar o caminho relativo do arquivo
+                relative_path = os.path.relpath(os.path.join(root, file), repo_root)
+                # Criar o link relativo para o arquivo
+                link = f"<a href='{relative_path}'>{relative_path}</a><br>"
+                all_links.append(link)
+
+    # Escrever os links no arquivo index.html
+    index_path = os.path.join(repo_root, "index.html")
     with open(index_path, "w") as index_file:
-        index_file.write("<html><body><h1>E-mails Processados</h1><ul>\n")
+        index_file.write("<html><body><h1>Lista de Arquivos HTML</h1>\n")
         for link in all_links:
-            index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
-        index_file.write("</ul></body></html>\n")
+            index_file.write(f"{link}\n")  # Escrever cada link encontrado
+        index_file.write("</body></html>\n")
+
+    print(f"Arquivo index.html atualizado com {len(all_links)} links.")
 
 def create_latest_summary_html():
     """
