@@ -2,6 +2,7 @@ import os
 import pickle
 import base64
 import datetime
+import pytz
 from googleapiclient.discovery import build
 from google.auth.credentials import Credentials
 from googleapiclient.errors import HttpError
@@ -10,24 +11,21 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 EMAIL_SENDER = "serpro.gov.br"  # Domínio do remetente
 BACKUP_FOLDER = "emails"
+TIMEZONE = pytz.timezone("America/Sao_Paulo")  # Fuso horário de São Paulo
 
 # Autenticação
 def authenticate():
-    # Obtendo o token do segredo armazenado no GitHub Actions
     token_base64 = os.getenv('GMAIL_TOKEN')
     if not token_base64:
         raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
 
     try:
-        # Decodificando o token Base64 e desserializando com pickle
         token_pickle = base64.b64decode(token_base64)
         creds = pickle.loads(token_pickle)
 
-        # Verificando se as credenciais têm o escopo correto
         if not creds or not creds.valid:
             raise ValueError("Credenciais inválidas ou expiradas.")
 
-        # Retornar o serviço Gmail autenticado
         return build('gmail', 'v1', credentials=creds)
     except Exception as e:
         raise ValueError(f"Erro ao processar o GMAIL_TOKEN: {e}")
@@ -35,7 +33,6 @@ def authenticate():
 # Processar e-mails
 def process_emails(service):
     try:
-        # Filtrar e-mails não lidos do remetente especificado
         results = service.users().messages().list(userId='me', q=f"is:unread from:{EMAIL_SENDER}").execute()
         messages = results.get('messages', [])
         print(f"Número de e-mails encontrados: {len(messages)}")
@@ -50,31 +47,23 @@ def process_emails(service):
 def process_message(service, message):
     headers = message['payload']['headers']
     subject = next((h['value'] for h in headers if h['name'] == 'Subject'), "Sem Título")
-    date = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    date = datetime.datetime.now(TIMEZONE).strftime("%d/%m/%Y %H:%M:%S")
     body = get_email_body(message)
 
-    # Criar subpasta para o assunto
     subject_folder = os.path.join(BACKUP_FOLDER, subject)
     os.makedirs(subject_folder, exist_ok=True)
 
-    # Criar arquivo de backup
     backup_file = os.path.join(subject_folder, f"{datetime.date.today()}.html")
     with open(backup_file, "w", encoding="utf-8") as file:
         file.write(body)
 
-    # Atualizar index.html da subpasta
     index_file = os.path.join(subject_folder, "index.html")
     update_index(index_file, body, date, subject_folder)
 
-    # Atualizar index.html na raiz
     root_index_file = os.path.join(BACKUP_FOLDER, "index.html")
-    update_index(root_index_file, body, date, subject_folder)
+    update_index(root_index_file, body, date, BACKUP_FOLDER)
 
-    # Marcar e-mail como lido e adicionar TAG
-    label_obj = {
-        'addLabelIds': ['Label_1'],  # Substitua por sua label personalizada, se necessário
-        'removeLabelIds': ['INBOX']  # Remover da caixa de entrada
-    }
+    label_obj = {'addLabelIds': ['Label_1'], 'removeLabelIds': ['INBOX']}
     try:
         service.users().messages().modify(userId='me', id=message['id'], body=label_obj).execute()
         print(f"E-mail com assunto '{subject}' marcado como lido e etiquetado.")
@@ -103,20 +92,21 @@ def get_email_body(message):
 
 # Atualizar index.html
 def update_index(index_file, body, date, folder):
-    if not os.path.exists(os.path.dirname(index_file)):
-        os.makedirs(os.path.dirname(index_file), exist_ok=True)
+    os.makedirs(os.path.dirname(index_file), exist_ok=True)
 
-    links = [f for f in os.listdir(folder) if f.endswith(".html") and f != "index.html"]
-    links_list = "".join(f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links)
+    links = [
+        f'<li><a href="{os.path.relpath(os.path.join(folder, link))}">{link}</a></li>'
+        for link in os.listdir(folder)
+        if link.endswith(".html") and link != "index.html"
+    ]
 
     html_content = f"""
     <html>
     <head><title>Última Atualização</title></head>
     <body>
         <h1>Última atualização: {date}</h1>
-        <div>{body}</div>
         <h2>Backups disponíveis:</h2>
-        <ul>{links_list}</ul>
+        <ul>{''.join(links)}</ul>
     </body>
     </html>
     """
