@@ -4,7 +4,7 @@ import datetime
 import pickle
 from email.message import EmailMessage
 from googleapiclient.discovery import build
-from googleapiclation.errors import HttpError
+from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
