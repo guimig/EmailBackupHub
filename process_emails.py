@@ -114,6 +114,10 @@ def get_email_body(message):
 
 # Atualizar index.html na raiz
 def update_root_index(links):
+    # Garantir que a pasta de backup existe
+    if not os.path.exists(BACKUP_FOLDER):
+        os.makedirs(BACKUP_FOLDER)
+
     index_file = os.path.join(BACKUP_FOLDER, "index.html")
     html_content = f"""
     <html>
