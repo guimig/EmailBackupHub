@@ -38,6 +38,7 @@ jobs:
       - name: Ensure Git repository is initialized
         run: |
           git init  # Garante que o repositório esteja inicializado
+          git remote remove origin || true  # Remove o remote origin, se já existir
           git remote add origin https://github.com/${{ github.repository }}  # Adiciona o remote do repositório, se necessário
           git fetch  # Faz o fetch das referências remotas
           git checkout ${{ github.ref }}  # Garante que a branch correta seja utilizada
