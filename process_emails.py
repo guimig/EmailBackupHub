@@ -159,36 +159,42 @@ def process_message(service, message):
         print(f"E-mail com assunto '{subject}' processado e marcado como lido.")
     except HttpError as error:
         print(f"Erro ao marcar e-mail como lido: {error}")
-
+    
     return link
-
-# Função para gerenciar os backups
-def manage_backups(subject_folder):
-    last_month = datetime.datetime.now(TIMEZONE) - datetime.timedelta(days=30)
-    backup_path = os.path.join(subject_folder, f"{last_month.strftime('%Y-%m')}.html")
-    if os.path.exists(backup_path):
-        os.remove(backup_path)
 
 # Atualiza o arquivo index.html na raiz
 def update_root_index(links):
     index_file = "index.html"
+    links_html = ""
     
-    # Criar lista de links para todos os arquivos .html nas subpastas de emails
-    for root, dirs, files in os.walk(BACKUP_FOLDER):
-        for file in files:
-            if file.endswith(".html"):
-                # Gerar o link absoluto baseado na estrutura de diretórios
-                folder_name = os.path.basename(root)
-                file_name = file
-                file_path = os.path.join(root, file)
-                link = f"https://guimig.github.io/EmailBackupHub/{BACKUP_FOLDER}/{folder_name}/{file_name}"
-                date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%d/%m/%Y")
-                links.append(f"<li><a href='{link}'>{folder_name} - {date}</a></li>")
+    # Gerar links
+    for link in links:
+        links_html += f"<li><a href='{link}'>{link}</a></li>"
 
+    # Adicionar o CSS básico
+    html_content = f"""
+    <html>
+    <head>
+        <style>
+            body {{ font-family: Arial, sans-serif; padding: 20px; }}
+            ul {{ list-style-type: none; padding-left: 0; }}
+            li {{ margin-bottom: 10px; }}
+            a {{ text-decoration: none; color: #2a9df4; }}
+            a:hover {{ color: #1a7fb8; }}
+        </style>
+    </head>
+    <body>
+        <h1>Backup de E-mails</h1>
+        <ul>
+            {links_html}
+        </ul>
+    </body>
+    </html>
+    """
+    
+    # Escrever no arquivo
     with open(index_file, "w", encoding="utf-8") as file:
-        file.write("<html><body><ul>")
-        file.write("\n".join(links))
-        file.write("</ul></body></html>")
+        file.write(html_content)
 
 # Função para realizar o commit das mudanças no repositório Git
 def commit_changes():
