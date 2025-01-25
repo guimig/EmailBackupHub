@@ -165,6 +165,20 @@ def manage_backups(subject_folder):
 # Atualiza o arquivo index.html na raiz
 def update_root_index(links):
     index_file = "index.html"
+    
+    # Criar lista de links para todos os arquivos .html nas subpastas de emails
+    for root, dirs, files in os.walk(BACKUP_FOLDER):
+        for file in files:
+            if file.endswith(".html"):
+                # Gerar o link absoluto baseado na estrutura de diretórios
+                folder_name = os.path.basename(root)
+                file_name = file
+                file_path = os.path.join(root, file)
+                link = f"https://guimig.github.io/EmailBackupHub/{BACKUP_FOLDER}/{folder_name}/{file_name}"
+                date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%d/%m/%Y")
+                links.append(f"<li><a href='{link}'>{folder_name} - {file_name} ({date})</a></li>")
+
+    # Gerar conteúdo HTML com a lista de links
     html_content = f"""
     <html>
     <head>
@@ -178,23 +192,14 @@ def update_root_index(links):
     </body>
     </html>
     """
+    # Salvar o arquivo de índice atualizado
     with open(index_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-# Realizar commit no repositório Git
+# Commit das alterações no repositório
 def commit_changes():
     repo = check_git_repo()
-    repo.index.add(["*"])  # Adiciona todas as mudanças
-    repo.index.commit(f"Backup realizado em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}")
-    repo.remotes.origin.push()
-
-# Função principal
-def main():
-    try:
-        service = authenticate()
-        process_emails(service)
-    except Exception as error:
-        print(f"Erro: {error}")
-
-if __name__ == '__main__':
-    main()
+    repo.git.add(".")
+    repo.index.commit("Atualizar backups de e-mails")
+    origin = repo.remote(name='origin')
+    origin.push()
