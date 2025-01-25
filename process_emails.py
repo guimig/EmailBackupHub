@@ -251,7 +251,7 @@ def update_root_index():
     # Percorrer todas as subpastas e arquivos no repositório
     for root, dirs, files in os.walk(repo_root):
         for file in files:
-            if file.endswith('.html'):  # Verifica se o arquivo é .html
+            if file.endswith('.html') and file != 'index.html':  # Verifica se o arquivo é .html
                 # Gerar o caminho relativo do arquivo
                 relative_path = os.path.relpath(os.path.join(root, file), repo_root)
                 
