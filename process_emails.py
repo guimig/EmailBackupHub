@@ -115,10 +115,11 @@ def get_email_body(message):
 # Atualizar index.html na raiz
 def update_root_index(links):
     # Garantir que a pasta de backup existe
-    if not os.path.exists(BACKUP_FOLDER):
-        os.makedirs(BACKUP_FOLDER)
+    emails_folder = os.path.join(os.getcwd(), BACKUP_FOLDER)
+    if not os.path.exists(emails_folder):
+        os.makedirs(emails_folder)
 
-    index_file = os.path.join(BACKUP_FOLDER, "index.html")
+    index_file = os.path.join(emails_folder, "index.html")
     html_content = f"""
     <html>
     <head><title>Index de E-mails</title></head>
@@ -141,15 +142,12 @@ def update_root_index(links):
 def commit_changes():
     try:
         # Verifique se a pasta "emails" e o arquivo "index.html" existem
-        if not os.path.exists(BACKUP_FOLDER):
-            os.makedirs(BACKUP_FOLDER)
-
-        # Verifica se o repositório já está inicializado
         repo = git.Repo(search_parent_directories=True)
         index = repo.index
 
-        # Adiciona os arquivos que foram modificados
-        index.add([BACKUP_FOLDER, 'index.html'])  # Adiciona os arquivos de backup
+        # Adiciona os arquivos modificados
+        index.add([os.path.join(BACKUP_FOLDER, "index.html")])  # Adiciona o index.html dentro da pasta emails
+        # Commit e push das mudanças
         index.commit("Atualiza os arquivos de backup de e-mails.")
         
         # Enviar alterações para o GitHub usando o GH_TOKEN
