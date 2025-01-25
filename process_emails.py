@@ -323,7 +323,7 @@ def update_root_index():
         <body>
             <h1>Lista de Arquivos HTML</h1>
             <div class="folder">
-                <h2>Arquivos da Raiz</h2>
+                <h2>Arquivos da Raiz - Últimas atualizações</h2>
                 <div class="links">
         """
 
