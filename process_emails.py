@@ -137,6 +137,12 @@ def process_emails(service):
             if link:
                 all_links.append(link)
 
+            # Marcar como lido e retirar da caixa de entrada
+            service.users().messages().modify(
+                userId='me', id=msg['id'],
+                body={'removeLabelIds': ['INBOX'], 'addLabelIds': ['UNREAD']}
+            ).execute()
+
         # Atualiza o index.html com todos os links
         update_root_index(all_links)
         commit_changes()  # Realiza o commit dos arquivos gerados no repositório
@@ -169,59 +175,49 @@ def process_message(service, message):
 
     # Criar arquivo index.html com o nome do e-mail (antigo index)
     index_file = os.path.join(subject_folder, f"{normalized_title}.html")
-    with open(index_file, "w", encoding="utf-8") as f:
-        f.write(body)  # Salva o corpo do e-mail no arquivo HTML
-
-    backup_files = manage_backups(subject_folder, normalized_title, date)
-
-    # Criar links para os arquivos de backup
-    link = f"https://guimig.github.io/EmailBackupHub/{subject_folder}/{normalized_title}.html"
-    
-    return link
-
-# Atualiza o arquivo index.html na raiz
-def update_root_index(links):
-    index_file = "index.html"
-    links_html = ""
-    
-    # Gerar links
-    for link in links:
-        links_html += f"<li><a href='{link}'>{link}</a></li>"
-
-    # Adicionar o CSS básico
-    html_content = f"""
-    <html>
-    <head>
-        <style>
-            body {{ font-family: Arial, sans-serif; padding: 20px; }}
-            ul {{ list-style-type: none; padding-left: 0; }}
-            li {{ margin-bottom: 10px; }}
-            a {{ text-decoration: none; color: #2a9df4; }}
-            a:hover {{ color: #1a7fb8; }}
-        </style>
-    </head>
-    <body>
-        <h1>Backup de E-mails</h1>
-        <ul>
-            {links_html}
-        </ul>
-    </body>
-    </html>
-    """
-    
-    # Escrever no arquivo
     with open(index_file, "w", encoding="utf-8") as file:
-        file.write(html_content)
+        # Incluindo o CSS no cabeçalho do arquivo HTML
+        file.write("""
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; }
+                h1 { color: #333; }
+                a { color: #0066cc; text-decoration: none; }
+                a:hover { text-decoration: underline; }
+                .email-content { margin: 20px; }
+            </style>
+        </head>
+        <body>
+            <h1>Backup de E-mail: {}</h1>
+            <div class="email-content">{}</div>
+        </body>
+        </html>
+        """.format(subject, body))
 
-# Função para realizar o commit das mudanças no repositório Git
+    # Chama a função de backup
+    backup_files = manage_backups(subject_folder, subject, date)
+    return backup_files
+
+# Atualizar o arquivo index.html
+def update_root_index(links):
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write('<html><head><title>E-mails Processados</title></head><body>')
+        f.write('<h1>E-mails Processados</h1>')
+        for link in links:
+            f.write(f'<a href="{link}">{link}</a><br>')
+        f.write('</body></html>')
+
+# Realizar commit no repositório Git
 def commit_changes():
-    repo = check_git_repo()  # Verificar ou inicializar o repositório Git
-    repo.git.add(A=True)  # Adiciona todos os arquivos ao commit
-    repo.index.commit("Atualização de arquivos e links")  # Realiza o commit
-    origin = repo.remote(name="origin")  # Obtém o repositório remoto
-    origin.push()  # Envia as mudanças para o repositório remoto
+    repo = check_git_repo()
+    repo.git.add(A=True)  # Adiciona todos os arquivos modificados
+    repo.index.commit(f"Backup de e-mails processados em {datetime.datetime.now(TIMEZONE)}")
 
-# Executar o script
-if __name__ == "__main__":
+# Função principal
+def main():
     service = authenticate()
     process_emails(service)
+
+if __name__ == '__main__':
+    main()
