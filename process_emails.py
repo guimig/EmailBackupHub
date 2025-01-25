@@ -1,8 +1,6 @@
 import os
 import base64
 import datetime
-import pickle
-from email.message import EmailMessage
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
@@ -22,8 +20,10 @@ def authenticate():
     
     # Decodificando o token
     token_data = base64.b64decode(token_base64)
-    creds = Credentials.from_authorized_user_info(token_data)
     
+    # Criando as credenciais
+    creds = Credentials.from_authorized_user_info(token_data)
+
     # Retornar o serviço Gmail autenticado
     return build('gmail', 'v1', credentials=creds)
 
@@ -76,10 +76,21 @@ def process_message(service, message):
 # Extrair corpo do e-mail
 def get_email_body(message):
     try:
-        data = message['payload']['body']['data']
-        decoded_data = base64.urlsafe_b64decode(data).decode("utf-8")
-        return decoded_data
-    except KeyError:
+        # Verificando o tipo de codificação do corpo
+        if 'body' in message['payload']:
+            body = message['payload']['body'].get('data')
+            if body:
+                decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
+                return decoded_data
+        # Verificando se há partes alternativas
+        for part in message['payload'].get('parts', []):
+            if part['mimeType'] == 'text/html':
+                body = part['body'].get('data')
+                if body:
+                    decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
+                    return decoded_data
+    except Exception as e:
+        print(f"Erro ao extrair o corpo do e-mail: {e}")
         return "Corpo do e-mail não disponível."
 
 # Atualizar index.html
