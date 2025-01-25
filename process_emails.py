@@ -1,6 +1,6 @@
 import os
+import pickle
 import base64
-import json
 import datetime
 from googleapiclient.discovery import build
 from google.auth.credentials import Credentials
@@ -19,17 +19,18 @@ def authenticate():
         raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
 
     try:
-        # Decodificando o token Base64
-        token_data = base64.b64decode(token_base64).decode("utf-8")
-        token_json = json.loads(token_data)
+        # Decodificando o token Base64 e desserializando com pickle
+        token_pickle = base64.b64decode(token_base64)
+        creds = pickle.loads(token_pickle)
 
-        # Criando as credenciais
-        creds = Credentials.from_authorized_user_info(token_json, SCOPES)
+        # Verificando se as credenciais têm o escopo correto
+        if not creds or not creds.valid:
+            raise ValueError("Credenciais inválidas ou expiradas.")
 
         # Retornar o serviço Gmail autenticado
         return build('gmail', 'v1', credentials=creds)
-    except (base64.binascii.Error, json.JSONDecodeError, ValueError) as e:
-        raise ValueError(f"Erro ao decodificar o GMAIL_TOKEN: {e}")
+    except Exception as e:
+        raise ValueError(f"Erro ao processar o GMAIL_TOKEN: {e}")
 
 # Processar e-mails
 def process_emails(service):
