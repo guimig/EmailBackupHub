@@ -140,9 +140,16 @@ def update_root_index(links):
 # Commit das mudanças no GitHub
 def commit_changes():
     try:
+        # Verifique se a pasta "emails" e o arquivo "index.html" existem
+        if not os.path.exists(BACKUP_FOLDER):
+            os.makedirs(BACKUP_FOLDER)
+
+        # Verifica se o repositório já está inicializado
         repo = git.Repo(search_parent_directories=True)
         index = repo.index
-        index.add([BACKUP_FOLDER, 'index.html'])  # Adiciona os arquivos que foram modificados
+
+        # Adiciona os arquivos que foram modificados
+        index.add([BACKUP_FOLDER, 'index.html'])  # Adiciona os arquivos de backup
         index.commit("Atualiza os arquivos de backup de e-mails.")
         
         # Enviar alterações para o GitHub usando o GH_TOKEN
