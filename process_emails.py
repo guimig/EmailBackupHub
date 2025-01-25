@@ -157,24 +157,10 @@ def process_message(service, message):
 
 # Função para gerenciar os backups
 def manage_backups(subject_folder):
-    today = datetime.date.today()
-    for i in range(1, 6):  # Últimos 5 dias
-        day = today - datetime.timedelta(days=i)
-        backup_path = os.path.join(subject_folder, f"{day}.html")
-        if os.path.exists(backup_path):
-            os.remove(backup_path)
-
-    for i in range(1, 6):  # Últimos 5 domingos (último dia de cada semana)
-        last_sunday = today - datetime.timedelta(days=today.weekday() + i)
-        backup_path = os.path.join(subject_folder, f"{last_sunday}.html")
-        if os.path.exists(backup_path):
-            os.remove(backup_path)
-
-    for i in range(1, 13):  # Últimos 12 meses
-        last_month = today.replace(month=today.month - i if today.month - i > 0 else 12 + (today.month - i), day=1)
-        backup_path = os.path.join(subject_folder, f"{last_month.strftime('%Y-%m')}.html")
-        if os.path.exists(backup_path):
-            os.remove(backup_path)
+    last_month = datetime.datetime.now(TIMEZONE) - datetime.timedelta(days=30)
+    backup_path = os.path.join(subject_folder, f"{last_month.strftime('%Y-%m')}.html")
+    if os.path.exists(backup_path):
+        os.remove(backup_path)
 
 # Atualiza o arquivo index.html na raiz
 def update_root_index(links):
@@ -182,62 +168,33 @@ def update_root_index(links):
     html_content = f"""
     <html>
     <head>
-        <title>Lista de E-mails Processados</title>
-        <style>
-            body {{
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                padding: 20px;
-                background-color: #f4f4f4;
-            }}
-            h1 {{
-                color: #00796b;
-            }}
-            ul {{
-                list-style-type: none;
-                padding: 0;
-            }}
-            li {{
-                padding: 8px;
-                background-color: #ffffff;
-                border-radius: 5px;
-                margin: 5px 0;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }}
-            a {{
-                text-decoration: none;
-                color: #00796b;
-            }}
-            a:hover {{
-                text-decoration: underline;
-            }}
-        </style>
+        <title>Backup de E-mails</title>
     </head>
     <body>
-        <h1>Lista de E-mails Processados</h1>
+        <h1>Últimos E-mails Processados</h1>
         <ul>
-            {"".join(links)}
+        {"".join(links)}
         </ul>
     </body>
     </html>
     """
+    with open(index_file, "w", encoding="utf-8") as f:
+        f.write(html_content)
 
-    with open(index_file, "w", encoding="utf-8") as file:
-        file.write(html_content)
-        print(f"Arquivo 'index.html' atualizado com sucesso.")
-
-# Commit de alterações no repositório Git
+# Realizar commit no repositório Git
 def commit_changes():
     repo = check_git_repo()
-    repo.index.add([f"{BACKUP_FOLDER}/index.html"])
-    repo.index.commit(f"Atualização de e-mails processados em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}")
+    repo.index.add(["*"])  # Adiciona todas as mudanças
+    repo.index.commit(f"Backup realizado em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}")
     repo.remotes.origin.push()
-    print("Alterações comprometidas e enviadas ao repositório.")
 
-# Executar a função principal
+# Função principal
 def main():
-    service = authenticate()
-    process_emails(service)
+    try:
+        service = authenticate()
+        process_emails(service)
+    except Exception as error:
+        print(f"Erro: {error}")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
