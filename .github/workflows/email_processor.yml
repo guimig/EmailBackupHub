@@ -32,6 +32,7 @@ jobs:
         run: |
           python process_emails.py
         env:
+          GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
           GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}  # Passando o token do Gmail via Secrets
 
       # Passo 5: Garante que o repositório Git está inicializado corretamente
