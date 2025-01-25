@@ -3,6 +3,7 @@ import pickle
 import base64
 import datetime
 import re
+import git
 from googleapiclient.discovery import build
 from google.auth.credentials import Credentials
 from googleapiclient.errors import HttpError
@@ -52,6 +53,7 @@ def process_emails(service):
                 all_links.append(link)
 
         update_root_index(all_links)
+        commit_changes()  # Realiza o commit dos arquivos gerados no repositório
     except HttpError as error:
         print(f"Erro ao processar e-mails: {error}")
 
@@ -130,6 +132,21 @@ def update_root_index(links):
         print(f"Arquivo index.html criado na raiz.")
     except Exception as e:
         print(f"Erro ao criar o index.html na raiz: {e}")
+
+# Commit das mudanças no GitHub
+def commit_changes():
+    try:
+        repo = git.Repo(search_parent_directories=True)
+        index = repo.index
+        index.add([BACKUP_FOLDER, 'index.html'])  # Adiciona os arquivos que foram modificados
+        index.commit("Atualiza os arquivos de backup de e-mails.")
+        
+        # Enviar alterações para o GitHub usando o GH_TOKEN
+        origin = repo.remote(name='origin')
+        origin.push()
+        print("Mudanças comitadas e enviadas para o repositório.")
+    except Exception as e:
+        print(f"Erro ao comitar e enviar alterações para o GitHub: {e}")
 
 # Principal
 if __name__ == '__main__':
