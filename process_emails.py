@@ -23,13 +23,19 @@ def authenticate():
     token_base64 = os.getenv('GMAIL_TOKEN')
     if not token_base64:
         raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
-
+    
     try:
+        # Decode do token base64
         token_pickle = base64.b64decode(token_base64)
         creds = pickle.loads(token_pickle)
+        
+        # Verifique se as credenciais são válidas
         if not creds or not creds.valid:
             raise ValueError("Credenciais inválidas ou expiradas.")
+        
+        print(f"Credenciais validadas com sucesso.")
         return build('gmail', 'v1', credentials=creds)
+    
     except Exception as e:
         raise ValueError(f"Erro ao processar o GMAIL_TOKEN: {e}")
 
@@ -176,30 +182,24 @@ def update_root_index(links):
                 file_path = os.path.join(root, file)
                 link = f"https://guimig.github.io/EmailBackupHub/{BACKUP_FOLDER}/{folder_name}/{file_name}"
                 date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%d/%m/%Y")
-                links.append(f"<li><a href='{link}'>{folder_name} - {file_name} ({date})</a></li>")
+                links.append(f"<li><a href='{link}'>{folder_name} - {date}</a></li>")
 
-    # Gerar conteúdo HTML com a lista de links
-    html_content = f"""
-    <html>
-    <head>
-        <title>Backup de E-mails</title>
-    </head>
-    <body>
-        <h1>Últimos E-mails Processados</h1>
-        <ul>
-        {"".join(links)}
-        </ul>
-    </body>
-    </html>
-    """
-    # Salvar o arquivo de índice atualizado
     with open(index_file, "w", encoding="utf-8") as f:
-        f.write(html_content)
+        f.write("<html><body><ul>")
+        f.write("\n".join(links))
+        f.write("</ul></body></html>")
 
-# Commit das alterações no repositório
+# Commit no repositório Git
 def commit_changes():
     repo = check_git_repo()
-    repo.git.add(".")
-    repo.index.commit("Atualizar backups de e-mails")
-    origin = repo.remote(name='origin')
-    origin.push()
+    repo.index.add(["index.html", BACKUP_FOLDER])
+    repo.index.commit(f"Backup atualizado em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}")
+    repo.remote().push()
+
+# Principal
+def main():
+    service = authenticate()
+    process_emails(service)
+
+if __name__ == '__main__':
+    main()
