@@ -109,12 +109,14 @@ def update_index(index_file, body, date, folder, root_folder):
     """
     with open(index_file, "w", encoding="utf-8") as file:
         file.write(html_content)
+        print(f"Arquivo de index criado na pasta: {folder}")
 
     # Atualizar o index na raiz também
     root_index_file = os.path.join(root_folder, "index.html")
     with open(root_index_file, "w", encoding="utf-8") as root_file:
         root_file.write(html_content)
-
+        print(f"Arquivo de index atualizado na raiz: {root_folder}")
+        
 # Principal
 if __name__ == '__main__':
     try:
