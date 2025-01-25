@@ -34,11 +34,17 @@ jobs:
         env:
           GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}  # Passando o token do Gmail via Secrets
 
-      # Passo 5: Commit e push das alterações para o repositório
+      # Passo 5: Verifica se há alterações antes de realizar commit e push
+      - name: Check if there are changes to commit
+        run: |
+          git diff --exit-code || echo "Changes detected"
+      
+      # Passo 6: Commit e push das alterações para o repositório
       - name: Commit and push changes to GitHub repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Update emails backup and repository"
+          git diff --quiet || git commit -m "Update emails backup and repository"
           git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+        if: github.event_name == 'workflow_dispatch' || steps.Check-if-there-are-changes-to-commit.outcome == 'success'
