@@ -51,4 +51,3 @@ jobs:
           git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Passando o token para push
-        if: github.event_name == 'workflow_dispatch' || steps.Check-if-there-are-changes-to-commit.outcome == 'success'

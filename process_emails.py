@@ -1,4 +1,5 @@
 import os
+import json
 import base64
 import datetime
 from googleapiclient.discovery import build
@@ -19,10 +20,13 @@ def authenticate():
         raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
     
     # Decodificando o token
-    token_data = base64.b64decode(token_base64)
+    token_data = base64.b64decode(token_base64).decode('utf-8')
+    
+    # Convertendo a string JSON para um dicionário
+    token_dict = json.loads(token_data)
     
     # Criando as credenciais
-    creds = Credentials.from_authorized_user_info(token_data)
+    creds = Credentials.from_authorized_user_info(token_dict, SCOPES)
 
     # Retornar o serviço Gmail autenticado
     return build('gmail', 'v1', credentials=creds)
@@ -30,7 +34,7 @@ def authenticate():
 # Processar e-mails
 def process_emails(service):
     # Filtrar e-mails não lidos
-    results = service.users().messages().list(userId='me', q="is:unread from:{}".format(EMAIL_SENDER)).execute()
+    results = service.users().messages().list(userId='me', q=f"is:unread from:{EMAIL_SENDER}").execute()
     messages = results.get('messages', [])
     print(f"Número de e-mails encontrados: {len(messages)}")
 
@@ -76,21 +80,16 @@ def process_message(service, message):
 # Extrair corpo do e-mail
 def get_email_body(message):
     try:
-        # Verificar se o corpo da mensagem está diretamente na resposta
         if 'body' in message['payload']:
             body = message['payload']['body'].get('data')
             if body:
-                # Decodificar corpo e retornar como texto
-                decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
-                return decoded_data
+                return base64.urlsafe_b64decode(body).decode("utf-8")
 
-        # Se não, verificar as partes do e-mail
         for part in message['payload'].get('parts', []):
             if part['mimeType'] == 'text/html':
                 body = part['body'].get('data')
                 if body:
-                    decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
-                    return decoded_data
+                    return base64.urlsafe_b64decode(body).decode("utf-8")
         return "Corpo do e-mail não disponível."
     except Exception as e:
         print(f"Erro ao extrair o corpo do e-mail: {e}")
@@ -98,15 +97,12 @@ def get_email_body(message):
 
 # Atualizar index.html
 def update_index(index_file, body, date, folder):
-    # Verifique se a pasta raiz ou subpasta já existe
     if not os.path.exists(os.path.dirname(index_file)):
         os.makedirs(os.path.dirname(index_file), exist_ok=True)
 
-    # Listar os arquivos de backup disponíveis dentro da subpasta
     links = [f for f in os.listdir(folder) if f.endswith(".html") and f != "index.html"]
     links_list = "".join(f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links)
 
-    # Criar o conteúdo HTML do index
     html_content = f"""
     <html>
     <head><title>Última Atualização</title></head>
@@ -118,14 +114,9 @@ def update_index(index_file, body, date, folder):
     </body>
     </html>
     """
-    
-    # Salvar o arquivo de index na pasta correta
-    try:
-        with open(index_file, "w", encoding="utf-8") as file:
-            file.write(html_content)
-        print(f"Arquivo de index criado em: {index_file}")
-    except Exception as e:
-        print(f"Erro ao criar o index: {e}")
+    with open(index_file, "w", encoding="utf-8") as file:
+        file.write(html_content)
+    print(f"Arquivo de index criado em: {index_file}")
 
 # Principal
 if __name__ == '__main__':
