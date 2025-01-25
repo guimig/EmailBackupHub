@@ -41,7 +41,8 @@ def authenticate():
 
 # Processar e-mails
 def process_emails(service):
-    results = service.users().messages().list(userId='me', q=f"from:{EMAIL_SENDER}").execute()
+    # Filtrar e-mails não lidos
+    results = service.users().messages().list(userId='me', q="is:unread from:{}".format(EMAIL_SENDER)).execute()
     messages = results.get('messages', [])
     print(f"Número de e-mails encontrados: {len(messages)}")
 
@@ -68,6 +69,10 @@ def process_message(service, message):
     # Atualizar index.html da subpasta
     index_file = os.path.join(subject_folder, "index.html")
     update_index(index_file, body, date, subject_folder, BACKUP_FOLDER)
+
+    # Atualizar index.html na raiz
+    root_index_file = os.path.join(BACKUP_FOLDER, "index.html")
+    update_index(root_index_file, body, date, subject_folder, BACKUP_FOLDER)
 
     # Marcar e-mail como lido e adicionar TAG
     label_obj = {
@@ -111,12 +116,6 @@ def update_index(index_file, body, date, folder, root_folder):
         file.write(html_content)
         print(f"Arquivo de index criado na pasta: {folder}")
 
-    # Atualizar o index na raiz também
-    root_index_file = os.path.join(root_folder, "index.html")
-    with open(root_index_file, "w", encoding="utf-8") as root_file:
-        root_file.write(html_content)
-        print(f"Arquivo de index atualizado na raiz: {root_folder}")
-        
 # Principal
 if __name__ == '__main__':
     try:
