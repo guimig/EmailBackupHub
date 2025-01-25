@@ -95,7 +95,6 @@ def manage_backups(subject_folder, subject, date):
     backup_files = []  # Lista para armazenar os arquivos a serem mantidos
 
     # Gerar a lista de backup com base no e-mail atual
-    # O formato do nome do arquivo será o título normalizado e a data de envio
     file_name = f"{subject}_{date.strftime('%Y-%m-%d')}.html"
     backup_files.append(file_name)
 
@@ -168,59 +167,41 @@ def process_message(service, message):
         print(f"Pasta criada: {subject_folder}")
 
         # Forçar o Git a rastrear a pasta, criando um arquivo .gitkeep
-        gitkeep_path = os.path.join(subject_folder, '.gitkeep')
-        if not os.path.exists(gitkeep_path):  # Verifique se o arquivo .gitkeep já existe
-            with open(gitkeep_path, 'w') as keep_file:
-                keep_file.write('')
+        gitkeep_path = os.path.join(subject_folder, ".gitkeep")
+        with open(gitkeep_path, 'w') as f:
+            pass  # Arquivo vazio para forçar o Git a rastrear a pasta
+
+        # Armazenar e-mails na pasta com base nas condições
+        file_name = f"{normalized_title}_{date.strftime('%Y-%m-%d')}.html"
+        file_path = os.path.join(subject_folder, file_name)
+        with open(file_path, "w") as f:
+            f.write(body)
+
+        return file_path  # Retorna o caminho do arquivo
     except Exception as e:
-        print(f"Erro ao criar pasta {subject_folder}: {e}")
-
-    # Criar arquivo index.html com o nome do e-mail (antigo index)
-    index_file = os.path.join(subject_folder, f"{normalized_title}.html")
-    with open(index_file, "w", encoding="utf-8") as file:
-        # Incluindo o CSS no cabeçalho do arquivo HTML
-        file.write(f"""
-        <html>
-        <head>
-            <style>
-                body {{ font-family: Arial, sans-serif; }}
-                h1 {{ color: #333; }}
-                a {{ color: #0066cc; text-decoration: none; }}
-                a:hover {{ text-decoration: underline; }}
-                .email-content {{ margin: 20px; }}
-            </style>
-        </head>
-        <body>
-            <h1>Backup de E-mail: {subject}</h1>
-            <div class="email-content">{body}</div>
-        </body>
-        </html>
-        """)
-
-    # Chama a função de backup
-    backup_files = manage_backups(subject_folder, subject, date)
-    return backup_files
+        print(f"Erro ao processar a mensagem: {e}")
+        return None
 
 # Atualizar o arquivo index.html
-def update_root_index(links):
-    with open('index.html', 'w', encoding='utf-8') as f:
-        f.write('<html><head><title>E-mails Processados</title></head><body>')
-        f.write('<h1>E-mails Processados</h1>')
-        for link in links:
-            # Modificar a maneira de acessar o link
-            f.write(f'<a href="{link[0]}">{link[0]}</a><br>')  # link[0] para acessar a string do link
-        f.write('</body></html>')
+def update_root_index(all_links):
+    index_path = os.path.join("index.html")
+    with open(index_path, "w") as index_file:
+        index_file.write("<html><body><h1>E-mails Processados</h1><ul>\n")
+        for link in all_links:
+            index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
+        index_file.write("</ul></body></html>\n")
 
-# Realizar commit no repositório Git
+# Commitar as alterações no repositório
 def commit_changes():
     repo = check_git_repo()
-    repo.git.add(A=True)  # Adiciona todos os arquivos modificados
-    repo.index.commit(f"Backup de e-mails processados em {datetime.datetime.now(TIMEZONE)}")
+    repo.git.add(A=True)  # Adiciona todos os arquivos alterados
+    repo.git.commit(m="Atualizando e-mails processados.")  # Commit de alterações
+    repo.git.push()  # Envia para o repositório remoto
 
-# Função principal
-def main():
-    service = authenticate()
-    process_emails(service)
-
+# Execução principal
 if __name__ == '__main__':
-    main()
+    try:
+        service = authenticate()
+        process_emails(service)
+    except Exception as e:
+        print(f"Erro ao executar o script: {e}")
