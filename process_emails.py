@@ -67,7 +67,14 @@ def process_message(service, message):
 
     # Criar pasta para o título do e-mail
     subject_folder = os.path.join(BACKUP_FOLDER, normalized_title)
-    os.makedirs(subject_folder, exist_ok=True)
+    print(f"Criando a pasta: {subject_folder}")  # Log para verificar o caminho
+
+    # Tentar criar a pasta e verificar se foi criada com sucesso
+    try:
+        os.makedirs(subject_folder, exist_ok=True)
+        print(f"Pasta criada: {subject_folder}")
+    except Exception as e:
+        print(f"Erro ao criar pasta {subject_folder}: {e}")
 
     # Criar arquivo index.html com o nome do e-mail (antigo index)
     index_file = os.path.join(subject_folder, f"{normalized_title}.html")
