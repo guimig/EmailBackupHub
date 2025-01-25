@@ -4,7 +4,7 @@ import datetime
 import pickle
 from email.message import EmailMessage
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+from googleapiclation.errors import HttpError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
@@ -77,9 +77,13 @@ def process_message(service, message):
     # Marcar e-mail como lido e adicionar TAG
     label_obj = {
         'addLabelIds': ['Label_1'],  # Substitua por sua label personalizada, se necessário
-        'removeLabelIds': ['INBOX']
+        'removeLabelIds': ['INBOX']  # Remover da caixa de entrada
     }
-    service.users().messages().modify(userId='me', id=message['id'], body=label_obj).execute()
+    try:
+        service.users().messages().modify(userId='me', id=message['id'], body=label_obj).execute()
+        print(f"E-mail com assunto '{subject}' marcado como lido e etiquetado.")
+    except HttpError as error:
+        print(f"Erro ao marcar e-mail como lido: {error}")
 
 # Extrair corpo do e-mail
 def get_email_body(message):
@@ -112,10 +116,14 @@ def update_index(index_file, body, date, folder, root_folder):
     </body>
     </html>
     """
-    with open(index_file, "w", encoding="utf-8") as file:
-        file.write(html_content)
-        print(f"Arquivo de index criado na pasta: {folder}")
-
+    # Verifica se o arquivo da pasta raiz pode ser acessado corretamente
+    try:
+        with open(index_file, "w", encoding="utf-8") as file:
+            file.write(html_content)
+            print(f"Arquivo de index criado em: {index_file}")
+    except Exception as e:
+        print(f"Erro ao criar o index: {e}")
+        
 # Principal
 if __name__ == '__main__':
     try:
