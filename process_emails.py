@@ -34,7 +34,7 @@ def authenticate():
 def normalize_title(title):
     title = title.lower()
     title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
-    title = re.sub(r'\s+', '-', title)  # Substitui espaços por hífens
+    title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
     return title
 
 # Processar e-mails
@@ -73,6 +73,10 @@ def process_message(service, message):
     try:
         os.makedirs(subject_folder, exist_ok=True)
         print(f"Pasta criada: {subject_folder}")
+
+        # Forçar o Git a rastrear a pasta, criando um arquivo .gitkeep
+        with open(os.path.join(subject_folder, '.gitkeep'), 'w') as keep_file:
+            keep_file.write('')
     except Exception as e:
         print(f"Erro ao criar pasta {subject_folder}: {e}")
 
