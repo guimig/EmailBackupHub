@@ -4,10 +4,14 @@ import base64
 import datetime
 import re
 import git
-from googleapiclient.discovery import build
-from google.auth.credentials import Credentials
-from googleapiclient.errors import HttpError
+import json
 import pytz
+#from googleapiclient.discovery import build
+#from google.auth.credentials import Credentials
+#from googleapiclient.errors import HttpError
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email import policy
@@ -20,28 +24,48 @@ TIMEZONE = pytz.timezone("America/Sao_Paulo")  # Fuso horário de São Paulo
 
 # Autenticação
 def authenticate():
+    """
+    Autentica na API do Gmail e renova o token automaticamente se necessário.
+    """
+    # Carrega segredos do GitHub Actions (em Base64)
     token_base64 = os.getenv('GMAIL_TOKEN')
-    credentials_json_base64 = os.getenv('GMAIL_CREDENTIALS_JSON')  # Credenciais do Gmail no formato JSON
+    credentials_json_base64 = os.getenv('GMAIL_CREDENTIALS_JSON')
 
-    if not token_base64 and not credentials_json_base64:
-        raise ValueError("Nenhuma credencial encontrada no ambiente. Configure GMAIL_TOKEN ou GMAIL_CREDENTIALS_JSON.")
-    
+    if not token_base64 or not credentials_json_base64:
+        raise ValueError("As credenciais GMAIL_TOKEN e GMAIL_CREDENTIALS_JSON não foram encontradas no ambiente.")
+
+    # Decodifica o token e o credentials.json
+    token_data = base64.b64decode(token_base64).decode('utf-8')
+    credentials_data = base64.b64decode(credentials_json_base64).decode('utf-8')
+
+    # Carrega as credenciais do token.json
     creds = None
-    
-    if token_base64:
+    try:
+        creds = Credentials.from_authorized_user_info(json.loads(token_data), SCOPES)
+    except Exception as e:
+        print(f"Erro ao carregar o token: {e}")
+
+    # Renova o token se necessário
+    if creds and creds.expired and creds.refresh_token:
         try:
-            # Decode do token base64
-            token_pickle = base64.b64decode(token_base64)
-            creds = pickle.loads(token_pickle)
-
-            # Verifique se as credenciais são válidas
-            if creds and creds.valid:
-                print("Credenciais validadas com sucesso.")
-                return build('gmail', 'v1', credentials=creds)
-
-            print("Token expirado ou inválido. Tentando renovar...")
+            creds.refresh(Request())
+            print("Token renovado com sucesso.")
         except Exception as e:
-            print(f"Erro ao processar o GMAIL_TOKEN: {e}")
+            raise ValueError(f"Erro ao renovar token: {e}")
+
+    # Caso não seja possível usar o token.json, usa credentials.json para obter novo token
+    if not creds or not creds.valid:
+        try:
+            creds = Credentials.from_authorized_user_info(json.loads(credentials_data), SCOPES)
+            print("Credenciais válidas geradas a partir de credentials.json.")
+        except Exception as e:
+            raise ValueError(f"Erro ao processar credentials.json: {e}")
+
+    # Retorna o serviço Gmail API autenticado
+    if creds and creds.valid:
+        return build('gmail', 'v1', credentials=creds)
+    else:
+        raise ValueError("Não foi possível autenticar. Verifique suas credenciais.")
     
     # Se o token estiver expirado ou inválido, tente renovar usando o JSON de credenciais
     if credentials_json_base64:
