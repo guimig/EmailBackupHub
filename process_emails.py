@@ -76,19 +76,22 @@ def process_message(service, message):
 # Extrair corpo do e-mail
 def get_email_body(message):
     try:
-        # Verificando o tipo de codificação do corpo
+        # Verificar se o corpo da mensagem está diretamente na resposta
         if 'body' in message['payload']:
             body = message['payload']['body'].get('data')
             if body:
+                # Decodificar corpo e retornar como texto
                 decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
                 return decoded_data
-        # Verificando se há partes alternativas
+
+        # Se não, verificar as partes do e-mail
         for part in message['payload'].get('parts', []):
             if part['mimeType'] == 'text/html':
                 body = part['body'].get('data')
                 if body:
                     decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
                     return decoded_data
+        return "Corpo do e-mail não disponível."
     except Exception as e:
         print(f"Erro ao extrair o corpo do e-mail: {e}")
         return "Corpo do e-mail não disponível."
@@ -123,7 +126,7 @@ def update_index(index_file, body, date, folder):
         print(f"Arquivo de index criado em: {index_file}")
     except Exception as e:
         print(f"Erro ao criar o index: {e}")
-        
+
 # Principal
 if __name__ == '__main__':
     try:
