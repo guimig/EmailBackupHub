@@ -149,6 +149,11 @@ def commit_changes():
         origin = repo.remote(name='origin')
         origin.push()
         print("Mudanças comitadas e enviadas para o repositório.")
+    except git.exc.InvalidGitRepositoryError:
+        print("Repositório Git não encontrado. Inicializando o repositório.")
+        # Inicializa o repositório Git caso não exista
+        repo = git.Repo.init(".")
+        commit_changes()  # Chama novamente para realizar o commit
     except Exception as e:
         print(f"Erro ao comitar e enviar alterações para o GitHub: {e}")
 
