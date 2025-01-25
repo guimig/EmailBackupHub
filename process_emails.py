@@ -49,6 +49,18 @@ def normalize_title(title):
     title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
     title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
     title = re.sub(r'-+', '-', title)  # Substitui múltiplos hífens por um único hífen
+    title = title.replace('à', 'a')  # Substitui caracteres como 'à' por 'a'
+    title = title.replace('á', 'a')  # Substitui caracteres como 'á' por 'a'
+    title = title.replace('ã', 'a')  # Substitui caracteres como 'ã' por 'a'
+    title = title.replace('é', 'e')  # Substitui caracteres como 'é' por 'e'
+    title = title.replace('è', 'e')  # Substitui caracteres como 'è' por 'e'
+    title = title.replace('ê', 'e')  # Substitui caracteres como 'ê' por 'e'
+    title = title.replace('í', 'i')  # Substitui caracteres como 'í' por 'i'
+    title = title.replace('ó', 'o')  # Substitui caracteres como 'ó' por 'o'
+    title = title.replace('ô', 'o')  # Substitui caracteres como 'ô' por 'o'
+    title = title.replace('õ', 'o')  # Substitui caracteres como 'õ' por 'o'
+    title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
+    title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
     return title
 
 # Processar e-mails
@@ -170,33 +182,26 @@ def commit_changes():
         index = repo.index
 
         # Adiciona a pasta e os arquivos ao repositório
-        index.add([os.path.join(BACKUP_FOLDER, "restos-à-pagar-rap---contratos/.gitkeep")])  # Garante que a pasta seja rastreada
-        index.add([os.path.join(BACKUP_FOLDER, "index.html")])
-
-        # Adiciona todos os arquivos na pasta emails
-        for root, dirs, files in os.walk(BACKUP_FOLDER):
-            for file in files:
-                index.add(os.path.join(root, file))
-
-        # Log para verificação de arquivos adicionados
-        print("Arquivos a serem comitados:")
-        for file in index.diff("HEAD"):
-            print(file.a_path)  # Exibe os arquivos que estão sendo comitados
+        index.add([os.path.join(BACKUP_FOLDER, '*')])
 
         # Realiza o commit
-        index.commit("Atualiza os arquivos de backup de e-mails.")
+        index.commit("Atualizando e-mails processados")
+        print("Mudanças cometidas com sucesso.")
 
-        # Enviar alterações para o GitHub
-        origin = repo.remote(name='origin')
+        # Enviar para o repositório remoto
+        origin = repo.remotes.origin
         origin.push()
-        print("Mudanças comitadas e enviadas para o repositório.")
+        print("Mudanças enviadas para o GitHub.")
+
     except Exception as e:
         print(f"Erro ao comitar e enviar alterações para o GitHub: {e}")
 
-# Principal
-if __name__ == '__main__':
+def main():
     try:
         service = authenticate()
         process_emails(service)
     except Exception as e:
-        print(f"Erro: {e}")
+        print(f"Erro na execução do script: {e}")
+
+if __name__ == "__main__":
+    main()
