@@ -187,7 +187,7 @@ def process_emails(service):
             # Marcar como lido e retirar da caixa de entrada
             service.users().messages().modify(
                 userId='me', id=msg['id'],
-                body={'removeLabelIds': ['INBOX'], 'addLabelIds': ['']}
+                body={'removeLabelIds': ['INBOX'], 'addLabelIds': ['UNREAD']}
             ).execute()
 
         # Atualiza o index.html com todos os links
