@@ -168,8 +168,10 @@ def process_message(service, message):
         print(f"Pasta criada: {subject_folder}")
 
         # Forçar o Git a rastrear a pasta, criando um arquivo .gitkeep
-        with open(os.path.join(subject_folder, '.gitkeep'), 'w') as keep_file:
-            keep_file.write('')
+        gitkeep_path = os.path.join(subject_folder, '.gitkeep')
+        if not os.path.exists(gitkeep_path):  # Verifique se o arquivo .gitkeep já existe
+            with open(gitkeep_path, 'w') as keep_file:
+                keep_file.write('')
     except Exception as e:
         print(f"Erro ao criar pasta {subject_folder}: {e}")
 
@@ -205,7 +207,8 @@ def update_root_index(links):
         f.write('<html><head><title>E-mails Processados</title></head><body>')
         f.write('<h1>E-mails Processados</h1>')
         for link in links:
-            f.write(f'<a href="{link}">{link}</a><br>')
+            # Modificar a maneira de acessar o link
+            f.write(f'<a href="{link[0]}">{link[0]}</a><br>')  # link[0] para acessar a string do link
         f.write('</body></html>')
 
 # Realizar commit no repositório Git
