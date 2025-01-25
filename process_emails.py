@@ -4,7 +4,7 @@ import datetime
 import pickle
 from email.message import EmailMessage
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError  # CORREÇÃO AQUI
+from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
@@ -16,25 +16,13 @@ BACKUP_FOLDER = "emails"
 # Autenticação
 def authenticate():
     # Obtendo o token do segredo armazenado no GitHub Actions
-    token_base64 = os.getenv('GMAIL_TOKEN')
-    if token_base64:
-        with open('token.pickle', 'wb') as f:
-            f.write(base64.b64decode(token_base64))
-    else:
-        raise ValueError("GMAIL_TOKEN não encontrado.")
+    token_base64 = os.getenv('GMAIL_TOKEN')  # Assume que o token está base64 codificado
+    if not token_base64:
+        raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
     
-    # Carregar o token e autenticar
-    creds = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-
-    # Se as credenciais não forem válidas, reautenticar
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            raise ValueError("Credenciais não válidas ou expiradas.")
+    # Decodificando o token
+    token_data = base64.b64decode(token_base64)
+    creds = Credentials.from_authorized_user_info(token_data)
     
     # Retornar o serviço Gmail autenticado
     return build('gmail', 'v1', credentials=creds)
