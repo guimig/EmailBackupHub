@@ -105,6 +105,7 @@ def process_emails(service):
             if link:
                 all_links.append(link)
 
+        # Atualiza o index.html com todos os links
         update_root_index(all_links)
         commit_changes()  # Realiza o commit dos arquivos gerados no repositório
     except HttpError as error:
@@ -159,7 +160,7 @@ def process_message(service, message):
     except HttpError as error:
         print(f"Erro ao marcar e-mail como lido: {error}")
 
-    return f"<li><a href='{link}'>{subject} - {date}</a></li>"
+    return link
 
 # Função para gerenciar os backups
 def manage_backups(subject_folder):
@@ -184,22 +185,20 @@ def update_root_index(links):
                 date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%d/%m/%Y")
                 links.append(f"<li><a href='{link}'>{folder_name} - {date}</a></li>")
 
-    with open(index_file, "w", encoding="utf-8") as f:
-        f.write("<html><body><ul>")
-        f.write("\n".join(links))
-        f.write("</ul></body></html>")
+    with open(index_file, "w", encoding="utf-8") as file:
+        file.write("<html><body><ul>")
+        file.write("\n".join(links))
+        file.write("</ul></body></html>")
 
-# Commit no repositório Git
+# Função para realizar o commit das mudanças no repositório Git
 def commit_changes():
-    repo = check_git_repo()
-    repo.index.add(["index.html", BACKUP_FOLDER])
-    repo.index.commit(f"Backup atualizado em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}")
-    repo.remote().push()
+    repo = check_git_repo()  # Verificar ou inicializar o repositório Git
+    repo.git.add(A=True)  # Adiciona todos os arquivos ao commit
+    repo.index.commit("Atualização de arquivos e links")  # Realiza o commit
+    origin = repo.remote(name="origin")  # Obtém o repositório remoto
+    origin.push()  # Envia as mudanças para o repositório remoto
 
-# Principal
-def main():
+# Executar o script
+if __name__ == "__main__":
     service = authenticate()
     process_emails(service)
-
-if __name__ == '__main__':
-    main()
