@@ -110,11 +110,16 @@ def process_message(service, message):
     index_file = os.path.join(subject_folder, f"{normalized_title}.html")
     with open(index_file, "w", encoding="utf-8") as file:
         file.write(body)
+        file.write(f"<p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}</p>")
 
-    # Criar arquivo de backup com a data
+    # Backup diário
     backup_file = os.path.join(subject_folder, f"{datetime.date.today()}.html")
     with open(backup_file, "w", encoding="utf-8") as file:
         file.write(body)
+        file.write(f"<p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}</p>")
+
+    # Gerenciar backups
+    manage_backups(subject_folder)
 
     # Retornar link para o arquivo criado
     link = f"./{BACKUP_FOLDER}/{normalized_title}/{normalized_title}.html"
@@ -129,29 +134,29 @@ def process_message(service, message):
 
     return f"<li><a href='{link}'>{subject} - {date}</a></li>"
 
-# Extrair corpo do e-mail
-def get_email_body(message):
-    try:
-        if 'body' in message['payload']:
-            body = message['payload']['body'].get('data')
-            if body:
-                decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
-                return decoded_data
+# Função para gerenciar os backups
+def manage_backups(subject_folder):
+    today = datetime.date.today()
+    for i in range(1, 6):  # Últimos 5 dias
+        day = today - datetime.timedelta(days=i)
+        backup_path = os.path.join(subject_folder, f"{day}.html")
+        if os.path.exists(backup_path):
+            os.remove(backup_path)
 
-        for part in message['payload'].get('parts', []):
-            if part['mimeType'] == 'text/html':
-                body = part['body'].get('data')
-                if body:
-                    decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
-                    return decoded_data
-        return "Corpo do e-mail não disponível."
-    except Exception as e:
-        print(f"Erro ao extrair o corpo do e-mail: {e}")
-        return "Corpo do e-mail não disponível."
+    for i in range(1, 6):  # Últimos 5 domingos (último dia de cada semana)
+        last_sunday = today - datetime.timedelta(days=today.weekday() + i)
+        backup_path = os.path.join(subject_folder, f"{last_sunday}.html")
+        if os.path.exists(backup_path):
+            os.remove(backup_path)
 
-# Atualizar index.html na raiz
+    for i in range(1, 13):  # Últimos 12 meses
+        last_month = today.replace(month=today.month - i if today.month - i > 0 else 12 + (today.month - i), day=1)
+        backup_path = os.path.join(subject_folder, f"{last_month}.html")
+        if os.path.exists(backup_path):
+            os.remove(backup_path)
+
+# Atualizar index.html na raiz com estilo CSS
 def update_root_index(links):
-    # Garantir que a pasta de backup existe
     emails_folder = os.path.join(os.getcwd(), BACKUP_FOLDER)
     if not os.path.exists(emails_folder):
         os.makedirs(emails_folder)
@@ -159,7 +164,40 @@ def update_root_index(links):
     index_file = os.path.join(emails_folder, "index.html")
     html_content = f"""
     <html>
-    <head><title>Index de E-mails</title></head>
+    <head>
+        <title>Index de E-mails</title>
+        <style>
+            body {{
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                margin: 0;
+                padding: 20px;
+            }}
+            h1 {{
+                color: #005F73;
+                text-align: center;
+            }}
+            ul {{
+                list-style-type: none;
+                padding: 0;
+            }}
+            li {{
+                background-color: #fff;
+                margin: 5px 0;
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }}
+            a {{
+                text-decoration: none;
+                color: #0077B6;
+            }}
+            a:hover {{
+                text-decoration: underline;
+            }}
+        </style>
+    </head>
     <body>
         <h1>Index de E-mails</h1>
         <ul>
