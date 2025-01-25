@@ -8,6 +8,9 @@ from googleapiclient.discovery import build
 from google.auth.credentials import Credentials
 from googleapiclient.errors import HttpError
 import pytz
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email import policy
 
 # Configuração
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
@@ -62,6 +65,24 @@ def normalize_title(title):
     title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
     title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
     return title
+
+# Função para extrair o corpo do e-mail
+def get_email_body(message):
+    if 'parts' in message['payload']:
+        for part in message['payload']['parts']:
+            if part['mimeType'] == 'text/plain':
+                data = part['body']['data']
+                byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
+                return byte_data.decode('utf-8')
+            elif part['mimeType'] == 'text/html':
+                data = part['body']['data']
+                byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
+                return byte_data.decode('utf-8')
+    elif 'body' in message['payload'] and 'data' in message['payload']['body']:
+        data = message['payload']['body']['data']
+        byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
+        return byte_data.decode('utf-8')
+    return ""
 
 # Processar e-mails
 def process_emails(service):
@@ -151,43 +172,37 @@ def manage_backups(subject_folder):
 
     for i in range(1, 13):  # Últimos 12 meses
         last_month = today.replace(month=today.month - i if today.month - i > 0 else 12 + (today.month - i), day=1)
-        backup_path = os.path.join(subject_folder, f"{last_month}.html")
+        backup_path = os.path.join(subject_folder, f"{last_month.strftime('%Y-%m')}.html")
         if os.path.exists(backup_path):
             os.remove(backup_path)
 
-# Atualizar index.html na raiz com estilo CSS
+# Atualiza o arquivo index.html na raiz
 def update_root_index(links):
-    emails_folder = os.path.join(os.getcwd(), BACKUP_FOLDER)
-    if not os.path.exists(emails_folder):
-        os.makedirs(emails_folder)
-
-    index_file = os.path.join(emails_folder, "index.html")
+    index_file = "index.html"
     html_content = f"""
     <html>
     <head>
-        <title>Index de E-mails</title>
+        <title>Lista de E-mails Processados</title>
         <style>
             body {{
                 font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                color: #333;
-                margin: 0;
+                margin: 20px;
                 padding: 20px;
+                background-color: #f4f4f4;
             }}
             h1 {{
-                color: #005F73;
-                text-align: center;
+                color: #00796b;
             }}
             ul {{
                 list-style-type: none;
                 padding: 0;
             }}
             li {{
-                background-color: #fff;
-                margin: 5px 0;
-                padding: 10px;
+                padding: 8px;
+                background-color: #ffffff;
                 border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin: 5px 0;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }}
             a {{
                 text-decoration: none;
