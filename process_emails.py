@@ -239,6 +239,49 @@ def update_root_index(all_links):
             index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
         index_file.write("</ul></body></html>\n")
 
+def create_latest_summary_html():
+    """
+    Cria um arquivo .html no diretório inicial para o último arquivo mais atualizado
+    de cada subpasta em /emails. Inclui no final a data e horário da última atualização.
+    """
+    for root, dirs, files in os.walk(BACKUP_FOLDER):
+        # Ignora a pasta raiz e processa apenas subpastas
+        if root == BACKUP_FOLDER:
+            continue
+
+        # Ordena os arquivos por data de modificação, do mais recente ao mais antigo
+        files = [f for f in files if f.endswith('.html')]
+        files.sort(key=lambda f: os.path.getmtime(os.path.join(root, f)), reverse=True)
+
+        if not files:
+            continue
+
+        # Seleciona o arquivo mais recente
+        latest_file = files[0]
+        latest_file_path = os.path.join(root, latest_file)
+
+        # Extrai o título normalizado da subpasta
+        normalized_title = os.path.basename(root)
+
+        # Cria o arquivo HTML no diretório inicial
+        output_file = f"{normalized_title}.html"
+        output_path = os.path.join(os.getcwd(), output_file)
+
+        # Lê o conteúdo do arquivo mais recente
+        with open(latest_file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Adiciona a data e hora da última atualização no final do HTML
+        now = datetime.datetime.now(TIMEZONE)
+        update_text = f"<p>Última atualização em: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+
+        # Escreve o conteúdo atualizado no arquivo de saída
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+            f.write(update_text)
+
+        print(f"Resumo atualizado criado: {output_path}")
+
 # Função para verificar ou inicializar o repositório Git
 def check_git_repo():
     try:
@@ -276,5 +319,7 @@ if __name__ == '__main__':
     try:
         service = authenticate()
         process_emails(service)
+        # Chamando a função após o processamento dos e-mails
+        create_latest_summary_html()
     except Exception as e:
         print(f"Erro ao executar o script: {e}")
