@@ -28,3 +28,7 @@ jobs:
           python process_emails.py
         env:
           GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
+
+      - name: Verify generated files
+        run: |
+          ls -l  # Verifique se os arquivos foram criados
