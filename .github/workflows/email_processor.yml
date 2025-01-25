@@ -34,18 +34,26 @@ jobs:
         env:
           GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}  # Passando o token do Gmail via Secrets
 
-      # Passo 5: Verifica se há alterações antes de realizar commit e push
+      # Passo 5: Garante que o repositório Git está inicializado corretamente
+      - name: Ensure Git repository is initialized
+        run: |
+          git init  # Garante que o repositório esteja inicializado
+          git remote add origin https://github.com/${{ github.repository }}  # Adiciona o remote do repositório, se necessário
+          git fetch  # Faz o fetch das referências remotas
+          git checkout ${{ github.ref }}  # Garante que a branch correta seja utilizada
+
+      # Passo 6: Verifica se há alterações antes de realizar commit e push
       - name: Check if there are changes to commit
         run: |
           git diff --exit-code || echo "Changes detected"
-      
-      # Passo 6: Commit e push das alterações para o repositório
+
+      # Passo 7: Commit e push das alterações para o repositório
       - name: Commit and push changes to GitHub repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --quiet || git commit -m "Update emails backup and repository"
+          git commit -am "Update emails backup and repository" || echo "No changes to commit"
           
           # Usando HTTPS para autenticação com token
           git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
