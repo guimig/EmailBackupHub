@@ -272,47 +272,61 @@ def update_root_index():
     
     # Conteúdo HTML com estrutura e CSS
     html_content = """
-    <html>
-    <head>
-        <title>Lista de Arquivos HTML</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-                background-color: #f4f4f4;
-            }
-            h1 {
-                color: #333;
-                text-align: center;
-            }
-            .folder {
-                margin-top: 20px;
-                background-color: #e2e2e2;
-                padding: 10px;
-                border-radius: 8px;
-            }
-            .folder h2 {
-                color: #555;
-                font-size: 1.4em;
-            }
-            .links {
-                margin-left: 20px;
-            }
-            a {
-                text-decoration: none;
-                color: #007bff;
-            }
-            a:hover {
-                text-decoration: underline;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Lista de Arquivos HTML</h1>
-        <div class="folder">
-            <h2>Arquivos da Raiz</h2>
-            <div class="links">
-    """
+        <html>
+        <head>
+            <title>Lista de Arquivos HTML</title>
+            <style>
+                body {
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    margin: 20px;
+                    background-color: #f0f0f0;
+                    color: #333;
+                }
+                h1 {
+                    color: #005e5c;  /* Cor institucional dos IFs */
+                    text-align: center;
+                    font-size: 2em;
+                    margin-bottom: 20px;
+                }
+                .folder {
+                    margin-top: 20px;
+                    background-color: #ffffff;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    border-left: 5px solid #005e5c;  /* Cor institucional dos IFs */
+                }
+                .folder h2 {
+                    color: #005e5c;
+                    font-size: 1.5em;
+                    margin-bottom: 10px;
+                }
+                .links {
+                    margin-left: 20px;
+                }
+                a {
+                    text-decoration: none;
+                    color: #005e5c;  /* Cor institucional dos IFs */
+                    font-size: 1.1em;
+                }
+                a:hover {
+                    text-decoration: underline;
+                    color: #007d7a;  /* Tom mais claro de verde */
+                }
+                .footer {
+                    margin-top: 30px;
+                    text-align: center;
+                    color: #777;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Lista de Arquivos HTML</h1>
+            <div class="folder">
+                <h2>Arquivos da Raiz</h2>
+                <div class="links">
+        """
+
     
     # Adicionar links da raiz
     for link in root_links:
