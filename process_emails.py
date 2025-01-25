@@ -30,11 +30,25 @@ def authenticate():
     except Exception as e:
         raise ValueError(f"Erro ao processar o GMAIL_TOKEN: {e}")
 
+# Função para verificar ou inicializar o repositório Git
+def check_git_repo():
+    try:
+        # Verifica se o repositório já existe no diretório
+        repo = git.Repo(search_parent_directories=True)
+        if repo.bare:
+            print("Repositório Git não encontrado. Inicializando o repositório.")
+            repo = git.Repo.init(".")  # Inicializa o repositório
+        return repo
+    except git.exc.InvalidGitRepositoryError:
+        print("Repositório Git não encontrado. Inicializando o repositório.")
+        return git.Repo.init(".")  # Inicializa o repositório se não for encontrado
+
 # Normalizar título do e-mail
 def normalize_title(title):
     title = title.lower()
     title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
     title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
+    title = re.sub(r'-+', '-', title)  # Substitui múltiplos hífens por um único hífen
     return title
 
 # Processar e-mails
@@ -152,24 +166,30 @@ def update_root_index(links):
 # Commit das mudanças no GitHub
 def commit_changes():
     try:
-        # Verifique se a pasta "emails" e o arquivo "index.html" existem
-        repo = git.Repo(search_parent_directories=True)
+        repo = check_git_repo()
         index = repo.index
 
-        # Adiciona os arquivos modificados
-        index.add([os.path.join(BACKUP_FOLDER, "index.html")])  # Adiciona o index.html dentro da pasta emails
-        # Commit e push das mudanças
+        # Adiciona a pasta e os arquivos ao repositório
+        index.add([os.path.join(BACKUP_FOLDER, "restos-à-pagar-rap---contratos/.gitkeep")])  # Garante que a pasta seja rastreada
+        index.add([os.path.join(BACKUP_FOLDER, "index.html")])
+
+        # Adiciona todos os arquivos na pasta emails
+        for root, dirs, files in os.walk(BACKUP_FOLDER):
+            for file in files:
+                index.add(os.path.join(root, file))
+
+        # Log para verificação de arquivos adicionados
+        print("Arquivos a serem comitados:")
+        for file in index.diff("HEAD"):
+            print(file.a_path)  # Exibe os arquivos que estão sendo comitados
+
+        # Realiza o commit
         index.commit("Atualiza os arquivos de backup de e-mails.")
-        
-        # Enviar alterações para o GitHub usando o GH_TOKEN
+
+        # Enviar alterações para o GitHub
         origin = repo.remote(name='origin')
         origin.push()
         print("Mudanças comitadas e enviadas para o repositório.")
-    except git.exc.InvalidGitRepositoryError:
-        print("Repositório Git não encontrado. Inicializando o repositório.")
-        # Inicializa o repositório Git caso não exista
-        repo = git.Repo.init(".")
-        commit_changes()  # Chama novamente para realizar o commit
     except Exception as e:
         print(f"Erro ao comitar e enviar alterações para o GitHub: {e}")
 
