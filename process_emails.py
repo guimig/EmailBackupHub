@@ -191,12 +191,37 @@ def update_root_index(all_links):
             index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
         index_file.write("</ul></body></html>\n")
 
-# Commitar as alterações no repositório
+# Função para verificar ou inicializar o repositório Git
+def check_git_repo():
+    try:
+        # Verifica se o repositório já existe no diretório
+        repo = git.Repo(search_parent_directories=True)
+        if repo.bare:
+            print("Repositório Git não encontrado. Inicializando o repositório.")
+            repo = git.Repo.init(".")  # Inicializa o repositório
+        return repo
+    except git.exc.InvalidGitRepositoryError:
+        print("Repositório Git não encontrado. Inicializando o repositório.")
+        return git.Repo.init(".")  # Inicializa o repositório se não for encontrado
+
+# Função para realizar o commit
 def commit_changes():
     repo = check_git_repo()
+    
+    # Configuração do usuário do Git, caso ainda não esteja configurado
+    with repo.config_writer() as git_config:
+        git_config.set_value("user", "name", "github-actions[bot]")
+        git_config.set_value("user", "email", "github-actions[bot]@users.noreply.github.com")
+
+    # Adiciona todos os arquivos alterados
     repo.git.add(A=True)  # Adiciona todos os arquivos alterados
-    repo.git.commit(m="Atualizando e-mails processados.")  # Commit de alterações
-    repo.git.push()  # Envia para o repositório remoto
+    try:
+        # Commit de alterações
+        repo.git.commit(m="Atualizando e-mails processados.")  # Commit de alterações
+    except git.exc.GitCommandError:
+        print("Nenhuma alteração para commitar.")
+    # Push para o repositório remoto
+    repo.git.push()
 
 # Execução principal
 if __name__ == '__main__':
