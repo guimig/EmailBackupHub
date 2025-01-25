@@ -177,23 +177,23 @@ def process_message(service, message):
     index_file = os.path.join(subject_folder, f"{normalized_title}.html")
     with open(index_file, "w", encoding="utf-8") as file:
         # Incluindo o CSS no cabeçalho do arquivo HTML
-        file.write("""
+        file.write(f"""
         <html>
         <head>
             <style>
-                body { font-family: Arial, sans-serif; }
-                h1 { color: #333; }
-                a { color: #0066cc; text-decoration: none; }
-                a:hover { text-decoration: underline; }
-                .email-content { margin: 20px; }
+                body {{ font-family: Arial, sans-serif; }}
+                h1 {{ color: #333; }}
+                a {{ color: #0066cc; text-decoration: none; }}
+                a:hover {{ text-decoration: underline; }}
+                .email-content {{ margin: 20px; }}
             </style>
         </head>
         <body>
-            <h1>Backup de E-mail: {}</h1>
-            <div class="email-content">{}</div>
+            <h1>Backup de E-mail: {subject}</h1>
+            <div class="email-content">{body}</div>
         </body>
         </html>
-        """.format(subject, body))
+        """)
 
     # Chama a função de backup
     backup_files = manage_backups(subject_folder, subject, date)
