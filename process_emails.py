@@ -2,7 +2,6 @@ import os
 import base64
 import datetime
 import pickle
-import git  # Usando o GitPython para manipulação do repositório local
 from email.message import EmailMessage
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -12,25 +11,20 @@ from google.oauth2.credentials import Credentials
 # Configuração
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 EMAIL_SENDER = "serpro.gov.br"  # Domínio do remetente
-BACKUP_FOLDER = "emails"  # Pasta de backup no repositório
+BACKUP_FOLDER = "emails"
 
 # Autenticação
 def authenticate():
-    # Obtendo o token do segredo armazenado no GitHub Actions
+    # Obtendo o token diretamente da variável de ambiente GMAIL_TOKEN
     token_base64 = os.getenv('GMAIL_TOKEN')
     if token_base64:
-        with open('token.pickle', 'wb') as f:
-            f.write(base64.b64decode(token_base64))
+        # Decodificando o token base64
+        creds_data = base64.b64decode(token_base64).decode("utf-8")
+        creds = Credentials.from_authorized_user_info(info=creds_data)
     else:
         raise ValueError("GMAIL_TOKEN não encontrado.")
     
-    # Carregar o token e autenticar
-    creds = None
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-
-    # Se as credenciais não forem válidas, reautenticar
+    # Verificando se as credenciais estão válidas
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -101,19 +95,10 @@ def update_index(index_file, body, date, folder):
     with open(index_file, "w", encoding="utf-8") as file:
         file.write(html_content)
 
-# Função para fazer commit e push para o repositório
-def commit_and_push_changes():
-    repo = git.Repo(search_parent_directories=True)  # Encontra o repositório git
-    repo.git.add(A=True)  # Adiciona todas as alterações
-    repo.index.commit(f"Backup de e-mails - {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")  # Commit
-    origin = repo.remote(name='origin')  # Conecta ao repositório remoto
-    origin.push()  # Push para o repositório remoto
-
 # Principal
 if __name__ == '__main__':
     try:
         service = authenticate()
         process_emails(service)
-        commit_and_push_changes()  # Realiza o commit e push para o repositório
     except Exception as e:
         print(f"Erro: {e}")
