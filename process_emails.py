@@ -1,11 +1,10 @@
 import os
-import json
 import base64
+import json
 import datetime
 from googleapiclient.discovery import build
+from google.auth.credentials import Credentials
 from googleapiclient.errors import HttpError
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
 
 # Configuração
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
@@ -15,32 +14,36 @@ BACKUP_FOLDER = "emails"
 # Autenticação
 def authenticate():
     # Obtendo o token do segredo armazenado no GitHub Actions
-    token_base64 = os.getenv('GMAIL_TOKEN')  # Assume que o token está base64 codificado
+    token_base64 = os.getenv('GMAIL_TOKEN')
     if not token_base64:
         raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
-    
-    # Decodificando o token
-    token_data = base64.b64decode(token_base64).decode('utf-8')
-    
-    # Convertendo a string JSON para um dicionário
-    token_dict = json.loads(token_data)
-    
-    # Criando as credenciais
-    creds = Credentials.from_authorized_user_info(token_dict, SCOPES)
 
-    # Retornar o serviço Gmail autenticado
-    return build('gmail', 'v1', credentials=creds)
+    try:
+        # Decodificando o token Base64
+        token_data = base64.b64decode(token_base64).decode("utf-8")
+        token_json = json.loads(token_data)
+
+        # Criando as credenciais
+        creds = Credentials.from_authorized_user_info(token_json, SCOPES)
+
+        # Retornar o serviço Gmail autenticado
+        return build('gmail', 'v1', credentials=creds)
+    except (base64.binascii.Error, json.JSONDecodeError, ValueError) as e:
+        raise ValueError(f"Erro ao decodificar o GMAIL_TOKEN: {e}")
 
 # Processar e-mails
 def process_emails(service):
-    # Filtrar e-mails não lidos
-    results = service.users().messages().list(userId='me', q=f"is:unread from:{EMAIL_SENDER}").execute()
-    messages = results.get('messages', [])
-    print(f"Número de e-mails encontrados: {len(messages)}")
+    try:
+        # Filtrar e-mails não lidos do remetente especificado
+        results = service.users().messages().list(userId='me', q=f"is:unread from:{EMAIL_SENDER}").execute()
+        messages = results.get('messages', [])
+        print(f"Número de e-mails encontrados: {len(messages)}")
 
-    for msg in messages:
-        message = service.users().messages().get(userId='me', id=msg['id']).execute()
-        process_message(service, message)
+        for msg in messages:
+            message = service.users().messages().get(userId='me', id=msg['id']).execute()
+            process_message(service, message)
+    except HttpError as error:
+        print(f"Erro ao processar e-mails: {error}")
 
 # Processar mensagem individual
 def process_message(service, message):
@@ -83,13 +86,15 @@ def get_email_body(message):
         if 'body' in message['payload']:
             body = message['payload']['body'].get('data')
             if body:
-                return base64.urlsafe_b64decode(body).decode("utf-8")
+                decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
+                return decoded_data
 
         for part in message['payload'].get('parts', []):
             if part['mimeType'] == 'text/html':
                 body = part['body'].get('data')
                 if body:
-                    return base64.urlsafe_b64decode(body).decode("utf-8")
+                    decoded_data = base64.urlsafe_b64decode(body).decode("utf-8")
+                    return decoded_data
         return "Corpo do e-mail não disponível."
     except Exception as e:
         print(f"Erro ao extrair o corpo do e-mail: {e}")
@@ -114,9 +119,12 @@ def update_index(index_file, body, date, folder):
     </body>
     </html>
     """
-    with open(index_file, "w", encoding="utf-8") as file:
-        file.write(html_content)
-    print(f"Arquivo de index criado em: {index_file}")
+    try:
+        with open(index_file, "w", encoding="utf-8") as file:
+            file.write(html_content)
+        print(f"Arquivo de index criado em: {index_file}")
+    except Exception as e:
+        print(f"Erro ao criar o index: {e}")
 
 # Principal
 if __name__ == '__main__':
