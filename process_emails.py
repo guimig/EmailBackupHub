@@ -1,6 +1,7 @@
 import os
 import base64
 import datetime
+import json
 from email.message import EmailMessage
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -17,8 +18,13 @@ def authenticate():
     token = os.getenv("GMAIL_TOKEN")
     if not token:
         raise ValueError("O token GMAIL_TOKEN não foi encontrado nas variáveis de ambiente.")
-    creds = Credentials.from_authorized_user_info(eval(token), SCOPES)
-    return build('gmail', 'v1', credentials=creds)
+    
+    try:
+        creds_info = json.loads(token)  # Use json.loads em vez de eval
+        creds = Credentials.from_authorized_user_info(creds_info, SCOPES)
+        return build('gmail', 'v1', credentials=creds)
+    except json.JSONDecodeError as e:
+        raise ValueError("O token GMAIL_TOKEN não está formatado corretamente como JSON.") from e
 
 # Processar e-mails
 def process_emails(service):
@@ -51,21 +57,30 @@ def process_message(service, message):
     update_index(index_file, body, date, subject_folder)
 
     # Adicionar TAG e arquivar o e-mail
-    service.users().messages().modify(userId='me', id=message['id'], body={'addLabelIds': [], 'removeLabelIds': ['INBOX']}).execute()
+    service.users().messages().modify(
+        userId='me',
+        id=message['id'],
+        body={'addLabelIds': [], 'removeLabelIds': ['INBOX']}
+    ).execute()
 
 # Extrair corpo do e-mail
 def get_email_body(message):
     try:
-        data = message['payload']['body']['data']
-        decoded_data = base64.urlsafe_b64decode(data).decode("utf-8")
-        return decoded_data
+        parts = message['payload']['parts']
+        body_data = ""
+        for part in parts:
+            if part['mimeType'] == 'text/html':
+                data = part['body']['data']
+                body_data = base64.urlsafe_b64decode(data).decode("utf-8")
+                break
+        return body_data if body_data else "Corpo do e-mail não disponível."
     except KeyError:
         return "Corpo do e-mail não disponível."
 
 # Atualizar index.html
 def update_index(index_file, body, date, folder):
     links = [f for f in os.listdir(folder) if f.endswith(".html") and f != "index.html"]
-    links_list = "".join(f'<li><a href="{link}">{link}</a></li>' for link in links)
+    links_list = "".join(f'<li><a href="{link}">{link}</a></li>' for link in sorted(links, reverse=True))
 
     html_content = f"""
     <html>
