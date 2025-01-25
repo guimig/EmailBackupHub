@@ -21,23 +21,47 @@ TIMEZONE = pytz.timezone("America/Sao_Paulo")  # Fuso horário de São Paulo
 # Autenticação
 def authenticate():
     token_base64 = os.getenv('GMAIL_TOKEN')
-    if not token_base64:
-        raise ValueError("GMAIL_TOKEN não encontrado no ambiente.")
+    credentials_json_base64 = os.getenv('GMAIL_CREDENTIALS_JSON')  # Credenciais do Gmail no formato JSON
+
+    if not token_base64 and not credentials_json_base64:
+        raise ValueError("Nenhuma credencial encontrada no ambiente. Configure GMAIL_TOKEN ou GMAIL_CREDENTIALS_JSON.")
     
-    try:
-        # Decode do token base64
-        token_pickle = base64.b64decode(token_base64)
-        creds = pickle.loads(token_pickle)
-        
-        # Verifique se as credenciais são válidas
-        if not creds or not creds.valid:
-            raise ValueError("Credenciais inválidas ou expiradas.")
-        
-        print(f"Credenciais validadas com sucesso.")
-        return build('gmail', 'v1', credentials=creds)
+    creds = None
     
-    except Exception as e:
-        raise ValueError(f"Erro ao processar o GMAIL_TOKEN: {e}")
+    if token_base64:
+        try:
+            # Decode do token base64
+            token_pickle = base64.b64decode(token_base64)
+            creds = pickle.loads(token_pickle)
+
+            # Verifique se as credenciais são válidas
+            if creds and creds.valid:
+                print("Credenciais validadas com sucesso.")
+                return build('gmail', 'v1', credentials=creds)
+
+            print("Token expirado ou inválido. Tentando renovar...")
+        except Exception as e:
+            print(f"Erro ao processar o GMAIL_TOKEN: {e}")
+    
+    # Se o token estiver expirado ou inválido, tente renovar usando o JSON de credenciais
+    if credentials_json_base64:
+        try:
+            # Decode e carregar credenciais JSON
+            credentials_json = base64.b64decode(credentials_json_base64).decode('utf-8')
+            from google.oauth2.service_account import Credentials as ServiceAccountCredentials
+            
+            # Cria credenciais de conta de serviço e escopo necessário
+            creds = ServiceAccountCredentials.from_service_account_info(
+                json.loads(credentials_json),
+                scopes=SCOPES
+            )
+            print("Token renovado com sucesso usando GMAIL_CREDENTIALS_JSON.")
+            return build('gmail', 'v1', credentials=creds)
+        except Exception as e:
+            raise ValueError(f"Erro ao processar o GMAIL_CREDENTIALS_JSON: {e}")
+    
+    raise ValueError("Não foi possível autenticar. Verifique suas credenciais.")
+
 
 # Função para verificar ou inicializar o repositório Git
 def check_git_repo():

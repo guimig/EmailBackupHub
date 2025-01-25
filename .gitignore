@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+*.sqlite3
+
+# Environment variables
+.env
+
+# Token and credentials
+token.pickle
+credentials.json
+
+# Backup HTML files
+# emails/*.html
+# emails/**/*.html
+
+# GitHub Actions
+.github/workflows/*.log
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
