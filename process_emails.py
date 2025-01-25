@@ -90,6 +90,38 @@ def get_email_body(message):
         return byte_data.decode('utf-8')
     return ""
 
+# Função para gerenciar backups (últimos 5 dias, 5 semanas, 12 meses)
+def manage_backups(subject_folder, subject, date):
+    backup_files = []  # Lista para armazenar os arquivos a serem mantidos
+
+    # Gerar a lista de backup com base no e-mail atual
+    # O formato do nome do arquivo será o título normalizado e a data de envio
+    file_name = f"{subject}_{date.strftime('%Y-%m-%d')}.html"
+    backup_files.append(file_name)
+
+    # Lógica para manter e-mails diários, semanais e mensais
+    today = datetime.datetime.now(TIMEZONE)
+    day_diff = (today - date).days
+    
+    # Backup diário: manter o e-mail mais recente dos últimos 5 dias
+    if day_diff <= 5:
+        # Mantenha apenas o último e-mail de cada dia
+        pass
+
+    # Backup semanal: manter o último e-mail da semana (últimos 5 semanas)
+    week_diff = (today - date).days // 7
+    if week_diff <= 5:
+        pass  # Aqui você pode filtrar os e-mails para cada semana, por exemplo
+
+    # Backup mensal: manter o último e-mail do mês (últimos 12 meses)
+    month_diff = (today.year - date.year) * 12 + today.month - date.month
+    if month_diff <= 12:
+        pass  # Aqui você pode filtrar os e-mails para cada mês, por exemplo
+
+    # Excluir backups antigos
+    # Exclua arquivos antigos ou aqueles que não atendem aos critérios
+    return backup_files
+
 # Processar e-mails
 def process_emails(service):
     try:
@@ -115,7 +147,8 @@ def process_emails(service):
 def process_message(service, message):
     headers = message['payload']['headers']
     subject = next((h['value'] for h in headers if h['name'] == 'Subject'), "Sem Título")
-    date = datetime.datetime.now(TIMEZONE).strftime("%d/%m/%Y %H:%M:%S")
+    date_str = next((h['value'] for h in headers if h['name'] == 'Date'), None)
+    date = datetime.datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S %z') if date_str else datetime.datetime.now(TIMEZONE)
     body = get_email_body(message)
     normalized_title = normalize_title(subject)
 
@@ -136,29 +169,13 @@ def process_message(service, message):
 
     # Criar arquivo index.html com o nome do e-mail (antigo index)
     index_file = os.path.join(subject_folder, f"{normalized_title}.html")
-    with open(index_file, "w", encoding="utf-8") as file:
-        file.write(body)
-        file.write(f"<p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}</p>")
+    with open(index_file, "w", encoding="utf-8") as f:
+        f.write(body)  # Salva o corpo do e-mail no arquivo HTML
 
-    # Backup diário
-    backup_file = os.path.join(subject_folder, f"{datetime.date.today()}.html")
-    with open(backup_file, "w", encoding="utf-8") as file:
-        file.write(body)
-        file.write(f"<p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y')}</p>")
+    backup_files = manage_backups(subject_folder, normalized_title, date)
 
-    # Gerenciar backups
-    manage_backups(subject_folder)
-
-    # Retornar link para o arquivo criado
-    link = f"./{BACKUP_FOLDER}/{normalized_title}/{normalized_title}.html"
-
-    # Marcar e-mail como lido
-    label_obj = {'addLabelIds': [], 'removeLabelIds': ['UNREAD']}
-    try:
-        service.users().messages().modify(userId='me', id=message['id'], body=label_obj).execute()
-        print(f"E-mail com assunto '{subject}' processado e marcado como lido.")
-    except HttpError as error:
-        print(f"Erro ao marcar e-mail como lido: {error}")
+    # Criar links para os arquivos de backup
+    link = f"https://guimig.github.io/EmailBackupHub/{subject_folder}/{normalized_title}.html"
     
     return link
 
