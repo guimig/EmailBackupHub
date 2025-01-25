@@ -191,7 +191,7 @@ def process_emails(service):
             ).execute()
 
         # Atualiza o index.html com todos os links
-        update_root_index(all_links)
+        update_root_index()
         commit_changes()  # Realiza o commit dos arquivos gerados no repositório
     except HttpError as error:
         print(f"Erro ao processar e-mails: {error}")
