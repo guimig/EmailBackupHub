@@ -38,7 +38,7 @@ jobs:
       - name: Check if there are changes to commit
         run: |
           git diff --exit-code || echo "Changes detected"
-
+      
       # Passo 6: Commit e push das alterações para o repositório
       - name: Commit and push changes to GitHub repository
         run: |
@@ -47,7 +47,7 @@ jobs:
           git add .
           git diff --quiet || git commit -m "Update emails backup and repository"
           
-          # Usando HTTPS para autenticação com token, garantindo segurança
+          # Usando HTTPS para autenticação com token
           git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Passando o token para push

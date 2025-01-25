@@ -15,16 +15,21 @@ BACKUP_FOLDER = "emails"
 
 # Autenticação
 def authenticate():
-    # Obtendo o token diretamente da variável de ambiente GMAIL_TOKEN
+    # Obtendo o token do segredo armazenado no GitHub Actions
     token_base64 = os.getenv('GMAIL_TOKEN')
     if token_base64:
-        # Decodificando o token base64
-        creds_data = base64.b64decode(token_base64).decode("utf-8")
-        creds = Credentials.from_authorized_user_info(info=creds_data)
+        with open('token.pickle', 'wb') as f:
+            f.write(base64.b64decode(token_base64))
     else:
         raise ValueError("GMAIL_TOKEN não encontrado.")
     
-    # Verificando se as credenciais estão válidas
+    # Carregar o token e autenticar
+    creds = None
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
+            creds = pickle.load(token)
+
+    # Se as credenciais não forem válidas, reautenticar
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
@@ -62,10 +67,14 @@ def process_message(service, message):
 
     # Atualizar index.html da subpasta
     index_file = os.path.join(subject_folder, "index.html")
-    update_index(index_file, body, date, subject_folder)
+    update_index(index_file, body, date, subject_folder, BACKUP_FOLDER)
 
-    # Adicionar TAG e arquivar o e-mail
-    service.users().messages().modify(userId='me', id=message['id'], body={'addLabelIds': ['Label_1'], 'removeLabelIds': ['INBOX']}).execute()
+    # Marcar e-mail como lido e adicionar TAG
+    label_obj = {
+        'addLabelIds': ['Label_1'],  # Substitua por sua label personalizada, se necessário
+        'removeLabelIds': ['INBOX']
+    }
+    service.users().messages().modify(userId='me', id=message['id'], body=label_obj).execute()
 
 # Extrair corpo do e-mail
 def get_email_body(message):
@@ -77,9 +86,13 @@ def get_email_body(message):
         return "Corpo do e-mail não disponível."
 
 # Atualizar index.html
-def update_index(index_file, body, date, folder):
+def update_index(index_file, body, date, folder, root_folder):
+    # Listar os backups disponíveis dentro da subpasta
     links = [f for f in os.listdir(folder) if f.endswith(".html") and f != "index.html"]
-    links_list = "".join(f'<li><a href="{link}">{link}</a></li>' for link in links)
+    links_list = "".join(f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links)
+
+    # Adicionar links no index da raiz
+    root_links = [f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links]
 
     html_content = f"""
     <html>
@@ -87,13 +100,20 @@ def update_index(index_file, body, date, folder):
     <body>
         <h1>Última atualização: {date}</h1>
         {body}
-        <h2>Backups disponíveis:</h2>
+        <h2>Backups disponíveis (subpasta):</h2>
         <ul>{links_list}</ul>
+        <h2>Backups disponíveis (raiz):</h2>
+        <ul>{''.join(root_links)}</ul>
     </body>
     </html>
     """
     with open(index_file, "w", encoding="utf-8") as file:
         file.write(html_content)
+
+    # Atualizar o index na raiz também
+    root_index_file = os.path.join(root_folder, "index.html")
+    with open(root_index_file, "w", encoding="utf-8") as root_file:
+        root_file.write(html_content)
 
 # Principal
 if __name__ == '__main__':
