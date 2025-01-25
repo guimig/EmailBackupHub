@@ -56,11 +56,11 @@ def process_message(service, message):
 
     # Atualizar index.html da subpasta
     index_file = os.path.join(subject_folder, "index.html")
-    update_index(index_file, body, date, subject_folder, BACKUP_FOLDER)
+    update_index(index_file, body, date, subject_folder)
 
     # Atualizar index.html na raiz
     root_index_file = os.path.join(BACKUP_FOLDER, "index.html")
-    update_index(root_index_file, body, date, subject_folder, BACKUP_FOLDER)
+    update_index(root_index_file, body, date, subject_folder)
 
     # Marcar e-mail como lido e adicionar TAG
     label_obj = {
@@ -83,32 +83,33 @@ def get_email_body(message):
         return "Corpo do e-mail não disponível."
 
 # Atualizar index.html
-def update_index(index_file, body, date, folder, root_folder):
-    # Listar os backups disponíveis dentro da subpasta
+def update_index(index_file, body, date, folder):
+    # Verifique se a pasta raiz ou subpasta já existe
+    if not os.path.exists(os.path.dirname(index_file)):
+        os.makedirs(os.path.dirname(index_file), exist_ok=True)
+
+    # Listar os arquivos de backup disponíveis dentro da subpasta
     links = [f for f in os.listdir(folder) if f.endswith(".html") and f != "index.html"]
     links_list = "".join(f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links)
 
-    # Adicionar links no index da raiz
-    root_links = [f'<li><a href="{folder}/{link}">{link}</a></li>' for link in links]
-
+    # Criar o conteúdo HTML do index
     html_content = f"""
     <html>
     <head><title>Última Atualização</title></head>
     <body>
         <h1>Última atualização: {date}</h1>
-        {body}
-        <h2>Backups disponíveis (subpasta):</h2>
+        <div>{body}</div>
+        <h2>Backups disponíveis:</h2>
         <ul>{links_list}</ul>
-        <h2>Backups disponíveis (raiz):</h2>
-        <ul>{''.join(root_links)}</ul>
     </body>
     </html>
     """
-    # Verifica se o arquivo da pasta raiz pode ser acessado corretamente
+    
+    # Salvar o arquivo de index na pasta correta
     try:
         with open(index_file, "w", encoding="utf-8") as file:
             file.write(html_content)
-            print(f"Arquivo de index criado em: {index_file}")
+        print(f"Arquivo de index criado em: {index_file}")
     except Exception as e:
         print(f"Erro ao criar o index: {e}")
         
