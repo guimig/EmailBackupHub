@@ -191,7 +191,7 @@ def update_root_index(links):
             }}
             a {{
                 text-decoration: none;
-                color: #0077B6;
+                color: #00796b;
             }}
             a:hover {{
                 text-decoration: underline;
@@ -199,47 +199,30 @@ def update_root_index(links):
         </style>
     </head>
     <body>
-        <h1>Index de E-mails</h1>
+        <h1>Lista de E-mails Processados</h1>
         <ul>
-            {''.join(links)}
+            {"".join(links)}
         </ul>
     </body>
     </html>
     """
-    try:
-        with open(index_file, "w", encoding="utf-8") as file:
-            file.write(html_content)
-        print(f"Arquivo index.html criado na raiz.")
-    except Exception as e:
-        print(f"Erro ao criar o index.html na raiz: {e}")
 
-# Commit das mudanças no GitHub
+    with open(index_file, "w", encoding="utf-8") as file:
+        file.write(html_content)
+        print(f"Arquivo 'index.html' atualizado com sucesso.")
+
+# Commit de alterações no repositório Git
 def commit_changes():
-    try:
-        repo = check_git_repo()
-        index = repo.index
+    repo = check_git_repo()
+    repo.index.add([f"{BACKUP_FOLDER}/index.html"])
+    repo.index.commit(f"Atualização de e-mails processados em {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}")
+    repo.remotes.origin.push()
+    print("Alterações comprometidas e enviadas ao repositório.")
 
-        # Adiciona a pasta e os arquivos ao repositório
-        index.add([os.path.join(BACKUP_FOLDER, '*')])
-
-        # Realiza o commit
-        index.commit("Atualizando e-mails processados")
-        print("Mudanças cometidas com sucesso.")
-
-        # Enviar para o repositório remoto
-        origin = repo.remotes.origin
-        origin.push()
-        print("Mudanças enviadas para o GitHub.")
-
-    except Exception as e:
-        print(f"Erro ao comitar e enviar alterações para o GitHub: {e}")
-
+# Executar a função principal
 def main():
-    try:
-        service = authenticate()
-        process_emails(service)
-    except Exception as e:
-        print(f"Erro na execução do script: {e}")
+    service = authenticate()
+    process_emails(service)
 
 if __name__ == "__main__":
     main()
