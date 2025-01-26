@@ -312,9 +312,9 @@ def update_root_index():
                     backup_links[subfolder].append((relative_path, link))  # Adiciona para ordenação
 
     # Ordenar os links por endereço do arquivo (relative_path)
-    root_links.sort(key=lambda x: x[0].lower())  # Ordena os links da raiz (de forma case-insensitive)
+    root_links.sort(key=lambda x: x[0].lower(), reverse=True)  # Ordena os links da raiz (de forma case-insensitive)
     for subfolder in backup_links:
-        backup_links[subfolder].sort(key=lambda x: x[0].lower())  # Ordena os links dos backups
+        backup_links[subfolder].sort(key=lambda x: x[0].lower(), reverse=True)  # Ordena os links dos backups
 
     # Caminho para o arquivo index.html
     index_path = os.path.join(repo_root, "index.html")
