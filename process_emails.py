@@ -526,27 +526,28 @@ def update_root_index():
                         box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
                     }
 
+                    /* Botão de alternância de tema */
                     .theme-toggle-btn {
                         padding: 10px 20px;
                         font-size: 1em;
-                        color: #ffffff;  /* Cor do texto do botão */
-                        background-color: #1a7f32;  /* Cor de fundo verde */
-                        border: none;
-                        border-radius: 25px;  /* Borda arredondada */
+                        color: #ffffff;
+                        background-color: #21262d;
+                        border: 1px solid #58a6ff;
+                        border-radius: 25px;
                         cursor: pointer;
-                        transition: all 0.3s ease;  /* Efeito suave de transição */
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+                        transition: all 0.3s ease;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                     }
 
                     .theme-toggle-btn:hover {
-                        background-color: #146d28;  /* Verde mais escuro quando o mouse passa */
-                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  /* Aumenta a sombra ao passar o mouse */
-                        transform: translateY(-2px);  /* Efeito de "levitação" */
+                        background-color: #30363d;
+                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+                        transform: translateY(-2px);
                     }
 
                     .theme-toggle-btn:focus {
-                        outline: none;  /* Remove o contorno padrão */
-                        box-shadow: 0 0 8px rgba(26, 127, 50, 0.6);  /* Brilho verde suave ao focar */
+                        outline: none;
+                        box-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
                     }
 
                     /* Responsividade */
