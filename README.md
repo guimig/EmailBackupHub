@@ -2,4 +2,4 @@ Os scripts acima foram testados e estão funcionais (última atualização em 26
 
 Entretanto, há muito a aprimorar. Especialmente a estrutura do código Python, que está com o código sujo, repetitiva em alguns pontos, merece melhor tratamento das variáveis, e deveria adotar uma estrutura modular de acordo com as melhores práticas de programação.
 
-Erro identificado: a função manage_backups não está deletando os arquivos do repositório. Pode haver um problema com permissões.
+Ver Issues.
