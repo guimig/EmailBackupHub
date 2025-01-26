@@ -202,7 +202,8 @@ def process_message(service, message):
 def create_latest_summary_html():
     """
     Cria um arquivo .html no diretório inicial para o último arquivo mais atualizado
-    de cada subpasta em /emails. Inclui no final a data e horário da última atualização.
+    de cada subpasta em /emails. Inclui no final a data e horário da última atualização 
+    e a data do último relatório.
     """
     for root, dirs, files in os.walk(BACKUP_FOLDER):
         # Ignora a pasta raiz e processa apenas subpastas
@@ -231,14 +232,20 @@ def create_latest_summary_html():
         with open(latest_file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
+        # Obtém a data do nome do arquivo ou da data de modificação do arquivo
+        file_creation_time = os.path.getmtime(latest_file_path)
+        last_report_date = datetime.datetime.fromtimestamp(file_creation_time, TIMEZONE)
+
         # Adiciona a data e hora da última atualização no final do HTML
         now = datetime.datetime.now(TIMEZONE)
-        update_text = f"<p>Última atualização em: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        update_text = f"<p>Última vez que o script buscou por novos relatórios: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        report_date_text = f"<p>Último relatório gerado em: {last_report_date.strftime('%d/%m/%Y %H:%M:%S')}</p>"
 
         # Escreve o conteúdo atualizado no arquivo de saída
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(content)
-            f.write(update_text)
+            f.write(report_date_text)  # Adiciona a data do último relatório
+            f.write(update_text)  # Adiciona a data da última execução do script
 
         print(f"Resumo atualizado criado: {output_path}")
 
