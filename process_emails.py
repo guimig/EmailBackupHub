@@ -232,9 +232,13 @@ def create_latest_summary_html():
         with open(latest_file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Obtém a data do nome do arquivo ou da data de modificação do arquivo
-        file_creation_time = os.path.getmtime(latest_file_path)
-        last_report_date = datetime.datetime.fromtimestamp(file_creation_time, TIMEZONE)
+        # Obtém a data do último relatório a partir do nome do arquivo
+        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
+        if match:
+            day, month, year = match.groups()
+            last_report_date = datetime.datetime(int(year), int(month), int(day), tzinfo=TIMEZONE)
+        else:
+            last_report_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_file_path), TIMEZONE)
 
         # Adiciona a data e hora da última atualização no final do HTML
         now = datetime.datetime.now(TIMEZONE)
