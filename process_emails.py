@@ -358,7 +358,7 @@ def update_root_index():
     html_content = """
         <html>
         <head>
-            <title>Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</title>
+            <title>CEOF</title>
             <style>
                 body {
                     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -470,7 +470,7 @@ def update_root_index():
             </style>
         </head>
         <body>
-            <h1>Lista de Arquivos HTML</h1>
+            <h1>Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h1>
             <!-- Barra de pesquisa -->
             <div style="text-align: center; margin-bottom: 20px;">
                 <input type="text" 
