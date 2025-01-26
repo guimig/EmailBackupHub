@@ -45,9 +45,9 @@ jobs:
           git checkout ${{ github.ref }}  # Garante que a branch correta seja utilizada
 
       # Passo 6: Verifica se há alterações antes de realizar commit e push
-      #- name: Check if there are changes to commit
-      #  run: |
-      #    git diff --exit-code || echo "Changes detected"
+      - name: Check if there are changes to commit
+        run: |
+          git diff --exit-code || echo "Changes detected"
 
       # Passo 7: Commit e push das alterações para o repositório
       - name: Commit and push changes to GitHub repository
