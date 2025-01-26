@@ -367,71 +367,91 @@ def update_root_index():
                     color: #c9d1d9;  /* Texto claro */
                     line-height: 1.6;
                 }
+
                 h1 {
                     color: #f0f6fc;  /* Branco quebrado */
                     text-align: center;
-                    font-size: 2em;
-                    margin-bottom: 20px;
+                    font-size: 2.2em;  /* Aumentado para destaque */
+                    margin-bottom: 30px;  /* Mais espaçamento */
                 }
+
                 .folder {
                     margin-top: 20px;
                     background-color: #161b22;  /* Fundo levemente mais claro */
-                    padding: 15px;
+                    padding: 20px;  /* Aumentado o padding */
                     border-radius: 8px;
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
                     border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
                 }
+
                 .folder h2 {
                     color: #adbac7;  /* Cinza claro */
-                    font-size: 1.5em;
-                    margin-bottom: 10px;
+                    font-size: 1.6em;  /* Aumentado para mais destaque */
+                    margin-bottom: 15px;
                 }
+
                 .links {
                     margin-left: 20px;
                 }
+
                 a {
                     text-decoration: none;
                     color: #58a6ff;  /* Azul suave */
-                    font-size: 1.1em;
+                    font-size: 1.2em;  /* Tamanho de fonte um pouco maior */
+                    display: block;  /* Para aumentar o espaço entre os links */
+                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
                 }
+
                 a:hover {
                     text-decoration: underline;
                     color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
+                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
+                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
                 }
+
                 .footer {
-                    margin-top: 30px;
+                    margin-top: 40px;
                     text-align: center;
                     color: #8b949e;  /* Cinza claro para rodapé */
                 }
+
                 #searchBox {
-                    padding: 10px;
-                    width: 80%;
-                    max-width: 500px;
-                    border-radius: 6px;
+                    padding: 12px;
+                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
+                    max-width: 600px;
+                    border-radius: 8px;  /* Borda mais arredondada */
                     border: 1px solid #484f58;  /* Cinza escuro */
                     background-color: #0d1117;  /* Fundo escuro */
                     color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);  /* Efeito interno */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
                     outline: none;
-                    transition: border-color 0.2s ease-in-out;
+                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
                 }
+
                 #searchBox::placeholder {
                     color: #6e7681;  /* Cinza claro para o placeholder */
                 }
+
                 #searchBox:focus {
-                    border-color: #6e7681;  /* Cinza neutro */
-                    box-shadow: 0 0 5px rgba(110, 118, 129, 0.8);  /* Brilho cinza */
+                    border-color: #58a6ff;  /* Azul ao focar */
+                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
                 }
-                /* Responsividade */
+
                 @media (max-width: 600px) {
                     body {
-                        font-size: 14px;
+                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
+                    }
+                    h1 {
+                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
                     }
                     .folder h2 {
-                        font-size: 1.3em;
+                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
                     }
                     a {
-                        font-size: 1em;
+                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
+                    }
+                    #searchBox {
+                        width: 90%;  /* Ajusta a largura do campo de busca */
                     }
                 }
             </style>
