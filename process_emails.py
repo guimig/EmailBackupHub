@@ -376,7 +376,7 @@ def update_root_index():
                         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                         margin: 20px;
                         background-color: #ffffff;  /* Fundo branco */
-                        color: #333333;  /* Texto preto ou cinza muito escuro */
+                        color: #333333;  /* Texto cinza muito escuro */
                         line-height: 1.6;
                     }
 
@@ -385,6 +385,7 @@ def update_root_index():
                         text-align: center;
                         font-size: 2.2em;  /* Tamanho aumentado para destaque */
                         margin-bottom: 30px;
+                        display: block;
                     }
 
                     .folder.light-theme {
@@ -570,15 +571,15 @@ def update_root_index():
             </head>
             <body class="light-theme">
                 <h1>CEOF</h1>
-                <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
+                <h2">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
                 
                 <!-- Botão de alternância de tema -->
-                <div style="text-align: center; margin-bottom: 20px;">
+                <div">
                     <button onclick="toggleTheme()" class="theme-toggle-btn">Alternar Tema</button>
                 </div>
 
                 <!-- Barra de pesquisa -->
-                <div style="text-align: center; margin-bottom: 20px;">
+                <div">
                     <input type="text" 
                         id="searchBox" 
                         placeholder="Pesquise por arquivos..." 
