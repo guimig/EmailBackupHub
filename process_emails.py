@@ -254,18 +254,25 @@ def update_root_index():
             if file.endswith('.html') and file != 'index.html':  # Verifica se o arquivo é .html
                 # Gerar o caminho relativo do arquivo
                 relative_path = os.path.relpath(os.path.join(root, file), repo_root)
-                
+                file_name = os.path.basename(file)  # Nome do arquivo
+
+                # Criar o link com nome amigável
+                link = f"<a href='{relative_path}' title='{relative_path}'>{file_name}</a><br>"
+
                 # Verificar se o arquivo está na raiz ou em subpastas
                 if root == repo_root:
-                    link = f"<a href='{relative_path}'>{relative_path}</a><br>"
-                    root_links.append(link)
+                    root_links.append((relative_path, link))  # Adiciona para ordenação
                 else:
                     # Organiza arquivos de backup por subpastas
                     subfolder = os.path.relpath(root, repo_root)
                     if subfolder not in backup_links:
                         backup_links[subfolder] = []
-                    link = f"<a href='{relative_path}'>{relative_path}</a><br>"
-                    backup_links[subfolder].append(link)
+                    backup_links[subfolder].append((relative_path, link))  # Adiciona para ordenação
+
+    # Ordenar os links por endereço do arquivo
+    root_links.sort(key=lambda x: x[0])  # Ordena os links da raiz
+    for subfolder in backup_links:
+        backup_links[subfolder].sort(key=lambda x: x[0])  # Ordena os links dos backups
 
     # Caminho para o arquivo index.html
     index_path = os.path.join(repo_root, "index.html")
