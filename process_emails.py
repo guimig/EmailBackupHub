@@ -143,7 +143,7 @@ def manage_backups(subject_folder, subject, date):
     backup_files = []  # Lista para armazenar os arquivos a serem mantidos
 
     # Gerar a lista de backup com base no e-mail atual
-    file_name = f"{subject}_{date.strftime('%Y-%m-%d')}.html"
+    file_name = f"{subject}_{date.strftime('%d-%m-%Y')}.html"
     backup_files.append(file_name)
 
     # Lógica para manter e-mails diários, semanais e mensais
@@ -187,7 +187,7 @@ def process_emails(service):
             # Marcar como lido e retirar da caixa de entrada
             service.users().messages().modify(
                 userId='me', id=msg['id'],
-                body={'removeLabelIds': ['INBOX', 'UNREAD']}
+                body={'removeLabelIds': ['UNREAD']}
             ).execute()
 
         # Atualiza o index.html com todos os links
@@ -220,7 +220,7 @@ def process_message(service, message):
             pass  # Arquivo vazio para forçar o Git a rastrear a pasta
 
         # Armazenar e-mails na pasta com base nas condições
-        file_name = f"{normalized_title}_{date.strftime('%Y-%m-%d')}.html"
+        file_name = f"{normalized_title}_{date.strftime('%d-%m-%Y')}.html"
         file_path = os.path.join(subject_folder, file_name)
         with open(file_path, "w") as f:
             f.write(body)
@@ -280,7 +280,7 @@ def update_root_index():
     html_content = """
         <html>
         <head>
-            <title>Lista de Arquivos HTML</title>
+            <title>Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</title>
             <style>
                 body {
                     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
