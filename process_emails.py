@@ -512,7 +512,7 @@ def update_root_index():
     html_content += """
         </div>
         <div class="footer">
-            <p>Repositório de Arquivos - CEOF.</p>
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
         </div>
         <script>
             // Função de pesquisa
