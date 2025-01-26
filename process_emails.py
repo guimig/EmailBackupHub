@@ -281,6 +281,7 @@ def update_root_index():
                     margin: 20px;
                     background-color: #f0f0f0;
                     color: #333;
+                    line-height: 1.6;
                 }
                 h1 {
                     color: #005e5c;  /* Cor institucional dos IFs */
@@ -318,15 +319,30 @@ def update_root_index():
                     text-align: center;
                     color: #777;
                 }
+                /* Estilo para tornar a página responsiva */
+                @media (max-width: 600px) {
+                    body {
+                        font-size: 14px;
+                    }
+                    .folder h2 {
+                        font-size: 1.3em;
+                    }
+                    a {
+                        font-size: 1em;
+                    }
+                }
             </style>
         </head>
         <body>
             <h1>Lista de Arquivos HTML</h1>
+            <!-- Barra de pesquisa -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <input type="text" id="searchBox" placeholder="Pesquise por arquivos..." style="padding: 10px; width: 80%; max-width: 500px; border-radius: 5px; border: 1px solid #ddd;">
+            </div>
             <div class="folder">
                 <h2>Arquivos da Raiz - Últimas atualizações</h2>
-                <div class="links">
-        """
-
+                <div class="links" id="rootLinks">
+    """
     
     # Adicionar links da raiz
     for link in root_links:
@@ -337,7 +353,7 @@ def update_root_index():
         html_content += f"""
         <div class="folder">
             <h2>Arquivos de Backup - {subfolder}</h2>
-            <div class="links">
+            <div class="links" id="folder_{subfolder}">
         """
         for link in links:
             html_content += f"{link}\n"
@@ -346,6 +362,23 @@ def update_root_index():
     # Finalizar a estrutura HTML
     html_content += """
         </div>
+        <div class="footer">
+            <p>&copy; 2025 Repositório de Arquivos - Todos os direitos reservados.</p>
+        </div>
+        <script>
+            // Função de pesquisa
+            document.getElementById('searchBox').addEventListener('input', function() {
+                var searchValue = this.value.toLowerCase();
+                var links = document.querySelectorAll('a');
+                links.forEach(function(link) {
+                    if (link.textContent.toLowerCase().includes(searchValue)) {
+                        link.style.display = 'block';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+            });
+        </script>
     </body>
     </html>
     """
@@ -355,7 +388,6 @@ def update_root_index():
         index_file.write(html_content)
 
     print(f"Arquivo index.html atualizado com {len(root_links)} links da raiz e {sum(len(links) for links in backup_links.values())} links de backup.")
-
 def create_latest_summary_html():
     """
     Cria um arquivo .html no diretório inicial para o último arquivo mais atualizado
