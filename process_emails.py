@@ -363,7 +363,7 @@ def update_root_index():
     html_content += """
         </div>
         <div class="footer">
-            <p>&copy; 2025 Repositório de Arquivos - Todos os direitos reservados.</p>
+            <p>Repositório de Arquivos - CEOF.</p>
         </div>
         <script>
             // Função de pesquisa
