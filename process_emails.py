@@ -360,7 +360,84 @@ def update_root_index():
         <head>
             <title>CEOF</title>
             <style>
-                body {
+                /* Tema Claro (Padrão) */
+                body.light-theme {
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    margin: 20px;
+                    background-color: #ffffff;  /* Fundo branco */
+                    color: #333333;  /* Texto preto ou cinza muito escuro */
+                    line-height: 1.6;
+                }
+
+                h1.light-theme {
+                    color: #1a7f32;  /* Verde para títulos */
+                    text-align: center;
+                    font-size: 2.2em;  /* Tamanho aumentado para destaque */
+                    margin-bottom: 30px;
+                }
+
+                .folder.light-theme {
+                    margin-top: 20px;
+                    background-color: #f9f9f9;  /* Fundo claro para as pastas */
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+                    border-left: 5px solid #1a7f32;  /* Verde para destaque */
+                }
+
+                .folder.light-theme h2 {
+                    color: #1a7f32;  /* Verde para os subtítulos */
+                    font-size: 1.6em;
+                    margin-bottom: 15px;
+                }
+
+                .links.light-theme {
+                    margin-left: 20px;
+                }
+
+                a.light-theme {
+                    text-decoration: none;
+                    color: #1a7f32;  /* Verde para links */
+                    font-size: 1em;
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                a.light-theme:hover {
+                    text-decoration: underline;
+                    color: #146d28;  /* Verde mais escuro ao passar o mouse */
+                }
+
+                .footer.light-theme {
+                    margin-top: 40px;
+                    text-align: center;
+                    color: #666666;  /* Cinza claro para o rodapé */
+                }
+
+                #searchBox.light-theme {
+                    padding: 12px;
+                    width: 85%;
+                    max-width: 600px;
+                    border-radius: 8px;
+                    border: 1px solid #484f58;  /* Cinza escuro para a borda */
+                    background-color: #ffffff;  /* Fundo branco */
+                    color: #333333;  /* Texto escuro */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);  /* Efeito interno suave */
+                    outline: none;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                #searchBox.light-theme::placeholder {
+                    color: #999999;  /* Placeholder em cinza claro */
+                }
+
+                #searchBox.light-theme:focus {
+                    border-color: #1a7f32;  /* Verde ao focar */
+                    box-shadow: 0 0 8px rgba(26, 127, 50, 0.5);  /* Brilho verde suave */
+                }
+
+                /* Tema Escuro */
+                body.dark-theme {
                     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                     margin: 20px;
                     background-color: #0d1117;  /* Fundo escuro */
@@ -368,126 +445,112 @@ def update_root_index():
                     line-height: 1.6;
                 }
 
-                h1 {
+                h1.dark-theme {
                     color: #f0f6fc;  /* Branco quebrado */
                     text-align: center;
-                    font-size: 2.2em;  /* Aumentado para destaque */
-                    margin-bottom: 30px;  /* Mais espaçamento */
+                    font-size: 2.2em;
+                    margin-bottom: 30px;
                 }
 
-                .folder {
+                .folder.dark-theme {
                     margin-top: 20px;
                     background-color: #161b22;  /* Fundo levemente mais claro */
-                    padding: 20px;  /* Aumentado o padding */
+                    padding: 20px;
                     border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
-                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                    border-left: 5px solid #6e7681;
                 }
 
-                .folder h2 {
-                    color: #adbac7;  /* Cinza claro */
-                    font-size: 1.6em;  /* Aumentado para mais destaque */
+                .folder.dark-theme h2 {
+                    color: #adbac7;
+                    font-size: 1.6em;
                     margin-bottom: 15px;
                 }
 
-                .links {
+                .links.dark-theme {
                     margin-left: 20px;
                 }
 
-                a {
+                a.dark-theme {
                     text-decoration: none;
                     color: #58a6ff;  /* Azul suave */
-                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
-                    display: block;  /* Para aumentar o espaço entre os links */
-                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
+                    font-size: 1em;
+                    display: block;
+                    margin-bottom: 10px;
                 }
 
-                a:hover {
+                a.dark-theme:hover {
                     text-decoration: underline;
-                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
-                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
-                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
+                    color: #1f6feb;
+                    padding-left: 5px;
+                    transition: all 0.3s ease-in-out;
                 }
 
-                .footer {
+                .footer.dark-theme {
                     margin-top: 40px;
                     text-align: center;
-                    color: #8b949e;  /* Cinza claro para rodapé */
+                    color: #8b949e;
                 }
 
-                #searchBox {
+                #searchBox.dark-theme {
                     padding: 12px;
-                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
-                    max-width: 600px;
-                    border-radius: 8px;  /* Borda mais arredondada */
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
-                }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajuste a largura conforme necessário */
+                    width: 85%;
                     max-width: 600px;
                     border-radius: 8px;
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
+                    border: 1px solid #484f58;
+                    background-color: #0d1117;
+                    color: #c9d1d9;
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
                     outline: none;
                     transition: all 0.3s ease-in-out;
                 }
 
-                #searchBox::placeholder {
-                    color: #6e7681;  /* Cinza claro para o placeholder */
+                #searchBox.dark-theme::placeholder {
+                    color: #6e7681;
                 }
 
-                #searchBox:focus {
-                    border-color: #58a6ff;  /* Azul ao focar */
-                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
+                #searchBox.dark-theme:focus {
+                    border-color: #58a6ff;
+                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
                 }
 
+                /* Responsividade */
                 @media (max-width: 600px) {
                     body {
-                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
+                        font-size: 14px;
                     }
                     h1 {
-                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
+                        font-size: 1.8em;
                     }
                     .folder h2 {
-                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
+                        font-size: 1.4em;
                     }
                     a {
-                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
+                        font-size: 1.1em;
                     }
                     #searchBox {
-                        width: 90%;  /* Ajusta a largura do campo de busca */
+                        width: 90%;
                     }
                 }
             </style>
         </head>
-        <body>
+        <body class="light-theme">
             <h1>CEOF</h1>
             <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
+            
+            <!-- Botão de alternância de tema -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <button onclick="toggleTheme()">Alternar Tema</button>
+            </div>
+
             <!-- Barra de pesquisa -->
             <div style="text-align: center; margin-bottom: 20px;">
                 <input type="text" 
                     id="searchBox" 
                     placeholder="Pesquise por arquivos..." 
-                    style="padding: 10px; 
-                    width: 80%; 
-                    max-width: 500px; 
-                    border-radius: 6px; 
-                    border: 1px solid #484f58;  /* Borda cinza escura */
-                    background-color: #0d1117;  /* Fundo preto acinzentado */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);  /* Efeito interno */
-                    outline: none; 
-                    transition: border-color 0.2s ease-in-out;">
+                    class="light-theme">
             </div>
+
             <div class="folder">
                 <h2>Arquivos da Raiz - Últimas atualizações</h2>
                 <div class="links" id="rootLinks">
@@ -515,6 +578,20 @@ def update_root_index():
             <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
         </div>
         <script>
+            // Função de alternância de tema
+            function toggleTheme() {
+                var body = document.body;
+                body.classList.toggle('light-theme');
+                body.classList.toggle('dark-theme');
+                
+                // Alternar classes de elementos
+                var elements = document.querySelectorAll('h1, h2, .folder, a, .footer, #searchBox');
+                elements.forEach(function(el) {
+                    el.classList.toggle('light-theme');
+                    el.classList.toggle('dark-theme');
+                });
+            }
+
             // Função de pesquisa
             document.getElementById('searchBox').addEventListener('input', function() {
                 var searchValue = this.value.toLowerCase();
