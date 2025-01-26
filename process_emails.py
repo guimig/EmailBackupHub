@@ -569,7 +569,7 @@ def update_root_index():
                     }
                 </style>
             </head>
-            <body class="light-theme">
+            <body class="dark-theme">
                 <h1>CEOF</h1>
                 <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
                 
@@ -583,7 +583,7 @@ def update_root_index():
                     <input type="text" 
                         id="searchBox" 
                         placeholder="Pesquise por arquivos..." 
-                        class="light-theme">
+                        class="dark-theme">
                 </div>
 
                 <div class="folder">
