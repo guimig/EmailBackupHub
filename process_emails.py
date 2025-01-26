@@ -169,7 +169,6 @@ def manage_backups(subject_folder, subject, date):
         pass  # Mantenha o último dia do mês dentro dos últimos 12 meses
 
     # Excluir backups antigos
-    # Listar arquivos existentes no diretório de backup
     existing_files = os.listdir(subject_folder)
     for file in existing_files:
         if file.endswith('.html'):
@@ -179,6 +178,10 @@ def manage_backups(subject_folder, subject, date):
                 file_day_diff = (today - file_date).days
                 file_week_diff = (today - file_date).days // 7
                 file_month_diff = (today.year - file_date.year) * 12 + today.month - file_date.month
+
+                # Adicionando logs de depuração para verificação das condições
+                print(f"Verificando arquivo: {file}")
+                print(f"file_day_diff: {file_day_diff}, file_week_diff: {file_week_diff}, file_month_diff: {file_month_diff}")
 
                 # Excluir backups diários com mais de 5 dias
                 if file_day_diff > 5:
