@@ -543,5 +543,6 @@ if __name__ == '__main__':
         process_emails(service)
         # Chamando a função após o processamento dos e-mails
         create_latest_summary_html()
+        update_root_index()
     except Exception as e:
         print(f"Erro ao executar o script: {e}")
