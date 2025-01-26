@@ -138,7 +138,7 @@ def get_email_body(message):
         return byte_data.decode('utf-8')
     return ""
 
-# Função para gerenciar backups (últimos 5 dias, 5 semanas, 12 meses)
+# Função para gerenciar backups (últimos 5 dias, último dia das últimas 5 semanas, último dia dos últimos 12 meses)
 def manage_backups(subject_folder, subject, date):
     backup_files = []  # Lista para armazenar os arquivos a serem mantidos
 
@@ -150,23 +150,55 @@ def manage_backups(subject_folder, subject, date):
     today = datetime.datetime.now(TIMEZONE)
     day_diff = (today - date).days
     
-    # Backup diário: manter o e-mail mais recente dos últimos 5 dias
+    # Backup diário: manter o arquivo mais recente dos últimos 5 dias
     if day_diff <= 5:
-        # Mantenha apenas o último e-mail de cada dia
-        pass
+        pass  # Mantenha o arquivo mais recente dos últimos 5 dias
 
-    # Backup semanal: manter o último e-mail da semana (últimos 5 semanas)
+    # Backup semanal: manter o último dia das últimas 5 semanas (último dia da semana - sábado)
+    # Verificar se a data corresponde ao último sábado das últimas 5 semanas
+    last_saturday = today - datetime.timedelta(days=today.weekday() + 2)  # Último sábado
     week_diff = (today - date).days // 7
-    if week_diff <= 5:
-        pass  # Aqui você pode filtrar os e-mails para cada semana, por exemplo
+    if week_diff <= 5 and date.weekday() == 5:  # Se for sábado (weekday() == 5)
+        pass  # Mantenha o último sábado dentro das últimas 5 semanas
 
-    # Backup mensal: manter o último e-mail do mês (últimos 12 meses)
+    # Backup mensal: manter o último dia dos últimos 12 meses (último dia do mês)
+    first_day_of_next_month = (today.replace(day=28) + datetime.timedelta(days=4)).replace(day=1)
+    last_day_of_month = first_day_of_next_month - datetime.timedelta(days=1)
     month_diff = (today.year - date.year) * 12 + today.month - date.month
-    if month_diff <= 12:
-        pass  # Aqui você pode filtrar os e-mails para cada mês, por exemplo
+    if month_diff <= 12 and date.day == last_day_of_month.day:
+        pass  # Mantenha o último dia do mês dentro dos últimos 12 meses
 
     # Excluir backups antigos
-    # Exclua arquivos antigos ou aqueles que não atendem aos critérios
+    # Listar arquivos existentes no diretório de backup
+    existing_files = os.listdir(subject_folder)
+    for file in existing_files:
+        if file.endswith('.html'):
+            file_date_str = file.split('_')[1].replace('.html', '')
+            try:
+                file_date = datetime.datetime.strptime(file_date_str, '%d-%m-%Y')
+                file_day_diff = (today - file_date).days
+                file_week_diff = (today - file_date).days // 7
+                file_month_diff = (today.year - file_date.year) * 12 + today.month - file_date.month
+
+                # Excluir backups diários com mais de 5 dias
+                if file_day_diff > 5:
+                    os.remove(os.path.join(subject_folder, file))
+                    print(f"Arquivo excluído (backup diário): {file}")
+                
+                # Excluir backups semanais que não sejam o último sábado das últimas 5 semanas
+                if file_week_diff > 5 or (file_week_diff <= 5 and file_date.weekday() != 5):
+                    os.remove(os.path.join(subject_folder, file))
+                    print(f"Arquivo excluído (backup semanal): {file}")
+                
+                # Excluir backups mensais que não sejam o último dia do mês dos últimos 12 meses
+                if file_month_diff > 12 or (file_month_diff <= 12 and file_date.day != last_day_of_month.day):
+                    os.remove(os.path.join(subject_folder, file))
+                    print(f"Arquivo excluído (backup mensal): {file}")
+
+            except ValueError:
+                print(f"Erro ao processar a data do arquivo: {file}")
+
+    # Retornar os arquivos a serem mantidos
     return backup_files
 
 # Processar e-mails
