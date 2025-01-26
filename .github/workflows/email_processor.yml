@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04  # Especificar a versão do Ubuntu para evitar o uso do ubuntu-24.04
 
     steps:
-      # Passo 1: Checkout do repositórioo
+      # Passo 1: Checkout do repositório
       - name: Checkout repository
         uses: actions/checkout@v2
 
