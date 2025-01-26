@@ -239,8 +239,9 @@ def process_message(service, message):
 #            index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
 #        index_file.write("</ul></body></html>\n")
 
-# Atualizar o arquivo index.html
 def update_root_index():
+    import os
+
     # Caminho do repositório onde os arquivos .html estão armazenados
     repo_root = os.getcwd()  # Usando o diretório atual (root do repositório)
     
@@ -269,7 +270,7 @@ def update_root_index():
                         backup_links[subfolder] = []
                     backup_links[subfolder].append((relative_path, link))  # Adiciona para ordenação
 
-    # Ordenar os links por endereço do arquivo
+    # Ordenar os links por endereço do arquivo (relative_path)
     root_links.sort(key=lambda x: x[0])  # Ordena os links da raiz
     for subfolder in backup_links:
         backup_links[subfolder].sort(key=lambda x: x[0])  # Ordena os links dos backups
@@ -383,7 +384,7 @@ def update_root_index():
     """
     
     # Adicionar links da raiz
-    for link in root_links:
+    for relative_path, link in root_links:
         html_content += f"{link}\n"
     
     # Adicionar arquivos de backup organizados por subpastas
@@ -393,7 +394,7 @@ def update_root_index():
             <h2>Arquivos de Backup - {subfolder}</h2>
             <div class="links" id="folder_{subfolder}">
         """
-        for link in links:
+        for relative_path, link in links:
             html_content += f"{link}\n"
         html_content += "</div></div>\n"
 
@@ -426,6 +427,7 @@ def update_root_index():
         index_file.write(html_content)
 
     print(f"Arquivo index.html atualizado com {len(root_links)} links da raiz e {sum(len(links) for links in backup_links.values())} links de backup.")
+
 
 def create_latest_summary_html():
     """
