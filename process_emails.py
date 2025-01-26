@@ -243,7 +243,7 @@ def create_latest_summary_html():
         # Adiciona a data e hora da última atualização no final do HTML
         now = datetime.datetime.now(TIMEZONE)
         update_text = f"<p>Última vez que o script buscou por novos relatórios: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-        report_date_text = f"<p>Último relatório gerado em: {last_report_date.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        report_date_text = f"<p>Relatório gerado em: {last_report_date.strftime('%d/%m/%Y')}</p>"
 
         # Escreve o conteúdo atualizado no arquivo de saída
         with open(output_path, 'w', encoding='utf-8') as f:
