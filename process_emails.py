@@ -471,7 +471,7 @@ def update_root_index():
         </head>
         <body>
             <h1>CEOF</h1>
-            <h2>Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
+            <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
             <!-- Barra de pesquisa -->
             <div style="text-align: center; margin-bottom: 20px;">
                 <input type="text" 
