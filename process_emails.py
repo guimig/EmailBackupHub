@@ -77,8 +77,8 @@ def process_emails():
 
 # Função para processar mensagem individual
 def process_message(msg):
-    subject = msg['subject']
-    date_str = msg['date']
+    subject = msg.get('subject', 'Sem Título')  # Usar 'Sem Título' se o assunto estiver ausente
+    date_str = msg.get('date')
     date = parsedate_to_datetime(date_str) if date_str else datetime.datetime.now(TIMEZONE)
     body = get_email_body(msg)
     normalized_title = normalize_title(subject)
@@ -119,6 +119,9 @@ def get_email_body(msg):
 
 # Função para normalizar o título do e-mail
 def normalize_title(title):
+    if not title:
+        return "sem-titulo"  # Retorna um valor padrão se o título estiver ausente
+
     title = title.lower()
     title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
     title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
