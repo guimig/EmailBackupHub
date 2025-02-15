@@ -1,215 +1,122 @@
 
         <html>
-            <head>
-                <title>CEOF</title>
-                <style>
-                    /* Tema Claro (Padrão) */
-                    body.light-theme {
-                        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                        margin: 20px;
-                        background-color: #ffffff;  /* Fundo branco */
-                        color: #333333;  /* Texto cinza muito escuro */
-                        line-height: 1.6;
-                    }
+        <head>
+            <title>CEOF</title>
+            <style>
+                body {
 
-                    h1.light-theme {
-                        color: #1a7f32;  /* Verde para títulos */
-                        text-align: center;
-                        font-size: 2.2em;  /* Tamanho aumentado para destaque */
-                        margin-bottom: 30px;
-                        display: block;
-                    }
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    margin: 20px;
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    line-height: 1.6;
+                }
 
-                    .folder.light-theme {
-                        margin-top: 20px;
-                        background-color: #f9f9f9;  /* Fundo claro para as pastas */
-                        padding: 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra suave */
-                        border-left: 5px solid #1a7f32;  /* Verde para destaque */
-                    }
+                h1 {
+                    color: #f0f6fc;  /* Branco quebrado */
+                    text-align: center;
+                    font-size: 2.2em;  /* Aumentado para destaque */
+                    margin-bottom: 30px;  /* Mais espaçamento */
+                }
 
-                    .folder.light-theme h2 {
-                        color: #1a7f32;  /* Verde para os subtítulos */
-                        font-size: 1.6em;
-                        margin-bottom: 15px;
-                    }
+                .folder {
+                    margin-top: 20px;
+                    background-color: #161b22;  /* Fundo levemente mais claro */
+                    padding: 20px;  /* Aumentado o padding */
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
+                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
+                }
 
-                    .links.light-theme {
-                        margin-left: 20px;
-                    }
+                .folder h2 {
+                    color: #adbac7;  /* Cinza claro */
+                    font-size: 1.6em;  /* Aumentado para mais destaque */
+                    margin-bottom: 15px;
+                }
 
-                    a.light-theme {
-                        text-decoration: none;
-                        color: #1a7f32;  /* Verde para links */
-                        font-size: 1em;
-                        display: block;
-                        margin-bottom: 10px;
-                    }
+                .links {
+                    margin-left: 20px;
+                }
 
-                    a.light-theme:hover {
-                        text-decoration: underline;
-                        color: #146d28;  /* Verde mais escuro ao passar o mouse */
-                    }
+                a {
+                    text-decoration: none;
+                    color: #58a6ff;  /* Azul suave */
+                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
+                    display: block;  /* Para aumentar o espaço entre os links */
+                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
+                }
 
-                    .footer.light-theme {
-                        margin-top: 40px;
-                        text-align: center;
-                        color: #666666;  /* Cinza claro para o rodapé */
-                    }
+                a:hover {
+                    text-decoration: underline;
+                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
+                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
+                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
+                }
 
-                    #searchBox.light-theme {
-                        padding: 12px;
-                        width: 85%;
-                        max-width: 600px;
-                        border-radius: 8px;
-                        border: 1px solid #484f58;  /* Cinza escuro para a borda */
-                        background-color: #ffffff;  /* Fundo branco */
-                        color: #333333;  /* Texto escuro */
-                        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.1);  /* Efeito interno suave */
-                        outline: none;
-                        transition: all 0.3s ease-in-out;
-                    }
+                .footer {
+                    margin-top: 40px;
+                    text-align: center;
+                    color: #8b949e;  /* Cinza claro para rodapé */
+                }
 
-                    #searchBox.light-theme::placeholder {
-                        color: #999999;  /* Placeholder em cinza claro */
-                    }
+                #searchBox {
+                    padding: 12px;
+                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
+                    max-width: 600px;
+                    border-radius: 8px;  /* Borda mais arredondada */
+                    border: 1px solid #484f58;  /* Cinza escuro */
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
+                    outline: none;
+                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
+                }
 
-                    #searchBox.light-theme:focus {
-                        border-color: #1a7f32;  /* Verde ao focar */
-                        box-shadow: 0 0 8px rgba(26, 127, 50, 0.5);  /* Brilho verde suave */
-                    }
+                #searchBox {
+                    padding: 12px;
+                    width: 85%;  /* Ajuste a largura conforme necessário */
+                    max-width: 600px;
+                    border-radius: 8px;
+                    border: 1px solid #484f58;  /* Cinza escuro */
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
+                    outline: none;
+                    transition: all 0.3s ease-in-out;
+                }
 
-                    /* Tema Escuro */
-                    body.dark-theme {
-                        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                        margin: 20px;
-                        background-color: #0d1117;  /* Fundo escuro */
-                        color: #c9d1d9;  /* Texto claro */
-                        line-height: 1.6;
-                    }
+                #searchBox::placeholder {
+                    color: #6e7681;  /* Cinza claro para o placeholder */
+                }
 
-                    h1.dark-theme {
-                        color: #f0f6fc;  /* Branco quebrado */
-                        text-align: center;
-                        font-size: 2.2em;
-                        margin-bottom: 30px;
-                    }
+                #searchBox:focus {
+                    border-color: #58a6ff;  /* Azul ao focar */
+                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
+                }
 
-                    .folder.dark-theme {
-                        margin-top: 20px;
-                        background-color: #161b22;  /* Fundo levemente mais claro */
-                        padding: 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-                        border-left: 5px solid #6e7681;
-                    }
 
-                    .folder.dark-theme h2 {
-                        color: #adbac7;
-                        font-size: 1.6em;
-                        margin-bottom: 15px;
+                @media (max-width: 600px) {
+                    body {
+                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
                     }
-
-                    .links.dark-theme {
-                        margin-left: 20px;
+                    h1 {
+                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
                     }
-
-                    a.dark-theme {
-                        text-decoration: none;
-                        color: #58a6ff;  /* Azul suave */
-                        font-size: 1em;
-                        display: block;
-                        margin-bottom: 10px;
+                    .folder h2 {
+                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
                     }
-
-                    a.dark-theme:hover {
-                        text-decoration: underline;
-                        color: #1f6feb;
-                        padding-left: 5px;
-                        transition: all 0.3s ease-in-out;
+                    a {
+                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
                     }
-
-                    .footer.dark-theme {
-                        margin-top: 40px;
-                        text-align: center;
-                        color: #8b949e;
+                    #searchBox {
+                        width: 90%;  /* Ajusta a largura do campo de busca */
                     }
-
-                    #searchBox.dark-theme {
-                        padding: 12px;
-                        width: 85%;
-                        max-width: 600px;
-                        border-radius: 8px;
-                        border: 1px solid #484f58;
-                        background-color: #0d1117;
-                        color: #c9d1d9;
-                        box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
-                        outline: none;
-                        transition: all 0.3s ease-in-out;
-                    }
-
-                    #searchBox.dark-theme::placeholder {
-                        color: #6e7681;
-                    }
-
-                    #searchBox.dark-theme:focus {
-                        border-color: #58a6ff;
-                        box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
-                    }
-
-                    /* Botão de alternância de tema */
-                    .theme-toggle-btn {
-                        padding: 10px 20px;
-                        font-size: 1em;
-                        color: #ffffff;
-                        background-color: #21262d;
-                        border: 1px solid #58a6ff;
-                        border-radius: 25px;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    }
-
-                    .theme-toggle-btn:hover {
-                        background-color: #30363d;
-                        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-                        transform: translateY(-2px);
-                    }
-
-                    .theme-toggle-btn:focus {
-                        outline: none;
-                        box-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
-                    }
-
-                    /* Responsividade */
-                    @media (max-width: 600px) {
-                        body {
-                            font-size: 14px;
-                        }
-                        h1 {
-                            font-size: 1.8em;
-                        }
-                        .folder h2 {
-                            font-size: 1.4em;
-                        }
-                        a {
-                            font-size: 1.1em;
-                        }
-                        #searchBox {
-                            width: 90%;
-                        }
-                    }
-                </style>
-            </head>
-            <body class="dark-theme">
-                <h1>CEOF</h1>
-                <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
-                
-                <!-- Botão de alternância de tema -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <button onclick="toggleTheme()" class="theme-toggle-btn">Alternar Tema</button>
-                </div>
+                }
+            </style>
+        </head>
+        <body>
+            <h1>CEOF</h1>
+            <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
 
                 <!-- Barra de pesquisa -->
                 <div style="text-align: center; margin-bottom: 20px;">
@@ -228,13 +135,18 @@
         <div class="folder">
             <h2>Arquivos de Backup - emails/restos-a-pagar-rap-contratos</h2>
             <div class="links" id="folder_emails/restos-a-pagar-rap-contratos">
-        <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_25-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_25-01-2025.html'>restos-a-pagar-rap-contratos_25-01-2025.html</a><br>
+        <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_31-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_31-01-2025.html'>restos-a-pagar-rap-contratos_31-01-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_30-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_30-01-2025.html'>restos-a-pagar-rap-contratos_30-01-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_29-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_29-01-2025.html'>restos-a-pagar-rap-contratos_29-01-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_28-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_28-01-2025.html'>restos-a-pagar-rap-contratos_28-01-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_25-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_25-01-2025.html'>restos-a-pagar-rap-contratos_25-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_24-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_24-01-2025.html'>restos-a-pagar-rap-contratos_24-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_23-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_23-01-2025.html'>restos-a-pagar-rap-contratos_23-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_22-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_22-01-2025.html'>restos-a-pagar-rap-contratos_22-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-01-2025.html'>restos-a-pagar-rap-contratos_21-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-01-2025.html'>restos-a-pagar-rap-contratos_18-01-2025.html</a><br>
 <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_17-01-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_17-01-2025.html'>restos-a-pagar-rap-contratos_17-01-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_01-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_01-02-2025.html'>restos-a-pagar-rap-contratos_01-02-2025.html</a><br>
 </div></div>
 
         <div class="folder">
@@ -248,20 +160,6 @@
             <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
         </div>
         <script>
-            // Função de alternância de tema
-            function toggleTheme() {
-                var body = document.body;
-                body.classList.toggle('light-theme');
-                body.classList.toggle('dark-theme');
-                
-                // Alternar classes de elementos
-                var elements = document.querySelectorAll('h1, h2, .folder, a, .footer, #searchBox');
-                elements.forEach(function(el) {
-                    el.classList.toggle('light-theme');
-                    el.classList.toggle('dark-theme');
-                });
-            }
-
             // Função de pesquisa
             document.getElementById('searchBox').addEventListener('input', function() {
                 var searchValue = this.value.toLowerCase();
