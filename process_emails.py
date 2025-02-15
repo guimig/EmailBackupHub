@@ -138,6 +138,11 @@ def normalize_title(title):
     title = title.replace('õ', 'o')  # Substitui caracteres como 'õ' por 'o'
     title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
     title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
+    
+    # Remove o hífen inicial, se existir
+    if title.startswith('-'):
+        title = title[1:]
+    
     return title
 
 # Função para criar o resumo dos e-mails mais recentes
