@@ -4,7 +4,7 @@ import datetime
 import re
 import git
 import pytz
-import smtplib
+import imaplib
 import email
 from email import policy
 from email.header import decode_header
@@ -15,35 +15,34 @@ EMAIL_SENDER = "serpro.gov.br"  # Domínio do remetente
 BACKUP_FOLDER = "emails"
 TIMEZONE = pytz.timezone("America/Sao_Paulo")  # Fuso horário de São Paulo
 
-# Configurações SMTP
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
+# Configurações IMAP
+IMAP_SERVER = "imap.gmail.com"
+IMAP_PORT = 993
 EMAIL_ADDRESS = os.getenv('GMAIL_EMAIL')
 EMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
 
-# Função para conectar ao servidor SMTP
-def connect_smtp():
+# Função para conectar ao servidor IMAP
+def connect_imap():
     try:
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-        server.starttls()
-        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        return server
+        mail = imaplib.IMAP4_SSL(IMAP_SERVER, IMAP_PORT)
+        mail.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        return mail
     except Exception as e:
-        print(f"Erro ao conectar ao servidor SMTP: {e}")
+        print(f"Erro ao conectar ao servidor IMAP: {e}")
         return None
 
 # Função para buscar e-mails não lidos
 def fetch_unread_emails():
     try:
-        server = connect_smtp()
-        if not server:
+        mail = connect_imap()
+        if not mail:
             return []
 
         # Seleciona a caixa de entrada
-        server.select('inbox')
+        mail.select('inbox')
 
         # Busca e-mails não lidos do remetente específico
-        status, messages = server.search(None, f'(UNSEEN FROM "{EMAIL_SENDER}")')
+        status, messages = mail.search(None, f'(UNSEEN FROM "{EMAIL_SENDER}")')
         if status != 'OK':
             print("Erro ao buscar e-mails.")
             return []
@@ -51,7 +50,7 @@ def fetch_unread_emails():
         email_ids = messages[0].split()
         emails = []
         for email_id in email_ids:
-            status, msg_data = server.fetch(email_id, '(RFC822)')
+            status, msg_data = mail.fetch(email_id, '(RFC822)')
             if status == 'OK':
                 emails.append(msg_data[0][1])
         return emails
@@ -137,6 +136,61 @@ def normalize_title(title):
     title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
     title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
     return title
+
+# Função para criar o resumo dos e-mails mais recentes
+def create_latest_summary_html():
+    """
+    Cria um arquivo .html no diretório inicial para o último arquivo mais atualizado
+    de cada subpasta em /emails. Inclui no final a data e horário da última atualização 
+    e a data do último relatório.
+    """
+    for root, dirs, files in os.walk(BACKUP_FOLDER):
+        # Ignora a pasta raiz e processa apenas subpastas
+        if root == BACKUP_FOLDER:
+            continue
+
+        # Ordena os arquivos por data de modificação, do mais recente ao mais antigo
+        files = [f for f in files if f.endswith('.html')]
+        files.sort(key=lambda f: os.path.getmtime(os.path.join(root, f)), reverse=True)
+
+        if not files:
+            continue
+
+        # Seleciona o arquivo mais recente
+        latest_file = files[0]
+        latest_file_path = os.path.join(root, latest_file)
+
+        # Extrai o título normalizado da subpasta
+        normalized_title = os.path.basename(root)
+
+        # Cria o arquivo HTML no diretório inicial
+        output_file = f"{normalized_title}.html"
+        output_path = os.path.join(os.getcwd(), output_file)
+
+        # Lê o conteúdo do arquivo mais recente
+        with open(latest_file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Obtém a data do último relatório a partir do nome do arquivo
+        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
+        if match:
+            day, month, year = match.groups()
+            last_report_date = datetime.datetime(int(year), int(month), int(day), tzinfo=TIMEZONE)
+        else:
+            last_report_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_file_path), TIMEZONE)
+
+        # Adiciona a data e hora da última atualização no final do HTML
+        now = datetime.datetime.now(TIMEZONE)
+        update_text = f"<p>Última vez que o script buscou por novos relatórios: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        report_date_text = f"<p>Relatório gerado em: {last_report_date.strftime('%d/%m/%Y')}</p>"
+
+        # Escreve o conteúdo atualizado no arquivo de saída
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+            f.write(report_date_text)  # Adiciona a data do último relatório
+            f.write(update_text)  # Adiciona a data da última execução do script
+
+        print(f"Resumo atualizado criado: {output_path}")
 
 # Função para atualizar o arquivo index.html
 def update_root_index():
