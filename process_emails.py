@@ -1,184 +1,93 @@
 import os
-import pickle
 import base64
 import datetime
 import re
 import git
-import json
 import pytz
-#from googleapiclient.discovery import build
-#from google.auth.credentials import Credentials
-from googleapiclient.errors import HttpError
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import smtplib
+import email
 from email import policy
+from email.header import decode_header
+from email.utils import parsedate_to_datetime
 
 # Configuração
-SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 EMAIL_SENDER = "serpro.gov.br"  # Domínio do remetente
 BACKUP_FOLDER = "emails"
 TIMEZONE = pytz.timezone("America/Sao_Paulo")  # Fuso horário de São Paulo
 
-# Autenticação
-def authenticate():
-    """
-    Autentica na API do Gmail e renova o token automaticamente se necessário.
-    """
-    # Carrega segredos do GitHub Actions (em Base64)
-    token_base64 = os.getenv('GMAIL_TOKEN')
-    credentials_json_base64 = os.getenv('GMAIL_CREDENTIALS_JSON')
+# Configurações SMTP
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+EMAIL_ADDRESS = os.getenv('GMAIL_EMAIL')
+EMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
 
-    if not token_base64 or not credentials_json_base64:
-        raise ValueError("As credenciais GMAIL_TOKEN e GMAIL_CREDENTIALS_JSON não foram encontradas no ambiente.")
-
-    # Decodifica o token e o credentials.json
-    token_data = base64.b64decode(token_base64).decode('utf-8')
-    credentials_data = base64.b64decode(credentials_json_base64).decode('utf-8')
-
-    # Carrega as credenciais do token.json
-    creds = None
+# Função para conectar ao servidor SMTP
+def connect_smtp():
     try:
-        creds = Credentials.from_authorized_user_info(json.loads(token_data), SCOPES)
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        return server
     except Exception as e:
-        print(f"Erro ao carregar o token: {e}")
+        print(f"Erro ao conectar ao servidor SMTP: {e}")
+        return None
 
-    # Renova o token se necessário
-    if creds and creds.expired and creds.refresh_token:
-        try:
-            creds.refresh(Request())
-            print("Token renovado com sucesso.")
-        except Exception as e:
-            raise ValueError(f"Erro ao renovar token: {e}")
-
-    # Caso não seja possível usar o token.json, usa credentials.json para obter novo token
-    if not creds or not creds.valid:
-        try:
-            creds = Credentials.from_authorized_user_info(json.loads(credentials_data), SCOPES)
-            print("Credenciais válidas geradas a partir de credentials.json.")
-        except Exception as e:
-            raise ValueError(f"Erro ao processar credentials.json: {e}")
-
-    # Retorna o serviço Gmail API autenticado
-    if creds and creds.valid:
-        return build('gmail', 'v1', credentials=creds)
-    else:
-        raise ValueError("Não foi possível autenticar. Verifique suas credenciais.")
-    
-    # Se o token estiver expirado ou inválido, tente renovar usando o JSON de credenciais
-    if credentials_json_base64:
-        try:
-            # Decode e carregar credenciais JSON
-            credentials_json = base64.b64decode(credentials_json_base64).decode('utf-8')
-            from google.oauth2.service_account import Credentials as ServiceAccountCredentials
-            
-            # Cria credenciais de conta de serviço e escopo necessário
-            creds = ServiceAccountCredentials.from_service_account_info(
-                json.loads(credentials_json),
-                scopes=SCOPES
-            )
-            print("Token renovado com sucesso usando GMAIL_CREDENTIALS_JSON.")
-            return build('gmail', 'v1', credentials=creds)
-        except Exception as e:
-            raise ValueError(f"Erro ao processar o GMAIL_CREDENTIALS_JSON: {e}")
-    
-    raise ValueError("Não foi possível autenticar. Verifique suas credenciais.")
-
-
-# Função para verificar ou inicializar o repositório Git
-def check_git_repo():
+# Função para buscar e-mails não lidos
+def fetch_unread_emails():
     try:
-        # Verifica se o repositório já existe no diretório
-        repo = git.Repo(search_parent_directories=True)
-        if repo.bare:
-            print("Repositório Git não encontrado. Inicializando o repositório.")
-            repo = git.Repo.init(".")  # Inicializa o repositório
-        return repo
-    except git.exc.InvalidGitRepositoryError:
-        print("Repositório Git não encontrado. Inicializando o repositório.")
-        return git.Repo.init(".")  # Inicializa o repositório se não for encontrado
+        server = connect_smtp()
+        if not server:
+            return []
 
-# Normalizar título do e-mail
-def normalize_title(title):
-    title = title.lower()
-    title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
-    title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
-    title = re.sub(r'-+', '-', title)  # Substitui múltiplos hífens por um único hífen
-    title = title.replace('à', 'a')  # Substitui caracteres como 'à' por 'a'
-    title = title.replace('á', 'a')  # Substitui caracteres como 'á' por 'a'
-    title = title.replace('ã', 'a')  # Substitui caracteres como 'ã' por 'a'
-    title = title.replace('é', 'e')  # Substitui caracteres como 'é' por 'e'
-    title = title.replace('è', 'e')  # Substitui caracteres como 'è' por 'e'
-    title = title.replace('ê', 'e')  # Substitui caracteres como 'ê' por 'e'
-    title = title.replace('í', 'i')  # Substitui caracteres como 'í' por 'i'
-    title = title.replace('ó', 'o')  # Substitui caracteres como 'ó' por 'o'
-    title = title.replace('ô', 'o')  # Substitui caracteres como 'ô' por 'o'
-    title = title.replace('õ', 'o')  # Substitui caracteres como 'õ' por 'o'
-    title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
-    title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
-    return title
+        # Seleciona a caixa de entrada
+        server.select('inbox')
 
-# Função para extrair o corpo do e-mail
-def get_email_body(message):
-    if 'parts' in message['payload']:
-        for part in message['payload']['parts']:
-            if part['mimeType'] == 'text/plain':
-                data = part['body']['data']
-                byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
-                return byte_data.decode('utf-8')
-            elif part['mimeType'] == 'text/html':
-                data = part['body']['data']
-                byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
-                return byte_data.decode('utf-8')
-    elif 'body' in message['payload'] and 'data' in message['payload']['body']:
-        data = message['payload']['body']['data']
-        byte_data = base64.urlsafe_b64decode(data.encode('ASCII'))
-        return byte_data.decode('utf-8')
-    return ""
+        # Busca e-mails não lidos do remetente específico
+        status, messages = server.search(None, f'(UNSEEN FROM "{EMAIL_SENDER}")')
+        if status != 'OK':
+            print("Erro ao buscar e-mails.")
+            return []
 
-# Processar e-mails
-def process_emails(service):
-    try:
-        results = service.users().messages().list(userId='me', q=f"is:unread from:{EMAIL_SENDER}").execute()
-        messages = results.get('messages', [])
-        print(f"Número de e-mails encontrados: {len(messages)}")
+        email_ids = messages[0].split()
+        emails = []
+        for email_id in email_ids:
+            status, msg_data = server.fetch(email_id, '(RFC822)')
+            if status == 'OK':
+                emails.append(msg_data[0][1])
+        return emails
+    except Exception as e:
+        print(f"Erro ao buscar e-mails: {e}")
+        return []
 
-        all_links = []
+# Função para processar e-mails
+def process_emails():
+    emails = fetch_unread_emails()
+    print(f"Número de e-mails encontrados: {len(emails)}")
 
-        for msg in messages:
-            message = service.users().messages().get(userId='me', id=msg['id']).execute()
-            link = process_message(service, message)
-            if link:
-                all_links.append(link)
+    all_links = []
 
-            # Marcar como lido e retirar da caixa de entrada
-            service.users().messages().modify(
-                userId='me', id=msg['id'],
-                body={'removeLabelIds': ['UNREAD']}
-            ).execute()
+    for msg_data in emails:
+        msg = email.message_from_bytes(msg_data, policy=policy.default)
+        link = process_message(msg)
+        if link:
+            all_links.append(link)
 
-        # Atualiza o index.html com todos os links
-        update_root_index()
-        commit_changes()  # Realiza o commit dos arquivos gerados no repositório
-    except HttpError as error:
-        print(f"Erro ao processar e-mails: {error}")
+    # Atualiza o index.html com todos os links
+    update_root_index()
+    commit_changes()  # Realiza o commit dos arquivos gerados no repositório
 
-# Processar mensagem individual
-def process_message(service, message):
-    headers = message['payload']['headers']
-    subject = next((h['value'] for h in headers if h['name'] == 'Subject'), "Sem Título")
-    date_str = next((h['value'] for h in headers if h['name'] == 'Date'), None)
-    date = datetime.datetime.strptime(date_str, '%a, %d %b %Y %H:%M:%S %z') if date_str else datetime.datetime.now(TIMEZONE)
-    body = get_email_body(message)
+# Função para processar mensagem individual
+def process_message(msg):
+    subject = msg['subject']
+    date_str = msg['date']
+    date = parsedate_to_datetime(date_str) if date_str else datetime.datetime.now(TIMEZONE)
+    body = get_email_body(msg)
     normalized_title = normalize_title(subject)
 
     # Criar pasta para o título do e-mail
     subject_folder = os.path.join(BACKUP_FOLDER, normalized_title)
-    print(f"Criando a pasta: {subject_folder}")  # Log para verificar o caminho
+    print(f"Criando a pasta: {subject_folder}")
 
-    # Tentar criar a pasta e verificar se foi criada com sucesso
     try:
         os.makedirs(subject_folder, exist_ok=True)
         print(f"Pasta criada: {subject_folder}")
@@ -199,135 +108,37 @@ def process_message(service, message):
         print(f"Erro ao processar a mensagem: {e}")
         return None
 
-def create_latest_summary_html():
-    """
-    Cria um arquivo .html no diretório inicial para o último arquivo mais atualizado
-    de cada subpasta em /emails. Inclui no final a data e horário da última atualização 
-    e a data do último relatório.
-    """
-    for root, dirs, files in os.walk(BACKUP_FOLDER):
-        # Ignora a pasta raiz e processa apenas subpastas
-        if root == BACKUP_FOLDER:
-            continue
+# Função para extrair o corpo do e-mail
+def get_email_body(msg):
+    if msg.is_multipart():
+        for part in msg.walk():
+            content_type = part.get_content_type()
+            if content_type == 'text/plain' or content_type == 'text/html':
+                return part.get_payload(decode=True).decode('utf-8')
+    else:
+        return msg.get_payload(decode=True).decode('utf-8')
 
-        # Ordena os arquivos por data de modificação, do mais recente ao mais antigo
-        files = [f for f in files if f.endswith('.html')]
-        files.sort(key=lambda f: os.path.getmtime(os.path.join(root, f)), reverse=True)
+# Função para normalizar o título do e-mail
+def normalize_title(title):
+    title = title.lower()
+    title = re.sub(r'[^\w\s-]', '', title)  # Remove caracteres especiais
+    title = re.sub(r'\s+', '-', title)  # Substitui espaços consecutivos por um único hífen
+    title = re.sub(r'-+', '-', title)  # Substitui múltiplos hífens por um único hífen
+    title = title.replace('à', 'a')  # Substitui caracteres como 'à' por 'a'
+    title = title.replace('á', 'a')  # Substitui caracteres como 'á' por 'a'
+    title = title.replace('ã', 'a')  # Substitui caracteres como 'ã' por 'a'
+    title = title.replace('é', 'e')  # Substitui caracteres como 'é' por 'e'
+    title = title.replace('è', 'e')  # Substitui caracteres como 'è' por 'e'
+    title = title.replace('ê', 'e')  # Substitui caracteres como 'ê' por 'e'
+    title = title.replace('í', 'i')  # Substitui caracteres como 'í' por 'i'
+    title = title.replace('ó', 'o')  # Substitui caracteres como 'ó' por 'o'
+    title = title.replace('ô', 'o')  # Substitui caracteres como 'ô' por 'o'
+    title = title.replace('õ', 'o')  # Substitui caracteres como 'õ' por 'o'
+    title = title.replace('ú', 'u')  # Substitui caracteres como 'ú' por 'u'
+    title = title.replace('ü', 'u')  # Substitui caracteres como 'ü' por 'u'
+    return title
 
-        if not files:
-            continue
-
-        # Seleciona o arquivo mais recente
-        latest_file = files[0]
-        latest_file_path = os.path.join(root, latest_file)
-
-        # Extrai o título normalizado da subpasta
-        normalized_title = os.path.basename(root)
-
-        # Cria o arquivo HTML no diretório inicial
-        output_file = f"{normalized_title}.html"
-        output_path = os.path.join(os.getcwd(), output_file)
-
-        # Lê o conteúdo do arquivo mais recente
-        with open(latest_file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-
-        # Obtém a data do último relatório a partir do nome do arquivo
-        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-        if match:
-            day, month, year = match.groups()
-            last_report_date = datetime.datetime(int(year), int(month), int(day), tzinfo=TIMEZONE)
-        else:
-            last_report_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_file_path), TIMEZONE)
-
-        # Adiciona a data e hora da última atualização no final do HTML
-        now = datetime.datetime.now(TIMEZONE)
-        update_text = f"<p>Última vez que o script buscou por novos relatórios: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-        report_date_text = f"<p>Relatório gerado em: {last_report_date.strftime('%d/%m/%Y')}</p>"
-
-        # Escreve o conteúdo atualizado no arquivo de saída
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(content)
-            f.write(report_date_text)  # Adiciona a data do último relatório
-            f.write(update_text)  # Adiciona a data da última execução do script
-
-        print(f"Resumo atualizado criado: {output_path}")
-
-# Função para gerenciar backups (últimos 5 dias, último dia das últimas 5 semanas, último dia dos últimos 12 meses)
-def manage_backups(subject_folder, subject, date):
-    backup_files = []  # Lista para armazenar os arquivos a serem mantidos
-
-    # Gerar a lista de backup com base no e-mail atual
-    file_name = f"{subject}_{date.strftime('%d-%m-%Y')}.html"
-    backup_files.append(file_name)
-
-    # Lógica para manter e-mails diários, semanais e mensais
-    today = datetime.datetime.now(TIMEZONE)
-    day_diff = (today - date).days
-    
-    # Backup diário: manter o arquivo mais recente dos últimos 5 dias
-    if day_diff <= 5:
-        pass  # Mantenha o arquivo mais recente dos últimos 5 dias
-
-    # Backup semanal: manter o último dia das últimas 5 semanas (último dia da semana - sábado)
-    # Verificar se a data corresponde ao último sábado das últimas 5 semanas
-    last_saturday = today - datetime.timedelta(days=today.weekday() + 2)  # Último sábado
-    week_diff = (today - date).days // 7
-    if week_diff <= 5 and date.weekday() == 5:  # Se for sábado (weekday() == 5)
-        pass  # Mantenha o último sábado dentro das últimas 5 semanas
-
-    # Backup mensal: manter o último dia dos últimos 12 meses (último dia do mês)
-    first_day_of_next_month = (today.replace(day=28) + datetime.timedelta(days=4)).replace(day=1)
-    last_day_of_month = first_day_of_next_month - datetime.timedelta(days=1)
-    month_diff = (today.year - date.year) * 12 + today.month - date.month
-    if month_diff <= 12 and date.day == last_day_of_month.day:
-        pass  # Mantenha o último dia do mês dentro dos últimos 12 meses
-
-    # Excluir backups antigos
-    existing_files = os.listdir(subject_folder)
-    for file in existing_files:
-        if file.endswith('.html'):
-            file_date_str = file.split('_')[1].replace('.html', '')
-            try:
-                file_date = datetime.datetime.strptime(file_date_str, '%d-%m-%Y')
-                file_day_diff = (today - file_date).days
-                file_week_diff = (today - file_date).days // 7
-                file_month_diff = (today.year - file_date.year) * 12 + today.month - file_date.month
-
-                # Adicionando logs de depuração para verificação das condições
-                print(f"Verificando arquivo: {file}")
-                print(f"file_day_diff: {file_day_diff}, file_week_diff: {file_week_diff}, file_month_diff: {file_month_diff}")
-
-                # Excluir backups diários com mais de 5 dias
-                if file_day_diff > 5:
-                    os.remove(os.path.join(subject_folder, file))
-                    print(f"Arquivo excluído (backup diário): {file}")
-                
-                # Excluir backups semanais que não sejam o último sábado das últimas 5 semanas
-                if file_week_diff > 5 or (file_week_diff <= 5 and file_date.weekday() != 5):
-                    os.remove(os.path.join(subject_folder, file))
-                    print(f"Arquivo excluído (backup semanal): {file}")
-                
-                # Excluir backups mensais que não sejam o último dia do mês dos últimos 12 meses
-                if file_month_diff > 12 or (file_month_diff <= 12 and file_date.day != last_day_of_month.day):
-                    os.remove(os.path.join(subject_folder, file))
-                    print(f"Arquivo excluído (backup mensal): {file}")
-
-            except ValueError:
-                print(f"Erro ao processar a data do arquivo: {file}")
-
-    # Retornar os arquivos a serem mantidos
-    return backup_files
-
-# Atualizar o arquivo index.html
-# def update_root_index(all_links):
-#    index_path = os.path.join("index.html")
-#    with open(index_path, "w") as index_file:
-#        index_file.write("<html><body><h1>E-mails Processados</h1><ul>\n")
-#        for link in all_links:
-#            index_file.write(f'<li><a href="{link}">{link}</a></li>\n')
-#        index_file.write("</ul></body></html>\n")
-
+# Função para atualizar o arquivo index.html
 def update_root_index():
     # Caminho do repositório onde os arquivos .html estão armazenados
     repo_root = os.getcwd()  # Usando o diretório atual (root do repositório)
@@ -372,7 +183,6 @@ def update_root_index():
             <title>CEOF</title>
             <style>
                 body {
-
                     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                     margin: 20px;
                     background-color: #0d1117;  /* Fundo escuro */
@@ -579,8 +389,7 @@ def commit_changes():
 # Execução principal
 if __name__ == '__main__':
     try:
-        service = authenticate()
-        process_emails(service)
+        process_emails()
         # Chamando a função após o processamento dos e-mails
         create_latest_summary_html()
         update_root_index()
