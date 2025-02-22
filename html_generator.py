@@ -8,6 +8,7 @@ def create_latest_summary_html():
         if root == BACKUP_FOLDER:
             continue
 
+        # Filtra apenas arquivos HTML e ordena por data de modificação
         html_files = sorted(
             (f for f in files if f.endswith('.html')),
             key=lambda f: os.path.getmtime(os.path.join(root, f)),
@@ -24,20 +25,42 @@ def create_latest_summary_html():
         with open(latest_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
+        # Extrai a data do nome do arquivo
         match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-        last_report_date = (
-            datetime.datetime(*map(int, match.groups()), tzinfo=TIMEZONE)
-            if match else
-            datetime.datetime.fromtimestamp(os.path.getmtime(latest_path), TIMEZONE)
-        )
+        if match:
+            day, month, year = match.groups()
+            try:
+                # Valida a data antes de criar o objeto datetime
+                last_report_date = datetime.datetime(
+                    year=int(year),
+                    month=int(month),
+                    day=int(day),
+                    tzinfo=TIMEZONE
+                )
+            except ValueError:
+                # Se a data for inválida, usa a data de modificação do arquivo
+                last_report_date = datetime.datetime.fromtimestamp(
+                    os.path.getmtime(latest_path),
+                    TIMEZONE
+                )
+        else:
+            # Se não encontrar a data no nome do arquivo, usa a data de modificação
+            last_report_date = datetime.datetime.fromtimestamp(
+                os.path.getmtime(latest_path),
+                TIMEZONE
+            )
 
+        # Adiciona o rodapé com a data do relatório e a última atualização
         footer = f"""
         <p>Relatório gerado em: {last_report_date.strftime('%d/%m/%Y')}</p>
         <p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
         """
         
+        # Escreve o conteúdo atualizado no arquivo de saída
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(content + footer)
+
+        print(f"Resumo atualizado criado: {output_path}")
 
 # Função para atualizar o arquivo index.html
 def update_root_index():
