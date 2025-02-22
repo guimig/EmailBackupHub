@@ -1,8 +1,8 @@
-from imap_client import ImapClient
-from email_parser import EmailParser
-from file_manager import FileManager
-from git_manager import GitManager
-from html_generator import HtmlGenerator
+from email_processor.imap_client import ImapClient
+from email_processor.email_parser import EmailParser
+from email_processor.file_manager import FileManager
+from email_processor.git_manager import GitManager
+from email_processor.html_generator import HtmlGenerator
 
 def main():
     # Inicialização dos módulos
