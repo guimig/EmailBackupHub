@@ -1,9 +1,9 @@
 name: Process Emails and Update Repository
 
-# on:
-#  schedule:
-#    - cron: '0 * * * *'  # Executar a cada 1 hora
-#  workflow_dispatch:
+on:
+  schedule:
+    - cron: '0 * * * *'  # Executar a cada 1 hora
+  workflow_dispatch:
 
 jobs:
   process:
