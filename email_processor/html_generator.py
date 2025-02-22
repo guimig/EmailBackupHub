@@ -1,7 +1,11 @@
 import os
 import re
+import logging
 from datetime import datetime
+from bs4 import BeautifulSoup
 from email_processor.config import Config
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class HtmlGenerator:
     HTML_TEMPLATE = """
@@ -144,26 +148,32 @@ class HtmlGenerator:
                 self._create_summary_file(root, files[0])
 
     def _create_summary_file(self, root, latest_file):
-        latest_file_path = os.path.join(root, latest_file)
-        normalized_title = os.path.basename(root)
-        output_path = os.path.join(os.getcwd(), f"{normalized_title}.html")
+        try:
+            logging.info(f"Processando arquivo: {latest_file}")
+            latest_file_path = os.path.join(root, latest_file)
+            normalized_title = os.path.basename(root)
+            output_path = os.path.join(os.getcwd(), f"{normalized_title}.html")
 
-        with open(latest_file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+            with open(latest_file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                content = BeautifulSoup(content, 'html.parser').prettify()  # Limpa o HTML
 
-        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-        if match:
-            day, month, year = map(int, match.groups())
-            last_report_date = datetime(year, month, day, tzinfo=Config.TIMEZONE)
-        else:
-            last_report_date = datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
+            match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
+            if match:
+                day, month, year = map(int, match.groups())
+                last_report_date = datetime(year, month, day, tzinfo=Config.TIMEZONE)
+            else:
+                last_report_date = datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
 
-        now = datetime.now(Config.TIMEZONE)
-        update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-        report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
+            now = datetime.now(Config.TIMEZONE)
+            update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+            report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(content + report_date_text + update_text)
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(content + report_date_text + update_text)
+        except Exception as e:
+            logging.error(f"Erro ao processar o arquivo {latest_file}: {e}")
+
 
     def _collect_links(self):
         root_links = []
