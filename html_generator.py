@@ -39,7 +39,7 @@ def create_latest_summary_html():
         footer = f"""
         <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
             <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
-            <p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
+            <p>Última busca por novos relatórios: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
         </div>
         """
         
