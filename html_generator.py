@@ -245,7 +245,20 @@ def update_root_index():
                 border-radius: 6px;
             }}
         </style>
- </head>
+ <style>
+            .clear-filters-button {{
+                background: none;
+                border: none;
+                color: #58a6ff;
+                cursor: pointer;
+                font-size: 14px;
+                margin-left: 10px;
+            }}
+            .clear-filters-button:hover {{
+                text-decoration: underline;
+            }}
+        </style>
+    </head>
     <body>
         <h1>CEOF - Relatórios Gerenciais</h1>
         
@@ -267,6 +280,8 @@ def update_root_index():
                 {''.join(f'<option value="{title}">{title}</option>' 
                         for title in sorted(grouped_latest.keys()))}
             </select>
+            
+            <button id="clearFiltersButton" class="clear-filters-button">Limpar Filtros</button>
         </div>
 
         <!-- Seção de últimos relatórios -->
@@ -355,11 +370,24 @@ def update_root_index():
                 noResultsLatest.style.display = hasResultsLatest ? 'none' : 'block';
                 noResultsAll.style.display = hasResultsAll ? 'none' : 'block';
             }}
+
+            function clearFilters() {{
+                // Limpa todos os filtros
+                document.getElementById('searchInput').value = '';
+                document.getElementById('dateFilter').value = '';
+                document.getElementById('categoryFilter').value = '';
+                
+                // Reaplica os filtros (para exibir todos os resultados)
+                applyFilters();
+            }}
             
             // Atualiza filtros em tempo real
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             document.getElementById('dateFilter').addEventListener('change', applyFilters);
             document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            
+            // Adiciona o evento de limpar filtros
+            document.getElementById('clearFiltersButton').addEventListener('click', clearFilters);
         </script>
     </body>
     </html>
