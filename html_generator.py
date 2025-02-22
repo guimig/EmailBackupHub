@@ -51,7 +51,7 @@ def get_report_metadata(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-            # Extrai o título do <h1>
+            # Extrai o título do relatorio
             title_match = re.search(r'<td colspan=1 style=\'font-family:tahoma;font-size:18.0pt\'>(.*?)</td>', content)
             title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
             
@@ -80,7 +80,7 @@ def update_root_index():
     reports = []
     backup_reports = []
 
-    # Coleta relatórios da raiz
+    # Coleta relatórios da raiz (últimas atualizações)
     for file in os.listdir(REPO_ROOT):
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
@@ -91,18 +91,24 @@ def update_root_index():
                 'category': 'Últimas Atualizações'
             })
 
-    # Coleta relatórios de backup
+    # Coleta relatórios de backup (histórico completo)
     for root, dirs, files in os.walk(BACKUP_FOLDER):
         for file in files:
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 metadata = get_report_metadata(file_path)
-                category = os.path.basename(root) if root != BACKUP_FOLDER else "Geral"
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
-                    'category': category
+                    'category': metadata['title']  # Categoria é o título do relatório
                 })
+
+    # Ordenação dos relatórios
+    # Últimas atualizações: ordena por título (ordem alfabética)
+    reports.sort(key=lambda x: x['title'], reverse=False)
+
+    # Histórico completo: ordena por título e data (da mais recente para a mais antiga)
+    backup_reports.sort(key=lambda x: (x['title'], x['date']), reverse=True)
 
     # Geração do HTML
     html_content = f"""
@@ -208,7 +214,7 @@ def update_root_index():
                 border-radius: 6px;
             }}
         </style>
-    </head>
+ </head>
     <body>
         <h1>CEOF - Relatórios Gerenciais</h1>
         
@@ -226,10 +232,9 @@ def update_root_index():
                    placeholder="Filtrar por data">
             
             <select id="categoryFilter" class="filter-input">
-                <option value="">Todas Categorias</option>
-                <option value="Últimas Atualizações">Últimas Atualizações</option>
-                {''.join(f'<option value="{category}">{category}</option>' 
-                        for category in sorted(set(r['category'] for r in backup_reports)))}
+                <option value="">Todos os Relatórios</option>
+                {''.join(f'<option value="{r["title"]}">{r["title"]}</option>' 
+                        for r in reports)}
             </select>
         </div>
 
@@ -238,10 +243,10 @@ def update_root_index():
             <h2>Últimas Atualizações</h2>
             <div class="links" id="latestReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['category']}">
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                {r['date']} | {r['category']}
+                                {r['date']} | Última Atualização
                             </div>
                         </div>''' 
                     for r in reports
@@ -254,7 +259,7 @@ def update_root_index():
             <h2>Histórico Completo</h2>
             <div class="links" id="allReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['category']}">
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
                                 {r['date']} | {r['category']}
