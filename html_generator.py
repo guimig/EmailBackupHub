@@ -324,6 +324,11 @@ def update_root_index():
             </div>
         </div>
 
+        <div class="footer">
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira. IFC - Campus Araquari.</p>
+            <p>Desenvolvido e mantido por Guilherme M.</p>
+        </div>
+
         <script>
             function applyFilters() {{
                 const searchTerm = document.getElementById('searchInput').value.toLowerCase();
