@@ -108,7 +108,7 @@ def update_root_index():
     html_content = f"""
     <html>
     <head>
-        <title>CEOF - Relatórios Avançados</title>
+        <title>CEOF - Relatórios Gerenciais</title>
         <style>
             body {{
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
