@@ -5,119 +5,97 @@ from email_processor.config import Config
 
 class HtmlGenerator:
     HTML_TEMPLATE = """
-    <html>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
     <head>
-        <title>CEOF</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CEOF - Relatórios</title>
         <style>
+            body {
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                margin: 20px;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                line-height: 1.6;
+            }
+            h1 {
+                color: #f0f6fc;
+                text-align: center;
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            .folder {
+                margin-top: 20px;
+                background-color: #161b22;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                border-left: 5px solid #6e7681;
+            }
+            .folder h2 {
+                color: #adbac7;
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+            .links {
+                margin-left: 20px;
+            }
+            a {
+                text-decoration: none;
+                color: #58a6ff;
+                font-size: 1em;
+                display: block;
+                margin-bottom: 10px;
+            }
+            a:hover {
+                text-decoration: underline;
+                color: #1f6feb;
+                padding-left: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+            .footer {
+                margin-top: 40px;
+                text-align: center;
+                color: #8b949e;
+            }
+            #searchBox {
+                padding: 12px;
+                width: 85%;
+                max-width: 600px;
+                border-radius: 8px;
+                border: 1px solid #484f58;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
+                outline: none;
+                transition: all 0.3s ease-in-out;
+            }
+            #searchBox::placeholder {
+                color: #6e7681;
+            }
+            #searchBox:focus {
+                border-color: #58a6ff;
+                box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
+            }
+            @media (max-width: 600px) {
                 body {
-                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                    margin: 20px;
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    line-height: 1.6;
+                    font-size: 14px;
                 }
-
                 h1 {
-                    color: #f0f6fc;  /* Branco quebrado */
-                    text-align: center;
-                    font-size: 2.2em;  /* Aumentado para destaque */
-                    margin-bottom: 30px;  /* Mais espaçamento */
+                    font-size: 1.8em;
                 }
-
-                .folder {
-                    margin-top: 20px;
-                    background-color: #161b22;  /* Fundo levemente mais claro */
-                    padding: 20px;  /* Aumentado o padding */
-                    border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
-                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
-                }
-
                 .folder h2 {
-                    color: #adbac7;  /* Cinza claro */
-                    font-size: 1.6em;  /* Aumentado para mais destaque */
-                    margin-bottom: 15px;
+                    font-size: 1.4em;
                 }
-
-                .links {
-                    margin-left: 20px;
-                }
-
                 a {
-                    text-decoration: none;
-                    color: #58a6ff;  /* Azul suave */
-                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
-                    display: block;  /* Para aumentar o espaço entre os links */
-                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
+                    font-size: 1.1em;
                 }
-
-                a:hover {
-                    text-decoration: underline;
-                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
-                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
-                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
-                }
-
-                .footer {
-                    margin-top: 40px;
-                    text-align: center;
-                    color: #8b949e;  /* Cinza claro para rodapé */
-                }
-
                 #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
-                    max-width: 600px;
-                    border-radius: 8px;  /* Borda mais arredondada */
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
+                    width: 90%;
                 }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajuste a largura conforme necessário */
-                    max-width: 600px;
-                    border-radius: 8px;
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;
-                }
-
-                #searchBox::placeholder {
-                    color: #6e7681;  /* Cinza claro para o placeholder */
-                }
-
-                #searchBox:focus {
-                    border-color: #58a6ff;  /* Azul ao focar */
-                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
-                }
-
-
-                @media (max-width: 600px) {
-                    body {
-                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
-                    }
-                    h1 {
-                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
-                    }
-                    .folder h2 {
-                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
-                    }
-                    a {
-                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
-                    }
-                    #searchBox {
-                        width: 90%;  /* Ajusta a largura do campo de busca */
-                    }
-                }
-            </style>
+            }
+        </style>
     </head>
     <body>
         <h1>CEOF</h1>
@@ -125,14 +103,10 @@ class HtmlGenerator:
         <div style="text-align: center; margin-bottom: 20px;">
             <input type="text" id="searchBox" placeholder="Pesquise por arquivos..." class="dark-theme">
         </div>
-        <!-- Barra de pesquisa -->
-        <div style="text-align: center; margin-bottom: 20px;">
-            <input type="text" 
-                id="searchBox" 
-                placeholder="Pesquise por arquivos..." 
-                class="dark-theme">
+        {content}
+        <div class="footer">
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
         </div>
-        <!-- Função de pesquisa -->
         <script>
             document.getElementById('searchBox').addEventListener('input', function() {
                 var searchValue = this.value.toLowerCase();
@@ -146,7 +120,6 @@ class HtmlGenerator:
                 });
             });
         </script>
-        {content}
     </body>
     </html>
     """
@@ -187,7 +160,7 @@ class HtmlGenerator:
 
         now = datetime.now(Config.TIMEZONE)
         update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-        report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
 
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(content + report_date_text + update_text)
@@ -222,8 +195,6 @@ class HtmlGenerator:
             for path, link in sorted(links, key=lambda x: x[0].lower(), reverse=True):
                 content.append(link)
             content.append('</div></div>')
-
-        content.append('</div><div class="footer"><p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p></div>')
 
         return self.HTML_TEMPLATE.format(content='\n'.join(content))
 
