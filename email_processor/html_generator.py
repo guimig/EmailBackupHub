@@ -148,6 +148,13 @@ class HtmlGenerator:
             if files:
                 self._create_summary_file(root, files[0])
 
+    def _clean_html(self, content):
+        """
+        Limpa o conteúdo HTML usando BeautifulSoup.
+        """
+        soup = BeautifulSoup(content, 'html.parser')
+        return soup.prettify()
+
     def _create_summary_file(self, root, latest_file):
         try:
             logging.info(f"Processando arquivo: {latest_file}")
@@ -184,13 +191,6 @@ class HtmlGenerator:
             logging.error(f"Erro de decodificação no arquivo {latest_file}: {e}")
         except Exception as e:
             logging.error(f"Erro ao processar o arquivo {latest_file}: {e}")
-
-    def _clean_html(self, content):
-        """
-        Limpa o conteúdo HTML usando BeautifulSoup.
-        """
-        soup = BeautifulSoup(content, 'html.parser')
-        return soup.prettify()
 
     def _collect_links(self):
         root_links = []
