@@ -1,5 +1,5 @@
 import git
-from .config import Config
+from email_processor.config import Config
 
 class GitManager:
     def __init__(self):

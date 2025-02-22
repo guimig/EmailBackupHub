@@ -1,7 +1,7 @@
 import os
 import re
 from datetime import datetime
-from .config import Config
+from email_processor.config import Config
 
 class HtmlGenerator:
     HTML_TEMPLATE = """

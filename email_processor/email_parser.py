@@ -2,7 +2,7 @@ import email
 from email import policy
 from email.utils import parsedate_to_datetime
 from datetime import datetime
-from .config import Config
+from email_processor.config import Config
 
 class EmailParser:
     @staticmethod

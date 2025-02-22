@@ -1,5 +1,5 @@
 import imaplib
-from .config import Config
+from email_processor.config import Config
 
 class ImapClient:
     def __init__(self):
