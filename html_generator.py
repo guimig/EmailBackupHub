@@ -88,10 +88,12 @@ def update_root_index():
             # Extrai a data do nome do arquivo
             date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
             if date_match:
-                report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
+                report_date_str = date_match.group(1)
+                report_date = datetime.datetime.strptime(report_date_str, "%d-%m-%Y")
             else:
-                report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
-            metadata['report_date'] = report_date
+                report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
+            metadata['report_date'] = report_date.strftime("%d/%m/%Y")
+            metadata['report_date_obj'] = report_date  # Objeto datetime para ordenação
             reports.append({
                 **metadata,
                 'path': file,
@@ -107,10 +109,12 @@ def update_root_index():
                 # Extrai a data do nome do arquivo
                 date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
                 if date_match:
-                    report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
+                    report_date_str = date_match.group(1)
+                    report_date = datetime.datetime.strptime(report_date_str, "%d-%m-%Y")
                 else:
-                    report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
-                metadata['report_date'] = report_date
+                    report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
+                metadata['report_date'] = report_date.strftime("%d/%m/%Y")
+                metadata['report_date_obj'] = report_date  # Objeto datetime para ordenação
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
@@ -118,11 +122,24 @@ def update_root_index():
                 })
 
     # Ordenação dos relatórios
-    # Últimas atualizações: ordena por título (ordem alfabética)
-    reports.sort(key=lambda x: x['title'], reverse=False)
+    # Últimas atualizações: ordena por título (ordem alfabética) e data (da mais recente para a mais antiga)
+    reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=False)
 
-    # Histórico completo: ordena por título (ordem alfabética) e data do relatório (da mais recente para a mais antiga)
-    backup_reports.sort(key=lambda x: (x['title'], x['report_date']), reverse=True)
+    # Histórico completo: ordena por título (ordem alfabética) e data (da mais recente para a mais antiga)
+    backup_reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=True)
+
+    # Agrupa relatórios por título para exibição organizada
+    grouped_latest = {}
+    for report in reports:
+        if report['title'] not in grouped_latest:
+            grouped_latest[report['title']] = []
+        grouped_latest[report['title']].append(report)
+
+    grouped_backup = {}
+    for report in backup_reports:
+        if report['title'] not in grouped_backup:
+            grouped_backup[report['title']] = []
+        grouped_backup[report['title']].append(report)
 
     # Geração do HTML
     html_content = f"""
@@ -247,8 +264,8 @@ def update_root_index():
             
             <select id="categoryFilter" class="filter-input">
                 <option value="">Todos os Relatórios</option>
-                {''.join(f'<option value="{r["title"]}">{r["title"]}</option>' 
-                        for r in reports)}
+                {''.join(f'<option value="{title}">{title}</option>' 
+                        for title in sorted(grouped_latest.keys()))}
             </select>
         </div>
 
@@ -263,7 +280,8 @@ def update_root_index():
                                 Data do relatório: {r['report_date']}
                             </div>
                         </div>''' 
-                    for r in reports
+                    for title in sorted(grouped_latest.keys())
+                    for r in grouped_latest[title]
                 ])}
             </div>
         </div>
@@ -279,7 +297,8 @@ def update_root_index():
                                 Data do relatório: {r['report_date']}
                             </div>
                         </div>''' 
-                    for r in backup_reports
+                    for title in sorted(grouped_backup.keys())
+                    for r in grouped_backup[title]
                 ])}
             </div>
         </div>
