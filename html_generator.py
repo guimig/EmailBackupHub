@@ -1,5 +1,4 @@
 import os
-import re
 import datetime
 from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
 
@@ -116,15 +115,15 @@ def update_root_index():
         </div>
 
         <script>
-            function filterReports() {{
+            function filterReports() {
                 const searchTerm = document.getElementById('searchInput').value.toLowerCase();
                 const cards = document.querySelectorAll('.report-card');
                 
-                cards.forEach(card => {{
+                cards.forEach(card => {
                     const text = card.textContent.toLowerCase();
                     card.style.display = text.includes(searchTerm) ? 'block' : 'none';
-                }});
-            }}
+                });
+            }
         </script>
     </body>
     </html>

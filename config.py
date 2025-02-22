@@ -5,6 +5,7 @@ import pytz
 EMAIL_SENDER = "serpro.gov.br"
 BACKUP_FOLDER = "emails"
 TIMEZONE = pytz.timezone("America/Sao_Paulo")
+REPO_ROOT = os.getcwd()  # Define o diretório raiz do repositório
 
 # Configurações IMAP
 IMAP_SERVER = "imap.gmail.com"
