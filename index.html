@@ -1,181 +1,242 @@
 
-        <html>
-        <head>
-            <title>CEOF</title>
-            <style>
-                body {
-                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                    margin: 20px;
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    line-height: 1.6;
-                }
-
-                h1 {
-                    color: #f0f6fc;  /* Branco quebrado */
-                    text-align: center;
-                    font-size: 2.2em;  /* Aumentado para destaque */
-                    margin-bottom: 30px;  /* Mais espaçamento */
-                }
-
-                .folder {
-                    margin-top: 20px;
-                    background-color: #161b22;  /* Fundo levemente mais claro */
-                    padding: 20px;  /* Aumentado o padding */
-                    border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
-                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
-                }
-
-                .folder h2 {
-                    color: #adbac7;  /* Cinza claro */
-                    font-size: 1.6em;  /* Aumentado para mais destaque */
-                    margin-bottom: 15px;
-                }
-
-                .links {
-                    margin-left: 20px;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: #58a6ff;  /* Azul suave */
-                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
-                    display: block;  /* Para aumentar o espaço entre os links */
-                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
-                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
-                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
-                }
-
-                .footer {
-                    margin-top: 40px;
-                    text-align: center;
-                    color: #8b949e;  /* Cinza claro para rodapé */
-                }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
-                    max-width: 600px;
-                    border-radius: 8px;  /* Borda mais arredondada */
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
-                }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajuste a largura conforme necessário */
-                    max-width: 600px;
-                    border-radius: 8px;
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;
-                }
-
-                #searchBox::placeholder {
-                    color: #6e7681;  /* Cinza claro para o placeholder */
-                }
-
-                #searchBox:focus {
-                    border-color: #58a6ff;  /* Azul ao focar */
-                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
-                }
-
-
-                @media (max-width: 600px) {
-                    body {
-                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
-                    }
-                    h1 {
-                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
-                    }
-                    .folder h2 {
-                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
-                    }
-                    a {
-                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
-                    }
-                    #searchBox {
-                        width: 90%;  /* Ajusta a largura do campo de busca */
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <h1>CEOF</h1>
-            <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
-
-                <!-- Barra de pesquisa -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <input type="text" 
-                        id="searchBox" 
-                        placeholder="Pesquise por arquivos..." 
-                        class="dark-theme">
-                </div>
-
-                <div class="folder">
-                    <h2>Arquivos da Raiz - Últimas atualizações</h2>
-                    <div class="links" id="rootLinks">
-    <a href='restos-a-pagar-rap.html' title='restos-a-pagar-rap.html'>restos-a-pagar-rap.html</a><br>
-<a href='restos-a-pagar-rap-contratos.html' title='restos-a-pagar-rap-contratos.html'>restos-a-pagar-rap-contratos.html</a><br>
-<a href='despesas-empenhadas-liquidadas-e-pagas.html' title='despesas-empenhadas-liquidadas-e-pagas.html'>despesas-empenhadas-liquidadas-e-pagas.html</a><br>
-
-        <div class="folder">
-            <h2>Arquivos de Backup - emails/restos-a-pagar-rap-contratos</h2>
-            <div class="links" id="folder_emails/restos-a-pagar-rap-contratos">
-        <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_22-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_22-02-2025.html'>restos-a-pagar-rap-contratos_22-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-02-2025.html'>restos-a-pagar-rap-contratos_21-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_20-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_20-02-2025.html'>restos-a-pagar-rap-contratos_20-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_19-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_19-02-2025.html'>restos-a-pagar-rap-contratos_19-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-02-2025.html'>restos-a-pagar-rap-contratos_18-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_15-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_15-02-2025.html'>restos-a-pagar-rap-contratos_15-02-2025.html</a><br>
-</div></div>
-
-        <div class="folder">
-            <h2>Arquivos de Backup - emails/restos-a-pagar-rap</h2>
-            <div class="links" id="folder_emails/restos-a-pagar-rap">
-        <a href='emails/restos-a-pagar-rap/restos-a-pagar-rap_22-02-2025.html' title='emails/restos-a-pagar-rap/restos-a-pagar-rap_22-02-2025.html'>restos-a-pagar-rap_22-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap/restos-a-pagar-rap_21-02-2025.html' title='emails/restos-a-pagar-rap/restos-a-pagar-rap_21-02-2025.html'>restos-a-pagar-rap_21-02-2025.html</a><br>
-<a href='emails/restos-a-pagar-rap/restos-a-pagar-rap_20-02-2025.html' title='emails/restos-a-pagar-rap/restos-a-pagar-rap_20-02-2025.html'>restos-a-pagar-rap_20-02-2025.html</a><br>
-</div></div>
-
-        <div class="folder">
-            <h2>Arquivos de Backup - emails/despesas-empenhadas-liquidadas-e-pagas</h2>
-            <div class="links" id="folder_emails/despesas-empenhadas-liquidadas-e-pagas">
-        <a href='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_22-02-2025.html' title='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_22-02-2025.html'>despesas-empenhadas-liquidadas-e-pagas_22-02-2025.html</a><br>
-<a href='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html' title='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html'>despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html</a><br>
-<a href='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html' title='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html'>despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html</a><br>
-</div></div>
-
+    <html>
+    <head>
+        <title>CEOF - Relatórios Avançados</title>
+        <style>
+            body {
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                margin: 20px;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                line-height: 1.6;
+            }
+            h1 {
+                color: #f0f6fc;
+                text-align: center;
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }
+            .folder {
+                margin-top: 20px;
+                background-color: #161b22;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                border-left: 5px solid #6e7681;
+            }
+            .folder h2 {
+                color: #adbac7;
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+            .links {
+                margin-left: 20px;
+            }
+            a {
+                text-decoration: none;
+                color: #58a6ff;
+                font-size: 1em;
+                display: block;
+                margin-bottom: 10px;
+            }
+            a:hover {
+                text-decoration: underline;
+                color: #1f6feb;
+                padding-left: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+            .footer {
+                margin-top: 40px;
+                text-align: center;
+                color: #8b949e;
+            }
+            #searchBox {
+                padding: 12px;
+                width: 85%;
+                max-width: 600px;
+                border-radius: 8px;
+                border: 1px solid #484f58;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
+                outline: none;
+                transition: all 0.3s ease-in-out;
+            }
+            #searchBox::placeholder {
+                color: #6e7681;
+            }
+            #searchBox:focus {
+                border-color: #58a6ff;
+                box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
+            }
+            @media (max-width: 600px) {
+                body { font-size: 14px; }
+                h1 { font-size: 1.8em; }
+                .folder h2 { font-size: 1.4em; }
+                a { font-size: 1.1em; }
+                #searchBox { width: 90%; }
+            }
+            .report-card {
+                background-color: #161b22;
+                padding: 15px;
+                margin: 10px 0;
+                border-radius: 6px;
+                border-left: 3px solid #58a6ff;
+            }
+            .report-meta {
+                color: #8b949e;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+            .search-filters {
+                margin: 15px 0;
+                display: flex;
+                gap: 10px;
+            }
+            .filter-input {
+                background: #0d1117;
+                border: 1px solid #30363d;
+                color: #c9d1d9;
+                padding: 8px;
+                border-radius: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CEOF - Relatórios Gerenciais</h1>
+        
+        <!-- Barra de pesquisa avançada -->
+        <div class="search-filters">
+            <input type="text" 
+                   id="searchInput" 
+                   placeholder="Pesquisar por nome..." 
+                   class="filter-input"
+                   style="flex-grow: 1">
+            
+            <input type="date" 
+                   id="dateFilter" 
+                   class="filter-input"
+                   placeholder="Filtrar por data">
+            
+            <select id="categoryFilter" class="filter-input">
+                <option value="">Todas Categorias</option>
+                <option value="Últimas Atualizações">Últimas Atualizações</option>
+                <option value="despesas-empenhadas-liquidadas-e-pagas">despesas-empenhadas-liquidadas-e-pagas</option><option value="restos-a-pagar-rap">restos-a-pagar-rap</option><option value="restos-a-pagar-rap-contratos">restos-a-pagar-rap-contratos</option>
+            </select>
         </div>
-        <div class="footer">
-            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
+
+        <!-- Seção de últimos relatórios -->
+        <div class="folder">
+            <h2>Últimas Atualizações</h2>
+            <div class="links" id="latestReports">
+                <div class="report-card" data-date="22/02/2025" data-category="Últimas Atualizações">
+                            <a href="restos-a-pagar-rap-contratos.html">restos-a-pagar-rap-contratos</a>
+                            <div class="report-meta">
+                                22/02/2025 | Últimas Atualizações
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="Últimas Atualizações">
+                            <a href="despesas-empenhadas-liquidadas-e-pagas.html">despesas-empenhadas-liquidadas-e-pagas</a>
+                            <div class="report-meta">
+                                22/02/2025 | Últimas Atualizações
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="Últimas Atualizações">
+                            <a href="restos-a-pagar-rap.html">restos-a-pagar-rap</a>
+                            <div class="report-meta">
+                                22/02/2025 | Últimas Atualizações
+                            </div>
+                        </div>
+            </div>
         </div>
+
+        <!-- Seção de histórico -->
+        <div class="folder">
+            <h2>Histórico Completo</h2>
+            <div class="links" id="allReports">
+                <div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_20-02-2025.html">restos-a-pagar-rap-contratos_20-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_22-02-2025.html">restos-a-pagar-rap-contratos_22-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_15-02-2025.html">restos-a-pagar-rap-contratos_15-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-02-2025.html">restos-a-pagar-rap-contratos_18-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_19-02-2025.html">restos-a-pagar-rap-contratos_19-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap-contratos">
+                            <a href="emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-02-2025.html">restos-a-pagar-rap-contratos_21-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap-contratos
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap">
+                            <a href="emails/restos-a-pagar-rap/restos-a-pagar-rap_21-02-2025.html">restos-a-pagar-rap_21-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap">
+                            <a href="emails/restos-a-pagar-rap/restos-a-pagar-rap_20-02-2025.html">restos-a-pagar-rap_20-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="restos-a-pagar-rap">
+                            <a href="emails/restos-a-pagar-rap/restos-a-pagar-rap_22-02-2025.html">restos-a-pagar-rap_22-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | restos-a-pagar-rap
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="despesas-empenhadas-liquidadas-e-pagas">
+                            <a href="emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html">despesas-empenhadas-liquidadas-e-pagas_20-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | despesas-empenhadas-liquidadas-e-pagas
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="despesas-empenhadas-liquidadas-e-pagas">
+                            <a href="emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_22-02-2025.html">despesas-empenhadas-liquidadas-e-pagas_22-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | despesas-empenhadas-liquidadas-e-pagas
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="despesas-empenhadas-liquidadas-e-pagas">
+                            <a href="emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html">despesas-empenhadas-liquidadas-e-pagas_21-02-2025</a>
+                            <div class="report-meta">
+                                22/02/2025 | despesas-empenhadas-liquidadas-e-pagas
+                            </div>
+                        </div>
+            </div>
+        </div>
+
         <script>
-            // Função de pesquisa
-            document.getElementById('searchBox').addEventListener('input', function() {
-                var searchValue = this.value.toLowerCase();
-                var links = document.querySelectorAll('a');
-                links.forEach(function(link) {
-                    if (link.textContent.toLowerCase().includes(searchValue)) {
-                        link.style.display = 'block';
-                    } else {
-                        link.style.display = 'none';
-                    }
+            function applyFilters() {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const filterDate = document.getElementById('dateFilter').value;
+                const filterCategory = document.getElementById('categoryFilter').value;
+                
+                const cards = document.querySelectorAll('.report-card');
+                
+                cards.forEach(card => {
+                    const matchesText = card.textContent.toLowerCase().includes(searchTerm);
+                    const matchesDate = !filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'));
+                    const matchesCategory = !filterCategory || card.dataset.category === filterCategory;
+                    
+                    card.style.display = (matchesText && matchesDate && matchesCategory) ? 'block' : 'none';
                 });
-            });
+            }
+            
+            // Atualiza filtros em tempo real
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            document.getElementById('dateFilter').addEventListener('change', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
         </script>
     </body>
     </html>
