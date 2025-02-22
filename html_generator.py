@@ -186,7 +186,7 @@ def update_root_index():
                 <option value="">Todas Categorias</option>
                 <option value="Últimas Atualizações">Últimas Atualizações</option>
                 {''.join(f'<option value="{category}">{category}</option>' 
-                        for category in sorted(set(r['category'] for r in backup_reports))}
+                        for category in sorted(set(r['category'] for r in backup_reports)))}
             </select>
         </div>
 
