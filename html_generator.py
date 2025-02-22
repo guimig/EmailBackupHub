@@ -85,10 +85,13 @@ def update_root_index():
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
             metadata = get_report_metadata(file_path)
-            # Adiciona a data de modificação do arquivo
-            metadata['last_modified'] = datetime.datetime.fromtimestamp(
-                os.path.getmtime(file_path), TIMEZONE
-            ).strftime('%d/%m/%Y %H:%M:%S')
+            # Extrai a data do nome do arquivo
+            date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
+            if date_match:
+                report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
+            else:
+                report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
+            metadata['report_date'] = report_date
             reports.append({
                 **metadata,
                 'path': file,
@@ -101,10 +104,13 @@ def update_root_index():
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 metadata = get_report_metadata(file_path)
-                # Adiciona a data de modificação do arquivo
-                metadata['last_modified'] = datetime.datetime.fromtimestamp(
-                    os.path.getmtime(file_path), TIMEZONE
-                ).strftime('%d/%m/%Y %H:%M:%S')
+                # Extrai a data do nome do arquivo
+                date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
+                if date_match:
+                    report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
+                else:
+                    report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
+                metadata['report_date'] = report_date
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
@@ -115,8 +121,8 @@ def update_root_index():
     # Últimas atualizações: ordena por título (ordem alfabética)
     reports.sort(key=lambda x: x['title'], reverse=False)
 
-    # Histórico completo: ordena por título (ordem alfabética) e data de modificação (da mais recente para a mais antiga)
-    backup_reports.sort(key=lambda x: (x['title'], x['last_modified']), reverse=True)
+    # Histórico completo: ordena por título (ordem alfabética) e data do relatório (da mais recente para a mais antiga)
+    backup_reports.sort(key=lambda x: (x['title'], x['report_date']), reverse=True)
 
     # Geração do HTML
     html_content = f"""
@@ -251,10 +257,10 @@ def update_root_index():
             <h2>Últimas Atualizações</h2>
             <div class="links" id="latestReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['last_modified']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                Última atualização: {r['last_modified']}
+                                Data do relatório: {r['report_date']}
                             </div>
                         </div>''' 
                     for r in reports
@@ -267,10 +273,10 @@ def update_root_index():
             <h2>Histórico Completo</h2>
             <div class="links" id="allReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['last_modified']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                Última atualização: {r['last_modified']}
+                                Data do relatório: {r['report_date']}
                             </div>
                         </div>''' 
                     for r in backup_reports
