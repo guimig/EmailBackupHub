@@ -153,7 +153,7 @@ class HtmlGenerator:
         Limpa o conteúdo HTML usando BeautifulSoup.
         """
         soup = BeautifulSoup(content, 'html.parser')
-        return soup.prettify()
+        return srt(soup)
 
     def _create_summary_file(self, root, latest_file):
         try:
