@@ -25,12 +25,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install gitpython  # Instala o GitPython para manipulação do Git
 
       # Passo 4: Execução do script de processamento de e-mails
       - name: Run the email processing script
         run: |
-          python process_emails.py
+          python main.py
         env:
           GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}  # E-mail do Gmail
           GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}  # Senha do Gmail ou senha de app
