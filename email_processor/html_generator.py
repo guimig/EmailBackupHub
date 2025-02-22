@@ -5,7 +5,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 from email_processor.config import Config
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+# logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class HtmlGenerator:
     HTML_TEMPLATE = """
