@@ -52,7 +52,7 @@ def get_report_metadata(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
             # Extrai o título do <h1>
-            title_match = re.search(r'<h1>(.*?)</h1>', content)
+            title_match = re.search(r'<td colspan=1 style=\'font-family:tahoma;font-size:18.0pt\'>(.*?)</td>', content)
             title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
             
         # Extrai data do nome do arquivo
