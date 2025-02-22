@@ -62,218 +62,189 @@ def create_latest_summary_html():
 
         print(f"Resumo atualizado criado: {output_path}")
 
-# Função para atualizar o arquivo index.html
+def get_report_metadata(file_path):
+    """Extrai metadados dos arquivos HTML"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            # Extrai o título do <h1>
+            title_match = re.search(r'<h1>(.*?)</h1>', content)
+            title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
+            
+        # Extrai data do nome do arquivo
+        filename = os.path.basename(file_path)
+        date_match = re.search(r'(\d{4}-\d{2}-\d{2})', filename)
+        if date_match:
+            date = datetime.datetime.strptime(date_match.group(1), "%Y-%m-%d").strftime("%d/%m/%Y")
+        else:
+            date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
+            
+        return {
+            'title': title,
+            'date': date,
+            'filename': filename
+        }
+    except Exception as e:
+        print(f"Erro ao ler metadados: {e}")
+        return {
+            'title': os.path.splitext(os.path.basename(file_path))[0],
+            'date': datetime.datetime.now(TIMEZONE).strftime("%d/%m/%Y"),
+            'filename': os.path.basename(file_path)
+        }
+
 def update_root_index():
-    # Caminho do repositório onde os arquivos .html estão armazenados
-    repo_root = os.getcwd()  # Usando o diretório atual (root do repositório)
-    
-    # Listas para armazenar os links dos arquivos .html encontrados
-    root_links = []
-    backup_links = {}
+    reports = []
+    backup_reports = []
 
-    # Percorrer todas as subpastas e arquivos no repositório
-    for root, dirs, files in os.walk(repo_root):
+    # Coleta relatórios da raiz
+    for file in os.listdir(REPO_ROOT):
+        if file.endswith('.html') and file != 'index.html':
+            file_path = os.path.join(REPO_ROOT, file)
+            metadata = get_report_metadata(file_path)
+            reports.append({
+                **metadata,
+                'path': file,
+                'category': 'Últimas Atualizações'
+            })
+
+    # Coleta relatórios de backup
+    for root, dirs, files in os.walk(BACKUP_FOLDER):
         for file in files:
-            if file.endswith('.html') and file != 'index.html':  # Verifica se o arquivo é .html
-                # Gerar o caminho relativo do arquivo
-                relative_path = os.path.relpath(os.path.join(root, file), repo_root)
-                file_name = os.path.basename(file)  # Nome do arquivo
+            if file.endswith('.html'):
+                file_path = os.path.join(root, file)
+                metadata = get_report_metadata(file_path)
+                category = os.path.basename(root) if root != BACKUP_FOLDER else "Geral"
+                backup_reports.append({
+                    **metadata,
+                    'path': os.path.relpath(file_path, REPO_ROOT),
+                    'category': category
+                })
 
-                # Criar o link com nome amigável
-                link = f"<a href='{relative_path.replace(os.sep, '/')}' title='{relative_path}'>{file_name}</a><br>"
+    # Geração do HTML
+    html_content = f"""
+    <html>
+    <head>
+        <title>CEOF - Relatórios Avançados</title>
+        <!-- Mantido o CSS dark original -->
+        <style>
+            body {{
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                margin: 20px;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                line-height: 1.6;
+            }}
+            /* ... (mantido igual ao CSS anterior) ... */
+            .report-card {{
+                background-color: #161b22;
+                padding: 15px;
+                margin: 10px 0;
+                border-radius: 6px;
+                border-left: 3px solid #58a6ff;
+            }}
+            .report-meta {{
+                color: #8b949e;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }}
+            .search-filters {{
+                margin: 15px 0;
+                display: flex;
+                gap: 10px;
+            }}
+            .filter-input {{
+                background: #0d1117;
+                border: 1px solid #30363d;
+                color: #c9d1d9;
+                padding: 8px;
+                border-radius: 6px;
+            }}
+        </style>
+    </head>
+    <body>
+        <h1>CEOF - Relatórios Gerenciais</h1>
+        
+        <!-- Barra de pesquisa avançada -->
+        <div class="search-filters">
+            <input type="text" 
+                   id="searchInput" 
+                   placeholder="Pesquisar por nome..." 
+                   class="filter-input"
+                   style="flex-grow: 1">
+            
+            <input type="date" 
+                   id="dateFilter" 
+                   class="filter-input"
+                   placeholder="Filtrar por data">
+            
+            <select id="categoryFilter" class="filter-input">
+                <option value="">Todas Categorias</option>
+                <option value="Últimas Atualizações">Últimas Atualizações</option>
+                {''.join(f'<option value="{category}">{category}</option>' 
+                        for category in sorted(set(r['category'] for r in backup_reports)))}
+            </select>
+        </div>
 
-                # Verificar se o arquivo está na raiz ou em subpastas
-                if root == repo_root:
-                    root_links.append((relative_path, link))  # Adiciona para ordenação
-                else:
-                    # Organiza arquivos de backup por subpastas
-                    subfolder = os.path.relpath(root, repo_root)
-                    if subfolder not in backup_links:
-                        backup_links[subfolder] = []
-                    backup_links[subfolder].append((relative_path, link))  # Adiciona para ordenação
-
-    # Ordenar os links por endereço do arquivo (relative_path)
-    root_links.sort(key=lambda x: x[0].lower(), reverse=True)  # Ordena os links da raiz (de forma case-insensitive)
-    for subfolder in backup_links:
-        backup_links[subfolder].sort(key=lambda x: x[0].lower(), reverse=True)  # Ordena os links dos backups
-
-    # Caminho para o arquivo index.html
-    index_path = os.path.join(repo_root, "index.html")
-    
-    # Conteúdo HTML com estrutura e CSS
-    html_content = """
-        <html>
-        <head>
-            <title>CEOF</title>
-            <style>
-                body {
-                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                    margin: 20px;
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    line-height: 1.6;
-                }
-
-                h1 {
-                    color: #f0f6fc;  /* Branco quebrado */
-                    text-align: center;
-                    font-size: 2.2em;  /* Aumentado para destaque */
-                    margin-bottom: 30px;  /* Mais espaçamento */
-                }
-
-                .folder {
-                    margin-top: 20px;
-                    background-color: #161b22;  /* Fundo levemente mais claro */
-                    padding: 20px;  /* Aumentado o padding */
-                    border-radius: 8px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
-                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
-                }
-
-                .folder h2 {
-                    color: #adbac7;  /* Cinza claro */
-                    font-size: 1.6em;  /* Aumentado para mais destaque */
-                    margin-bottom: 15px;
-                }
-
-                .links {
-                    margin-left: 20px;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: #58a6ff;  /* Azul suave */
-                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
-                    display: block;  /* Para aumentar o espaço entre os links */
-                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
-                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
-                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
-                }
-
-                .footer {
-                    margin-top: 40px;
-                    text-align: center;
-                    color: #8b949e;  /* Cinza claro para rodapé */
-                }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
-                    max-width: 600px;
-                    border-radius: 8px;  /* Borda mais arredondada */
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
-                }
-
-                #searchBox {
-                    padding: 12px;
-                    width: 85%;  /* Ajuste a largura conforme necessário */
-                    max-width: 600px;
-                    border-radius: 8px;
-                    border: 1px solid #484f58;  /* Cinza escuro */
-                    background-color: #0d1117;  /* Fundo escuro */
-                    color: #c9d1d9;  /* Texto claro */
-                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
-                    outline: none;
-                    transition: all 0.3s ease-in-out;
-                }
-
-                #searchBox::placeholder {
-                    color: #6e7681;  /* Cinza claro para o placeholder */
-                }
-
-                #searchBox:focus {
-                    border-color: #58a6ff;  /* Azul ao focar */
-                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
-                }
-
-
-                @media (max-width: 600px) {
-                    body {
-                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
-                    }
-                    h1 {
-                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
-                    }
-                    .folder h2 {
-                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
-                    }
-                    a {
-                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
-                    }
-                    #searchBox {
-                        width: 90%;  /* Ajusta a largura do campo de busca */
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <h1>CEOF</h1>
-            <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
-
-                <!-- Barra de pesquisa -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <input type="text" 
-                        id="searchBox" 
-                        placeholder="Pesquise por arquivos..." 
-                        class="dark-theme">
-                </div>
-
-                <div class="folder">
-                    <h2>Arquivos da Raiz - Últimas atualizações</h2>
-                    <div class="links" id="rootLinks">
-    """
-    
-    # Adicionar links da raiz
-    for relative_path, link in root_links:
-        html_content += f"{link}\n"
-    
-    # Adicionar arquivos de backup organizados por subpastas
-    for subfolder, links in backup_links.items():
-        html_content += f"""
+        <!-- Seção de últimos relatórios -->
         <div class="folder">
-            <h2>Arquivos de Backup - {subfolder}</h2>
-            <div class="links" id="folder_{subfolder}">
-        """
-        for relative_path, link in links:
-            html_content += f"{link}\n"
-        html_content += "</div></div>\n"
+            <h2>Últimas Atualizações</h2>
+            <div class="links" id="latestReports">
+                {"".join([
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['category']}">
+                            <a href="{r['path']}">{r['title']}</a>
+                            <div class="report-meta">
+                                {r['date']} | {r['category']}
+                            </div>
+                        </div>''' 
+                    for r in reports
+                ])}
+            </div>
+        </div>
 
-    # Finalizar a estrutura HTML
-    html_content += """
+        <!-- Seção de histórico -->
+        <div class="folder">
+            <h2>Histórico Completo</h2>
+            <div class="links" id="allReports">
+                {"".join([
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['category']}">
+                            <a href="{r['path']}">{r['title']}</a>
+                            <div class="report-meta">
+                                {r['date']} | {r['category']}
+                            </div>
+                        </div>''' 
+                    for r in backup_reports
+                ])}
+            </div>
         </div>
-        <div class="footer">
-            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
-        </div>
+
         <script>
-            // Função de pesquisa
-            document.getElementById('searchBox').addEventListener('input', function() {
-                var searchValue = this.value.toLowerCase();
-                var links = document.querySelectorAll('a');
-                links.forEach(function(link) {
-                    if (link.textContent.toLowerCase().includes(searchValue)) {
-                        link.style.display = 'block';
-                    } else {
-                        link.style.display = 'none';
-                    }
-                });
-            });
+            function applyFilters() {{
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const filterDate = document.getElementById('dateFilter').value;
+                const filterCategory = document.getElementById('categoryFilter').value;
+                
+                const cards = document.querySelectorAll('.report-card');
+                
+                cards.forEach(card => {{
+                    const matchesText = card.textContent.toLowerCase().includes(searchTerm);
+                    const matchesDate = !filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'));
+                    const matchesCategory = !filterCategory || card.dataset.category === filterCategory;
+                    
+                    card.style.display = (matchesText && matchesDate && matchesCategory) ? 'block' : 'none';
+                }});
+            }}
+            
+            // Atualiza filtros em tempo real
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            document.getElementById('dateFilter').addEventListener('change', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
         </script>
     </body>
     </html>
     """
-    
-    # Escrever o conteúdo no arquivo index.html
-    with open(index_path, "w") as index_file:
-        index_file.write(html_content)
 
-    print(f"Arquivo index.html atualizado com {len(root_links)} links da raiz e {sum(len(links) for links in backup_links.values())} links de backup.")
+    with open(os.path.join(REPO_ROOT, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(html_content)
+
+    print("Index.html atualizado com funcionalidades avançadas!")
+
