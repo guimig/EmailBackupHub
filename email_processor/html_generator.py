@@ -166,30 +166,42 @@ class HtmlGenerator:
             with open(latest_file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
 
-            # Limpa o conteúdo HTML usando BeautifulSoup
+            # Parseia o conteúdo com BeautifulSoup
             soup = BeautifulSoup(content, 'html.parser')
-            cleaned_content = soup.prettify()
 
-            # Extrai a data do nome do arquivo
-            match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-            if match:
-                day, month, year = map(int, match.groups())
-                last_report_date = datetime(year, month, day, tzinfo=Config.TIMEZONE)
+            # Adiciona a data do relatório e atualização DENTRO do body
+            report_date_text = soup.new_tag("p")
+            report_date_text.string = f"Data do relatório: {self._get_report_date(latest_file, latest_file_path).strftime('%d/%m/%Y')}"
+            
+            update_text = soup.new_tag("p")
+            update_text.string = f"Última atualização: {datetime.now(Config.TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}"
+
+            # Insere os textos no final do body
+            if soup.body:
+                soup.body.append(report_date_text)
+                soup.body.append(update_text)
             else:
-                last_report_date = datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
+                # Se não houver body, cria um
+                body = soup.new_tag("body")
+                body.append(report_date_text)
+                body.append(update_text)
+                soup.append(body)
 
-            # Adiciona a data e hora da última atualização no final do HTML
-            now = datetime.now(Config.TIMEZONE)
-            update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-            report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
-
-            # Escreve o conteúdo atualizado no arquivo de saída
+            # Salva o conteúdo modificado
             with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(cleaned_content + report_date_text + update_text)
-        except UnicodeDecodeError as e:
-            logging.error(f"Erro de decodificação no arquivo {latest_file}: {e}")
+                f.write(str(soup))
+
         except Exception as e:
             logging.error(f"Erro ao processar o arquivo {latest_file}: {e}")
+
+    def _get_report_date(self, latest_file, latest_file_path):
+        # Extrai a data do nome do arquivo ou da última modificação
+        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
+        if match:
+            day, month, year = map(int, match.groups())
+            return datetime(year, month, day, tzinfo=Config.TIMEZONE)
+        else:
+            return datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
 
     def _collect_links(self):
         root_links = []
