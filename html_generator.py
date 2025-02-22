@@ -1,66 +1,7 @@
 import os
 import re
 import datetime
-from config import BACKUP_FOLDER, TIMEZONE
-
-def create_latest_summary_html():
-    for root, dirs, files in os.walk(BACKUP_FOLDER):
-        if root == BACKUP_FOLDER:
-            continue
-
-        # Filtra apenas arquivos HTML e ordena por data de modificação
-        html_files = sorted(
-            (f for f in files if f.endswith('.html')),
-            key=lambda f: os.path.getmtime(os.path.join(root, f)),
-            reverse=True
-        )
-        if not html_files:
-            continue
-
-        latest_file = html_files[0]
-        latest_path = os.path.join(root, latest_file)
-        normalized_title = os.path.basename(root)
-        output_path = os.path.join(os.getcwd(), f"{normalized_title}.html")
-
-        with open(latest_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-
-        # Extrai a data do nome do arquivo
-        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-        if match:
-            day, month, year = match.groups()
-            try:
-                # Valida a data antes de criar o objeto datetime
-                last_report_date = datetime.datetime(
-                    year=int(year),
-                    month=int(month),
-                    day=int(day),
-                    tzinfo=TIMEZONE
-                )
-            except ValueError:
-                # Se a data for inválida, usa a data de modificação do arquivo
-                last_report_date = datetime.datetime.fromtimestamp(
-                    os.path.getmtime(latest_path),
-                    TIMEZONE
-                )
-        else:
-            # Se não encontrar a data no nome do arquivo, usa a data de modificação
-            last_report_date = datetime.datetime.fromtimestamp(
-                os.path.getmtime(latest_path),
-                TIMEZONE
-            )
-
-        # Adiciona o rodapé com a data do relatório e a última atualização
-        footer = f"""
-        <p>Relatório gerado em: {last_report_date.strftime('%d/%m/%Y')}</p>
-        <p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
-        """
-        
-        # Escreve o conteúdo atualizado no arquivo de saída
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(content + footer)
-
-        print(f"Resumo atualizado criado: {output_path}")
+from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
 
 def get_report_metadata(file_path):
     """Extrai metadados dos arquivos HTML"""
@@ -125,7 +66,6 @@ def update_root_index():
     <html>
     <head>
         <title>CEOF - Relatórios Avançados</title>
-        <!-- Mantido o CSS dark original -->
         <style>
             body {{
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -134,7 +74,72 @@ def update_root_index():
                 color: #c9d1d9;
                 line-height: 1.6;
             }}
-            /* ... (mantido igual ao CSS anterior) ... */
+            h1 {{
+                color: #f0f6fc;
+                text-align: center;
+                font-size: 2.2em;
+                margin-bottom: 30px;
+            }}
+            .folder {{
+                margin-top: 20px;
+                background-color: #161b22;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                border-left: 5px solid #6e7681;
+            }}
+            .folder h2 {{
+                color: #adbac7;
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }}
+            .links {{
+                margin-left: 20px;
+            }}
+            a {{
+                text-decoration: none;
+                color: #58a6ff;
+                font-size: 1em;
+                display: block;
+                margin-bottom: 10px;
+            }}
+            a:hover {{
+                text-decoration: underline;
+                color: #1f6feb;
+                padding-left: 5px;
+                transition: all 0.3s ease-in-out;
+            }}
+            .footer {{
+                margin-top: 40px;
+                text-align: center;
+                color: #8b949e;
+            }}
+            #searchBox {{
+                padding: 12px;
+                width: 85%;
+                max-width: 600px;
+                border-radius: 8px;
+                border: 1px solid #484f58;
+                background-color: #0d1117;
+                color: #c9d1d9;
+                box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);
+                outline: none;
+                transition: all 0.3s ease-in-out;
+            }}
+            #searchBox::placeholder {{
+                color: #6e7681;
+            }}
+            #searchBox:focus {{
+                border-color: #58a6ff;
+                box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
+            }}
+            @media (max-width: 600px) {{
+                body {{ font-size: 14px; }}
+                h1 {{ font-size: 1.8em; }}
+                .folder h2 {{ font-size: 1.4em; }}
+                a {{ font-size: 1.1em; }}
+                #searchBox {{ width: 90%; }}
+            }}
             .report-card {{
                 background-color: #161b22;
                 padding: 15px;
@@ -181,7 +186,7 @@ def update_root_index():
                 <option value="">Todas Categorias</option>
                 <option value="Últimas Atualizações">Últimas Atualizações</option>
                 {''.join(f'<option value="{category}">{category}</option>' 
-                        for category in sorted(set(r['category'] for r in backup_reports)))}
+                        for category in sorted(set(r['category'] for r in backup_reports))}
             </select>
         </div>
 
@@ -247,4 +252,3 @@ def update_root_index():
         f.write(html_content)
 
     print("Index.html atualizado com funcionalidades avançadas!")
-
