@@ -3,6 +3,49 @@ import re
 import datetime
 from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
 
+def create_latest_summary_html():
+    """Gera arquivos HTML na raiz com os últimos relatórios de cada pasta."""
+    for root, dirs, files in os.walk(BACKUP_FOLDER):
+        if root == BACKUP_FOLDER:
+            continue
+
+        # Filtra e ordena arquivos HTML
+        html_files = sorted(
+            [f for f in files if f.endswith('.html')],
+            key=lambda f: os.path.getmtime(os.path.join(root, f)),
+            reverse=True
+        )
+        
+        if not html_files:
+            continue
+
+        # Processa o arquivo mais recente
+        latest_file = html_files[0]
+        latest_path = os.path.join(root, latest_file)
+        normalized_title = os.path.basename(root)
+        output_path = os.path.join(REPO_ROOT, f"{normalized_title}.html")
+
+        # Extrai conteúdo e datas
+        with open(latest_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Determina a data do relatório
+        file_date = datetime.datetime.fromtimestamp(
+            os.path.getmtime(latest_path),
+            TIMEZONE
+        )
+        
+        # Adiciona footer
+        footer = f"""
+        <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
+            <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
+            <p>Última atualização: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
+        </div>
+        """
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(content + footer)
+
 def get_report_metadata(file_path):
     """Extrai metadados dos arquivos HTML"""
     try:
