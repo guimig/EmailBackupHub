@@ -152,8 +152,14 @@ class HtmlGenerator:
         """
         Limpa o conteúdo HTML usando BeautifulSoup.
         """
-        soup = BeautifulSoup(content, 'html.parser')
-        return srt(soup)
+        try:
+            soup = BeautifulSoup(content, 'html.parser')
+            logging.debug(f"HTML recebido:\n{content}")
+            return str(soup)  # Evita o uso de prettify()
+        except Exception as e:
+            logging.error(f"Erro ao parsear HTML: {e}")
+            raise
+
 
     def _create_summary_file(self, root, latest_file):
         try:
