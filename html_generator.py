@@ -85,6 +85,10 @@ def update_root_index():
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
             metadata = get_report_metadata(file_path)
+            # Adiciona a data de modificação do arquivo
+            metadata['last_modified'] = datetime.datetime.fromtimestamp(
+                os.path.getmtime(file_path), TIMEZONE
+            ).strftime('%d/%m/%Y %H:%M:%S')
             reports.append({
                 **metadata,
                 'path': file,
@@ -97,6 +101,10 @@ def update_root_index():
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 metadata = get_report_metadata(file_path)
+                # Adiciona a data de modificação do arquivo
+                metadata['last_modified'] = datetime.datetime.fromtimestamp(
+                    os.path.getmtime(file_path), TIMEZONE
+                ).strftime('%d/%m/%Y %H:%M:%S')
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
@@ -107,8 +115,8 @@ def update_root_index():
     # Últimas atualizações: ordena por título (ordem alfabética)
     reports.sort(key=lambda x: x['title'], reverse=False)
 
-    # Histórico completo: ordena por título e data (da mais recente para a mais antiga)
-    backup_reports.sort(key=lambda x: (x['title'], x['date']), reverse=True)
+    # Histórico completo: ordena por título (ordem alfabética) e data de modificação (da mais recente para a mais antiga)
+    backup_reports.sort(key=lambda x: (x['title'], x['last_modified']), reverse=True)
 
     # Geração do HTML
     html_content = f"""
@@ -243,10 +251,10 @@ def update_root_index():
             <h2>Últimas Atualizações</h2>
             <div class="links" id="latestReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['last_modified']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                {r['date']} | Última Atualização
+                                Última atualização: {r['last_modified']}
                             </div>
                         </div>''' 
                     for r in reports
@@ -259,10 +267,10 @@ def update_root_index():
             <h2>Histórico Completo</h2>
             <div class="links" id="allReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['last_modified']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                {r['date']} | {r['category']}
+                                Última atualização: {r['last_modified']}
                             </div>
                         </div>''' 
                     for r in backup_reports
