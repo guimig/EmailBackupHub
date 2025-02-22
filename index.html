@@ -145,6 +145,9 @@
                             </div>
                         </div>
             </div>
+            <div id="noResultsLatest" style="display: none; color: #8b949e; margin-top: 20px;">
+                Nenhum resultado encontrado com os parâmetros fornecidos.
+            </div>
         </div>
 
         <!-- Seção de histórico -->
@@ -208,6 +211,9 @@
                             </div>
                         </div>
             </div>
+            <div id="noResultsAll" style="display: none; color: #8b949e; margin-top: 20px;">
+                Nenhum resultado encontrado com os parâmetros fornecidos.
+            </div>
         </div>
 
         <script>
@@ -216,15 +222,45 @@
                 const filterDate = document.getElementById('dateFilter').value;
                 const filterCategory = document.getElementById('categoryFilter').value;
                 
-                const cards = document.querySelectorAll('.report-card');
-                
-                cards.forEach(card => {
+                const cardsLatest = document.querySelectorAll('#latestReports .report-card');
+                const cardsAll = document.querySelectorAll('#allReports .report-card');
+                const noResultsLatest = document.getElementById('noResultsLatest');
+                const noResultsAll = document.getElementById('noResultsAll');
+
+                let hasResultsLatest = false;
+                let hasResultsAll = false;
+
+                // Filtra os últimos relatórios
+                cardsLatest.forEach(card => {
                     const matchesText = card.textContent.toLowerCase().includes(searchTerm);
                     const matchesDate = !filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'));
                     const matchesCategory = !filterCategory || card.dataset.category === filterCategory;
                     
-                    card.style.display = (matchesText && matchesDate && matchesCategory) ? 'block' : 'none';
+                    if (matchesText && matchesDate && matchesCategory) {
+                        card.style.display = 'block';
+                        hasResultsLatest = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
+
+                // Filtra o histórico completo
+                cardsAll.forEach(card => {
+                    const matchesText = card.textContent.toLowerCase().includes(searchTerm);
+                    const matchesDate = !filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'));
+                    const matchesCategory = !filterCategory || card.dataset.category === filterCategory;
+                    
+                    if (matchesText && matchesDate && matchesCategory) {
+                        card.style.display = 'block';
+                        hasResultsAll = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Exibe ou oculta a mensagem de "Nenhum resultado"
+                noResultsLatest.style.display = hasResultsLatest ? 'none' : 'block';
+                noResultsAll.style.display = hasResultsAll ? 'none' : 'block';
             }
             
             // Atualiza filtros em tempo real
