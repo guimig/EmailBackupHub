@@ -155,42 +155,41 @@ class HtmlGenerator:
         soup = BeautifulSoup(content, 'html.parser')
         return soup.prettify()
 
-    def _create_summary_file(self, root, latest_file):
-        try:
-            logging.info(f"Processando arquivo: {latest_file}")
-            latest_file_path = os.path.join(root, latest_file)
-            normalized_title = os.path.basename(root)
-            output_path = os.path.join(os.getcwd(), f"{normalized_title}.html")
+ def _create_summary_file(self, root, latest_file):
+    try:
+        logging.info(f"Processando arquivo: {latest_file}")
+        latest_file_path = os.path.join(root, latest_file)
+        normalized_title = os.path.basename(root)
+        output_path = os.path.join(os.getcwd(), f"{normalized_title}.html")
 
-            # Lê e limpa o conteúdo HTML
-            with open(latest_file_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-                content = self._clean_html(content)  # Limpa o HTML
+        # Lê o conteúdo do arquivo HTML
+        with open(latest_file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Limpa o conteúdo HTML usando BeautifulSoup
+        soup = BeautifulSoup(content, 'html.parser')
+        cleaned_content = soup.prettify()
 
-            # Verifica se há strings problemáticas
-            if 'font-family' in content:
-                logging.warning(f"Arquivo {latest_file} contém 'font-family'. Verifique o conteúdo.")
+        # Extrai a data do nome do arquivo
+        match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
+        if match:
+            day, month, year = map(int, match.groups())
+            last_report_date = datetime(year, month, day, tzinfo=Config.TIMEZONE)
+        else:
+            last_report_date = datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
 
-            # Extrai a data do nome do arquivo
-            match = re.search(r'(\d{2})-(\d{2})-(\d{4})\.html', latest_file)
-            if match:
-                day, month, year = map(int, match.groups())
-                last_report_date = datetime(year, month, day, tzinfo=Config.TIMEZONE)
-            else:
-                last_report_date = datetime.fromtimestamp(os.path.getmtime(latest_file_path), Config.TIMEZONE)
+        # Adiciona a data e hora da última atualização no final do HTML
+        now = datetime.now(Config.TIMEZONE)
+        update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
+        report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
 
-            # Adiciona a data e hora da última atualização no final do HTML
-            now = datetime.now(Config.TIMEZONE)
-            update_text = f"<p>Última atualização: {now.strftime('%d/%m/%Y %H:%M:%S')}</p>"
-            report_date_text = f"<p>Data do relatório: {last_report_date.strftime('%d/%m/%Y')}</p>"
-
-            # Escreve o conteúdo atualizado no arquivo de saída
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(content + report_date_text + update_text)
-        except UnicodeDecodeError as e:
-            logging.error(f"Erro de decodificação no arquivo {latest_file}: {e}")
-        except Exception as e:
-            logging.error(f"Erro ao processar o arquivo {latest_file}: {e}")
+        # Escreve o conteúdo atualizado no arquivo de saída
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(cleaned_content + report_date_text + update_text)
+    except UnicodeDecodeError as e:
+        logging.error(f"Erro de decodificação no arquivo {latest_file}: {e}")
+    except Exception as e:
+        logging.error(f"Erro ao processar o arquivo {latest_file}: {e}")
 
     def _collect_links(self):
         root_links = []
