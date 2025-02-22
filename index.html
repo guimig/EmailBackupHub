@@ -1,0 +1,179 @@
+
+        <html>
+        <head>
+            <title>CEOF</title>
+            <style>
+                body {
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    margin: 20px;
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    line-height: 1.6;
+                }
+
+                h1 {
+                    color: #f0f6fc;  /* Branco quebrado */
+                    text-align: center;
+                    font-size: 2.2em;  /* Aumentado para destaque */
+                    margin-bottom: 30px;  /* Mais espaçamento */
+                }
+
+                .folder {
+                    margin-top: 20px;
+                    background-color: #161b22;  /* Fundo levemente mais claro */
+                    padding: 20px;  /* Aumentado o padding */
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Sombra mais suave */
+                    border-left: 5px solid #6e7681;  /* Cinza neutro para destaque */
+                }
+
+                .folder h2 {
+                    color: #adbac7;  /* Cinza claro */
+                    font-size: 1.6em;  /* Aumentado para mais destaque */
+                    margin-bottom: 15px;
+                }
+
+                .links {
+                    margin-left: 20px;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #58a6ff;  /* Azul suave */
+                    font-size: 1em;  /* Tamanho de fonte um pouco maior */
+                    display: block;  /* Para aumentar o espaço entre os links */
+                    margin-bottom: 10px;  /* Adiciona espaçamento entre os links */
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                    color: #1f6feb;  /* Azul mais vibrante ao passar o mouse */
+                    padding-left: 5px;  /* Adiciona um pequeno efeito de deslocamento */
+                    transition: all 0.3s ease-in-out;  /* Suaviza a transição */
+                }
+
+                .footer {
+                    margin-top: 40px;
+                    text-align: center;
+                    color: #8b949e;  /* Cinza claro para rodapé */
+                }
+
+                #searchBox {
+                    padding: 12px;
+                    width: 85%;  /* Ajustado para aproveitar mais o espaço */
+                    max-width: 600px;
+                    border-radius: 8px;  /* Borda mais arredondada */
+                    border: 1px solid #484f58;  /* Cinza escuro */
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
+                    outline: none;
+                    transition: all 0.3s ease-in-out;  /* Transição mais suave */
+                }
+
+                #searchBox {
+                    padding: 12px;
+                    width: 85%;  /* Ajuste a largura conforme necessário */
+                    max-width: 600px;
+                    border-radius: 8px;
+                    border: 1px solid #484f58;  /* Cinza escuro */
+                    background-color: #0d1117;  /* Fundo escuro */
+                    color: #c9d1d9;  /* Texto claro */
+                    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.7);  /* Efeito interno mais forte */
+                    outline: none;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                #searchBox::placeholder {
+                    color: #6e7681;  /* Cinza claro para o placeholder */
+                }
+
+                #searchBox:focus {
+                    border-color: #58a6ff;  /* Azul ao focar */
+                    box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);  /* Brilho azul suave */
+                }
+
+
+                @media (max-width: 600px) {
+                    body {
+                        font-size: 14px;  /* Ajusta o tamanho da fonte para telas menores */
+                    }
+                    h1 {
+                        font-size: 1.8em;  /* Reduz o título para dispositivos pequenos */
+                    }
+                    .folder h2 {
+                        font-size: 1.4em;  /* Ajusta o tamanho do título da pasta */
+                    }
+                    a {
+                        font-size: 1.1em;  /* Ajusta o tamanho dos links */
+                    }
+                    #searchBox {
+                        width: 90%;  /* Ajusta a largura do campo de busca */
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <h1>CEOF</h1>
+            <h2 style="text-align: center;">Lista de Relatórios Gerados pelo Tesouro Gerencial (.html)</h2>
+
+                <!-- Barra de pesquisa -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <input type="text" 
+                        id="searchBox" 
+                        placeholder="Pesquise por arquivos..." 
+                        class="dark-theme">
+                </div>
+
+                <div class="folder">
+                    <h2>Arquivos da Raiz - Últimas atualizações</h2>
+                    <div class="links" id="rootLinks">
+    <a href='restos-a-pagar-rap.html' title='restos-a-pagar-rap.html'>restos-a-pagar-rap.html</a><br>
+<a href='restos-a-pagar-rap-contratos.html' title='restos-a-pagar-rap-contratos.html'>restos-a-pagar-rap-contratos.html</a><br>
+<a href='despesas-empenhadas-liquidadas-e-pagas.html' title='despesas-empenhadas-liquidadas-e-pagas.html'>despesas-empenhadas-liquidadas-e-pagas.html</a><br>
+
+        <div class="folder">
+            <h2>Arquivos de Backup - emails/restos-a-pagar-rap-contratos</h2>
+            <div class="links" id="folder_emails/restos-a-pagar-rap-contratos">
+        <a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_21-02-2025.html'>restos-a-pagar-rap-contratos_21-02-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_20-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_20-02-2025.html'>restos-a-pagar-rap-contratos_20-02-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_19-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_19-02-2025.html'>restos-a-pagar-rap-contratos_19-02-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_18-02-2025.html'>restos-a-pagar-rap-contratos_18-02-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_15-02-2025.html' title='emails/restos-a-pagar-rap-contratos/restos-a-pagar-rap-contratos_15-02-2025.html'>restos-a-pagar-rap-contratos_15-02-2025.html</a><br>
+</div></div>
+
+        <div class="folder">
+            <h2>Arquivos de Backup - emails/restos-a-pagar-rap</h2>
+            <div class="links" id="folder_emails/restos-a-pagar-rap">
+        <a href='emails/restos-a-pagar-rap/restos-a-pagar-rap_21-02-2025.html' title='emails/restos-a-pagar-rap/restos-a-pagar-rap_21-02-2025.html'>restos-a-pagar-rap_21-02-2025.html</a><br>
+<a href='emails/restos-a-pagar-rap/restos-a-pagar-rap_20-02-2025.html' title='emails/restos-a-pagar-rap/restos-a-pagar-rap_20-02-2025.html'>restos-a-pagar-rap_20-02-2025.html</a><br>
+</div></div>
+
+        <div class="folder">
+            <h2>Arquivos de Backup - emails/despesas-empenhadas-liquidadas-e-pagas</h2>
+            <div class="links" id="folder_emails/despesas-empenhadas-liquidadas-e-pagas">
+        <a href='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html' title='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html'>despesas-empenhadas-liquidadas-e-pagas_21-02-2025.html</a><br>
+<a href='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html' title='emails/despesas-empenhadas-liquidadas-e-pagas/despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html'>despesas-empenhadas-liquidadas-e-pagas_20-02-2025.html</a><br>
+</div></div>
+
+        </div>
+        <div class="footer">
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira.</p>
+        </div>
+        <script>
+            // Função de pesquisa
+            document.getElementById('searchBox').addEventListener('input', function() {
+                var searchValue = this.value.toLowerCase();
+                var links = document.querySelectorAll('a');
+                links.forEach(function(link) {
+                    if (link.textContent.toLowerCase().includes(searchValue)) {
+                        link.style.display = 'block';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+    </body>
+    </html>
+    
