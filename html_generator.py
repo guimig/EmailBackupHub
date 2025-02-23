@@ -22,7 +22,6 @@ def create_latest_summary_html():
         latest_path = os.path.join(root, latest_file)
         normalized_title = os.path.basename(root)
 
-        # Extração correta da data
         date_match = re.search(r'(\d{2}-\d{2}-\d{4})', latest_file)
         if date_match:
             file_date_str = date_match.group(1)
@@ -30,7 +29,7 @@ def create_latest_summary_html():
         else:
             file_date = datetime.datetime.fromtimestamp(
                 os.path.getmtime(latest_path)
-            ).replace(tzinfo=None)  # Remove timezone info
+            ).replace(tzinfo=None)
 
         output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date.strftime('%d-%m-%Y')}.html")
 
@@ -65,23 +64,23 @@ def get_report_metadata(file_path):
         return {
             'title': title,
             'date': date.strftime("%d/%m/%Y"),
-            'filename': filename,
-            'date_obj': date  # Objeto datetime naive
+            'date_obj': date,  # Objeto datetime para ordenação
+            'filename': filename
         }
     except Exception as e:
         print(f"Erro ao ler metadados: {e}")
         return {
             'title': os.path.splitext(os.path.basename(file_path))[0],
             'date': datetime.datetime.now().strftime("%d/%m/%Y"),
-            'filename': os.path.basename(file_path),
-            'date_obj': datetime.datetime.now().replace(tzinfo=None)
+            'date_obj': datetime.datetime.now().replace(tzinfo=None),
+            'filename': os.path.basename(file_path)
         }
 
 def update_root_index():
     reports = []
     backup_reports = []
 
-    # Coleta relatórios
+    # Coleta relatórios da raiz
     for file in os.listdir(REPO_ROOT):
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
@@ -93,6 +92,7 @@ def update_root_index():
                 'category': 'Últimas Atualizações'
             })
 
+    # Coleta histórico completo
     for root, dirs, files in os.walk(BACKUP_FOLDER):
         for file in files:
             if file.endswith('.html'):
@@ -105,21 +105,24 @@ def update_root_index():
                     'category': metadata['title']
                 })
 
-    # Ordenação com datetimes naive
+    # Ordenação unificada usando 'date_obj'
     reports.sort(key=lambda x: (x['title'], x['date_obj']), reverse=False)
     backup_reports.sort(key=lambda x: (x['title'], x['date_obj']), reverse=True)
 
+    # Agrupamento
     grouped_latest = {}
     for report in reports:
-        if report['title'] not in grouped_latest:
-            grouped_latest[report['title']] = []
-        grouped_latest[report['title']].append(report)
+        key = report['title']
+        if key not in grouped_latest:
+            grouped_latest[key] = []
+        grouped_latest[key].append(report)
 
     grouped_backup = {}
     for report in backup_reports:
-        if report['title'] not in grouped_backup:
-            grouped_backup[report['title']] = []
-        grouped_backup[report['title']].append(report)
+        key = report['title']
+        if key not in grouped_backup:
+            grouped_backup[key] = []
+        grouped_backup[key].append(report)
 
     html_content = f"""
     <html>
@@ -336,43 +339,7 @@ def update_root_index():
         </style>
     </head>
     <body>
-        <h1>CEOF - Relatórios Gerenciais</h1>
-        
-        <!-- Barra de pesquisa otimizada para mobile -->
-        <div class="search-filters">
-            <input type="text" 
-                   id="searchInput" 
-                   placeholder="🔍 Pesquisar por nome..."
-                   class="filter-input"
-                   aria-label="Campo de pesquisa">
-
-            <div class="mobile-optimized">
-                <select class="filter-input" id="mobileSort">
-                    <option value="">Ordenar por...</option>
-                    <option value="title">Nome (A-Z)</option>
-                    <option value="-title">Nome (Z-A)</option>
-                    <option value="-date">Data (recentes)</option>
-                    <option value="date">Data (antigos)</option>
-                </select>
-            </div>
-
-            <input type="date" 
-                   id="dateFilter" 
-                   class="filter-input desktop-only"
-                   aria-label="Filtrar por data">
-
-            <select id="categoryFilter" class="filter-input desktop-only">
-                <option value="">Todos Relatórios</option>
-                {''.join(f'<option value="{title}">{title}</option>' 
-                        for title in sorted(grouped_latest.keys()))}
-            </select>
-
-            <button id="clearFiltersButton" class="clear-filters-button">
-                🗑️ Limpar
-            </button>
-        </div>
-
-       <!-- Seção de últimos relatórios com controle de ordenação -->
+        <!-- Seção de últimos relatórios -->
         <div class="folder">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Últimas Atualizações</h2>
@@ -383,22 +350,19 @@ def update_root_index():
             </div>
             <div class="links" id="latestReports">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                Data do relatório: {r['report_date']}
+                                Data do relatório: {r['date']}
                             </div>
                         </div>''' 
                     for title in sorted(grouped_latest.keys())
                     for r in grouped_latest[title]
                 ])}
             </div>
-            <div id="noResultsLatest" style="display: none; color: #8b949e; margin-top: 20px;">
-                Nenhum resultado encontrado com os parâmetros fornecidos.
-            </div>
         </div>
 
-         <!-- Seção de histórico com controles aprimorados -->
+        <!-- Seção de histórico -->
         <div class="folder">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Histórico Completo</h2>
@@ -412,16 +376,17 @@ def update_root_index():
             </div>
             <div class="links" id="allReports" style="display: none;">
                 {"".join([
-                    f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
+                    f'''<div class="report-card" data-date="{r['date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
                             <div class="report-meta">
-                                Data do relatório: {r['report_date']}
+                                Data do relatório: {r['date']}
                             </div>
                         </div>''' 
                     for title in sorted(grouped_backup.keys())
                     for r in grouped_backup[title]
                 ])}
             </div>
+        </div>
             <div id="noResultsAll" style="display: none; color: #8b949e; margin-top: 20px;">
                 Nenhum resultado encontrado com os parâmetros fornecidos.
             </div>
