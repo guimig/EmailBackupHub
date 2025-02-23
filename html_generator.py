@@ -293,7 +293,7 @@ def update_root_index():
                 border: none;
                 color: #58a6ff;
                 cursor: pointer;
-                font-size: 0.5em;
+                font-size: 0.8em;
                 margin-left: 10px;
             }}
             .clear-filters-button:hover {{
@@ -301,7 +301,7 @@ def update_root_index():
             }}
             .expand-button {{
                 padding: 8px 16px;
-                font-size: 0.5em;
+                font-size: 0.8em;
                 background: #58a6ff;
                 color: white;
                 border-radius: 6px;
