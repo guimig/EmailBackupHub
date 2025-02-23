@@ -213,42 +213,7 @@
         </style>
     </head>
     <body>
-        <h1>CEOF - Relatórios Gerenciais</h1>
-        
-        <!-- Barra de pesquisa otimizada para mobile -->
-        <div class="search-filters">
-            <input type="text" 
-                   id="searchInput" 
-                   placeholder="🔍 Pesquisar por nome..."
-                   class="filter-input"
-                   aria-label="Campo de pesquisa">
-
-            <div class="mobile-optimized">
-                <select class="filter-input" id="mobileSort">
-                    <option value="">Ordenar por...</option>
-                    <option value="title">Nome (A-Z)</option>
-                    <option value="-title">Nome (Z-A)</option>
-                    <option value="-date">Data (recentes)</option>
-                    <option value="date">Data (antigos)</option>
-                </select>
-            </div>
-
-            <input type="date" 
-                   id="dateFilter" 
-                   class="filter-input desktop-only"
-                   aria-label="Filtrar por data">
-
-            <select id="categoryFilter" class="filter-input desktop-only">
-                <option value="">Todos Relatórios</option>
-                <option value="Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento">Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento</option><option value="Restos a pagar (RAP)">Restos a pagar (RAP)</option><option value="Restos a pagar (RAP) - Contratos">Restos a pagar (RAP) - Contratos</option>
-            </select>
-
-            <button id="clearFiltersButton" class="clear-filters-button">
-                🗑️ Limpar
-            </button>
-        </div>
-
-       <!-- Seção de últimos relatórios com controle de ordenação -->
+        <!-- Seção de últimos relatórios -->
         <div class="folder">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Últimas Atualizações</h2>
@@ -258,15 +223,30 @@
                 </select>
             </div>
             <div class="links" id="latestReports">
-                <div class="report-card" data-date="23/02/2025" data-category="Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento">
+                <div class="report-card" data-date="20/02/2025" data-category="Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento">
+                            <a href="despesas-empenhadas-liquidadas-e-pagas-20-02-2025.html">Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento</a>
+                            <div class="report-meta">
+                                Data do relatório: 20/02/2025
+                            </div>
+                        </div><div class="report-card" data-date="23/02/2025" data-category="Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento">
                             <a href="despesas-empenhadas-liquidadas-e-pagas.html">Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento</a>
                             <div class="report-meta">
                                 Data do relatório: 23/02/2025
+                            </div>
+                        </div><div class="report-card" data-date="22/02/2025" data-category="Restos a pagar (RAP)">
+                            <a href="restos-a-pagar-rap-22-02-2025.html">Restos a pagar (RAP)</a>
+                            <div class="report-meta">
+                                Data do relatório: 22/02/2025
                             </div>
                         </div><div class="report-card" data-date="23/02/2025" data-category="Restos a pagar (RAP)">
                             <a href="restos-a-pagar-rap.html">Restos a pagar (RAP)</a>
                             <div class="report-meta">
                                 Data do relatório: 23/02/2025
+                            </div>
+                        </div><div class="report-card" data-date="20/02/2025" data-category="Restos a pagar (RAP) - Contratos">
+                            <a href="restos-a-pagar-rap-contratos-20-02-2025.html">Restos a pagar (RAP) - Contratos</a>
+                            <div class="report-meta">
+                                Data do relatório: 20/02/2025
                             </div>
                         </div><div class="report-card" data-date="23/02/2025" data-category="Restos a pagar (RAP) - Contratos">
                             <a href="restos-a-pagar-rap-contratos.html">Restos a pagar (RAP) - Contratos</a>
@@ -275,12 +255,9 @@
                             </div>
                         </div>
             </div>
-            <div id="noResultsLatest" style="display: none; color: #8b949e; margin-top: 20px;">
-                Nenhum resultado encontrado com os parâmetros fornecidos.
-            </div>
         </div>
 
-         <!-- Seção de histórico com controles aprimorados -->
+        <!-- Seção de histórico -->
         <div class="folder">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Histórico Completo</h2>
@@ -350,6 +327,7 @@
                             </div>
                         </div>
             </div>
+        </div>
             <div id="noResultsAll" style="display: none; color: #8b949e; margin-top: 20px;">
                 Nenhum resultado encontrado com os parâmetros fornecidos.
             </div>
