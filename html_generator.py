@@ -22,16 +22,17 @@ def create_latest_summary_html():
         latest_path = os.path.join(root, latest_file)
         normalized_title = os.path.basename(root)
 
-        # Extrai a data antes de criar o output_path
+        # Extração correta da data
         date_match = re.search(r'(\d{2}-\d{2}-\d{4})', latest_file)
         if date_match:
             file_date_str = date_match.group(1)
             file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
         else:
-            file_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_path), TIMEZONE)
-            file_date_str = file_date.strftime("%d-%m-%Y")
+            file_date = datetime.datetime.fromtimestamp(
+                os.path.getmtime(latest_path)
+            ).replace(tzinfo=None)  # Remove timezone info
 
-        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date_str}.html")
+        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date.strftime('%d-%m-%Y')}.html")
 
         with open(latest_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -39,7 +40,7 @@ def create_latest_summary_html():
         footer = f"""
         <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
             <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
-            <p>Última busca por novos relatórios: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
+            <p>Última busca por novos relatórios: {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}</p>
         </div>
         """
         
@@ -57,21 +58,23 @@ def get_report_metadata(file_path):
         filename = os.path.basename(file_path)
         date_match = re.search(r'(\d{2}-\d{2}-\d{4})', filename)
         if date_match:
-            date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
+            date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
         else:
-            date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
+            date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).replace(tzinfo=None)
             
         return {
             'title': title,
-            'date': date,
-            'filename': filename
+            'date': date.strftime("%d/%m/%Y"),
+            'filename': filename,
+            'date_obj': date  # Objeto datetime naive
         }
     except Exception as e:
         print(f"Erro ao ler metadados: {e}")
         return {
             'title': os.path.splitext(os.path.basename(file_path))[0],
-            'date': datetime.datetime.now(TIMEZONE).strftime("%d/%m/%Y"),
-            'filename': os.path.basename(file_path)
+            'date': datetime.datetime.now().strftime("%d/%m/%Y"),
+            'filename': os.path.basename(file_path),
+            'date_obj': datetime.datetime.now().replace(tzinfo=None)
         }
 
 def update_root_index():
@@ -83,17 +86,11 @@ def update_root_index():
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
             metadata = get_report_metadata(file_path)
-            date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
-            if date_match:
-                report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
-            else:
-                report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
             
             reports.append({
                 **metadata,
                 'path': file,
-                'report_date': report_date.strftime("%d/%m/%Y"),
-                'report_date_obj': report_date
+                'category': 'Últimas Atualizações'
             })
 
     for root, dirs, files in os.walk(BACKUP_FOLDER):
@@ -101,22 +98,16 @@ def update_root_index():
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 metadata = get_report_metadata(file_path)
-                date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
-                if date_match:
-                    report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
-                else:
-                    report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
                 
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
-                    'report_date': report_date.strftime("%d/%m/%Y"),
-                    'report_date_obj': report_date
+                    'category': metadata['title']
                 })
 
-    # Ordenações
-    reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=False)
-    backup_reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=True)
+    # Ordenação com datetimes naive
+    reports.sort(key=lambda x: (x['title'], x['date_obj']), reverse=False)
+    backup_reports.sort(key=lambda x: (x['title'], x['date_obj']), reverse=True)
 
     grouped_latest = {}
     for report in reports:
