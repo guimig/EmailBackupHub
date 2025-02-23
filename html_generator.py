@@ -569,12 +569,11 @@ def update_root_index():
             // Adiciona o evento de limpar filtros
             document.getElementById('clearFiltersButton').addEventListener('click', clearFilters);
 
-            <script>
             // Novo sistema de ordenação
-            const sortElements = (container, key) => {
+            const sortElements = (container, key) => {{
                 const cards = Array.from(container.querySelectorAll('.report-card'));
                 
-                cards.sort((a, b) => {
+                cards.sort((a, b) => {{
                     const aVal = key === 'title' ? 
                         a.querySelector('a').textContent.toLowerCase() :
                         a.dataset.date.split('/').reverse().join('');
@@ -583,47 +582,47 @@ def update_root_index():
                         b.querySelector('a').textContent.toLowerCase() :
                         b.dataset.date.split('/').reverse().join('');
                         
-                    if(key.startsWith('-')) {
+                    if(key.startsWith('-')) {{
                         return bVal.localeCompare(aVal);
-                    }
+                    }}
                     return aVal.localeCompare(bVal);
-                });
+                }});
 
                 cards.forEach(card => container.appendChild(card));
-            };
+            }};
 
             // Controles de ordenação
-            document.getElementById('sortLatest').addEventListener('change', (e) => {
+            document.getElementById('sortLatest').addEventListener('change', (e) => {{
                 sortElements(document.getElementById('latestReports'), e.target.value);
                 applyFilters();
-            });
+            }});
 
-            document.getElementById('sortHistory').addEventListener('change', (e) => {
+            document.getElementById('sortHistory').addEventListener('change', (e) => {{
                 sortElements(document.getElementById('allReports'), e.target.value);
                 currentPage = 1;
                 showPage(currentPage);
-            });
+            }});
 
-            document.getElementById('mobileSort').addEventListener('change', (e) => {
+            document.getElementById('mobileSort').addEventListener('change', (e) => {{
                 const value = e.target.value;
                 const targetSection = value.includes('date') ? 
                     document.getElementById('allReports') : 
                     document.getElementById('latestReports');
                 
                 sortElements(targetSection, value);
-                if(targetSection === document.getElementById('allReports')) {
+                if(targetSection === document.getElementById('allReports')) {{
                     currentPage = 1;
                     showPage(currentPage);
-                }
+                }}
                 applyFilters();
-            });
+            }});
 
             // Filtro otimizado com debounce
             let searchTimeout;
-            document.getElementById('searchInput').addEventListener('input', () => {
+            document.getElementById('searchInput').addEventListener('input', () => {{
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(applyFilters, 300);
-            });
+            }});
 
             // Paginação responsiva
             function showPage(page) {{
@@ -633,6 +632,19 @@ def update_root_index():
                 // Cálculo responsivo
                 const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
                 const itemsPerPage = viewportWidth < 768 ? 5 : 10;
+
+                cards.forEach((card, index) => {{
+                    if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {{
+                        card.style.display = 'block';
+                    }} else {{
+                        card.style.display = 'none';
+                    }}
+                }});
+
+                document.getElementById('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`;
+                document.getElementById('prevPage').disabled = page === 1;
+                document.getElementById('nextPage').disabled = page === totalPages;
+            }}
 
             // Melhoria na exibição mobile
             function handleMobileLayout() {{
