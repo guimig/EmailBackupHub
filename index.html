@@ -178,15 +178,16 @@
                 text-decoration: underline;
             }
             .expand-button {
-                background: none;
-                border: none;
-                color: #58a6ff;
-                cursor: pointer;
-                font-size: 14px;
-                margin-left: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background: #238636;
+                color: white;
+                border-radius: 6px;
+                transition: all 0.3s;
             }
             .expand-button:hover {
-                text-decoration: underline;
+                background: #2ea043;
+                transform: scale(1.05);
             }
             .pagination {
                 display: flex;
@@ -213,7 +214,42 @@
         </style>
     </head>
     <body>
-        <!-- Seção de últimos relatórios -->
+        <h1>CEOF - Relatórios Gerenciais</h1>
+        
+        <!-- Barra de pesquisa otimizada para mobile -->
+        <div class="search-filters">
+            <input type="text" 
+                   id="searchInput" 
+                   placeholder="🔍 Pesquisar por nome..."
+                   class="filter-input"
+                   aria-label="Campo de pesquisa">
+
+            <div class="mobile-optimized">
+                <select class="filter-input" id="mobileSort">
+                    <option value="">Ordenar por...</option>
+                    <option value="title">Nome (A-Z)</option>
+                    <option value="-title">Nome (Z-A)</option>
+                    <option value="-date">Data (recentes)</option>
+                    <option value="date">Data (antigos)</option>
+                </select>
+            </div>
+
+            <input type="date" 
+                   id="dateFilter" 
+                   class="filter-input desktop-only"
+                   aria-label="Filtrar por data">
+
+            <select id="categoryFilter" class="filter-input desktop-only">
+                <option value="">Todos Relatórios</option>
+                <option value="Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento">Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento</option><option value="Restos a pagar (RAP)">Restos a pagar (RAP)</option><option value="Restos a pagar (RAP) - Contratos">Restos a pagar (RAP) - Contratos</option>
+            </select>
+
+            <button id="clearFiltersButton" class="clear-filters-button">
+                🗑️ Limpar
+            </button>
+        </div>
+
+<!-- Seção de últimos relatórios -->
         <div class="folder">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>Últimas Atualizações</h2>
@@ -260,6 +296,9 @@
                             </div>
                         </div>
             </div>
+            <div id="noResultsLatest" style="display: none; color: #8b949e; margin-top: 20px;">
+                Nenhum resultado encontrado com os parâmetros fornecidos.
+            </div>
         </div>
 
         <!-- Seção de histórico -->
@@ -271,7 +310,7 @@
                         <option value="-date">Ordenar por Data</option>
                         <option value="title">Ordenar por A-Z</option>
                     </select>
-                    <button id="toggleHistory" class="expand-button">▼</button>
+                    <button id="toggleHistory" class="expand-button">▼ Histórico</button>
                 </div>
             </div>
             <div class="links" id="allReports" style="display: none;">
@@ -332,7 +371,6 @@
                             </div>
                         </div>
             </div>
-        </div>
             <div id="noResultsAll" style="display: none; color: #8b949e; margin-top: 20px;">
                 Nenhum resultado encontrado com os parâmetros fornecidos.
             </div>
@@ -405,59 +443,47 @@
                 applyFilters();
             }
 
-            // Paginação do histórico completo
+            // Controle do histórico
+            let historyVisible = false;
+            const toggleHistory = () => {
+                const historySection = document.getElementById('allReports');
+                const paginationControls = document.getElementById('paginationControls');
+                const toggleButton = document.getElementById('toggleHistory');
+                
+                historyVisible = !historyVisible;
+                historySection.style.display = historyVisible ? 'block' : 'none';
+                paginationControls.style.display = historyVisible ? 'flex' : 'none';
+                toggleButton.textContent = historyVisible ? '▲ Ocultar Histórico' : '▼ Exibir Histórico';
+                if(historyVisible) showPage(1);
+            }
+
+            // Paginação
             let currentPage = 1;
             let itemsPerPage = 10;
 
-            function showPage(page) {
-                const visibleCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
-                const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-                itemsPerPage = viewportWidth < 768 ? 5 : 10;
-                const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
-
-                visibleCards.forEach((card, index) => {
+            const showPage = (page) => {
+                const cards = Array.from(document.querySelectorAll('#allReports .report-card'));
+                const totalPages = Math.ceil(cards.length / itemsPerPage);
+                
+                cards.forEach((card, index) => {
                     card.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) 
                         ? 'block' 
                         : 'none';
                 });
 
                 document.getElementById('pageInfo').textContent = `Página ${page} de ${totalPages}`;
-                document.getElementById('prevPage').disabled = page <= 1;
-                document.getElementById('nextPage').disabled = page >= totalPages;
+                document.getElementById('prevPage').disabled = page === 1;
+                document.getElementById('nextPage').disabled = page === totalPages;
             }
 
+            // Event Listeners
+            document.getElementById('toggleHistory').addEventListener('click', toggleHistory);
             document.getElementById('prevPage').addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    showPage(currentPage);
-                }
+                if(currentPage > 1) showPage(--currentPage);
             });
-
             document.getElementById('nextPage').addEventListener('click', () => {
-                const visibleCards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
-                const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    showPage(currentPage);
-                }
-            });
-
-            // Expandir/recolher histórico
-            document.getElementById('toggleHistory').addEventListener('click', () => {
-                const historySection = document.getElementById('allReports');
-                const paginationControls = document.getElementById('paginationControls');
-                const toggleButton = document.getElementById('toggleHistory');
-
-                if (historySection.style.display === 'none') {
-                    historySection.style.display = 'block';
-                    paginationControls.style.display = 'flex';
-                    toggleButton.textContent = 'Recolher Histórico';
-                    showPage(currentPage);
-                } else {
-                    historySection.style.display = 'none';
-                    paginationControls.style.display = 'none';
-                    toggleButton.textContent = 'Expandir Histórico';
-                }
+                const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage);
+                if(currentPage < totalPages) showPage(++currentPage);
             });
 
             // Atualiza filtros em tempo real
