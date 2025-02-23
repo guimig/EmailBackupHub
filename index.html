@@ -2,6 +2,7 @@
     <html>
     <head>
         <title>CEOF - Relatórios Gerenciais</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -426,20 +427,20 @@
             let itemsPerPage = 10;
 
             function showPage(page) {
-                const allCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])'));
+                const visibleCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
                 const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
                 itemsPerPage = viewportWidth < 768 ? 5 : 10;
-                const totalPages = Math.ceil(allCards.length / itemsPerPage);
+                const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
 
-                allCards.forEach((card, index) => {
+                visibleCards.forEach((card, index) => {
                     card.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) 
                         ? 'block' 
                         : 'none';
                 });
 
                 document.getElementById('pageInfo').textContent = `Página ${page} de ${totalPages}`;
-                document.getElementById('prevPage').disabled = page === 1;
-                document.getElementById('nextPage').disabled = page === totalPages;
+                document.getElementById('prevPage').disabled = page <= 1;
+                document.getElementById('nextPage').disabled = page >= totalPages;
             }
 
             document.getElementById('prevPage').addEventListener('click', () => {
@@ -452,7 +453,6 @@
             document.getElementById('nextPage').addEventListener('click', () => {
                 const visibleCards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
                 const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
-                
                 if (currentPage < totalPages) {
                     currentPage++;
                     showPage(currentPage);
