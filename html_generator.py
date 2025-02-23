@@ -31,7 +31,7 @@ def create_latest_summary_html():
                 os.path.getmtime(latest_path)
             ).replace(tzinfo=None)
 
-        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date.strftime('%d-%m-%Y')}.html")
+        output_path = os.path.join(REPO_ROOT, f"{normalized_title}.html")
 
         with open(latest_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -293,7 +293,7 @@ def update_root_index():
                 border: none;
                 color: #58a6ff;
                 cursor: pointer;
-                font-size: 14px;
+                font-size: 1em;
                 margin-left: 10px;
             }}
             .clear-filters-button:hover {{
@@ -301,8 +301,8 @@ def update_root_index():
             }}
             .expand-button {{
                 padding: 10px 20px;
-                font-size: 16px;
-                background: #238636;
+                font-size: 1em;
+                background: #58a6ff;
                 color: white;
                 border-radius: 6px;
                 transition: all 0.3s;
