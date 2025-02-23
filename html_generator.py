@@ -9,7 +9,6 @@ def create_latest_summary_html():
         if root == BACKUP_FOLDER:
             continue
 
-        # Filtra e ordena arquivos HTML
         html_files = sorted(
             [f for f in files if f.endswith('.html')],
             key=lambda f: os.path.getmtime(os.path.join(root, f)),
@@ -19,28 +18,24 @@ def create_latest_summary_html():
         if not html_files:
             continue
 
-        # Processa o arquivo mais recente
         latest_file = html_files[0]
         latest_path = os.path.join(root, latest_file)
         normalized_title = os.path.basename(root)
-        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date_str}.html")
 
-        # Extrai conteúdo e datas
-        with open(latest_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # Determina a data do relatório a partir do nome do arquivo
+        # Extrai a data antes de criar o output_path
         date_match = re.search(r'(\d{2}-\d{2}-\d{4})', latest_file)
         if date_match:
             file_date_str = date_match.group(1)
             file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
         else:
             file_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_path), TIMEZONE)
-            file_date_str = file_date.strftime("%d-%m-%Y")  # Adicionar esta linha
+            file_date_str = file_date.strftime("%d-%m-%Y")
 
         output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date_str}.html")
+
+        with open(latest_path, 'r', encoding='utf-8') as f:
+            content = f.read()
         
-        # Adiciona footer
         footer = f"""
         <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
             <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
@@ -56,11 +51,9 @@ def get_report_metadata(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-            # Extrai o título do relatorio
             title_match = re.search(r'<td colspan=1 style=\'font-family:tahoma;font-size:18.0pt\'>(.*?)</td>', content)
             title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
             
-        # Extrai data do nome do arquivo
         filename = os.path.basename(file_path)
         date_match = re.search(r'(\d{2}-\d{2}-\d{4})', filename)
         if date_match:
@@ -85,55 +78,46 @@ def update_root_index():
     reports = []
     backup_reports = []
 
-    # Coleta relatórios da raiz (últimas atualizações)
+    # Coleta relatórios
     for file in os.listdir(REPO_ROOT):
         if file.endswith('.html') and file != 'index.html':
             file_path = os.path.join(REPO_ROOT, file)
             metadata = get_report_metadata(file_path)
-            # Extrai a data do nome do arquivo
             date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
             if date_match:
-                report_date_str = date_match.group(1)
-                report_date = datetime.datetime.strptime(report_date_str, "%d-%m-%Y")
+                report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
             else:
                 report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
-            metadata['report_date'] = report_date.strftime("%d/%m/%Y")
-            metadata['report_date_obj'] = report_date  # Objeto datetime para ordenação
+            
             reports.append({
                 **metadata,
                 'path': file,
-                'category': 'Últimas Atualizações'
+                'report_date': report_date.strftime("%d/%m/%Y"),
+                'report_date_obj': report_date
             })
 
-    # Coleta relatórios de backup (histórico completo)
     for root, dirs, files in os.walk(BACKUP_FOLDER):
         for file in files:
             if file.endswith('.html'):
                 file_path = os.path.join(root, file)
                 metadata = get_report_metadata(file_path)
-                # Extrai a data do nome do arquivo
                 date_match = re.search(r'(\d{2}-\d{2}-\d{4})', file)
                 if date_match:
-                    report_date_str = date_match.group(1)
-                    report_date = datetime.datetime.strptime(report_date_str, "%d-%m-%Y")
+                    report_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
                 else:
                     report_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE)
-                metadata['report_date'] = report_date.strftime("%d/%m/%Y")
-                metadata['report_date_obj'] = report_date  # Objeto datetime para ordenação
+                
                 backup_reports.append({
                     **metadata,
                     'path': os.path.relpath(file_path, REPO_ROOT),
-                    'category': metadata['title']  # Categoria é o título do relatório
+                    'report_date': report_date.strftime("%d/%m/%Y"),
+                    'report_date_obj': report_date
                 })
 
-    # Ordenação dos relatórios
-    # Últimas atualizações: ordena por título (ordem alfabética) e data (da mais recente para a mais antiga)
+    # Ordenações
     reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=False)
-
-    # Histórico completo: ordena por título (ordem alfabética) e data (da mais recente para a mais antiga)
     backup_reports.sort(key=lambda x: (x['title'], x['report_date_obj']), reverse=True)
 
-    # Agrupa relatórios por título para exibição organizada
     grouped_latest = {}
     for report in reports:
         if report['title'] not in grouped_latest:
@@ -146,11 +130,11 @@ def update_root_index():
             grouped_backup[report['title']] = []
         grouped_backup[report['title']].append(report)
 
-    # Geração do HTML
     html_content = f"""
     <html>
     <head>
         <title>CEOF - Relatórios Gerenciais</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {{
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -524,20 +508,20 @@ def update_root_index():
             let itemsPerPage = 10;
 
             function showPage(page) {{
-                const allCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])'));
+                const visibleCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
                 const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
                 itemsPerPage = viewportWidth < 768 ? 5 : 10;
-                const totalPages = Math.ceil(allCards.length / itemsPerPage);
+                const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
 
-                allCards.forEach((card, index) => {{
+                visibleCards.forEach((card, index) => {{
                     card.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) 
                         ? 'block' 
                         : 'none';
                 }});
 
                 document.getElementById('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`;
-                document.getElementById('prevPage').disabled = page === 1;
-                document.getElementById('nextPage').disabled = page === totalPages;
+                document.getElementById('prevPage').disabled = page <= 1;
+                document.getElementById('nextPage').disabled = page >= totalPages;
             }}
 
             document.getElementById('prevPage').addEventListener('click', () => {{
@@ -550,7 +534,6 @@ def update_root_index():
             document.getElementById('nextPage').addEventListener('click', () => {{
                 const visibleCards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
                 const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
-                
                 if (currentPage < totalPages) {{
                     currentPage++;
                     showPage(currentPage);
@@ -664,4 +647,4 @@ def update_root_index():
     with open(os.path.join(REPO_ROOT, 'index.html'), 'w', encoding='utf-8') as f:
         f.write(html_content)
 
-    print("Index.html atualizado com funcionalidades avançadas!")
+    print("Index.html atualizado com sucesso!")
