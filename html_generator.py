@@ -23,7 +23,7 @@ def create_latest_summary_html():
         latest_file = html_files[0]
         latest_path = os.path.join(root, latest_file)
         normalized_title = os.path.basename(root)
-        output_path = os.path.join(REPO_ROOT, f"{normalized_title}.html")
+        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date_str}.html")
 
         # Extrai conteúdo e datas
         with open(latest_path, 'r', encoding='utf-8') as f:
@@ -36,6 +36,9 @@ def create_latest_summary_html():
             file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
         else:
             file_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_path), TIMEZONE)
+            file_date_str = file_date.strftime("%d-%m-%Y")  # Adicionar esta linha
+
+        output_path = os.path.join(REPO_ROOT, f"{normalized_title}-{file_date_str}.html")
         
         # Adiciona footer
         footer = f"""
@@ -196,6 +199,14 @@ def update_root_index():
                 text-align: center;
                 color: #8b949e;
             }}
+            .search-filters {{
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                margin: 15px auto;
+            }}
             #searchBox {{
                 padding: 12px;
                 width: 85%;
@@ -219,6 +230,7 @@ def update_root_index():
             @media (max-width: 768px) {{
                 .search-filters {{
                     flex-direction: column;
+                    align-items: center;
                 }}
                 
                 .filter-input, .sort-select {{
@@ -509,18 +521,18 @@ def update_root_index():
 
             // Paginação do histórico completo
             let currentPage = 1;
-            const itemsPerPage = 10;
+            let itemsPerPage = 10;
 
             function showPage(page) {{
-                const cards = document.querySelectorAll('#allReports .report-card');
-                const totalPages = Math.ceil(cards.length / itemsPerPage);
+                const allCards = Array.from(document.querySelectorAll('#allReports .report-card:not([style*="display: none"])'));
+                const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                itemsPerPage = viewportWidth < 768 ? 5 : 10;
+                const totalPages = Math.ceil(allCards.length / itemsPerPage);
 
-                cards.forEach((card, index) => {{
-                    if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {{
-                        card.style.display = 'block';
-                    }} else {{
-                        card.style.display = 'none';
-                    }}
+                allCards.forEach((card, index) => {{
+                    card.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) 
+                        ? 'block' 
+                        : 'none';
                 }});
 
                 document.getElementById('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`;
@@ -536,7 +548,9 @@ def update_root_index():
             }});
 
             document.getElementById('nextPage').addEventListener('click', () => {{
-                const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage);
+                const visibleCards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
+                const totalPages = Math.ceil(visibleCards.length / itemsPerPage);
+                
                 if (currentPage < totalPages) {{
                     currentPage++;
                     showPage(currentPage);
@@ -574,19 +588,19 @@ def update_root_index():
                 const cards = Array.from(container.querySelectorAll('.report-card'));
                 
                 cards.sort((a, b) => {{
-                    const aVal = key === 'title' ? 
-                        a.querySelector('a').textContent.toLowerCase() :
-                        a.dataset.date.split('/').reverse().join('');
-                        
-                    const bVal = key === 'title' ? 
-                        b.querySelector('a').textContent.toLowerCase() :
-                        b.dataset.date.split('/').reverse().join('');
-                        
-                    if(key.startsWith('-')) {{
-                        return bVal.localeCompare(aVal);
-                    }}
-                    return aVal.localeCompare(bVal);
-                }});
+                const aDate = a.dataset.date.split('/').reverse().join('');
+                const bDate = b.dataset.date.split('/').reverse().join('');
+                
+                if(key === '-date') return bDate.localeCompare(aDate);
+                if(key === 'date') return aDate.localeCompare(bDate);
+                
+                const aTitle = a.querySelector('a').textContent.toLowerCase();
+                const bTitle = b.querySelector('a').textContent.toLowerCase();
+                
+                return key === '-title' 
+                    ? bTitle.localeCompare(aTitle) 
+                    : aTitle.localeCompare(bTitle);
+            }});
 
                 cards.forEach(card => container.appendChild(card));
             }};
@@ -623,28 +637,6 @@ def update_root_index():
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(applyFilters, 300);
             }});
-
-            // Paginação responsiva
-            function showPage(page) {{
-                const cards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
-                const totalPages = Math.ceil(cards.length / itemsPerPage);
-
-                // Cálculo responsivo
-                const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-                const itemsPerPage = viewportWidth < 768 ? 5 : 10;
-
-                cards.forEach((card, index) => {{
-                    if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {{
-                        card.style.display = 'block';
-                    }} else {{
-                        card.style.display = 'none';
-                    }}
-                }});
-
-                document.getElementById('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`;
-                document.getElementById('prevPage').disabled = page === 1;
-                document.getElementById('nextPage').disabled = page === totalPages;
-            }}
 
             // Melhoria na exibição mobile
             function handleMobileLayout() {{
