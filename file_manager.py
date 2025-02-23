@@ -49,4 +49,4 @@ class FileManager:
 
     @staticmethod
     def _generate_filename(title, date):
-        return f"{title}_{date.strftime('%Y-%m-%d')}.html"
+        return f"{title}_{date.strftime('%d-%m-%Y')}.html"

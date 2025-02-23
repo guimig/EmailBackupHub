@@ -29,11 +29,13 @@ def create_latest_summary_html():
         with open(latest_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Determina a data do relatório
-        file_date = datetime.datetime.fromtimestamp(
-            os.path.getmtime(latest_path),
-            TIMEZONE
-        )
+        # Determina a data do relatório a partir do nome do arquivo
+        date_match = re.search(r'(\d{2}-\d{2}-\d{4})', latest_file)
+        if date_match:
+            file_date_str = date_match.group(1)
+            file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
+        else:
+            file_date = datetime.datetime.fromtimestamp(os.path.getmtime(latest_path), TIMEZONE)
         
         # Adiciona footer
         footer = f"""
@@ -57,9 +59,9 @@ def get_report_metadata(file_path):
             
         # Extrai data do nome do arquivo
         filename = os.path.basename(file_path)
-        date_match = re.search(r'(\d{4}-\d{2}-\d{2})', filename)
+        date_match = re.search(r'(\d{2}-\d{2}-\d{4})', filename)
         if date_match:
-            date = datetime.datetime.strptime(date_match.group(1), "%Y-%m-%d").strftime("%d/%m/%Y")
+            date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y").strftime("%d/%m/%Y")
         else:
             date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).strftime("%d/%m/%Y")
             
@@ -213,6 +215,62 @@ def update_root_index():
                 border-color: #58a6ff;
                 box-shadow: 0 0 8px rgba(85, 145, 255, 0.6);
             }}
+            /* Novos estilos para mobile */
+            @media (max-width: 768px) {{
+                .search-filters {{
+                    flex-direction: column;
+                }}
+                
+                .filter-input, .sort-select {{
+                    width: 100%;
+                    margin: 5px 0;
+                }}
+                
+                .report-card {{
+                    padding: 12px;
+                    margin: 8px 0;
+                }}
+                
+                .pagination button {{
+                    padding: 10px 15px;
+                    margin: 3px;
+                }}
+                
+                .folder {{
+                    padding: 15px;
+                }}
+                
+                h1 {{
+                    font-size: 1.8rem;
+                    margin-bottom: 20px;
+                }}
+            }}
+            /* Novos estilos para ordenação */
+            .sort-controls {{
+                margin: 15px 0;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }}
+            .sort-select {{
+                background: #0d1117;
+                border: 1px solid #30363d;
+                color: #c9d1d9;
+                padding: 8px;
+                border-radius: 6px;
+                cursor: pointer;
+            }}
+            .mobile-optimized {{
+                display: none;
+            }}
+            @media (max-width: 768px) {{
+                .desktop-only {{
+                    display: none;
+                }}
+                .mobile-optimized {{
+                    display: block;
+                }}
+            }}
             @media (max-width: 600px) {{
                 body {{ font-size: 14px; }}
                 h1 {{ font-size: 1.8em; }}
@@ -244,8 +302,6 @@ def update_root_index():
                 padding: 8px;
                 border-radius: 6px;
             }}
-        </style>
- <style>
             .clear-filters-button {{
                 background: none;
                 border: none;
@@ -257,36 +313,87 @@ def update_root_index():
             .clear-filters-button:hover {{
                 text-decoration: underline;
             }}
+            .expand-button {{
+                background: none;
+                border: none;
+                color: #58a6ff;
+                cursor: pointer;
+                font-size: 14px;
+                margin-left: 10px;
+            }}
+            .expand-button:hover {{
+                text-decoration: underline;
+            }}
+            .pagination {{
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }}
+            .pagination button {{
+                background: #161b22;
+                border: 1px solid #30363d;
+                color: #c9d1d9;
+                padding: 8px 12px;
+                margin: 0 5px;
+                cursor: pointer;
+                border-radius: 6px;
+            }}
+            .pagination button:hover {{
+                background: #58a6ff;
+                color: #0d1117;
+            }}
+            .pagination button.active {{
+                background: #58a6ff;
+                color: #0d1117;
+            }}
         </style>
     </head>
     <body>
         <h1>CEOF - Relatórios Gerenciais</h1>
         
-        <!-- Barra de pesquisa avançada -->
+        <!-- Barra de pesquisa otimizada para mobile -->
         <div class="search-filters">
             <input type="text" 
                    id="searchInput" 
-                   placeholder="Pesquisar por nome..." 
+                   placeholder="🔍 Pesquisar por nome..."
                    class="filter-input"
-                   style="flex-grow: 1">
-            
+                   aria-label="Campo de pesquisa">
+
+            <div class="mobile-optimized">
+                <select class="filter-input" id="mobileSort">
+                    <option value="">Ordenar por...</option>
+                    <option value="title">Nome (A-Z)</option>
+                    <option value="-title">Nome (Z-A)</option>
+                    <option value="-date">Data (recentes)</option>
+                    <option value="date">Data (antigos)</option>
+                </select>
+            </div>
+
             <input type="date" 
                    id="dateFilter" 
-                   class="filter-input"
-                   placeholder="Filtrar por data">
-            
-            <select id="categoryFilter" class="filter-input">
-                <option value="">Todos os Relatórios</option>
+                   class="filter-input desktop-only"
+                   aria-label="Filtrar por data">
+
+            <select id="categoryFilter" class="filter-input desktop-only">
+                <option value="">Todos Relatórios</option>
                 {''.join(f'<option value="{title}">{title}</option>' 
                         for title in sorted(grouped_latest.keys()))}
             </select>
-            
-            <button id="clearFiltersButton" class="clear-filters-button">Limpar Filtros</button>
+
+            <button id="clearFiltersButton" class="clear-filters-button">
+                🗑️ Limpar
+            </button>
         </div>
 
-        <!-- Seção de últimos relatórios -->
+       <!-- Seção de últimos relatórios com controle de ordenação -->
         <div class="folder">
-            <h2>Últimas Atualizações</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Últimas Atualizações</h2>
+                <select class="sort-select desktop-only" id="sortLatest">
+                    <option value="title">Ordenar por A-Z</option>
+                    <option value="-date">Ordenar por Data</option>
+                </select>
+            </div>
             <div class="links" id="latestReports">
                 {"".join([
                     f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
@@ -304,10 +411,19 @@ def update_root_index():
             </div>
         </div>
 
-        <!-- Seção de histórico -->
+         <!-- Seção de histórico com controles aprimorados -->
         <div class="folder">
-            <h2>Histórico Completo</h2>
-            <div class="links" id="allReports">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Histórico Completo</h2>
+                <div>
+                    <select class="sort-select desktop-only" id="sortHistory">
+                        <option value="-date">Ordenar por Data</option>
+                        <option value="title">Ordenar por A-Z</option>
+                    </select>
+                    <button id="toggleHistory" class="expand-button">▼</button>
+                </div>
+            </div>
+            <div class="links" id="allReports" style="display: none;">
                 {"".join([
                     f'''<div class="report-card" data-date="{r['report_date']}" data-category="{r['title']}">
                             <a href="{r['path']}">{r['title']}</a>
@@ -322,10 +438,15 @@ def update_root_index():
             <div id="noResultsAll" style="display: none; color: #8b949e; margin-top: 20px;">
                 Nenhum resultado encontrado com os parâmetros fornecidos.
             </div>
+            <div class="pagination" id="paginationControls" style="display: none;">
+                <button id="prevPage">Anterior</button>
+                <span id="pageInfo"></span>
+                <button id="nextPage">Próxima</button>
+            </div>
         </div>
 
         <div class="footer">
-            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira. IFC - Campus Araquari.</p>
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira (CEOF). IFC - Campus Araquari.</p>
             <p>Desenvolvido e mantido por Guilherme M.</p>
         </div>
 
@@ -385,7 +506,61 @@ def update_root_index():
                 // Reaplica os filtros (para exibir todos os resultados)
                 applyFilters();
             }}
-            
+
+            // Paginação do histórico completo
+            let currentPage = 1;
+            const itemsPerPage = 10;
+
+            function showPage(page) {{
+                const cards = document.querySelectorAll('#allReports .report-card');
+                const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+                cards.forEach((card, index) => {{
+                    if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {{
+                        card.style.display = 'block';
+                    }} else {{
+                        card.style.display = 'none';
+                    }}
+                }});
+
+                document.getElementById('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`;
+                document.getElementById('prevPage').disabled = page === 1;
+                document.getElementById('nextPage').disabled = page === totalPages;
+            }}
+
+            document.getElementById('prevPage').addEventListener('click', () => {{
+                if (currentPage > 1) {{
+                    currentPage--;
+                    showPage(currentPage);
+                }}
+            }});
+
+            document.getElementById('nextPage').addEventListener('click', () => {{
+                const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage);
+                if (currentPage < totalPages) {{
+                    currentPage++;
+                    showPage(currentPage);
+                }}
+            }});
+
+            // Expandir/recolher histórico
+            document.getElementById('toggleHistory').addEventListener('click', () => {{
+                const historySection = document.getElementById('allReports');
+                const paginationControls = document.getElementById('paginationControls');
+                const toggleButton = document.getElementById('toggleHistory');
+
+                if (historySection.style.display === 'none') {{
+                    historySection.style.display = 'block';
+                    paginationControls.style.display = 'flex';
+                    toggleButton.textContent = 'Recolher Histórico';
+                    showPage(currentPage);
+                }} else {{
+                    historySection.style.display = 'none';
+                    paginationControls.style.display = 'none';
+                    toggleButton.textContent = 'Expandir Histórico';
+                }}
+            }});
+
             // Atualiza filtros em tempo real
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             document.getElementById('dateFilter').addEventListener('change', applyFilters);
@@ -393,6 +568,90 @@ def update_root_index():
             
             // Adiciona o evento de limpar filtros
             document.getElementById('clearFiltersButton').addEventListener('click', clearFilters);
+
+            <script>
+            // Novo sistema de ordenação
+            const sortElements = (container, key) => {
+                const cards = Array.from(container.querySelectorAll('.report-card'));
+                
+                cards.sort((a, b) => {
+                    const aVal = key === 'title' ? 
+                        a.querySelector('a').textContent.toLowerCase() :
+                        a.dataset.date.split('/').reverse().join('');
+                        
+                    const bVal = key === 'title' ? 
+                        b.querySelector('a').textContent.toLowerCase() :
+                        b.dataset.date.split('/').reverse().join('');
+                        
+                    if(key.startsWith('-')) {
+                        return bVal.localeCompare(aVal);
+                    }
+                    return aVal.localeCompare(bVal);
+                });
+
+                cards.forEach(card => container.appendChild(card));
+            };
+
+            // Controles de ordenação
+            document.getElementById('sortLatest').addEventListener('change', (e) => {
+                sortElements(document.getElementById('latestReports'), e.target.value);
+                applyFilters();
+            });
+
+            document.getElementById('sortHistory').addEventListener('change', (e) => {
+                sortElements(document.getElementById('allReports'), e.target.value);
+                currentPage = 1;
+                showPage(currentPage);
+            });
+
+            document.getElementById('mobileSort').addEventListener('change', (e) => {
+                const value = e.target.value;
+                const targetSection = value.includes('date') ? 
+                    document.getElementById('allReports') : 
+                    document.getElementById('latestReports');
+                
+                sortElements(targetSection, value);
+                if(targetSection === document.getElementById('allReports')) {
+                    currentPage = 1;
+                    showPage(currentPage);
+                }
+                applyFilters();
+            });
+
+            // Filtro otimizado com debounce
+            let searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(applyFilters, 300);
+            });
+
+            // Paginação responsiva
+            function showPage(page) {{
+                const cards = document.querySelectorAll('#allReports .report-card:not([style*="display: none"])');
+                const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+                // Cálculo responsivo
+                const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                const itemsPerPage = viewportWidth < 768 ? 5 : 10;
+
+            // Melhoria na exibição mobile
+            function handleMobileLayout() {{
+                const isMobile = window.innerWidth < 768;
+                document.querySelectorAll('.desktop-only').forEach(el => 
+                    el.style.display = isMobile ? 'none' : '');
+                document.querySelectorAll('.mobile-optimized').forEach(el => 
+                    el.style.display = isMobile ? 'block' : 'none');
+                
+                if(isMobile) {{
+                    document.getElementById('allReports').style.display = 'none';
+                    document.getElementById('paginationControls').style.display = 'none';
+                }}
+            }}
+
+            // Atualizar layout ao redimensionar
+            window.addEventListener('resize', handleMobileLayout);
+            handleMobileLayout();
+
         </script>
     </body>
     </html>
