@@ -158,7 +158,7 @@ def update_root_index():
                 color: #f0f6fc;
                 margin-bottom: 30px;
                 position: relative;
-                display: inline-block;
+                width: 100%; /* Ocupa toda a largura */
                 padding: 0 20px;
             }}
             .title-text {{
@@ -167,19 +167,21 @@ def update_root_index():
             }}
             .title-highlight {{
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 10px;
+                bottom: -5px; /* Ajuste para posicionar a barra abaixo do texto */
+                left: 50%; /* Centraliza horizontalmente */
+                transform: translateX(-50%); /* Ajuste fino para centralização */
+                width: 80%; /* Largura da barra */
+                height: 8px; /* Altura da barra */
                 background: linear-gradient(90deg, #58a6ff, #1f6feb);
                 border-radius: 5px;
                 z-index: 1;
-                opacity: 0.7;
+                opacity: 0.9; /* Mais visível */
                 transition: all 0.3s ease;
             }}
             .main-title:hover .title-highlight {{
-                height: 15px;
-                opacity: 1;
+                height: 12px; /* Aumenta a altura no hover */
+                opacity: 1; /* Torna totalmente visível */
+                width: 100%; /* Expande a largura no hover */
             }}
             .folder {{
                 margin-top: 20px;
