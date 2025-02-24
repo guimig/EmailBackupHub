@@ -167,19 +167,19 @@ def update_root_index():
             }}
             .title-highlight {{
                 position: absolute;
-                bottom: -5px; /* Ajuste para posicionar a barra abaixo do texto */
+                bottom: -10px; /* Ajuste para posicionar a barra abaixo do texto */
                 left: 50%; /* Centraliza horizontalmente */
                 transform: translateX(-50%); /* Ajuste fino para centralização */
                 width: 50%; /* Largura da barra */
                 height: 8px; /* Altura da barra */
-                background: linear-gradient(90deg, #58a6ff, #1f6feb);
+                background: linear-gradient(90deg, #58a6ff, #1959bd);
                 border-radius: 5px;
                 z-index: 1;
-                opacity: 0.9; /* Mais visível */
+                opacity: 0.7; /* Mais visível */
                 transition: all 0.3s ease;
             }}
             .main-title:hover .title-highlight {{
-                height: 20px; /* Aumenta a altura no hover */
+                height: 12px; /* Aumenta a altura no hover */
                 opacity: 1; /* Torna totalmente visível */
                 width: 60%; /* Expande a largura no hover */
             }}
