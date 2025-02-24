@@ -541,7 +541,7 @@ def update_root_index():
         <div class="footer">
             <div class="footer-content">
                 <div class="institutional-info">
-                    <img src="caminho/para/logo-ifc.png" alt="IFC Logo" class="footer-logo">
+                    <img src="caminho/para/logo-ifc.png" alt="" class="footer-logo">
                     <div class="text-block">
                         <h3 class="institutional-title">Repositório de Arquivos</h3>
                         <p class="campus-info">
@@ -559,8 +559,8 @@ def update_root_index():
                         <span class="developer-name">Guilherme M.</span>
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-icon"><img src="img/github-mark-white.png"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><img src="img/mail-logo.png"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
