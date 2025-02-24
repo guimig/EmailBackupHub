@@ -24,7 +24,7 @@
                 color: #f0f6fc;
                 margin-bottom: 30px;
                 position: relative;
-                display: inline-block;
+                width: 100%; /* Ocupa toda a largura */
                 padding: 0 20px;
             }
             .title-text {
@@ -33,19 +33,21 @@
             }
             .title-highlight {
                 position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 10px;
+                bottom: -5px; /* Ajuste para posicionar a barra abaixo do texto */
+                left: 50%; /* Centraliza horizontalmente */
+                transform: translateX(-50%); /* Ajuste fino para centralização */
+                width: 80%; /* Largura da barra */
+                height: 8px; /* Altura da barra */
                 background: linear-gradient(90deg, #58a6ff, #1f6feb);
                 border-radius: 5px;
                 z-index: 1;
-                opacity: 0.7;
+                opacity: 0.9; /* Mais visível */
                 transition: all 0.3s ease;
             }
             .main-title:hover .title-highlight {
-                height: 15px;
-                opacity: 1;
+                height: 12px; /* Aumenta a altura no hover */
+                opacity: 1; /* Torna totalmente visível */
+                width: 100%; /* Expande a largura no hover */
             }
             .folder {
                 margin-top: 20px;
@@ -216,6 +218,13 @@
                 h1 {
                     font-size: 1.8rem;
                     margin-bottom: 20px;
+                }
+                .main-title {
+                    font-size: 2rem;
+                }
+
+                .title-highlight {
+                    width: 90%; /* Ajuste para telas menores */
                 }
             }
             /* Novos estilos para ordenação */
@@ -399,10 +408,10 @@
                             <div class="report-meta">
                                 Data do relatório: 20/02/2025
                             </div>
-                        </div><div class="report-card" data-date="22/02/2025" data-category="Restos a pagar (RAP)">
+                        </div><div class="report-card" data-date="21/02/2025" data-category="Restos a pagar (RAP)">
                             <a href="restos-a-pagar-rap.html">Restos a pagar (RAP)</a>
                             <div class="report-meta">
-                                Data do relatório: 22/02/2025
+                                Data do relatório: 21/02/2025
                             </div>
                         </div><div class="report-card" data-date="20/02/2025" data-category="Restos a pagar (RAP) - Contratos">
                             <a href="restos-a-pagar-rap-contratos.html">Restos a pagar (RAP) - Contratos</a>
@@ -505,7 +514,7 @@
                         <p class="campus-info">
                             <i class="fas fa-university"></i>
                             Coordenação de Execução Orçamentária e Financeira (CEOF)<br>
-                            Não é uma página oficial do IFC - Campus Araquari
+                            Essa <b>não</b> é uma página oficial do IFC - Campus Araquari
                         </p>
                     </div>
                 </div>
