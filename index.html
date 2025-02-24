@@ -47,9 +47,101 @@
                 transition: all 0.3s ease-in-out;
             }
             .footer {
-                margin-top: 40px;
-                text-align: center;
+                background: #161b22;
+                border-top: 1px solid #30363d;
+                padding: 2rem 1rem;
+                margin-top: 4rem;
+            }
+
+            .footer-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .footer-logo {
+                height: 50px;
+                margin-right: 1.5rem;
+            }
+
+            .institutional-info {
+                display: flex;
+                align-items: center;
+            }
+
+            .institutional-title {
+                color: #c9d1d9;
+                margin: 0 0 0.5rem 0;
+                font-size: 1.2rem;
+            }
+
+            .campus-info {
                 color: #8b949e;
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            .developer-info {
+                text-align: right;
+            }
+
+            .developed-by {
+                color: #8b949e;
+                margin: 0 0 1rem 0;
+            }
+
+            .developer-name {
+                color: #58a6ff;
+                transition: color 0.3s ease;
+            }
+
+            .developer-name:hover {
+                color: #1f6feb;
+                text-decoration: underline;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 1rem;
+                justify-content: flex-end;
+            }
+
+            .social-icon {
+                color: #8b949e;
+                font-size: 1.2rem;
+                transition: color 0.3s ease;
+            }
+
+            .social-icon:hover {
+                color: #58a6ff;
+            }
+
+            @media (max-width: 768px) {
+                .footer-content {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .developer-info {
+                    text-align: center;
+                }
+                
+                .social-links {
+                    justify-content: center;
+                }
+                
+                .institutional-info {
+                    flex-direction: column;
+                    text-align: center;
+                }
+                
+                .footer-logo {
+                    margin: 0 0 1rem 0;
+                }
             }
             .search-filters {
                 display: flex;
@@ -266,15 +358,15 @@
                             <div class="report-meta">
                                 Data do relatório: 20/02/2025
                             </div>
-                        </div><div class="report-card" data-date="22/02/2025" data-category="Restos a pagar (RAP)">
+                        </div><div class="report-card" data-date="21/02/2025" data-category="Restos a pagar (RAP)">
                             <a href="restos-a-pagar-rap.html">Restos a pagar (RAP)</a>
                             <div class="report-meta">
-                                Data do relatório: 22/02/2025
+                                Data do relatório: 21/02/2025
                             </div>
-                        </div><div class="report-card" data-date="22/02/2025" data-category="Restos a pagar (RAP) - Contratos">
+                        </div><div class="report-card" data-date="20/02/2025" data-category="Restos a pagar (RAP) - Contratos">
                             <a href="restos-a-pagar-rap-contratos.html">Restos a pagar (RAP) - Contratos</a>
                             <div class="report-meta">
-                                Data do relatório: 22/02/2025
+                                Data do relatório: 20/02/2025
                             </div>
                         </div>
             </div>
@@ -364,9 +456,31 @@
         </div>
 
         <div class="footer">
-            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira (CEOF).</p>
-            <p>IFC - Campus Araquari.</p>
-            <p>Desenvolvido e mantido por Guilherme M.</p>
+            <div class="footer-content">
+                <div class="institutional-info">
+                    <img src="caminho/para/logo-ifc.png" alt="IFC Logo" class="footer-logo">
+                    <div class="text-block">
+                        <h3 class="institutional-title">Repositório de Arquivos</h3>
+                        <p class="campus-info">
+                            <i class="fas fa-university"></i>
+                            Coordenação de Execução Orçamentária e Financeira (CEOF)<br>
+                            IFC - Campus Araquari
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="developer-info">
+                    <p class="developed-by">
+                        <i class="fas fa-code"></i>
+                        Desenvolvido e mantido por 
+                        <span class="developer-name">Guilherme M.</span>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script>
