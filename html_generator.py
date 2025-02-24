@@ -158,7 +158,7 @@ def update_root_index():
                 color: #f0f6fc;
                 margin-bottom: 30px;
                 position: relative;
-                width: 100%; /* Ocupa toda a largura */
+                width: 80%; /* Ocupa toda a largura */
                 padding: 0 20px;
             }}
             .title-text {{
