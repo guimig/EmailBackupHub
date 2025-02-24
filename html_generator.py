@@ -353,6 +353,13 @@ def update_root_index():
                     font-size: 1.8rem;
                     margin-bottom: 20px;
                 }}
+                .main-title {{
+                    font-size: 2rem;
+                }}
+
+                .title-highlight {{
+                    width: 90%; /* Ajuste para telas menores */
+                }}
             }}
             /* Novos estilos para ordenação */
             .sort-controls {{
