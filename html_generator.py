@@ -152,6 +152,35 @@ def update_root_index():
                 font-size: 2.2em;
                 margin-bottom: 30px;
             }}
+            .main-title {{
+                text-align: center;
+                font-size: 2.5rem;
+                color: #f0f6fc;
+                margin-bottom: 30px;
+                position: relative;
+                display: inline-block;
+                padding: 0 20px;
+            }}
+            .title-text {{
+                position: relative;
+                z-index: 2;
+            }}
+            .title-highlight {{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 10px;
+                background: linear-gradient(90deg, #58a6ff, #1f6feb);
+                border-radius: 5px;
+                z-index: 1;
+                opacity: 0.7;
+                transition: all 0.3s ease;
+            }}
+            .main-title:hover .title-highlight {{
+                height: 15px;
+                opacity: 1;
+            }}
             .folder {{
                 margin-top: 20px;
                 background-color: #161b22;
@@ -451,7 +480,10 @@ def update_root_index():
         </style>
     </head>
     <body>
-        <h1>CEOF - Relatórios Gerenciais</h1>
+        <h1 class="main-title">
+            <span class="title-text">CEOF - Relatórios Gerenciais</span>
+            <span class="title-highlight"></span>
+        </h1>
         
         <!-- Barra de pesquisa otimizada para mobile -->
         <div class="search-filters">
