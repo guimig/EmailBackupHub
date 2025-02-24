@@ -39,7 +39,7 @@ def create_latest_summary_html():
         footer = f"""
         <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
             <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
-            <p>Última busca por novos relatórios: {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}</p>
+            <p>Última busca por novos relatórios: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
         </div>
         """
         
@@ -51,22 +51,34 @@ def get_report_metadata(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
+            
+            # Extrai o título do relatório
             title_match = re.search(r'<td colspan=1 style=\'font-family:tahoma;font-size:18.0pt\'>(.*?)</td>', content)
             title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
             
-        filename = os.path.basename(file_path)
-        date_match = re.search(r'(\d{2}-\d{2}-\d{4})', filename)
-        if date_match:
-            date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
-        else:
-            date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).replace(tzinfo=None)
+            # Extrai a data GERADA do conteúdo do relatório (prioritário)
+            date_match = re.search(r'Relatório gerado em: (\d{2}/\d{2}/\d{4})', content)
+            if date_match:
+                date_str = date_match.group(1)
+                date = datetime.datetime.strptime(date_str, "%d/%m/%Y")
+            else:
+                # Fallback 1: Data do nome do arquivo
+                filename = os.path.basename(file_path)
+                filename_date_match = re.search(r'(\d{2}-\d{2}-\d{4})', filename)
+                if filename_date_match:
+                    date_str = filename_date_match.group(1)
+                    date = datetime.datetime.strptime(date_str, "%d-%m-%Y")
+                else:
+                    # Fallback 2: Data de modificação do arquivo
+                    date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path)).replace(tzinfo=None)
             
         return {
             'title': title,
-            'date': date.strftime("%d/%m/%Y"),
+            'date': date.strftime("%d/%m/%Y"),  # Formato padrão BR
             'date_obj': date,
-            'filename': filename
+            'filename': os.path.basename(file_path)
         }
+        
     except Exception as e:
         print(f"Erro ao ler metadados: {e}")
         return {
@@ -315,7 +327,8 @@ def update_root_index():
                 justify-content: center;
                 margin-top: 20px;
                 color: #8b949e;
-                font-size: 0.75em;
+                font-size: 0.8em;
+                margin-top: 5px;
             }}
             .pagination button {{
                 background: #161b22;
@@ -434,7 +447,8 @@ def update_root_index():
         </div>
 
         <div class="footer">
-            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira (CEOF). IFC - Campus Araquari.</p>
+            <p>Repositório de Arquivos - Coordenação de Execução Orçamentária e Financeira (CEOF).</p>
+            <p>IFC - Campus Araquari.</p>
             <p>Desenvolvido e mantido por Guilherme M.</p>
         </div>
 
