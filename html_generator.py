@@ -412,6 +412,7 @@ def update_root_index():
                 font-size: 16px;
             }}
             .expand-button {{
+                border: none;
                 padding: 8px 16px;
                 font-size: 0.75em;
                 background: #58a6ff;
