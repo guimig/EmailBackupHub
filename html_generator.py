@@ -158,7 +158,7 @@ def update_root_index():
                 color: #f0f6fc;
                 margin-bottom: 30px;
                 position: relative;
-                width: 90%; /* Ocupa toda a largura */
+                width: 95%; /* Ocupa toda a largura */
                 padding: 0 20px;
             }}
             .title-text {{
@@ -181,7 +181,7 @@ def update_root_index():
             .main-title:hover .title-highlight {{
                 height: 12px; /* Aumenta a altura no hover */
                 opacity: 1; /* Torna totalmente visível */
-                width: 55%; /* Expande a largura no hover */
+                width: 62%; /* Expande a largura no hover */
             }}
             .folder {{
                 margin-top: 20px;
