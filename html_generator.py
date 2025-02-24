@@ -588,7 +588,7 @@ def update_root_index():
                         <p class="campus-info">
                             <i class="fas fa-university"></i>
                             Coordenação de Execução Orçamentária e Financeira (CEOF)<br>
-                            Não é uma página oficial do IFC - Campus Araquari
+                            Essa <b>não</b> é uma página oficial do IFC - Campus Araquari
                         </p>
                     </div>
                 </div>
