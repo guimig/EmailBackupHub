@@ -158,7 +158,7 @@ def update_root_index():
                 color: #f0f6fc;
                 margin-bottom: 30px;
                 position: relative;
-                width: 80%; /* Ocupa toda a largura */
+                width: 90%; /* Ocupa toda a largura */
                 padding: 0 20px;
             }}
             .title-text {{
@@ -170,7 +170,7 @@ def update_root_index():
                 bottom: -2px; /* Ajuste para posicionar a barra abaixo do texto */
                 left: 50%; /* Centraliza horizontalmente */
                 transform: translateX(-50%); /* Ajuste fino para centralização */
-                width: 50%; /* Largura da barra */
+                width: 60%; /* Largura da barra */
                 height: 8px; /* Altura da barra */
                 background: linear-gradient(90deg, #58a6ff, #1959bd);
                 border-radius: 5px;
