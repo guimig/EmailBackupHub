@@ -71,11 +71,11 @@ def get_report_metadata(file_path):
                 else:
                     # Fallback 2: Data de modificação do arquivo
                     date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).replace(tzinfo=None)
-
+            
         return {
-            'title': os.path.splitext(os.path.basename(file_path))[0],
-            'date': datetime.datetime.now(TIMEZONE).strftime("%d/%m/%Y"),
-            'date_obj': datetime.datetime.now(TIMEZONE).replace(tzinfo=None),
+            'title': title,
+            'date': date.strftime("%d/%m/%Y"),  # Formato padrão BR
+            'date_obj': date,
             'filename': os.path.basename(file_path)
         }
         
