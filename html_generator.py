@@ -181,7 +181,7 @@ def update_root_index():
             .main-title:hover .title-highlight {{
                 height: 12px; /* Aumenta a altura no hover */
                 opacity: 1; /* Torna totalmente visível */
-                width: 60%; /* Expande a largura no hover */
+                width: 55%; /* Expande a largura no hover */
             }}
             .folder {{
                 margin-top: 20px;
