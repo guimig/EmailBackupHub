@@ -301,19 +301,21 @@ def update_root_index():
             }}
             .expand-button {{
                 padding: 8px 16px;
-                font-size: 0.8em;
+                font-size: 0.75em;
                 background: #58a6ff;
-                color: #c9d1d9;
+                color: #0d1117;
                 border-radius: 6px;
                 transition: all 0.3s;
             }}
             .expand-button:hover {{
-                background: #2ea043;
+                background: #4378b5;
             }}
             .pagination {{
                 display: flex;
                 justify-content: center;
                 margin-top: 20px;
+                color: #8b949e;
+                font-size: 0.75em;
             }}
             .pagination button {{
                 background: #161b22;
@@ -341,7 +343,7 @@ def update_root_index():
         <div class="search-filters">
             <input type="text" 
                    id="searchInput" 
-                   placeholder="🔍 Pesquisar por nome..."
+                   placeholder="🔍 Pesquisar por nome...          "
                    class="filter-input"
                    aria-label="Campo de pesquisa">
 
