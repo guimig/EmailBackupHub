@@ -248,27 +248,53 @@
                 margin-top: 5px;
             }
             .search-filters {
-                margin: 15px 0;
                 display: flex;
+                justify-content: center;
                 gap: 10px;
+                flex-wrap: wrap;
+                max-width: 1200px;
+                margin: 15px auto;
+                align-items: center;
             }
+
             .filter-input {
                 background: #0d1117;
                 border: 1px solid #30363d;
                 color: #c9d1d9;
-                padding: 8px;
+                padding: 10px;
                 border-radius: 6px;
+                outline: none;
+                transition: all 0.3s ease;
+                width: 100%;
+                max-width: 300px;
             }
+
+            .filter-input:focus {
+                border-color: #58a6ff;
+                box-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
+            }
+
             .clear-filters-button {
-                background: none;
+                background: #238636;
                 border: none;
-                color: #58a6ff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 6px;
                 cursor: pointer;
-                font-size: 0.8em;
-                margin-left: 10px;
+                font-size: 14px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
+
             .clear-filters-button:hover {
-                text-decoration: underline;
+                background: #2ea043;
+                transform: scale(1.05);
+            }
+
+            .clear-filters-button i {
+                font-size: 16px;
             }
             .expand-button {
                 padding: 8px 16px;
@@ -282,30 +308,33 @@
                 background: #4378b5;
             }
             .pagination {
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
-                color: #8b949e;
-                font-size: 0.8em;
-                margin-top: 5px;
-            }
-            .pagination button {
-                background: #161b22;
-                border: 1px solid #30363d;
-                color: #c9d1d9;
-                padding: 8px 12px;
-                margin: 0 5px;
-                cursor: pointer;
-                border-radius: 6px;
-            }
-            .pagination button:hover {
-                background: #58a6ff;
-                color: #0d1117;
-            }
-            .pagination button.active {
-                background: #58a6ff;
-                color: #0d1117;
-            }
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centraliza verticalmente */
+            margin-top: 20px;
+            gap: 10px; /* Espaçamento entre os elementos */
+        }
+
+        .pagination button {
+            background: #161b22;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background: #58a6ff;
+            color: #0d1117;
+        }
+
+        #pageInfo {
+            color: #8b949e;
+            font-size: 0.9rem;
+            margin: 0 10px; /* Espaçamento entre o texto e os botões */
+        }
         </style>
     </head>
     <body>
@@ -340,7 +369,7 @@
             </select>
 
             <button id="clearFiltersButton" class="clear-filters-button">
-                🗑️ Limpar
+                <i class="fas fa-times"></i> Limpar
             </button>
         </div>
 
