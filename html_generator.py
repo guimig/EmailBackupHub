@@ -187,7 +187,6 @@ def update_root_index():
                 padding: 2rem 1rem;
                 margin-top: 4rem;
             }}
-
             .footer-content {{
                 max-width: 1200px;
                 margin: 0 auto;
@@ -197,64 +196,52 @@ def update_root_index():
                 justify-content: space-between;
                 align-items: center;
             }}
-
             .footer-logo {{
                 height: 50px;
                 margin-right: 1.5rem;
             }}
-
             .institutional-info {{
                 display: flex;
                 align-items: center;
             }}
-
             .institutional-title {{
                 color: #c9d1d9;
                 margin: 0 0 0.5rem 0;
                 font-size: 1.2rem;
             }}
-
             .campus-info {{
                 color: #8b949e;
                 margin: 0;
                 line-height: 1.6;
             }}
-
             .developer-info {{
                 text-align: right;
             }}
-
             .developed-by {{
                 color: #8b949e;
                 margin: 0 0 1rem 0;
             }}
-
             .developer-name {{
                 color: #58a6ff;
                 transition: color 0.3s ease;
             }}
-
             .developer-name:hover {{
                 color: #1f6feb;
                 text-decoration: underline;
             }}
-
             .social-links {{
                 display: flex;
                 gap: 1rem;
                 justify-content: flex-end;
             }}
-
             .social-icon {{
                 color: #8b949e;
                 font-size: 1.2rem;
                 transition: color 0.3s ease;
             }}
-
             .social-icon:hover {{
                 color: #58a6ff;
             }}
-
             @media (max-width: 768px) {{
                 .footer-content {{
                     flex-direction: column;
@@ -390,7 +377,6 @@ def update_root_index():
                 margin: 15px auto;
                 align-items: center;
             }}
-
             .filter-input {{
                 background: #0d1117;
                 border: 1px solid #30363d;
@@ -402,31 +388,26 @@ def update_root_index():
                 width: 100%;
                 max-width: 300px;
             }}
-
             .filter-input:focus {{
                 border-color: #58a6ff;
                 box-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
             }}
-
             .clear-filters-button {{
-                background: #238636;
+                background: #58a6ff;
                 border: none;
-                color: white;
-                padding: 10px 20px;
+                color: #0d1117;
+                padding: 8px 16px;
                 border-radius: 6px;
                 cursor: pointer;
-                font-size: 14px;
+                font-size: 0.75em;
                 transition: all 0.3s ease;
                 display: flex;
                 align-items: center;
                 gap: 8px;
             }}
-
             .clear-filters-button:hover {{
-                background: #2ea043;
-                transform: scale(1.05);
+                background: #4378b5;
             }}
-
             .clear-filters-button i {{
                 font-size: 16px;
             }}
@@ -447,28 +428,25 @@ def update_root_index():
             align-items: center; /* Centraliza verticalmente */
             margin-top: 20px;
             gap: 10px; /* Espaçamento entre os elementos */
-        }}
-
-        .pagination button {{
-            background: #161b22;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-        }}
-
-        .pagination button:hover {{
-            background: #58a6ff;
-            color: #0d1117;
-        }}
-
-        #pageInfo {{
-            color: #8b949e;
-            font-size: 0.9rem;
-            margin: 0 10px; /* Espaçamento entre o texto e os botões */
-        }}
+            }}
+            .pagination button {{
+                background: #161b22;
+                border: 1px solid #30363d;
+                color: #c9d1d9;
+                padding: 8px 12px;
+                cursor: pointer;
+                border-radius: 6px;
+                transition: background 0.3s ease;
+            }}
+            .pagination button:hover {{
+                background: #58a6ff;
+                color: #0d1117;
+            }}
+            #pageInfo {{
+                color: #8b949e;
+                font-size: 0.9rem;
+                margin: 0 10px; /* Espaçamento entre o texto e os botões */
+            }}
         </style>
     </head>
     <body>
