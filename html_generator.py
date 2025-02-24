@@ -489,10 +489,12 @@ def update_root_index():
         </style>
     </head>
     <body>
-        <h1 class="main-title">
-            <span class="title-text">CEOF - Relatórios Gerenciais</span>
-            <span class="title-highlight"></span>
-        </h1>
+        <div style="text-align: center;">
+            <h1 class="main-title">
+                <span class="title-text">CEOF - Relatórios Gerenciais</span>
+                <span class="title-highlight"></span>
+            </h1>
+        </div>
         
         <!-- Barra de pesquisa otimizada para mobile -->
         <div class="search-filters">
