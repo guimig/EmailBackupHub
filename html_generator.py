@@ -137,6 +137,7 @@ def update_root_index():
     <head>
         <title>CEOF - Relatórios Gerenciais</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <style>
             body {{
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -547,7 +548,7 @@ def update_root_index():
                         <p class="campus-info">
                             <i class="fas fa-university"></i>
                             Coordenação de Execução Orçamentária e Financeira (CEOF)<br>
-                            IFC - Campus Araquari
+                            Não é uma página oficial do IFC - Campus Araquari
                         </p>
                     </div>
                 </div>
@@ -559,8 +560,8 @@ def update_root_index():
                         <span class="developer-name">Guilherme M.</span>
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><img src="img/github-mark-white.png"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><img src="img/mail-logo.png"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/guimig/EmailBackupHub" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
