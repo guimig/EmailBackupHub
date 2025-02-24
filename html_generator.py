@@ -167,7 +167,7 @@ def update_root_index():
             }}
             .title-highlight {{
                 position: absolute;
-                bottom: -10px; /* Ajuste para posicionar a barra abaixo do texto */
+                bottom: -20px; /* Ajuste para posicionar a barra abaixo do texto */
                 left: 50%; /* Centraliza horizontalmente */
                 transform: translateX(-50%); /* Ajuste fino para centralização */
                 width: 50%; /* Largura da barra */
