@@ -9,27 +9,33 @@ def create_latest_summary_html():
         if root == BACKUP_FOLDER:
             continue
 
-        html_files = sorted(
-            [f for f in files if f.endswith('.html')],
-            key=lambda f: os.path.getmtime(os.path.join(root, f)),
-            reverse=True
-        )
+        # Lista para armazenar arquivos com suas datas parseadas
+        html_files = []
+        for f in files:
+            if not f.endswith('.html'):
+                continue
+            
+            # Extrai data do nome do arquivo
+            date_match = re.search(r'(\d{2}-\d{2}-\d{4})', f)
+            if date_match:
+                file_date_str = date_match.group(1)
+                file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
+            else:
+                # Fallback para data de modificação
+                file_path = os.path.join(root, f)
+                mtime = os.path.getmtime(file_path)
+                file_date = datetime.datetime.fromtimestamp(mtime)
+            
+            html_files.append((f, file_date))
         
         if not html_files:
             continue
-
-        latest_file = html_files[0]
+        
+        # Ordena pelos mais recentes primeiro (baseado na data extraída)
+        html_files_sorted = sorted(html_files, key=lambda x: x[1], reverse=True)
+        latest_file, latest_date = html_files_sorted[0]
         latest_path = os.path.join(root, latest_file)
         normalized_title = os.path.basename(root)
-
-        date_match = re.search(r'(\d{2}-\d{2}-\d{4})', latest_file)
-        if date_match:
-            file_date_str = date_match.group(1)
-            file_date = datetime.datetime.strptime(file_date_str, "%d-%m-%Y")
-        else:
-            file_date = datetime.datetime.fromtimestamp(
-                os.path.getmtime(latest_path)
-            ).replace(tzinfo=None)
 
         output_path = os.path.join(REPO_ROOT, f"{normalized_title}.html")
 
@@ -38,7 +44,7 @@ def create_latest_summary_html():
         
         footer = f"""
         <div style="margin-top: 40px; color: #8b949e; border-top: 1px solid #30363d; padding-top: 20px;">
-            <p>Relatório gerado em: {file_date.strftime('%d/%m/%Y')}</p>
+            <p>Relatório gerado em: {latest_date.strftime('%d/%m/%Y')}</p>
             <p>Última busca por novos relatórios: {datetime.datetime.now(TIMEZONE).strftime('%d/%m/%Y %H:%M:%S')}</p>
         </div>
         """
