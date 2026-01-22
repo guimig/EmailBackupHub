@@ -141,7 +141,7 @@ def update_root_index():
     html_content = f"""
     <html>
     <head>
-        <title>CEOF - Relatórios Gerenciais</title>
+        <title>DAP - Relatórios Gerenciais</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <style>
@@ -497,7 +497,7 @@ def update_root_index():
     <body>
         <div style="text-align: center;">
             <h1 class="main-title">
-                <span class="title-text">CEOF - Relatórios Gerenciais</span>
+                <span class="title-text">DAP - Relatórios Gerenciais</span>
                 <span class="title-highlight"></span>
             </h1>
         </div>
@@ -604,7 +604,7 @@ def update_root_index():
                         <h3 class="institutional-title">Repositório de Arquivos</h3>
                         <p class="campus-info">
                             <i class="fas fa-university"></i>
-                            Coordenação de Execução Orçamentária e Financeira (CEOF)<br>
+                            Direção de Administração e Planejamento (DAP)<br>
                             Essa <b>não</b> é uma página oficial do IFC - Campus Araquari
                         </p>
                     </div>
