@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizador de Relatório</title>
+  <style>
+    :root { color-scheme: dark; --bg: #0d1117; --panel: #161b22; --line: #30363d; --text: #c9d1d9; --muted: #8b949e; --brand: #58a6ff; --total: #332b00; --warn: #f2cc60; --ok: #56d364; --bad: #ff7b72; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    header { padding: 20px; border-bottom: 1px solid var(--line); background: #0b1018; }
+    h1 { margin: 0 0 8px; font-size: 1.5rem; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    main { padding: 16px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); }
+    .tag { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--panel); }
+    .toolbar { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; margin: 16px 0; }
+    input, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
+    button { cursor: pointer; color: #0d1117; background: var(--brand); border-color: var(--brand); font-weight: 700; }
+    .table-wrap { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 72vh; background: var(--panel); }
+    table { border-collapse: collapse; width: 100%; min-width: 900px; }
+    th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 8px; vertical-align: top; }
+    th { position: sticky; top: 0; background: #21262d; z-index: 2; }
+    th input { width: 100%; margin-top: 6px; padding: 6px; font-size: 0.82rem; }
+    tbody tr:hover td { background: #1c2129; }
+    .total-row td { background: var(--total); font-weight: 700; }
+    .quality { margin: 12px 0; color: var(--muted); }
+    .quality.bad { color: var(--warn); }
+    @media (max-width: 800px) { .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="dashboard.html">← Dashboard</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
+    <h1 id="title">Carregando relatório...</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+  <main>
+    <div class="toolbar">
+      <input id="globalSearch" type="search" placeholder="Pesquisar em todas as colunas">
+      <button id="clearFilters">Limpar filtros</button>
+      <button id="exportCsv">Exportar CSV</button>
+    </div>
+    <div id="quality" class="quality"></div>
+    <section class="table-wrap">
+      <table id="table"></table>
+    </section>
+  </main>
+  <script>
+    let report = null;
+    let columnFilters = {};
+    const byId = id => document.getElementById(id);
+    const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    function reportUrl() {
+      const params = new URLSearchParams(location.search);
+      return params.get('report') || 'data/index.json';
+    }
+
+    async function loadReport() {
+      const url = reportUrl();
+      const response = await fetch(url);
+      report = await response.json();
+      byId('title').textContent = report.title || 'Relatório';
+      byId('htmlLink').href = report.html_path || '#';
+      byId('jsonLink').href = url;
+      byId('meta').innerHTML = [
+        `Data: ${report.date || '-'}`,
+        `Periodicidade: ${report.metadata?.periodicidade || '-'}`,
+        `Status: ${report.metadata?.status || '-'}`,
+        `Idade: ${report.metadata?.idade_dias ?? '-'} dias`,
+        `Exercício: ${report.metadata?.exercicio || '-'}`,
+        `Linhas: ${report.metadata?.row_count ?? 0}`
+      ].map(text => `<span class="tag">${escapeHtml(text)}</span>`).join('');
+      byId('quality').textContent = report.quality?.ok ? 'Parsing concluído sem alertas.' : `Alertas de parsing: ${(report.quality?.issues || []).join(', ')}`;
+      byId('quality').className = report.quality?.ok ? 'quality' : 'quality bad';
+      renderTable();
+    }
+
+    function filteredRows() {
+      const term = normalize(byId('globalSearch').value);
+      return (report.rows || []).filter(row => {
+        const values = Object.values(row).join(' ');
+        if (term && !normalize(values).includes(term)) return false;
+        return Object.entries(columnFilters).every(([column, value]) => !value || normalize(row[column]).includes(normalize(value)));
+      });
+    }
+
+    function renderTable() {
+      const columns = report.columns || [];
+      const rows = filteredRows();
+      const totals = new Set((report.totals || []).map(total => JSON.stringify(total.raw || {})));
+      byId('table').innerHTML = `
+        <thead><tr>${columns.map(column => `<th>${escapeHtml(column)}<input data-column="${escapeHtml(column)}" placeholder="Filtrar"></th>`).join('')}</tr></thead>
+        <tbody>${rows.map(row => {
+          const isTotal = totals.has(JSON.stringify(row)) || String(Object.values(row)[0] || '').toLowerCase().startsWith('total');
+          return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+        }).join('')}</tbody>
+      `;
+      document.querySelectorAll('th input').forEach(input => {
+        input.value = columnFilters[input.dataset.column] || '';
+        input.addEventListener('input', event => {
+          columnFilters[event.target.dataset.column] = event.target.value;
+          renderTable();
+        });
+      });
+    }
+
+    function exportCsv() {
+      const columns = report.columns || [];
+      const lines = [columns.map(csvCell).join(',')];
+      for (const row of filteredRows()) {
+        lines.push(columns.map(column => csvCell(row[column])).join(','));
+      }
+      download(`${report.slug || 'relatorio'}.csv`, lines.join('\n'));
+    }
+
+    function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
+    function download(name, content) {
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = name;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+    }
+
+    byId('globalSearch').addEventListener('input', renderTable);
+    byId('clearFilters').addEventListener('click', () => { columnFilters = {}; byId('globalSearch').value = ''; renderTable(); });
+    byId('exportCsv').addEventListener('click', exportCsv);
+    loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });
+  </script>
+</body>
+</html>
