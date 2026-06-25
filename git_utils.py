@@ -41,7 +41,7 @@ def commit_changes():
         return
 
     repo.git.add(*generated_paths)
-    if not repo.is_dirty(untracked_files=True):
+    if not repo.is_dirty(index=True, working_tree=True, untracked_files=False):
         print("Nenhuma alteração para commitar.")
         return
 
