@@ -16,14 +16,16 @@ def check_git_repo():
 def get_generated_paths():
     paths = []
 
-    if os.path.isdir(BACKUP_FOLDER):
-        paths.append(BACKUP_FOLDER)
+    for folder in [BACKUP_FOLDER, "data"]:
+        if os.path.isdir(folder):
+            paths.append(folder)
 
-    if os.path.exists("index.html"):
-        paths.append("index.html")
+    for file_name in ["index.html", "dashboard.html", "report-viewer.html"]:
+        if os.path.exists(file_name):
+            paths.append(file_name)
 
     for file_name in os.listdir("."):
-        if file_name.endswith(".html") and file_name != "index.html":
+        if file_name.endswith(".html") and file_name not in {"index.html", "dashboard.html", "report-viewer.html"}:
             paths.append(file_name)
 
     return paths
