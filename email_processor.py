@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup, Comment
 
 from config import BACKUP_FOLDER, TIMEZONE
+from data_generator import generate_data_files, record_source_uid
 from html_generator import update_root_index
 from git_utils import commit_changes
 from imap_client import fetch_unread_emails, mark_emails_as_seen
@@ -35,22 +36,25 @@ SAFE_URL_SCHEMES = {"", "http", "https", "mailto"}
 DANGEROUS_STYLE_PATTERNS = ("expression", "javascript:", "url(", "behavior:", "-moz-binding")
 
 
-def process_emails():
+def process_emails(commit=True):
     emails = fetch_unread_emails()
     print(f"Numero de e-mails encontrados: {len(emails)}")
 
     processed_uids = []
     for msg_data in emails:
         msg = email.message_from_bytes(msg_data["raw"], policy=policy.default)
-        if process_message(msg):
+        if process_message(msg, msg_data["uid"]):
             processed_uids.append(msg_data["uid"])
 
     update_root_index()
-    commit_changes()
-    mark_emails_as_seen(processed_uids)
+    generate_data_files()
+    if commit:
+        commit_changes()
+        mark_emails_as_seen(processed_uids)
+    return processed_uids
 
 
-def process_message(msg):
+def process_message(msg, source_uid=None):
     subject = msg.get("subject", "Sem titulo")
     date_str = msg.get("date")
     date = parsedate_to_datetime(date_str) if date_str else datetime.datetime.now(TIMEZONE)
@@ -72,6 +76,7 @@ def process_message(msg):
         file_path = os.path.join(subject_folder, file_name)
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(body)
+        record_source_uid(file_path, source_uid)
         return True
     except Exception as e:
         print(f"Erro ao processar a mensagem: {e}")
