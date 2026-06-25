@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DAP - Dashboard de Relatórios</title>
+  <style>
+    :root { color-scheme: dark; --bg: #0d1117; --panel: #161b22; --line: #30363d; --text: #c9d1d9; --muted: #8b949e; --brand: #58a6ff; --warn: #f2cc60; --ok: #56d364; --bad: #ff7b72; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    header { padding: 24px; border-bottom: 1px solid var(--line); background: #0b1018; }
+    h1 { margin: 0 0 8px; font-size: 1.8rem; }
+    .sub { color: var(--muted); margin: 0; }
+    main { padding: 20px; max-width: 1400px; margin: 0 auto; }
+    .toolbar { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 14px; }
+    input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; font-size: 0.95rem; }
+    button { cursor: pointer; color: #0d1117; background: var(--brand); border-color: var(--brand); font-weight: 700; }
+    .summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+    .metric { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+    .metric strong { display: block; font-size: 1.35rem; color: #fff; }
+    .metric span { color: var(--muted); font-size: 0.85rem; }
+    .table-wrap { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 70vh; background: var(--panel); }
+    table { width: 100%; border-collapse: collapse; min-width: 980px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #21262d; z-index: 1; cursor: pointer; }
+    tr:hover td { background: #1c2129; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+    .ok { color: var(--ok); }
+    .bad { color: var(--bad); }
+    .warn { color: var(--warn); }
+    @media (max-width: 900px) { .toolbar, .summary { grid-template-columns: 1fr; } main { padding: 12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DAP - Dashboard de Relatórios</h1>
+    <p class="sub">Visualização complementar baseada na API estática em JSON. Os HTMLs originais permanecem preservados.</p>
+  </header>
+  <main>
+    <section class="summary">
+      <div class="metric"><strong id="totalReports">0</strong><span>relatórios</span></div>
+      <div class="metric"><strong id="updatedReports">0</strong><span>atualizados</span></div>
+      <div class="metric"><strong id="staleReports">0</strong><span>desatualizados</span></div>
+      <div class="metric"><strong id="qualityIssues">0</strong><span>com alerta de parsing</span></div>
+    </section>
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Pesquisar por título, data, termo, coluna ou conteúdo indexado">
+      <select id="periodicity"><option value="">Todas periodicidades</option></select>
+      <select id="status"><option value="">Todos status</option><option value="atualizado">Atualizado</option><option value="desatualizado">Desatualizado</option></select>
+      <button id="exportCsv">Exportar CSV</button>
+    </section>
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="title">Relatório</th>
+            <th data-sort="date_iso">Data</th>
+            <th data-sort="periodicidade">Periodicidade</th>
+            <th data-sort="status">Status</th>
+            <th data-sort="idade_dias">Idade</th>
+            <th>Qualidade</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+  <script>
+    let indexData = null;
+    let searchData = null;
+    let reports = [];
+    let sortKey = 'title';
+    let sortDir = 1;
+
+    const byId = id => document.getElementById(id);
+    const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    async function loadData() {
+      const [indexResponse, searchResponse] = await Promise.all([
+        fetch('data/index.json'),
+        fetch('data/search-index.json')
+      ]);
+      indexData = await indexResponse.json();
+      searchData = await searchResponse.json();
+      const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
+      reports = (indexData.reports || []).map(report => ({ ...report, searchText: textBySlug[report.slug] || '' }));
+      populateFilters();
+      render();
+    }
+
+    function populateFilters() {
+      const values = [...new Set(reports.map(report => report.metadata.periodicidade).filter(Boolean))].sort();
+      byId('periodicity').insertAdjacentHTML('beforeend', values.map(value => `<option value="${value}">${value}</option>`).join(''));
+    }
+
+    function filteredReports() {
+      const term = normalize(byId('search').value);
+      const periodicity = byId('periodicity').value;
+      const status = byId('status').value;
+      return reports.filter(report => {
+        const matchesTerm = !term || normalize(`${report.title} ${report.date} ${report.html_path} ${report.searchText}`).includes(term);
+        const matchesPeriodicity = !periodicity || report.metadata.periodicidade === periodicity;
+        const matchesStatus = !status || report.metadata.status === status;
+        return matchesTerm && matchesPeriodicity && matchesStatus;
+      }).sort((a, b) => {
+        const av = sortValue(a, sortKey);
+        const bv = sortValue(b, sortKey);
+        return String(av).localeCompare(String(bv), 'pt-BR', { numeric: true }) * sortDir;
+      });
+    }
+
+    function sortValue(report, key) {
+      if (key in report) return report[key];
+      return report.metadata[key] || '';
+    }
+
+    function render() {
+      const rows = filteredReports();
+      byId('totalReports').textContent = reports.length;
+      byId('updatedReports').textContent = reports.filter(report => report.metadata.status === 'atualizado').length;
+      byId('staleReports').textContent = reports.filter(report => report.metadata.status === 'desatualizado').length;
+      byId('qualityIssues').textContent = reports.filter(report => !report.quality.ok).length;
+      byId('rows').innerHTML = rows.map(report => `
+        <tr>
+          <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.title)}</a></td>
+          <td>${report.date}</td>
+          <td><span class="tag">${report.metadata.periodicidade}</span></td>
+          <td class="${report.metadata.status === 'atualizado' ? 'ok' : 'bad'}">${report.metadata.status}</td>
+          <td>${report.metadata.idade_dias} dias</td>
+          <td class="${report.quality.ok ? 'ok' : 'warn'}">${report.quality.ok ? 'ok' : report.quality.issues.join(', ')}</td>
+          <td><a href="${report.html_path}">HTML</a> | <a href="${report.json_path}">JSON</a> | <a href="${report.series_path}">Série</a></td>
+        </tr>
+      `).join('');
+    }
+
+    function exportCsv() {
+      const header = ['titulo', 'data', 'periodicidade', 'status', 'idade_dias', 'html_path', 'json_path'];
+      const lines = [header.join(',')];
+      for (const report of filteredReports()) {
+        lines.push([
+          report.title,
+          report.date,
+          report.metadata.periodicidade,
+          report.metadata.status,
+          report.metadata.idade_dias,
+          report.html_path,
+          report.json_path
+        ].map(csvCell).join(','));
+      }
+      download('relatorios.csv', lines.join('\n'));
+    }
+
+    function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
+    function download(name, content) {
+      const blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = name;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+    }
+
+    byId('search').addEventListener('input', render);
+    byId('periodicity').addEventListener('change', render);
+    byId('status').addEventListener('change', render);
+    byId('exportCsv').addEventListener('click', exportCsv);
+    document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
+      const nextKey = th.dataset.sort;
+      sortDir = sortKey === nextKey ? -sortDir : 1;
+      sortKey = nextKey;
+      render();
+    }));
+    loadData().catch(error => { byId('rows').innerHTML = `<tr><td colspan="7">Erro ao carregar dados: ${escapeHtml(error.message)}</td></tr>`; });
+  </script>
+</body>
+</html>
