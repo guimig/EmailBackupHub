@@ -15,7 +15,7 @@ REPORTS_DIR = DATA_DIR / "reports"
 SNAPSHOTS_DIR = DATA_DIR / "snapshots"
 SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
-SCHEMA_VERSION = "1.1"
+SCHEMA_VERSION = "1.2"
 
 
 def normalize_slug(text):
@@ -68,12 +68,10 @@ def extract_date(content, file_path):
     return parse_date_from_name(file_path)
 
 
-def file_hash(path):
-    digest = hashlib.sha256()
-    with open(path, "rb") as file_obj:
-        for chunk in iter(lambda: file_obj.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+def cheap_hash(path):
+    stat = os.stat(path)
+    raw = f"{rel_path(path)}:{stat.st_size}:{int(stat.st_mtime)}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def extract_title(soup, file_path):
@@ -92,8 +90,7 @@ def parse_br_number(value):
     if not value:
         return None
     negative = value.startswith("(") and value.endswith(")")
-    value = value.strip("()")
-    value = re.sub(r"[^\d,.-]", "", value)
+    value = re.sub(r"[^\d,.-]", "", value.strip("()"))
     if not value:
         return None
     if "," in value:
@@ -103,15 +100,6 @@ def parse_br_number(value):
     except ValueError:
         return None
     return -number if negative else number
-
-
-def extract_values_from_text(text):
-    values = []
-    for raw_value in re.findall(r"\(?\d[\d\.]*,\d{2}\)?|\(?\d[\d\.]+\)?", text or ""):
-        number = parse_br_number(raw_value)
-        if number is not None:
-            values.append(number)
-    return values
 
 
 def build_table_grid(table):
@@ -126,9 +114,7 @@ def build_table_grid(table):
 def pick_table(soup):
     tables = [build_table_grid(table) for table in soup.find_all("table")]
     tables = [table for table in tables if table]
-    if not tables:
-        return []
-    return max(tables, key=lambda table: sum(len(row) for row in table))
+    return max(tables, key=lambda table: sum(len(row) for row in table)) if tables else []
 
 
 def looks_like_header(row):
@@ -141,14 +127,8 @@ def looks_like_header(row):
 def normalize_table(grid):
     if not grid:
         return [], [], [], ["no_table"]
-
     issues = []
-    header_index = None
-    for idx, row in enumerate(grid):
-        if looks_like_header(row):
-            header_index = idx
-            break
-
+    header_index = next((idx for idx, row in enumerate(grid) if looks_like_header(row)), None)
     if header_index is None:
         width = max(len(row) for row in grid)
         columns = [f"Coluna {idx + 1}" for idx in range(width)]
@@ -157,27 +137,21 @@ def normalize_table(grid):
     else:
         columns = [cell or f"Coluna {idx + 1}" for idx, cell in enumerate(grid[header_index])]
         data_rows = grid[header_index + 1:]
-
     width = len(columns)
     rows = []
     totals = []
     for raw_row in data_rows:
-        if not any(raw_row):
-            continue
         padded = (raw_row + [""] * width)[:width]
+        if not any(padded):
+            continue
         row = {columns[idx]: padded[idx] for idx in range(width)}
         first_cell = next((cell for cell in padded if cell), "")
-        numeric_values = {
-            columns[idx]: parse_br_number(padded[idx])
-            for idx in range(width)
-            if parse_br_number(padded[idx]) is not None
-        }
+        numeric_values = {columns[idx]: parse_br_number(padded[idx]) for idx in range(width) if parse_br_number(padded[idx]) is not None}
         if first_cell.lower().startswith("total"):
             totals.append({"label": first_cell, "values": numeric_values, "raw": row})
         rows.append(row)
         if len(raw_row) != width:
             issues.append("inconsistent_columns")
-
     if not rows:
         issues.append("no_rows")
     return columns, rows, totals, sorted(set(issues))
@@ -193,8 +167,7 @@ def infer_periodicity(title, report_date, now_date):
 
 
 def infer_status(periodicity, age_days):
-    limits = {"diaria": 1, "mensal": 35, "anual": 370}
-    limit = limits.get(periodicity, 1)
+    limit = {"diaria": 1, "mensal": 35, "anual": 370}.get(periodicity, 1)
     return {"status": "desatualizado" if age_days > limit else "atualizado", "limite_dias": limit}
 
 
@@ -204,9 +177,8 @@ def extract_exercicio(title, report_date):
 
 
 def metadata_for(title, report_date, content_hash, source_path, source_map, now, row_count=0, column_count=0):
-    now_date = now.date()
-    age_days = (now_date - report_date).days
-    periodicity = infer_periodicity(title, report_date, now_date)
+    age_days = (now.date() - report_date).days
+    periodicity = infer_periodicity(title, report_date, now.date())
     return {
         "ultima_atualizacao": now.isoformat(),
         "idade_dias": age_days,
@@ -227,13 +199,11 @@ def full_report_document(file_path, source_map, now):
     report_date, date_issue = extract_date(content, file_path)
     slug = normalize_slug(Path(file_path).parent.name or title)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
-    grid = pick_table(soup)
-    columns, rows, totals, issues = normalize_table(grid)
+    columns, rows, totals, issues = normalize_table(pick_table(soup))
     if date_issue:
         issues.append(date_issue)
     if not soup.find("table"):
         issues.append("no_html_table")
-
     source_path = rel_path(file_path)
     return {
         "schema_version": SCHEMA_VERSION,
@@ -254,18 +224,7 @@ def full_report_document(file_path, source_map, now):
 def light_history_document(file_path, title, slug, source_map, now):
     report_date, date_issue = parse_date_from_name(file_path)
     source_path = rel_path(file_path)
-    content_hash = file_hash(file_path)
-    issues = [date_issue] if date_issue else []
-    totals = []
-    try:
-        content = Path(file_path).read_text(encoding="utf-8", errors="replace")
-        matches = re.findall(r"[^<>\n]*Total[^<>\n]*(?:<[^>]+>[^<>\n]*){0,20}", content, flags=re.IGNORECASE)
-        if matches:
-            values = extract_values_from_text(BeautifulSoup(matches[-1], "html.parser").get_text(" ", strip=True))
-            totals = [{"label": "Total", "values": {f"Valor {idx + 1}": value for idx, value in enumerate(values)}}]
-    except Exception:
-        issues.append("total_parse_failed")
-
+    issues = [date_issue, "light_snapshot"] if date_issue else ["light_snapshot"]
     return {
         "schema_version": SCHEMA_VERSION,
         "slug": slug,
@@ -276,24 +235,20 @@ def light_history_document(file_path, title, slug, source_map, now):
         "category": title,
         "columns": [],
         "rows": [],
-        "totals": totals,
-        "metadata": metadata_for(title, report_date, content_hash, source_path, source_map, now),
-        "quality": {"ok": not issues, "issues": sorted(set(issues))},
+        "totals": [],
+        "metadata": metadata_for(title, report_date, cheap_hash(file_path), source_path, source_map, now),
+        "quality": {"ok": False, "issues": issues},
     }
 
 
-def find_backup_html_files():
-    backup_root = Path(REPO_ROOT) / BACKUP_FOLDER
-    if not backup_root.exists():
-        return []
-    return [str(path) for path in backup_root.rglob("*.html")]
-
-
 def grouped_files():
+    backup_root = Path(REPO_ROOT) / BACKUP_FOLDER
     groups = {}
-    for file_path in find_backup_html_files():
-        slug = normalize_slug(Path(file_path).parent.name)
-        groups.setdefault(slug, []).append(file_path)
+    if not backup_root.exists():
+        return groups
+    for file_path in backup_root.rglob("*.html"):
+        slug = normalize_slug(file_path.parent.name)
+        groups.setdefault(slug, []).append(str(file_path))
     return groups
 
 
@@ -310,14 +265,14 @@ def build_search_text(doc):
 
 
 def build_series(slug, snapshots):
-    series = []
-    for doc in sorted(snapshots, key=lambda item: item["date_iso"]):
-        totals = []
-        for total in doc.get("totals", []):
-            for column, value in total.get("values", {}).items():
-                totals.append({"column": column, "value": value})
-        series.append({"date": doc["date"], "date_iso": doc["date_iso"], "hash_conteudo": doc["metadata"]["hash_conteudo"], "totals": totals})
-    return {"schema_version": SCHEMA_VERSION, "slug": slug, "series": series}
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "slug": slug,
+        "series": [
+            {"date": doc["date"], "date_iso": doc["date_iso"], "hash_conteudo": doc["metadata"]["hash_conteudo"], "totals": []}
+            for doc in sorted(snapshots, key=lambda item: item["date_iso"])
+        ],
+    }
 
 
 def generate_data_files():
@@ -326,18 +281,15 @@ def generate_data_files():
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     SERIES_DIR.mkdir(parents=True, exist_ok=True)
-
     reports = []
     search_documents = []
     history_count = 0
-
     for slug, paths in sorted(grouped_files().items()):
         paths = sorted(paths, key=sort_key)
         latest_path = paths[-1]
         latest_doc = full_report_document(latest_path, source_map, now)
         write_json(REPORTS_DIR / f"{slug}.json", latest_doc)
         search_documents.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_doc)})
-
         snapshots = []
         for path in paths:
             doc = latest_doc if path == latest_path else light_history_document(path, latest_doc["title"], slug, source_map, now)
@@ -346,28 +298,8 @@ def generate_data_files():
             write_json(SNAPSHOTS_DIR / slug / snapshot_name, doc)
         write_json(SERIES_DIR / f"{slug}.json", build_series(slug, snapshots))
         history_count += len(snapshots)
-
         report_path = REPORTS_DIR / f"{slug}.json"
-        reports.append({
-            "slug": slug,
-            "title": latest_doc["title"],
-            "date": latest_doc["date"],
-            "date_iso": latest_doc["date_iso"],
-            "html_path": latest_doc["html_path"],
-            "json_path": rel_path(report_path),
-            "series_path": rel_path(SERIES_DIR / f"{slug}.json"),
-            "viewer_path": f"report-viewer.html?report={rel_path(report_path)}",
-            "metadata": latest_doc["metadata"],
-            "quality": latest_doc["quality"],
-        })
-
-    index_doc = {
-        "schema_version": SCHEMA_VERSION,
-        "generated_at": now.isoformat(),
-        "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"},
-        "reports": reports,
-        "history_count": history_count,
-    }
-    write_json(DATA_DIR / "index.json", index_doc)
+        reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_path), "series_path": rel_path(SERIES_DIR / f"{slug}.json"), "viewer_path": f"report-viewer.html?report={rel_path(report_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
+    write_json(DATA_DIR / "index.json", {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"}, "reports": reports, "history_count": history_count})
     write_json(DATA_DIR / "search-index.json", {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas.")
