@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "suprimento-de-fundos-empenhos",
+  "title": "Suprimento de Fundos - Empenhos",
+  "date": "30/10/2025",
+  "date_iso": "2025-10-30",
+  "html_path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_30-10-2025.html",
+  "category": "Suprimento de Fundos - Empenhos",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T20:54:02.276628-03:00",
+    "idade_dias": 239,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "650954af9994325dbf836e25e5ed1ecd0992d1589054d74fe65c33f102887821",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

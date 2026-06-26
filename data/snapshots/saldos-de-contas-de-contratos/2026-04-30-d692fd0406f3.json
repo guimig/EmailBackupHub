@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldos-de-contas-de-contratos",
+  "title": "Saldos de Contas de Contratos",
+  "date": "30/04/2026",
+  "date_iso": "2026-04-30",
+  "html_path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_30-04-2026.html",
+  "category": "Saldos de Contas de Contratos",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T20:54:02.276628-03:00",
+    "idade_dias": 57,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "d692fd0406f3414882bf549b1fa57f2b45c8885de83ddba41e376e06806ed001",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldos-de-contas-de-contratos",
+  "title": "Saldos de Contas de Contratos",
+  "date": "01/09/2025",
+  "date_iso": "2025-09-01",
+  "html_path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-09-2025.html",
+  "category": "Saldos de Contas de Contratos",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T20:54:02.276628-03:00",
+    "idade_dias": 298,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "daeca07b5076383660acf6a2a4b67460a53d2ca1d2058ba1da56b55adc52ff73",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}
