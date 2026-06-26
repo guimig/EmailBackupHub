@@ -1,11 +1,11 @@
 {
   "schema_version": "1.2",
   "slug": "imoveis-por-ug-conta-contabil-e-rip",
-  "title": "imoveis-por-ug-conta-contabil-e-rip_25-05-2026",
+  "title": "RIP Imóveis por Conta Contábil",
   "date": "25/05/2026",
   "date_iso": "2026-05-25",
   "html_path": "emails/imoveis-por-ug-conta-contabil-e-rip/imoveis-por-ug-conta-contabil-e-rip_25-05-2026.html",
-  "category": "imoveis-por-ug-conta-contabil-e-rip_25-05-2026",
+  "category": "RIP Imóveis por Conta Contábil",
   "columns": [
     "RIP Imóvel (SPIU)",
     "Conta Contábil Número",
@@ -18266,16 +18266,16 @@
   ],
   "totals": [],
   "metadata": {
-    "ultima_atualizacao": "2026-06-25T21:20:38.692133-03:00",
+    "ultima_atualizacao": "2026-06-25T21:47:41.874037-03:00",
     "idade_dias": 31,
-    "periodicidade": "diaria",
+    "periodicidade": "mensal",
     "exercicio": 2026,
     "fonte_email_uid": null,
     "hash_conteudo": "3ed0af15a0f3d741acc23a6d2e46f7034aafb2c4f054d569c0606b1d4247eb0b",
     "row_count": 2281,
     "column_count": 6,
-    "status": "desatualizado",
-    "limite_dias": 1
+    "status": "atualizado",
+    "limite_dias": 35
   },
   "quality": {
     "ok": false,
