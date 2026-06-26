@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "credito-disponivel-mes-lancamento",
+  "title": "Crédito Disponível - Mês Lançamento",
+  "date": "13/02/2026",
+  "date_iso": "2026-02-13",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-02-2026.html",
+  "category": "Crédito Disponível - Mês Lançamento",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 133,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "7b58b7badfbd68ba6cfe970a41ac26c7dc5120a71503cabd60bea001b5d20dac",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
+  "title": "Saldos de Empenhos do Exercício - Conta Contábil",
+  "date": "09/12/2025",
+  "date_iso": "2025-12-09",
+  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_09-12-2025.html",
+  "category": "Saldos de Empenhos do Exercício - Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 199,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "9350bb2ec85cd8af66d7a78dd6242d4ab5581b33bca060f94e312ed865fa8d4d",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

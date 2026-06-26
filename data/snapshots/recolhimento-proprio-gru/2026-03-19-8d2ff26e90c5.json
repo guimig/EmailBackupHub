@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "recolhimento-proprio-gru",
+  "title": "Recolhimento próprio (GRU)",
+  "date": "19/03/2026",
+  "date_iso": "2026-03-19",
+  "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_19-03-2026.html",
+  "category": "Recolhimento próprio (GRU)",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 99,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "8d2ff26e90c5ba9468e18180f4b3b0b71e4df09a84c65e4a21cf9c0916ef2957",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

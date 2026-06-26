@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "limite-de-saque-conta-contabil",
+  "title": "Limite de Saque - Conta Contábil",
+  "date": "28/04/2026",
+  "date_iso": "2026-04-28",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_28-04-2026.html",
+  "category": "Limite de Saque - Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 59,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "46d8cc94f6bf1870603af70c21f92b877581e8d65258ac91773be6bd04b6a3da",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

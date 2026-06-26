@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
+  "title": "Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento",
+  "date": "30/04/2026",
+  "date_iso": "2026-04-30",
+  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_30-04-2026.html",
+  "category": "Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 57,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "6251cac947bcf44cd617396c90d454cbda8c982e229afed4970cf9870b3f21cd",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

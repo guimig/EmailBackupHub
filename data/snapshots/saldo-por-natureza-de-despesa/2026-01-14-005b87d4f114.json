@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldo-por-natureza-de-despesa",
+  "title": "Saldo por Natureza de Despesa",
+  "date": "14/01/2026",
+  "date_iso": "2026-01-14",
+  "html_path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_14-01-2026.html",
+  "category": "Saldo por Natureza de Despesa",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 163,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "005b87d4f114e7b40978a574104ae925b8cbaaa90ee7a7b76d2a7197d206f920",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

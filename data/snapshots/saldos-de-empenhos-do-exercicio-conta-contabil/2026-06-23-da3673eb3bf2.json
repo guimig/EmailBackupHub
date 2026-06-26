@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
+  "title": "Saldos de Empenhos do Exercício - Conta Contábil",
+  "date": "23/06/2026",
+  "date_iso": "2026-06-23",
+  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_23-06-2026.html",
+  "category": "Saldos de Empenhos do Exercício - Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 3,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "da3673eb3bf233d3f31d4489bf43fbb9b9573cf6cfc4b250c051fa79f5e53e3e",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

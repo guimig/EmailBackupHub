@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
+  "title": "Saldo de Empenhos a Liquidar - Mês a mês",
+  "date": "03/06/2026",
+  "date_iso": "2026-06-03",
+  "html_path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_03-06-2026.html",
+  "category": "Saldo de Empenhos a Liquidar - Mês a mês",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 23,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "b99f18f6d801cb931eccada2f1fe16ca9cec0dcc10d93f8c13055c0fdc73d404",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

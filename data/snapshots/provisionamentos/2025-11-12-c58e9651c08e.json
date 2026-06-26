@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "provisionamentos",
+  "title": "Provisionamentos",
+  "date": "12/11/2025",
+  "date_iso": "2025-11-12",
+  "html_path": "emails/provisionamentos/provisionamentos_12-11-2025.html",
+  "category": "Provisionamentos",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 226,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "c58e9651c08e7fd98353714f426631879ba3c68f037a4acdc611f4c92f7558e3",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

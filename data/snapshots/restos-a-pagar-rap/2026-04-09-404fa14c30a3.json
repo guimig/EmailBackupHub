@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "restos-a-pagar-rap",
+  "title": "Restos a pagar (RAP)",
+  "date": "09/04/2026",
+  "date_iso": "2026-04-09",
+  "html_path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_09-04-2026.html",
+  "category": "Restos a pagar (RAP)",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T08:39:40.086052-03:00",
+    "idade_dias": 78,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "404fa14c30a38689dfcaabd5ca435bdf9c07630121ec1cd1badfc7ac7f315fda",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}
