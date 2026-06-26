@@ -17,6 +17,50 @@ SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
 SCHEMA_VERSION = "1.2"
 
+REPORT_OVERRIDES = {
+    "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
+        "periodicidade": "historico",
+        "status": "atualizado",
+        "limite_dias": None,
+    },
+    "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
+        "periodicidade": "historico",
+        "status": "atualizado",
+        "limite_dias": None,
+    },
+    "despesas-empenhadas-liquidadas-e-pagas-2024": {
+        "periodicidade": "historico",
+        "status": "atualizado",
+        "limite_dias": None,
+    },
+    "despesas-empenhadas-liquidadas-e-pagas-2025": {
+        "periodicidade": "historico",
+        "status": "atualizado",
+        "limite_dias": None,
+    },
+    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": {
+        "periodicidade": "mensal",
+        "limite_dias": 35,
+    },
+    "imoveis-por-ug-conta-contabil-e-rip": {
+        "title": "RIP Imóveis por Conta Contábil",
+        "periodicidade": "mensal",
+        "limite_dias": 35,
+    },
+    "credito-disponivel-mes-lancamento": {
+        "periodicidade": "diaria",
+        "limite_dias": 1,
+    },
+    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": {
+        "periodicidade": "diaria",
+        "limite_dias": 1,
+    },
+    "saldo-de-empenhos-a-liquidar-mes-a-mes": {
+        "periodicidade": "diaria",
+        "limite_dias": 1,
+    },
+}
+
 
 def normalize_slug(text):
     text = unicodedata.normalize("NFD", text or "")
@@ -83,6 +127,11 @@ def extract_title(soup, file_path):
     if soup.title and soup.title.get_text(strip=True):
         return soup.title.get_text(strip=True)
     return os.path.splitext(os.path.basename(file_path))[0]
+
+
+def apply_report_overrides(slug, title):
+    override = REPORT_OVERRIDES.get(slug, {})
+    return override.get("title", title)
 
 
 def parse_br_number(value):
@@ -157,17 +206,27 @@ def normalize_table(grid):
     return columns, rows, totals, sorted(set(issues))
 
 
-def infer_periodicity(title, report_date, now_date):
+def infer_periodicity(slug, title, report_date, now_date):
+    override = REPORT_OVERRIDES.get(slug, {})
+    if override.get("periodicidade"):
+        return override["periodicidade"]
     normalized = normalize_slug(title).replace("-", " ")
     if re.search(r"\b20\d{2}\b", title or "") and report_date.year < now_date.year:
-        return "anual"
+        return "historico"
     if any(term in normalized for term in ["mensal", " mes ", "mes "]):
         return "mensal"
     return "diaria"
 
 
-def infer_status(periodicity, age_days):
-    limit = {"diaria": 1, "mensal": 35, "anual": 370}.get(periodicity, 1)
+def infer_status(slug, periodicity, age_days):
+    override = REPORT_OVERRIDES.get(slug, {})
+    if "status" in override:
+        return {"status": override["status"], "limite_dias": override.get("limite_dias")}
+    if override.get("limite_dias") is None and "limite_dias" in override:
+        return {"status": "atualizado", "limite_dias": None}
+    limit = override.get("limite_dias", {"diaria": 1, "mensal": 35, "historico": None, "anual": 370}.get(periodicity, 1))
+    if limit is None:
+        return {"status": "atualizado", "limite_dias": None}
     return {"status": "desatualizado" if age_days > limit else "atualizado", "limite_dias": limit}
 
 
@@ -176,9 +235,9 @@ def extract_exercicio(title, report_date):
     return max(years) if years else report_date.year
 
 
-def metadata_for(title, report_date, content_hash, source_path, source_map, now, row_count=0, column_count=0):
+def metadata_for(slug, title, report_date, content_hash, source_path, source_map, now, row_count=0, column_count=0):
     age_days = (now.date() - report_date).days
-    periodicity = infer_periodicity(title, report_date, now.date())
+    periodicity = infer_periodicity(slug, title, report_date, now.date())
     return {
         "ultima_atualizacao": now.isoformat(),
         "idade_dias": age_days,
@@ -188,16 +247,16 @@ def metadata_for(title, report_date, content_hash, source_path, source_map, now,
         "hash_conteudo": content_hash,
         "row_count": row_count,
         "column_count": column_count,
-        **infer_status(periodicity, age_days),
+        **infer_status(slug, periodicity, age_days),
     }
 
 
 def full_report_document(file_path, source_map, now):
     content = Path(file_path).read_text(encoding="utf-8", errors="replace")
     soup = BeautifulSoup(content, "html.parser")
-    title = extract_title(soup, file_path)
+    slug = normalize_slug(Path(file_path).parent.name)
+    title = apply_report_overrides(slug, extract_title(soup, file_path))
     report_date, date_issue = extract_date(content, file_path)
-    slug = normalize_slug(Path(file_path).parent.name or title)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
     columns, rows, totals, issues = normalize_table(pick_table(soup))
     if date_issue:
@@ -216,7 +275,7 @@ def full_report_document(file_path, source_map, now):
         "columns": columns,
         "rows": rows,
         "totals": totals,
-        "metadata": metadata_for(title, report_date, content_hash, source_path, source_map, now, len(rows), len(columns)),
+        "metadata": metadata_for(slug, title, report_date, content_hash, source_path, source_map, now, len(rows), len(columns)),
         "quality": {"ok": not issues, "issues": sorted(set(issues))},
     }
 
@@ -228,15 +287,15 @@ def light_history_document(file_path, title, slug, source_map, now):
     return {
         "schema_version": SCHEMA_VERSION,
         "slug": slug,
-        "title": title,
+        "title": apply_report_overrides(slug, title),
         "date": report_date.strftime("%d/%m/%Y"),
         "date_iso": report_date.isoformat(),
         "html_path": source_path,
-        "category": title,
+        "category": apply_report_overrides(slug, title),
         "columns": [],
         "rows": [],
         "totals": [],
-        "metadata": metadata_for(title, report_date, cheap_hash(file_path), source_path, source_map, now),
+        "metadata": metadata_for(slug, apply_report_overrides(slug, title), report_date, cheap_hash(file_path), source_path, source_map, now),
         "quality": {"ok": False, "issues": issues},
     }
 
