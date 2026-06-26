@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "evolucao-das-despesas-empenhadas",
+  "title": "Evolução das Despesas Empenhadas",
+  "date": "06/05/2026",
+  "date_iso": "2026-05-06",
+  "html_path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_06-05-2026.html",
+  "category": "Evolução das Despesas Empenhadas",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-25T21:20:38.692133-03:00",
+    "idade_dias": 50,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "0cc25aa1dcaa8e754b00b4fa181c0c6d97fd769d68ea370dd2917854fbdbf27d",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

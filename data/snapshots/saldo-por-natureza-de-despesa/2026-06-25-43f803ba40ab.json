@@ -1,0 +1,1412 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldo-por-natureza-de-despesa",
+  "title": "Saldo por Natureza de Despesa",
+  "date": "25/06/2026",
+  "date_iso": "2026-06-25",
+  "html_path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_25-06-2026.html",
+  "category": "Saldo por Natureza de Despesa",
+  "columns": [
+    "Grupo Despesa",
+    "PTRES",
+    "PI",
+    "Natureza Despesa",
+    "Conta Contábil",
+    "622130100",
+    "622130200",
+    "622130300",
+    "622130400"
+  ],
+  "rows": [
+    {
+      "Grupo Despesa": "= CREDITO EMPENHADO A LIQUIDAR",
+      "PTRES": "= CREDITO EMPENHADO EM LIQUIDACAO",
+      "PI": "= CREDITO EMPENHADO LIQUIDADO A PAGAR",
+      "Natureza Despesa": "= CREDITO EMPENHADO LIQUIDADO PAGO",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Natureza Despesa Detalhada",
+      "PTRES": "Saldo - Moeda Origem (Conta Contábil)",
+      "PI": "Saldo - Moeda Origem (Conta Contábil)",
+      "Natureza Despesa": "Saldo - Moeda Origem (Conta Contábil)",
+      "Conta Contábil": "Saldo - Moeda Origem (Conta Contábil)",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "4",
+      "PTRES": "INVESTIMENTOS",
+      "PI": "231502",
+      "Natureza Despesa": "L20RLP0100N",
+      "Conta Contábil": "FUNCIONAMENTO - CUSTEIO GERAL",
+      "622130100": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+      "622130200": "44905237",
+      "622130300": "EQUIPAMENTOS DE TIC - ATIVOS DE REDE",
+      "622130400": "9.520,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "9.520,00",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "3",
+      "PTRES": "OUTRAS DESPESAS CORRENTES",
+      "PI": "170770",
+      "Natureza Despesa": "L4572P0100N",
+      "Conta Contábil": "FORMACAO E CAPACITACAO DE SERVIDORES PUB. FED",
+      "622130100": "DIARIAS - PESSOAL CIVIL",
+      "622130200": "33901414",
+      "622130300": "DIARIAS NO PAIS",
+      "622130400": "21.281,94"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "21.281,94",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "3.718,06",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "INDENIZACOES E RESTITUICOES",
+      "PTRES": "33909314",
+      "PI": "RESSARCIMENTO DE PASSAGENS E DESP.C/LOCOMOCAO",
+      "Natureza Despesa": "5.000,00",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "5.000,00",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "231502",
+      "PTRES": "L20RLP0100N",
+      "PI": "FUNCIONAMENTO - CUSTEIO GERAL",
+      "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+      "Conta Contábil": "33901414",
+      "622130100": "DIARIAS NO PAIS",
+      "622130200": "3.540,20",
+      "622130300": "0,00",
+      "622130400": "0,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "3.540,20",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "21.459,80",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "PTRES": "33901801",
+      "PI": "BOLSAS DE ESTUDO NO PAIS",
+      "Natureza Despesa": "66.000,00",
+      "Conta Contábil": "0,00",
+      "622130100": "0,00",
+      "622130200": "31.300,00",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "66.000,00",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "31.300,00",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "MATERIAL DE CONSUMO",
+      "PTRES": "33903001",
+      "PI": "COMBUSTIVEIS E LUBRIFICANTES AUTOMOTIVOS",
+      "Natureza Despesa": "10.305,00",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903003",
+      "PTRES": "COMBUSTIVEIS E LUBRIF. P/ OUTRAS FINALIDADES",
+      "PI": "189,75",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "310,49",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903004",
+      "PTRES": "GAS E OUTROS MATERIAIS ENGARRAFADOS",
+      "PI": "10.374,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903006",
+      "PTRES": "ALIMENTOS PARA ANIMAIS",
+      "PI": "16.708,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "90,20",
+      "622130100": "52.220,47",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903011",
+      "PTRES": "MATERIAL QUIMICO",
+      "PI": "1.721,20",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "965,72",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903016",
+      "PTRES": "MATERIAL DE EXPEDIENTE",
+      "PI": "1.805,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "7.369,73",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903018",
+      "PTRES": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "PI": "342,50",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "10.949,70",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903019",
+      "PTRES": "MATERIAL DE ACONDICIONAMENTO E EMBALAGEM",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "962,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903022",
+      "PTRES": "MATERIAL DE LIMPEZA E PROD. DE HIGIENIZACAO",
+      "PI": "3.523,38",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "192,03",
+      "622130100": "6.722,96",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903024",
+      "PTRES": "MATERIAL P/ MANUT.DE BENS IMOVEIS/INSTALACOES",
+      "PI": "7.729,48",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "510,00",
+      "622130100": "19.480,62",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903025",
+      "PTRES": "MATERIAL P/ MANUTENCAO DE BENS MOVEIS",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "142,00",
+      "622130100": "1.294,80",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903026",
+      "PTRES": "MATERIAL ELETRICO E ELETRONICO",
+      "PI": "910,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "20.307,52",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903028",
+      "PTRES": "MATERIAL DE PROTECAO E SEGURANCA",
+      "PI": "1.451,64",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "9.855,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903031",
+      "PTRES": "SEMENTES, MUDAS DE PLANTAS E INSUMOS",
+      "PI": "1.766,70",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "999,00",
+      "622130100": "5.432,54",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903035",
+      "PTRES": "MATERIAL LABORATORIAL",
+      "PI": "3.739,12",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "40,01",
+      "622130100": "8.200,08",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903036",
+      "PTRES": "MATERIAL HOSPITALAR",
+      "PI": "1.835,56",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "175,18",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903042",
+      "PTRES": "FERRAMENTAS",
+      "PI": "3.813,78",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "3.646,09",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903044",
+      "PTRES": "MATERIAL DE SINALIZACAO VISUAL E OUTROS",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "190,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903096",
+      "PTRES": "MATERIAL DE CONSUMO - PAGTO ANTECIPADO",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "30.000,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "66.215,11",
+      "PI": "0,00",
+      "Natureza Despesa": "1.973,24",
+      "Conta Contábil": "178.082,90",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+      "PTRES": "33903303",
+      "PI": "LOCACAO DE MEIOS DE TRANSPORTE",
+      "Natureza Despesa": "17.199,99",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903305",
+      "PTRES": "LOCOMOCAO URBANA",
+      "PI": "38.907,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "1.088,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903308",
+      "PTRES": "PEDAGIOS",
+      "PI": "1.500,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "57.606,99",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "1.088,00",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+      "PTRES": "33903602",
+      "PI": "DIARIAS A COLABORADORES EVENTUAIS NO PAIS",
+      "Natureza Despesa": "1.000,00",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "1.000,00",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "LOCACAO DE MAO-DE-OBRA",
+      "PTRES": "33903701",
+      "PI": "APOIO ADMINISTRATIVO, TECNICO E OPERACIONAL",
+      "Natureza Despesa": "108.546,35",
+      "Conta Contábil": "0,00",
+      "622130100": "12.896,01",
+      "622130200": "259.632,44",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903702",
+      "PTRES": "LIMPEZA E CONSERVACAO",
+      "PI": "339.015,16",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "106.399,08",
+      "622130100": "167.723,44",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903704",
+      "PTRES": "MANUTENCAO E CONSERVACAO DE BENS IMOVEIS",
+      "PI": "44.298,14",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "7.863,28",
+      "622130100": "106.139,03",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "491.859,65",
+      "PI": "0,00",
+      "Natureza Despesa": "127.158,37",
+      "Conta Contábil": "533.494,91",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "PTRES": "33903905",
+      "PI": "SERVICOS TECNICOS PROFISSIONAIS",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "2.034,25",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903916",
+      "PTRES": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+      "PI": "2.335,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "3.665,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903917",
+      "PTRES": "MANUT. E CONSERV. DE MAQUINAS E EQUIPAMENTOS",
+      "PI": "476,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903920",
+      "PTRES": "MANUT.E CONS.DE B.MOVEIS DE OUTRAS NATUREZAS",
+      "PI": "1.997,36",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "18.340,64",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903937",
+      "PTRES": "JUROS E MULTA DE MORA",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,01",
+      "622130100": "520,53",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903941",
+      "PTRES": "FORNECIMENTO DE ALIMENTACAO",
+      "PI": "342.101,82",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "217.904,01",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903943",
+      "PTRES": "SERVICOS DE ENERGIA ELETRICA",
+      "PI": "123.362,06",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "25.626,04",
+      "622130100": "50.602,57",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903944",
+      "PTRES": "SERVICOS DE AGUA, ESGOTO E RESIDUOS SOLIDOS",
+      "PI": "13.855,67",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "732,47",
+      "622130100": "10.411,17",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903947",
+      "PTRES": "SERVICOS DE COMUNICACAO EM GERAL",
+      "PI": "100,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903958",
+      "PTRES": "SERVICOS DE TELECOMUNICACOES",
+      "PI": "2.106,28",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "1.203,72",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903969",
+      "PTRES": "SEGUROS EM GERAL",
+      "PI": "500,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903978",
+      "PTRES": "LIMPEZA E CONSERVACAO",
+      "PI": "25.333,09",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "151,32",
+      "622130100": "5.317,59",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903979",
+      "PTRES": "SERV. DE APOIO ADMIN., TECNICO E OPERACIONAL",
+      "PI": "19.470,00",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33903996",
+      "PTRES": "OUTROS SERV.DE TERCEIROS PJ- PAGTO ANTECIPADO",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "30.000,00",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "531.637,28",
+      "PI": "0,00",
+      "Natureza Despesa": "26.509,84",
+      "Conta Contábil": "339.999,48",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+      "PTRES": "33904016",
+      "PI": "OUTSOURCING DE IMPRESSAO",
+      "Natureza Despesa": "19.829,35",
+      "Conta Contábil": "0,00",
+      "622130100": "0,00",
+      "622130200": "5.774,07",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "19.829,35",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "5.774,07",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+      "PTRES": "33904708",
+      "PI": "IMPOSTO S/SERVICOS DE QUALQUER NATUREZA-ISSQN",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "0,00",
+      "622130200": "64,04",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33904710",
+      "PTRES": "TAXAS",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "0,00",
+      "622130100": "2.989,04",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "33904722",
+      "PTRES": "CONTRIBUICAO P/ CUSTEIO DE ILUMINACAO PUBLICA",
+      "PI": "5.991,51",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "929,76",
+      "622130100": "3.978,67",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "5.991,51",
+      "PI": "0,00",
+      "Natureza Despesa": "929,76",
+      "Conta Contábil": "7.031,75",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "INDENIZACOES E RESTITUICOES",
+      "PTRES": "33909314",
+      "PI": "RESSARCIMENTO DE PASSAGENS E DESP.C/LOCOMOCAO",
+      "Natureza Despesa": "1.000,00",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "1.000,00",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "231503",
+      "PTRES": "L2994P2302N",
+      "PI": "ASSISTENCIA ESTUDANTIL - VISITAS TECNICAS",
+      "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Conta Contábil": "33901801",
+      "622130100": "BOLSAS DE ESTUDO NO PAIS",
+      "622130200": "32.072,17",
+      "622130300": "0,00",
+      "622130400": "0,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "32.072,17",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "15.827,83",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "231505",
+      "PTRES": "L2994P2300N",
+      "PI": "ASSISTENCIA ESTUDANTIL - PAE",
+      "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Conta Contábil": "33901801",
+      "622130100": "BOLSAS DE ESTUDO NO PAIS",
+      "622130200": "280.950,00",
+      "622130300": "0,00",
+      "622130400": "0,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "280.950,00",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "175.800,00",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "L2994P2301N",
+      "PTRES": "ASSISTENCIA ESTUDANTIL - PCD",
+      "PI": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Natureza Despesa": "33901801",
+      "Conta Contábil": "BOLSAS DE ESTUDO NO PAIS",
+      "622130100": "0,00",
+      "622130200": "0,00",
+      "622130300": "0,00",
+      "622130400": "35.094,78"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "0,00",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "35.094,78",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "L2994P2399N",
+      "PTRES": "JOGOS INTERNOS IFC",
+      "PI": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Natureza Despesa": "33901801",
+      "Conta Contábil": "BOLSAS DE ESTUDO NO PAIS",
+      "622130100": "570,00",
+      "622130200": "0,00",
+      "622130300": "0,00",
+      "622130400": "8.930,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "570,00",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "8.930,00",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "249897",
+      "PTRES": "L21B3P2002N",
+      "PI": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+      "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+      "Conta Contábil": "33901414",
+      "622130100": "DIARIAS NO PAIS",
+      "622130200": "21.425,64",
+      "622130300": "0,00",
+      "622130400": "0,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "21.425,64",
+      "PI": "0,00",
+      "Natureza Despesa": "0,00",
+      "Conta Contábil": "8.074,36",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "PTRES": "33901801",
+      "PI": "BOLSAS DE ESTUDO NO PAIS",
+      "Natureza Despesa": "9.000,00",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "9.000,00",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "MATERIAL DE CONSUMO",
+      "PTRES": "33903011",
+      "PI": "MATERIAL QUIMICO",
+      "Natureza Despesa": "382,23",
+      "Conta Contábil": "0,00",
+      "622130100": "19,77",
+      "622130200": "1.179,06",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "382,23",
+      "PI": "0,00",
+      "Natureza Despesa": "19,77",
+      "Conta Contábil": "1.179,06",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "260220",
+      "PTRES": "L21IHP2300N",
+      "PI": "ASSISTENCIA PCD",
+      "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+      "Conta Contábil": "33903633",
+      "622130100": "SERVICOS DE SELECAO E TREINAMENTO",
+      "622130200": "6.766,38",
+      "622130300": "0,00",
+      "622130400": "4.400,00"
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "6.766,38",
+      "PI": "0,00",
+      "Natureza Despesa": "4.400,00",
+      "Conta Contábil": "147.766,67",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+      "PTRES": "33914718",
+      "PI": "CONTRIBUICAO PREVIDENCIARIA - SERVICOS TERCEIROS (PF)",
+      "Natureza Despesa": "1.566,67",
+      "Conta Contábil": "0,00",
+      "622130100": "8.000,00",
+      "622130200": "22.433,33",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "1.566,67",
+      "PI": "0,00",
+      "Natureza Despesa": "8.000,00",
+      "Conta Contábil": "22.433,33",
+      "622130100": "",
+      "622130200": "",
+      "622130300": "",
+      "622130400": ""
+    },
+    {
+      "Grupo Despesa": "Total",
+      "PTRES": "",
+      "PI": "",
+      "Natureza Despesa": "",
+      "Conta Contábil": "",
+      "622130100": "1.633.215,12",
+      "622130200": "0,00",
+      "622130300": "168.990,98",
+      "622130400": "1.537.055,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 9520.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "9.520,00",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 21281.94,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 3718.06
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "21.281,94",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "3.718,06",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 5000.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "5.000,00",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 3540.2,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 21459.8
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "3.540,20",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "21.459,80",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 66000.0,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 31300.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "66.000,00",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "31.300,00",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 66215.11,
+        "PI": 0.0,
+        "Natureza Despesa": 1973.24,
+        "Conta Contábil": 178082.9
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "66.215,11",
+        "PI": "0,00",
+        "Natureza Despesa": "1.973,24",
+        "Conta Contábil": "178.082,90",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 57606.99,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 1088.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "57.606,99",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "1.088,00",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 1000.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "1.000,00",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 491859.65,
+        "PI": 0.0,
+        "Natureza Despesa": 127158.37,
+        "Conta Contábil": 533494.91
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "491.859,65",
+        "PI": "0,00",
+        "Natureza Despesa": "127.158,37",
+        "Conta Contábil": "533.494,91",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 531637.28,
+        "PI": 0.0,
+        "Natureza Despesa": 26509.84,
+        "Conta Contábil": 339999.48
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "531.637,28",
+        "PI": "0,00",
+        "Natureza Despesa": "26.509,84",
+        "Conta Contábil": "339.999,48",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 19829.35,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 5774.07
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "19.829,35",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "5.774,07",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 5991.51,
+        "PI": 0.0,
+        "Natureza Despesa": 929.76,
+        "Conta Contábil": 7031.75
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "5.991,51",
+        "PI": "0,00",
+        "Natureza Despesa": "929,76",
+        "Conta Contábil": "7.031,75",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 1000.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "1.000,00",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 32072.17,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 15827.83
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "32.072,17",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "15.827,83",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 280950.0,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 175800.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "280.950,00",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "175.800,00",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 0.0,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 35094.78
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "0,00",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "35.094,78",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 570.0,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 8930.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "570,00",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "8.930,00",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 21425.64,
+        "PI": 0.0,
+        "Natureza Despesa": 0.0,
+        "Conta Contábil": 8074.36
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "21.425,64",
+        "PI": "0,00",
+        "Natureza Despesa": "0,00",
+        "Conta Contábil": "8.074,36",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 9000.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "9.000,00",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 382.23,
+        "PI": 0.0,
+        "Natureza Despesa": 19.77,
+        "Conta Contábil": 1179.06
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "382,23",
+        "PI": "0,00",
+        "Natureza Despesa": "19,77",
+        "Conta Contábil": "1.179,06",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 6766.38,
+        "PI": 0.0,
+        "Natureza Despesa": 4400.0,
+        "Conta Contábil": 147766.67
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "6.766,38",
+        "PI": "0,00",
+        "Natureza Despesa": "4.400,00",
+        "Conta Contábil": "147.766,67",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "PTRES": 1566.67,
+        "PI": 0.0,
+        "Natureza Despesa": 8000.0,
+        "Conta Contábil": 22433.33
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "1.566,67",
+        "PI": "0,00",
+        "Natureza Despesa": "8.000,00",
+        "Conta Contábil": "22.433,33",
+        "622130100": "",
+        "622130200": "",
+        "622130300": "",
+        "622130400": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "622130100": 1633215.12,
+        "622130200": 0.0,
+        "622130300": 168990.98,
+        "622130400": 1537055.0
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "PTRES": "",
+        "PI": "",
+        "Natureza Despesa": "",
+        "Conta Contábil": "",
+        "622130100": "1.633.215,12",
+        "622130200": "0,00",
+        "622130300": "168.990,98",
+        "622130400": "1.537.055,00"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-25T21:20:38.692133-03:00",
+    "idade_dias": 0,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "43f803ba40ab9232ac277221efa5b3265bc17fdcc681dcac9d1da24cc7c67ce7",
+    "row_count": 84,
+    "column_count": 9,
+    "status": "atualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "inconsistent_columns"
+    ]
+  }
+}

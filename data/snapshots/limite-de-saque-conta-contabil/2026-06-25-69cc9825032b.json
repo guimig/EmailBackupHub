@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.2",
+  "slug": "limite-de-saque-conta-contabil",
+  "title": "Limite de Saque - Conta Contábil",
+  "date": "25/06/2026",
+  "date_iso": "2026-06-25",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_25-06-2026.html",
+  "category": "Limite de Saque - Conta Contábil",
+  "columns": [
+    "UG Executora Nome",
+    "UG Executora Código",
+    "Fonte Recursos Detalhada Código",
+    "Fonte Recursos Detalhada Nome",
+    "Vinculação Pagamento Código",
+    "Vinculação Pagamento Nome",
+    "Métrica",
+    "Saldo - Moeda Origem (Conta Contábil)"
+  ],
+  "rows": [
+    {
+      "UG Executora Nome": "Conta Contábil Número",
+      "UG Executora Código": "111122001",
+      "Fonte Recursos Detalhada Código": "111122003",
+      "Fonte Recursos Detalhada Nome": "",
+      "Vinculação Pagamento Código": "",
+      "Vinculação Pagamento Nome": "",
+      "Métrica": "",
+      "Saldo - Moeda Origem (Conta Contábil)": ""
+    },
+    {
+      "UG Executora Nome": "Conta Contábil Nome",
+      "UG Executora Código": "= LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS",
+      "Fonte Recursos Detalhada Código": "= LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS",
+      "Fonte Recursos Detalhada Nome": "",
+      "Vinculação Pagamento Código": "",
+      "Vinculação Pagamento Nome": "",
+      "Métrica": "",
+      "Saldo - Moeda Origem (Conta Contábil)": ""
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica": "38.339,97",
+      "Saldo - Moeda Origem (Conta Contábil)": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+      "Vinculação Pagamento Código": "405",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Métrica": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil)": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000A0008U",
+      "Fonte Recursos Detalhada Nome": "TERMO DE EXECUCAO DESCENTRALIZADA - MEC",
+      "Vinculação Pagamento Código": "405",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Métrica": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil)": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica": "163.659,20",
+      "Saldo - Moeda Origem (Conta Contábil)": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1133000000",
+      "Fonte Recursos Detalhada Nome": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+      "Vinculação Pagamento Código": "499",
+      "Vinculação Pagamento Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
+      "Métrica": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil)": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1491000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS",
+      "Vinculação Pagamento Código": "987",
+      "Vinculação Pagamento Nome": "DEVOLUCAO DE DESPESA",
+      "Métrica": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil)": ""
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1491980000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS-CANC.OB APOS REM.BANCO",
+      "Vinculação Pagamento Código": "990",
+      "Vinculação Pagamento Nome": "PASSIVOS FINANCEIROS",
+      "Métrica": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil)": ""
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "3050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica": "5.166,92",
+      "Saldo - Moeda Origem (Conta Contábil)": ""
+    }
+  ],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-25T21:20:38.692133-03:00",
+    "idade_dias": 0,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "69cc9825032bd8915d6afac7b0f9ca14c04d68bde64193f5537bfce31b4927bf",
+    "row_count": 10,
+    "column_count": 8,
+    "status": "atualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "inconsistent_columns"
+    ]
+  }
+}
