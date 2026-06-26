@@ -50,6 +50,7 @@
   <script>
     let report = null;
     let columnFilters = {};
+    let renderTimer = null;
     const byId = id => document.getElementById(id);
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
@@ -75,7 +76,9 @@
       ].map(text => `<span class="tag">${escapeHtml(text)}</span>`).join('');
       byId('quality').textContent = report.quality?.ok ? 'Parsing concluído sem alertas.' : `Alertas de parsing: ${(report.quality?.issues || []).join(', ')}`;
       byId('quality').className = report.quality?.ok ? 'quality' : 'quality bad';
-      renderTable();
+      columnFilters = {};
+      renderTableShell();
+      renderRows();
     }
 
     function filteredRows() {
@@ -87,24 +90,35 @@
       });
     }
 
-    function renderTable() {
+    function renderTableShell() {
+      const columns = report.columns || [];
+      byId('table').innerHTML = `
+        <thead><tr>${columns.map(column => `<th>${escapeHtml(column)}<input data-column="${escapeHtml(column)}" placeholder="Filtrar"></th>`).join('')}</tr></thead>
+        <tbody></tbody>
+      `;
+      document.querySelectorAll('th input').forEach(input => {
+        input.addEventListener('input', event => {
+          columnFilters[event.target.dataset.column] = event.target.value;
+          scheduleRenderRows();
+        });
+      });
+    }
+
+    function scheduleRenderRows() {
+      clearTimeout(renderTimer);
+      renderTimer = setTimeout(renderRows, 250);
+    }
+
+    function renderRows() {
+      if (!report) return;
       const columns = report.columns || [];
       const rows = filteredRows();
       const totals = new Set((report.totals || []).map(total => JSON.stringify(total.raw || {})));
-      byId('table').innerHTML = `
-        <thead><tr>${columns.map(column => `<th>${escapeHtml(column)}<input data-column="${escapeHtml(column)}" placeholder="Filtrar"></th>`).join('')}</tr></thead>
-        <tbody>${rows.map(row => {
-          const isTotal = totals.has(JSON.stringify(row)) || String(Object.values(row)[0] || '').toLowerCase().startsWith('total');
-          return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
-        }).join('')}</tbody>
-      `;
-      document.querySelectorAll('th input').forEach(input => {
-        input.value = columnFilters[input.dataset.column] || '';
-        input.addEventListener('input', event => {
-          columnFilters[event.target.dataset.column] = event.target.value;
-          renderTable();
-        });
-      });
+      const tbody = byId('table').querySelector('tbody');
+      tbody.innerHTML = rows.map(row => {
+        const isTotal = totals.has(JSON.stringify(row)) || String(Object.values(row)[0] || '').toLowerCase().startsWith('total');
+        return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+      }).join('');
     }
 
     function exportCsv() {
@@ -130,8 +144,13 @@
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
-    byId('globalSearch').addEventListener('input', renderTable);
-    byId('clearFilters').addEventListener('click', () => { columnFilters = {}; byId('globalSearch').value = ''; renderTable(); });
+    byId('globalSearch').addEventListener('input', scheduleRenderRows);
+    byId('clearFilters').addEventListener('click', () => {
+      columnFilters = {};
+      byId('globalSearch').value = '';
+      document.querySelectorAll('th input').forEach(input => { input.value = ''; });
+      renderRows();
+    });
     byId('exportCsv').addEventListener('click', exportCsv);
     loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });
   </script>
