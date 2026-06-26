@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
+  "title": "Saldo Patrimonio e Almoxarifado - Conta Contábil",
+  "date": "31/12/2025",
+  "date_iso": "2025-12-31",
+  "html_path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_31-12-2025.html",
+  "category": "Saldo Patrimonio e Almoxarifado - Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T13:19:54.699740-03:00",
+    "idade_dias": 177,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "687f90555bc44e1bea6603c414cf9bf999af1f1ad6fe3d742a5148a22a7787c0",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}

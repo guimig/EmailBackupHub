@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.2",
+  "slug": "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu",
+  "title": "Despesas Empenhadas, Liquidadas e Pagas - STRICTU SENSU",
+  "date": "02/12/2025",
+  "date_iso": "2025-12-02",
+  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_02-12-2025.html",
+  "category": "Despesas Empenhadas, Liquidadas e Pagas - STRICTU SENSU",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T13:19:54.699740-03:00",
+    "idade_dias": 206,
+    "periodicidade": "mensal",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "aee1ffb5a3f7157d75e2998541e13d21aa1fa761a24ff943740e0659b15392d0",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 35
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "date_from_filename",
+      "light_snapshot"
+    ]
+  }
+}
