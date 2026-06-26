@@ -2,9 +2,45 @@ import datetime
 import html
 import os
 import re
+import unicodedata
 from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
 
 EXCLUDED_ROOT_HTML = {"index.html", "dashboard.html", "report-viewer.html"}
+TITLE_OVERRIDES = {
+    "imoveis-por-ug-conta-contabil-e-rip": "RIP Imóveis por Conta Contábil",
+}
+
+
+def normalize_slug(text):
+    text = unicodedata.normalize("NFD", text or "")
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = text.lower()
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"\s+", "-", text).strip("-")
+    text = re.sub(r"-+", "-", text)
+    return text or "sem-titulo"
+
+
+def report_slug(file_path):
+    parent = os.path.basename(os.path.dirname(file_path))
+    if parent and parent != os.path.basename(REPO_ROOT):
+        return normalize_slug(parent)
+    return normalize_slug(os.path.splitext(os.path.basename(file_path))[0])
+
+
+def friendly_title(file_path, title):
+    return TITLE_OVERRIDES.get(report_slug(file_path), title)
+
+
+def parse_report_date(file_path, content=None):
+    content = content or ""
+    date_match = re.search(r"Relatório gerado em: (\d{2}/\d{2}/\d{4})", content)
+    if date_match:
+        return datetime.datetime.strptime(date_match.group(1), "%d/%m/%Y")
+    filename_date_match = re.search(r"(\d{2}-\d{2}-\d{4})", os.path.basename(file_path))
+    if filename_date_match:
+        return datetime.datetime.strptime(filename_date_match.group(1), "%d-%m-%Y")
+    return datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).replace(tzinfo=None)
 
 
 def create_latest_summary_html():
@@ -15,23 +51,16 @@ def create_latest_summary_html():
 
         html_files = []
         for file_name in files:
-            if not file_name.endswith(".html"):
-                continue
-            date_match = re.search(r"(\d{2}-\d{2}-\d{4})", file_name)
-            if date_match:
-                file_date = datetime.datetime.strptime(date_match.group(1), "%d-%m-%Y")
-            else:
+            if file_name.endswith(".html"):
                 file_path = os.path.join(root, file_name)
-                file_date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path))
-            html_files.append((file_name, file_date))
+                html_files.append((file_name, parse_report_date(file_path)))
 
         if not html_files:
             continue
 
         latest_file, latest_date = sorted(html_files, key=lambda item: item[1], reverse=True)[0]
         latest_path = os.path.join(root, latest_file)
-        normalized_title = os.path.basename(root)
-        output_path = os.path.join(REPO_ROOT, f"{normalized_title}.html")
+        output_path = os.path.join(REPO_ROOT, f"{os.path.basename(root)}.html")
 
         with open(latest_path, "r", encoding="utf-8") as source:
             content = source.read()
@@ -52,34 +81,20 @@ def get_report_metadata(file_path):
     try:
         with open(file_path, "r", encoding="utf-8") as source:
             content = source.read()
-
         title_match = re.search(r"<td colspan=1 style='font-family:tahoma;font-size:18.0pt'>(.*?)</td>", content)
-        title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
-
-        date_match = re.search(r"Relatório gerado em: (\d{2}/\d{2}/\d{4})", content)
-        if date_match:
-            date = datetime.datetime.strptime(date_match.group(1), "%d/%m/%Y")
-        else:
-            filename_date_match = re.search(r"(\d{2}-\d{2}-\d{4})", os.path.basename(file_path))
-            if filename_date_match:
-                date = datetime.datetime.strptime(filename_date_match.group(1), "%d-%m-%Y")
-            else:
-                date = datetime.datetime.fromtimestamp(os.path.getmtime(file_path), TIMEZONE).replace(tzinfo=None)
-
+        raw_title = title_match.group(1) if title_match else os.path.splitext(os.path.basename(file_path))[0]
+        date = parse_report_date(file_path, content)
         return {
-            "title": title,
+            "title": friendly_title(file_path, raw_title),
             "date": date.strftime("%d/%m/%Y"),
             "date_obj": date,
             "filename": os.path.basename(file_path),
         }
     except Exception as error:
         print(f"Erro ao ler metadados: {error}")
-        return {
-            "title": os.path.splitext(os.path.basename(file_path))[0],
-            "date": datetime.datetime.now().strftime("%d/%m/%Y"),
-            "date_obj": datetime.datetime.now().replace(tzinfo=None),
-            "filename": os.path.basename(file_path),
-        }
+        date = datetime.datetime.now().replace(tzinfo=None)
+        raw_title = os.path.splitext(os.path.basename(file_path))[0]
+        return {"title": friendly_title(file_path, raw_title), "date": date.strftime("%d/%m/%Y"), "date_obj": date, "filename": os.path.basename(file_path)}
 
 
 def report_card(report):
@@ -91,167 +106,142 @@ def report_card(report):
     """
 
 
-def update_root_index():
-    reports = []
-    backup_reports = []
-
+def collect_reports():
+    latest = []
+    history = []
     for file_name in os.listdir(REPO_ROOT):
         if file_name.endswith(".html") and file_name not in EXCLUDED_ROOT_HTML:
             file_path = os.path.join(REPO_ROOT, file_name)
-            reports.append({**get_report_metadata(file_path), "path": file_name, "category": "Últimas Atualizações"})
+            latest.append({**get_report_metadata(file_path), "path": file_name})
 
     for root, dirs, files in os.walk(BACKUP_FOLDER):
         for file_name in files:
             if file_name.endswith(".html"):
                 file_path = os.path.join(root, file_name)
-                metadata = get_report_metadata(file_path)
-                backup_reports.append({**metadata, "path": os.path.relpath(file_path, REPO_ROOT), "category": metadata["title"]})
+                history.append({**get_report_metadata(file_path), "path": os.path.relpath(file_path, REPO_ROOT)})
 
-    reports.sort(key=lambda item: (item["title"], item["date_obj"]))
-    backup_reports.sort(key=lambda item: (item["title"], item["date_obj"]), reverse=True)
+    latest.sort(key=lambda item: (item["title"], item["date_obj"]))
+    history.sort(key=lambda item: (item["title"], item["date_obj"]), reverse=True)
+    return latest, history
 
-    grouped_latest = {}
-    for report in reports:
-        grouped_latest.setdefault(report["title"], []).append(report)
 
-    grouped_backup = {}
-    for report in backup_reports:
-        grouped_backup.setdefault(report["title"], []).append(report)
+def render_options(reports):
+    titles = sorted({report["title"] for report in reports})
+    return "".join(f'<option value="{html.escape(title)}">{html.escape(title)}</option>' for title in titles)
 
-    category_options = "".join(
-        f'<option value="{html.escape(title)}">{html.escape(title)}</option>'
-        for title in sorted(grouped_latest.keys())
-    )
-    latest_cards = "".join(report_card(report) for title in sorted(grouped_latest.keys()) for report in grouped_latest[title])
-    backup_cards = "".join(report_card(report) for title in sorted(grouped_backup.keys()) for report in grouped_backup[title])
+
+def update_root_index():
+    latest_reports, history_reports = collect_reports()
+    latest_cards = "".join(report_card(report) for report in latest_reports)
+    history_cards = "".join(report_card(report) for report in history_reports)
+    category_options = render_options(latest_reports)
 
     html_content = f"""
 <!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <title>DAP - Relatórios Gerenciais</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 20px; background-color: #0d1117; color: #c9d1d9; line-height: 1.6; }}
-        h1 {{ color: #f0f6fc; text-align: center; font-size: 2.2em; margin-bottom: 20px; }}
-        .main-title {{ text-align: center; font-size: 2.5rem; color: #f0f6fc; margin-bottom: 18px; position: relative; padding: 0 20px; }}
-        .title-text {{ position: relative; z-index: 2; }}
-        .title-highlight {{ position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 8px; background: linear-gradient(90deg, #58a6ff, #1959bd); border-radius: 5px; z-index: 1; opacity: 0.7; }}
-        .top-menu {{ max-width: 1100px; margin: 0 auto 26px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }}
-        .top-menu a {{ display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border: 1px solid #30363d; border-radius: 999px; background: linear-gradient(180deg, #161b22, #0d1117); color: #c9d1d9; box-shadow: 0 8px 20px rgba(0,0,0,.18); }}
-        .top-menu a.primary {{ color: #0d1117; background: linear-gradient(90deg, #58a6ff, #7ee787); border-color: #58a6ff; font-weight: 700; }}
-        .top-menu a:hover {{ text-decoration: none; transform: translateY(-1px); color: #fff; padding-left: 16px; }}
-        .folder {{ margin-top: 20px; background-color: #161b22; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,.3); border-left: 5px solid #6e7681; }}
-        .folder h2 {{ color: #adbac7; font-size: 1.6em; margin-bottom: 15px; }}
-        .links {{ margin-left: 20px; }}
-        a {{ text-decoration: none; color: #58a6ff; font-size: 1em; display: block; margin-bottom: 10px; }}
-        a:hover {{ text-decoration: underline; color: #1f6feb; padding-left: 5px; transition: all .3s ease-in-out; }}
-        .search-filters {{ display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; max-width: 1200px; margin: 15px auto; align-items: center; }}
-        .filter-input, .sort-select {{ background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 10px; border-radius: 6px; outline: none; }}
-        .filter-input {{ width: 100%; max-width: 300px; }}
-        .filter-input:focus {{ border-color: #58a6ff; box-shadow: 0 0 8px rgba(88,166,255,.6); }}
-        .clear-filters-button, .expand-button {{ background: #58a6ff; border: none; color: #0d1117; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: .75em; }}
-        .report-card {{ background-color: #161b22; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 3px solid #58a6ff; }}
-        .report-meta {{ color: #8b949e; font-size: .9em; margin-top: 5px; }}
-        .pagination {{ display: flex; justify-content: center; align-items: center; margin-top: 20px; gap: 10px; }}
-        .pagination button {{ background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 12px; cursor: pointer; border-radius: 6px; }}
-        .mobile-optimized {{ display: none; }}
-        .footer {{ background: #161b22; border-top: 1px solid #30363d; padding: 2rem 1rem; margin-top: 4rem; }}
-        .footer-content {{ max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; }}
-        .campus-info, .developed-by {{ color: #8b949e; }}
-        .developer-info {{ text-align: right; }}
-        .social-links {{ display: flex; gap: 1rem; justify-content: flex-end; }}
-        @media (max-width: 768px) {{ .desktop-only {{ display: none; }} .mobile-optimized {{ display: block; }} .search-filters, .footer-content {{ flex-direction: column; text-align: center; }} .links {{ margin-left: 0; }} .developer-info {{ text-align: center; }} .social-links {{ justify-content: center; }} .main-title {{ font-size: 2rem; }} .title-highlight {{ width: 90%; }} }}
-    </style>
+  <meta charset="utf-8">
+  <title>DAP - Relatórios Gerenciais</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {{ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 20px; background: #0d1117; color: #c9d1d9; line-height: 1.6; }}
+    h1 {{ color: #f0f6fc; text-align: center; font-size: 2.4rem; margin: 16px 0 20px; }}
+    a {{ text-decoration: none; color: #58a6ff; display: block; margin-bottom: 10px; }}
+    a:hover {{ text-decoration: underline; color: #1f6feb; }}
+    .main-title {{ position: relative; text-align: center; }}
+    .title-text {{ position: relative; z-index: 2; }}
+    .title-highlight {{ position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 8px; background: linear-gradient(90deg, #58a6ff, #1959bd); border-radius: 5px; opacity: .75; }}
+    .top-menu {{ max-width: 1100px; margin: 0 auto 26px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }}
+    .top-menu a {{ display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border: 1px solid #30363d; border-radius: 999px; background: linear-gradient(180deg, #161b22, #0d1117); color: #c9d1d9; box-shadow: 0 8px 20px rgba(0,0,0,.18); }}
+    .top-menu a.primary {{ color: #0d1117; background: linear-gradient(90deg, #58a6ff, #7ee787); border-color: #58a6ff; font-weight: 700; }}
+    .folder {{ margin-top: 20px; background: #161b22; padding: 20px; border-radius: 8px; border-left: 5px solid #6e7681; }}
+    .folder h2 {{ color: #adbac7; font-size: 1.6em; margin: 0 0 15px; }}
+    .links {{ margin-left: 20px; }}
+    .search-filters {{ display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; max-width: 1200px; margin: 15px auto; align-items: center; }}
+    .filter-input, .sort-select {{ background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 10px; border-radius: 6px; outline: none; }}
+    .filter-input {{ width: 100%; max-width: 300px; }}
+    .clear-filters-button, .expand-button {{ background: #58a6ff; border: 0; color: #0d1117; padding: 9px 16px; border-radius: 6px; cursor: pointer; font-weight: 700; }}
+    .report-card {{ background: #161b22; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 3px solid #58a6ff; }}
+    .report-meta {{ color: #8b949e; font-size: .9em; margin-top: 5px; }}
+    .pagination {{ display: flex; justify-content: center; align-items: center; margin-top: 20px; gap: 10px; }}
+    .pagination button {{ background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 12px; cursor: pointer; border-radius: 6px; }}
+    .footer {{ background: #161b22; border-top: 1px solid #30363d; padding: 2rem 1rem; margin-top: 4rem; color: #8b949e; }}
+    .footer-content {{ max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: center; }}
+    .mobile-optimized {{ display: none; }}
+    @media (max-width: 768px) {{ .desktop-only {{ display: none; }} .mobile-optimized {{ display: block; }} .links {{ margin-left: 0; }} .footer-content {{ text-align: center; justify-content: center; }} .title-highlight {{ width: 90%; }} }}
+  </style>
 </head>
 <body>
-    <div style="text-align:center;">
-        <h1 class="main-title"><span class="title-text">DAP - Relatórios Gerenciais</span><span class="title-highlight"></span></h1>
-    </div>
-    <nav class="top-menu" aria-label="Navegação principal">
-        <a class="primary" href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard dinâmico</a>
-        <a href="data/index.json"><i class="fas fa-database"></i> API JSON</a>
-        <a href="https://github.com/guimig/EmailBackupHub"><i class="fab fa-github"></i> Repositório</a>
-    </nav>
+  <h1 class="main-title"><span class="title-text">DAP - Relatórios Gerenciais</span><span class="title-highlight"></span></h1>
+  <nav class="top-menu" aria-label="Navegação principal">
+    <a class="primary" href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard dinâmico</a>
+    <a href="data/index.json"><i class="fas fa-database"></i> API JSON</a>
+    <a href="https://github.com/guimig/EmailBackupHub"><i class="fab fa-github"></i> Repositório</a>
+  </nav>
 
-    <div class="search-filters">
-        <input type="text" id="searchInput" placeholder="🔍 Pesquisar por nome..." class="filter-input" aria-label="Campo de pesquisa">
-        <div class="mobile-optimized">
-            <select class="filter-input" id="mobileSort">
-                <option value="">Ordenar por...</option>
-                <option value="title">Nome (A-Z)</option>
-                <option value="-title">Nome (Z-A)</option>
-                <option value="-date">Data (recentes)</option>
-                <option value="date">Data (antigos)</option>
-            </select>
-        </div>
-        <input type="date" id="dateFilter" class="filter-input desktop-only" aria-label="Filtrar por data">
-        <select id="categoryFilter" class="filter-input desktop-only"><option value="">Todos Relatórios</option>{category_options}</select>
-        <button id="clearFiltersButton" class="clear-filters-button"><i class="fas fa-times"></i> Limpar</button>
-    </div>
+  <div class="search-filters">
+    <input type="text" id="searchInput" placeholder="🔍 Pesquisar por nome..." class="filter-input" aria-label="Campo de pesquisa">
+    <div class="mobile-optimized"><select class="filter-input" id="mobileSort"><option value="">Ordenar por...</option><option value="title">Nome (A-Z)</option><option value="-title">Nome (Z-A)</option><option value="-date">Data (recentes)</option><option value="date">Data (antigos)</option></select></div>
+    <input type="date" id="dateFilter" class="filter-input desktop-only" aria-label="Filtrar por data">
+    <select id="categoryFilter" class="filter-input desktop-only"><option value="">Todos Relatórios</option>{category_options}</select>
+    <button id="clearFiltersButton" class="clear-filters-button"><i class="fas fa-times"></i> Limpar</button>
+  </div>
 
-    <div class="folder">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
-            <h2>Últimas Atualizações</h2>
-            <select class="sort-select desktop-only" id="sortLatest"><option value="title">Ordenar por A-Z</option><option value="-date">Ordenar por Data</option></select>
-        </div>
-        <div class="links" id="latestReports">{latest_cards}</div>
-        <div id="noResultsLatest" style="display:none; color:#8b949e; margin-top:20px;">Nenhum resultado encontrado com os parâmetros fornecidos.</div>
-    </div>
+  <div class="folder">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;"><h2>Últimas Atualizações</h2><select class="sort-select desktop-only" id="sortLatest"><option value="title">Ordenar por A-Z</option><option value="-date">Ordenar por Data</option></select></div>
+    <div class="links" id="latestReports">{latest_cards}</div>
+    <div id="noResultsLatest" style="display:none; color:#8b949e; margin-top:20px;">Nenhum resultado encontrado com os parâmetros fornecidos.</div>
+  </div>
 
-    <div class="folder">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
-            <h2>Histórico Completo</h2>
-            <div><select class="sort-select desktop-only" id="sortHistory"><option value="-date">Ordenar por Data</option><option value="title">Ordenar por A-Z</option></select> <button id="toggleHistory" class="expand-button">▼ Histórico</button></div>
-        </div>
-        <div class="links" id="allReports" style="display:none;">{backup_cards}</div>
-        <div id="noResultsAll" style="display:none; color:#8b949e; margin-top:20px;">Nenhum resultado encontrado com os parâmetros fornecidos.</div>
-        <div class="pagination" id="paginationControls" style="display:none;"><button id="prevPage">Anterior</button><span id="pageInfo"></span><button id="nextPage">Próxima</button></div>
-    </div>
+  <div class="folder">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;"><h2>Histórico Completo</h2><div><select class="sort-select desktop-only" id="sortHistory"><option value="-date">Ordenar por Data</option><option value="title">Ordenar por A-Z</option></select> <button id="toggleHistory" class="expand-button">▼ Histórico</button></div></div>
+    <div class="links" id="allReports" style="display:none;">{history_cards}</div>
+    <div id="noResultsAll" style="display:none; color:#8b949e; margin-top:20px;">Nenhum resultado encontrado com os parâmetros fornecidos.</div>
+    <div class="pagination" id="paginationControls" style="display:none;"><button id="prevPage">Anterior</button><span id="pageInfo"></span><button id="nextPage">Próxima</button></div>
+  </div>
 
-    <div class="footer"><div class="footer-content"><div><h3>Repositório de Arquivos</h3><p class="campus-info"><i class="fas fa-university"></i> Direção de Administração e Planejamento (DAP)<br>Essa <b>não</b> é uma página oficial do IFC - Campus Araquari</p></div><div class="developer-info"><p class="developed-by"><i class="fas fa-code"></i> Desenvolvido e mantido por Guilherme M.</p><div class="social-links"><a href="https://github.com/guimig/EmailBackupHub" class="social-icon"><i class="fab fa-github"></i></a></div></div></div></div>
+  <div class="footer"><div class="footer-content"><div><h3>Repositório de Arquivos</h3><p><i class="fas fa-university"></i> Direção de Administração e Planejamento (DAP)<br>Essa <b>não</b> é uma página oficial do IFC - Campus Araquari</p></div><div><p><i class="fas fa-code"></i> Desenvolvido e mantido por Guilherme M.</p><a href="https://github.com/guimig/EmailBackupHub"><i class="fab fa-github"></i> GitHub</a></div></div></div>
 
-    <script>
-        const byId = id => document.getElementById(id);
-        function applyFilters() {{
-            const searchTerm = byId('searchInput').value.toLowerCase();
-            const filterDate = byId('dateFilter') ? byId('dateFilter').value : '';
-            const filterCategory = byId('categoryFilter') ? byId('categoryFilter').value : '';
-            let hasLatest = false;
-            let hasAll = false;
-            document.querySelectorAll('#latestReports .report-card').forEach(card => {{
-                const matches = card.textContent.toLowerCase().includes(searchTerm) && (!filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'))) && (!filterCategory || card.dataset.category === filterCategory);
-                card.style.display = matches ? 'block' : 'none';
-                hasLatest = hasLatest || matches;
-            }});
-            document.querySelectorAll('#allReports .report-card').forEach(card => {{
-                const matches = card.textContent.toLowerCase().includes(searchTerm) && (!filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'))) && (!filterCategory || card.dataset.category === filterCategory);
-                card.style.display = matches ? 'block' : 'none';
-                hasAll = hasAll || matches;
-            }});
-            byId('noResultsLatest').style.display = hasLatest ? 'none' : 'block';
-            byId('noResultsAll').style.display = hasAll ? 'none' : 'block';
-        }}
-        function clearFilters() {{ byId('searchInput').value = ''; if (byId('dateFilter')) byId('dateFilter').value = ''; if (byId('categoryFilter')) byId('categoryFilter').value = ''; applyFilters(); }}
-        let historyVisible = false;
-        let currentPage = 1;
-        const itemsPerPage = 10;
-        function toggleHistory() {{ historyVisible = !historyVisible; byId('allReports').style.display = historyVisible ? 'block' : 'none'; byId('paginationControls').style.display = historyVisible ? 'flex' : 'none'; byId('toggleHistory').textContent = historyVisible ? '▲ Ocultar Histórico' : '▼ Exibir Histórico'; if (historyVisible) showPage(1); }}
-        function showPage(page) {{ const cards = Array.from(document.querySelectorAll('#allReports .report-card')); const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage)); currentPage = page; cards.forEach((card, index) => {{ card.style.display = index >= (page - 1) * itemsPerPage && index < page * itemsPerPage ? 'block' : 'none'; }}); byId('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`; byId('prevPage').disabled = page === 1; byId('nextPage').disabled = page === totalPages; }}
-        function sortElements(container, key) {{ const cards = Array.from(container.querySelectorAll('.report-card')); cards.sort((a, b) => {{ const aDate = a.dataset.date.split('/').reverse().join(''); const bDate = b.dataset.date.split('/').reverse().join(''); if (key === '-date') return bDate.localeCompare(aDate); if (key === 'date') return aDate.localeCompare(bDate); const aTitle = a.querySelector('a').textContent.toLowerCase(); const bTitle = b.querySelector('a').textContent.toLowerCase(); return key === '-title' ? bTitle.localeCompare(aTitle) : aTitle.localeCompare(bTitle); }}); cards.forEach(card => container.appendChild(card)); }}
-        byId('toggleHistory').addEventListener('click', toggleHistory);
-        byId('prevPage').addEventListener('click', () => {{ if (currentPage > 1) showPage(currentPage - 1); }});
-        byId('nextPage').addEventListener('click', () => {{ const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage); if (currentPage < totalPages) showPage(currentPage + 1); }});
-        byId('searchInput').addEventListener('input', applyFilters);
-        byId('dateFilter').addEventListener('change', applyFilters);
-        byId('categoryFilter').addEventListener('change', applyFilters);
-        byId('clearFiltersButton').addEventListener('click', clearFilters);
-        byId('sortLatest').addEventListener('change', event => {{ sortElements(byId('latestReports'), event.target.value); applyFilters(); }});
-        byId('sortHistory').addEventListener('change', event => {{ sortElements(byId('allReports'), event.target.value); showPage(1); }});
-        byId('mobileSort').addEventListener('change', event => {{ const target = event.target.value.includes('date') ? byId('allReports') : byId('latestReports'); sortElements(target, event.target.value); if (target === byId('allReports')) showPage(1); applyFilters(); }});
-    </script>
+  <script>
+    const byId = id => document.getElementById(id);
+    function applyFilters() {{
+      const searchTerm = byId('searchInput').value.toLowerCase();
+      const filterDate = byId('dateFilter') ? byId('dateFilter').value : '';
+      const filterCategory = byId('categoryFilter') ? byId('categoryFilter').value : '';
+      let hasLatest = false;
+      let hasAll = false;
+      for (const card of document.querySelectorAll('#latestReports .report-card')) {{
+        const matches = card.textContent.toLowerCase().includes(searchTerm) && (!filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'))) && (!filterCategory || card.dataset.category === filterCategory);
+        card.style.display = matches ? 'block' : 'none';
+        hasLatest = hasLatest || matches;
+      }}
+      for (const card of document.querySelectorAll('#allReports .report-card')) {{
+        const matches = card.textContent.toLowerCase().includes(searchTerm) && (!filterDate || card.dataset.date.includes(filterDate.split('-').reverse().join('/'))) && (!filterCategory || card.dataset.category === filterCategory);
+        card.style.display = matches ? 'block' : 'none';
+        hasAll = hasAll || matches;
+      }}
+      byId('noResultsLatest').style.display = hasLatest ? 'none' : 'block';
+      byId('noResultsAll').style.display = hasAll ? 'none' : 'block';
+    }}
+    function clearFilters() {{ byId('searchInput').value = ''; byId('dateFilter').value = ''; byId('categoryFilter').value = ''; applyFilters(); }}
+    let historyVisible = false;
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    function toggleHistory() {{ historyVisible = !historyVisible; byId('allReports').style.display = historyVisible ? 'block' : 'none'; byId('paginationControls').style.display = historyVisible ? 'flex' : 'none'; byId('toggleHistory').textContent = historyVisible ? '▲ Ocultar Histórico' : '▼ Exibir Histórico'; if (historyVisible) showPage(1); }}
+    function showPage(page) {{ const cards = Array.from(document.querySelectorAll('#allReports .report-card')); const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage)); currentPage = page; cards.forEach((card, index) => {{ card.style.display = index >= (page - 1) * itemsPerPage && index < page * itemsPerPage ? 'block' : 'none'; }}); byId('pageInfo').textContent = `Página ${{page}} de ${{totalPages}}`; byId('prevPage').disabled = page === 1; byId('nextPage').disabled = page === totalPages; }}
+    function sortElements(container, key) {{ const cards = Array.from(container.querySelectorAll('.report-card')); cards.sort((a, b) => {{ const aDate = a.dataset.date.split('/').reverse().join(''); const bDate = b.dataset.date.split('/').reverse().join(''); if (key === '-date') return bDate.localeCompare(aDate); if (key === 'date') return aDate.localeCompare(bDate); const aTitle = a.querySelector('a').textContent.toLowerCase(); const bTitle = b.querySelector('a').textContent.toLowerCase(); return key === '-title' ? bTitle.localeCompare(aTitle) : aTitle.localeCompare(bTitle); }}); cards.forEach(card => container.appendChild(card)); }}
+    byId('toggleHistory').addEventListener('click', toggleHistory);
+    byId('prevPage').addEventListener('click', () => {{ if (currentPage > 1) showPage(currentPage - 1); }});
+    byId('nextPage').addEventListener('click', () => {{ const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage); if (currentPage < totalPages) showPage(currentPage + 1); }});
+    byId('searchInput').addEventListener('input', applyFilters);
+    byId('dateFilter').addEventListener('change', applyFilters);
+    byId('categoryFilter').addEventListener('change', applyFilters);
+    byId('clearFiltersButton').addEventListener('click', clearFilters);
+    byId('sortLatest').addEventListener('change', event => {{ sortElements(byId('latestReports'), event.target.value); applyFilters(); }});
+    byId('sortHistory').addEventListener('change', event => {{ sortElements(byId('allReports'), event.target.value); showPage(1); }});
+    byId('mobileSort').addEventListener('change', event => {{ const target = event.target.value.includes('date') ? byId('allReports') : byId('latestReports'); sortElements(target, event.target.value); if (target === byId('allReports')) showPage(1); applyFilters(); }});
+  </script>
 </body>
 </html>
     """
