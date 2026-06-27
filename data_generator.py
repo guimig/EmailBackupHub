@@ -15,7 +15,14 @@ REPORTS_DIR = DATA_DIR / "reports"
 SNAPSHOTS_DIR = DATA_DIR / "snapshots"
 SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
-SCHEMA_VERSION = "1.3"
+SCHEMA_VERSION = "1.4"
+
+INFO_QUALITY_CODES = {
+    "date_from_filename",
+    "date_from_mtime",
+    "inconsistent_columns",
+    "totals_separated",
+}
 
 REPORT_FRIENDLY_NAMES = {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza - 2024",
@@ -280,6 +287,13 @@ def classify_row(row):
     return "data"
 
 
+def quality_result(codes):
+    codes = sorted(set(code for code in codes if code))
+    issues = [code for code in codes if code not in INFO_QUALITY_CODES]
+    warnings = [code for code in codes if code in INFO_QUALITY_CODES]
+    return {"ok": not issues, "issues": issues, "warnings": warnings}
+
+
 def normalize_table(grid):
     if not grid:
         return [], [], [], [], ["no_table"]
@@ -393,7 +407,7 @@ def full_report_document(file_path, source_map, now):
         "totals": totals,
         "row_types": row_types,
         "metadata": metadata_for(slug, title, report_date, content_hash, source_path, source_map, now, len(rows), len(columns)),
-        "quality": {"ok": not issues, "issues": sorted(set(issues))},
+        "quality": quality_result(issues),
     }
 
 
@@ -414,7 +428,7 @@ def light_history_document(file_path, title, slug, source_map, now):
         "totals": [],
         "row_types": [],
         "metadata": metadata_for(slug, apply_report_overrides(slug, title), report_date, cheap_hash(file_path), source_path, source_map, now),
-        "quality": {"ok": False, "issues": issues},
+        "quality": quality_result(issues),
     }
 
 
