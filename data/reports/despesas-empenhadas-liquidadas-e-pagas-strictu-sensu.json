@@ -1,378 +1,706 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "slug": "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu",
-  "title": "Despesas Empenhadas, Liquidadas e Pagas - STRICTU SENSU",
+  "title": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
   "date": "31/12/2025",
   "date_iso": "2025-12-31",
   "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_31-12-2025.html",
-  "category": "Despesas Empenhadas, Liquidadas e Pagas - STRICTU SENSU",
+  "category": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
   "columns": [
-    "Natureza Despesa",
-    "Natureza Despesa Detalhada",
-    "NE CCor",
-    "NE CCor - Descrição",
-    "Item Informação",
-    "29",
-    "31",
-    "34"
+    "Coluna 1",
+    "Coluna 2",
+    "Coluna 3",
+    "Coluna 4",
+    "Coluna 5",
+    "Coluna 6",
+    "Coluna 7",
+    "Coluna 8",
+    "Coluna 9"
   ],
   "rows": [
     {
-      "Natureza Despesa": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
-      "Natureza Despesa Detalhada": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
-      "NE CCor": "DESPESAS PAGAS (CONTROLE EMPENHO)",
-      "NE CCor - Descrição": "",
-      "Item Informação": "",
-      "29": "",
-      "31": "",
-      "34": ""
+      "Coluna 1": "Natureza Despesa",
+      "Coluna 2": "Natureza Despesa Detalhada",
+      "Coluna 3": "Natureza Despesa Detalhada",
+      "Coluna 4": "NE CCor",
+      "Coluna 5": "NE CCor - Descrição",
+      "Coluna 6": "Item Informação",
+      "Coluna 7": "29",
+      "Coluna 8": "31",
+      "Coluna 9": "34"
     },
     {
-      "Natureza Despesa": "NE CCor - Favorecido",
-      "Natureza Despesa Detalhada": "Saldo - R$ (Item Informação)",
-      "NE CCor": "Saldo - R$ (Item Informação)",
-      "NE CCor - Descrição": "Saldo - R$ (Item Informação)",
-      "Item Informação": "",
-      "29": "",
-      "31": "",
-      "34": ""
+      "Coluna 1": "Natureza Despesa",
+      "Coluna 2": "Natureza Despesa Detalhada",
+      "Coluna 3": "Natureza Despesa Detalhada",
+      "Coluna 4": "NE CCor",
+      "Coluna 5": "NE CCor - Descrição",
+      "Coluna 6": "Item Informação",
+      "Coluna 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+      "Coluna 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+      "Coluna 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
     },
     {
-      "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
-      "Natureza Despesa Detalhada": "33901414",
-      "NE CCor": "DIARIAS NO PAIS",
-      "NE CCor - Descrição": "158459264222025NE000057",
-      "Item Informação": "EMPENHO PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PPGPSA - PROGRAMA DE POS GRADUACAO EM SANIDADE ANIMAL, NO AMBITO DO IFC CAMPUS ARAQUARI, DURANTE O EXERCICIO DE 2025. NAO SE APLICA Nº 03/2025.",
-      "29": "IF CATARINENSE - CAMPUS ARAQUARI",
-      "31": "17.575,12",
-      "34": "17.575,12"
+      "Coluna 1": "Natureza Despesa",
+      "Coluna 2": "Natureza Despesa Detalhada",
+      "Coluna 3": "Natureza Despesa Detalhada",
+      "Coluna 4": "NE CCor",
+      "Coluna 5": "NE CCor - Descrição",
+      "Coluna 6": "NE CCor - Favorecido",
+      "Coluna 7": "Saldo - R$ (Item Informação)",
+      "Coluna 8": "Saldo - R$ (Item Informação)",
+      "Coluna 9": "Saldo - R$ (Item Informação)"
     },
     {
-      "Natureza Despesa": "158459264222025NE000121",
-      "Natureza Despesa Detalhada": "NAO SE APLICA Nº 06/2025 PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PROGRAMA DE POS-GRADUACAO EM TECNOLOGIA E AMBIENTE - PPGTA, DURANTE O EXERCICIO DE 2025. PROCESSO: 23349.002819/2025-32.",
-      "NE CCor": "IF CATARINENSE - CAMPUS ARAQUARI",
-      "NE CCor - Descrição": "8.391,58",
-      "Item Informação": "8.391,58",
-      "29": "8.391,58",
-      "31": "",
-      "34": ""
+      "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+      "Coluna 2": "33901414",
+      "Coluna 3": "DIARIAS NO PAIS",
+      "Coluna 4": "158459264222025NE000057",
+      "Coluna 5": "EMPENHO PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PPGPSA - PROGRAMA DE POS GRADUACAO EM SANIDADE ANIMAL, NO AMBITO DO IFC CAMPUS ARAQUARI, DURANTE O EXERCICIO DE 2025. NAO SE APLICA Nº 03/2025.",
+      "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Coluna 7": "17.575,12",
+      "Coluna 8": "17.575,12",
+      "Coluna 9": "17.575,12"
     },
     {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "25.966,70",
-      "29": "25.966,70",
-      "31": "25.966,70",
-      "34": ""
+      "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+      "Coluna 2": "33901414",
+      "Coluna 3": "DIARIAS NO PAIS",
+      "Coluna 4": "158459264222025NE000121",
+      "Coluna 5": "NAO SE APLICA Nº 06/2025 PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PROGRAMA DE POS-GRADUACAO EM TECNOLOGIA E AMBIENTE - PPGTA, DURANTE O EXERCICIO DE 2025. PROCESSO: 23349.002819/2025-32.",
+      "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Coluna 7": "8.391,58",
+      "Coluna 8": "8.391,58",
+      "Coluna 9": "8.391,58"
     },
     {
-      "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
-      "Natureza Despesa Detalhada": "33901801",
-      "NE CCor": "BOLSAS DE ESTUDO NO PAIS",
-      "NE CCor - Descrição": "158459264222025NE000120",
-      "Item Informação": "EMPENHO PARA ATENDER AS DESPESAS COM O CENTRO DE CUSTOS STRICTU SENSU RELATIVO AO EDITAL 35/2025 - ASSEG/GAB, DO CURSO PPGTA - SEIS MIL REAIS - PPGSA - TRES MIL REAIS - CF. MEMORANDO ELETRONICO 25/2025 - PROEPI. AUXILIO FINANCEIRO A ESTUDANTES PARA APRESENTACAO DE TRABALHOS.",
-      "29": "IF CATARINENSE - CAMPUS ARAQUARI",
-      "31": "5.245,70",
-      "34": "5.245,70"
+      "Coluna 1": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Coluna 2": "33901801",
+      "Coluna 3": "BOLSAS DE ESTUDO NO PAIS",
+      "Coluna 4": "158459264222025NE000120",
+      "Coluna 5": "EMPENHO PARA ATENDER AS DESPESAS COM O CENTRO DE CUSTOS STRICTU SENSU RELATIVO AO EDITAL 35/2025 - ASSEG/GAB, DO CURSO PPGTA - SEIS MIL REAIS - PPGSA - TRES MIL REAIS - CF. MEMORANDO ELETRONICO 25/2025 - PROEPI. AUXILIO FINANCEIRO A ESTUDANTES PARA APRESENTACAO DE TRABALHOS.",
+      "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Coluna 7": "5.245,70",
+      "Coluna 8": "5.245,70",
+      "Coluna 9": "5.245,70"
     },
     {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "5.245,70",
-      "29": "5.245,70",
-      "31": "5.245,70",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000218",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "GERPAGRO DISTRIBUIDORA DE PRODUTOS AGROPECUARIOS LTDA",
+      "Coluna 7": "635,00",
+      "Coluna 8": "635,00",
+      "Coluna 9": "621,03"
     },
     {
-      "Natureza Despesa": "MATERIAL DE CONSUMO",
-      "Natureza Despesa Detalhada": "33903018",
-      "NE CCor": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
-      "NE CCor - Descrição": "158459264222025NE000218",
-      "Item Informação": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "29": "GERPAGRO DISTRIBUIDORA DE PRODUTOS AGROPECUARIOS LTDA",
-      "31": "635,00",
-      "34": "635,00"
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000219",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "FAROVET PRODUTOS VETERINARIOS LTDA",
+      "Coluna 7": "225,78",
+      "Coluna 8": "225,78",
+      "Coluna 9": "225,78"
     },
     {
-      "Natureza Despesa": "158459264222025NE000219",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "NE CCor": "FAROVET PRODUTOS VETERINARIOS LTDA",
-      "NE CCor - Descrição": "225,78",
-      "Item Informação": "225,78",
-      "29": "225,78",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000220",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "ALC MORAES COMERCIAL LTDA.",
+      "Coluna 7": "201,64",
+      "Coluna 8": "201,64",
+      "Coluna 9": "187,96"
     },
     {
-      "Natureza Despesa": "158459264222025NE000220",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "NE CCor": "ALC MORAES COMERCIAL LTDA.",
-      "NE CCor - Descrição": "201,64",
-      "Item Informação": "201,64",
-      "29": "187,96",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000221",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "APLICAPET 39724032 PRODUTOS E SERVICOS VETERINARIOS LTD",
+      "Coluna 7": "37,62",
+      "Coluna 8": "37,62",
+      "Coluna 9": "37,62"
     },
     {
-      "Natureza Despesa": "158459264222025NE000221",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "NE CCor": "APLICAPET 39724032 PRODUTOS E SERVICOS VETERINARIOS LTD",
-      "NE CCor - Descrição": "37,62",
-      "Item Informação": "37,62",
-      "29": "37,62",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000222",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "FARMACIA DO CAMPO LTDA",
+      "Coluna 7": "128,62",
+      "Coluna 8": "",
+      "Coluna 9": ""
     },
     {
-      "Natureza Despesa": "158459264222025NE000222",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "NE CCor": "FARMACIA DO CAMPO LTDA",
-      "NE CCor - Descrição": "128,62",
-      "Item Informação": "",
-      "29": "",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903018",
+      "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+      "Coluna 4": "158459264222025NE000224",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "ATACADAO PET PARAISO LTDA",
+      "Coluna 7": "98,00",
+      "Coluna 8": "98,00",
+      "Coluna 9": "98,00"
     },
     {
-      "Natureza Despesa": "158459264222025NE000224",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "NE CCor": "ATACADAO PET PARAISO LTDA",
-      "NE CCor - Descrição": "98,00",
-      "Item Informação": "98,00",
-      "29": "98,00",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903035",
+      "Coluna 3": "MATERIAL LABORATORIAL",
+      "Coluna 4": "158459264222025NE000177",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
+      "Coluna 6": "A C L ASSISTENCIA E COMERCIO DE PRODUTOS PARA LABORATOR",
+      "Coluna 7": "1.814,29",
+      "Coluna 8": "1.814,29",
+      "Coluna 9": "1.708,15"
     },
     {
-      "Natureza Despesa": "33903035",
-      "Natureza Despesa Detalhada": "MATERIAL LABORATORIAL",
-      "NE CCor": "158459264222025NE000177",
-      "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
-      "Item Informação": "A C L ASSISTENCIA E COMERCIO DE PRODUTOS PARA LABORATOR",
-      "29": "1.814,29",
-      "31": "1.814,29",
-      "34": "1.708,15"
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903035",
+      "Coluna 3": "MATERIAL LABORATORIAL",
+      "Coluna 4": "158459264222025NE000178",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
+      "Coluna 6": "PER-LAB INDUSTRIA E COMERCIO DE VIDROS PARA LABS LTDA",
+      "Coluna 7": "950,20",
+      "Coluna 8": "950,20",
+      "Coluna 9": "950,20"
     },
     {
-      "Natureza Despesa": "158459264222025NE000178",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
-      "NE CCor": "PER-LAB INDUSTRIA E COMERCIO DE VIDROS PARA LABS LTDA",
-      "NE CCor - Descrição": "950,20",
-      "Item Informação": "950,20",
-      "29": "950,20",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903035",
+      "Coluna 3": "MATERIAL LABORATORIAL",
+      "Coluna 4": "158459264222025NE000179",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
+      "Coluna 6": "TDA MATERIAIS E INSUMOS PARA LABORATORIO LTDA",
+      "Coluna 7": "2.206,61",
+      "Coluna 8": "2.206,61",
+      "Coluna 9": "2.206,61"
     },
     {
-      "Natureza Despesa": "158459264222025NE000179",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
-      "NE CCor": "TDA MATERIAIS E INSUMOS PARA LABORATORIO LTDA",
-      "NE CCor - Descrição": "2.206,61",
-      "Item Informação": "2.206,61",
-      "29": "2.206,61",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903035",
+      "Coluna 3": "MATERIAL LABORATORIAL",
+      "Coluna 4": "158459264222025NE000180",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
+      "Coluna 6": "32.346.844 CATIA REGINA NUNES DA SILVA",
+      "Coluna 7": "285,00",
+      "Coluna 8": "",
+      "Coluna 9": ""
     },
     {
-      "Natureza Despesa": "158459264222025NE000180",
-      "Natureza Despesa Detalhada": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
-      "NE CCor": "32.346.844 CATIA REGINA NUNES DA SILVA",
-      "NE CCor - Descrição": "285,00",
-      "Item Informação": "",
-      "29": "",
-      "31": "",
-      "34": ""
+      "Coluna 1": "MATERIAL DE CONSUMO",
+      "Coluna 2": "33903036",
+      "Coluna 3": "MATERIAL HOSPITALAR",
+      "Coluna 4": "158459264222025NE000220",
+      "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+      "Coluna 6": "ALC MORAES COMERCIAL LTDA.",
+      "Coluna 7": "32,26",
+      "Coluna 8": "32,26",
+      "Coluna 9": "32,26"
     },
     {
-      "Natureza Despesa": "33903036",
-      "Natureza Despesa Detalhada": "MATERIAL HOSPITALAR",
-      "NE CCor": "158459264222025NE000220",
-      "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
-      "Item Informação": "ALC MORAES COMERCIAL LTDA.",
-      "29": "32,26",
-      "31": "32,26",
-      "34": "32,26"
+      "Coluna 1": "LOCACAO DE MAO-DE-OBRA",
+      "Coluna 2": "33903702",
+      "Coluna 3": "LIMPEZA E CONSERVACAO",
+      "Coluna 4": "158459264222025NE000261",
+      "Coluna 5": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
+      "Coluna 6": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
+      "Coluna 7": "50.322,58",
+      "Coluna 8": "",
+      "Coluna 9": ""
     },
     {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "6.615,02",
-      "29": "6.201,40",
-      "31": "6.067,61",
-      "34": ""
-    },
-    {
-      "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
-      "Natureza Despesa Detalhada": "33903702",
-      "NE CCor": "LIMPEZA E CONSERVACAO",
-      "NE CCor - Descrição": "158459264222025NE000261",
-      "Item Informação": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
-      "29": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
-      "31": "50.322,58",
-      "34": ""
-    },
-    {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "50.322,58",
-      "29": "",
-      "31": "",
-      "34": ""
-    },
-    {
-      "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-      "Natureza Despesa Detalhada": "33903948",
-      "NE CCor": "SERVICO DE SELECAO E TREINAMENTO",
-      "NE CCor - Descrição": "158459264222025NE000154",
-      "Item Informação": "EMPENHO PARA PAGAMENTO DE INSCRICAO NO EVENTO FISH CONGRESS E FISH EXPO BRASIL 2025 PARA A SERVIDORA JAQUELINE INES ALVES DE ANDRADE, QUE ACONTECERA EM FOZ DO IGUACU/PR NOS DIAS 02, 03 E 04 DE SETEMBRO DE 2025.",
-      "29": "HOLLUS COMUNICACAO E EVENTOS LTDA",
-      "31": "650,00",
-      "34": ""
-    },
-    {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "650,00",
-      "29": "",
-      "31": "",
-      "34": ""
-    },
-    {
-      "Natureza Despesa": "Total",
-      "Natureza Despesa Detalhada": "",
-      "NE CCor": "",
-      "NE CCor - Descrição": "",
-      "Item Informação": "",
-      "29": "88.800,00",
-      "31": "37.413,80",
-      "34": "37.280,01"
+      "Coluna 1": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Coluna 2": "33903948",
+      "Coluna 3": "SERVICO DE SELECAO E TREINAMENTO",
+      "Coluna 4": "158459264222025NE000154",
+      "Coluna 5": "EMPENHO PARA PAGAMENTO DE INSCRICAO NO EVENTO FISH CONGRESS E FISH EXPO BRASIL 2025 PARA A SERVIDORA JAQUELINE INES ALVES DE ANDRADE, QUE ACONTECERA EM FOZ DO IGUACU/PR NOS DIAS 02, 03 E 04 DE SETEMBRO DE 2025.",
+      "Coluna 6": "HOLLUS COMUNICACAO E EVENTOS LTDA",
+      "Coluna 7": "650,00",
+      "Coluna 8": "",
+      "Coluna 9": ""
     }
   ],
   "totals": [
     {
-      "label": "Total",
+      "label": "DIARIAS - PESSOAL CIVIL",
       "values": {
-        "Item Informação": 25966.7,
-        "29": 25966.7,
-        "31": 25966.7
+        "Coluna 7": 25966.7,
+        "Coluna 8": 25966.7,
+        "Coluna 9": 25966.7
       },
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "25.966,70",
-        "29": "25.966,70",
-        "31": "25.966,70",
-        "34": ""
+        "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "25.966,70",
+        "Coluna 8": "25.966,70",
+        "Coluna 9": "25.966,70"
+      }
+    },
+    {
+      "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "values": {
+        "Coluna 7": 5245.7,
+        "Coluna 8": 5245.7,
+        "Coluna 9": 5245.7
+      },
+      "raw": {
+        "Coluna 1": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "5.245,70",
+        "Coluna 8": "5.245,70",
+        "Coluna 9": "5.245,70"
+      }
+    },
+    {
+      "label": "MATERIAL DE CONSUMO",
+      "values": {
+        "Coluna 7": 6615.02,
+        "Coluna 8": 6201.4,
+        "Coluna 9": 6067.61
+      },
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "6.615,02",
+        "Coluna 8": "6.201,40",
+        "Coluna 9": "6.067,61"
+      }
+    },
+    {
+      "label": "LOCACAO DE MAO-DE-OBRA",
+      "values": {
+        "Coluna 7": 50322.58
+      },
+      "raw": {
+        "Coluna 1": "LOCACAO DE MAO-DE-OBRA",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "50.322,58",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "values": {
+        "Coluna 7": 650.0
+      },
+      "raw": {
+        "Coluna 1": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "650,00",
+        "Coluna 8": "",
+        "Coluna 9": ""
       }
     },
     {
       "label": "Total",
       "values": {
-        "Item Informação": 5245.7,
-        "29": 5245.7,
-        "31": 5245.7
+        "Coluna 7": 88800.0,
+        "Coluna 8": 37413.8,
+        "Coluna 9": 37280.01
       },
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "5.245,70",
-        "29": "5.245,70",
-        "31": "5.245,70",
-        "34": ""
+        "Coluna 1": "Total",
+        "Coluna 2": "",
+        "Coluna 3": "",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "88.800,00",
+        "Coluna 8": "37.413,80",
+        "Coluna 9": "37.280,01"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "Natureza Despesa",
+        "Coluna 2": "Natureza Despesa Detalhada",
+        "Coluna 3": "Natureza Despesa Detalhada",
+        "Coluna 4": "NE CCor",
+        "Coluna 5": "NE CCor - Descrição",
+        "Coluna 6": "Item Informação",
+        "Coluna 7": "29",
+        "Coluna 8": "31",
+        "Coluna 9": "34"
       }
     },
     {
-      "label": "Total",
-      "values": {
-        "Item Informação": 6615.02,
-        "29": 6201.4,
-        "31": 6067.61
-      },
+      "type": "data",
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "6.615,02",
-        "29": "6.201,40",
-        "31": "6.067,61",
-        "34": ""
+        "Coluna 1": "Natureza Despesa",
+        "Coluna 2": "Natureza Despesa Detalhada",
+        "Coluna 3": "Natureza Despesa Detalhada",
+        "Coluna 4": "NE CCor",
+        "Coluna 5": "NE CCor - Descrição",
+        "Coluna 6": "Item Informação",
+        "Coluna 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+        "Coluna 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+        "Coluna 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
       }
     },
     {
-      "label": "Total",
-      "values": {
-        "Item Informação": 50322.58
-      },
+      "type": "data",
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "50.322,58",
-        "29": "",
-        "31": "",
-        "34": ""
+        "Coluna 1": "Natureza Despesa",
+        "Coluna 2": "Natureza Despesa Detalhada",
+        "Coluna 3": "Natureza Despesa Detalhada",
+        "Coluna 4": "NE CCor",
+        "Coluna 5": "NE CCor - Descrição",
+        "Coluna 6": "NE CCor - Favorecido",
+        "Coluna 7": "Saldo - R$ (Item Informação)",
+        "Coluna 8": "Saldo - R$ (Item Informação)",
+        "Coluna 9": "Saldo - R$ (Item Informação)"
       }
     },
     {
-      "label": "Total",
-      "values": {
-        "Item Informação": 650.0
-      },
+      "type": "data",
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "650,00",
-        "29": "",
-        "31": "",
-        "34": ""
+        "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+        "Coluna 2": "33901414",
+        "Coluna 3": "DIARIAS NO PAIS",
+        "Coluna 4": "158459264222025NE000057",
+        "Coluna 5": "EMPENHO PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PPGPSA - PROGRAMA DE POS GRADUACAO EM SANIDADE ANIMAL, NO AMBITO DO IFC CAMPUS ARAQUARI, DURANTE O EXERCICIO DE 2025. NAO SE APLICA Nº 03/2025.",
+        "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Coluna 7": "17.575,12",
+        "Coluna 8": "17.575,12",
+        "Coluna 9": "17.575,12"
       }
     },
     {
-      "label": "Total",
-      "values": {
-        "29": 88800.0,
-        "31": 37413.8,
-        "34": 37280.01
-      },
+      "type": "data",
       "raw": {
-        "Natureza Despesa": "Total",
-        "Natureza Despesa Detalhada": "",
-        "NE CCor": "",
-        "NE CCor - Descrição": "",
-        "Item Informação": "",
-        "29": "88.800,00",
-        "31": "37.413,80",
-        "34": "37.280,01"
+        "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+        "Coluna 2": "33901414",
+        "Coluna 3": "DIARIAS NO PAIS",
+        "Coluna 4": "158459264222025NE000121",
+        "Coluna 5": "NAO SE APLICA Nº 06/2025 PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PROGRAMA DE POS-GRADUACAO EM TECNOLOGIA E AMBIENTE - PPGTA, DURANTE O EXERCICIO DE 2025. PROCESSO: 23349.002819/2025-32.",
+        "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Coluna 7": "8.391,58",
+        "Coluna 8": "8.391,58",
+        "Coluna 9": "8.391,58"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "DIARIAS - PESSOAL CIVIL",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "25.966,70",
+        "Coluna 8": "25.966,70",
+        "Coluna 9": "25.966,70"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Coluna 2": "33901801",
+        "Coluna 3": "BOLSAS DE ESTUDO NO PAIS",
+        "Coluna 4": "158459264222025NE000120",
+        "Coluna 5": "EMPENHO PARA ATENDER AS DESPESAS COM O CENTRO DE CUSTOS STRICTU SENSU RELATIVO AO EDITAL 35/2025 - ASSEG/GAB, DO CURSO PPGTA - SEIS MIL REAIS - PPGSA - TRES MIL REAIS - CF. MEMORANDO ELETRONICO 25/2025 - PROEPI. AUXILIO FINANCEIRO A ESTUDANTES PARA APRESENTACAO DE TRABALHOS.",
+        "Coluna 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Coluna 7": "5.245,70",
+        "Coluna 8": "5.245,70",
+        "Coluna 9": "5.245,70"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "5.245,70",
+        "Coluna 8": "5.245,70",
+        "Coluna 9": "5.245,70"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000218",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "GERPAGRO DISTRIBUIDORA DE PRODUTOS AGROPECUARIOS LTDA",
+        "Coluna 7": "635,00",
+        "Coluna 8": "635,00",
+        "Coluna 9": "621,03"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000219",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "FAROVET PRODUTOS VETERINARIOS LTDA",
+        "Coluna 7": "225,78",
+        "Coluna 8": "225,78",
+        "Coluna 9": "225,78"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000220",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "ALC MORAES COMERCIAL LTDA.",
+        "Coluna 7": "201,64",
+        "Coluna 8": "201,64",
+        "Coluna 9": "187,96"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000221",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "APLICAPET 39724032 PRODUTOS E SERVICOS VETERINARIOS LTD",
+        "Coluna 7": "37,62",
+        "Coluna 8": "37,62",
+        "Coluna 9": "37,62"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000222",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "FARMACIA DO CAMPO LTDA",
+        "Coluna 7": "128,62",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903018",
+        "Coluna 3": "MATERIAIS E MEDICAMENTOS P/ USO VETERINARIO",
+        "Coluna 4": "158459264222025NE000224",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "ATACADAO PET PARAISO LTDA",
+        "Coluna 7": "98,00",
+        "Coluna 8": "98,00",
+        "Coluna 9": "98,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903035",
+        "Coluna 3": "MATERIAL LABORATORIAL",
+        "Coluna 4": "158459264222025NE000177",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
+        "Coluna 6": "A C L ASSISTENCIA E COMERCIO DE PRODUTOS PARA LABORATOR",
+        "Coluna 7": "1.814,29",
+        "Coluna 8": "1.814,29",
+        "Coluna 9": "1.708,15"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903035",
+        "Coluna 3": "MATERIAL LABORATORIAL",
+        "Coluna 4": "158459264222025NE000178",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 4/2025 CCPGTA. REQUISITANTE: PPGTA. FISCAL: CARLOS E. N. M.",
+        "Coluna 6": "PER-LAB INDUSTRIA E COMERCIO DE VIDROS PARA LABS LTDA",
+        "Coluna 7": "950,20",
+        "Coluna 8": "950,20",
+        "Coluna 9": "950,20"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903035",
+        "Coluna 3": "MATERIAL LABORATORIAL",
+        "Coluna 4": "158459264222025NE000179",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
+        "Coluna 6": "TDA MATERIAIS E INSUMOS PARA LABORATORIO LTDA",
+        "Coluna 7": "2.206,61",
+        "Coluna 8": "2.206,61",
+        "Coluna 9": "2.206,61"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903035",
+        "Coluna 3": "MATERIAL LABORATORIAL",
+        "Coluna 4": "158459264222025NE000180",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE VIDRARIAS - MATERIAL DE CONSUMO, PARA ATENDER AS NECESSIDADES DO IFC. ADESAO INTERNA N. 190/2025. PREGAO ELET. N. 90579/2024. PROCESSO N. 23349.004204/2025-41. CF. MEMO ELET. N. 1/2025 GRQUI/ARA. REQUISITANTE: PPGTA. FISCAL: ADALBERTO M. DA S.",
+        "Coluna 6": "32.346.844 CATIA REGINA NUNES DA SILVA",
+        "Coluna 7": "285,00",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "33903036",
+        "Coluna 3": "MATERIAL HOSPITALAR",
+        "Coluna 4": "158459264222025NE000220",
+        "Coluna 5": "EMPENHO PARA AQUISICAO DE MATERIAIS E MEDICAMENTOS VETERINARIOS E HOSPITALARES PARA O IFC CAMPUS ARAQUARI, COM RECURSO DO PPGTA, CONFORME MEMORANDO ELETRONICO Nº 52/2025 - CAMP/ARAQ. ADESAO INTERNA Nº 140/2025 - PREGAO ELETRONICO SRP N° 90037/2024. PROCESSO: 23349.003426/2025-46. FISCAL: ARISTILIANO B.B.",
+        "Coluna 6": "ALC MORAES COMERCIAL LTDA.",
+        "Coluna 7": "32,26",
+        "Coluna 8": "32,26",
+        "Coluna 9": "32,26"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "MATERIAL DE CONSUMO",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "6.615,02",
+        "Coluna 8": "6.201,40",
+        "Coluna 9": "6.067,61"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "LOCACAO DE MAO-DE-OBRA",
+        "Coluna 2": "33903702",
+        "Coluna 3": "LIMPEZA E CONSERVACAO",
+        "Coluna 4": "158459264222025NE000261",
+        "Coluna 5": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
+        "Coluna 6": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
+        "Coluna 7": "50.322,58",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "LOCACAO DE MAO-DE-OBRA",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "50.322,58",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Coluna 1": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Coluna 2": "33903948",
+        "Coluna 3": "SERVICO DE SELECAO E TREINAMENTO",
+        "Coluna 4": "158459264222025NE000154",
+        "Coluna 5": "EMPENHO PARA PAGAMENTO DE INSCRICAO NO EVENTO FISH CONGRESS E FISH EXPO BRASIL 2025 PARA A SERVIDORA JAQUELINE INES ALVES DE ANDRADE, QUE ACONTECERA EM FOZ DO IGUACU/PR NOS DIAS 02, 03 E 04 DE SETEMBRO DE 2025.",
+        "Coluna 6": "HOLLUS COMUNICACAO E EVENTOS LTDA",
+        "Coluna 7": "650,00",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Coluna 2": "Total",
+        "Coluna 3": "Total",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "650,00",
+        "Coluna 8": "",
+        "Coluna 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Coluna 1": "Total",
+        "Coluna 2": "",
+        "Coluna 3": "",
+        "Coluna 4": "",
+        "Coluna 5": "",
+        "Coluna 6": "",
+        "Coluna 7": "88.800,00",
+        "Coluna 8": "37.413,80",
+        "Coluna 9": "37.280,01"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-06-26T20:54:02.276628-03:00",
+    "ultima_atualizacao": "2026-06-26T22:45:33.469895-03:00",
     "idade_dias": 177,
     "periodicidade": "mensal",
     "exercicio": 2025,
     "fonte_email_uid": null,
     "hash_conteudo": "91a45bf4a4204b1e2f6f17a2f8c5fa72ab61d990dce9a63c1ea1918d56e106b0",
-    "row_count": 24,
-    "column_count": 8,
+    "row_count": 19,
+    "column_count": 9,
     "status": "desatualizado",
     "limite_dias": 35
   },
@@ -380,7 +708,7 @@
     "ok": false,
     "issues": [
       "date_from_filename",
-      "inconsistent_columns"
+      "totals_separated"
     ]
   }
 }
