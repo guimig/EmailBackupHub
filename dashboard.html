@@ -43,7 +43,7 @@
       <div class="metric"><strong id="totalReports">0</strong><span>relatórios</span></div>
       <div class="metric"><strong id="updatedReports">0</strong><span>atualizados</span></div>
       <div class="metric"><strong id="staleReports">0</strong><span>desatualizados</span></div>
-      <div class="metric"><strong id="qualityIssues">0</strong><span>com alerta de parsing</span></div>
+      <div class="metric"><strong id="qualityIssues">0</strong><span>com problema de parsing</span></div>
     </section>
     <section class="toolbar">
       <input id="search" type="search" placeholder="Pesquisar por título, data, termo, coluna ou conteúdo indexado">
@@ -77,6 +77,13 @@
 
     const byId = id => document.getElementById(id);
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const infoQualityCodes = new Set(['date_from_filename', 'date_from_mtime', 'inconsistent_columns', 'totals_separated']);
+    const qualityLabels = {
+      date_from_filename: 'data obtida pelo nome do arquivo',
+      date_from_mtime: 'data obtida pela modificação do arquivo',
+      inconsistent_columns: 'largura de linhas normalizada',
+      totals_separated: 'totais separados da tabela principal'
+    };
     const friendlyNames = {
       '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2024',
       '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2025',
@@ -144,12 +151,26 @@
       return friendlyNames[report.slug] || report.title || report.slug || 'Relatório';
     }
 
+    function qualitySummary(report) {
+      const quality = report.quality || {};
+      const rawIssues = quality.issues || [];
+      const warnings = [...(quality.warnings || []), ...rawIssues.filter(issue => infoQualityCodes.has(issue))];
+      const issues = rawIssues.filter(issue => !infoQualityCodes.has(issue));
+      if (issues.length) return { ok: false, text: issues.map(qualityLabel).join(', ') };
+      if (warnings.length) return { ok: true, text: `obs.: ${[...new Set(warnings)].map(qualityLabel).join(', ')}` };
+      return { ok: true, text: 'ok' };
+    }
+
+    function qualityLabel(code) {
+      return qualityLabels[code] || code;
+    }
+
     function render() {
       const rows = filteredReports();
       byId('totalReports').textContent = reports.length;
       byId('updatedReports').textContent = reports.filter(report => report.metadata.status === 'atualizado').length;
       byId('staleReports').textContent = reports.filter(report => report.metadata.status === 'desatualizado').length;
-      byId('qualityIssues').textContent = reports.filter(report => !report.quality.ok).length;
+      byId('qualityIssues').textContent = reports.filter(report => !qualitySummary(report).ok).length;
       byId('rows').innerHTML = rows.map(report => `
         <tr>
           <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.displayTitle)}</a></td>
@@ -157,7 +178,7 @@
           <td><span class="tag">${report.metadata.periodicidade}</span></td>
           <td class="${report.metadata.status === 'atualizado' ? 'ok' : 'bad'}">${report.metadata.status}</td>
           <td>${report.metadata.idade_dias} dias</td>
-          <td class="${report.quality.ok ? 'ok' : 'warn'}">${report.quality.ok ? 'ok' : report.quality.issues.join(', ')}</td>
+          <td class="${qualitySummary(report).ok ? 'ok' : 'warn'}">${escapeHtml(qualitySummary(report).text)}</td>
           <td><a href="${report.html_path}">HTML</a> | <a href="${report.json_path}">JSON</a> | <a href="${report.series_path}">Série</a></td>
         </tr>
       `).join('');

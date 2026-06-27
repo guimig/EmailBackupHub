@@ -64,6 +64,13 @@
     let renderTimer = null;
     const byId = id => document.getElementById(id);
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const infoQualityCodes = new Set(['date_from_filename', 'date_from_mtime', 'inconsistent_columns', 'totals_separated']);
+    const qualityLabels = {
+      date_from_filename: 'data obtida pelo nome do arquivo',
+      date_from_mtime: 'data obtida pela modificação do arquivo',
+      inconsistent_columns: 'largura de linhas normalizada',
+      totals_separated: 'totais separados da tabela principal'
+    };
 
     function reportUrl() {
       const params = new URLSearchParams(location.search);
@@ -85,8 +92,9 @@
         `Exercício: ${report.metadata?.exercicio || '-'}`,
         `Linhas: ${report.metadata?.row_count ?? 0}`
       ].map(text => `<span class="tag">${escapeHtml(text)}</span>`).join('');
-      byId('quality').textContent = report.quality?.ok ? 'Parsing concluído sem alertas.' : `Alertas de parsing: ${(report.quality?.issues || []).join(', ')}`;
-      byId('quality').className = report.quality?.ok ? 'quality' : 'quality bad';
+      const quality = qualitySummary(report);
+      byId('quality').textContent = quality.text;
+      byId('quality').className = quality.ok ? 'quality' : 'quality bad';
       columnFilters = {};
       renderTableShell();
       renderTotals();
@@ -108,6 +116,20 @@
         return report.row_types;
       }
       return (report.rows || []).map(row => ({ type: 'data', raw: row }));
+    }
+
+    function qualitySummary(report) {
+      const quality = report.quality || {};
+      const rawIssues = quality.issues || [];
+      const warnings = [...(quality.warnings || []), ...rawIssues.filter(issue => infoQualityCodes.has(issue))];
+      const issues = rawIssues.filter(issue => !infoQualityCodes.has(issue));
+      if (issues.length) return { ok: false, text: `Problemas de parsing: ${issues.map(qualityLabel).join(', ')}` };
+      if (warnings.length) return { ok: true, text: `Observações de leitura: ${[...new Set(warnings)].map(qualityLabel).join(', ')}` };
+      return { ok: true, text: 'Parsing concluído sem problemas.' };
+    }
+
+    function qualityLabel(code) {
+      return qualityLabels[code] || code;
     }
 
     function renderTotals() {
