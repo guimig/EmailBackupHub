@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "slug": "despesas-empenhadas-liquidadas-e-pagas-2025",
   "title": "Despesas Empenhadas, Liquidadas e Pagas - 2025",
   "date": "01/05/2026",
@@ -10238,7 +10238,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-06-26T22:45:33.469895-03:00",
+    "ultima_atualizacao": "2026-06-26T22:56:08.557921-03:00",
     "idade_dias": 56,
     "periodicidade": "historico",
     "exercicio": 2025,
@@ -10250,8 +10250,9 @@
     "limite_dias": null
   },
   "quality": {
-    "ok": false,
-    "issues": [
+    "ok": true,
+    "issues": [],
+    "warnings": [
       "date_from_filename",
       "totals_separated"
     ]

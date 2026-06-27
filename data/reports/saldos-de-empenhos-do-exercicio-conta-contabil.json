@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
   "title": "Saldos de Empenhos do Exercício por Conta Contábil",
   "date": "26/06/2026",
@@ -5903,7 +5903,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-06-26T22:45:33.469895-03:00",
+    "ultima_atualizacao": "2026-06-26T22:56:08.557921-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -5915,8 +5915,9 @@
     "limite_dias": 1
   },
   "quality": {
-    "ok": false,
-    "issues": [
+    "ok": true,
+    "issues": [],
+    "warnings": [
       "date_from_filename",
       "totals_separated"
     ]
