@@ -15,8 +15,10 @@
     main { padding: 16px; }
     .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); }
     .tag { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--panel); }
-    .toolbar { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; margin: 16px 0; }
+    .toolbar { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; margin: 16px 0; }
     input, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
+    label.toggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; white-space: nowrap; }
+    label.toggle input { padding: 0; }
     button { cursor: pointer; color: #0d1117; background: var(--brand); border-color: var(--brand); font-weight: 700; }
     .table-wrap { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 72vh; background: var(--panel); }
     table { border-collapse: collapse; width: 100%; min-width: 900px; }
@@ -25,6 +27,10 @@
     th input { width: 100%; margin-top: 6px; padding: 6px; font-size: 0.82rem; }
     tbody tr:hover td { background: #1c2129; }
     .total-row td { background: var(--total); font-weight: 700; }
+    .totals { margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
+    .totals summary { cursor: pointer; padding: 10px 12px; color: var(--warn); font-weight: 700; }
+    .totals-list { display: grid; gap: 8px; padding: 0 12px 12px; color: var(--muted); }
+    .totals-list div { border-top: 1px solid var(--line); padding-top: 8px; }
     .quality { margin: 12px 0; color: var(--muted); }
     .quality.bad { color: var(--warn); }
     @media (max-width: 800px) { .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } }
@@ -39,10 +45,15 @@
   <main>
     <div class="toolbar">
       <input id="globalSearch" type="search" placeholder="Pesquisar em todas as colunas">
+      <label class="toggle"><input id="showTotals" type="checkbox"> Mostrar totais</label>
       <button id="clearFilters">Limpar filtros</button>
       <button id="exportCsv">Exportar CSV</button>
     </div>
     <div id="quality" class="quality"></div>
+    <details id="totalsPanel" class="totals" style="display:none;">
+      <summary id="totalsSummary">Totais separados</summary>
+      <div id="totalsList" class="totals-list"></div>
+    </details>
     <section class="table-wrap">
       <table id="table"></table>
     </section>
@@ -78,16 +89,35 @@
       byId('quality').className = report.quality?.ok ? 'quality' : 'quality bad';
       columnFilters = {};
       renderTableShell();
+      renderTotals();
       renderRows();
     }
 
     function filteredRows() {
       const term = normalize(byId('globalSearch').value);
-      return (report.rows || []).filter(row => {
+      return visibleRows().filter(item => {
+        const row = item.raw || item;
         const values = Object.values(row).join(' ');
         if (term && !normalize(values).includes(term)) return false;
         return Object.entries(columnFilters).every(([column, value]) => !value || normalize(row[column]).includes(normalize(value)));
       });
+    }
+
+    function visibleRows() {
+      if (byId('showTotals').checked && Array.isArray(report.row_types) && report.row_types.length) {
+        return report.row_types;
+      }
+      return (report.rows || []).map(row => ({ type: 'data', raw: row }));
+    }
+
+    function renderTotals() {
+      const totals = report.totals || [];
+      byId('totalsPanel').style.display = totals.length ? 'block' : 'none';
+      byId('totalsSummary').textContent = `${totals.length} linha(s) de total separada(s)`;
+      byId('totalsList').innerHTML = totals.map(total => {
+        const values = Object.entries(total.values || {}).map(([key, value]) => `${escapeHtml(key)}: ${escapeHtml(value)}`).join(' | ');
+        return `<div><strong>${escapeHtml(total.label || 'Total')}</strong>${values ? `<br>${values}` : ''}</div>`;
+      }).join('');
     }
 
     function renderTableShell() {
@@ -113,10 +143,10 @@
       if (!report) return;
       const columns = report.columns || [];
       const rows = filteredRows();
-      const totals = new Set((report.totals || []).map(total => JSON.stringify(total.raw || {})));
       const tbody = byId('table').querySelector('tbody');
-      tbody.innerHTML = rows.map(row => {
-        const isTotal = totals.has(JSON.stringify(row)) || String(Object.values(row)[0] || '').toLowerCase().startsWith('total');
+      tbody.innerHTML = rows.map(item => {
+        const row = item.raw || item;
+        const isTotal = item.type === 'total';
         return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
       }).join('');
     }
@@ -124,7 +154,8 @@
     function exportCsv() {
       const columns = report.columns || [];
       const lines = [columns.map(csvCell).join(',')];
-      for (const row of filteredRows()) {
+      for (const item of filteredRows()) {
+        const row = item.raw || item;
         lines.push(columns.map(column => csvCell(row[column])).join(','));
       }
       download(`${report.slug || 'relatorio'}.csv`, lines.join('\n'));
@@ -148,10 +179,12 @@
     byId('clearFilters').addEventListener('click', () => {
       columnFilters = {};
       byId('globalSearch').value = '';
+      byId('showTotals').checked = false;
       document.querySelectorAll('th input').forEach(input => { input.value = ''; });
       renderRows();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
+    byId('showTotals').addEventListener('change', renderRows);
     loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });
   </script>
 </body>
