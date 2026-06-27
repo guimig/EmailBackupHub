@@ -77,6 +77,28 @@
 
     const byId = id => document.getElementById(id);
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const friendlyNames = {
+      '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2024',
+      '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2025',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': 'Liquidações e Pagamentos por Data',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza',
+      'credito-disponivel-mes-lancamento': 'Crédito Disponível por Mês de Lançamento',
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por Mês',
+      'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': 'Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu',
+      'evolucao-das-despesas-empenhadas': 'Evolução das Despesas Empenhadas',
+      'imoveis-por-ug-conta-contabil-e-rip': 'Imóveis por UG, Conta Contábil e RIP',
+      'limite-de-saque-conta-contabil': 'Limite de Saque por Conta Contábil',
+      'provisionamentos': 'Provisionamentos',
+      'recolhimento-proprio-gru': 'Recolhimento Próprio - GRU',
+      'restos-a-pagar-rap': 'Restos a Pagar - RAP',
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': 'Saldo de Empenhos a Liquidar Mês a Mês',
+      'saldo-patrimonio-e-almoxarifado-conta-contabil': 'Saldo de Patrimônio e Almoxarifado por Conta Contábil',
+      'saldo-por-natureza-de-despesa': 'Saldo por Natureza de Despesa',
+      'saldos-de-contas-de-contratos': 'Saldos de Contas de Contratos',
+      'saldos-de-empenhos-do-exercicio-conta-contabil': 'Saldos de Empenhos do Exercício por Conta Contábil',
+      'suprimento-de-fundos-empenhos': 'Suprimento de Fundos - Empenhos',
+      'suprimento-de-fundos-liquidacoes-e-pagamentos': 'Suprimento de Fundos - Liquidações e Pagamentos'
+    };
 
     async function loadData() {
       const [indexResponse, searchResponse] = await Promise.all([
@@ -86,7 +108,7 @@
       indexData = await indexResponse.json();
       searchData = await searchResponse.json();
       const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
-      reports = (indexData.reports || []).map(report => ({ ...report, searchText: textBySlug[report.slug] || '' }));
+      reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: textBySlug[report.slug] || '' }));
       populateFilters();
       render();
     }
@@ -101,7 +123,7 @@
       const periodicity = byId('periodicity').value;
       const status = byId('status').value;
       return reports.filter(report => {
-        const matchesTerm = !term || normalize(`${report.title} ${report.date} ${report.html_path} ${report.searchText}`).includes(term);
+        const matchesTerm = !term || normalize(`${report.displayTitle} ${report.title} ${report.date} ${report.html_path} ${report.searchText}`).includes(term);
         const matchesPeriodicity = !periodicity || report.metadata.periodicidade === periodicity;
         const matchesStatus = !status || report.metadata.status === status;
         return matchesTerm && matchesPeriodicity && matchesStatus;
@@ -113,8 +135,13 @@
     }
 
     function sortValue(report, key) {
+      if (key === 'title') return report.displayTitle || report.title;
       if (key in report) return report[key];
       return report.metadata[key] || '';
+    }
+
+    function friendlyTitle(report) {
+      return friendlyNames[report.slug] || report.title || report.slug || 'Relatório';
     }
 
     function render() {
@@ -125,7 +152,7 @@
       byId('qualityIssues').textContent = reports.filter(report => !report.quality.ok).length;
       byId('rows').innerHTML = rows.map(report => `
         <tr>
-          <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.title)}</a></td>
+          <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.displayTitle)}</a></td>
           <td>${report.date}</td>
           <td><span class="tag">${report.metadata.periodicidade}</span></td>
           <td class="${report.metadata.status === 'atualizado' ? 'ok' : 'bad'}">${report.metadata.status}</td>
@@ -141,7 +168,7 @@
       const lines = [header.join(',')];
       for (const report of filteredReports()) {
         lines.push([
-          report.title,
+          report.displayTitle,
           report.date,
           report.metadata.periodicidade,
           report.metadata.status,

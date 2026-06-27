@@ -15,7 +15,32 @@ REPORTS_DIR = DATA_DIR / "reports"
 SNAPSHOTS_DIR = DATA_DIR / "snapshots"
 SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.3"
+
+REPORT_FRIENDLY_NAMES = {
+    "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza - 2024",
+    "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza - 2025",
+    "acompanhamento-das-liquidacoes-e-pagamentos-por-data": "Liquidações e Pagamentos por Data",
+    "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza",
+    "credito-disponivel-mes-lancamento": "Crédito Disponível por Mês de Lançamento",
+    "despesas-empenhadas-liquidadas-e-pagas-2024": "Despesas Empenhadas, Liquidadas e Pagas - 2024",
+    "despesas-empenhadas-liquidadas-e-pagas-2025": "Despesas Empenhadas, Liquidadas e Pagas - 2025",
+    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
+    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
+    "evolucao-das-despesas-empenhadas": "Evolução das Despesas Empenhadas",
+    "imoveis-por-ug-conta-contabil-e-rip": "Imóveis por UG, Conta Contábil e RIP",
+    "limite-de-saque-conta-contabil": "Limite de Saque por Conta Contábil",
+    "provisionamentos": "Provisionamentos",
+    "recolhimento-proprio-gru": "Recolhimento Próprio - GRU",
+    "restos-a-pagar-rap": "Restos a Pagar - RAP",
+    "saldo-de-empenhos-a-liquidar-mes-a-mes": "Saldo de Empenhos a Liquidar Mês a Mês",
+    "saldo-patrimonio-e-almoxarifado-conta-contabil": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
+    "saldo-por-natureza-de-despesa": "Saldo por Natureza de Despesa",
+    "saldos-de-contas-de-contratos": "Saldos de Contas de Contratos",
+    "saldos-de-empenhos-do-exercicio-conta-contabil": "Saldos de Empenhos do Exercício por Conta Contábil",
+    "suprimento-de-fundos-empenhos": "Suprimento de Fundos - Empenhos",
+    "suprimento-de-fundos-liquidacoes-e-pagamentos": "Suprimento de Fundos - Liquidações e Pagamentos",
+}
 
 REPORT_OVERRIDES = {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
@@ -131,7 +156,7 @@ def extract_title(soup, file_path):
 
 def apply_report_overrides(slug, title):
     override = REPORT_OVERRIDES.get(slug, {})
-    return override.get("title", title)
+    return override.get("title") or REPORT_FRIENDLY_NAMES.get(slug) or title
 
 
 def parse_br_number(value):
@@ -151,10 +176,46 @@ def parse_br_number(value):
     return -number if negative else number
 
 
+def span_value(cell, attr):
+    try:
+        return max(1, int(cell.get(attr, 1)))
+    except (TypeError, ValueError):
+        return 1
+
+
 def build_table_grid(table):
     grid = []
+    carried = {}
     for tr in table.find_all("tr"):
-        row = [cell.get_text(" ", strip=True) for cell in tr.find_all(["td", "th"])]
+        row = []
+        col_idx = 0
+        while col_idx in carried:
+            row.append(carried[col_idx]["text"])
+            carried[col_idx]["rows"] -= 1
+            if carried[col_idx]["rows"] <= 0:
+                del carried[col_idx]
+            col_idx += 1
+        for cell in tr.find_all(["td", "th"]):
+            while col_idx in carried:
+                row.append(carried[col_idx]["text"])
+                carried[col_idx]["rows"] -= 1
+                if carried[col_idx]["rows"] <= 0:
+                    del carried[col_idx]
+                col_idx += 1
+            text = cell.get_text(" ", strip=True)
+            colspan = span_value(cell, "colspan")
+            rowspan = span_value(cell, "rowspan")
+            for offset in range(colspan):
+                row.append(text)
+                if rowspan > 1:
+                    carried[col_idx + offset] = {"text": text, "rows": rowspan - 1}
+            col_idx += colspan
+        while col_idx in carried:
+            row.append(carried[col_idx]["text"])
+            carried[col_idx]["rows"] -= 1
+            if carried[col_idx]["rows"] <= 0:
+                del carried[col_idx]
+            col_idx += 1
         if any(row):
             grid.append(row)
     return grid
@@ -173,37 +234,92 @@ def looks_like_header(row):
     return len(text_cells) >= max(2, len(row) // 2)
 
 
+def looks_like_data(row):
+    cells = [cell for cell in row if cell]
+    if len(cells) < 2:
+        return False
+    numeric_count = sum(1 for cell in cells if parse_br_number(cell) is not None)
+    return numeric_count >= max(1, len(cells) // 3)
+
+
+def dedupe_columns(columns):
+    seen = {}
+    result = []
+    for idx, column in enumerate(columns):
+        name = re.sub(r"\s+", " ", column or "").strip() or f"Coluna {idx + 1}"
+        if name in seen:
+            seen[name] += 1
+            name = f"{name} ({seen[name]})"
+        else:
+            seen[name] = 1
+        result.append(name)
+    return result
+
+
+def merge_header_rows(header_rows, width):
+    columns = []
+    for col_idx in range(width):
+        parts = []
+        for row in header_rows:
+            value = row[col_idx] if col_idx < len(row) else ""
+            if value and value not in parts:
+                parts.append(value)
+        columns.append(" / ".join(parts) or f"Coluna {col_idx + 1}")
+    return dedupe_columns(columns)
+
+
+def classify_row(row):
+    joined = normalize_slug(" ".join(cell for cell in row if cell)).replace("-", " ")
+    first_cell = next((cell for cell in row if cell), "")
+    first_slug = normalize_slug(first_cell).replace("-", " ")
+    numeric_count = sum(1 for cell in row if parse_br_number(cell) is not None)
+    if re.search(r"\b(total|subtotal|sub total|totalizador|soma)\b", first_slug):
+        return "total"
+    if numeric_count and re.search(r"\b(total|subtotal|sub total|totalizador|soma)\b", joined):
+        return "total"
+    return "data"
+
+
 def normalize_table(grid):
     if not grid:
-        return [], [], [], ["no_table"]
+        return [], [], [], [], ["no_table"]
     issues = []
-    header_index = next((idx for idx, row in enumerate(grid) if looks_like_header(row)), None)
-    if header_index is None:
+    data_start = next((idx for idx, row in enumerate(grid) if looks_like_data(row)), None)
+    if data_start is None:
         width = max(len(row) for row in grid)
         columns = [f"Coluna {idx + 1}" for idx in range(width)]
         data_rows = grid
         issues.append("columns_generated")
     else:
-        columns = [cell or f"Coluna {idx + 1}" for idx, cell in enumerate(grid[header_index])]
-        data_rows = grid[header_index + 1:]
+        header_candidates = [row for row in grid[:data_start] if looks_like_header(row)]
+        width = max(len(row) for row in grid[data_start:] + header_candidates)
+        fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
+        columns = merge_header_rows(header_candidates[-3:] or fallback_headers, width)
+        data_rows = grid[data_start:]
     width = len(columns)
     rows = []
     totals = []
+    row_types = []
     for raw_row in data_rows:
         padded = (raw_row + [""] * width)[:width]
         if not any(padded):
             continue
         row = {columns[idx]: padded[idx] for idx in range(width)}
-        first_cell = next((cell for cell in padded if cell), "")
         numeric_values = {columns[idx]: parse_br_number(padded[idx]) for idx in range(width) if parse_br_number(padded[idx]) is not None}
-        if first_cell.lower().startswith("total"):
-            totals.append({"label": first_cell, "values": numeric_values, "raw": row})
-        rows.append(row)
+        row_type = classify_row(padded)
+        if row_type == "total":
+            label = next((cell for cell in padded if cell), "Total")
+            totals.append({"label": label, "values": numeric_values, "raw": row})
+        else:
+            rows.append(row)
+        row_types.append({"type": row_type, "raw": row})
         if len(raw_row) != width:
             issues.append("inconsistent_columns")
     if not rows:
         issues.append("no_rows")
-    return columns, rows, totals, sorted(set(issues))
+    if totals:
+        issues.append("totals_separated")
+    return columns, rows, totals, row_types, sorted(set(issues))
 
 
 def infer_periodicity(slug, title, report_date, now_date):
@@ -258,7 +374,7 @@ def full_report_document(file_path, source_map, now):
     title = apply_report_overrides(slug, extract_title(soup, file_path))
     report_date, date_issue = extract_date(content, file_path)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
-    columns, rows, totals, issues = normalize_table(pick_table(soup))
+    columns, rows, totals, row_types, issues = normalize_table(pick_table(soup))
     if date_issue:
         issues.append(date_issue)
     if not soup.find("table"):
@@ -275,6 +391,7 @@ def full_report_document(file_path, source_map, now):
         "columns": columns,
         "rows": rows,
         "totals": totals,
+        "row_types": row_types,
         "metadata": metadata_for(slug, title, report_date, content_hash, source_path, source_map, now, len(rows), len(columns)),
         "quality": {"ok": not issues, "issues": sorted(set(issues))},
     }
@@ -295,6 +412,7 @@ def light_history_document(file_path, title, slug, source_map, now):
         "columns": [],
         "rows": [],
         "totals": [],
+        "row_types": [],
         "metadata": metadata_for(slug, apply_report_overrides(slug, title), report_date, cheap_hash(file_path), source_path, source_map, now),
         "quality": {"ok": False, "issues": issues},
     }
