@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4",
+  "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
+  "title": "Saldos de Empenhos do Exercício por Conta Contábil",
+  "date": "30/08/2025",
+  "date_iso": "2025-08-30",
+  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_30-08-2025.html",
+  "category": "Saldos de Empenhos do Exercício por Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "row_types": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-26T23:06:37.266306-03:00",
+    "idade_dias": 300,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "a0f952e8ca6d27ab13e4c7718609b617c8fa9795fdabe9de9a3e9b7ef41ff1b9",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "light_snapshot"
+    ],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}
