@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4",
+  "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
+  "title": "Liquidações e Pagamentos por Data",
+  "date": "26/06/2026",
+  "date_iso": "2026-06-26",
+  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_26-06-2026.html",
+  "category": "Liquidações e Pagamentos por Data",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "row_types": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-28T20:59:54.472426-03:00",
+    "idade_dias": 2,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": "5856",
+    "hash_conteudo": "0bda9b1dcccc373d5e2f4d55484b7ac2ebf8846288ac2643e11bd60f0772fbea",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "light_snapshot"
+    ],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}

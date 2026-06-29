@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4",
+  "slug": "provisionamentos",
+  "title": "Provisionamentos",
+  "date": "19/06/2026",
+  "date_iso": "2026-06-19",
+  "html_path": "emails/provisionamentos/provisionamentos_19-06-2026.html",
+  "category": "Provisionamentos",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "row_types": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-06-28T20:59:54.472426-03:00",
+    "idade_dias": 9,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "96d3c6b8b1e9030d6b98c4319736d7f68614d742e6be275d7f6df3f35319ab18",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "light_snapshot"
+    ],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}
