@@ -15,6 +15,31 @@
     .insight { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
     .insight strong { display: block; color: #fff; font-size: 1rem; overflow-wrap: anywhere; }
     .insight span { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 4px; }
+    .dashboard-panel { margin-top: 18px; border: 1px solid var(--line); background: #f8fbf7; color: #233128; border-radius: 8px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+    .dashboard-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .dashboard-panel h2 { margin: 0; color: #243428; font-size: 1.5rem; }
+    .dashboard-panel .panel-note { color: #657269; font-size: .86rem; margin-top: 4px; }
+    .panel-badge { border: 1px solid #b7c8b8; color: #2c6b3c; background: #edf6ed; border-radius: 999px; padding: 6px 10px; font-size: .78rem; white-space: nowrap; }
+    .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; }
+    .kpi-card { border: 1px solid #dce6dc; background: #fff; border-radius: 8px; padding: 12px; min-height: 84px; }
+    .kpi-card span { display: block; color: #56625b; font-size: .82rem; margin-bottom: 8px; }
+    .kpi-card strong { display: block; color: #1f2c23; font-size: 1.22rem; line-height: 1.2; overflow-wrap: anywhere; }
+    .kpi-card small { display: block; color: #7a877f; margin-top: 8px; font-size: .72rem; }
+    .dashboard-charts { display: grid; grid-template-columns: repeat(4, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; }
+    .chart-card { border: 1px solid #dce6dc; background: #fff; border-radius: 8px; padding: 12px; min-height: 210px; }
+    .chart-card h3 { margin: 0 0 8px; color: #2c3a30; font-size: .95rem; font-weight: 700; }
+    .chart-value { color: #1f2c23; font-size: 1.16rem; margin-bottom: 8px; }
+    .chart-slot { min-height: 128px; display: flex; align-items: center; justify-content: center; }
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 7px 10px; color: #5f6d64; font-size: .68rem; margin-top: 8px; }
+    .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }
+    .stack-bar { width: 92px; height: 132px; display: flex; flex-direction: column-reverse; border: 1px solid #d6dfd6; background: #eef3ee; }
+    .stack-paid { background: #2f7a3e; }
+    .stack-open { background: #079e99; }
+    .treemap { width: 100%; height: 132px; display: grid; grid-template-columns: 2fr 1.15fr; grid-template-rows: 1.15fr .85fr; gap: 3px; }
+    .tree-cell { background: #2f7a3e; color: #fff; padding: 7px; overflow: hidden; font-size: .67rem; display: flex; align-items: end; }
+    .tree-cell:nth-child(2) { background: #6ea67a; }
+    .tree-cell:nth-child(3) { background: #a4c7aa; color: #1f2c23; }
+    .tree-cell:nth-child(4) { background: #c5dcc9; color: #1f2c23; }
     main { padding: 20px; max-width: 1400px; margin: 0 auto; }
     .toolbar { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 14px; }
     input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; font-size: 0.95rem; }
@@ -34,21 +59,42 @@
     .ok { color: var(--ok); }
     .bad { color: var(--bad); }
     .warn { color: var(--warn); }
-    @media (max-width: 900px) { .toolbar, .summary, .header-insights { grid-template-columns: 1fr; } main { padding: 12px; } }
+    @media (max-width: 1100px) { .dashboard-kpis, .dashboard-charts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 900px) { .toolbar, .summary, .header-insights, .dashboard-kpis, .dashboard-charts { grid-template-columns: 1fr; } main { padding: 12px; } .dashboard-panel-head { display: block; } .panel-badge { display: inline-block; margin-top: 10px; } }
   </style>
 </head>
 <body>
   <header>
     <h1>DAP - Dashboard de Relatórios</h1>
     <p class="sub">Visualização complementar baseada na API estática em JSON. Os HTMLs originais permanecem preservados.</p>
-    <section class="header-insights" aria-label="Resumo financeiro">
-      <div class="insight"><span>Empenhos a liquidar</span><strong id="commitmentsOpen">-</strong></div>
-      <div class="insight"><span>Liquidados a pagar</span><strong id="commitmentsPayable">-</strong></div>
-      <div class="insight"><span>Empenhos pagos</span><strong id="commitmentsPaid">-</strong></div>
-      <div class="insight"><span>RAP pagos</span><strong id="rapPaid">-</strong></div>
-      <div class="insight"><span>RAP a pagar</span><strong id="rapPayable">-</strong></div>
-      <div class="insight"><span>RAP pagos/total</span><strong id="rapPaidPct">-</strong></div>
-      <div class="insight"><span>GRU arrecadado</span><strong id="gruCollected">-</strong></div>
+    <section class="dashboard-panel" aria-label="Resumo orçamentário e financeiro">
+      <div class="dashboard-panel-head">
+        <div>
+          <h2>Resumo Orçamentário e Financeiro</h2>
+          <div class="panel-note">Painel sintético baseado nos JSONs estáticos do último fechamento disponível.</div>
+        </div>
+        <span class="panel-badge" id="financePanelDate">Atualizando</span>
+      </div>
+      <div class="dashboard-kpis">
+        <div class="kpi-card"><span>Base acompanhada (R$)</span><strong id="budgetBase">-</strong><small>Provisionamentos + crédito disponível</small></div>
+        <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="provisionTotal">-</strong><small>Saldo total provisionado</small></div>
+        <div class="kpi-card"><span>Crédito disponível (R$)</span><strong id="creditAvailable">-</strong><small>Saldo disponível no mês</small></div>
+        <div class="kpi-card"><span>Restos a Pagar (R$)</span><strong id="rapTotal">-</strong><small>Pagos + a pagar</small></div>
+        <div class="kpi-card"><span>Arrecadação própria (R$)</span><strong id="gruCollected">-</strong><small>GRU arrecadadas</small></div>
+        <div class="kpi-card"><span>Despesas empenhadas (R$)</span><strong id="committedTotal">-</strong><small>Total empenhado</small></div>
+        <div class="kpi-card"><span>Despesas liquidadas (R$)</span><strong id="liquidatedTotal">-</strong><small>Total liquidado</small></div>
+        <div class="kpi-card"><span>Despesas pagas (R$)</span><strong id="paidTotal">-</strong><small>Total pago</small></div>
+      </div>
+      <div class="dashboard-charts">
+        <article class="chart-card"><h3>Evolução das despesas</h3><div class="chart-value" id="trendValue">-</div><div class="chart-slot" id="expenseTrendChart"></div><div class="chart-legend">Empenhado, liquidado e pago no fechamento</div></article>
+        <article class="chart-card"><h3>Provisionamentos</h3><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:#2f7a3e"></i>Empenhado</span><span><i class="legend-dot" style="background:#079e99"></i>Disponível</span></div></article>
+        <article class="chart-card"><h3>Crédito disponível</h3><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:#2f7a3e"></i>Crédito</span><span><i class="legend-dot" style="background:#c6d7c9"></i>Base</span></div></article>
+        <article class="chart-card"><h3>Restos a Pagar</h3><div class="chart-value" id="rapShareValue">-</div><div class="chart-slot" id="rapStackChart"></div><div class="chart-legend"><span><i class="legend-dot" style="background:#2f7a3e"></i>Pago</span><span><i class="legend-dot" style="background:#079e99"></i>A pagar</span></div></article>
+        <article class="chart-card"><h3>Arrecadação própria</h3><div class="chart-value" id="gruValue">-</div><div class="chart-slot" id="gruTreeChart"></div><div class="chart-legend" id="gruLegend"></div></article>
+        <article class="chart-card"><h3>% empenhado do provisionado</h3><div class="chart-value" id="committedGaugeValue">-</div><div class="chart-slot" id="committedGauge"></div></article>
+        <article class="chart-card"><h3>% liquidado do empenhado</h3><div class="chart-value" id="liquidatedGaugeValue">-</div><div class="chart-slot" id="liquidatedGauge"></div></article>
+        <article class="chart-card"><h3>% pago do liquidado</h3><div class="chart-value" id="paidGaugeValue">-</div><div class="chart-slot" id="paidGauge"></div></article>
+      </div>
     </section>
   </header>
   <main>
@@ -188,7 +234,9 @@
         'saldos-de-empenhos-do-exercicio-conta-contabil',
         'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento',
         'restos-a-pagar-rap',
-        'recolhimento-proprio-gru'
+        'recolhimento-proprio-gru',
+        'credito-disponivel-mes-lancamento',
+        'provisionamentos'
       ];
       const targets = reports.filter(report => slugs.includes(report.slug));
       const loaded = await Promise.all(targets.map(async report => {
@@ -240,6 +288,14 @@
     }
 
     function renderFinancialSummary() {
+      const committed = firstValue([
+        totalValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'Valor 7'),
+        totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 8')
+      ]);
+      const liquidated = firstValue([
+        totalValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'Valor 8'),
+        totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 9')
+      ]);
       const open = firstValue([
         totalValue('saldo-de-empenhos-a-liquidar-mes-a-mes', 'Total a Liquidar'),
         totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 8')
@@ -255,17 +311,63 @@
       const rapPaid = totalValue('restos-a-pagar-rap', 'Valor 11');
       const rapPayable = totalValue('restos-a-pagar-rap', 'Valor 12');
       const gru = totalValue('recolhimento-proprio-gru', 'last');
-      byId('commitmentsOpen').textContent = formatMoney(open);
-      byId('commitmentsPayable').textContent = formatMoney(payable);
-      byId('commitmentsPaid').textContent = formatMoney(paid);
-      byId('rapPaid').textContent = formatMoney(rapPaid);
-      byId('rapPayable').textContent = formatMoney(rapPayable);
-      byId('rapPaidPct').textContent = formatPercent(rapPaid, rapPaid + rapPayable);
-      byId('gruCollected').textContent = formatMoney(gru);
+      const provisioned = totalValue('provisionamentos', 'last');
+      const credit = totalValue('credito-disponivel-mes-lancamento', 'last');
+      const rapTotal = safeNumber(rapPaid) + safeNumber(rapPayable);
+      const budget = safeNumber(provisioned) + safeNumber(credit);
+      const committedRatio = ratio(committed, provisioned);
+      const liquidatedRatio = ratio(liquidated, committed);
+      const paidRatio = ratio(paid, liquidated);
+
+      setText('budgetBase', formatMoney(budget));
+      setText('provisionTotal', formatMoney(provisioned));
+      setText('creditAvailable', formatMoney(credit));
+      setText('rapTotal', formatMoney(rapTotal));
+      setText('gruCollected', formatMoney(gru));
+      setText('committedTotal', formatMoney(committed));
+      setText('liquidatedTotal', formatMoney(liquidated));
+      setText('paidTotal', formatMoney(paid));
+      setText('financePanelDate', latestFinancialDate());
+      setText('trendValue', `${formatMoney(committed)} empenhados`);
+      setText('provisionShareValue', formatPercent(committed, provisioned));
+      setText('creditShareValue', formatPercent(credit, budget));
+      setText('rapShareValue', formatPercent(rapPaid, rapTotal));
+      setText('gruValue', formatMoney(gru));
+      setText('committedGaugeValue', formatPercent(committed, provisioned));
+      setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
+      setText('paidGaugeValue', formatPercent(paid, liquidated));
+
+      renderTrend('expenseTrendChart', [committed, liquidated, paid]);
+      renderDonut('provisionDonut', [committed, Math.max(0, safeNumber(provisioned) - safeNumber(committed))], ['#2f7a3e', '#079e99']);
+      renderDonut('creditDonut', [credit, Math.max(0, budget - safeNumber(credit))], ['#2f7a3e', '#c6d7c9']);
+      renderStack('rapStackChart', rapPaid, rapPayable);
+      renderTreemap('gruTreeChart', 'gruLegend', gruBreakdown());
+      renderGauge('committedGauge', committedRatio);
+      renderGauge('liquidatedGauge', liquidatedRatio);
+      renderGauge('paidGauge', paidRatio);
     }
 
     function firstValue(values) {
       return values.find(value => Number.isFinite(value) && value !== 0) ?? values.find(Number.isFinite);
+    }
+
+    function setText(id, value) {
+      const element = byId(id);
+      if (element) element.textContent = value;
+    }
+
+    function safeNumber(value) {
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function ratio(part, total) {
+      return Number.isFinite(part) && Number.isFinite(total) && total > 0 ? Math.max(0, Math.min(1, part / total)) : 0;
+    }
+
+    function latestFinancialDate() {
+      const dates = Object.values(financialReports).map(doc => doc?.date).filter(Boolean);
+      dates.sort();
+      return dates.length ? `Fechamento: ${dates[dates.length - 1]}` : 'Fechamento indisponível';
     }
 
     function totalValue(slug, column) {
@@ -286,6 +388,81 @@
     function lastNumericValue(row) {
       const values = Object.values(row || {}).map(parseBrNumber).filter(Number.isFinite);
       return values.length ? values[values.length - 1] : null;
+    }
+
+    function renderTrend(id, values) {
+      const numbers = values.map(safeNumber);
+      const max = Math.max(...numbers, 1);
+      const points = numbers.map((value, index) => {
+        const x = 18 + index * 62;
+        const y = 112 - (value / max) * 88;
+        return `${x},${y}`;
+      }).join(' ');
+      byId(id).innerHTML = `
+        <svg viewBox="0 0 170 128" width="100%" height="128" role="img" aria-label="Evolução das despesas">
+          <path d="M18 112 L80 112 L142 112" stroke="#d8e3d8" stroke-width="1"/>
+          <polygon points="18,112 ${points} 142,112" fill="#dce9de"/>
+          <polyline points="${points}" fill="none" stroke="#2f7a3e" stroke-width="3"/>
+          ${numbers.map((value, index) => `<circle cx="${18 + index * 62}" cy="${112 - (value / max) * 88}" r="4" fill="#079e99"/>`).join('')}
+          <text x="18" y="124" font-size="8" fill="#5f6d64">Emp.</text>
+          <text x="75" y="124" font-size="8" fill="#5f6d64">Liq.</text>
+          <text x="138" y="124" font-size="8" fill="#5f6d64">Pago</text>
+        </svg>`;
+    }
+
+    function renderDonut(id, values, colors) {
+      const total = values.reduce((sum, value) => sum + safeNumber(value), 0) || 1;
+      let offset = 25;
+      const circles = values.map((value, index) => {
+        const pct = safeNumber(value) / total * 100;
+        const circle = `<circle cx="50" cy="50" r="34" fill="none" stroke="${colors[index]}" stroke-width="18" stroke-dasharray="${pct} ${100 - pct}" stroke-dashoffset="${offset}" pathLength="100"/>`;
+        offset -= pct;
+        return circle;
+      }).join('');
+      byId(id).innerHTML = `<svg viewBox="0 0 100 100" width="128" height="128" role="img" aria-label="Gráfico de rosca">${circles}<circle cx="50" cy="50" r="21" fill="#fff"/></svg>`;
+    }
+
+    function renderStack(id, paid, payable) {
+      const total = safeNumber(paid) + safeNumber(payable);
+      const paidPct = total ? safeNumber(paid) / total * 100 : 0;
+      const payablePct = Math.max(0, 100 - paidPct);
+      byId(id).innerHTML = `
+        <div class="stack-bar" role="img" aria-label="Restos a pagar pagos e a pagar">
+          <div class="stack-paid" style="height:${paidPct}%"></div>
+          <div class="stack-open" style="height:${payablePct}%"></div>
+        </div>`;
+    }
+
+    function renderGauge(id, value) {
+      const pct = Math.round(value * 100);
+      const dash = Math.max(0, Math.min(100, pct));
+      byId(id).innerHTML = `
+        <svg viewBox="0 0 160 94" width="100%" height="128" role="img" aria-label="Medidor ${pct}%">
+          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="#c9c9c9" stroke-width="18" pathLength="100"/>
+          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="#2f7a3e" stroke-width="18" pathLength="100" stroke-dasharray="${dash} ${100 - dash}"/>
+          <text x="80" y="72" text-anchor="middle" font-size="20" fill="#1f2c23">${pct}%</text>
+        </svg>`;
+    }
+
+    function renderTreemap(id, legendId, items) {
+      const top = items.slice(0, 4);
+      byId(id).innerHTML = `<div class="treemap">${top.map(item => `<div class="tree-cell" title="${escapeHtml(item.label)}">${escapeHtml(shortLabel(item.label))}</div>`).join('')}</div>`;
+      byId(legendId).innerHTML = top.map((item, index) => `<span><i class="legend-dot" style="background:${['#2f7a3e', '#6ea67a', '#a4c7aa', '#c5dcc9'][index]}"></i>${escapeHtml(shortLabel(item.label))}</span>`).join('');
+    }
+
+    function gruBreakdown() {
+      const doc = financialReports['recolhimento-proprio-gru'];
+      const totals = (doc?.row_types || []).filter(item => item.type === 'total').map(item => item.raw || {});
+      const result = totals.filter(row => normalize(row['Emissão - Mês'] || '').includes('total') && !normalize(row['Cód. Recolhimento GRU'] || '').includes('total')).map(row => ({
+        label: row['Cód. Recolhimento GRU (2)'] || row['Cód. Recolhimento GRU'] || 'GRU',
+        value: lastNumericValue(row)
+      })).filter(item => Number.isFinite(item.value) && item.value > 0);
+      return result.sort((a, b) => b.value - a.value);
+    }
+
+    function shortLabel(value) {
+      const text = String(value || '').replace(/\s+/g, ' ').trim();
+      return text.length > 28 ? `${text.slice(0, 25)}...` : text;
     }
 
     function sumReport(slug, columnPatterns) {
