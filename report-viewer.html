@@ -24,7 +24,7 @@
     table { border-collapse: collapse; width: 100%; min-width: 900px; }
     th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 8px; vertical-align: top; }
     th { position: sticky; top: 0; background: #21262d; z-index: 2; }
-    th input { width: 100%; margin-top: 6px; padding: 6px; font-size: 0.82rem; }
+    th input, th select { width: 100%; margin-top: 6px; padding: 6px; font-size: 0.82rem; }
     tbody tr:hover td { background: #1c2129; }
     .total-row td { background: var(--total); font-weight: 700; }
     .totals { margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
@@ -61,6 +61,7 @@
   <script>
     let report = null;
     let columnFilters = {};
+    let columnSort = { column: null, direction: '' };
     let renderTimer = null;
     const byId = id => document.getElementById(id);
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -70,6 +71,41 @@
       date_from_mtime: 'data obtida pela modificação do arquivo',
       inconsistent_columns: 'largura de linhas normalizada',
       totals_separated: 'totais separados da tabela principal'
+    };
+    const reportFriendlyNames = {
+      '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza - 2024',
+      '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza - 2025',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': 'Liquidacoes e Pagamentos por Data',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza',
+      'credito-disponivel-mes-lancamento': 'Credito Disponivel por Mes de Lancamento',
+      'despesas-empenhadas-liquidadas-e-pagas-2024': 'Despesas Empenhadas, Liquidadas e Pagas - 2024',
+      'despesas-empenhadas-liquidadas-e-pagas-2025': 'Despesas Empenhadas, Liquidadas e Pagas - 2025',
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por Mes',
+      'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': 'Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu',
+      'evolucao-das-despesas-empenhadas': 'Evolucao das Despesas Empenhadas',
+      'imoveis-por-ug-conta-contabil-e-rip': 'Imoveis por UG, Conta Contabil e RIP',
+      'limite-de-saque-conta-contabil': 'Limite de Saque por Conta Contabil',
+      'provisionamentos': 'Provisionamentos',
+      'recolhimento-proprio-gru': 'Recolhimento Proprio - GRU',
+      'restos-a-pagar-rap': 'Restos a Pagar - RAP',
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': 'Saldo de Empenhos a Liquidar Mes a Mes',
+      'saldo-patrimonio-e-almoxarifado-conta-contabil': 'Saldo de Patrimonio e Almoxarifado por Conta Contabil',
+      'saldo-por-natureza-de-despesa': 'Saldo por Natureza de Despesa',
+      'saldos-de-contas-de-contratos': 'Saldos de Contas de Contratos',
+      'saldos-de-empenhos-do-exercicio-conta-contabil': 'Saldos de Empenhos do Exercicio por Conta Contabil',
+      'suprimento-de-fundos-empenhos': 'Suprimento de Fundos - Empenhos',
+      'suprimento-de-fundos-liquidacoes-e-pagamentos': 'Suprimento de Fundos - Liquidacoes e Pagamentos'
+    };
+    const columnFriendlyNames = {
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': ['Data', 'Empenhado', 'Liquidado', 'Pago', 'Saldo a Liquidar'],
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': ['Natureza de Despesa', 'Empenhado', 'Liquidado', 'Pago', 'Saldo a Liquidar'],
+      'credito-disponivel-mes-lancamento': ['Mes', 'Credito Inicial', 'Credito Atualizado', 'Credito Disponivel'],
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': ['Mes', 'Empenhado', 'Liquidado', 'Pago', 'Liquidado a Pagar'],
+      'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': ['Natureza de Despesa', 'Empenhado', 'Liquidado', 'Pago', 'Liquidado a Pagar'],
+      'recolhimento-proprio-gru': ['Unidade Gestora', 'Codigo de Recolhimento', 'Descricao', 'Arrecadado'],
+      'restos-a-pagar-rap': ['Unidade Gestora', 'Natureza de Despesa', 'Inscrito', 'Cancelado', 'Pago', 'A Pagar', '% Pago'],
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': ['Natureza de Despesa', 'Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Total a Liquidar'],
+      'saldos-de-empenhos-do-exercicio-conta-contabil': ['Conta Contabil', 'Empenhado', 'A Liquidar', 'Liquidado a Pagar', 'Pago']
     };
 
     function reportUrl() {
@@ -81,7 +117,7 @@
       const url = reportUrl();
       const response = await fetch(url);
       report = await response.json();
-      byId('title').textContent = report.title || 'Relatório';
+      byId('title').textContent = reportFriendlyNames[report.slug] || report.title || 'Relatório';
       byId('htmlLink').href = report.html_path || '#';
       byId('jsonLink').href = url;
       byId('meta').innerHTML = [
@@ -96,6 +132,7 @@
       byId('quality').textContent = quality.text;
       byId('quality').className = quality.ok ? 'quality' : 'quality bad';
       columnFilters = {};
+      columnSort = { column: null, direction: '' };
       renderTableShell();
       renderTotals();
       renderRows();
@@ -103,12 +140,28 @@
 
     function filteredRows() {
       const term = normalize(byId('globalSearch').value);
-      return visibleRows().filter(item => {
+      const rows = visibleRows().filter(item => {
         const row = item.raw || item;
         const values = Object.values(row).join(' ');
         if (term && !normalize(values).includes(term)) return false;
         return Object.entries(columnFilters).every(([column, value]) => !value || normalize(row[column]).includes(normalize(value)));
       });
+      if (!columnSort.column || !columnSort.direction) return rows;
+      return rows.sort((a, b) => {
+        const av = sortCellValue((a.raw || a)[columnSort.column]);
+        const bv = sortCellValue((b.raw || b)[columnSort.column]);
+        return compareCellValues(av, bv) * (columnSort.direction === 'az' ? 1 : -1);
+      });
+    }
+
+    function sortCellValue(value) {
+      const number = parseBrNumber(value);
+      return Number.isFinite(number) ? number : normalize(value);
+    }
+
+    function compareCellValues(a, b) {
+      if (typeof a === 'number' && typeof b === 'number') return a - b;
+      return String(a ?? '').localeCompare(String(b ?? ''), 'pt-BR', { numeric: true });
     }
 
     function visibleRows() {
@@ -142,16 +195,46 @@
       }).join('');
     }
 
+    function friendlyColumns(columns) {
+      const friendly = columnFriendlyNames[report.slug] || [];
+      const generated = columns.length && columns.every(column => /^Coluna \d+$/.test(column || ''));
+      return columns.map((column, index) => {
+        if (generated && friendly[index]) return friendly[index];
+        if (/^Coluna \d+$/.test(column || '')) return index === 0 ? 'Descricao' : `Valor ${index}`;
+        return column;
+      });
+    }
+
     function renderTableShell() {
       const columns = report.columns || [];
+      const displayColumns = friendlyColumns(columns);
       byId('table').innerHTML = `
-        <thead><tr>${columns.map(column => `<th>${escapeHtml(column)}<input data-column="${escapeHtml(column)}" placeholder="Filtrar"></th>`).join('')}</tr></thead>
+        <thead><tr>${columns.map((column, index) => `
+          <th>
+            ${escapeHtml(displayColumns[index])}
+            <input data-column="${escapeHtml(column)}" placeholder="Filtrar">
+            <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
+              <option value="">Ordem original</option>
+              <option value="az">A-Z</option>
+              <option value="za">Z-A</option>
+            </select>
+          </th>
+        `).join('')}</tr></thead>
         <tbody></tbody>
       `;
       document.querySelectorAll('th input').forEach(input => {
         input.addEventListener('input', event => {
           columnFilters[event.target.dataset.column] = event.target.value;
           scheduleRenderRows();
+        });
+      });
+      document.querySelectorAll('th select').forEach(select => {
+        select.addEventListener('change', event => {
+          document.querySelectorAll('th select').forEach(item => {
+            if (item !== event.target) item.value = '';
+          });
+          columnSort = { column: event.target.dataset.sortColumn, direction: event.target.value };
+          renderRows();
         });
       });
     }
@@ -175,12 +258,22 @@
 
     function exportCsv() {
       const columns = report.columns || [];
-      const lines = [columns.map(csvCell).join(',')];
+      const displayColumns = friendlyColumns(columns);
+      const lines = [displayColumns.map(csvCell).join(',')];
       for (const item of filteredRows()) {
         const row = item.raw || item;
         lines.push(columns.map(column => csvCell(row[column])).join(','));
       }
       download(`${report.slug || 'relatorio'}.csv`, lines.join('\n'));
+    }
+
+    function parseBrNumber(value) {
+      if (typeof value === 'number') return value;
+      const clean = String(value || '').replace(/[^\d,.-]/g, '');
+      if (!clean) return null;
+      const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
+      const number = Number(normalized);
+      return Number.isFinite(number) ? number : null;
     }
 
     function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
@@ -200,9 +293,11 @@
     byId('globalSearch').addEventListener('input', scheduleRenderRows);
     byId('clearFilters').addEventListener('click', () => {
       columnFilters = {};
+      columnSort = { column: null, direction: '' };
       byId('globalSearch').value = '';
       byId('showTotals').checked = false;
       document.querySelectorAll('th input').forEach(input => { input.value = ''; });
+      document.querySelectorAll('th select').forEach(select => { select.value = ''; });
       renderRows();
     });
     byId('exportCsv').addEventListener('click', exportCsv);

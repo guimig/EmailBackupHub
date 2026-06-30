@@ -11,6 +11,10 @@
     header { padding: 24px; border-bottom: 1px solid var(--line); background: #0b1018; }
     h1 { margin: 0 0 8px; font-size: 1.8rem; }
     .sub { color: var(--muted); margin: 0; }
+    .header-insights { display: grid; grid-template-columns: repeat(7, minmax(140px, 1fr)); gap: 10px; margin-top: 16px; }
+    .insight { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+    .insight strong { display: block; color: #fff; font-size: 1rem; overflow-wrap: anywhere; }
+    .insight span { display: block; color: var(--muted); font-size: 0.78rem; margin-bottom: 4px; }
     main { padding: 20px; max-width: 1400px; margin: 0 auto; }
     .toolbar { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 14px; }
     input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; font-size: 0.95rem; }
@@ -30,13 +34,22 @@
     .ok { color: var(--ok); }
     .bad { color: var(--bad); }
     .warn { color: var(--warn); }
-    @media (max-width: 900px) { .toolbar, .summary { grid-template-columns: 1fr; } main { padding: 12px; } }
+    @media (max-width: 900px) { .toolbar, .summary, .header-insights { grid-template-columns: 1fr; } main { padding: 12px; } }
   </style>
 </head>
 <body>
   <header>
     <h1>DAP - Dashboard de Relatórios</h1>
     <p class="sub">Visualização complementar baseada na API estática em JSON. Os HTMLs originais permanecem preservados.</p>
+    <section class="header-insights" aria-label="Resumo financeiro">
+      <div class="insight"><span>Empenhos a liquidar</span><strong id="commitmentsOpen">-</strong></div>
+      <div class="insight"><span>Liquidados a pagar</span><strong id="commitmentsPayable">-</strong></div>
+      <div class="insight"><span>Empenhos pagos</span><strong id="commitmentsPaid">-</strong></div>
+      <div class="insight"><span>RAP pagos</span><strong id="rapPaid">-</strong></div>
+      <div class="insight"><span>RAP a pagar</span><strong id="rapPayable">-</strong></div>
+      <div class="insight"><span>RAP pagos/total</span><strong id="rapPaidPct">-</strong></div>
+      <div class="insight"><span>GRU arrecadado</span><strong id="gruCollected">-</strong></div>
+    </section>
   </header>
   <main>
     <section class="summary">
@@ -72,6 +85,7 @@
     let indexData = null;
     let searchData = null;
     let reports = [];
+    let financialReports = {};
     let sortKey = 'title';
     let sortDir = 1;
 
@@ -91,6 +105,8 @@
       'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza',
       'credito-disponivel-mes-lancamento': 'Crédito Disponível por Mês de Lançamento',
       'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por Mês',
+      'despesas-empenhadas-liquidadas-e-pagas-2024': 'Despesas Empenhadas, Liquidadas e Pagas - 2024',
+      'despesas-empenhadas-liquidadas-e-pagas-2025': 'Despesas Empenhadas, Liquidadas e Pagas - 2025',
       'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': 'Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu',
       'evolucao-das-despesas-empenhadas': 'Evolução das Despesas Empenhadas',
       'imoveis-por-ug-conta-contabil-e-rip': 'Imóveis por UG, Conta Contábil e RIP',
@@ -116,6 +132,7 @@
       searchData = await searchResponse.json();
       const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
       reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: textBySlug[report.slug] || '' }));
+      await loadFinancialReports();
       populateFilters();
       render();
     }
@@ -132,7 +149,7 @@
       return reports.filter(report => {
         const matchesTerm = !term || normalize(`${report.displayTitle} ${report.title} ${report.date} ${report.html_path} ${report.searchText}`).includes(term);
         const matchesPeriodicity = !periodicity || report.metadata.periodicidade === periodicity;
-        const matchesStatus = !status || report.metadata.status === status;
+        const matchesStatus = !status || reportStatus(report) === status;
         return matchesTerm && matchesPeriodicity && matchesStatus;
       }).sort((a, b) => {
         const av = sortValue(a, sortKey);
@@ -165,23 +182,133 @@
       return qualityLabels[code] || code;
     }
 
+    async function loadFinancialReports() {
+      const slugs = [
+        'saldo-de-empenhos-a-liquidar-mes-a-mes',
+        'saldos-de-empenhos-do-exercicio-conta-contabil',
+        'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento',
+        'restos-a-pagar-rap',
+        'recolhimento-proprio-gru'
+      ];
+      const targets = reports.filter(report => slugs.includes(report.slug));
+      const loaded = await Promise.all(targets.map(async report => {
+        try {
+          const response = await fetch(report.json_path);
+          return [report.slug, await response.json()];
+        } catch {
+          return [report.slug, null];
+        }
+      }));
+      financialReports = Object.fromEntries(loaded.filter(([, doc]) => doc));
+    }
+
+    function reportStatus(report) {
+      const metadata = report.metadata || {};
+      if (metadata.periodicidade === 'diaria' && metadata.status === 'desatualizado') {
+        const today = new Date();
+        if (today.getDay() === 1 && Number(metadata.idade_dias) <= 2) return 'atualizado';
+      }
+      return metadata.status || '';
+    }
+
+    function reportLimit(report) {
+      const metadata = report.metadata || {};
+      if (metadata.periodicidade === 'diaria' && new Date().getDay() === 1 && metadata.limite_dias != null) {
+        return Math.max(Number(metadata.limite_dias), 2);
+      }
+      return metadata.limite_dias;
+    }
+
     function render() {
       const rows = filteredReports();
       byId('totalReports').textContent = reports.length;
-      byId('updatedReports').textContent = reports.filter(report => report.metadata.status === 'atualizado').length;
-      byId('staleReports').textContent = reports.filter(report => report.metadata.status === 'desatualizado').length;
+      byId('updatedReports').textContent = reports.filter(report => reportStatus(report) === 'atualizado').length;
+      byId('staleReports').textContent = reports.filter(report => reportStatus(report) === 'desatualizado').length;
       byId('qualityIssues').textContent = reports.filter(report => !qualitySummary(report).ok).length;
+      renderFinancialSummary();
       byId('rows').innerHTML = rows.map(report => `
         <tr>
           <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.displayTitle)}</a></td>
           <td>${report.date}</td>
           <td><span class="tag">${report.metadata.periodicidade}</span></td>
-          <td class="${report.metadata.status === 'atualizado' ? 'ok' : 'bad'}">${report.metadata.status}</td>
-          <td>${report.metadata.idade_dias} dias</td>
+          <td class="${reportStatus(report) === 'atualizado' ? 'ok' : 'bad'}">${reportStatus(report)}</td>
+          <td>${report.metadata.idade_dias} dias${reportLimit(report) != null ? ` / limite ${reportLimit(report)}` : ''}</td>
           <td class="${qualitySummary(report).ok ? 'ok' : 'warn'}">${escapeHtml(qualitySummary(report).text)}</td>
           <td><a href="${report.html_path}">HTML</a> | <a href="${report.json_path}">JSON</a> | <a href="${report.series_path}">Série</a></td>
         </tr>
       `).join('');
+    }
+
+    function renderFinancialSummary() {
+      const open = firstValue([
+        sumReport('saldo-de-empenhos-a-liquidar-mes-a-mes', [['total', 'a liquidar'], ['saldo', 'a liquidar'], ['a liquidar']]),
+        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['a liquidar']])
+      ]);
+      const payable = firstValue([
+        sumReport('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [['liquidado', 'a pagar'], ['liquidados', 'a pagar']]),
+        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['liquidado', 'a pagar']])
+      ]);
+      const paid = firstValue([
+        sumReport('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [['pago']]),
+        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['pago']])
+      ]);
+      const rapPaid = sumReport('restos-a-pagar-rap', [['pago']]);
+      const rapPayable = sumReport('restos-a-pagar-rap', [['a pagar']]);
+      const gru = sumReport('recolhimento-proprio-gru', [['arrecadado'], ['recolhido'], ['valor']]);
+      byId('commitmentsOpen').textContent = formatMoney(open);
+      byId('commitmentsPayable').textContent = formatMoney(payable);
+      byId('commitmentsPaid').textContent = formatMoney(paid);
+      byId('rapPaid').textContent = formatMoney(rapPaid);
+      byId('rapPayable').textContent = formatMoney(rapPayable);
+      byId('rapPaidPct').textContent = formatPercent(rapPaid, rapPaid + rapPayable);
+      byId('gruCollected').textContent = formatMoney(gru);
+    }
+
+    function firstValue(values) {
+      return values.find(value => Number.isFinite(value) && value !== 0) ?? values.find(Number.isFinite);
+    }
+
+    function sumReport(slug, columnPatterns) {
+      const doc = financialReports[slug];
+      if (!doc) return null;
+      const rows = doc.totals?.length ? doc.totals.map(total => total.raw || total.values || {}) : (doc.rows || []);
+      let total = 0;
+      let matched = false;
+      for (const row of rows) {
+        for (const [column, value] of Object.entries(row)) {
+          if (!matchesAnyColumn(column, columnPatterns)) continue;
+          const number = parseBrNumber(value);
+          if (Number.isFinite(number)) {
+            total += number;
+            matched = true;
+          }
+        }
+      }
+      return matched ? total : null;
+    }
+
+    function matchesAnyColumn(column, patterns) {
+      const normalizedColumn = normalize(column);
+      return patterns.some(parts => parts.every(part => normalizedColumn.includes(normalize(part))));
+    }
+
+    function parseBrNumber(value) {
+      if (typeof value === 'number') return value;
+      const clean = String(value || '').replace(/[^\d,.-]/g, '');
+      if (!clean) return null;
+      const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
+      const number = Number(normalized);
+      return Number.isFinite(number) ? number : null;
+    }
+
+    function formatMoney(value) {
+      if (!Number.isFinite(value)) return '-';
+      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function formatPercent(part, total) {
+      if (!Number.isFinite(part) || !Number.isFinite(total) || total <= 0) return '-';
+      return (part / total).toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
     }
 
     function exportCsv() {
@@ -192,7 +319,7 @@
           report.displayTitle,
           report.date,
           report.metadata.periodicidade,
-          report.metadata.status,
+          reportStatus(report),
           report.metadata.idade_dias,
           report.html_path,
           report.json_path

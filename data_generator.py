@@ -49,6 +49,81 @@ REPORT_FRIENDLY_NAMES = {
     "suprimento-de-fundos-liquidacoes-e-pagamentos": "Suprimento de Fundos - Liquidações e Pagamentos",
 }
 
+REPORT_COLUMN_NAMES = {
+    "acompanhamento-das-liquidacoes-e-pagamentos-por-data": [
+        "Data",
+        "Empenhado",
+        "Liquidado",
+        "Pago",
+        "Saldo a Liquidar",
+    ],
+    "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": [
+        "Natureza de Despesa",
+        "Empenhado",
+        "Liquidado",
+        "Pago",
+        "Saldo a Liquidar",
+    ],
+    "credito-disponivel-mes-lancamento": [
+        "Mes",
+        "Credito Inicial",
+        "Credito Atualizado",
+        "Credito Disponivel",
+    ],
+    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": [
+        "Mes",
+        "Empenhado",
+        "Liquidado",
+        "Pago",
+        "Liquidado a Pagar",
+    ],
+    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": [
+        "Natureza de Despesa",
+        "Empenhado",
+        "Liquidado",
+        "Pago",
+        "Liquidado a Pagar",
+    ],
+    "recolhimento-proprio-gru": [
+        "Unidade Gestora",
+        "Codigo de Recolhimento",
+        "Descricao",
+        "Arrecadado",
+    ],
+    "restos-a-pagar-rap": [
+        "Unidade Gestora",
+        "Natureza de Despesa",
+        "Inscrito",
+        "Cancelado",
+        "Pago",
+        "A Pagar",
+        "% Pago",
+    ],
+    "saldo-de-empenhos-a-liquidar-mes-a-mes": [
+        "Natureza de Despesa",
+        "Janeiro",
+        "Fevereiro",
+        "Marco",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro",
+        "Total a Liquidar",
+    ],
+    "saldos-de-empenhos-do-exercicio-conta-contabil": [
+        "Conta Contabil",
+        "Empenhado",
+        "A Liquidar",
+        "Liquidado a Pagar",
+        "Pago",
+    ],
+}
+
 REPORT_OVERRIDES = {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
         "periodicidade": "historico",
@@ -263,6 +338,48 @@ def dedupe_columns(columns):
     return result
 
 
+def has_generated_column_names(columns):
+    return bool(columns) and all(re.fullmatch(r"Coluna \d+", column or "") for column in columns)
+
+
+def apply_column_overrides(slug, columns):
+    friendly = REPORT_COLUMN_NAMES.get(slug)
+    if not friendly or not has_generated_column_names(columns):
+        return columns
+    result = []
+    for idx, column in enumerate(columns):
+        result.append(friendly[idx] if idx < len(friendly) else f"Valor {idx + 1}")
+    return dedupe_columns(result)
+
+
+def rename_row_keys(row, old_columns, new_columns):
+    return {
+        new_columns[idx]: row.get(old_columns[idx], "")
+        for idx in range(min(len(old_columns), len(new_columns)))
+    }
+
+
+def apply_column_names_to_data(slug, columns, rows, totals, row_types):
+    new_columns = apply_column_overrides(slug, columns)
+    if new_columns == columns:
+        return columns, rows, totals, row_types
+    new_rows = [rename_row_keys(row, columns, new_columns) for row in rows]
+    new_totals = []
+    for total in totals:
+        raw = rename_row_keys(total.get("raw", {}), columns, new_columns)
+        values = {
+            new_columns[idx]: total.get("values", {}).get(columns[idx])
+            for idx in range(min(len(columns), len(new_columns)))
+            if total.get("values", {}).get(columns[idx]) is not None
+        }
+        new_totals.append({**total, "values": values, "raw": raw})
+    new_row_types = [
+        {**item, "raw": rename_row_keys(item.get("raw", {}), columns, new_columns)}
+        for item in row_types
+    ]
+    return new_columns, new_rows, new_totals, new_row_types
+
+
 def merge_header_rows(header_rows, width):
     columns = []
     for col_idx in range(width):
@@ -348,13 +465,15 @@ def infer_periodicity(slug, title, report_date, now_date):
     return "diaria"
 
 
-def infer_status(slug, periodicity, age_days):
+def infer_status(slug, periodicity, age_days, now_date):
     override = REPORT_OVERRIDES.get(slug, {})
     if "status" in override:
         return {"status": override["status"], "limite_dias": override.get("limite_dias")}
     if override.get("limite_dias") is None and "limite_dias" in override:
         return {"status": "atualizado", "limite_dias": None}
     limit = override.get("limite_dias", {"diaria": 1, "mensal": 35, "historico": None, "anual": 370}.get(periodicity, 1))
+    if periodicity == "diaria" and now_date.weekday() == 0 and limit is not None:
+        limit = max(limit, 2)
     if limit is None:
         return {"status": "atualizado", "limite_dias": None}
     return {"status": "desatualizado" if age_days > limit else "atualizado", "limite_dias": limit}
@@ -377,7 +496,7 @@ def metadata_for(slug, title, report_date, content_hash, source_path, source_map
         "hash_conteudo": content_hash,
         "row_count": row_count,
         "column_count": column_count,
-        **infer_status(slug, periodicity, age_days),
+        **infer_status(slug, periodicity, age_days, now.date()),
     }
 
 
@@ -389,6 +508,7 @@ def full_report_document(file_path, source_map, now):
     report_date, date_issue = extract_date(content, file_path)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
     columns, rows, totals, row_types, issues = normalize_table(pick_table(soup))
+    columns, rows, totals, row_types = apply_column_names_to_data(slug, columns, rows, totals, row_types)
     if date_issue:
         issues.append(date_issue)
     if not soup.find("table"):
