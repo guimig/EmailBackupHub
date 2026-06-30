@@ -241,20 +241,20 @@
 
     function renderFinancialSummary() {
       const open = firstValue([
-        sumReport('saldo-de-empenhos-a-liquidar-mes-a-mes', [['total', 'a liquidar'], ['saldo', 'a liquidar'], ['a liquidar']]),
-        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['a liquidar']])
+        totalValue('saldo-de-empenhos-a-liquidar-mes-a-mes', 'Total a Liquidar'),
+        totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 8')
       ]);
       const payable = firstValue([
-        sumReport('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [['liquidado', 'a pagar'], ['liquidados', 'a pagar']]),
-        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['liquidado', 'a pagar']])
+        totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 9'),
+        totalValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'Valor 8')
       ]);
       const paid = firstValue([
-        sumReport('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [['pago']]),
-        sumReport('saldos-de-empenhos-do-exercicio-conta-contabil', [['pago']])
+        totalValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'Valor 10'),
+        totalValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'Valor 9')
       ]);
-      const rapPaid = sumReport('restos-a-pagar-rap', [['pago']]);
-      const rapPayable = sumReport('restos-a-pagar-rap', [['a pagar']]);
-      const gru = sumReport('recolhimento-proprio-gru', [['arrecadado'], ['recolhido'], ['valor']]);
+      const rapPaid = totalValue('restos-a-pagar-rap', 'Valor 11');
+      const rapPayable = totalValue('restos-a-pagar-rap', 'Valor 12');
+      const gru = totalValue('recolhimento-proprio-gru', 'last');
       byId('commitmentsOpen').textContent = formatMoney(open);
       byId('commitmentsPayable').textContent = formatMoney(payable);
       byId('commitmentsPaid').textContent = formatMoney(paid);
@@ -266,6 +266,26 @@
 
     function firstValue(values) {
       return values.find(value => Number.isFinite(value) && value !== 0) ?? values.find(Number.isFinite);
+    }
+
+    function totalValue(slug, column) {
+      const row = grandTotalRow(financialReports[slug]);
+      if (!row) return null;
+      if (column === 'last') return lastNumericValue(row);
+      return parseBrNumber(row[column]);
+    }
+
+    function grandTotalRow(doc) {
+      const totals = doc?.totals || [];
+      if (totals.length) return totals[totals.length - 1].raw || totals[totals.length - 1].values || null;
+      const typedTotals = (doc?.row_types || []).filter(item => item.type === 'total').map(item => item.raw || item);
+      if (typedTotals.length) return typedTotals[typedTotals.length - 1];
+      return null;
+    }
+
+    function lastNumericValue(row) {
+      const values = Object.values(row || {}).map(parseBrNumber).filter(Number.isFinite);
+      return values.length ? values[values.length - 1] : null;
     }
 
     function sumReport(slug, columnPatterns) {
@@ -294,11 +314,13 @@
 
     function parseBrNumber(value) {
       if (typeof value === 'number') return value;
-      const clean = String(value || '').replace(/[^\d,.-]/g, '');
+      const text = String(value || '').trim();
+      const negative = text.startsWith('(') && text.endsWith(')');
+      const clean = text.replace(/[^\d,.-]/g, '');
       if (!clean) return null;
       const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
       const number = Number(normalized);
-      return Number.isFinite(number) ? number : null;
+      return Number.isFinite(number) ? (negative ? -number : number) : null;
     }
 
     function formatMoney(value) {

@@ -13297,6 +13297,68 @@
 
   <script>
     const byId = id => document.getElementById(id);
+    const friendlyNames = {
+      '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2024',
+      '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2025',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': 'Liquidações e Pagamentos por Data',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza',
+      'credito-disponivel-mes-lancamento': 'Crédito Disponível por Mês de Lançamento',
+      'despesas-empenhadas-liquidadas-e-pagas-2024': 'Despesas Empenhadas, Liquidadas e Pagas - 2024',
+      'despesas-empenhadas-liquidadas-e-pagas-2025': 'Despesas Empenhadas, Liquidadas e Pagas - 2025',
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por Mês',
+      'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': 'Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu',
+      'evolucao-das-despesas-empenhadas': 'Evolução das Despesas Empenhadas',
+      'imoveis-por-ug-conta-contabil-e-rip': 'Imóveis por UG, Conta Contábil e RIP',
+      'limite-de-saque-conta-contabil': 'Limite de Saque por Conta Contábil',
+      'provisionamentos': 'Provisionamentos',
+      'recolhimento-proprio-gru': 'Recolhimento Próprio - GRU',
+      'restos-a-pagar-rap': 'Restos a Pagar - RAP',
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': 'Saldo de Empenhos a Liquidar Mês a Mês',
+      'saldo-patrimonio-e-almoxarifado-conta-contabil': 'Saldo de Patrimônio e Almoxarifado por Conta Contábil',
+      'saldo-por-natureza-de-despesa': 'Saldo por Natureza de Despesa',
+      'saldos-de-contas-de-contratos': 'Saldos de Contas de Contratos',
+      'saldos-de-empenhos-do-exercicio-conta-contabil': 'Saldos de Empenhos do Exercício por Conta Contábil',
+      'suprimento-de-fundos-empenhos': 'Suprimento de Fundos - Empenhos',
+      'suprimento-de-fundos-liquidacoes-e-pagamentos': 'Suprimento de Fundos - Liquidações e Pagamentos'
+    };
+    const friendlyAliases = {
+      '2024 - Acompanhamento das Liquidações e Pagamentos - Por Natureza de Despesa': friendlyNames['2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa'],
+      '2025 - Acompanhamento das Liquidações e Pagamentos - Por Natureza de Despesa': friendlyNames['2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa'],
+      'Acompanhamento das Liquidações e Pagamentos - Por Data': friendlyNames['acompanhamento-das-liquidacoes-e-pagamentos-por-data'],
+      'Acompanhamento das Liquidações e Pagamentos - Por data': friendlyNames['acompanhamento-das-liquidacoes-e-pagamentos-por-data'],
+      'Acompanhamento das Liquidações e Pagamentos - Por Natureza de Despesa': friendlyNames['acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa'],
+      'Crédito Disponível - Mês Lançamento': friendlyNames['credito-disponivel-mes-lancamento'],
+      'Despesas Empenhadas, Liquidadas e Pagas - Mês Lançamento': friendlyNames['despesas-empenhadas-liquidadas-e-pagas-mes-lancamento'],
+      'Despesas Empenhadas, Liquidadas e Pagas - STRICTU SENSU': friendlyNames['despesas-empenhadas-liquidadas-e-pagas-strictu-sensu'],
+      'RIP Imóveis por Conta Contábil': friendlyNames['imoveis-por-ug-conta-contabil-e-rip']
+    };
+    function normalizeText(text) {
+      return (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+    function slugFromHref(href) {
+      const file = (href || '').split('/').pop().replace(/\.html$/i, '');
+      return file.replace(/_\d{2}-\d{2}-\d{4}$/, '');
+    }
+    function friendlyNameFor(value) {
+      const slug = slugFromHref(value);
+      const aliasKey = Object.keys(friendlyAliases).find(key => normalizeText(key) === normalizeText(value));
+      return friendlyNames[slug] || friendlyNames[value] || friendlyAliases[value] || friendlyAliases[aliasKey] || value;
+    }
+    function applyFriendlyNames() {
+      document.querySelectorAll('.report-card').forEach(card => {
+        const link = card.querySelector('a');
+        if (!link) return;
+        const friendly = friendlyNameFor(link.getAttribute('href') || link.textContent);
+        link.textContent = friendly;
+        card.dataset.category = friendly;
+      });
+      document.querySelectorAll('#categoryFilter option').forEach(option => {
+        if (!option.value) return;
+        const friendly = friendlyNameFor(option.value);
+        option.value = friendly;
+        option.textContent = friendly;
+      });
+    }
     function applyFilters() {
       const searchTerm = byId('searchInput').value.toLowerCase();
       const filterDate = byId('dateFilter') ? byId('dateFilter').value : '';
@@ -13323,6 +13385,7 @@
     function toggleHistory() { historyVisible = !historyVisible; byId('allReports').style.display = historyVisible ? 'block' : 'none'; byId('paginationControls').style.display = historyVisible ? 'flex' : 'none'; byId('toggleHistory').textContent = historyVisible ? '▲ Ocultar Histórico' : '▼ Exibir Histórico'; if (historyVisible) showPage(1); }
     function showPage(page) { const cards = Array.from(document.querySelectorAll('#allReports .report-card')); const totalPages = Math.max(1, Math.ceil(cards.length / itemsPerPage)); currentPage = page; cards.forEach((card, index) => { card.style.display = index >= (page - 1) * itemsPerPage && index < page * itemsPerPage ? 'block' : 'none'; }); byId('pageInfo').textContent = `Página ${page} de ${totalPages}`; byId('prevPage').disabled = page === 1; byId('nextPage').disabled = page === totalPages; }
     function sortElements(container, key) { const cards = Array.from(container.querySelectorAll('.report-card')); cards.sort((a, b) => { const aDate = a.dataset.date.split('/').reverse().join(''); const bDate = b.dataset.date.split('/').reverse().join(''); if (key === '-date') return bDate.localeCompare(aDate); if (key === 'date') return aDate.localeCompare(bDate); const aTitle = a.querySelector('a').textContent.toLowerCase(); const bTitle = b.querySelector('a').textContent.toLowerCase(); return key === '-title' ? bTitle.localeCompare(aTitle) : aTitle.localeCompare(bTitle); }); cards.forEach(card => container.appendChild(card)); }
+    applyFriendlyNames();
     byId('toggleHistory').addEventListener('click', toggleHistory);
     byId('prevPage').addEventListener('click', () => { if (currentPage > 1) showPage(currentPage - 1); });
     byId('nextPage').addEventListener('click', () => { const totalPages = Math.ceil(document.querySelectorAll('#allReports .report-card').length / itemsPerPage); if (currentPage < totalPages) showPage(currentPage + 1); });
@@ -13336,4 +13399,3 @@
   </script>
 </body>
 </html>
-    
