@@ -82,6 +82,7 @@
     .chart-value { color: var(--text); font-size: 1.16rem; margin-bottom: 8px; }
     .chart-slot { min-height: 128px; display: flex; align-items: center; justify-content: center; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 7px 10px; color: var(--muted); font-size: .68rem; margin-top: 8px; }
+    .chart-note { color: var(--muted); font-size: .72rem; line-height: 1.35; margin-top: 8px; }
     .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }
     .stack-bar { width: 92px; height: 132px; display: flex; flex-direction: column-reverse; border: 1px solid var(--line); background: var(--soft); }
     .stack-paid { background: var(--accent); }
@@ -132,8 +133,7 @@
         <span class="panel-badge" id="financePanelDate">Atualizando</span>
       </div>
       <div class="dashboard-kpis">
-        <div class="kpi-card"><span>Base acompanhada (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado</small></div>
-        <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="provisionTotal">-</strong><small>Saldo total provisionado</small></div>
+        <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
         <div class="kpi-card"><span>Crédito disponível (R$)</span><strong id="creditAvailable">-</strong><small>Saldo disponível no mês</small></div>
         <div class="kpi-card"><span>Restos a Pagar (R$)</span><strong id="rapTotal">-</strong><small>Pagos + a pagar</small></div>
         <div class="kpi-card"><span>Arrecadação própria (R$)</span><strong id="gruCollected">-</strong><small>GRU arrecadadas</small></div>
@@ -143,8 +143,8 @@
       </div>
       <div class="dashboard-charts">
         <article class="chart-card"><h3>Evolução das despesas</h3><div class="chart-value" id="trendValue">-</div><div class="chart-slot" id="expenseTrendChart"></div><div class="chart-legend">Empenhado, liquidado e pago no fechamento</div></article>
-        <article class="chart-card"><h3>Provisionamentos</h3><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Empenhado</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>Disponível</span></div></article>
-        <article class="chart-card"><h3>Crédito disponível</h3><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Crédito</span><span><i class="legend-dot" style="background:var(--accent-soft)"></i>Base</span></div></article>
+        <article class="chart-card"><h3>Uso do provisionado</h3><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Empenhado</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>Saldo a empenhar</span></div><div class="chart-note">Empenhado em relação ao orçamento provisionado.</div></article>
+        <article class="chart-card"><h3>Crédito livre no provisionado</h3><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Crédito disponível</span><span><i class="legend-dot" style="background:var(--accent-soft)"></i>Provisionado utilizado</span></div><div class="chart-note">Crédito disponível como parcela do orçamento provisionado.</div></article>
         <article class="chart-card"><h3>Restos a Pagar</h3><div class="chart-value" id="rapShareValue">-</div><div class="chart-slot" id="rapStackChart"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Pago</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>A pagar</span></div></article>
         <article class="chart-card"><h3>Arrecadação própria</h3><div class="chart-value" id="gruValue">-</div><div class="chart-slot" id="gruTreeChart"></div><div class="chart-legend" id="gruLegend"></div></article>
         <article class="chart-card"><h3>% empenhado do provisionado</h3><div class="chart-value" id="committedGaugeValue">-</div><div class="chart-slot" id="committedGauge"></div></article>
@@ -394,7 +394,6 @@
       const paidRatio = ratio(paid, liquidated);
 
       setText('budgetBase', formatMoney(budget));
-      setText('provisionTotal', formatMoney(provisioned));
       setText('creditAvailable', formatMoney(credit));
       setText('rapTotal', formatMoney(rapTotal));
       setText('gruCollected', formatMoney(gru));

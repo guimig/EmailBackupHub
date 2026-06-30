@@ -1,14 +1,48 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Visualizador de Relatório</title>
   <style>
-    :root { color-scheme: dark; --bg: #0d1117; --panel: #161b22; --line: #30363d; --text: #c9d1d9; --muted: #8b949e; --brand: #58a6ff; --total: #332b00; --warn: #f2cc60; --ok: #56d364; --bad: #ff7b72; }
+    :root,
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --header: #0b1018;
+      --panel: #161b22;
+      --soft: #1c2129;
+      --line: #30363d;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --brand: #58a6ff;
+      --brand-contrast: #0d1117;
+      --total: #332b00;
+      --warn: #f2cc60;
+      --ok: #56d364;
+      --bad: #ff7b72;
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f8fbf7;
+      --header: #eef6ed;
+      --panel: #ffffff;
+      --soft: #edf6ed;
+      --line: #dce6dc;
+      --text: #233128;
+      --muted: #657269;
+      --brand: #2f7a3e;
+      --brand-contrast: #ffffff;
+      --total: #fff4c2;
+      --warn: #9a6a00;
+      --ok: #2f7a3e;
+      --bad: #b42318;
+    }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
-    header { padding: 20px; border-bottom: 1px solid var(--line); background: #0b1018; }
+    header { padding: 20px; border-bottom: 1px solid var(--line); background: var(--header); }
+    .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .header-main { min-width: 0; }
     h1 { margin: 0 0 8px; font-size: 1.5rem; }
     a { color: var(--brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -16,16 +50,17 @@
     .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); }
     .tag { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--panel); }
     .toolbar { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; margin: 16px 0; }
-    input, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
+    input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
     label.toggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; white-space: nowrap; }
     label.toggle input { padding: 0; }
-    button { cursor: pointer; color: #0d1117; background: var(--brand); border-color: var(--brand); font-weight: 700; }
+    button { cursor: pointer; color: var(--brand-contrast); background: var(--brand); border-color: var(--brand); font-weight: 700; }
+    .theme-toggle { flex: 0 0 auto; min-width: 132px; }
     .table-wrap { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 72vh; background: var(--panel); }
     table { border-collapse: collapse; width: 100%; min-width: 900px; }
     th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 8px; vertical-align: top; }
-    th { position: sticky; top: 0; background: #21262d; z-index: 2; }
+    th { position: sticky; top: 0; background: var(--soft); z-index: 2; }
     th input, th select { width: 100%; margin-top: 6px; padding: 6px; font-size: 0.82rem; }
-    tbody tr:hover td { background: #1c2129; }
+    tbody tr:hover td { background: var(--soft); }
     .total-row td { background: var(--total); font-weight: 700; }
     .totals { margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
     .totals summary { cursor: pointer; padding: 10px 12px; color: var(--warn); font-weight: 700; }
@@ -33,14 +68,19 @@
     .totals-list div { border-top: 1px solid var(--line); padding-top: 8px; }
     .quality { margin: 12px 0; color: var(--muted); }
     .quality.bad { color: var(--warn); }
-    @media (max-width: 800px) { .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } }
+    @media (max-width: 800px) { .header-top { display: block; } .theme-toggle { width: 100%; margin-top: 12px; } .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } }
   </style>
 </head>
 <body>
   <header>
-    <p><a href="dashboard.html">← Dashboard</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
-    <h1 id="title">Carregando relatório...</h1>
-    <div class="meta" id="meta"></div>
+    <div class="header-top">
+      <div class="header-main">
+        <p><a href="dashboard.html">← Dashboard</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
+        <h1 id="title">Carregando relatório...</h1>
+        <div class="meta" id="meta"></div>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button">Tema claro</button>
+    </div>
   </header>
   <main>
     <div class="toolbar">
@@ -64,6 +104,23 @@
     let columnSort = { column: null, direction: '' };
     let renderTimer = null;
     const byId = id => document.getElementById(id);
+
+    const THEME_KEY = 'dap-dashboard-theme';
+
+    function applyTheme(theme) {
+      const nextTheme = theme === 'light' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = nextTheme;
+      try { localStorage.setItem(THEME_KEY, nextTheme); } catch {}
+      const button = byId('themeToggle');
+      if (button) button.textContent = nextTheme === 'dark' ? 'Tema claro' : 'Tema escuro';
+    }
+
+    function initTheme() {
+      let storedTheme = 'dark';
+      try { storedTheme = localStorage.getItem(THEME_KEY) || 'dark'; } catch {}
+      applyTheme(storedTheme);
+    }
+
     const normalize = text => (text || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const infoQualityCodes = new Set(['date_from_filename', 'date_from_mtime', 'inconsistent_columns', 'totals_separated']);
     const qualityLabels = {
@@ -301,6 +358,8 @@
       renderRows();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
+    byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+    initTheme();
     byId('showTotals').addEventListener('change', renderRows);
     loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });
   </script>
