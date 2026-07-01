@@ -68,7 +68,8 @@
     .totals-list div { border-top: 1px solid var(--line); padding-top: 8px; }
     .quality { margin: 12px 0; color: var(--muted); }
     .quality.bad { color: var(--warn); }
-    @media (max-width: 800px) { .header-top { display: block; } .theme-toggle { width: 100%; margin-top: 12px; } .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } }
+    .site-footer { padding: 18px 16px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 800px) { .header-top { display: block; } .theme-toggle { width: 100%; margin-top: 12px; } .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } .site-footer { display: block; } }
   </style>
 </head>
 <body>
@@ -99,6 +100,10 @@
       <table id="table"></table>
     </section>
   </main>
+  <footer class="site-footer">
+    <span>Desenvolvido por Guilherme Migliorini.</span>
+    <a href="https://github.com/guimig/EmailBackupHub">Página do GitHub</a>
+  </footer>
   <script>
     let report = null;
     let columnFilters = {};
@@ -343,6 +348,7 @@
         ['Linhas no arquivo', report.metadata?.row_count ?? 0],
         ['Exportado em', generatedAt]
       ];
+      const tesouroContext = tesouroContextEntries();
       const activeFilters = activeFilterSummary();
       const highlights = numericHighlights(rows, columns, displayColumns);
       const quality = qualitySummary(report);
@@ -366,6 +372,7 @@
     .card span { display: block; color: var(--muted); font-size: .78rem; margin-bottom: 6px; }
     .card strong { display: block; overflow-wrap: anywhere; }
     .note { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px; color: var(--muted); line-height: 1.45; }
+    .footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     table { width: 100%; border-collapse: collapse; background: var(--panel); }
     th, td { border: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; font-size: .82rem; }
     th { background: var(--soft); }
@@ -382,6 +389,7 @@
   </header>
   <main>
     <section class="note"><strong>Resumo:</strong> ${escapeHtml(reportSummary(rows, columns, activeFilters, quality))}</section>
+    ${tesouroContextHtml(tesouroContext)}
     <h2>Filtros aplicados</h2>
     <section class="grid">${activeFilters.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
     <h2>Principais informa\u00e7\u00f5es obtidas</h2>
@@ -395,6 +403,7 @@
         return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
       }).join('')}</tbody>
     </table>
+    <footer class="footer"><span>Desenvolvido por Guilherme Migliorini.</span><span>https://github.com/guimig/EmailBackupHub</span></footer>
   </main>
 </body>
 </html>`;
@@ -412,6 +421,46 @@
       return filters;
     }
 
+    function tesouroContextEntries() {
+      const entries = [];
+      const handledMetadata = new Set(['periodicidade', 'status', 'idade_dias', 'exercicio', 'row_count']);
+      appendObjectEntries(entries, 'Metadados do arquivo', report.metadata, handledMetadata);
+      for (const key of ['filters', 'filter', 'filtros', 'filtro', 'applied_filters', 'tesouro_filters', 'tesouroGerencialFilters', 'parameters', 'params', 'query', 'consulta', 'criterios', 'criteria']) {
+        appendObjectEntries(entries, 'Filtros/consulta do Tesouro Gerencial', report[key]);
+      }
+      return entries;
+    }
+
+    function appendObjectEntries(target, group, value, skipKeys = new Set()) {
+      if (!value) return;
+      if (Array.isArray(value)) {
+        value.forEach((item, index) => appendObjectEntries(target, `${group} ${index + 1}`, item, skipKeys));
+        return;
+      }
+      if (typeof value !== 'object') {
+        target.push([group, value]);
+        return;
+      }
+      for (const [key, entryValue] of Object.entries(value)) {
+        if (skipKeys.has(key) || entryValue == null || entryValue === '') continue;
+        const label = `${group}: ${humanizeKey(key)}`;
+        if (typeof entryValue === 'object') {
+          target.push([label, JSON.stringify(entryValue)]);
+        } else {
+          target.push([label, entryValue]);
+        }
+      }
+    }
+
+    function humanizeKey(key) {
+      return String(key || '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+
+    function tesouroContextHtml(entries) {
+      if (!entries.length) return '';
+      return `<h2>Metadados e filtros do Tesouro Gerencial</h2><section class="grid">${entries.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>`;
+    }
+
     function friendlyColumnName(column) {
       const columns = report.columns || [];
       const index = columns.indexOf(column);
@@ -426,6 +475,7 @@
     function numericHighlights(rows, columns, displayColumns) {
       const highlights = [];
       for (const [index, column] of columns.entries()) {
+        if (!isSummableColumn(column, displayColumns[index])) continue;
         let total = 0;
         let count = 0;
         for (const item of rows) {
@@ -439,6 +489,13 @@
       }
       if (!highlights.length) return [['Linhas exportadas', rows.length], ['Colunas', columns.length]];
       return highlights.slice(0, 8);
+    }
+
+    function isSummableColumn(column, displayColumn) {
+      const label = normalize(`${column || ''} ${displayColumn || ''}`);
+      const classificationPattern = /(codigo|cod\.?|classificacao|fonte|recurso|ug|uo|ptres|programa|acao|plano|natureza|nd|elemento|subitem|modalidade|categoria|grupo|identificador|id\b|cpf|cnpj|conta contabil|rip|mes|ano|data)/;
+      if (classificationPattern.test(label)) return false;
+      return /(valor|saldo|total|pago|pagos|pagamento|empenhado|empenhos|liquidado|liquidar|a pagar|credito|crédito|provisionado|provisionamento|despesa|arrecadado|inscrito|cancelado|disponivel|disponível)/.test(label);
     }
 
     function totalsReportHtml() {
