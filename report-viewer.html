@@ -171,6 +171,41 @@
       'saldo-de-empenhos-a-liquidar-mes-a-mes': ['Natureza de Despesa', 'Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro', 'Total a Liquidar'],
       'saldos-de-empenhos-do-exercicio-conta-contabil': ['Conta Contabil', 'Empenhado', 'A Liquidar', 'Liquidado a Pagar', 'Pago']
     };
+    const reportHighlightRules = {
+      'restos-a-pagar-rap': [
+        ['RAP inscrito', 'Valor 9'],
+        ['RAP cancelado', 'Valor 10'],
+        ['RAP pago', 'Valor 11'],
+        ['RAP a pagar', 'Valor 12']
+      ],
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': [
+        ['Despesas empenhadas', 'Valor 7'],
+        ['Despesas liquidadas', 'Valor 8'],
+        ['Despesas pagas', 'Valor 9']
+      ],
+      'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': [
+        ['Despesas empenhadas', 'Valor 7'],
+        ['Despesas liquidadas', 'Valor 8'],
+        ['Despesas pagas', 'Valor 9']
+      ],
+      'saldos-de-empenhos-do-exercicio-conta-contabil': [
+        ['Empenhos a liquidar', 'Valor 8'],
+        ['Liquidados a pagar', 'Valor 9'],
+        ['Empenhos pagos', 'Valor 10']
+      ],
+      'recolhimento-proprio-gru': [
+        ['GRU arrecadadas', '724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. L\u00edquido - R$ (Item Informa\u00e7\u00e3o)', ['movim', 'liquido']]
+      ],
+      'provisionamentos': [
+        ['Provisionamentos', 'Saldo - Moeda Origem (Item Informa\u00e7\u00e3o)', ['saldo', 'moeda']]
+      ],
+      'credito-disponivel-mes-lancamento': [
+        ['Cr\u00e9dito dispon\u00edvel', 'Saldo - R$ (Conta Cont\u00e1bil)', ['saldo', 'r$']]
+      ],
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': [
+        ['Saldo total a liquidar', 'Total a Liquidar']
+      ]
+    };
 
     function reportUrl() {
       const params = new URLSearchParams(location.search);
@@ -549,7 +584,7 @@
     }
 
     function numericHighlights(rows, columns, displayColumns) {
-      const totalHighlights = totalsHighlights(columns, displayColumns);
+      const totalHighlights = totalsHighlights(rows, columns, displayColumns);
       if (totalHighlights.length) return totalHighlights.slice(0, 8);
       const highlights = [];
       for (const [index, column] of columns.entries()) {
@@ -563,38 +598,121 @@
             count += 1;
           }
         }
-        if (count) highlights.push([displayColumns[index], total.toLocaleString('pt-BR', { maximumFractionDigits: 2 })]);
+        if (count) highlights.push([`Total ${displayColumns[index]}`, formatMoneyValue(total)]);
       }
       if (!highlights.length) return [['Linhas exportadas', rows.length], ['Colunas', columns.length]];
       return highlights.slice(0, 8);
     }
 
-    function totalsHighlights(columns, displayColumns) {
+    function totalsHighlights(rows, columns, displayColumns) {
       const byColumn = new Map(columns.map((column, index) => [column, displayColumns[index]]));
-      const accumulator = new Map();
       const totals = report.totals || [];
       const grandTotals = totals.filter(total => normalize(total.label) === 'total' || normalize(total.raw?.[columns[0]]) === 'total');
-      const sourceTotals = grandTotals.length ? grandTotals : totals;
-      for (const total of sourceTotals) {
-        const values = total.values || total.raw || {};
-        for (const [column, value] of Object.entries(values)) {
-          const displayColumn = byColumn.get(column) || inferredColumnName(column, columns.indexOf(column)) || column;
-          if (!isSummableColumn(column, displayColumn)) continue;
-          const number = parseBrNumber(value);
-          if (!Number.isFinite(number)) continue;
-          accumulator.set(displayColumn, (accumulator.get(displayColumn) || 0) + number);
+      const highlights = [];
+      for (const total of grandTotals) {
+        const known = knownTotalHighlights(total);
+        highlights.push(...(known.length ? known : genericTotalHighlights(total, columns, byColumn)));
+      }
+      highlights.push(...partialTotalHighlights(totals, grandTotals, columns, byColumn));
+      return uniqueHighlights(highlights);
+    }
+
+    function knownTotalHighlights(total) {
+      const rules = reportHighlightRules[report?.slug] || [];
+      return rules.map(([label, column, terms]) => {
+        const matchedColumn = findTotalColumn(total, column, terms);
+        const value = numericTotalValue(total, matchedColumn);
+        return Number.isFinite(value) ? [`Total ${label}`, formatMoneyValue(value)] : null;
+      }).filter(Boolean);
+    }
+
+    function findTotalColumn(total, column, terms = []) {
+      const keys = [...Object.keys(total?.values || {}), ...Object.keys(total?.raw || {})];
+      if (keys.includes(column)) return column;
+      const normalizedTerms = terms.map(normalize).filter(Boolean);
+      if (normalizedTerms.length) {
+        const matched = keys.find(key => normalizedTerms.every(term => normalize(fixMojibake(key)).includes(term)));
+        if (matched) return matched;
+      }
+      return column;
+    }
+
+    function genericTotalHighlights(total, columns, byColumn) {
+      return columns.map(column => {
+        const displayColumn = byColumn.get(column) || inferredColumnName(column, columns.indexOf(column)) || column;
+        if (!isSummableColumn(column, displayColumn)) return null;
+        const value = numericTotalValue(total, column);
+        return Number.isFinite(value) ? [`Total ${displayColumn}`, formatMoneyValue(value)] : null;
+      }).filter(Boolean);
+    }
+
+    function partialTotalHighlights(totals, grandTotals, columns, byColumn) {
+      const grandSet = new Set(grandTotals);
+      const primaryRules = reportHighlightRules[report?.slug] || [];
+      const primaryColumns = primaryRules.length
+        ? primaryRules.slice(0, 2).map(([label, column, terms]) => ({ label, column, terms }))
+        : monetaryColumns(columns, byColumn).slice(0, 2).map(column => ({ label: byColumn.get(column) || column, column }));
+      const partials = [];
+      for (const rule of primaryColumns) {
+        for (const total of totals) {
+          if (grandSet.has(total)) continue;
+          const label = cleanTotalLabel(total.label || total.raw?.[columns[0]]);
+          if (!label || normalize(label) === 'total') continue;
+          const matchedColumn = findTotalColumn(total, rule.column, rule.terms);
+          const value = numericTotalValue(total, matchedColumn);
+          if (Number.isFinite(value) && value !== 0) {
+            partials.push({ label: `${shortText(label, 34)} - ${rule.label}`, value });
+          }
         }
       }
-      return [...accumulator.entries()].map(([label, value]) => [label, value.toLocaleString('pt-BR', { maximumFractionDigits: 2 })]);
+      return partials
+        .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
+        .slice(0, 3)
+        .map(item => [item.label, formatMoneyValue(item.value)]);
+    }
+
+    function monetaryColumns(columns, byColumn) {
+      return columns.filter(column => isSummableColumn(column, byColumn.get(column) || column));
+    }
+
+    function numericTotalValue(total, column) {
+      const values = total?.values || {};
+      if (Object.prototype.hasOwnProperty.call(values, column)) {
+        const value = typeof values[column] === 'number' ? values[column] : parseBrNumber(values[column]);
+        if (Number.isFinite(value)) return value;
+      }
+      return parseBrNumber(total?.raw?.[column]);
+    }
+
+    function uniqueHighlights(items) {
+      const seen = new Set();
+      return items.filter(([label]) => {
+        const key = normalize(label);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function cleanTotalLabel(label) {
+      return fixMojibake(label).replace(/\s+/g, ' ').trim();
+    }
+
+    function shortText(value, max) {
+      const text = String(value || '').replace(/\s+/g, ' ').trim();
+      return text.length > max ? `${text.slice(0, max - 3)}...` : text;
+    }
+
+    function formatMoneyValue(value) {
+      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
     function isSummableColumn(column, displayColumn) {
-      const label = normalize(`${column || ''} ${displayColumn || ''}`);
+      const label = normalize(fixMojibake(`${column || ''} ${displayColumn || ''}`));
       const classificationPattern = /(codigo|cod\.?|classificacao|fonte|recurso|ug|uo|ptres|programa|acao|plano|natureza|nd|elemento|subitem|modalidade|categoria|grupo|identificador|id\b|cpf|cnpj|conta contabil|rip|mes|ano|data)/;
       if (classificationPattern.test(label)) return false;
-      return /(valor|saldo|total|pago|pagos|pagamento|empenhado|empenhos|liquidado|liquidar|a pagar|credito|crédito|provisionado|provisionamento|despesa|arrecadado|inscrito|cancelado|disponivel|disponível)/.test(label);
+      return /(r\$|valor|saldo|total|pago|pagos|pagamento|empenhado|empenhos|liquidado|liquidar|a pagar|credito|provisionado|provisionamento|despesa|arrecadado|inscrito|cancelado|disponivel|movim liquido|moeda origem)/.test(label);
     }
-
     function totalsReportHtml() {
       if (!byId('showTotals').checked) return '';
       const totals = report.totals || [];
