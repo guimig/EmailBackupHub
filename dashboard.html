@@ -79,6 +79,9 @@
     .term-help[open] summary, .chart-help[open] summary { background: var(--brand); color: var(--brand-contrast); }
     .term-help p, .chart-help p { margin: 8px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.35; }
     .term-help p { max-width: 280px; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 10px; box-shadow: var(--shadow); }
+    .dashboard-insight { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; padding: 12px; margin-bottom: 14px; min-height: 74px; }
+    .dashboard-insight strong { display: block; color: var(--text); margin-bottom: 6px; }
+    .dashboard-insight p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.4; }
     .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; }
     .kpi-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 84px; }
     .kpi-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
@@ -161,6 +164,10 @@
         <details class="term-help"><summary>Liquidado</summary><p>Despesa reconhecida após confirmação da entrega do bem ou serviço.</p></details>
         <details class="term-help"><summary>Restos a pagar</summary><p>Despesas empenhadas em exercícios anteriores que ainda podem estar pagas ou a pagar.</p></details>
         <details class="term-help"><summary>GRU</summary><p>Guia de Recolhimento da União usada para registrar arrecadação própria.</p></details>
+      </div>
+      <div class="dashboard-insight" aria-live="polite">
+        <strong id="insightTitle">Explore o painel</strong>
+        <p id="insightText">Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador e sua utilidade para acompanhar a execução orçamentária e financeira.</p>
       </div>
       <div class="dashboard-kpis">
         <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
@@ -474,6 +481,39 @@
       renderGauge('committedGauge', committedRatio);
       renderGauge('liquidatedGauge', liquidatedRatio);
       renderGauge('paidGauge', paidRatio);
+      updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+    }
+
+    function updateDashboardInsights(values) {
+      setInsight('budgetBase', 'Provisionamentos', `${formatMoney(values.budget)} é o orçamento provisionado acompanhado. Use como base para avaliar quanto já foi comprometido por empenhos e quanto ainda está disponível para execução.`);
+      setInsight('creditAvailable', 'Crédito disponível', `${formatMoney(values.credit)} ainda está livre dentro do orçamento provisionado. Quando esse valor diminui, indica maior comprometimento da dotação.`);
+      setInsight('rapTotal', 'Restos a pagar', `${formatMoney(values.rapTotal)} em restos a pagar: ${formatMoney(values.rapPaid)} pagos e ${formatMoney(values.rapPayable)} ainda a pagar.`);
+      setInsight('gruCollected', 'GRU arrecadadas', `${formatMoney(values.gru)} em arrecadação própria identificada nos dados. Esse valor ajuda a acompanhar receitas registradas por GRU.`);
+      setInsight('committedTotal', 'Despesas empenhadas', `${formatMoney(values.committed)} já foram formalmente comprometidos. Compare com o provisionado para medir a pressão sobre o orçamento.`);
+      setInsight('liquidatedTotal', 'Despesas liquidadas', `${formatMoney(values.liquidated)} já tiveram entrega reconhecida. Esse é o estágio anterior ao pagamento.`);
+      setInsight('paidTotal', 'Despesas pagas', `${formatMoney(values.paid)} já foram efetivamente pagos. Compare com o liquidado para ver o ritmo de pagamento.`);
+      setInsight('trendValue', 'Evolução da execução', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. A distância entre os estágios mostra o andamento da execução.`);
+      setInsight('provisionShareValue', 'Uso do provisionado', `${formatPercent(values.committed, values.provisioned)} do provisionamento já está empenhado. O restante é saldo ainda não comprometido por empenhos.`);
+      setInsight('creditShareValue', 'Crédito livre no provisionado', `${formatPercent(values.credit, values.budget)} do provisionado aparece como crédito disponível. O indicador ajuda a identificar margem de execução.`);
+      setInsight('rapShareValue', 'Restos a pagar', `${formatPercent(values.rapPaid, values.rapTotal)} dos restos a pagar já foram pagos. O restante exige acompanhamento financeiro.`);
+      setInsight('gruValue', 'Arrecadação própria', `${formatMoney(values.gru)} em GRU. O mapa destaca os códigos de recolhimento mais relevantes quando disponíveis.`);
+      setInsight('committedGaugeValue', '% empenhado do provisionado', `${formatPercent(values.committed, values.provisioned)} do orçamento provisionado já foi empenhado.`);
+      setInsight('liquidatedGaugeValue', '% liquidado do empenhado', `${formatPercent(values.liquidated, values.committed)} do empenhado já foi liquidado.`);
+      setInsight('paidGaugeValue', '% pago do liquidado', `${formatPercent(values.paid, values.liquidated)} do liquidado já foi pago.`);
+    }
+
+    function setInsight(anchorId, title, text) {
+      const card = byId(anchorId)?.closest('.kpi-card, .chart-card');
+      if (!card) return;
+      card.tabIndex = 0;
+      card.dataset.insightTitle = title;
+      card.dataset.insightText = text;
+      card.title = text;
+    }
+
+    function showInsight(card) {
+      setText('insightTitle', card.dataset.insightTitle || 'Explore o painel');
+      setText('insightText', card.dataset.insightText || 'Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador.');
     }
 
     function firstValue(values) {
@@ -676,6 +716,14 @@
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
+    document.querySelector('.dashboard-panel').addEventListener('mouseover', event => {
+      const card = event.target.closest('[data-insight-title]');
+      if (card) showInsight(card);
+    });
+    document.querySelector('.dashboard-panel').addEventListener('focusin', event => {
+      const card = event.target.closest('[data-insight-title]');
+      if (card) showInsight(card);
+    });
     document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
       const nextKey = th.dataset.sort;
       sortDir = sortKey === nextKey ? -sortDir : 1;

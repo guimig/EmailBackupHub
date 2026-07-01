@@ -49,7 +49,7 @@
     main { padding: 16px; }
     .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); }
     .tag { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--panel); }
-    .toolbar { display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 10px; margin: 16px 0; }
+    .toolbar { display: grid; grid-template-columns: 1fr auto auto auto auto auto; gap: 10px; margin: 16px 0; }
     input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
     label.toggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; white-space: nowrap; }
     label.toggle input { padding: 0; }
@@ -90,6 +90,7 @@
       <button id="clearFilters">Limpar filtros</button>
       <button id="exportCsv">Exportar CSV</button>
       <button id="exportHtml">Exportar HTML</button>
+      <button id="printHtml">Imprimir PDF</button>
     </div>
     <div id="quality" class="quality"></div>
     <details id="totalsPanel" class="totals" style="display:none;">
@@ -136,28 +137,28 @@
       totals_separated: 'totais separados da tabela principal'
     };
     const reportFriendlyNames = {
-      '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza - 2024',
-      '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza - 2025',
-      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': 'Liquidacoes e Pagamentos por Data',
-      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidacoes e Pagamentos por Natureza',
-      'credito-disponivel-mes-lancamento': 'Credito Disponivel por Mes de Lancamento',
+      '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquida\u00e7\u00f5es e Pagamentos por Natureza - 2024',
+      '2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquida\u00e7\u00f5es e Pagamentos por Natureza - 2025',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-data': 'Liquida\u00e7\u00f5es e Pagamentos por Data',
+      'acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquida\u00e7\u00f5es e Pagamentos por Natureza',
+      'credito-disponivel-mes-lancamento': 'Cr\u00e9dito Dispon\u00edvel por M\u00eas de Lan\u00e7amento',
       'despesas-empenhadas-liquidadas-e-pagas-2024': 'Despesas Empenhadas, Liquidadas e Pagas - 2024',
       'despesas-empenhadas-liquidadas-e-pagas-2025': 'Despesas Empenhadas, Liquidadas e Pagas - 2025',
-      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por Mes',
+      'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento': 'Despesas Empenhadas, Liquidadas e Pagas por M\u00eas',
       'despesas-empenhadas-liquidadas-e-pagas-strictu-sensu': 'Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu',
-      'evolucao-das-despesas-empenhadas': 'Evolucao das Despesas Empenhadas',
-      'imoveis-por-ug-conta-contabil-e-rip': 'Imoveis por UG, Conta Contabil e RIP',
-      'limite-de-saque-conta-contabil': 'Limite de Saque por Conta Contabil',
+      'evolucao-das-despesas-empenhadas': 'Evolu\u00e7\u00e3o das Despesas Empenhadas',
+      'imoveis-por-ug-conta-contabil-e-rip': 'Im\u00f3veis por UG, Conta Cont\u00e1bil e RIP',
+      'limite-de-saque-conta-contabil': 'Limite de Saque por Conta Cont\u00e1bil',
       'provisionamentos': 'Provisionamentos',
-      'recolhimento-proprio-gru': 'Recolhimento Proprio - GRU',
+      'recolhimento-proprio-gru': 'Recolhimento Pr\u00f3prio - GRU',
       'restos-a-pagar-rap': 'Restos a Pagar - RAP',
-      'saldo-de-empenhos-a-liquidar-mes-a-mes': 'Saldo de Empenhos a Liquidar Mes a Mes',
-      'saldo-patrimonio-e-almoxarifado-conta-contabil': 'Saldo de Patrimonio e Almoxarifado por Conta Contabil',
+      'saldo-de-empenhos-a-liquidar-mes-a-mes': 'Saldo de Empenhos a Liquidar M\u00eas a M\u00eas',
+      'saldo-patrimonio-e-almoxarifado-conta-contabil': 'Saldo de Patrim\u00f4nio e Almoxarifado por Conta Cont\u00e1bil',
       'saldo-por-natureza-de-despesa': 'Saldo por Natureza de Despesa',
       'saldos-de-contas-de-contratos': 'Saldos de Contas de Contratos',
-      'saldos-de-empenhos-do-exercicio-conta-contabil': 'Saldos de Empenhos do Exercicio por Conta Contabil',
+      'saldos-de-empenhos-do-exercicio-conta-contabil': 'Saldos de Empenhos do Exerc\u00edcio por Conta Cont\u00e1bil',
       'suprimento-de-fundos-empenhos': 'Suprimento de Fundos - Empenhos',
-      'suprimento-de-fundos-liquidacoes-e-pagamentos': 'Suprimento de Fundos - Liquidacoes e Pagamentos'
+      'suprimento-de-fundos-liquidacoes-e-pagamentos': 'Suprimento de Fundos - Liquida\u00e7\u00f5es e Pagamentos'
     };
     const columnFriendlyNames = {
       'acompanhamento-das-liquidacoes-e-pagamentos-por-data': ['Data', 'Empenhado', 'Liquidado', 'Pago', 'Saldo a Liquidar'],
@@ -176,11 +177,29 @@
       return params.get('report') || 'data/index.json';
     }
 
+    function friendlyReportTitle() {
+      return reportFriendlyNames[report?.slug] || fixMojibake(report?.title) || report?.slug || 'Relat\u00f3rio';
+    }
+
+    function fixMojibake(value) {
+      let text = String(value || '');
+      for (let index = 0; index < 2; index += 1) {
+        try {
+          const decoded = decodeURIComponent(escape(text));
+          if (decoded === text) break;
+          text = decoded;
+        } catch {
+          break;
+        }
+      }
+      return text;
+    }
+
     async function loadReport() {
       const url = reportUrl();
       const response = await fetch(url);
       report = await response.json();
-      byId('title').textContent = reportFriendlyNames[report.slug] || report.title || 'Relatório';
+      byId('title').textContent = friendlyReportTitle();
       byId('htmlLink').href = report.html_path || '#';
       byId('jsonLink').href = url;
       byId('meta').innerHTML = [
@@ -331,12 +350,29 @@
     }
 
     function exportHtmlReport() {
+      const html = buildHtmlReport();
+      if (html) download(`${report?.slug || 'relatorio'}-relatorio.html`, html, 'text/html;charset=utf-8');
+    }
+
+    function printHtmlReport() {
+      const html = buildHtmlReport();
+      if (!html) return;
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) return;
+      printWindow.document.open();
+      printWindow.document.write(html);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => printWindow.print(), 500);
+    }
+
+    function buildHtmlReport() {
       if (!report) return;
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
       const rows = filteredRows();
       const generatedAt = new Date().toLocaleString('pt-BR');
-      const title = reportFriendlyNames[report.slug] || report.title || 'Relat\u00f3rio';
+      const title = friendlyReportTitle();
       const metadata = [
         ['Fonte', 'Tesouro Gerencial'],
         ['Arquivo est\u00e1tico', report.html_path || '-'],
@@ -407,7 +443,7 @@
   </main>
 </body>
 </html>`;
-      download(`${report.slug || 'relatorio'}-relatorio.html`, html, 'text/html;charset=utf-8');
+      return html;
     }
 
     function activeFilterSummary() {
@@ -499,6 +535,7 @@
     }
 
     function totalsReportHtml() {
+      if (!byId('showTotals').checked) return '';
       const totals = report.totals || [];
       if (!totals.length) return '';
       return `<h2>Totais separados</h2><section class="note totals">${totals.map(total => {
@@ -542,6 +579,7 @@
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
+    byId('printHtml').addEventListener('click', printHtmlReport);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
     byId('showTotals').addEventListener('change', renderRows);
