@@ -68,9 +68,17 @@
     .theme-toggle { flex: 0 0 auto; min-width: 132px; }
     .dashboard-panel { margin-top: 18px; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 8px; padding: 18px; box-shadow: var(--shadow); }
     .dashboard-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .panel-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
     .dashboard-panel h2 { margin: 0; color: var(--text); font-size: 1.5rem; }
     .dashboard-panel .panel-note { color: var(--muted); font-size: .86rem; margin-top: 4px; }
     .panel-badge { border: 1px solid var(--line); color: var(--brand); background: var(--soft); border-radius: 999px; padding: 6px 10px; font-size: .78rem; white-space: nowrap; }
+    .term-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .term-help { position: relative; }
+    .term-help summary, .chart-help summary { list-style: none; cursor: pointer; border: 1px solid var(--line); background: var(--soft); color: var(--brand); border-radius: 999px; padding: 6px 10px; font-size: .78rem; font-weight: 700; }
+    .term-help summary::-webkit-details-marker, .chart-help summary::-webkit-details-marker { display: none; }
+    .term-help[open] summary, .chart-help[open] summary { background: var(--brand); color: var(--brand-contrast); }
+    .term-help p, .chart-help p { margin: 8px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.35; }
+    .term-help p { max-width: 280px; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 10px; box-shadow: var(--shadow); }
     .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; }
     .kpi-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 84px; }
     .kpi-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
@@ -78,7 +86,12 @@
     .kpi-card small { display: block; color: var(--muted); margin-top: 8px; font-size: .72rem; }
     .dashboard-charts { display: grid; grid-template-columns: repeat(4, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; }
     .chart-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 210px; }
+    .chart-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     .chart-card h3 { margin: 0 0 8px; color: var(--text); font-size: .95rem; font-weight: 700; }
+    .chart-card-head h3 { margin-bottom: 0; }
+    .chart-help { max-width: 100%; }
+    .chart-help summary { width: 28px; height: 28px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+    .chart-help p { border-top: 1px solid var(--line); padding-top: 8px; }
     .chart-value { color: var(--text); font-size: 1.16rem; margin-bottom: 8px; }
     .chart-slot { min-height: 128px; display: flex; align-items: center; justify-content: center; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 7px 10px; color: var(--muted); font-size: .68rem; margin-top: 8px; }
@@ -108,11 +121,16 @@
     a { color: var(--brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .tag { display: inline-block; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+    .quality-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+    .quality-code { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 999px; border: 1px solid var(--line); background: var(--soft); color: var(--text); font-size: .72rem; font-weight: 700; }
+    .quality-code.warn { color: var(--warn); }
+    .quality-code.bad { color: var(--bad); }
+    .quality-legend { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 10px; color: var(--muted); font-size: .82rem; }
     .ok { color: var(--ok); }
     .bad { color: var(--bad); }
     .warn { color: var(--warn); }
     @media (max-width: 1100px) { .dashboard-kpis, .dashboard-charts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 900px) { .header-top { display: block; } .theme-toggle { margin-top: 12px; width: 100%; } .toolbar, .summary, .header-insights, .dashboard-kpis, .dashboard-charts { grid-template-columns: 1fr; } main { padding: 12px; } .dashboard-panel-head { display: block; } .panel-badge { display: inline-block; margin-top: 10px; } }
+    @media (max-width: 900px) { .header-top { display: block; } .theme-toggle { margin-top: 12px; width: 100%; } .toolbar, .summary, .header-insights, .dashboard-kpis, .dashboard-charts { grid-template-columns: 1fr; } main { padding: 12px; } .dashboard-panel-head, .panel-actions { display: block; } .panel-badge { display: inline-block; margin-top: 10px; } }
   </style>
 </head>
 <body>
@@ -128,9 +146,20 @@
       <div class="dashboard-panel-head">
         <div>
           <h2>Resumo Orçamentário e Financeiro</h2>
-          <div class="panel-note">Painel sintético baseado nos JSONs estáticos do último fechamento disponível.</div>
+          <div class="panel-note">Passe o mouse ou toque em cada item de ajuda para entender os conceitos do painel.</div>
         </div>
-        <span class="panel-badge" id="financePanelDate">Atualizando</span>
+        <div class="panel-actions">
+          <span class="panel-badge" id="financePanelDate">Atualizando</span>
+          <details class="chart-help"><summary aria-label="Como ler o painel">?</summary><p>Os valores são sintéticos e vêm dos JSONs estáticos gerados a partir dos relatórios do Tesouro Gerencial.</p></details>
+        </div>
+      </div>
+      <div class="term-strip" aria-label="Glossário rápido">
+        <details class="term-help"><summary>Provisionamento</summary><p>Orçamento reservado ou distribuído para execução. É a base acompanhada no painel.</p></details>
+        <details class="term-help"><summary>Crédito disponível</summary><p>Parcela do orçamento que ainda está livre para ser utilizada.</p></details>
+        <details class="term-help"><summary>Empenho</summary><p>Compromisso formal de gasto assumido pela administração.</p></details>
+        <details class="term-help"><summary>Liquidado</summary><p>Despesa reconhecida após confirmação da entrega do bem ou serviço.</p></details>
+        <details class="term-help"><summary>Restos a pagar</summary><p>Despesas empenhadas em exercícios anteriores que ainda podem estar pagas ou a pagar.</p></details>
+        <details class="term-help"><summary>GRU</summary><p>Guia de Recolhimento da União usada para registrar arrecadação própria.</p></details>
       </div>
       <div class="dashboard-kpis">
         <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
@@ -142,14 +171,14 @@
         <div class="kpi-card"><span>Despesas pagas (R$)</span><strong id="paidTotal">-</strong><small>Total pago</small></div>
       </div>
       <div class="dashboard-charts">
-        <article class="chart-card"><h3>Evolução das despesas</h3><div class="chart-value" id="trendValue">-</div><div class="chart-slot" id="expenseTrendChart"></div><div class="chart-legend">Empenhado, liquidado e pago no fechamento</div></article>
-        <article class="chart-card"><h3>Uso do provisionado</h3><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Empenhado</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>Saldo a empenhar</span></div><div class="chart-note">Empenhado em relação ao orçamento provisionado.</div></article>
-        <article class="chart-card"><h3>Crédito livre no provisionado</h3><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Crédito disponível</span><span><i class="legend-dot" style="background:var(--accent-soft)"></i>Provisionado utilizado</span></div><div class="chart-note">Crédito disponível como parcela do orçamento provisionado.</div></article>
-        <article class="chart-card"><h3>Restos a Pagar</h3><div class="chart-value" id="rapShareValue">-</div><div class="chart-slot" id="rapStackChart"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Pago</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>A pagar</span></div></article>
-        <article class="chart-card"><h3>Arrecadação própria</h3><div class="chart-value" id="gruValue">-</div><div class="chart-slot" id="gruTreeChart"></div><div class="chart-legend" id="gruLegend"></div></article>
-        <article class="chart-card"><h3>% empenhado do provisionado</h3><div class="chart-value" id="committedGaugeValue">-</div><div class="chart-slot" id="committedGauge"></div></article>
-        <article class="chart-card"><h3>% liquidado do empenhado</h3><div class="chart-value" id="liquidatedGaugeValue">-</div><div class="chart-slot" id="liquidatedGauge"></div></article>
-        <article class="chart-card"><h3>% pago do liquidado</h3><div class="chart-value" id="paidGaugeValue">-</div><div class="chart-slot" id="paidGauge"></div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>Evolução das despesas</h3><details class="chart-help"><summary aria-label="Explicar evolução">?</summary><p>Compara as etapas da execução: empenhar, liquidar e pagar. Quanto maior a aproximação entre os pontos, maior a execução concluída.</p></details></div><div class="chart-value" id="trendValue">-</div><div class="chart-slot" id="expenseTrendChart"></div><div class="chart-legend">Empenhado, liquidado e pago no fechamento</div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>Uso do provisionado</h3><details class="chart-help"><summary aria-label="Explicar provisionamento">?</summary><p>Mostra quanto do orçamento provisionado já virou empenho. O saldo a empenhar indica a parte ainda não comprometida.</p></details></div><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Empenhado</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>Saldo a empenhar</span></div><div class="chart-note">Empenhado em relação ao orçamento provisionado.</div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>Crédito livre no provisionado</h3><details class="chart-help"><summary aria-label="Explicar crédito disponível">?</summary><p>Crédito disponível é a parcela ainda livre para uso. O gráfico compara essa parcela com o total provisionado.</p></details></div><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Crédito disponível</span><span><i class="legend-dot" style="background:var(--accent-soft)"></i>Provisionado utilizado</span></div><div class="chart-note">Crédito disponível como parcela do orçamento provisionado.</div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>Restos a Pagar</h3><details class="chart-help"><summary aria-label="Explicar restos a pagar">?</summary><p>Restos a pagar são compromissos de anos anteriores. O gráfico separa o que já foi pago do que ainda está a pagar.</p></details></div><div class="chart-value" id="rapShareValue">-</div><div class="chart-slot" id="rapStackChart"></div><div class="chart-legend"><span><i class="legend-dot" style="background:var(--accent)"></i>Pago</span><span><i class="legend-dot" style="background:var(--accent-2)"></i>A pagar</span></div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>Arrecadação própria</h3><details class="chart-help"><summary aria-label="Explicar GRU">?</summary><p>Resume valores arrecadados via GRU e destaca os principais códigos de recolhimento encontrados no relatório.</p></details></div><div class="chart-value" id="gruValue">-</div><div class="chart-slot" id="gruTreeChart"></div><div class="chart-legend" id="gruLegend"></div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>% empenhado do provisionado</h3><details class="chart-help"><summary aria-label="Explicar percentual empenhado">?</summary><p>Indica a parcela do provisionamento que já foi formalmente comprometida como despesa.</p></details></div><div class="chart-value" id="committedGaugeValue">-</div><div class="chart-slot" id="committedGauge"></div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>% liquidado do empenhado</h3><details class="chart-help"><summary aria-label="Explicar percentual liquidado">?</summary><p>Indica quanto dos empenhos já teve entrega reconhecida e está apto ao pagamento.</p></details></div><div class="chart-value" id="liquidatedGaugeValue">-</div><div class="chart-slot" id="liquidatedGauge"></div></article>
+        <article class="chart-card"><div class="chart-card-head"><h3>% pago do liquidado</h3><details class="chart-help"><summary aria-label="Explicar percentual pago">?</summary><p>Indica quanto do valor liquidado já foi efetivamente pago.</p></details></div><div class="chart-value" id="paidGaugeValue">-</div><div class="chart-slot" id="paidGauge"></div></article>
       </div>
     </section>
   </header>
@@ -182,6 +211,14 @@
         <tbody id="rows"></tbody>
       </table>
     </section>
+    <div class="quality-legend" aria-label="Legenda da qualidade">
+      <span><span class="quality-code">OK</span> sem alerta</span>
+      <span><span class="quality-code warn">D</span> data pelo nome</span>
+      <span><span class="quality-code warn">M</span> data pela modificação</span>
+      <span><span class="quality-code warn">L</span> linhas normalizadas</span>
+      <span><span class="quality-code warn">T</span> totais separados</span>
+      <span><span class="quality-code bad">P</span> problema de parsing</span>
+    </div>
   </main>
   <script>
     let indexData = null;
@@ -217,6 +254,12 @@
       date_from_mtime: 'data obtida pela modificação do arquivo',
       inconsistent_columns: 'largura de linhas normalizada',
       totals_separated: 'totais separados da tabela principal'
+    };
+    const qualityCodes = {
+      date_from_filename: 'D',
+      date_from_mtime: 'M',
+      inconsistent_columns: 'L',
+      totals_separated: 'T'
     };
     const friendlyNames = {
       '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquidações e Pagamentos por Natureza - 2024',
@@ -293,11 +336,19 @@
       const rawIssues = quality.issues || [];
       const warnings = [...(quality.warnings || []), ...rawIssues.filter(issue => infoQualityCodes.has(issue))];
       const issues = rawIssues.filter(issue => !infoQualityCodes.has(issue));
-      if (issues.length) return { ok: false, text: issues.map(qualityLabel).join(', ') };
-      if (warnings.length) return { ok: true, text: `obs.: ${[...new Set(warnings)].map(qualityLabel).join(', ')}` };
-      return { ok: true, text: 'ok' };
+      if (issues.length) return { ok: false, codes: ['P'], text: issues.map(qualityLabel).join(', ') };
+      if (warnings.length) {
+        const uniqueWarnings = [...new Set(warnings)];
+        return { ok: true, codes: uniqueWarnings.map(warning => qualityCodes[warning] || 'O'), text: uniqueWarnings.map(qualityLabel).join(', ') };
+      }
+      return { ok: true, codes: ['OK'], text: 'sem alerta' };
     }
 
+    function qualityBadges(report) {
+      const quality = qualitySummary(report);
+      const badgeClass = quality.ok ? (quality.codes[0] === 'OK' ? '' : ' warn') : ' bad';
+      return `<div class="quality-badges" title="${escapeHtml(quality.text)}">${quality.codes.map(code => `<span class="quality-code${badgeClass}">${escapeHtml(code)}</span>`).join('')}</div>`;
+    }
     function qualityLabel(code) {
       return qualityLabels[code] || code;
     }
@@ -355,7 +406,7 @@
           <td><span class="tag">${report.metadata.periodicidade}</span></td>
           <td class="${reportStatus(report) === 'atualizado' ? 'ok' : 'bad'}">${reportStatus(report)}</td>
           <td>${report.metadata.idade_dias} dias${reportLimit(report) != null ? ` / limite ${reportLimit(report)}` : ''}</td>
-          <td class="${qualitySummary(report).ok ? 'ok' : 'warn'}">${escapeHtml(qualitySummary(report).text)}</td>
+          <td>${qualityBadges(report)}</td>
           <td><a href="${report.html_path}">HTML</a> | <a href="${report.json_path}">JSON</a> | <a href="${report.series_path}">Série</a></td>
         </tr>
       `).join('');

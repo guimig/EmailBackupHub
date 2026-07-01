@@ -49,7 +49,7 @@
     main { padding: 16px; }
     .meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--muted); }
     .tag { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--panel); }
-    .toolbar { display: grid; grid-template-columns: 1fr auto auto auto; gap: 10px; margin: 16px 0; }
+    .toolbar { display: grid; grid-template-columns: 1fr auto auto auto auto; gap: 10px; margin: 16px 0; }
     input, select, button { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; }
     label.toggle { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 6px; padding: 10px 12px; white-space: nowrap; }
     label.toggle input { padding: 0; }
@@ -88,6 +88,7 @@
       <label class="toggle"><input id="showTotals" type="checkbox"> Mostrar totais</label>
       <button id="clearFilters">Limpar filtros</button>
       <button id="exportCsv">Exportar CSV</button>
+      <button id="exportHtml">Exportar HTML</button>
     </div>
     <div id="quality" class="quality"></div>
     <details id="totalsPanel" class="totals" style="display:none;">
@@ -324,6 +325,131 @@
       download(`${report.slug || 'relatorio'}.csv`, lines.join('\n'));
     }
 
+    function exportHtmlReport() {
+      if (!report) return;
+      const columns = report.columns || [];
+      const displayColumns = friendlyColumns(columns);
+      const rows = filteredRows();
+      const generatedAt = new Date().toLocaleString('pt-BR');
+      const title = reportFriendlyNames[report.slug] || report.title || 'Relat\u00f3rio';
+      const metadata = [
+        ['Fonte', 'Tesouro Gerencial'],
+        ['Arquivo est\u00e1tico', report.html_path || '-'],
+        ['Data do relat\u00f3rio', report.date || '-'],
+        ['Periodicidade', report.metadata?.periodicidade || '-'],
+        ['Status', report.metadata?.status || '-'],
+        ['Idade', `${report.metadata?.idade_dias ?? '-'} dias`],
+        ['Exerc\u00edcio', report.metadata?.exercicio || '-'],
+        ['Linhas no arquivo', report.metadata?.row_count ?? 0],
+        ['Exportado em', generatedAt]
+      ];
+      const activeFilters = activeFilterSummary();
+      const highlights = numericHighlights(rows, columns, displayColumns);
+      const quality = qualitySummary(report);
+      const html = `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(title)} - Relat\u00f3rio</title>
+  <style>
+    :root { --bg:#f8fbf7; --panel:#ffffff; --soft:#edf6ed; --line:#dce6dc; --text:#233128; --muted:#657269; --brand:#2f7a3e; --warn:#9a6a00; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    header { padding: 28px 32px; background: var(--soft); border-bottom: 1px solid var(--line); }
+    main { padding: 24px 32px; }
+    h1 { margin: 0 0 8px; font-size: 1.7rem; }
+    h2 { margin: 24px 0 10px; font-size: 1.1rem; }
+    .subtitle { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 10px; margin-top: 16px; }
+    .card { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px; }
+    .card span { display: block; color: var(--muted); font-size: .78rem; margin-bottom: 6px; }
+    .card strong { display: block; overflow-wrap: anywhere; }
+    .note { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px; color: var(--muted); line-height: 1.45; }
+    table { width: 100%; border-collapse: collapse; background: var(--panel); }
+    th, td { border: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; font-size: .82rem; }
+    th { background: var(--soft); }
+    .totals div { border-top: 1px solid var(--line); padding: 8px 0; }
+    @media print { body { background: #fff; } header, main { padding: 14mm; } .card, .note, table { break-inside: avoid; } }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } main, header { padding: 16px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>${escapeHtml(title)}</h1>
+    <p class="subtitle">Relat\u00f3rio obtido do Tesouro Gerencial e exportado a partir do painel local DAP.</p>
+    <section class="grid">${metadata.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
+  </header>
+  <main>
+    <section class="note"><strong>Resumo:</strong> ${escapeHtml(reportSummary(rows, columns, activeFilters, quality))}</section>
+    <h2>Filtros aplicados</h2>
+    <section class="grid">${activeFilters.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
+    <h2>Principais informa\u00e7\u00f5es obtidas</h2>
+    <section class="grid">${highlights.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
+    ${totalsReportHtml()}
+    <h2>Tabela</h2>
+    <table>
+      <thead><tr>${displayColumns.map(column => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead>
+      <tbody>${rows.map(item => {
+        const row = item.raw || item;
+        return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+      }).join('')}</tbody>
+    </table>
+  </main>
+</body>
+</html>`;
+      download(`${report.slug || 'relatorio'}-relatorio.html`, html, 'text/html;charset=utf-8');
+    }
+
+    function activeFilterSummary() {
+      const filters = [];
+      filters.push(['Busca geral', byId('globalSearch').value || 'Sem busca geral']);
+      for (const [column, value] of Object.entries(columnFilters)) {
+        if (value) filters.push([friendlyColumnName(column), value]);
+      }
+      if (columnSort.column && columnSort.direction) filters.push(['Ordena\u00e7\u00e3o', `${friendlyColumnName(columnSort.column)} (${columnSort.direction === 'az' ? 'A-Z' : 'Z-A'})`]);
+      filters.push(['Totais na tabela', byId('showTotals').checked ? 'Inclu\u00eddos' : 'Ocultos']);
+      return filters;
+    }
+
+    function friendlyColumnName(column) {
+      const columns = report.columns || [];
+      const index = columns.indexOf(column);
+      return friendlyColumns(columns)[index] || column || '-';
+    }
+
+    function reportSummary(rows, columns, activeFilters, quality) {
+      const filterText = activeFilters.filter(([, value]) => !String(value).startsWith('Sem ') && value !== 'Ocultos').length;
+      return `${rows.length} linha(s) exportada(s), ${columns.length} coluna(s), ${filterText} filtro(s)/op\u00e7\u00e3o(\u00f5es) aplicados. Qualidade da leitura: ${quality.text}.`;
+    }
+
+    function numericHighlights(rows, columns, displayColumns) {
+      const highlights = [];
+      for (const [index, column] of columns.entries()) {
+        let total = 0;
+        let count = 0;
+        for (const item of rows) {
+          const number = parseBrNumber((item.raw || item)[column]);
+          if (Number.isFinite(number)) {
+            total += number;
+            count += 1;
+          }
+        }
+        if (count) highlights.push([displayColumns[index], total.toLocaleString('pt-BR', { maximumFractionDigits: 2 })]);
+      }
+      if (!highlights.length) return [['Linhas exportadas', rows.length], ['Colunas', columns.length]];
+      return highlights.slice(0, 8);
+    }
+
+    function totalsReportHtml() {
+      const totals = report.totals || [];
+      if (!totals.length) return '';
+      return `<h2>Totais separados</h2><section class="note totals">${totals.map(total => {
+        const values = Object.entries(total.values || {}).map(([key, value]) => `${escapeHtml(key)}: ${escapeHtml(value)}`).join(' | ');
+        return `<div><strong>${escapeHtml(total.label || 'Total')}</strong>${values ? `<br>${values}` : ''}</div>`;
+      }).join('')}</section>`;
+    }
+
     function parseBrNumber(value) {
       if (typeof value === 'number') return value;
       const clean = String(value || '').replace(/[^\d,.-]/g, '');
@@ -334,8 +460,8 @@
     }
 
     function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
-    function download(name, content) {
-      const blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+    function download(name, content, type = 'text/csv;charset=utf-8') {
+      const blob = new Blob([content], { type });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -358,6 +484,7 @@
       renderRows();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
+    byId('exportHtml').addEventListener('click', exportHtmlReport);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
     byId('showTotals').addEventListener('change', renderRows);
