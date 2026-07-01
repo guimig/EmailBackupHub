@@ -482,6 +482,7 @@
       renderGauge('liquidatedGauge', liquidatedRatio);
       renderGauge('paidGauge', paidRatio);
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+      updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
     }
 
     function updateDashboardInsights(values) {
@@ -514,6 +515,25 @@
     function showInsight(card) {
       setText('insightTitle', card.dataset.insightTitle || 'Explore o painel');
       setText('insightText', card.dataset.insightText || 'Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador.');
+    }
+    function updateGraphInsights(values) {
+      setElementInsight('expenseTrendChart', 'Evolução das despesas', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. A diferença entre as etapas mostra o que ainda precisa ser liquidado ou pago.`);
+      setElementInsight('provisionDonut', 'Uso do provisionado', `Parte empenhada: ${formatMoney(values.committed)}. Saldo estimado a empenhar: ${formatMoney(Math.max(0, safeNumber(values.provisioned) - safeNumber(values.committed)))}.`);
+      setElementInsight('creditDonut', 'Crédito livre no provisionado', `Crédito disponível: ${formatMoney(values.credit)}. Provisionado já utilizado ou indisponível: ${formatMoney(Math.max(0, safeNumber(values.budget) - safeNumber(values.credit)))}.`);
+      setElementInsight('rapStackChart', 'Restos a pagar', `Pagos: ${formatMoney(values.rapPaid)}. A pagar: ${formatMoney(values.rapPayable)}. Total acompanhado: ${formatMoney(values.rapTotal)}.`);
+      setElementInsight('gruTreeChart', 'Arrecadação própria', `Total de GRU arrecadadas: ${formatMoney(values.gru)}. As áreas maiores indicam os códigos de recolhimento com maior participação.`);
+      setElementInsight('committedGauge', 'Percentual empenhado', `${formatPercent(values.committed, values.provisioned)} do provisionado já virou empenho.`);
+      setElementInsight('liquidatedGauge', 'Percentual liquidado', `${formatPercent(values.liquidated, values.committed)} do empenhado já teve entrega reconhecida.`);
+      setElementInsight('paidGauge', 'Percentual pago', `${formatPercent(values.paid, values.liquidated)} do liquidado já foi efetivamente pago.`);
+    }
+
+    function setElementInsight(id, title, text) {
+      const element = byId(id);
+      if (!element) return;
+      element.tabIndex = 0;
+      element.dataset.insightTitle = title;
+      element.dataset.insightText = text;
+      element.title = text;
     }
 
     function firstValue(values) {

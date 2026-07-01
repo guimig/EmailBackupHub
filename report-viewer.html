@@ -247,10 +247,21 @@
     }
 
     function visibleRows() {
+      const cleanRows = rows => rows.filter(item => item.type === 'total' || !isHeaderLikeRow(item.raw || item));
       if (byId('showTotals').checked && Array.isArray(report.row_types) && report.row_types.length) {
-        return report.row_types;
+        return cleanRows(report.row_types);
       }
-      return (report.rows || []).map(row => ({ type: 'data', raw: row }));
+      return cleanRows((report.rows || []).map(row => ({ type: 'data', raw: row })));
+    }
+
+    function isHeaderLikeRow(row) {
+      const values = Object.values(row || {}).map(value => normalize(fixMojibake(value))).filter(Boolean);
+      if (!values.length) return true;
+      const joined = values.join(' ');
+      const numericCount = values.filter(value => Number.isFinite(parseBrNumber(value))).length;
+      const headerTerms = ['natureza despesa', 'item informacao', 'ne ccor', 'saldo r', 'restos a pagar', 'valor', 'unidade gestora', 'mes lancamento'];
+      const matches = headerTerms.filter(term => joined.includes(term)).length;
+      return matches >= 2 && numericCount <= Math.max(4, values.length * 0.35);
     }
 
     function qualitySummary(report) {
@@ -281,10 +292,32 @@
       const friendly = columnFriendlyNames[report.slug] || [];
       const generated = columns.length && columns.every(column => /^Coluna \d+$/.test(column || ''));
       return columns.map((column, index) => {
+        const inferred = inferredColumnName(column, index);
+        if (inferred) return inferred;
         if (generated && friendly[index]) return friendly[index];
         if (/^Coluna \d+$/.test(column || '')) return index === 0 ? 'Descricao' : `Valor ${index}`;
         return column;
       });
+    }
+
+    function inferredColumnName(column, index) {
+      if (report?.slug === 'restos-a-pagar-rap') {
+        const labels = {
+          'Valor 8': 'Valor do empenho',
+          'Valor 9': 'RAP inscrito',
+          'Valor 10': 'RAP cancelado',
+          'Valor 11': 'RAP pago',
+          'Valor 12': 'RAP a pagar'
+        };
+        if (labels[column]) return labels[column];
+        const baseLabels = ['Natureza de despesa', 'Cod. natureza', 'Natureza detalhada', 'Empenho', 'Descricao do empenho', 'Favorecido', 'Processo'];
+        return baseLabels[index] || null;
+      }
+      const headerRows = (report.rows || []).slice(0, 4);
+      const terms = headerRows.map(row => fixMojibake(row?.[column])).filter(Boolean);
+      const meaningful = terms.find(term => /saldo|r\$|valor|pago|liquidado|empenhado|credito|provision|arrecad/i.test(term));
+      if (!meaningful || String(meaningful).length > 80) return null;
+      return String(meaningful).replace(/\s+/g, ' ').trim();
     }
 
     function renderTableShell() {
@@ -351,19 +384,26 @@
 
     function exportHtmlReport() {
       const html = buildHtmlReport();
-      if (html) download(`${report?.slug || 'relatorio'}-relatorio.html`, html, 'text/html;charset=utf-8');
+      if (!html) return;
+      openHtmlReport(html);
+      download(`${report?.slug || 'relatorio'}-relatorio.html`, html, 'text/html;charset=utf-8');
     }
 
     function printHtmlReport() {
       const html = buildHtmlReport();
       if (!html) return;
-      const printWindow = window.open('', '_blank');
-      if (!printWindow) return;
-      printWindow.document.open();
-      printWindow.document.write(html);
-      printWindow.document.close();
-      printWindow.focus();
-      setTimeout(() => printWindow.print(), 500);
+      openHtmlReport(html, true);
+    }
+
+    function openHtmlReport(html, shouldPrint = false) {
+      const reportWindow = window.open('', '_blank');
+      if (!reportWindow) return false;
+      reportWindow.document.open();
+      reportWindow.document.write(html);
+      reportWindow.document.close();
+      reportWindow.focus();
+      if (shouldPrint) setTimeout(() => reportWindow.print(), 500);
+      return true;
     }
 
     function buildHtmlReport() {
@@ -509,6 +549,8 @@
     }
 
     function numericHighlights(rows, columns, displayColumns) {
+      const totalHighlights = totalsHighlights(columns, displayColumns);
+      if (totalHighlights.length) return totalHighlights.slice(0, 8);
       const highlights = [];
       for (const [index, column] of columns.entries()) {
         if (!isSummableColumn(column, displayColumns[index])) continue;
@@ -525,6 +567,25 @@
       }
       if (!highlights.length) return [['Linhas exportadas', rows.length], ['Colunas', columns.length]];
       return highlights.slice(0, 8);
+    }
+
+    function totalsHighlights(columns, displayColumns) {
+      const byColumn = new Map(columns.map((column, index) => [column, displayColumns[index]]));
+      const accumulator = new Map();
+      const totals = report.totals || [];
+      const grandTotals = totals.filter(total => normalize(total.label) === 'total' || normalize(total.raw?.[columns[0]]) === 'total');
+      const sourceTotals = grandTotals.length ? grandTotals : totals;
+      for (const total of sourceTotals) {
+        const values = total.values || total.raw || {};
+        for (const [column, value] of Object.entries(values)) {
+          const displayColumn = byColumn.get(column) || inferredColumnName(column, columns.indexOf(column)) || column;
+          if (!isSummableColumn(column, displayColumn)) continue;
+          const number = parseBrNumber(value);
+          if (!Number.isFinite(number)) continue;
+          accumulator.set(displayColumn, (accumulator.get(displayColumn) || 0) + number);
+        }
+      }
+      return [...accumulator.entries()].map(([label, value]) => [label, value.toLocaleString('pt-BR', { maximumFractionDigits: 2 })]);
     }
 
     function isSummableColumn(column, displayColumn) {
