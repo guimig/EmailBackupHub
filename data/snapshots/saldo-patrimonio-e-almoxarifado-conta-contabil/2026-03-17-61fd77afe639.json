@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.4",
+  "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
+  "title": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
+  "date": "17/03/2026",
+  "date_iso": "2026-03-17",
+  "html_path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_17-03-2026.html",
+  "category": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
+  "columns": [],
+  "rows": [],
+  "totals": [],
+  "row_types": [],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T09:01:36.085998-03:00",
+    "idade_dias": 107,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "61fd77afe6391dbc7644e219ab6dc6464cd444ce18f2d0eb1fdc61cdf8beab8f",
+    "row_count": 0,
+    "column_count": 0,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": false,
+    "issues": [
+      "light_snapshot"
+    ],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}
