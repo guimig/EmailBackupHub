@@ -9,6 +9,14 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 
 from config import BACKUP_FOLDER, REPO_ROOT, TIMEZONE
+from report_definitions import (
+    report_columns,
+    report_definition,
+    report_limit_days,
+    report_periodicity,
+    report_status,
+    report_title,
+)
 
 DATA_DIR = Path(REPO_ROOT) / "data"
 REPORTS_DIR = DATA_DIR / "reports"
@@ -23,151 +31,6 @@ INFO_QUALITY_CODES = {
     "inconsistent_columns",
     "totals_separated",
 }
-
-REPORT_FRIENDLY_NAMES = {
-    "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza - 2024",
-    "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza - 2025",
-    "acompanhamento-das-liquidacoes-e-pagamentos-por-data": "Liquidações e Pagamentos por Data",
-    "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": "Liquidações e Pagamentos por Natureza",
-    "credito-disponivel-mes-lancamento": "Crédito Disponível por Mês de Lançamento",
-    "despesas-empenhadas-liquidadas-e-pagas-2024": "Despesas Empenhadas, Liquidadas e Pagas - 2024",
-    "despesas-empenhadas-liquidadas-e-pagas-2025": "Despesas Empenhadas, Liquidadas e Pagas - 2025",
-    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
-    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
-    "evolucao-das-despesas-empenhadas": "Evolução das Despesas Empenhadas",
-    "imoveis-por-ug-conta-contabil-e-rip": "Imóveis por UG, Conta Contábil e RIP",
-    "limite-de-saque-conta-contabil": "Limite de Saque por Conta Contábil",
-    "provisionamentos": "Provisionamentos",
-    "recolhimento-proprio-gru": "Recolhimento Próprio - GRU",
-    "restos-a-pagar-rap": "Restos a Pagar - RAP",
-    "saldo-de-empenhos-a-liquidar-mes-a-mes": "Saldo de Empenhos a Liquidar Mês a Mês",
-    "saldo-patrimonio-e-almoxarifado-conta-contabil": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
-    "saldo-por-natureza-de-despesa": "Saldo por Natureza de Despesa",
-    "saldos-de-contas-de-contratos": "Saldos de Contas de Contratos",
-    "saldos-de-empenhos-do-exercicio-conta-contabil": "Saldos de Empenhos do Exercício por Conta Contábil",
-    "suprimento-de-fundos-empenhos": "Suprimento de Fundos - Empenhos",
-    "suprimento-de-fundos-liquidacoes-e-pagamentos": "Suprimento de Fundos - Liquidações e Pagamentos",
-}
-
-REPORT_COLUMN_NAMES = {
-    "acompanhamento-das-liquidacoes-e-pagamentos-por-data": [
-        "Data",
-        "Empenhado",
-        "Liquidado",
-        "Pago",
-        "Saldo a Liquidar",
-    ],
-    "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": [
-        "Natureza de Despesa",
-        "Empenhado",
-        "Liquidado",
-        "Pago",
-        "Saldo a Liquidar",
-    ],
-    "credito-disponivel-mes-lancamento": [
-        "Mes",
-        "Credito Inicial",
-        "Credito Atualizado",
-        "Credito Disponivel",
-    ],
-    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": [
-        "Mes",
-        "Empenhado",
-        "Liquidado",
-        "Pago",
-        "Liquidado a Pagar",
-    ],
-    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": [
-        "Natureza de Despesa",
-        "Empenhado",
-        "Liquidado",
-        "Pago",
-        "Liquidado a Pagar",
-    ],
-    "recolhimento-proprio-gru": [
-        "Unidade Gestora",
-        "Codigo de Recolhimento",
-        "Descricao",
-        "Arrecadado",
-    ],
-    "restos-a-pagar-rap": [
-        "Unidade Gestora",
-        "Natureza de Despesa",
-        "Inscrito",
-        "Cancelado",
-        "Pago",
-        "A Pagar",
-        "% Pago",
-    ],
-    "saldo-de-empenhos-a-liquidar-mes-a-mes": [
-        "Natureza de Despesa",
-        "Janeiro",
-        "Fevereiro",
-        "Marco",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-        "Agosto",
-        "Setembro",
-        "Outubro",
-        "Novembro",
-        "Dezembro",
-        "Total a Liquidar",
-    ],
-    "saldos-de-empenhos-do-exercicio-conta-contabil": [
-        "Conta Contabil",
-        "Empenhado",
-        "A Liquidar",
-        "Liquidado a Pagar",
-        "Pago",
-    ],
-}
-
-REPORT_OVERRIDES = {
-    "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
-        "periodicidade": "historico",
-        "status": "atualizado",
-        "limite_dias": None,
-    },
-    "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
-        "periodicidade": "historico",
-        "status": "atualizado",
-        "limite_dias": None,
-    },
-    "despesas-empenhadas-liquidadas-e-pagas-2024": {
-        "periodicidade": "historico",
-        "status": "atualizado",
-        "limite_dias": None,
-    },
-    "despesas-empenhadas-liquidadas-e-pagas-2025": {
-        "periodicidade": "historico",
-        "status": "atualizado",
-        "limite_dias": None,
-    },
-    "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": {
-        "periodicidade": "mensal",
-        "limite_dias": 35,
-    },
-    "imoveis-por-ug-conta-contabil-e-rip": {
-        "title": "RIP Imóveis por Conta Contábil",
-        "periodicidade": "mensal",
-        "limite_dias": 35,
-    },
-    "credito-disponivel-mes-lancamento": {
-        "periodicidade": "diaria",
-        "limite_dias": 1,
-    },
-    "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": {
-        "periodicidade": "diaria",
-        "limite_dias": 1,
-    },
-    "saldo-de-empenhos-a-liquidar-mes-a-mes": {
-        "periodicidade": "diaria",
-        "limite_dias": 1,
-    },
-}
-
 
 def normalize_slug(text):
     text = unicodedata.normalize("NFD", text or "")
@@ -237,8 +100,7 @@ def extract_title(soup, file_path):
 
 
 def apply_report_overrides(slug, title):
-    override = REPORT_OVERRIDES.get(slug, {})
-    return override.get("title") or REPORT_FRIENDLY_NAMES.get(slug) or title
+    return report_title(slug, title) or title
 
 
 def parse_br_number(value):
@@ -343,7 +205,7 @@ def has_generated_column_names(columns):
 
 
 def apply_column_overrides(slug, columns):
-    friendly = REPORT_COLUMN_NAMES.get(slug)
+    friendly = report_columns(slug)
     if not friendly or not has_generated_column_names(columns):
         return columns
     result = []
@@ -454,9 +316,9 @@ def normalize_table(grid):
 
 
 def infer_periodicity(slug, title, report_date, now_date):
-    override = REPORT_OVERRIDES.get(slug, {})
-    if override.get("periodicidade"):
-        return override["periodicidade"]
+    periodicity = report_periodicity(slug)
+    if periodicity:
+        return periodicity
     normalized = normalize_slug(title).replace("-", " ")
     if re.search(r"\b20\d{2}\b", title or "") and report_date.year < now_date.year:
         return "historico"
@@ -466,12 +328,14 @@ def infer_periodicity(slug, title, report_date, now_date):
 
 
 def infer_status(slug, periodicity, age_days, now_date):
-    override = REPORT_OVERRIDES.get(slug, {})
-    if "status" in override:
-        return {"status": override["status"], "limite_dias": override.get("limite_dias")}
-    if override.get("limite_dias") is None and "limite_dias" in override:
+    definition = report_definition(slug)
+    status = report_status(slug)
+    if status:
+        return {"status": status, "limite_dias": report_limit_days(slug)}
+    if definition.get("limite_dias") is None and "limite_dias" in definition:
         return {"status": "atualizado", "limite_dias": None}
-    limit = override.get("limite_dias", {"diaria": 1, "mensal": 35, "historico": None, "anual": 370}.get(periodicity, 1))
+    configured_limit = report_limit_days(slug)
+    limit = configured_limit if "limite_dias" in definition else {"diaria": 1, "mensal": 35, "historico": None, "anual": 370}.get(periodicity, 1)
     if periodicity == "diaria" and now_date.weekday() == 0 and limit is not None:
         limit = max(limit, 2)
     if limit is None:

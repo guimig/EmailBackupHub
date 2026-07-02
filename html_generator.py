@@ -4,11 +4,9 @@ import os
 import re
 import unicodedata
 from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
+from report_definitions import report_title
 
 EXCLUDED_ROOT_HTML = {"index.html", "dashboard.html", "report-viewer.html", "relatorios.html"}
-TITLE_OVERRIDES = {
-    "imoveis-por-ug-conta-contabil-e-rip": "RIP Imóveis por Conta Contábil",
-}
 
 
 def normalize_slug(text):
@@ -29,7 +27,7 @@ def report_slug(file_path):
 
 
 def friendly_title(file_path, title):
-    return TITLE_OVERRIDES.get(report_slug(file_path), title)
+    return report_title(report_slug(file_path), title) or title
 
 
 def parse_report_date(file_path, content=None):
