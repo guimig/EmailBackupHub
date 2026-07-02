@@ -74,6 +74,14 @@
     .custom-total-options input { margin-top: 1px; padding: 0; }
     .custom-total-summary { display: flex; flex-wrap: wrap; gap: 8px; }
     .custom-total-pill { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--soft); color: var(--text); }
+    .viewer-controls { margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
+    .viewer-controls summary { cursor: pointer; padding: 10px 12px; color: var(--text); font-weight: 700; }
+    .viewer-controls-body { display: grid; gap: 12px; padding: 0 12px 12px; color: var(--muted); }
+    .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+    .control-grid label { display: flex; gap: 8px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 8px; background: var(--soft); color: var(--text); font-size: .86rem; }
+    .control-row { display: grid; grid-template-columns: minmax(220px, 360px) 1fr; gap: 12px; align-items: start; }
+    .group-row td { background: var(--soft); font-weight: 700; color: var(--text); }
+    .group-summary td { background: var(--total); font-weight: 700; }
     .quality { margin: 12px 0; color: var(--muted); }
     .quality.bad { color: var(--warn); }
     .site-footer { padding: 18px 16px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -108,9 +116,28 @@
     <details id="customTotalsPanel" class="custom-totals">
       <summary>Totais personalizados</summary>
       <div class="custom-totals-body">
-        <p>Selecione manualmente as colunas que devem ser somadas. Esses totais entram ao final da tabela e na exportaÃ§Ã£o HTML/PDF.</p>
+        <p>Selecione manualmente as colunas que devem ser somadas. Esses totais entram ao final da tabela e na exportação HTML/PDF.</p>
         <div id="customTotalOptions" class="custom-total-options"></div>
         <div id="customTotalSummary" class="custom-total-summary"></div>
+      </div>
+    </details>
+    <details class="viewer-controls">
+      <summary>Colunas e agrupamento</summary>
+      <div class="viewer-controls-body">
+        <div>
+          <strong>Colunas visíveis</strong>
+          <div id="columnVisibilityOptions" class="control-grid"></div>
+        </div>
+        <div class="control-row">
+          <label>
+            <span>Agrupar por</span>
+            <select id="groupColumn"></select>
+          </label>
+          <div>
+            <strong>Somar por grupo</strong>
+            <div id="groupSumOptions" class="control-grid"></div>
+          </div>
+        </div>
       </div>
     </details>
     <section class="table-wrap">
@@ -126,7 +153,11 @@
     let columnFilters = {};
     let columnSort = { column: null, direction: '' };
     let selectedTotalColumns = new Set();
+    let visibleColumns = new Set();
+    let groupColumn = '';
+    let groupSumColumns = new Set();
     let renderTimer = null;
+    let restoringState = false;
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -268,9 +299,15 @@
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       selectedTotalColumns = new Set();
+      visibleColumns = new Set(report.columns || []);
+      groupColumn = '';
+      groupSumColumns = new Set();
       byId('showTotals').checked = true;
+      restoreStateFromUrl();
       renderTableShell();
       renderTotals();
+      renderColumnVisibilityControls();
+      renderGroupingControls();
       renderCustomTotalsControls();
       renderRows();
     }
@@ -289,6 +326,52 @@
         const bv = sortCellValue((b.raw || b)[columnSort.column]);
         return compareCellValues(av, bv) * (columnSort.direction === 'az' ? 1 : -1);
       });
+    }
+
+    function visibleReportColumns() {
+      const columns = report?.columns || [];
+      if (!visibleColumns.size) return columns;
+      return columns.filter(column => visibleColumns.has(column));
+    }
+
+    function columnIndex(column) {
+      return (report?.columns || []).indexOf(column);
+    }
+
+    function columnsFromIndexes(value) {
+      const columns = report?.columns || [];
+      return String(value || '').split(',').map(index => columns[Number(index)]).filter(Boolean);
+    }
+
+    function indexList(columns) {
+      return columns.map(columnIndex).filter(index => index >= 0).join(',');
+    }
+
+    function groupedRows(rows) {
+      if (!groupColumn) return [{ key: '', rows }];
+      const groups = new Map();
+      for (const item of rows) {
+        const row = item.raw || item;
+        const key = fixMojibake(row[groupColumn]) || '(vazio)';
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(item);
+      }
+      return [...groups.entries()].map(([key, items]) => ({ key, rows: items }));
+    }
+
+    function groupTotals(rows) {
+      return [...groupSumColumns].map(column => {
+        let total = 0;
+        let count = 0;
+        for (const item of customTotalRows(rows)) {
+          const number = parseBrNumber((item.raw || item)[column]);
+          if (Number.isFinite(number)) {
+            total += number;
+            count += 1;
+          }
+        }
+        return { column, total, count };
+      }).filter(item => item.count > 0);
     }
 
     function sortCellValue(value) {
@@ -345,11 +428,14 @@
 
     function friendlyColumns(columns) {
       const friendly = columnFriendlyNames[report.slug] || [];
-      const generated = columns.length && columns.every(column => /^Coluna \d+$/.test(column || ''));
+      const allColumns = report.columns || columns;
+      const generated = allColumns.length && allColumns.every(column => /^Coluna \d+$/.test(column || ''));
       return columns.map((column, index) => {
-        const inferred = inferredColumnName(column, index);
+        const originalIndex = allColumns.indexOf(column);
+        const sourceIndex = originalIndex >= 0 ? originalIndex : index;
+        const inferred = inferredColumnName(column, sourceIndex);
         if (inferred) return inferred;
-        if (generated && friendly[index]) return friendly[index];
+        if (generated && friendly[sourceIndex]) return friendly[sourceIndex];
         if (/^Coluna \d+$/.test(column || '')) return index === 0 ? 'Descricao' : `Valor ${index}`;
         return column;
       });
@@ -376,17 +462,17 @@
     }
 
     function renderTableShell() {
-      const columns = report.columns || [];
+      const columns = visibleReportColumns();
       const displayColumns = friendlyColumns(columns);
       byId('table').innerHTML = `
         <thead><tr>${columns.map((column, index) => `
           <th>
             ${escapeHtml(displayColumns[index])}
-            <input data-column="${escapeHtml(column)}" placeholder="Filtrar">
+            <input data-column="${escapeHtml(column)}" placeholder="Filtrar" value="${escapeHtml(columnFilters[column] || '')}">
             <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
-              <option value="">Ordem original</option>
-              <option value="az">A-Z</option>
-              <option value="za">Z-A</option>
+              <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
+              <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>A-Z</option>
+              <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Z-A</option>
             </select>
           </th>
         `).join('')}</tr></thead>
@@ -410,6 +496,58 @@
       });
     }
 
+    function renderColumnVisibilityControls() {
+      const columns = report.columns || [];
+      const displayColumns = friendlyColumns(columns);
+      const options = byId('columnVisibilityOptions');
+      options.innerHTML = columns.map((column, index) => `
+        <label>
+          <input type="checkbox" data-visible-column="${escapeHtml(column)}" ${visibleColumns.has(column) ? 'checked' : ''}>
+          <span>${escapeHtml(displayColumns[index])}</span>
+        </label>
+      `).join('');
+      options.querySelectorAll('input').forEach(input => {
+        input.addEventListener('change', event => {
+          const column = event.target.dataset.visibleColumn;
+          if (event.target.checked) visibleColumns.add(column);
+          else visibleColumns.delete(column);
+          if (!visibleColumns.size) visibleColumns.add(column);
+          renderTableShell();
+          renderColumnVisibilityControls();
+          renderCustomTotalsControls();
+          renderGroupingControls();
+          renderRows();
+        });
+      });
+    }
+
+    function renderGroupingControls() {
+      const columns = report.columns || [];
+      const displayColumns = friendlyColumns(columns);
+      const groupSelect = byId('groupColumn');
+      groupSelect.innerHTML = `<option value="">Sem agrupamento</option>${columns.map((column, index) => `<option value="${escapeHtml(column)}">${escapeHtml(displayColumns[index])}</option>`).join('')}`;
+      groupSelect.value = groupColumn || '';
+      groupSelect.onchange = event => {
+        groupColumn = event.target.value;
+        renderRows();
+      };
+      const options = byId('groupSumOptions');
+      options.innerHTML = columns.map((column, index) => `
+        <label>
+          <input type="checkbox" data-group-sum-column="${escapeHtml(column)}" ${groupSumColumns.has(column) ? 'checked' : ''}>
+          <span>${escapeHtml(displayColumns[index])}</span>
+        </label>
+      `).join('');
+      options.querySelectorAll('input').forEach(input => {
+        input.addEventListener('change', event => {
+          const column = event.target.dataset.groupSumColumn;
+          if (event.target.checked) groupSumColumns.add(column);
+          else groupSumColumns.delete(column);
+          renderRows();
+        });
+      });
+    }
+
     function scheduleRenderRows() {
       clearTimeout(renderTimer);
       renderTimer = setTimeout(renderRows, 250);
@@ -417,16 +555,45 @@
 
     function renderRows() {
       if (!report) return;
-      const columns = report.columns || [];
+      const columns = visibleReportColumns();
       const rows = filteredRows();
       const tbody = byId('table').querySelector('tbody');
-      tbody.innerHTML = rows.map(item => {
-        const row = item.raw || item;
-        const isTotal = item.type === 'total';
-        return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
-      }).join('');
+      tbody.innerHTML = groupedTableHtml(rows, columns);
       renderCustomTotalsFooter(rows, columns);
       renderCustomTotalsSummary(rows, columns);
+      updateUrlState();
+    }
+
+    function groupedTableHtml(rows, columns) {
+      if (!groupColumn) {
+        return rows.map(item => rowHtml(item, columns)).join('');
+      }
+      const groupHtml = groupedRows(rows).map(group => {
+        const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
+        const totals = groupTotals(group.rows);
+        return `
+          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)} (${group.rows.length} linha(s))</td></tr>
+          ${group.rows.map(item => rowHtml(item, columns)).join('')}
+          ${groupSummaryRowHtml(totals, columns, 'Total do grupo')}
+        `;
+      }).join('');
+      return `${groupHtml}${groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento')}`;
+    }
+
+    function rowHtml(item, columns) {
+      const row = item.raw || item;
+      const isTotal = item.type === 'total';
+      return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+    }
+
+    function groupSummaryRowHtml(totals, columns, label) {
+      if (!totals.length) return '';
+      const totalByColumn = new Map(totals.map(item => [item.column, item]));
+      return `<tr class="group-summary">${columns.map((column, index) => {
+        const total = totalByColumn.get(column);
+        if (total) return `<td>${escapeHtml(formatMoneyValue(total.total))}</td>`;
+        return `<td>${index === 0 ? escapeHtml(label) : ''}</td>`;
+      }).join('')}</tr>`;
     }
 
     function renderCustomTotalsControls() {
@@ -435,7 +602,7 @@
       const options = byId('customTotalOptions');
       options.innerHTML = columns.map((column, index) => `
         <label>
-          <input type="checkbox" data-total-column="${escapeHtml(column)}">
+          <input type="checkbox" data-total-column="${escapeHtml(column)}" ${selectedTotalColumns.has(column) ? 'checked' : ''}>
           <span>${escapeHtml(displayColumns[index])}</span>
         </label>
       `).join('');
@@ -447,7 +614,7 @@
           renderRows();
         });
       });
-      renderCustomTotalsSummary(filteredRows(), columns);
+      renderCustomTotalsSummary(filteredRows(), visibleReportColumns());
     }
 
     function customTotalRows(rows) {
@@ -525,15 +692,62 @@
       }).join('')}</tr>`;
     }
 
+    function groupedReportTableHtml(rows, columns) {
+      if (!groupColumn) {
+        return rows.map(item => {
+          const row = item.raw || item;
+          return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+        }).join('');
+      }
+      const groupHtml = groupedRows(rows).map(group => {
+        const totals = groupTotals(group.rows);
+        return `
+          <tr><td colspan="${Math.max(1, columns.length)}"><strong>${escapeHtml(friendlyColumnName(groupColumn))}: ${escapeHtml(group.key)}</strong> (${group.rows.length} linha(s))</td></tr>
+          ${group.rows.map(item => {
+            const row = item.raw || item;
+            return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+          }).join('')}
+          ${groupSummaryRowHtml(totals, columns, 'Total do grupo')}
+        `;
+      }).join('');
+      return `${groupHtml}${groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento')}`;
+    }
+
     function exportCsv() {
-      const columns = report.columns || [];
+      const columns = visibleReportColumns();
       const displayColumns = friendlyColumns(columns);
       const lines = [displayColumns.map(csvCell).join(',')];
-      for (const item of filteredRows()) {
-        const row = item.raw || item;
-        lines.push(columns.map(column => csvCell(row[column])).join(','));
+      const rows = filteredRows();
+      for (const group of groupedRows(rows)) {
+        if (groupColumn) lines.push([`Grupo: ${friendlyColumnName(groupColumn)} = ${group.key}`, ...columns.slice(1).map(() => '')].map(csvCell).join(','));
+        for (const item of group.rows) {
+          const row = item.raw || item;
+          lines.push(columns.map(column => csvCell(row[column])).join(','));
+        }
+        if (groupColumn) {
+          const totals = groupTotals(group.rows);
+          if (totals.length) {
+            const totalByColumn = new Map(totals.map(item => [item.column, item]));
+            lines.push(columns.map((column, index) => {
+              const total = totalByColumn.get(column);
+              if (total) return csvCell(formatMoneyValue(total.total));
+              return csvCell(index === 0 ? 'Total do grupo' : '');
+            }).join(','));
+          }
+        }
       }
-      const totals = customTotals(filteredRows(), columns);
+      if (groupColumn) {
+        const totals = groupTotals(rows);
+        if (totals.length) {
+          const totalByColumn = new Map(totals.map(item => [item.column, item]));
+          lines.push(columns.map((column, index) => {
+            const total = totalByColumn.get(column);
+            if (total) return csvCell(formatMoneyValue(total.total));
+            return csvCell(index === 0 ? 'Total geral do agrupamento' : '');
+          }).join(','));
+        }
+      }
+      const totals = customTotals(rows, columns);
       if (totals.length) {
         const totalByColumn = new Map(totals.map(item => [item.column, item]));
         lines.push(columns.map((column, index) => {
@@ -571,7 +785,7 @@
 
     function buildHtmlReport() {
       if (!report) return;
-      const columns = report.columns || [];
+      const columns = visibleReportColumns();
       const displayColumns = friendlyColumns(columns);
       const rows = filteredRows();
       const generatedAt = new Date().toLocaleString('pt-BR');
@@ -638,10 +852,7 @@
     <h2>Tabela</h2>
     <table>
       <thead><tr>${displayColumns.map(column => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead>
-      <tbody>${rows.map(item => {
-        const row = item.raw || item;
-        return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
-      }).join('')}${customTotalsTableRowHtml(rows, columns)}</tbody>
+      <tbody>${groupedReportTableHtml(rows, columns)}${customTotalsTableRowHtml(rows, columns)}</tbody>
     </table>
     <footer class="footer"><span>Desenvolvido por Guilherme Migliorini.</span><span>https://github.com/guimig/EmailBackupHub</span></footer>
   </main>
@@ -658,6 +869,9 @@
       }
       if (columnSort.column && columnSort.direction) filters.push(['Ordena\u00e7\u00e3o', `${friendlyColumnName(columnSort.column)} (${columnSort.direction === 'az' ? 'A-Z' : 'Z-A'})`]);
       filters.push(['Totais na tabela', byId('showTotals').checked ? 'Inclu\u00eddos' : 'Ocultos']);
+      filters.push(['Colunas vis\u00edveis', visibleReportColumns().map(friendlyColumnName).join(', ') || 'Nenhuma']);
+      filters.push(['Agrupamento', groupColumn ? friendlyColumnName(groupColumn) : 'Sem agrupamento']);
+      filters.push(['Somas por grupo', groupSumColumns.size ? [...groupSumColumns].map(friendlyColumnName).join(', ') : 'Nenhuma coluna selecionada']);
       filters.push(['Totais personalizados', selectedTotalColumns.size ? [...selectedTotalColumns].map(friendlyColumnName).join(', ') : 'Nenhuma coluna selecionada']);
       return filters;
     }
@@ -836,10 +1050,58 @@
       if (!byId('showTotals').checked) return '';
       const totals = report.totals || [];
       if (!totals.length) return '';
+      const visible = new Set(visibleReportColumns());
       return `<h2>Totais separados</h2><section class="note totals">${totals.map(total => {
-        const values = Object.entries(total.values || {}).map(([key, value]) => `${escapeHtml(key)}: ${escapeHtml(value)}`).join(' | ');
+        const values = Object.entries(total.values || {}).filter(([key]) => visible.has(key)).map(([key, value]) => `${escapeHtml(friendlyColumnName(key))}: ${escapeHtml(value)}`).join(' | ');
         return `<div><strong>${escapeHtml(total.label || 'Total')}</strong>${values ? `<br>${values}` : ''}</div>`;
       }).join('')}</section>`;
+    }
+
+    function restoreStateFromUrl() {
+      restoringState = true;
+      const params = new URLSearchParams(location.search);
+      const columns = report.columns || [];
+      byId('globalSearch').value = params.get('q') || '';
+      byId('showTotals').checked = params.get('totals') !== '0';
+      const visible = columnsFromIndexes(params.get('cols'));
+      visibleColumns = new Set(visible.length ? visible : columns);
+      selectedTotalColumns = new Set(columnsFromIndexes(params.get('customTotals')));
+      groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')));
+      const groupIndex = params.get('group');
+      groupColumn = groupIndex === null || groupIndex === '' ? '' : columns[Number(groupIndex)] || '';
+      const sortIndex = params.get('sort');
+      columnSort = {
+        column: sortIndex === null || sortIndex === '' ? null : columns[Number(sortIndex)] || null,
+        direction: params.get('dir') || ''
+      };
+      columnFilters = {};
+      columns.forEach((column, index) => {
+        const value = params.get(`f${index}`);
+        if (value) columnFilters[column] = value;
+      });
+      restoringState = false;
+    }
+
+    function updateUrlState() {
+      if (restoringState || !report) return;
+      const params = new URLSearchParams(location.search);
+      const columns = report.columns || [];
+      params.set('report', reportUrl());
+      setOrDelete(params, 'q', byId('globalSearch').value);
+      params.set('totals', byId('showTotals').checked ? '1' : '0');
+      setOrDelete(params, 'cols', visibleColumns.size === columns.length ? '' : indexList(visibleReportColumns()));
+      setOrDelete(params, 'customTotals', indexList([...selectedTotalColumns]));
+      setOrDelete(params, 'group', groupColumn ? String(columnIndex(groupColumn)) : '');
+      setOrDelete(params, 'groupSums', indexList([...groupSumColumns]));
+      setOrDelete(params, 'sort', columnSort.column ? String(columnIndex(columnSort.column)) : '');
+      setOrDelete(params, 'dir', columnSort.direction);
+      columns.forEach((column, index) => setOrDelete(params, `f${index}`, columnFilters[column] || ''));
+      history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
+    }
+
+    function setOrDelete(params, key, value) {
+      if (value == null || value === '') params.delete(key);
+      else params.set(key, value);
     }
 
     function parseBrNumber(value) {
@@ -869,9 +1131,18 @@
     byId('clearFilters').addEventListener('click', () => {
       columnFilters = {};
       columnSort = { column: null, direction: '' };
+      selectedTotalColumns = new Set();
+      visibleColumns = new Set(report?.columns || []);
+      groupColumn = '';
+      groupSumColumns = new Set();
       byId('globalSearch').value = '';
+      byId('showTotals').checked = true;
       document.querySelectorAll('th input').forEach(input => { input.value = ''; });
       document.querySelectorAll('th select').forEach(select => { select.value = ''; });
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderGroupingControls();
+      renderCustomTotalsControls();
       renderRows();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
