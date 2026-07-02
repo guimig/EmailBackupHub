@@ -563,22 +563,38 @@ def generate_data_files():
     reports = []
     search_documents = []
     history_count = 0
+    json_files = []
     for slug, paths in sorted(grouped_files().items()):
         paths = sorted(paths, key=sort_key)
         latest_path = paths[-1]
         latest_doc = full_report_document(latest_path, source_map, now)
-        write_json(REPORTS_DIR / f"{slug}.json", latest_doc)
+        report_json_path = REPORTS_DIR / f"{slug}.json"
+        write_json(report_json_path, latest_doc)
+        json_files.append(rel_path(report_json_path))
         search_documents.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_doc)})
         snapshots = []
         for path in paths:
             doc = latest_doc if path == latest_path else full_report_document(path, source_map, now)
             snapshots.append(doc)
             snapshot_name = f"{doc['date_iso']}-{doc['metadata']['hash_conteudo'][:12]}.json"
-            write_json(SNAPSHOTS_DIR / slug / snapshot_name, doc)
-        write_json(SERIES_DIR / f"{slug}.json", build_series(slug, snapshots))
+            snapshot_path = SNAPSHOTS_DIR / slug / snapshot_name
+            write_json(snapshot_path, doc)
+            json_files.append(rel_path(snapshot_path))
+        series_path = SERIES_DIR / f"{slug}.json"
+        write_json(series_path, build_series(slug, snapshots))
+        json_files.append(rel_path(series_path))
         history_count += len(snapshots)
-        report_path = REPORTS_DIR / f"{slug}.json"
-        reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_path), "series_path": rel_path(SERIES_DIR / f"{slug}.json"), "viewer_path": f"report-viewer.html?report={rel_path(report_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
-    write_json(DATA_DIR / "index.json", {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"}, "reports": reports, "history_count": history_count})
-    write_json(DATA_DIR / "search-index.json", {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
+        reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
+    index_path = DATA_DIR / "index.json"
+    search_index_path = DATA_DIR / "search-index.json"
+    write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"}, "reports": reports, "history_count": history_count})
+    write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
+    json_files.extend([rel_path(index_path), rel_path(search_index_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas.")
+    return {
+        "generated_at": now.isoformat(),
+        "reports_count": len(reports),
+        "history_count": history_count,
+        "updated_reports": [report["slug"] for report in reports],
+        "json_files": sorted(set(json_files)),
+    }

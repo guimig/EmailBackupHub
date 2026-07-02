@@ -36,35 +36,71 @@ SAFE_URL_SCHEMES = {"", "http", "https", "mailto"}
 DANGEROUS_STYLE_PATTERNS = ("expression", "javascript:", "url(", "behavior:", "-moz-binding")
 
 
-def process_emails(commit=True):
+def process_emails(commit=True, return_details=False):
     emails = fetch_unread_emails()
     print(f"Numero de e-mails encontrados: {len(emails)}")
 
     processed_uids = []
+    email_details = []
     for msg_data in emails:
-        msg = email.message_from_bytes(msg_data["raw"], policy=policy.default)
-        if process_message(msg, msg_data["uid"]):
-            processed_uids.append(msg_data["uid"])
+        uid = msg_data.get("uid")
+        try:
+            msg = email.message_from_bytes(msg_data["raw"], policy=policy.default)
+            detail = process_message(msg, uid, return_detail=True)
+        except Exception as error:
+            detail = {
+                "uid": str(uid) if uid is not None else None,
+                "subject": None,
+                "slug": None,
+                "sender": None,
+                "email_date": None,
+                "html_path": None,
+                "status": "failed",
+                "reason": str(error),
+            }
+            print(f"Erro ao decodificar e-mail {uid}: {error}")
+
+        email_details.append(detail)
+        if uid is not None and detail.get("status") in {"processed", "skipped"}:
+            processed_uids.append(uid)
 
     update_root_index()
     generate_data_files()
     if commit:
         commit_changes()
         mark_emails_as_seen(processed_uids)
-    return processed_uids
+    result = {
+        "emails_found": len(emails),
+        "emails": email_details,
+        "processed_uids": processed_uids,
+    }
+    return result if return_details else processed_uids
 
 
-def process_message(msg, source_uid=None):
+def process_message(msg, source_uid=None, return_detail=False):
     subject = msg.get("subject", "Sem titulo")
+    sender = msg.get("from", "")
     date_str = msg.get("date")
     date = parsedate_to_datetime(date_str) if date_str else datetime.datetime.now(TIMEZONE)
     body = get_email_body(msg)
+    normalized_title = normalize_title(subject)
+    detail = {
+        "uid": str(source_uid) if source_uid is not None else None,
+        "subject": str(subject) if subject is not None else None,
+        "slug": normalized_title,
+        "sender": str(sender) if sender is not None else None,
+        "email_date": date.isoformat() if date else None,
+        "html_path": None,
+        "status": None,
+        "reason": None,
+    }
 
     if should_skip_email(subject, body):
         print(f"Ignorando e-mail marcado como 'nao houve retorno': {subject}")
-        return True
+        detail["status"] = "skipped"
+        detail["reason"] = "nao_houve_retorno"
+        return detail if return_detail else True
 
-    normalized_title = normalize_title(subject)
     subject_folder = os.path.join(BACKUP_FOLDER, normalized_title)
     try:
         os.makedirs(subject_folder, exist_ok=True)
@@ -77,10 +113,14 @@ def process_message(msg, source_uid=None):
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(body)
         record_source_uid(file_path, source_uid)
-        return True
+        detail["html_path"] = os.path.normpath(file_path).replace(os.sep, "/")
+        detail["status"] = "processed"
+        return detail if return_detail else True
     except Exception as e:
         print(f"Erro ao processar a mensagem: {e}")
-        return False
+        detail["status"] = "failed"
+        detail["reason"] = str(e)
+        return detail if return_detail else False
 
 
 def get_email_body(msg):
