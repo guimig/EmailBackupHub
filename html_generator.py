@@ -5,7 +5,7 @@ import re
 import unicodedata
 from config import BACKUP_FOLDER, TIMEZONE, REPO_ROOT
 
-EXCLUDED_ROOT_HTML = {"index.html", "dashboard.html", "report-viewer.html"}
+EXCLUDED_ROOT_HTML = {"index.html", "dashboard.html", "report-viewer.html", "relatorios.html"}
 TITLE_OVERRIDES = {
     "imoveis-por-ug-conta-contabil-e-rip": "RIP Imóveis por Conta Contábil",
 }
@@ -136,7 +136,7 @@ def update_root_index():
     history_cards = "".join(report_card(report) for report in history_reports)
     category_options = render_options(latest_reports)
 
-    html_content = f"""
+    reports_html_content = f"""
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -176,6 +176,7 @@ def update_root_index():
   <h1 class="main-title"><span class="title-text">DAP - Relatórios Gerenciais</span><span class="title-highlight"></span></h1>
   <nav class="top-menu" aria-label="Navegação principal">
     <a class="primary" href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard dinâmico</a>
+    <a href="index.html"><i class="fas fa-home"></i> Início</a>
     <a href="data/index.json"><i class="fas fa-database"></i> API JSON</a>
     <a href="https://github.com/guimig/EmailBackupHub"><i class="fab fa-github"></i> Repositório</a>
   </nav>
@@ -246,7 +247,35 @@ def update_root_index():
 </html>
     """
 
-    with open(os.path.join(REPO_ROOT, "index.html"), "w", encoding="utf-8") as output:
-        output.write(html_content)
+    index_html_content = """
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0; url=dashboard.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DAP - Dashboard</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: Arial, Helvetica, sans-serif; background: #f8fbf7; color: #233128; }
+    main { max-width: 680px; padding: 24px; text-align: center; }
+    a { color: #2f7a3e; font-weight: 700; }
+    .links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>DAP - Dashboard de Relatórios</h1>
+    <p>Redirecionando para o dashboard principal.</p>
+    <p class="links"><a href="dashboard.html">Abrir dashboard</a><a href="relatorios.html">Ver listagem de relatórios</a></p>
+  </main>
+</body>
+</html>
+    """
 
-    print("Index.html atualizado com sucesso!")
+    with open(os.path.join(REPO_ROOT, "relatorios.html"), "w", encoding="utf-8") as output:
+        output.write(reports_html_content)
+
+    with open(os.path.join(REPO_ROOT, "index.html"), "w", encoding="utf-8") as output:
+        output.write(index_html_content)
+
+    print("Index.html e relatorios.html atualizados com sucesso!")

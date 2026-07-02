@@ -84,7 +84,7 @@
   <header>
     <div class="header-top">
       <div class="header-main">
-        <p><a href="dashboard.html">← Dashboard</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
+        <p><a href="dashboard.html">← Dashboard</a> | <a href="relatorios.html">Listagem</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
         <h1 id="title">Carregando relatório...</h1>
         <div class="meta" id="meta"></div>
       </div>
@@ -94,7 +94,7 @@
   <main>
     <div class="toolbar">
       <input id="globalSearch" type="search" placeholder="Pesquisar em todas as colunas">
-      <label class="toggle"><input id="showTotals" type="checkbox"> Mostrar totais</label>
+      <label class="toggle"><input id="showTotals" type="checkbox" checked> Mostrar totais</label>
       <button id="clearFilters">Limpar filtros</button>
       <button id="exportCsv">Exportar CSV</button>
       <button id="exportHtml">Exportar HTML</button>
@@ -268,6 +268,7 @@
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       selectedTotalColumns = new Set();
+      byId('showTotals').checked = true;
       renderTableShell();
       renderTotals();
       renderCustomTotalsControls();
@@ -869,7 +870,6 @@
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       byId('globalSearch').value = '';
-      byId('showTotals').checked = false;
       document.querySelectorAll('th input').forEach(input => { input.value = ''; });
       document.querySelectorAll('th select').forEach(select => { select.value = ''; });
       renderRows();
