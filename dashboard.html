@@ -111,6 +111,7 @@
     .chart-empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; padding: 16px; font-size: .86rem; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 7px 10px; color: var(--muted); font-size: .68rem; margin-top: 8px; }
     .chart-note { color: var(--muted); font-size: .72rem; line-height: 1.35; margin-top: 8px; }
+    .history-meta { color: var(--muted); font-size: .68rem; line-height: 1.35; margin-top: 6px; text-align: center; }
     .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }
     .stack-bar { width: 92px; height: 132px; display: flex; flex-direction: column-reverse; border: 1px solid var(--line); background: var(--soft); }
     .stack-paid { background: var(--accent); }
@@ -489,11 +490,11 @@
       setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
       setText('paidGaugeValue', formatPercent(paid, liquidated));
 
-      renderTrend('expenseTrendChart', [committed, liquidated, paid]);
+      renderExpenseHistory('expenseTrendChart', { committed, liquidated, paid });
       renderDonut('provisionDonut', [committed, provisionOpen], ['var(--accent)', 'var(--accent-2)']);
-      renderDonut('creditDonut', [credit, creditUsed], ['var(--accent)', 'var(--accent-soft)']);
-      renderStack('rapStackChart', rapPaid, rapPayable);
-      renderTreemap('gruTreeChart', 'gruLegend', gruBreakdown());
+      renderCreditHistory('creditDonut', credit);
+      renderRapHistory('rapStackChart', { rapPaid, rapPayable });
+      renderGruHistory('gruTreeChart', 'gruLegend', gru);
       renderGauge('committedGauge', committedRatio);
       renderGauge('liquidatedGauge', liquidatedRatio);
       renderGauge('paidGauge', paidRatio);
@@ -948,6 +949,107 @@
       setElementInsight('committedGauge', 'Percentual empenhado', percentInsight(values.committed, values.provisioned, 'do provisionado ja virou empenho.'));
       setElementInsight('liquidatedGauge', 'Percentual liquidado', percentInsight(values.liquidated, values.committed, 'do empenhado ja teve entrega reconhecida.'));
       setElementInsight('paidGauge', 'Percentual pago', percentInsight(values.paid, values.liquidated, 'do liquidado ja foi efetivamente pago.'));
+    }
+
+    function seriesPoints(slug, metric) {
+      const series = financialReports[slug]?.series_data?.series || [];
+      return series.map(item => ({
+        date: item.date || item.date_iso || '',
+        dateIso: item.date_iso || item.date || '',
+        value: item?.metrics?.[metric]
+      })).filter(point => Number.isFinite(point.value));
+    }
+
+    function historicalSeries(slug, entries) {
+      return entries.map(entry => ({
+        ...entry,
+        points: seriesPoints(slug, entry.metric)
+      }));
+    }
+
+    function renderExpenseHistory(id, currentValues) {
+      const series = historicalSeries('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [
+        { label: 'Empenhado', metric: 'empenhado', color: 'var(--accent)', current: currentValues.committed },
+        { label: 'Liquidado', metric: 'liquidado', color: 'var(--accent-2)', current: currentValues.liquidated },
+        { label: 'Pago', metric: 'pago', color: 'var(--warn)', current: currentValues.paid }
+      ]);
+      renderHistoricalLineChart(id, series, 'Evolucao historica de empenhado, liquidado e pago');
+    }
+
+    function renderCreditHistory(id, currentValue) {
+      renderHistoricalLineChart(id, historicalSeries('credito-disponivel-mes-lancamento', [
+        { label: 'Credito disponivel', metric: 'credito_disponivel', color: 'var(--accent)', current: currentValue }
+      ]), 'Evolucao historica do credito disponivel');
+    }
+
+    function renderRapHistory(id, currentValues) {
+      renderHistoricalLineChart(id, historicalSeries('restos-a-pagar-rap', [
+        { label: 'RAP pago', metric: 'rap_pago', color: 'var(--accent)', current: currentValues.rapPaid },
+        { label: 'RAP a pagar', metric: 'rap_a_pagar', color: 'var(--accent-2)', current: currentValues.rapPayable }
+      ]), 'Evolucao historica de restos a pagar');
+    }
+
+    function renderGruHistory(id, legendId, currentValue) {
+      renderHistoricalLineChart(id, historicalSeries('recolhimento-proprio-gru', [
+        { label: 'GRU arrecadada', metric: 'gru_arrecadada', color: 'var(--accent)', current: currentValue }
+      ]), 'Evolucao historica de GRU arrecadada');
+      const legend = byId(legendId);
+      if (legend) legend.innerHTML = '<span><i class="legend-dot" style="background:var(--accent)"></i>GRU arrecadada</span>';
+    }
+
+    function renderHistoricalLineChart(id, series, ariaLabel) {
+      const validSeries = series.filter(item => item.points.length);
+      const validPoints = validSeries.flatMap(item => item.points);
+      const container = byId(id);
+      if (!container) return;
+      if (!validPoints.length) {
+        container.innerHTML = '<div class="chart-empty" role="img" aria-label="Historico insuficiente">Historico insuficiente</div>';
+        return;
+      }
+      const dates = [...new Set(validPoints.map(point => point.dateIso || point.date))].sort();
+      if (dates.length < 2) {
+        const values = validSeries.map(item => {
+          const point = item.points[item.points.length - 1];
+          return point ? `${item.label}: ${formatMoney(point.value)}` : null;
+        }).filter(Boolean).join(' | ');
+        container.innerHTML = `<div class="chart-empty" role="img" aria-label="Apenas um ponto historico disponivel">Valor atual: ${escapeHtml(values || '-')}<br><small>${escapeHtml(validPoints[0]?.date || 'data indisponivel')}</small></div>`;
+        return;
+      }
+      const values = validPoints.map(point => point.value);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const span = max - min || 1;
+      const width = 220;
+      const height = 126;
+      const padX = 18;
+      const padY = 16;
+      const xFor = date => {
+        const index = Math.max(0, dates.indexOf(date));
+        return dates.length === 1 ? width / 2 : padX + index * ((width - padX * 2) / (dates.length - 1));
+      };
+      const yFor = value => height - padY - ((value - min) / span) * (height - padY * 2);
+      const lines = validSeries.map(item => {
+        const points = item.points.map(point => `${xFor(point.dateIso || point.date)},${yFor(point.value)}`).join(' ');
+        const circles = item.points.map(point => `<circle cx="${xFor(point.dateIso || point.date)}" cy="${yFor(point.value)}" r="2.8" fill="${item.color}"><title>${escapeHtml(item.label)} - ${escapeHtml(point.date)}: ${escapeHtml(formatMoney(point.value))}</title></circle>`).join('');
+        return `<polyline points="${points}" fill="none" stroke="${item.color}" stroke-width="2.5"/>${circles}`;
+      }).join('');
+      const firstPoint = validPoints.find(point => (point.dateIso || point.date) === dates[0]) || validPoints[0];
+      const firstDate = firstPoint?.date || dates[0] || '-';
+      const lastPoint = validPoints.reduce((latest, point) => (String(point.dateIso || point.date) > String(latest.dateIso || latest.date) ? point : latest), validPoints[0]);
+      const legend = validSeries.map(item => {
+        const last = item.points[item.points.length - 1];
+        return `<span><i class="legend-dot" style="background:${item.color}"></i>${escapeHtml(item.label)}: ${escapeHtml(formatMoney(last.value))}</span>`;
+      }).join('');
+      container.innerHTML = `
+        <div>
+          <svg viewBox="0 0 ${width} ${height}" width="100%" height="128" role="img" aria-label="${escapeHtml(ariaLabel)}">
+            <path d="M${padX} ${height - padY} H${width - padX}" stroke="var(--line)" stroke-width="1"/>
+            <path d="M${padX} ${padY} V${height - padY}" stroke="var(--line)" stroke-width="1"/>
+            ${lines}
+          </svg>
+          <div class="chart-legend">${legend}</div>
+          <div class="history-meta">Periodo: ${escapeHtml(firstDate)} a ${escapeHtml(lastPoint.date || '-')}. ${validPoints.length} ponto(s). Ultima data: ${escapeHtml(lastPoint.date || '-')}.</div>
+        </div>`;
     }
 
     function gruBreakdown() {
