@@ -82,6 +82,17 @@
     .dashboard-insight { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; padding: 12px; margin-bottom: 14px; min-height: 74px; }
     .dashboard-insight strong { display: block; color: var(--text); margin-bottom: 6px; }
     .dashboard-insight p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.4; }
+    .management-alerts { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; padding: 12px; margin-bottom: 14px; }
+    .management-alerts h3 { margin: 0 0 8px; font-size: .98rem; color: var(--text); }
+    .alerts-list { display: grid; gap: 8px; }
+    .alert-item { border: 1px solid var(--line); border-left-width: 5px; background: var(--card); border-radius: 8px; padding: 10px; }
+    .alert-item strong { display: block; color: var(--text); font-size: .9rem; margin-bottom: 3px; }
+    .alert-item p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.35; }
+    .alert-item a { display: inline-block; margin-top: 6px; font-size: .82rem; }
+    .alert-critical { border-left-color: var(--bad); }
+    .alert-warning { border-left-color: var(--warn); }
+    .alert-info { border-left-color: var(--brand); }
+    .alert-empty { color: var(--muted); font-size: .86rem; margin: 0; }
     .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; }
     .kpi-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 84px; }
     .kpi-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
@@ -170,6 +181,10 @@
         <strong id="insightTitle">Explore o painel</strong>
         <p id="insightText">Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador e sua utilidade para acompanhar a execução orçamentária e financeira.</p>
       </div>
+      <section class="management-alerts" aria-label="Alertas gerenciais">
+        <h3>Alertas gerenciais</h3>
+        <div id="managementAlerts" class="alerts-list" aria-live="polite"><p class="alert-empty">Carregando alertas gerenciais...</p></div>
+      </section>
       <div class="dashboard-kpis">
         <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
         <div class="kpi-card"><span>Crédito disponível (R$)</span><strong id="creditAvailable">-</strong><small>Saldo disponível no mês</small></div>
@@ -484,6 +499,7 @@
       renderGauge('paidGauge', paidRatio);
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, creditUsed, rapPaidRatio });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, creditUsed });
+      renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
     }
 
     function updateDashboardInsights(values) {
@@ -945,6 +961,126 @@
         };
       }).filter(item => Number.isFinite(item.value) && item.value > 0);
       return result.sort((a, b) => b.value - a.value);
+    }
+
+    function renderManagementAlerts(values) {
+      const alerts = [
+        ...statusAlerts(),
+        ...qualityAlerts(),
+        ...expectedMetricAlerts(values),
+        ...financialAlerts(values)
+      ];
+      const container = byId('managementAlerts');
+      if (!container) return;
+      if (!alerts.length) {
+        container.innerHTML = '<p class="alert-empty">Nenhum alerta gerencial identificado.</p>';
+        return;
+      }
+      container.innerHTML = alerts.map(alertHtml).join('');
+    }
+
+    function statusAlerts() {
+      return reports.flatMap(report => {
+        const status = reportStatus(report);
+        const periodicity = report.metadata?.periodicidade;
+        if (status !== 'desatualizado' || !['diaria', 'mensal'].includes(periodicity)) return [];
+        return [makeAlert({
+          level: periodicity === 'diaria' ? 'critical' : 'warning',
+          type: periodicity === 'diaria' ? 'Relatorio diario desatualizado' : 'Relatorio mensal desatualizado',
+          report,
+          message: `${friendlyTitle(report)} esta desatualizado. Data: ${report.date || 'indisponivel'}; idade: ${report.metadata?.idade_dias ?? '-'} dia(s); limite: ${reportLimit(report) ?? 'indisponivel'}.`
+        })];
+      });
+    }
+
+    function qualityAlerts() {
+      return reports.flatMap(report => {
+        const summary = qualitySummary(report);
+        if (summary.ok) return [];
+        return [makeAlert({
+          level: 'critical',
+          type: 'Problema de parsing',
+          report,
+          message: `${friendlyTitle(report)} possui problema de parsing: ${summary.text || 'qualidade nao aprovada'}.`
+        })];
+      });
+    }
+
+    function expectedMetricAlerts(values) {
+      const monitored = [
+        ['Provisionamentos', values.provisioned],
+        ['Credito disponivel', values.credit],
+        ['Despesas empenhadas', values.committed],
+        ['Despesas liquidadas', values.liquidated],
+        ['Despesas pagas', values.paid],
+        ['RAP pago', values.rapPaid],
+        ['RAP a pagar', values.rapPayable],
+        ['GRU arrecadada', values.gru]
+      ];
+      return monitored.filter(([, item]) => !isAvailable(item)).map(([label, item]) => makeAlert({
+        level: 'info',
+        type: 'Metrica ou coluna esperada indisponivel',
+        message: `${label}: nao foi possivel calcular a metrica com seguranca. ${auditSource(item)}`
+      }));
+    }
+
+    function financialAlerts(values) {
+      const alerts = [];
+      if (isAvailable(values.committed) && isAvailable(values.provisioned) && valueOf(values.committed) > valueOf(values.provisioned)) {
+        alerts.push(makeAlert({
+          level: 'critical',
+          type: 'Empenhado maior que provisionado',
+          report: reportBySlug('provisionamentos') || reportBySlug('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento'),
+          message: `Empenhado (${formatMoney(values.committed)}) supera provisionado (${formatMoney(values.provisioned)}). ${auditSources([values.committed, values.provisioned])}`
+        }));
+      }
+      if (isAvailable(values.paid) && isAvailable(values.liquidated) && valueOf(values.paid) > valueOf(values.liquidated)) {
+        alerts.push(makeAlert({
+          level: 'warning',
+          type: 'Pago maior que liquidado',
+          report: reportBySlug('saldos-de-empenhos-do-exercicio-conta-contabil') || reportBySlug('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento'),
+          message: `Pago (${formatMoney(values.paid)}) supera liquidado (${formatMoney(values.liquidated)}). ${auditSources([values.paid, values.liquidated])}`
+        }));
+      }
+      if (isAvailable(values.rapPayable) && isAvailable(values.rapTotal) && valueOf(values.rapTotal) > 0) {
+        const ratioValue = valueOf(values.rapPayable) / valueOf(values.rapTotal);
+        if (ratioValue > 0.5) {
+          alerts.push(makeAlert({
+            level: 'warning',
+            type: 'RAP a pagar elevado',
+            report: reportBySlug('restos-a-pagar-rap'),
+            message: `RAP a pagar representa ${ratioValue.toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 })} do total acompanhado. Limite: 50%.`
+          }));
+        }
+      }
+      if (isAvailable(values.credit) && isAvailable(values.provisioned) && valueOf(values.provisioned) > 0) {
+        const ratioValue = valueOf(values.credit) / valueOf(values.provisioned);
+        if (ratioValue < 0.1) {
+          alerts.push(makeAlert({
+            level: 'warning',
+            type: 'Credito disponivel baixo',
+            report: reportBySlug('credito-disponivel-mes-lancamento') || reportBySlug('provisionamentos'),
+            message: `Credito disponivel representa ${ratioValue.toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 })} do provisionado. Limite conservador: 10%.`
+          }));
+        }
+      }
+      return alerts;
+    }
+
+    function makeAlert({ level = 'info', type, report = null, message }) {
+      return { level, type, report, message };
+    }
+
+    function alertHtml(alert) {
+      const report = alert.report;
+      const title = report ? friendlyTitle(report) : alert.type;
+      const date = report?.date ? `Data do relatorio: ${escapeHtml(report.date)}. ` : '';
+      const link = report?.json_path ? `<a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">Abrir relatorio</a>` : '';
+      return `<article class="alert-item alert-${escapeHtml(alert.level)}"><strong>${escapeHtml(alert.type)} - ${escapeHtml(title)}</strong><p>${date}${escapeHtml(alert.message)}</p>${link}</article>`;
+    }
+
+    function reportBySlug(slug) {
+      return reports.find(report => report.slug === slug) || null;
     }
 
     function exportCsv() {
