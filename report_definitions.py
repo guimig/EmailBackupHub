@@ -24,11 +24,23 @@ REPORT_DEFINITIONS = {
         "title": "Liquidações e Pagamentos por Data",
         "columns": ["Data", "Empenhado", "Liquidado", "Pago", "Saldo a Liquidar"],
         "expected_metrics": ["empenhado", "liquidado", "pago", "saldo_a_liquidar"],
+        "metric_rules": {
+            "empenhado": {"columns": ["Empenhado"]},
+            "liquidado": {"columns": ["Liquidado"]},
+            "pago": {"columns": ["Pago"]},
+            "saldo_a_liquidar": {"columns": ["Saldo a Liquidar"]},
+        },
     },
     "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
         "title": "Liquidações e Pagamentos por Natureza",
         "columns": ["Natureza de Despesa", "Empenhado", "Liquidado", "Pago", "Saldo a Liquidar"],
         "expected_metrics": ["empenhado", "liquidado", "pago", "saldo_a_liquidar"],
+        "metric_rules": {
+            "empenhado": {"columns": ["Empenhado"]},
+            "liquidado": {"columns": ["Liquidado"]},
+            "pago": {"columns": ["Pago"]},
+            "saldo_a_liquidar": {"columns": ["Saldo a Liquidar"]},
+        },
     },
     "credito-disponivel-mes-lancamento": {
         "title": "Crédito Disponível por Mês de Lançamento",
@@ -37,6 +49,9 @@ REPORT_DEFINITIONS = {
         "columns": ["Mes", "Credito Inicial", "Credito Atualizado", "Credito Disponivel"],
         "highlights": [{"label": "Crédito disponível", "column": "Saldo - R$ (Conta Contábil)", "match_terms": ["saldo", "r$"]}],
         "expected_metrics": ["credito_disponivel"],
+        "metric_rules": {
+            "credito_disponivel": {"columns": ["Credito Disponivel", "Saldo - R$ (Conta Contábil)"], "match_terms": ["credito disponivel", "saldo", "r$"]},
+        },
     },
     "despesas-empenhadas-liquidadas-e-pagas-2024": {
         "title": "Despesas Empenhadas, Liquidadas e Pagas - 2024",
@@ -61,6 +76,11 @@ REPORT_DEFINITIONS = {
             {"label": "Despesas pagas", "column": "Valor 9"},
         ],
         "expected_metrics": ["empenhado", "liquidado", "pago"],
+        "metric_rules": {
+            "empenhado": {"columns": ["Empenhado"], "fallback_columns": ["Valor 7"]},
+            "liquidado": {"columns": ["Liquidado"], "fallback_columns": ["Valor 8"]},
+            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 9"]},
+        },
     },
     "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": {
         "title": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
@@ -73,6 +93,11 @@ REPORT_DEFINITIONS = {
             {"label": "Despesas pagas", "column": "Valor 9"},
         ],
         "expected_metrics": ["empenhado", "liquidado", "pago"],
+        "metric_rules": {
+            "empenhado": {"columns": ["Empenhado"], "fallback_columns": ["Valor 7"]},
+            "liquidado": {"columns": ["Liquidado"], "fallback_columns": ["Valor 8"]},
+            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 9"]},
+        },
     },
     "evolucao-das-despesas-empenhadas": {
         "title": "Evolução das Despesas Empenhadas",
@@ -90,13 +115,19 @@ REPORT_DEFINITIONS = {
     "provisionamentos": {
         "title": "Provisionamentos",
         "highlights": [{"label": "Provisionamentos", "column": "Saldo - Moeda Origem (Item Informação)", "match_terms": ["saldo", "moeda"]}],
-        "expected_metrics": ["provisionamentos"],
+        "expected_metrics": ["provisionado"],
+        "metric_rules": {
+            "provisionado": {"columns": ["Saldo - Moeda Origem (Item Informação)"], "match_terms": ["saldo", "moeda"]},
+        },
     },
     "recolhimento-proprio-gru": {
         "title": "Recolhimento Próprio - GRU",
         "columns": ["Unidade Gestora", "Codigo de Recolhimento", "Descricao", "Arrecadado"],
         "highlights": [{"label": "GRU arrecadadas", "column": "Movim. Líquido - R$ (Item Informação)", "match_terms": ["movim", "liquido"]}],
         "expected_metrics": ["gru_arrecadada"],
+        "metric_rules": {
+            "gru_arrecadada": {"columns": ["Arrecadado", "Movim. Líquido - R$ (Item Informação)"], "match_terms": ["arrecadado", "movim", "liquido"]},
+        },
     },
     "restos-a-pagar-rap": {
         "title": "Restos a Pagar - RAP",
@@ -108,6 +139,12 @@ REPORT_DEFINITIONS = {
             {"label": "RAP a pagar", "column": "Valor 12"},
         ],
         "expected_metrics": ["rap_inscrito", "rap_cancelado", "rap_pago", "rap_a_pagar"],
+        "metric_rules": {
+            "rap_inscrito": {"columns": ["Inscrito"], "fallback_columns": ["Valor 9"]},
+            "rap_cancelado": {"columns": ["Cancelado"], "fallback_columns": ["Valor 10"]},
+            "rap_pago": {"columns": ["Pago"], "fallback_columns": ["Valor 11"]},
+            "rap_a_pagar": {"columns": ["A Pagar"], "fallback_columns": ["Valor 12"]},
+        },
     },
     "saldo-de-empenhos-a-liquidar-mes-a-mes": {
         "title": "Saldo de Empenhos a Liquidar Mês a Mês",
@@ -131,6 +168,9 @@ REPORT_DEFINITIONS = {
         ],
         "highlights": [{"label": "Saldo total a liquidar", "column": "Total a Liquidar"}],
         "expected_metrics": ["saldo_a_liquidar"],
+        "metric_rules": {
+            "saldo_a_liquidar": {"columns": ["Total a Liquidar"]},
+        },
     },
     "saldo-patrimonio-e-almoxarifado-conta-contabil": {
         "title": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
@@ -152,7 +192,13 @@ REPORT_DEFINITIONS = {
             {"label": "Liquidados a pagar", "column": "Valor 9"},
             {"label": "Empenhos pagos", "column": "Valor 10"},
         ],
-        "expected_metrics": ["empenhos_a_liquidar", "liquidados_a_pagar", "empenhos_pagos"],
+        "expected_metrics": ["empenhado", "saldo_a_liquidar", "liquidado_a_pagar", "pago"],
+        "metric_rules": {
+            "empenhado": {"columns": ["Empenhado"]},
+            "saldo_a_liquidar": {"columns": ["A Liquidar"], "fallback_columns": ["Valor 8"]},
+            "liquidado_a_pagar": {"columns": ["Liquidado a Pagar"], "fallback_columns": ["Valor 9"]},
+            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 10"]},
+        },
     },
     "suprimento-de-fundos-empenhos": {
         "title": "Suprimento de Fundos - Empenhos",
@@ -187,3 +233,11 @@ def report_limit_days(slug):
 
 def report_status(slug):
     return report_definition(slug).get("status")
+
+
+def report_expected_metrics(slug):
+    return report_definition(slug).get("expected_metrics") or []
+
+
+def report_metric_rules(slug):
+    return report_definition(slug).get("metric_rules") or {}

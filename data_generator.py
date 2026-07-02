@@ -12,7 +12,9 @@ from config import BACKUP_FOLDER, REPO_ROOT, TIMEZONE
 from report_definitions import (
     report_columns,
     report_definition,
+    report_expected_metrics,
     report_limit_days,
+    report_metric_rules,
     report_periodicity,
     report_status,
     report_title,
@@ -118,6 +120,10 @@ def parse_br_number(value):
     except ValueError:
         return None
     return -number if negative else number
+
+
+def normalize_key(text):
+    return normalize_slug(text).replace("-", " ")
 
 
 def span_value(cell, attr):
@@ -439,14 +445,92 @@ def build_search_text(doc):
     return " ".join(parts)
 
 
+def metric_column_candidates(rule):
+    columns = []
+    for key in ("columns", "fallback_columns"):
+        for column in rule.get(key) or []:
+            if column and column not in columns:
+                columns.append(column)
+    return columns
+
+
+def matches_metric_column(column, rule):
+    normalized_column = normalize_key(column)
+    candidates = [normalize_key(candidate) for candidate in metric_column_candidates(rule)]
+    if normalized_column in candidates:
+        return True
+    match_terms = [normalize_key(term) for term in rule.get("match_terms") or []]
+    return bool(match_terms) and all(term in normalized_column for term in match_terms)
+
+
+def first_metric_column(columns, rule):
+    for candidate in metric_column_candidates(rule):
+        if candidate in columns:
+            return candidate
+    for column in columns:
+        if matches_metric_column(column, rule):
+            return column
+    return None
+
+
+def metric_value_from_totals(totals, columns, rule):
+    column = first_metric_column(columns, rule)
+    if not column:
+        return None
+    for total in reversed(totals or []):
+        values = total.get("values") or {}
+        if column in values and values[column] is not None:
+            return values[column]
+        raw = total.get("raw") or {}
+        value = parse_br_number(raw.get(column))
+        if value is not None:
+            return value
+    return None
+
+
+def metric_value_from_rows(rows, columns, rule):
+    column = first_metric_column(columns, rule)
+    if not column:
+        return None
+    values = [parse_br_number(row.get(column)) for row in rows or []]
+    values = [value for value in values if value is not None]
+    if not values:
+        return None
+    return sum(values)
+
+
+def extract_metrics(doc):
+    slug = doc.get("slug")
+    rules = report_metric_rules(slug)
+    metrics = {}
+    for metric in report_expected_metrics(slug):
+        rule = rules.get(metric)
+        if not rule:
+            continue
+        value = metric_value_from_totals(doc.get("totals"), doc.get("columns") or [], rule)
+        if value is None:
+            value = metric_value_from_rows(doc.get("rows"), doc.get("columns") or [], rule)
+        if value is not None:
+            metrics[metric] = value
+    return metrics
+
+
+def series_item(doc):
+    item = {
+        "date": doc["date"],
+        "date_iso": doc["date_iso"],
+        "hash_conteudo": doc["metadata"]["hash_conteudo"],
+        "totals": doc.get("totals") or [],
+    }
+    item["metrics"] = extract_metrics(doc)
+    return item
+
+
 def build_series(slug, snapshots):
     return {
         "schema_version": SCHEMA_VERSION,
         "slug": slug,
-        "series": [
-            {"date": doc["date"], "date_iso": doc["date_iso"], "hash_conteudo": doc["metadata"]["hash_conteudo"], "totals": []}
-            for doc in sorted(snapshots, key=lambda item: item["date_iso"])
-        ],
+        "series": [series_item(doc) for doc in sorted(snapshots, key=lambda item: item["date_iso"])],
     }
 
 
@@ -467,7 +551,7 @@ def generate_data_files():
         search_documents.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_doc)})
         snapshots = []
         for path in paths:
-            doc = latest_doc if path == latest_path else light_history_document(path, latest_doc["title"], slug, source_map, now)
+            doc = latest_doc if path == latest_path else full_report_document(path, source_map, now)
             snapshots.append(doc)
             snapshot_name = f"{doc['date_iso']}-{doc['metadata']['hash_conteudo'][:12]}.json"
             write_json(SNAPSHOTS_DIR / slug / snapshot_name, doc)
