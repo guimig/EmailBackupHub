@@ -25,7 +25,7 @@ REPORTS_DIR = DATA_DIR / "reports"
 SNAPSHOTS_DIR = DATA_DIR / "snapshots"
 SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
-SCHEMA_VERSION = "1.4"
+SCHEMA_VERSION = "1.5"
 
 INFO_QUALITY_CODES = {
     "date_from_filename",
@@ -454,49 +454,69 @@ def metric_column_candidates(rule):
     return columns
 
 
-def matches_metric_column(column, rule):
+def descriptive_column_match(column, candidate):
     normalized_column = normalize_key(column)
-    candidates = [normalize_key(candidate) for candidate in metric_column_candidates(rule)]
-    if normalized_column in candidates:
+    normalized_candidate = normalize_key(candidate)
+    if not normalized_column or not normalized_candidate:
+        return False
+    if normalized_column == normalized_candidate:
         return True
+    if len(normalized_candidate) < 8:
+        return False
+    return normalized_candidate in normalized_column
+
+
+def matches_metric_terms(column, rule):
+    normalized_column = normalize_key(column)
     match_terms = [normalize_key(term) for term in rule.get("match_terms") or []]
     return bool(match_terms) and all(term in normalized_column for term in match_terms)
 
 
-def first_metric_column(columns, rule):
+def matches_metric_column(column, rule):
+    return any(descriptive_column_match(column, candidate) for candidate in metric_column_candidates(rule)) or matches_metric_terms(column, rule)
+
+
+def metric_columns(columns, rule):
+    result = []
+
+    def add(column):
+        if column not in result:
+            result.append(column)
+
     for candidate in metric_column_candidates(rule):
-        if candidate in columns:
-            return candidate
+        for column in columns:
+            if normalize_key(column) == normalize_key(candidate):
+                add(column)
+    for candidate in metric_column_candidates(rule):
+        for column in columns:
+            if descriptive_column_match(column, candidate):
+                add(column)
     for column in columns:
-        if matches_metric_column(column, rule):
-            return column
-    return None
+        if matches_metric_terms(column, rule):
+            add(column)
+    return result
 
 
 def metric_value_from_totals(totals, columns, rule):
-    column = first_metric_column(columns, rule)
-    if not column:
-        return None
-    for total in reversed(totals or []):
-        values = total.get("values") or {}
-        if column in values and values[column] is not None:
-            return values[column]
-        raw = total.get("raw") or {}
-        value = parse_br_number(raw.get(column))
-        if value is not None:
-            return value
+    for column in metric_columns(columns, rule):
+        for total in reversed(totals or []):
+            values = total.get("values") or {}
+            if column in values and values[column] is not None:
+                return values[column]
+            raw = total.get("raw") or {}
+            value = parse_br_number(raw.get(column))
+            if value is not None:
+                return value
     return None
 
 
 def metric_value_from_rows(rows, columns, rule):
-    column = first_metric_column(columns, rule)
-    if not column:
-        return None
-    values = [parse_br_number(row.get(column)) for row in rows or []]
-    values = [value for value in values if value is not None]
-    if not values:
-        return None
-    return sum(values)
+    for column in metric_columns(columns, rule):
+        values = [parse_br_number(row.get(column)) for row in rows or []]
+        values = [value for value in values if value is not None]
+        if values:
+            return sum(values)
+    return None
 
 
 def extract_metrics(doc):
