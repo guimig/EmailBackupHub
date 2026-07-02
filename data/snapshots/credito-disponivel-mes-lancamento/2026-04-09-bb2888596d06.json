@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.4",
+  "slug": "credito-disponivel-mes-lancamento",
+  "title": "Crédito Disponível por Mês de Lançamento",
+  "date": "09/04/2026",
+  "date_iso": "2026-04-09",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_09-04-2026.html",
+  "category": "Crédito Disponível por Mês de Lançamento",
+  "columns": [
+    "Grupo Despesa",
+    "Natureza Despesa",
+    "Natureza Despesa (2)",
+    "Unidade Orçamentária",
+    "Unidade Orçamentária (2)",
+    "Fonte Recursos Detalhada",
+    "Fonte Recursos Detalhada (2)",
+    "PTRES",
+    "Métrica / PI",
+    "Métrica / PI (2)",
+    "Saldo - R$ (Conta Contábil) / ABR/2026"
+  ],
+  "rows": [
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "249897",
+      "Métrica / PI": "L21B3P2002N",
+      "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+      "Saldo - R$ (Conta Contábil) / ABR/2026": "55.500,00"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1050000191",
+      "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "PTRES": "231502",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / ABR/2026": "4.742,90"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339018",
+      "Natureza Despesa (2)": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "249897",
+      "Métrica / PI": "L21B3P2002N",
+      "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+      "Saldo - R$ (Conta Contábil) / ABR/2026": "9.000,00"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339032",
+      "Natureza Despesa (2)": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+      "Unidade Orçamentária": "26298",
+      "Unidade Orçamentária (2)": "FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCACAO",
+      "Fonte Recursos Detalhada": "1133000000",
+      "Fonte Recursos Detalhada (2)": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+      "PTRES": "230446",
+      "Métrica / PI": "CFF53M9601N",
+      "Métrica / PI (2)": "PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO",
+      "Saldo - R$ (Conta Contábil) / ABR/2026": "89.872,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339000.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1000000000.0,
+        "Saldo - R$ (Conta Contábil) / ABR/2026": 55500.0
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "55.500,00"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339000.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1050000191.0,
+        "Saldo - R$ (Conta Contábil) / ABR/2026": 4742.9
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "4.742,90"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339018.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1000000000.0,
+        "Saldo - R$ (Conta Contábil) / ABR/2026": 9000.0
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339018",
+        "Natureza Despesa (2)": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "9.000,00"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339032.0,
+        "Unidade Orçamentária": 26298.0,
+        "Fonte Recursos Detalhada": 1133000000.0,
+        "Saldo - R$ (Conta Contábil) / ABR/2026": 89872.0
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339032",
+        "Natureza Despesa (2)": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+        "Unidade Orçamentária": "26298",
+        "Unidade Orçamentária (2)": "FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCACAO",
+        "Fonte Recursos Detalhada": "1133000000",
+        "Fonte Recursos Detalhada (2)": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "89.872,00"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - R$ (Conta Contábil) / ABR/2026": 159114.9
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "159.114,90"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "249897",
+        "Métrica / PI": "L21B3P2002N",
+        "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "55.500,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "55.500,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "231502",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "4.742,90"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "4.742,90"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339018",
+        "Natureza Despesa (2)": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "249897",
+        "Métrica / PI": "L21B3P2002N",
+        "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "9.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339018",
+        "Natureza Despesa (2)": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "9.000,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339032",
+        "Natureza Despesa (2)": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+        "Unidade Orçamentária": "26298",
+        "Unidade Orçamentária (2)": "FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCACAO",
+        "Fonte Recursos Detalhada": "1133000000",
+        "Fonte Recursos Detalhada (2)": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+        "PTRES": "230446",
+        "Métrica / PI": "CFF53M9601N",
+        "Métrica / PI (2)": "PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "89.872,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339032",
+        "Natureza Despesa (2)": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+        "Unidade Orçamentária": "26298",
+        "Unidade Orçamentária (2)": "FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCACAO",
+        "Fonte Recursos Detalhada": "1133000000",
+        "Fonte Recursos Detalhada (2)": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "89.872,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / ABR/2026": "159.114,90"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 84,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "bb2888596d06ce60faa5363262cedfa0901270d555bf1bfff5108547837954df",
+    "row_count": 4,
+    "column_count": 11,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

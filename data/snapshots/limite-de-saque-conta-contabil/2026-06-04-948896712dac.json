@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.4",
+  "slug": "limite-de-saque-conta-contabil",
+  "title": "Limite de Saque por Conta Contábil",
+  "date": "04/06/2026",
+  "date_iso": "2026-06-04",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_04-06-2026.html",
+  "category": "Limite de Saque por Conta Contábil",
+  "columns": [
+    "UG Executora Nome",
+    "UG Executora Código",
+    "Fonte Recursos Detalhada Código",
+    "Fonte Recursos Detalhada Nome",
+    "Vinculação Pagamento Código",
+    "Vinculação Pagamento Nome",
+    "Métrica / Conta Contábil Número / Conta Contábil Nome",
+    "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS",
+    "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS"
+  ],
+  "rows": [
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101,17",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+      "Vinculação Pagamento Código": "405",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000A0008U",
+      "Fonte Recursos Detalhada Nome": "TERMO DE EXECUCAO DESCENTRALIZADA - MEC",
+      "Vinculação Pagamento Código": "405",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "159.546,90",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1133000000",
+      "Fonte Recursos Detalhada Nome": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+      "Vinculação Pagamento Código": "499",
+      "Vinculação Pagamento Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1491000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS",
+      "Vinculação Pagamento Código": "987",
+      "Vinculação Pagamento Nome": "DEVOLUCAO DE DESPESA",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "DEVOLUCAO DE DESPESA",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1491980000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS-CANC.OB APOS REM.BANCO",
+      "Vinculação Pagamento Código": "990",
+      "Vinculação Pagamento Nome": "PASSIVOS FINANCEIROS",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "PASSIVOS FINANCEIROS",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "3050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.166,92",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+    }
+  ],
+  "totals": [],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1000000000",
+        "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101,17",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1000000000",
+        "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+        "Vinculação Pagamento Código": "405",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1000A0008U",
+        "Fonte Recursos Detalhada Nome": "TERMO DE EXECUCAO DESCENTRALIZADA - MEC",
+        "Vinculação Pagamento Código": "405",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1050000191",
+        "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "159.546,90",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1133000000",
+        "Fonte Recursos Detalhada Nome": "EDUCACAO BASICA, VED.PGTO DESP.PESSOAL",
+        "Vinculação Pagamento Código": "499",
+        "Vinculação Pagamento Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1491000000",
+        "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS",
+        "Vinculação Pagamento Código": "987",
+        "Vinculação Pagamento Nome": "DEVOLUCAO DE DESPESA",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "DEVOLUCAO DE DESPESA",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1491980000",
+        "Fonte Recursos Detalhada Nome": "RECURSOS DIVERSOS-CANC.OB APOS REM.BANCO",
+        "Vinculação Pagamento Código": "990",
+        "Vinculação Pagamento Nome": "PASSIVOS FINANCEIROS",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "PASSIVOS FINANCEIROS",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "3050000191",
+        "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.166,92",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": ""
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 28,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "948896712dac53abf7e741d5fa73bec8867d63390e960abcda2b3d0f41b885ee",
+    "row_count": 8,
+    "column_count": 9,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}

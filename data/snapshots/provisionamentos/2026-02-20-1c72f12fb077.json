@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.4",
+  "slug": "provisionamentos",
+  "title": "Provisionamentos",
+  "date": "20/02/2026",
+  "date_iso": "2026-02-20",
+  "html_path": "emails/provisionamentos/provisionamentos_20-02-2026.html",
+  "category": "Provisionamentos",
+  "columns": [
+    "Ação Governo",
+    "Grupo Despesa",
+    "Grupo Despesa (2)",
+    "PI",
+    "PI (2)",
+    "NC",
+    "Doc - Observação",
+    "Transação - Mês",
+    "Saldo - Moeda Origem (Item Informação)"
+  ],
+  "rows": [
+    {
+      "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "PI": "-8",
+      "PI (2)": "SEM INFORMACAO",
+      "NC": "158125264222026NC000002",
+      "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS CONSIDERANDO 1/12 AVOS DA PLOA 2026 COM BASE NA DIVISAO ORCAMENTARIA DA LOA 2025. SEM RETENCOES.",
+      "Transação - Mês": "JAN/2026",
+      "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+    },
+    {
+      "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "PI": "-8",
+      "PI (2)": "SEM INFORMACAO",
+      "NC": "158125264222026NC000043",
+      "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS CONFORME MEMORANDO 7/2026 - PROEN DE 05/02/2026.",
+      "Transação - Mês": "FEV/2026",
+      "Saldo - Moeda Origem (Item Informação)": "10.000,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 490286.08
+      },
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 10000.0
+      },
+      "raw": {
+        "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "10.000,00"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 500286.08
+      },
+      "raw": {
+        "Ação Governo": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "500.286,08"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "PI": "-8",
+        "PI (2)": "SEM INFORMACAO",
+        "NC": "158125264222026NC000002",
+        "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS CONSIDERANDO 1/12 AVOS DA PLOA 2026 COM BASE NA DIVISAO ORCAMENTARIA DA LOA 2025. SEM RETENCOES.",
+        "Transação - Mês": "JAN/2026",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "PI": "-8",
+        "PI (2)": "SEM INFORMACAO",
+        "NC": "158125264222026NC000043",
+        "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS CONFORME MEMORANDO 7/2026 - PROEN DE 05/02/2026.",
+        "Transação - Mês": "FEV/2026",
+        "Saldo - Moeda Origem (Item Informação)": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "500.286,08"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 132,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "1c72f12fb077df415218643154a0e71dddfac73e208382aa658f72deeac3909d",
+    "row_count": 2,
+    "column_count": 9,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

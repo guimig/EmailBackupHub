@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.4",
+  "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
+  "title": "Saldos de Empenhos do Exercício por Conta Contábil",
+  "date": "16/01/2026",
+  "date_iso": "2026-01-16",
+  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_16-01-2026.html",
+  "category": "Saldos de Empenhos do Exercício por Conta Contábil",
+  "columns": [
+    "Conta Contabil",
+    "Empenhado",
+    "A Liquidar",
+    "Liquidado a Pagar",
+    "Pago",
+    "Valor 6",
+    "Valor 7",
+    "Valor 8",
+    "Valor 9",
+    "Valor 10"
+  ],
+  "rows": [
+    {
+      "Conta Contabil": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "A Liquidar": "Natureza Despesa Detalhada",
+      "Liquidado a Pagar": "NE CCor",
+      "Pago": "NE CCor - Descrição",
+      "Valor 6": "NE CCor - Favorecido",
+      "Valor 7": "Conta Contábil",
+      "Valor 8": "622920101",
+      "Valor 9": "622920103",
+      "Valor 10": "622920104"
+    },
+    {
+      "Conta Contabil": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "A Liquidar": "Natureza Despesa Detalhada",
+      "Liquidado a Pagar": "NE CCor",
+      "Pago": "NE CCor - Descrição",
+      "Valor 6": "NE CCor - Favorecido",
+      "Valor 7": "Conta Contábil",
+      "Valor 8": "= EMPENHOS A LIQUIDAR",
+      "Valor 9": "= EMPENHOS LIQUIDADOS A PAGAR",
+      "Valor 10": "= EMPENHOS PAGOS"
+    },
+    {
+      "Conta Contabil": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "A Liquidar": "Natureza Despesa Detalhada",
+      "Liquidado a Pagar": "NE CCor",
+      "Pago": "NE CCor - Descrição",
+      "Valor 6": "NE CCor - Favorecido",
+      "Valor 7": "NE CCor - Valor",
+      "Valor 8": "Saldo - R$ (Conta Contábil)",
+      "Valor 9": "Saldo - R$ (Conta Contábil)",
+      "Valor 10": "Saldo - R$ (Conta Contábil)"
+    },
+    {
+      "Conta Contabil": "MATERIAL DE CONSUMO",
+      "Empenhado": "33903096",
+      "A Liquidar": "MATERIAL DE CONSUMO - PAGTO ANTECIPADO",
+      "Liquidado a Pagar": "158459264222026NE000002",
+      "Pago": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+      "Valor 6": "TIAGO JONES BACK",
+      "Valor 7": "10.000,00",
+      "Valor 8": "0,00",
+      "Valor 9": "0,00",
+      "Valor 10": "10.000,00"
+    },
+    {
+      "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903996",
+      "A Liquidar": "OUTROS SERV.DE TERCEIROS PJ- PAGTO ANTECIPADO",
+      "Liquidado a Pagar": "158459264222026NE000001",
+      "Pago": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA N. 05/2024 ¿ PROAD/IFC.",
+      "Valor 6": "TIAGO JONES BACK",
+      "Valor 7": "10.000,00",
+      "Valor 8": "0,00",
+      "Valor 9": "0,00",
+      "Valor 10": "10.000,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "MATERIAL DE CONSUMO",
+      "values": {
+        "Valor 8": 0.0,
+        "Valor 9": 0.0,
+        "Valor 10": 10000.0
+      },
+      "raw": {
+        "Conta Contabil": "MATERIAL DE CONSUMO",
+        "Empenhado": "Total",
+        "A Liquidar": "Total",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "values": {
+        "Valor 8": 0.0,
+        "Valor 9": 0.0,
+        "Valor 10": 10000.0
+      },
+      "raw": {
+        "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "Total",
+        "A Liquidar": "Total",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Valor 8": 0.0,
+        "Valor 9": 0.0,
+        "Valor 10": 20000.0
+      },
+      "raw": {
+        "Conta Contabil": "Total",
+        "Empenhado": "",
+        "A Liquidar": "",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "20.000,00"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Conta Contabil": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "A Liquidar": "Natureza Despesa Detalhada",
+        "Liquidado a Pagar": "NE CCor",
+        "Pago": "NE CCor - Descrição",
+        "Valor 6": "NE CCor - Favorecido",
+        "Valor 7": "Conta Contábil",
+        "Valor 8": "622920101",
+        "Valor 9": "622920103",
+        "Valor 10": "622920104"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Conta Contabil": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "A Liquidar": "Natureza Despesa Detalhada",
+        "Liquidado a Pagar": "NE CCor",
+        "Pago": "NE CCor - Descrição",
+        "Valor 6": "NE CCor - Favorecido",
+        "Valor 7": "Conta Contábil",
+        "Valor 8": "= EMPENHOS A LIQUIDAR",
+        "Valor 9": "= EMPENHOS LIQUIDADOS A PAGAR",
+        "Valor 10": "= EMPENHOS PAGOS"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Conta Contabil": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "A Liquidar": "Natureza Despesa Detalhada",
+        "Liquidado a Pagar": "NE CCor",
+        "Pago": "NE CCor - Descrição",
+        "Valor 6": "NE CCor - Favorecido",
+        "Valor 7": "NE CCor - Valor",
+        "Valor 8": "Saldo - R$ (Conta Contábil)",
+        "Valor 9": "Saldo - R$ (Conta Contábil)",
+        "Valor 10": "Saldo - R$ (Conta Contábil)"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Conta Contabil": "MATERIAL DE CONSUMO",
+        "Empenhado": "33903096",
+        "A Liquidar": "MATERIAL DE CONSUMO - PAGTO ANTECIPADO",
+        "Liquidado a Pagar": "158459264222026NE000002",
+        "Pago": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+        "Valor 6": "TIAGO JONES BACK",
+        "Valor 7": "10.000,00",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Conta Contabil": "MATERIAL DE CONSUMO",
+        "Empenhado": "Total",
+        "A Liquidar": "Total",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903996",
+        "A Liquidar": "OUTROS SERV.DE TERCEIROS PJ- PAGTO ANTECIPADO",
+        "Liquidado a Pagar": "158459264222026NE000001",
+        "Pago": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA N. 05/2024 ¿ PROAD/IFC.",
+        "Valor 6": "TIAGO JONES BACK",
+        "Valor 7": "10.000,00",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "Total",
+        "A Liquidar": "Total",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Conta Contabil": "Total",
+        "Empenhado": "",
+        "A Liquidar": "",
+        "Liquidado a Pagar": "",
+        "Pago": "",
+        "Valor 6": "",
+        "Valor 7": "",
+        "Valor 8": "0,00",
+        "Valor 9": "0,00",
+        "Valor 10": "20.000,00"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 167,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "78f16b767261e8ca912b9235728e748605ad0460de7a807dea03311dda76976b",
+    "row_count": 5,
+    "column_count": 10,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

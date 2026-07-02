@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.4",
+  "slug": "limite-de-saque-conta-contabil",
+  "title": "Limite de Saque por Conta Contábil",
+  "date": "21/01/2026",
+  "date_iso": "2026-01-21",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_21-01-2026.html",
+  "category": "Limite de Saque por Conta Contábil",
+  "columns": [
+    "UG Executora Nome",
+    "UG Executora Código",
+    "Fonte Recursos Detalhada Código",
+    "Fonte Recursos Detalhada Nome",
+    "Vinculação Pagamento Código",
+    "Vinculação Pagamento Nome",
+    "Métrica / Conta Contábil Número / Conta Contábil Nome",
+    "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS"
+  ],
+  "rows": [
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1000000000",
+      "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "48.600,22"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "1050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "209.207,27"
+    },
+    {
+      "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "UG Executora Código": "158459",
+      "Fonte Recursos Detalhada Código": "3050000191",
+      "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "Vinculação Pagamento Código": "400",
+      "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.166,92"
+    }
+  ],
+  "totals": [],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1000000000",
+        "Fonte Recursos Detalhada Nome": "RECURSOS LIVRES DA UNIAO",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "48.600,22"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "1050000191",
+        "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "209.207,27"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "UG Executora Código": "158459",
+        "Fonte Recursos Detalhada Código": "3050000191",
+        "Fonte Recursos Detalhada Nome": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "Vinculação Pagamento Código": "400",
+        "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.166,92"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 162,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "202edd92e13d6db5ca6d969728263e18a92791e3f93ff52155a8562b9b1ecf6e",
+    "row_count": 3,
+    "column_count": 8,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename"
+    ]
+  }
+}

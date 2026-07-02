@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.4",
+  "slug": "credito-disponivel-mes-lancamento",
+  "title": "Crédito Disponível por Mês de Lançamento",
+  "date": "13/02/2026",
+  "date_iso": "2026-02-13",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-02-2026.html",
+  "category": "Crédito Disponível por Mês de Lançamento",
+  "columns": [
+    "Grupo Despesa",
+    "Natureza Despesa",
+    "Natureza Despesa (2)",
+    "Unidade Orçamentária",
+    "Unidade Orçamentária (2)",
+    "Fonte Recursos Detalhada",
+    "Fonte Recursos Detalhada (2)",
+    "PTRES",
+    "Métrica / PI",
+    "Métrica / PI (2)",
+    "Saldo - R$ (Conta Contábil) / FEV/2026"
+  ],
+  "rows": [
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "231502",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / FEV/2026": "22.169,03"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "260220",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / FEV/2026": "10.000,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339000.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1000000000.0,
+        "Saldo - R$ (Conta Contábil) / FEV/2026": 32169.03
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "32.169,03"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - R$ (Conta Contábil) / FEV/2026": 32169.03
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "32.169,03"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "231502",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "22.169,03"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "260220",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "32.169,03"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / FEV/2026": "32.169,03"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 139,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "195dd1e78cb4cec35fdbd73af6306b12151c999f0faad6c17e02160fdd0f36b7",
+    "row_count": 2,
+    "column_count": 11,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

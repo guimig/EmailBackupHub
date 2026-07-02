@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.4",
+  "slug": "credito-disponivel-mes-lancamento",
+  "title": "Crédito Disponível por Mês de Lançamento",
+  "date": "13/03/2026",
+  "date_iso": "2026-03-13",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-03-2026.html",
+  "category": "Crédito Disponível por Mês de Lançamento",
+  "columns": [
+    "Grupo Despesa",
+    "Natureza Despesa",
+    "Natureza Despesa (2)",
+    "Unidade Orçamentária",
+    "Unidade Orçamentária (2)",
+    "Fonte Recursos Detalhada",
+    "Fonte Recursos Detalhada (2)",
+    "PTRES",
+    "Métrica / PI",
+    "Métrica / PI (2)",
+    "Saldo - R$ (Conta Contábil) / MAR/2026"
+  ],
+  "rows": [
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "231502",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / MAR/2026": "471.283,27"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "231503",
+      "Métrica / PI": "L2994P2302N",
+      "Métrica / PI (2)": "ASSISTENCIA ESTUDANTIL - VISITAS TECNICAS",
+      "Saldo - R$ (Conta Contábil) / MAR/2026": "47.900,00"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "249897",
+      "Métrica / PI": "L21B3P2002N",
+      "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+      "Saldo - R$ (Conta Contábil) / MAR/2026": "75.000,00"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1050000191",
+      "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "PTRES": "231502",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / MAR/2026": "14.825,65"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339030",
+      "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "231502",
+      "Métrica / PI": "L20RLP0100N",
+      "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+      "Saldo - R$ (Conta Contábil) / MAR/2026": "13.074,34"
+    }
+  ],
+  "totals": [
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339000.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1000000000.0,
+        "Saldo - R$ (Conta Contábil) / MAR/2026": 594183.27
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "594.183,27"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339000.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1050000191.0,
+        "Saldo - R$ (Conta Contábil) / MAR/2026": 14825.65
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "14.825,65"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339030.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1000000000.0,
+        "Saldo - R$ (Conta Contábil) / MAR/2026": 13074.34
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "13.074,34"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - R$ (Conta Contábil) / MAR/2026": 622083.26
+      },
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "622.083,26"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "231502",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "471.283,27"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "231503",
+        "Métrica / PI": "L2994P2302N",
+        "Métrica / PI (2)": "ASSISTENCIA ESTUDANTIL - VISITAS TECNICAS",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "47.900,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "249897",
+        "Métrica / PI": "L21B3P2002N",
+        "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "75.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "594.183,27"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "231502",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "14.825,65"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "14.825,65"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "231502",
+        "Métrica / PI": "L20RLP0100N",
+        "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "13.074,34"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "13.074,34"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "Total",
+        "Natureza Despesa": "",
+        "Natureza Despesa (2)": "",
+        "Unidade Orçamentária": "",
+        "Unidade Orçamentária (2)": "",
+        "Fonte Recursos Detalhada": "",
+        "Fonte Recursos Detalhada (2)": "",
+        "PTRES": "",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / MAR/2026": "622.083,26"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 111,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "11a3883aad7a06c4a841fcf80688e97f51f49ab2089d3ee70e84fc6bcf2d36e7",
+    "row_count": 5,
+    "column_count": 11,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

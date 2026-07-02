@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.4",
+  "slug": "provisionamentos",
+  "title": "Provisionamentos",
+  "date": "15/08/2025",
+  "date_iso": "2025-08-15",
+  "html_path": "emails/provisionamentos/provisionamentos_15-08-2025.html",
+  "category": "Provisionamentos",
+  "columns": [
+    "Ação Governo",
+    "Ação Governo (2)",
+    "Grupo Despesa",
+    "Grupo Despesa (2)",
+    "Saldo - Moeda Origem (Item Informação)"
+  ],
+  "rows": [
+    {
+      "Ação Governo": "20RG",
+      "Ação Governo (2)": "REESTRUTURACAO E MODERNIZACAO DAS INSTITUICOES DA REDE FEDER",
+      "Grupo Despesa": "4",
+      "Grupo Despesa (2)": "INVESTIMENTOS",
+      "Saldo - Moeda Origem (Item Informação)": "100.000,00"
+    },
+    {
+      "Ação Governo": "20RL",
+      "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "Grupo Despesa": "4",
+      "Grupo Despesa (2)": "INVESTIMENTOS",
+      "Saldo - Moeda Origem (Item Informação)": "90.000,00"
+    },
+    {
+      "Ação Governo": "20RL",
+      "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "Saldo - Moeda Origem (Item Informação)": "4.061.724,74"
+    },
+    {
+      "Ação Governo": "2994",
+      "Ação Governo (2)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "Saldo - Moeda Origem (Item Informação)": "832.763,86"
+    },
+    {
+      "Ação Governo": "4572",
+      "Ação Governo (2)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "Saldo - Moeda Origem (Item Informação)": "40.000,00"
+    }
+  ],
+  "totals": [
+    {
+      "label": "20RG",
+      "values": {
+        "Ação Governo": 20.0,
+        "Saldo - Moeda Origem (Item Informação)": 100000.0
+      },
+      "raw": {
+        "Ação Governo": "20RG",
+        "Ação Governo (2)": "REESTRUTURACAO E MODERNIZACAO DAS INSTITUICOES DA REDE FEDER",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "100.000,00"
+      }
+    },
+    {
+      "label": "20RL",
+      "values": {
+        "Ação Governo": 20.0,
+        "Saldo - Moeda Origem (Item Informação)": 4151724.74
+      },
+      "raw": {
+        "Ação Governo": "20RL",
+        "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "4.151.724,74"
+      }
+    },
+    {
+      "label": "2994",
+      "values": {
+        "Ação Governo": 2994.0,
+        "Saldo - Moeda Origem (Item Informação)": 832763.86
+      },
+      "raw": {
+        "Ação Governo": "2994",
+        "Ação Governo (2)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "832.763,86"
+      }
+    },
+    {
+      "label": "4572",
+      "values": {
+        "Ação Governo": 4572.0,
+        "Saldo - Moeda Origem (Item Informação)": 40000.0
+      },
+      "raw": {
+        "Ação Governo": "4572",
+        "Ação Governo (2)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "40.000,00"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 5124488.6
+      },
+      "raw": {
+        "Ação Governo": "Total",
+        "Ação Governo (2)": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "Saldo - Moeda Origem (Item Informação)": "5.124.488,60"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "20RG",
+        "Ação Governo (2)": "REESTRUTURACAO E MODERNIZACAO DAS INSTITUICOES DA REDE FEDER",
+        "Grupo Despesa": "4",
+        "Grupo Despesa (2)": "INVESTIMENTOS",
+        "Saldo - Moeda Origem (Item Informação)": "100.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "20RG",
+        "Ação Governo (2)": "REESTRUTURACAO E MODERNIZACAO DAS INSTITUICOES DA REDE FEDER",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "100.000,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "20RL",
+        "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "4",
+        "Grupo Despesa (2)": "INVESTIMENTOS",
+        "Saldo - Moeda Origem (Item Informação)": "90.000,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "20RL",
+        "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "Saldo - Moeda Origem (Item Informação)": "4.061.724,74"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "20RL",
+        "Ação Governo (2)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "4.151.724,74"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "2994",
+        "Ação Governo (2)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "Saldo - Moeda Origem (Item Informação)": "832.763,86"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "2994",
+        "Ação Governo (2)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "832.763,86"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "4572",
+        "Ação Governo (2)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "Saldo - Moeda Origem (Item Informação)": "40.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "4572",
+        "Ação Governo (2)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "Saldo - Moeda Origem (Item Informação)": "40.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "Total",
+        "Ação Governo (2)": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "Saldo - Moeda Origem (Item Informação)": "5.124.488,60"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 321,
+    "periodicidade": "diaria",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "83d56caffb95dd9f95861a717d6fbb61b74127df57ec2fcca4fbf5f5861ef240",
+    "row_count": 5,
+    "column_count": 5,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

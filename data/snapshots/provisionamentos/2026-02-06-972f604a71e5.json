@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.4",
+  "slug": "provisionamentos",
+  "title": "Provisionamentos",
+  "date": "06/02/2026",
+  "date_iso": "2026-02-06",
+  "html_path": "emails/provisionamentos/provisionamentos_06-02-2026.html",
+  "category": "Provisionamentos",
+  "columns": [
+    "Ação Governo",
+    "Grupo Despesa",
+    "Grupo Despesa (2)",
+    "PI",
+    "PI (2)",
+    "NC",
+    "Doc - Observação",
+    "Transação - Mês",
+    "Saldo - Moeda Origem (Item Informação)"
+  ],
+  "rows": [
+    {
+      "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "PI": "-8",
+      "PI (2)": "SEM INFORMACAO",
+      "NC": "158125264222026NC000002",
+      "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS CONSIDERANDO 1/12 AVOS DA PLOA 2026 COM BASE NA DIVISAO ORCAMENTARIA DA LOA 2025. SEM RETENCOES.",
+      "Transação - Mês": "JAN/2026",
+      "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+    }
+  ],
+  "totals": [
+    {
+      "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 490286.08
+      },
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Saldo - Moeda Origem (Item Informação)": 490286.08
+      },
+      "raw": {
+        "Ação Governo": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "PI": "-8",
+        "PI (2)": "SEM INFORMACAO",
+        "NC": "158125264222026NC000002",
+        "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS CONSIDERANDO 1/12 AVOS DA PLOA 2026 COM BASE NA DIVISAO ORCAMENTARIA DA LOA 2025. SEM RETENCOES.",
+        "Transação - Mês": "JAN/2026",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+        "Grupo Despesa": "Total",
+        "Grupo Despesa (2)": "Total",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Ação Governo": "Total",
+        "Grupo Despesa": "",
+        "Grupo Despesa (2)": "",
+        "PI": "",
+        "PI (2)": "",
+        "NC": "",
+        "Doc - Observação": "",
+        "Transação - Mês": "",
+        "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 146,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "972f604a71e5309ad0a05b047034705f469f0e5e8fadb3eed1cd58a241ce7404",
+    "row_count": 1,
+    "column_count": 9,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

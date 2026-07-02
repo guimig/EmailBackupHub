@@ -1,0 +1,931 @@
+{
+  "schema_version": "1.4",
+  "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
+  "title": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
+  "date": "20/02/2026",
+  "date_iso": "2026-02-20",
+  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_20-02-2026.html",
+  "category": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
+  "columns": [
+    "Mes",
+    "Empenhado",
+    "Liquidado",
+    "Pago",
+    "Liquidado a Pagar",
+    "Valor 6",
+    "Valor 7",
+    "Valor 8",
+    "Valor 9"
+  ],
+  "rows": [
+    {
+      "Mes": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "Item Informação",
+      "Valor 7": "29",
+      "Valor 8": "31",
+      "Valor 9": "34"
+    },
+    {
+      "Mes": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "Item Informação",
+      "Valor 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+      "Valor 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+      "Valor 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
+    },
+    {
+      "Mes": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "NE CCor - Favorecido",
+      "Valor 7": "Saldo - R$ (Item Informação)",
+      "Valor 8": "Saldo - R$ (Item Informação)",
+      "Valor 9": "Saldo - R$ (Item Informação)"
+    },
+    {
+      "Mes": "DIARIAS - PESSOAL CIVIL",
+      "Empenhado": "33901414",
+      "Liquidado": "DIARIAS NO PAIS",
+      "Pago": "158459264222026NE000019",
+      "Liquidado a Pagar": "NAO SE APLICA Nº 1/2026 PARA PAGAMENTO DE DIARIAS DE PESSOAL CIVIL PARA ATENDER O INTERESSES DO IFC - CAMPUS ARAQUARI.",
+      "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Valor 7": "5.000,00",
+      "Valor 8": "2.145,90",
+      "Valor 9": "2.145,90"
+    },
+    {
+      "Mes": "MATERIAL DE CONSUMO",
+      "Empenhado": "33903006",
+      "Liquidado": "ALIMENTOS PARA ANIMAIS",
+      "Pago": "158459264222026NE000022",
+      "Liquidado a Pagar": "EMPENHO DE ALIMENTOS PARA ANIMAIS (RACAO) PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI. SETOR REQUISITANTE: COORD. ESCOLA FAZENDA. PREGAO ELETR. N. 90274/2025 - SRP. ADESAO INTERNA N. 211/2025. PROCESSO N. 23349.004413/2025-94. CF. MEMO ELET. N. 2/2026 - CAMP/ARAQ (IDENTIFICADOR: 202703524). FISCAL TITULAR / SUBSTITUTO: ARISTILIANO B. B. / CRISTIANO T.",
+      "Valor 6": "MARIANA MOREIRA ANDRASCHKO LTDA",
+      "Valor 7": "9.494,40",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "MATERIAL DE CONSUMO",
+      "Empenhado": "33903024",
+      "Liquidado": "MATERIAL P/ MANUT.DE BENS IMOVEIS/INSTALACOES",
+      "Pago": "158459264222026NE000017",
+      "Liquidado a Pagar": "EMPENHO PARA FORNECIMENTO DE PECAS PARA MANUTENCAO DE ELEVADORES DO IFC CAMPUS ARAQUARI. CONTRATO 88/2025. PROCESSO 23349.0019363/2025-51.",
+      "Valor 6": "SAFETY ELEVADORES LTDA",
+      "Valor 7": "3.000,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "MATERIAL DE CONSUMO",
+      "Empenhado": "33903096",
+      "Liquidado": "MATERIAL DE CONSUMO - PAGTO ANTECIPADO",
+      "Pago": "158459264222026NE000002",
+      "Liquidado a Pagar": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+      "Valor 6": "TIAGO JONES BACK",
+      "Valor 7": "10.000,00",
+      "Valor 8": "10.000,00",
+      "Valor 9": "10.000,00"
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+      "Empenhado": "33903602",
+      "Liquidado": "DIARIAS A COLABORADORES EVENTUAIS NO PAIS",
+      "Pago": "158459264222026NE000020",
+      "Liquidado a Pagar": "NAO SE APLICA Nº 2/2026 PARA PAGAMENTO DE DIARIAS A COLABORADORES EVENTUAIS NO PAIS PARA ATENDER OS INTERESSES DO IFC - CAMPUS ARAQUARI.",
+      "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Valor 7": "1.000,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "LOCACAO DE MAO-DE-OBRA",
+      "Empenhado": "33903701",
+      "Liquidado": "APOIO ADMINISTRATIVO, TECNICO E OPERACIONAL",
+      "Pago": "158459264222026NE000004",
+      "Liquidado a Pagar": "EMPENHO PARA SERVICOS CONTINUADOS DE TRABALHADORES RURAIS POLIVALENTES, COM DISPONIBILIZACAO DE MAO DE OBRA EM REGIME DE DEDICACAO EXCLUSIVA, PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. CONTRATO CAMP/ARAQ Nº 94/2022. PREGAO Nº 67/2022. PROCESSO N.º 23349.001724/2022-59.",
+      "Valor 6": "PARANA LIMP SERVICOS TERCEIRIZADOS LTDA",
+      "Valor 7": "58.805,90",
+      "Valor 8": "58.593,37",
+      "Valor 9": "46.611,03"
+    },
+    {
+      "Mes": "LOCACAO DE MAO-DE-OBRA",
+      "Empenhado": "33903702",
+      "Liquidado": "LIMPEZA E CONSERVACAO",
+      "Pago": "158459264222026NE000006",
+      "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
+      "Valor 6": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
+      "Valor 7": "97.426,54",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "LOCACAO DE MAO-DE-OBRA",
+      "Empenhado": "33903704",
+      "Liquidado": "MANUTENCAO E CONSERVACAO DE BENS IMOVEIS",
+      "Pago": "158459264222026NE000008",
+      "Liquidado a Pagar": "EMPENHO PARA O CONTRATO 183/2023 - PREGAO 118/2023 - MANUTENCAO PREDIAL E SERVICO DE ELETRICISTA COM DEDICACAO DE MAO DE OBRA. PROCESSO 23349.003781/2023-53. FISCAIS THIAGO E JOVERCI.",
+      "Valor 6": "JL SERVICOS LTDA",
+      "Valor 7": "27.280,84",
+      "Valor 8": "23.528,01",
+      "Valor 9": "18.716,53"
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903916",
+      "Liquidado": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+      "Pago": "158459264222026NE000016",
+      "Liquidado a Pagar": "EMPENHO PARA PRESTACAO DE SERVICO DE MANUTENCAO DE ELEVADORES DO IFC CAMPUS ARAQUARI. CONTRATO 88/2025. PROCESSO 23349.001963/2025-51.",
+      "Valor 6": "SAFETY ELEVADORES LTDA",
+      "Valor 7": "3.000,00",
+      "Valor 8": "733,00",
+      "Valor 9": "733,00"
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903941",
+      "Liquidado": "FORNECIMENTO DE ALIMENTACAO",
+      "Pago": "158459264222026NE000005",
+      "Liquidado a Pagar": "EMPENHO PARA FORNECIMENTO DE REFEICOES SUBSIDIADAS AOS ALUNOS DO CAMPUS ARAQUARI. CONTRATO 15/2023. PROCESSO 23349.005597/2022-67.",
+      "Valor 6": "MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA",
+      "Valor 7": "200.000,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903943",
+      "Liquidado": "SERVICOS DE ENERGIA ELETRICA",
+      "Pago": "158459264222026NE000010",
+      "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE ENERGIA ELETRICA PELA DISTRIBUIDORA AO CONSUMIDOR NO AMBIENTE DE CONTRATACAO REGULADO, PARA VIABILIZAR O ATENDIMENTO DAS NECESSIDADES DE COMPRA DE ENERGIA ELETRICA DA UNIDADE CONSUMIDORA 12211775. CONTRATO 193/2024 - CAMP/ARAQ. FISCAL: JOVERCI A. P. E TIAGO J. B.",
+      "Valor 6": "CELESC DISTRIBUICAO S.A",
+      "Valor 7": "9.996,72",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903943",
+      "Liquidado": "SERVICOS DE ENERGIA ELETRICA",
+      "Pago": "158459264222026NE000012",
+      "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE ENERGIA ELETRICA PELA DISTRIBUIDORA AO CONSUMIDOR NO AMBIENTE DE CONTRATACAO REGULADO, PARA VIABILIZAR O ATENDIMENTO DAS NECESSIDADES DE COMPRA DE ENERGIA ELETRICA DA UNIDADE CONSUMIDORA 19123278. CONTRATO N. 194/2024 CAMP/ARAQ. FISCAL: JOVERCI A. P. E TIAGO J. B.",
+      "Valor 6": "CELESC DISTRIBUICAO S.A",
+      "Valor 7": "9.999,60",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903944",
+      "Liquidado": "SERVICOS DE AGUA, ESGOTO E RESIDUOS SOLIDOS",
+      "Pago": "158459264222026NE000018",
+      "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DE FATURAS DO CONTRATO DE SERVICO DE AGUA E ESGOTO FIRMADO COM A COMPANHIA DE AGUAS E SANEAMENTO - CASAN - INEXIGIBILIDADE N. 99/2024. CONTRATO N. 147/2025.",
+      "Valor 6": "COMPANHIA CATARINENSE DE AGUAS E SANEAMENTO CASAN",
+      "Valor 7": "9.999,56",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903947",
+      "Liquidado": "SERVICOS DE COMUNICACAO EM GERAL",
+      "Pago": "158459264222026NE000015",
+      "Liquidado a Pagar": "EMPENHO PARA O SERVICO DE CORREIOS EXERCICIO 2026. CONTRATO 76/2025 - CAMP/ARAQ. DISPENSA DE LICITACAO Nº 181/2024. ATO QUE AUTORIZA A CONTRATACAO DIRETA Nº 325/2025.",
+      "Valor 6": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+      "Valor 7": "100,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903958",
+      "Liquidado": "SERVICOS DE TELECOMUNICACOES",
+      "Pago": "158459264222026NE000003",
+      "Liquidado a Pagar": "EMPENHO DE SERVICO DE TELEFONIA, PR 128/2021, CONTRATO 86/2022, PROCESSO 23349.002933/2022-10, PARA ATENDER OS INTERESSES DO IFC-CAMPUS ARAQUARI.",
+      "Valor 6": "OI S.A. - EM RECUPERACAO JUDICIAL",
+      "Valor 7": "800,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903969",
+      "Liquidado": "SEGUROS EM GERAL",
+      "Pago": "158459264222026NE000009",
+      "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DO CONTRATO DE SEGURO ESTUDANTIL NO AMBITO DO CAMPUS ARAQUARI. CONTRATO NUMERO 8/2024 - CAMP/ARAQ. PE 32/2023. FISCAL: 23349.005058/2023-17.",
+      "Valor 6": "SEGUROS SURA S.A.",
+      "Valor 7": "500,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903978",
+      "Liquidado": "LIMPEZA E CONSERVACAO",
+      "Pago": "158459264222026NE000014",
+      "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE PRESTADORA DE SERVICO ESPECIALIZADO PARA COLETA, TRANSPORTE E DESTINO FINAL DE RESIDUOS DOMICILIARES E COMERCIAIS COM CARACTERISTICAS DOMESTICAS PARA O IFC CAMPUS ARAQUARI. ATO QUE AUTORIZA A CONTRATACAO DIRETA N. 323/2025. INEXIGIBILIDADE N. 105/2024.",
+      "Valor 6": "RECICLE CATARINENSE DE RESIDUOS LTDA",
+      "Valor 7": "2.999,93",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Empenhado": "33903996",
+      "Liquidado": "OUTROS SERV.DE TERCEIROS PJ- PAGTO ANTECIPADO",
+      "Pago": "158459264222026NE000001",
+      "Liquidado a Pagar": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA N. 05/2024 ¿ PROAD/IFC.",
+      "Valor 6": "TIAGO JONES BACK",
+      "Valor 7": "10.000,00",
+      "Valor 8": "10.000,00",
+      "Valor 9": "10.000,00"
+    },
+    {
+      "Mes": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+      "Empenhado": "33904016",
+      "Liquidado": "OUTSOURCING DE IMPRESSAO",
+      "Pago": "158459264222026NE000007",
+      "Liquidado a Pagar": "EMPENHO ESTIMATIVO DE SERVICOS E OUTSOURCING DE IMPRESSAO. CONTRATO 162/23. ADESAO INTERNA 180/2023 AO PE 21/2023. 23349.003729/2023-05.",
+      "Valor 6": "A4 DIGITAL PRINT LTDA",
+      "Valor 7": "6.982,92",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+      "Empenhado": "33904710",
+      "Liquidado": "TAXAS",
+      "Pago": "158459264222026NE000021",
+      "Liquidado a Pagar": "NAO SE APLICA N° 3/2026 PARA PAGAMENTO DE REGISTRO DE RESPONSABILIDADE TECNICA (RRT) JUNTO AO CONSELHO DE ARQUITETURA E URBANISMO DO BRASIL PARA EXECUCAO DA OBRA DA BIBLIOTECA (PAC) DO IFC CAMPUS ARAQUARI.",
+      "Valor 6": "CONSELHO DE ARQUITETURA E URBANISMO DE SANTA CATARINA",
+      "Valor 7": "130,64",
+      "Valor 8": "130,64",
+      "Valor 9": "130,64"
+    },
+    {
+      "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+      "Empenhado": "33904722",
+      "Liquidado": "CONTRIBUICAO P/ CUSTEIO DE ILUMINACAO PUBLICA",
+      "Pago": "158459264222026NE000011",
+      "Liquidado a Pagar": "EMPENHO PARA TAXA COSIP. CONTRATO 193/2024. UC 12211775. PROCESSO: 23349.004549/2024-13.",
+      "Valor 6": "CELESC DISTRIBUICAO S.A",
+      "Valor 7": "800,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    },
+    {
+      "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+      "Empenhado": "33904722",
+      "Liquidado": "CONTRIBUICAO P/ CUSTEIO DE ILUMINACAO PUBLICA",
+      "Pago": "158459264222026NE000013",
+      "Liquidado a Pagar": "EMPENHO PARA TAXA COSIP. CONTRATO 194/2024. UC 19123278. PROCESSO: 23349.004549/2024-13.",
+      "Valor 6": "CELESC DISTRIBUICAO S.A",
+      "Valor 7": "800,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    }
+  ],
+  "totals": [
+    {
+      "label": "DIARIAS - PESSOAL CIVIL",
+      "values": {
+        "Valor 7": 5000.0,
+        "Valor 8": 2145.9,
+        "Valor 9": 2145.9
+      },
+      "raw": {
+        "Mes": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "5.000,00",
+        "Valor 8": "2.145,90",
+        "Valor 9": "2.145,90"
+      }
+    },
+    {
+      "label": "MATERIAL DE CONSUMO",
+      "values": {
+        "Valor 7": 22494.4,
+        "Valor 8": 10000.0,
+        "Valor 9": 10000.0
+      },
+      "raw": {
+        "Mes": "MATERIAL DE CONSUMO",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "22.494,40",
+        "Valor 8": "10.000,00",
+        "Valor 9": "10.000,00"
+      }
+    },
+    {
+      "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+      "values": {
+        "Valor 7": 1000.0
+      },
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "1.000,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "label": "LOCACAO DE MAO-DE-OBRA",
+      "values": {
+        "Valor 7": 183513.28,
+        "Valor 8": 82121.38,
+        "Valor 9": 65327.56
+      },
+      "raw": {
+        "Mes": "LOCACAO DE MAO-DE-OBRA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "183.513,28",
+        "Valor 8": "82.121,38",
+        "Valor 9": "65.327,56"
+      }
+    },
+    {
+      "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "values": {
+        "Valor 7": 247395.81,
+        "Valor 8": 10733.0,
+        "Valor 9": 10733.0
+      },
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "247.395,81",
+        "Valor 8": "10.733,00",
+        "Valor 9": "10.733,00"
+      }
+    },
+    {
+      "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+      "values": {
+        "Valor 7": 6982.92
+      },
+      "raw": {
+        "Mes": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "6.982,92",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+      "values": {
+        "Valor 7": 1730.64,
+        "Valor 8": 130.64,
+        "Valor 9": 130.64
+      },
+      "raw": {
+        "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "1.730,64",
+        "Valor 8": "130,64",
+        "Valor 9": "130,64"
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Valor 7": 468117.05,
+        "Valor 8": 105130.92,
+        "Valor 9": 88337.1
+      },
+      "raw": {
+        "Mes": "Total",
+        "Empenhado": "",
+        "Liquidado": "",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "468.117,05",
+        "Valor 8": "105.130,92",
+        "Valor 9": "88.337,10"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "Item Informação",
+        "Valor 7": "29",
+        "Valor 8": "31",
+        "Valor 9": "34"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "Item Informação",
+        "Valor 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+        "Valor 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+        "Valor 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "NE CCor - Favorecido",
+        "Valor 7": "Saldo - R$ (Item Informação)",
+        "Valor 8": "Saldo - R$ (Item Informação)",
+        "Valor 9": "Saldo - R$ (Item Informação)"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "33901414",
+        "Liquidado": "DIARIAS NO PAIS",
+        "Pago": "158459264222026NE000019",
+        "Liquidado a Pagar": "NAO SE APLICA Nº 1/2026 PARA PAGAMENTO DE DIARIAS DE PESSOAL CIVIL PARA ATENDER O INTERESSES DO IFC - CAMPUS ARAQUARI.",
+        "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Valor 7": "5.000,00",
+        "Valor 8": "2.145,90",
+        "Valor 9": "2.145,90"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "5.000,00",
+        "Valor 8": "2.145,90",
+        "Valor 9": "2.145,90"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "MATERIAL DE CONSUMO",
+        "Empenhado": "33903006",
+        "Liquidado": "ALIMENTOS PARA ANIMAIS",
+        "Pago": "158459264222026NE000022",
+        "Liquidado a Pagar": "EMPENHO DE ALIMENTOS PARA ANIMAIS (RACAO) PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI. SETOR REQUISITANTE: COORD. ESCOLA FAZENDA. PREGAO ELETR. N. 90274/2025 - SRP. ADESAO INTERNA N. 211/2025. PROCESSO N. 23349.004413/2025-94. CF. MEMO ELET. N. 2/2026 - CAMP/ARAQ (IDENTIFICADOR: 202703524). FISCAL TITULAR / SUBSTITUTO: ARISTILIANO B. B. / CRISTIANO T.",
+        "Valor 6": "MARIANA MOREIRA ANDRASCHKO LTDA",
+        "Valor 7": "9.494,40",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "MATERIAL DE CONSUMO",
+        "Empenhado": "33903024",
+        "Liquidado": "MATERIAL P/ MANUT.DE BENS IMOVEIS/INSTALACOES",
+        "Pago": "158459264222026NE000017",
+        "Liquidado a Pagar": "EMPENHO PARA FORNECIMENTO DE PECAS PARA MANUTENCAO DE ELEVADORES DO IFC CAMPUS ARAQUARI. CONTRATO 88/2025. PROCESSO 23349.0019363/2025-51.",
+        "Valor 6": "SAFETY ELEVADORES LTDA",
+        "Valor 7": "3.000,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "MATERIAL DE CONSUMO",
+        "Empenhado": "33903096",
+        "Liquidado": "MATERIAL DE CONSUMO - PAGTO ANTECIPADO",
+        "Pago": "158459264222026NE000002",
+        "Liquidado a Pagar": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+        "Valor 6": "TIAGO JONES BACK",
+        "Valor 7": "10.000,00",
+        "Valor 8": "10.000,00",
+        "Valor 9": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "MATERIAL DE CONSUMO",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "22.494,40",
+        "Valor 8": "10.000,00",
+        "Valor 9": "10.000,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+        "Empenhado": "33903602",
+        "Liquidado": "DIARIAS A COLABORADORES EVENTUAIS NO PAIS",
+        "Pago": "158459264222026NE000020",
+        "Liquidado a Pagar": "NAO SE APLICA Nº 2/2026 PARA PAGAMENTO DE DIARIAS A COLABORADORES EVENTUAIS NO PAIS PARA ATENDER OS INTERESSES DO IFC - CAMPUS ARAQUARI.",
+        "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Valor 7": "1.000,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "1.000,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "LOCACAO DE MAO-DE-OBRA",
+        "Empenhado": "33903701",
+        "Liquidado": "APOIO ADMINISTRATIVO, TECNICO E OPERACIONAL",
+        "Pago": "158459264222026NE000004",
+        "Liquidado a Pagar": "EMPENHO PARA SERVICOS CONTINUADOS DE TRABALHADORES RURAIS POLIVALENTES, COM DISPONIBILIZACAO DE MAO DE OBRA EM REGIME DE DEDICACAO EXCLUSIVA, PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. CONTRATO CAMP/ARAQ Nº 94/2022. PREGAO Nº 67/2022. PROCESSO N.º 23349.001724/2022-59.",
+        "Valor 6": "PARANA LIMP SERVICOS TERCEIRIZADOS LTDA",
+        "Valor 7": "58.805,90",
+        "Valor 8": "58.593,37",
+        "Valor 9": "46.611,03"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "LOCACAO DE MAO-DE-OBRA",
+        "Empenhado": "33903702",
+        "Liquidado": "LIMPEZA E CONSERVACAO",
+        "Pago": "158459264222026NE000006",
+        "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
+        "Valor 6": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
+        "Valor 7": "97.426,54",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "LOCACAO DE MAO-DE-OBRA",
+        "Empenhado": "33903704",
+        "Liquidado": "MANUTENCAO E CONSERVACAO DE BENS IMOVEIS",
+        "Pago": "158459264222026NE000008",
+        "Liquidado a Pagar": "EMPENHO PARA O CONTRATO 183/2023 - PREGAO 118/2023 - MANUTENCAO PREDIAL E SERVICO DE ELETRICISTA COM DEDICACAO DE MAO DE OBRA. PROCESSO 23349.003781/2023-53. FISCAIS THIAGO E JOVERCI.",
+        "Valor 6": "JL SERVICOS LTDA",
+        "Valor 7": "27.280,84",
+        "Valor 8": "23.528,01",
+        "Valor 9": "18.716,53"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "LOCACAO DE MAO-DE-OBRA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "183.513,28",
+        "Valor 8": "82.121,38",
+        "Valor 9": "65.327,56"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903916",
+        "Liquidado": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+        "Pago": "158459264222026NE000016",
+        "Liquidado a Pagar": "EMPENHO PARA PRESTACAO DE SERVICO DE MANUTENCAO DE ELEVADORES DO IFC CAMPUS ARAQUARI. CONTRATO 88/2025. PROCESSO 23349.001963/2025-51.",
+        "Valor 6": "SAFETY ELEVADORES LTDA",
+        "Valor 7": "3.000,00",
+        "Valor 8": "733,00",
+        "Valor 9": "733,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903941",
+        "Liquidado": "FORNECIMENTO DE ALIMENTACAO",
+        "Pago": "158459264222026NE000005",
+        "Liquidado a Pagar": "EMPENHO PARA FORNECIMENTO DE REFEICOES SUBSIDIADAS AOS ALUNOS DO CAMPUS ARAQUARI. CONTRATO 15/2023. PROCESSO 23349.005597/2022-67.",
+        "Valor 6": "MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA",
+        "Valor 7": "200.000,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903943",
+        "Liquidado": "SERVICOS DE ENERGIA ELETRICA",
+        "Pago": "158459264222026NE000010",
+        "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE ENERGIA ELETRICA PELA DISTRIBUIDORA AO CONSUMIDOR NO AMBIENTE DE CONTRATACAO REGULADO, PARA VIABILIZAR O ATENDIMENTO DAS NECESSIDADES DE COMPRA DE ENERGIA ELETRICA DA UNIDADE CONSUMIDORA 12211775. CONTRATO 193/2024 - CAMP/ARAQ. FISCAL: JOVERCI A. P. E TIAGO J. B.",
+        "Valor 6": "CELESC DISTRIBUICAO S.A",
+        "Valor 7": "9.996,72",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903943",
+        "Liquidado": "SERVICOS DE ENERGIA ELETRICA",
+        "Pago": "158459264222026NE000012",
+        "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE ENERGIA ELETRICA PELA DISTRIBUIDORA AO CONSUMIDOR NO AMBIENTE DE CONTRATACAO REGULADO, PARA VIABILIZAR O ATENDIMENTO DAS NECESSIDADES DE COMPRA DE ENERGIA ELETRICA DA UNIDADE CONSUMIDORA 19123278. CONTRATO N. 194/2024 CAMP/ARAQ. FISCAL: JOVERCI A. P. E TIAGO J. B.",
+        "Valor 6": "CELESC DISTRIBUICAO S.A",
+        "Valor 7": "9.999,60",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903944",
+        "Liquidado": "SERVICOS DE AGUA, ESGOTO E RESIDUOS SOLIDOS",
+        "Pago": "158459264222026NE000018",
+        "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DE FATURAS DO CONTRATO DE SERVICO DE AGUA E ESGOTO FIRMADO COM A COMPANHIA DE AGUAS E SANEAMENTO - CASAN - INEXIGIBILIDADE N. 99/2024. CONTRATO N. 147/2025.",
+        "Valor 6": "COMPANHIA CATARINENSE DE AGUAS E SANEAMENTO CASAN",
+        "Valor 7": "9.999,56",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903947",
+        "Liquidado": "SERVICOS DE COMUNICACAO EM GERAL",
+        "Pago": "158459264222026NE000015",
+        "Liquidado a Pagar": "EMPENHO PARA O SERVICO DE CORREIOS EXERCICIO 2026. CONTRATO 76/2025 - CAMP/ARAQ. DISPENSA DE LICITACAO Nº 181/2024. ATO QUE AUTORIZA A CONTRATACAO DIRETA Nº 325/2025.",
+        "Valor 6": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+        "Valor 7": "100,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903958",
+        "Liquidado": "SERVICOS DE TELECOMUNICACOES",
+        "Pago": "158459264222026NE000003",
+        "Liquidado a Pagar": "EMPENHO DE SERVICO DE TELEFONIA, PR 128/2021, CONTRATO 86/2022, PROCESSO 23349.002933/2022-10, PARA ATENDER OS INTERESSES DO IFC-CAMPUS ARAQUARI.",
+        "Valor 6": "OI S.A. - EM RECUPERACAO JUDICIAL",
+        "Valor 7": "800,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903969",
+        "Liquidado": "SEGUROS EM GERAL",
+        "Pago": "158459264222026NE000009",
+        "Liquidado a Pagar": "EMPENHO PARA PAGAMENTO DO CONTRATO DE SEGURO ESTUDANTIL NO AMBITO DO CAMPUS ARAQUARI. CONTRATO NUMERO 8/2024 - CAMP/ARAQ. PE 32/2023. FISCAL: 23349.005058/2023-17.",
+        "Valor 6": "SEGUROS SURA S.A.",
+        "Valor 7": "500,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903978",
+        "Liquidado": "LIMPEZA E CONSERVACAO",
+        "Pago": "158459264222026NE000014",
+        "Liquidado a Pagar": "EMPENHO PARA CONTRATACAO DE PRESTADORA DE SERVICO ESPECIALIZADO PARA COLETA, TRANSPORTE E DESTINO FINAL DE RESIDUOS DOMICILIARES E COMERCIAIS COM CARACTERISTICAS DOMESTICAS PARA O IFC CAMPUS ARAQUARI. ATO QUE AUTORIZA A CONTRATACAO DIRETA N. 323/2025. INEXIGIBILIDADE N. 105/2024.",
+        "Valor 6": "RECICLE CATARINENSE DE RESIDUOS LTDA",
+        "Valor 7": "2.999,93",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "33903996",
+        "Liquidado": "OUTROS SERV.DE TERCEIROS PJ- PAGTO ANTECIPADO",
+        "Pago": "158459264222026NE000001",
+        "Liquidado a Pagar": "SUPRIMENTO DE FUNDOS N. 01/2026 PARA USO DO CARTAO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO AMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIRECAO DE ADMINISTRACAO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA N. 05/2024 ¿ PROAD/IFC.",
+        "Valor 6": "TIAGO JONES BACK",
+        "Valor 7": "10.000,00",
+        "Valor 8": "10.000,00",
+        "Valor 9": "10.000,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "247.395,81",
+        "Valor 8": "10.733,00",
+        "Valor 9": "10.733,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+        "Empenhado": "33904016",
+        "Liquidado": "OUTSOURCING DE IMPRESSAO",
+        "Pago": "158459264222026NE000007",
+        "Liquidado a Pagar": "EMPENHO ESTIMATIVO DE SERVICOS E OUTSOURCING DE IMPRESSAO. CONTRATO 162/23. ADESAO INTERNA 180/2023 AO PE 21/2023. 23349.003729/2023-05.",
+        "Valor 6": "A4 DIGITAL PRINT LTDA",
+        "Valor 7": "6.982,92",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "6.982,92",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+        "Empenhado": "33904710",
+        "Liquidado": "TAXAS",
+        "Pago": "158459264222026NE000021",
+        "Liquidado a Pagar": "NAO SE APLICA N° 3/2026 PARA PAGAMENTO DE REGISTRO DE RESPONSABILIDADE TECNICA (RRT) JUNTO AO CONSELHO DE ARQUITETURA E URBANISMO DO BRASIL PARA EXECUCAO DA OBRA DA BIBLIOTECA (PAC) DO IFC CAMPUS ARAQUARI.",
+        "Valor 6": "CONSELHO DE ARQUITETURA E URBANISMO DE SANTA CATARINA",
+        "Valor 7": "130,64",
+        "Valor 8": "130,64",
+        "Valor 9": "130,64"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+        "Empenhado": "33904722",
+        "Liquidado": "CONTRIBUICAO P/ CUSTEIO DE ILUMINACAO PUBLICA",
+        "Pago": "158459264222026NE000011",
+        "Liquidado a Pagar": "EMPENHO PARA TAXA COSIP. CONTRATO 193/2024. UC 12211775. PROCESSO: 23349.004549/2024-13.",
+        "Valor 6": "CELESC DISTRIBUICAO S.A",
+        "Valor 7": "800,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+        "Empenhado": "33904722",
+        "Liquidado": "CONTRIBUICAO P/ CUSTEIO DE ILUMINACAO PUBLICA",
+        "Pago": "158459264222026NE000013",
+        "Liquidado a Pagar": "EMPENHO PARA TAXA COSIP. CONTRATO 194/2024. UC 19123278. PROCESSO: 23349.004549/2024-13.",
+        "Valor 6": "CELESC DISTRIBUICAO S.A",
+        "Valor 7": "800,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "1.730,64",
+        "Valor 8": "130,64",
+        "Valor 9": "130,64"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Mes": "Total",
+        "Empenhado": "",
+        "Liquidado": "",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "468.117,05",
+        "Valor 8": "105.130,92",
+        "Valor 9": "88.337,10"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 132,
+    "periodicidade": "diaria",
+    "exercicio": 2026,
+    "fonte_email_uid": null,
+    "hash_conteudo": "d039cbcdb7c337dbb49446ca243ddd050c828cb871a3288e8701021ad18af7cb",
+    "row_count": 25,
+    "column_count": 9,
+    "status": "desatualizado",
+    "limite_dias": 1
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}

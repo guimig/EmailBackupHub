@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.4",
+  "slug": "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu",
+  "title": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
+  "date": "27/08/2025",
+  "date_iso": "2025-08-27",
+  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_27-08-2025.html",
+  "category": "Despesas Empenhadas, Liquidadas e Pagas - Stricto Sensu",
+  "columns": [
+    "Natureza de Despesa",
+    "Empenhado",
+    "Liquidado",
+    "Pago",
+    "Liquidado a Pagar",
+    "Valor 6",
+    "Valor 7",
+    "Valor 8",
+    "Valor 9"
+  ],
+  "rows": [
+    {
+      "Natureza de Despesa": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "Item Informação",
+      "Valor 7": "29",
+      "Valor 8": "31",
+      "Valor 9": "34"
+    },
+    {
+      "Natureza de Despesa": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "Item Informação",
+      "Valor 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+      "Valor 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+      "Valor 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
+    },
+    {
+      "Natureza de Despesa": "Natureza Despesa",
+      "Empenhado": "Natureza Despesa Detalhada",
+      "Liquidado": "Natureza Despesa Detalhada",
+      "Pago": "NE CCor",
+      "Liquidado a Pagar": "NE CCor - Descrição",
+      "Valor 6": "NE CCor - Favorecido",
+      "Valor 7": "Saldo - R$ (Item Informação)",
+      "Valor 8": "Saldo - R$ (Item Informação)",
+      "Valor 9": "Saldo - R$ (Item Informação)"
+    },
+    {
+      "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+      "Empenhado": "33901414",
+      "Liquidado": "DIARIAS NO PAIS",
+      "Pago": "158459264222025NE000057",
+      "Liquidado a Pagar": "EMPENHO PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PPGPSA - PROGRAMA DE POS GRADUACAO EM SANIDADE ANIMAL, NO AMBITO DO IFC CAMPUS ARAQUARI, DURANTE O EXERCICIO DE 2025. NAO SE APLICA Nº 03/2025.",
+      "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Valor 7": "15.000,00",
+      "Valor 8": "9.301,03",
+      "Valor 9": "9.301,03"
+    },
+    {
+      "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+      "Empenhado": "33901414",
+      "Liquidado": "DIARIAS NO PAIS",
+      "Pago": "158459264222025NE000121",
+      "Liquidado a Pagar": "NAO SE APLICA Nº 06/2025 PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PROGRAMA DE POS-GRADUACAO EM TECNOLOGIA E AMBIENTE - PPGTA, DURANTE O EXERCICIO DE 2025. PROCESSO: 23349.002819/2025-32.",
+      "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Valor 7": "10.000,00",
+      "Valor 8": "1.072,77",
+      "Valor 9": "1.072,77"
+    },
+    {
+      "Natureza de Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "Empenhado": "33901801",
+      "Liquidado": "BOLSAS DE ESTUDO NO PAIS",
+      "Pago": "158459264222025NE000120",
+      "Liquidado a Pagar": "EMPENHO PARA ATENDER AS DESPESAS COM O CENTRO DE CUSTOS STRICTU SENSU RELATIVO AO EDITAL 35/2025 - ASSEG/GAB, DO CURSO PPGTA - SEIS MIL REAIS - PPGSA - TRES MIL REAIS - CF. MEMORANDO ELETRONICO 25/2025 - PROEPI. AUXILIO FINANCEIRO A ESTUDANTES PARA APRESENTACAO DE TRABALHOS.",
+      "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "Valor 7": "9.000,00",
+      "Valor 8": "2.395,70",
+      "Valor 9": "895,70"
+    },
+    {
+      "Natureza de Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+      "Empenhado": "44905243",
+      "Liquidado": "EQUIPAMENTOS DE TIC - SERVIDORES/STORAGE",
+      "Pago": "158459264222025NE000137",
+      "Liquidado a Pagar": "EMPENHO DE SERVIDOR DE RACK PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. CF. MEM. 129/2024 - CTI/ARA. PREGAO SRP 90088/2024. ADESAO INTERNA 251/2024. PROCESSO 23349.0002242025-42. SETOR REQUISITANTE: CTI. FISCAIS: JOAO R. T. E CARINA L. DA S.",
+      "Valor 6": "GLOBAL DISTRIBUICAO DE BENS DE CONSUMO LTDA.",
+      "Valor 7": "0,00",
+      "Valor 8": "",
+      "Valor 9": ""
+    }
+  ],
+  "totals": [
+    {
+      "label": "DIARIAS - PESSOAL CIVIL",
+      "values": {
+        "Valor 7": 25000.0,
+        "Valor 8": 10373.8,
+        "Valor 9": 10373.8
+      },
+      "raw": {
+        "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "25.000,00",
+        "Valor 8": "10.373,80",
+        "Valor 9": "10.373,80"
+      }
+    },
+    {
+      "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+      "values": {
+        "Valor 7": 9000.0,
+        "Valor 8": 2395.7,
+        "Valor 9": 895.7
+      },
+      "raw": {
+        "Natureza de Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "9.000,00",
+        "Valor 8": "2.395,70",
+        "Valor 9": "895,70"
+      }
+    },
+    {
+      "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+      "values": {
+        "Valor 7": 0.0
+      },
+      "raw": {
+        "Natureza de Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "0,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "label": "Total",
+      "values": {
+        "Valor 7": 34000.0,
+        "Valor 8": 12769.5,
+        "Valor 9": 11269.5
+      },
+      "raw": {
+        "Natureza de Despesa": "Total",
+        "Empenhado": "",
+        "Liquidado": "",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "34.000,00",
+        "Valor 8": "12.769,50",
+        "Valor 9": "11.269,50"
+      }
+    }
+  ],
+  "row_types": [
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "Item Informação",
+        "Valor 7": "29",
+        "Valor 8": "31",
+        "Valor 9": "34"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "Item Informação",
+        "Valor 7": "DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+        "Valor 8": "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+        "Valor 9": "DESPESAS PAGAS (CONTROLE EMPENHO)"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "Natureza Despesa",
+        "Empenhado": "Natureza Despesa Detalhada",
+        "Liquidado": "Natureza Despesa Detalhada",
+        "Pago": "NE CCor",
+        "Liquidado a Pagar": "NE CCor - Descrição",
+        "Valor 6": "NE CCor - Favorecido",
+        "Valor 7": "Saldo - R$ (Item Informação)",
+        "Valor 8": "Saldo - R$ (Item Informação)",
+        "Valor 9": "Saldo - R$ (Item Informação)"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "33901414",
+        "Liquidado": "DIARIAS NO PAIS",
+        "Pago": "158459264222025NE000057",
+        "Liquidado a Pagar": "EMPENHO PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PPGPSA - PROGRAMA DE POS GRADUACAO EM SANIDADE ANIMAL, NO AMBITO DO IFC CAMPUS ARAQUARI, DURANTE O EXERCICIO DE 2025. NAO SE APLICA Nº 03/2025.",
+        "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Valor 7": "15.000,00",
+        "Valor 8": "9.301,03",
+        "Valor 9": "9.301,03"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "33901414",
+        "Liquidado": "DIARIAS NO PAIS",
+        "Pago": "158459264222025NE000121",
+        "Liquidado a Pagar": "NAO SE APLICA Nº 06/2025 PARA PAGAMENTOS DE DIARIAS E PASSAGENS COM RECURSOS DO PROGRAMA DE POS-GRADUACAO EM TECNOLOGIA E AMBIENTE - PPGTA, DURANTE O EXERCICIO DE 2025. PROCESSO: 23349.002819/2025-32.",
+        "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Valor 7": "10.000,00",
+        "Valor 8": "1.072,77",
+        "Valor 9": "1.072,77"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Natureza de Despesa": "DIARIAS - PESSOAL CIVIL",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "25.000,00",
+        "Valor 8": "10.373,80",
+        "Valor 9": "10.373,80"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Empenhado": "33901801",
+        "Liquidado": "BOLSAS DE ESTUDO NO PAIS",
+        "Pago": "158459264222025NE000120",
+        "Liquidado a Pagar": "EMPENHO PARA ATENDER AS DESPESAS COM O CENTRO DE CUSTOS STRICTU SENSU RELATIVO AO EDITAL 35/2025 - ASSEG/GAB, DO CURSO PPGTA - SEIS MIL REAIS - PPGSA - TRES MIL REAIS - CF. MEMORANDO ELETRONICO 25/2025 - PROEPI. AUXILIO FINANCEIRO A ESTUDANTES PARA APRESENTACAO DE TRABALHOS.",
+        "Valor 6": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "Valor 7": "9.000,00",
+        "Valor 8": "2.395,70",
+        "Valor 9": "895,70"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Natureza de Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "9.000,00",
+        "Valor 8": "2.395,70",
+        "Valor 9": "895,70"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza de Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+        "Empenhado": "44905243",
+        "Liquidado": "EQUIPAMENTOS DE TIC - SERVIDORES/STORAGE",
+        "Pago": "158459264222025NE000137",
+        "Liquidado a Pagar": "EMPENHO DE SERVIDOR DE RACK PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. CF. MEM. 129/2024 - CTI/ARA. PREGAO SRP 90088/2024. ADESAO INTERNA 251/2024. PROCESSO 23349.0002242025-42. SETOR REQUISITANTE: CTI. FISCAIS: JOAO R. T. E CARINA L. DA S.",
+        "Valor 6": "GLOBAL DISTRIBUICAO DE BENS DE CONSUMO LTDA.",
+        "Valor 7": "0,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Natureza de Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+        "Empenhado": "Total",
+        "Liquidado": "Total",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "0,00",
+        "Valor 8": "",
+        "Valor 9": ""
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Natureza de Despesa": "Total",
+        "Empenhado": "",
+        "Liquidado": "",
+        "Pago": "",
+        "Liquidado a Pagar": "",
+        "Valor 6": "",
+        "Valor 7": "34.000,00",
+        "Valor 8": "12.769,50",
+        "Valor 9": "11.269,50"
+      }
+    }
+  ],
+  "metadata": {
+    "ultima_atualizacao": "2026-07-02T10:44:44.534126-03:00",
+    "idade_dias": 309,
+    "periodicidade": "mensal",
+    "exercicio": 2025,
+    "fonte_email_uid": null,
+    "hash_conteudo": "2302034b9c87536a40ebbfbbfe0fbf41217367ae58b9c5069f445a6f231e0468",
+    "row_count": 7,
+    "column_count": 9,
+    "status": "desatualizado",
+    "limite_dias": 35
+  },
+  "quality": {
+    "ok": true,
+    "issues": [],
+    "warnings": [
+      "date_from_filename",
+      "totals_separated"
+    ]
+  }
+}
