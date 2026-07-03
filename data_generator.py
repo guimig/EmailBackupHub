@@ -31,6 +31,7 @@ RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 SCHEMA_VERSION = "1.5"
 RETENTION_DRY_RUN = True
+SERIES_MIN_DATE = datetime.date(2026, 1, 1)
 
 INFO_QUALITY_CODES = {
     "date_from_filename",
@@ -806,10 +807,18 @@ def series_item(doc):
 
 
 def build_series(slug, snapshots):
+    ordered = sorted(snapshots, key=lambda item: item["date_iso"])
+    filtered = [
+        doc
+        for doc in ordered
+        if datetime.date.fromisoformat(doc["date_iso"]) >= SERIES_MIN_DATE
+    ]
     return {
         "schema_version": SCHEMA_VERSION,
         "slug": slug,
-        "series": [series_item(doc) for doc in sorted(snapshots, key=lambda item: item["date_iso"])],
+        "series_min_date": SERIES_MIN_DATE.isoformat(),
+        "omitted_before_min_date": len(ordered) - len(filtered),
+        "series": [series_item(doc) for doc in filtered],
     }
 
 

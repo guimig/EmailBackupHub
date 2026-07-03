@@ -5,6 +5,7 @@ let indexData = null;
     let reportDefinitions = {};
     let sortKey = 'title';
     let sortDir = 1;
+    const SERIES_MIN_DATE = '2026-01-01';
 
     const byId = id => document.getElementById(id);
 
@@ -600,7 +601,7 @@ let indexData = null;
         date: item.date || item.date_iso || '',
         dateIso: item.date_iso || item.date || '',
         value: metricIsReliable(item, metric) ? item?.metrics?.[metric] : null
-      })).filter(point => Number.isFinite(point.value));
+      })).filter(point => Number.isFinite(point.value) && (!point.dateIso || point.dateIso >= SERIES_MIN_DATE));
     }
 
     function historicalSeries(slug, entries) {
@@ -650,7 +651,7 @@ let indexData = null;
       const container = byId(id);
       if (!container) return;
       if (!validPoints.length) {
-        container.innerHTML = '<div class="chart-empty" role="img" aria-label="Historico insuficiente">Historico insuficiente</div>';
+        container.innerHTML = '<div class="chart-empty" role="img" aria-label="Historico insuficiente desde janeiro de 2026">Historico insuficiente desde jan/2026</div>';
         return;
       }
       const dates = [...new Set(validPoints.map(point => point.dateIso || point.date))].sort();
@@ -659,7 +660,7 @@ let indexData = null;
           const point = item.points[item.points.length - 1];
           return point ? `${item.label}: ${formatMoney(point.value)}` : null;
         }).filter(Boolean).join(' | ');
-        container.innerHTML = `<div class="chart-empty" role="img" aria-label="Apenas um ponto historico disponivel">Valor atual: ${escapeHtml(values || '-')}<br><small>${escapeHtml(validPoints[0]?.date || 'data indisponivel')}</small></div>`;
+        container.innerHTML = `<div class="chart-empty" role="img" aria-label="Apenas um ponto historico disponivel desde janeiro de 2026">Valor atual: ${escapeHtml(values || '-')}<br><small>${escapeHtml(validPoints[0]?.date || 'data indisponivel')} - serie desde jan/2026</small></div>`;
         return;
       }
       const values = validPoints.map(point => point.value);
@@ -695,7 +696,7 @@ let indexData = null;
             ${lines}
           </svg>
           <div class="chart-legend">${legend}</div>
-          <div class="history-meta">Periodo: ${escapeHtml(firstDate)} a ${escapeHtml(lastPoint.date || '-')}. ${validPoints.length} ponto(s). Ultima data: ${escapeHtml(lastPoint.date || '-')}.</div>
+          <div class="history-meta">Periodo: ${escapeHtml(firstDate)} a ${escapeHtml(lastPoint.date || '-')}. ${validPoints.length} ponto(s). Serie desde jan/2026. Ultima data: ${escapeHtml(lastPoint.date || '-')}.</div>
         </div>`;
     }
 
