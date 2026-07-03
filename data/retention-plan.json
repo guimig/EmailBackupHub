@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": null,
+  "generated_at": "2026-07-02T21:39:46.461120-03:00",
   "policy": {
     "dry_run": true,
     "keep_latest": true,
@@ -8,12 +8,4415 @@
   },
   "summary": {
     "dry_run": true,
-    "total_files": 0,
-    "retained_files": 0,
-    "ignored_by_retention": 0,
-    "processed_files": 0,
+    "total_files": 2673,
+    "retained_files": 102,
+    "ignored_by_retention": 2571,
+    "processed_files": 102,
     "cache_hits": 0,
-    "snapshots_written": 0
+    "snapshots_written": 102
   },
-  "reports": []
+  "reports": [
+    {
+      "slug": "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
+      "total_files": 1,
+      "retained_files": 1,
+      "ignored_by_retention": 0,
+      "latest_files": 1,
+      "monthly_files": 0,
+      "retained": [
+        {
+          "path": "emails/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_25-06-2026.html",
+          "date_iso": "2026-06-25",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": []
+    },
+    {
+      "slug": "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
+      "total_files": 1,
+      "retained_files": 1,
+      "ignored_by_retention": 0,
+      "latest_files": 1,
+      "monthly_files": 0,
+      "retained": [
+        {
+          "path": "emails/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_25-06-2026.html",
+          "date_iso": "2026-06-25",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": []
+    },
+    {
+      "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
+      "total_files": 100,
+      "retained_files": 4,
+      "ignored_by_retention": 96,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_27-01-2026.html",
+          "date_iso": "2026-01-27"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_03-02-2026.html",
+          "date_iso": "2026-02-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_10-02-2026.html",
+          "date_iso": "2026-02-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_25-02-2026.html",
+          "date_iso": "2026-02-25"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_21-03-2026.html",
+          "date_iso": "2026-03-21"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_10-04-2026.html",
+          "date_iso": "2026-04-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-04-2026.html",
+          "date_iso": "2026-04-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_14-04-2026.html",
+          "date_iso": "2026-04-14"
+        }
+      ]
+    },
+    {
+      "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
+      "total_files": 98,
+      "retained_files": 3,
+      "ignored_by_retention": 95,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day",
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_03-02-2026.html",
+          "date_iso": "2026-02-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_10-02-2026.html",
+          "date_iso": "2026-02-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_25-02-2026.html",
+          "date_iso": "2026-02-25"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_21-03-2026.html",
+          "date_iso": "2026-03-21"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_10-04-2026.html",
+          "date_iso": "2026-04-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_11-04-2026.html",
+          "date_iso": "2026-04-11"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_14-04-2026.html",
+          "date_iso": "2026-04-14"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_15-04-2026.html",
+          "date_iso": "2026-04-15"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_16-04-2026.html",
+          "date_iso": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "slug": "credito-disponivel-mes-lancamento",
+      "total_files": 102,
+      "retained_files": 4,
+      "ignored_by_retention": 98,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_10-02-2026.html",
+          "date_iso": "2026-02-10"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_25-02-2026.html",
+          "date_iso": "2026-02-25"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_10-04-2026.html",
+          "date_iso": "2026-04-10"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_11-04-2026.html",
+          "date_iso": "2026-04-11"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_14-04-2026.html",
+          "date_iso": "2026-04-14"
+        }
+      ]
+    },
+    {
+      "slug": "despesas-empenhadas-liquidadas-e-pagas-2024",
+      "total_files": 6,
+      "retained_files": 1,
+      "ignored_by_retention": 5,
+      "latest_files": 1,
+      "monthly_files": 0,
+      "retained": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_09-06-2026.html",
+          "date_iso": "2026-06-09",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_09-05-2026.html",
+          "date_iso": "2026-05-09"
+        }
+      ]
+    },
+    {
+      "slug": "despesas-empenhadas-liquidadas-e-pagas-2025",
+      "total_files": 3,
+      "retained_files": 3,
+      "ignored_by_retention": 0,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2025/despesas-empenhadas-liquidadas-e-pagas-2025_02-03-2026.html",
+          "date_iso": "2026-03-02",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2025/despesas-empenhadas-liquidadas-e-pagas-2025_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2025/despesas-empenhadas-liquidadas-e-pagas-2025_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day",
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": []
+    },
+    {
+      "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
+      "total_files": 102,
+      "retained_files": 4,
+      "ignored_by_retention": 98,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_21-03-2026.html",
+          "date_iso": "2026-03-21"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_10-04-2026.html",
+          "date_iso": "2026-04-10"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_11-04-2026.html",
+          "date_iso": "2026-04-11"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_14-04-2026.html",
+          "date_iso": "2026-04-14"
+        }
+      ]
+    },
+    {
+      "slug": "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu",
+      "total_files": 107,
+      "retained_files": 4,
+      "ignored_by_retention": 103,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_31-12-2025.html",
+          "date_iso": "2025-12-31",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_12-08-2025.html",
+          "date_iso": "2025-08-12"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_13-08-2025.html",
+          "date_iso": "2025-08-13"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_14-08-2025.html",
+          "date_iso": "2025-08-14"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        }
+      ]
+    },
+    {
+      "slug": "evolucao-das-despesas-empenhadas",
+      "total_files": 103,
+      "retained_files": 4,
+      "ignored_by_retention": 99,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_10-02-2026.html",
+          "date_iso": "2026-02-10"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_25-02-2026.html",
+          "date_iso": "2026-02-25"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_21-03-2026.html",
+          "date_iso": "2026-03-21"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_10-04-2026.html",
+          "date_iso": "2026-04-10"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_11-04-2026.html",
+          "date_iso": "2026-04-11"
+        }
+      ]
+    },
+    {
+      "slug": "imoveis-por-ug-conta-contabil-e-rip",
+      "total_files": 2,
+      "retained_files": 1,
+      "ignored_by_retention": 1,
+      "latest_files": 1,
+      "monthly_files": 1,
+      "retained": [
+        {
+          "path": "emails/imoveis-por-ug-conta-contabil-e-rip/imoveis-por-ug-conta-contabil-e-rip_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day",
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/imoveis-por-ug-conta-contabil-e-rip/imoveis-por-ug-conta-contabil-e-rip_25-05-2026.html",
+          "date_iso": "2026-05-25"
+        }
+      ]
+    },
+    {
+      "slug": "limite-de-saque-conta-contabil",
+      "total_files": 137,
+      "retained_files": 4,
+      "ignored_by_retention": 133,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_08-12-2025.html",
+          "date_iso": "2025-12-08"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_09-12-2025.html",
+          "date_iso": "2025-12-09"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_10-12-2025.html",
+          "date_iso": "2025-12-10"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_11-12-2025.html",
+          "date_iso": "2025-12-11"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_12-12-2025.html",
+          "date_iso": "2025-12-12"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_13-12-2025.html",
+          "date_iso": "2025-12-13"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_14-12-2025.html",
+          "date_iso": "2025-12-14"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_17-12-2025.html",
+          "date_iso": "2025-12-17"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_19-12-2025.html",
+          "date_iso": "2025-12-19"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_20-12-2025.html",
+          "date_iso": "2025-12-20"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_21-12-2025.html",
+          "date_iso": "2025-12-21"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_22-12-2025.html",
+          "date_iso": "2025-12-22"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_23-12-2025.html",
+          "date_iso": "2025-12-23"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_24-12-2025.html",
+          "date_iso": "2025-12-24"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_25-12-2025.html",
+          "date_iso": "2025-12-25"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_26-12-2025.html",
+          "date_iso": "2025-12-26"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_27-12-2025.html",
+          "date_iso": "2025-12-27"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_28-12-2025.html",
+          "date_iso": "2025-12-28"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_29-12-2025.html",
+          "date_iso": "2025-12-29"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_30-12-2025.html",
+          "date_iso": "2025-12-30"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_31-12-2025.html",
+          "date_iso": "2025-12-31"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_03-01-2026.html",
+          "date_iso": "2026-01-03"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_06-01-2026.html",
+          "date_iso": "2026-01-06"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_07-01-2026.html",
+          "date_iso": "2026-01-07"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_08-01-2026.html",
+          "date_iso": "2026-01-08"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_09-01-2026.html",
+          "date_iso": "2026-01-09"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_10-01-2026.html",
+          "date_iso": "2026-01-10"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_13-01-2026.html",
+          "date_iso": "2026-01-13"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_14-01-2026.html",
+          "date_iso": "2026-01-14"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_15-01-2026.html",
+          "date_iso": "2026-01-15"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_16-01-2026.html",
+          "date_iso": "2026-01-16"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_17-01-2026.html",
+          "date_iso": "2026-01-17"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_18-01-2026.html",
+          "date_iso": "2026-01-18"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_20-01-2026.html",
+          "date_iso": "2026-01-20"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_03-02-2026.html",
+          "date_iso": "2026-02-03"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        }
+      ]
+    },
+    {
+      "slug": "provisionamentos",
+      "total_files": 223,
+      "retained_files": 8,
+      "ignored_by_retention": 215,
+      "latest_files": 1,
+      "monthly_files": 7,
+      "retained": [
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/provisionamentos/provisionamentos_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_21-10-2025.html",
+          "date_iso": "2025-10-21"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_22-10-2025.html",
+          "date_iso": "2025-10-22"
+        },
+        {
+          "path": "emails/provisionamentos/provisionamentos_23-10-2025.html",
+          "date_iso": "2025-10-23"
+        }
+      ]
+    },
+    {
+      "slug": "recolhimento-proprio-gru",
+      "total_files": 147,
+      "retained_files": 6,
+      "ignored_by_retention": 141,
+      "latest_files": 1,
+      "monthly_files": 5,
+      "retained": [
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_26-11-2025.html",
+          "date_iso": "2025-11-26"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_27-11-2025.html",
+          "date_iso": "2025-11-27"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_29-11-2025.html",
+          "date_iso": "2025-11-29"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_30-11-2025.html",
+          "date_iso": "2025-11-30"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_02-12-2025.html",
+          "date_iso": "2025-12-02"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_03-12-2025.html",
+          "date_iso": "2025-12-03"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_04-12-2025.html",
+          "date_iso": "2025-12-04"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_05-12-2025.html",
+          "date_iso": "2025-12-05"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_06-12-2025.html",
+          "date_iso": "2025-12-06"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_07-12-2025.html",
+          "date_iso": "2025-12-07"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_09-12-2025.html",
+          "date_iso": "2025-12-09"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_10-12-2025.html",
+          "date_iso": "2025-12-10"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_11-12-2025.html",
+          "date_iso": "2025-12-11"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_12-12-2025.html",
+          "date_iso": "2025-12-12"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_13-12-2025.html",
+          "date_iso": "2025-12-13"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_14-12-2025.html",
+          "date_iso": "2025-12-14"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_17-12-2025.html",
+          "date_iso": "2025-12-17"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_19-12-2025.html",
+          "date_iso": "2025-12-19"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_20-12-2025.html",
+          "date_iso": "2025-12-20"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_21-12-2025.html",
+          "date_iso": "2025-12-21"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_22-12-2025.html",
+          "date_iso": "2025-12-22"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_23-12-2025.html",
+          "date_iso": "2025-12-23"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_24-12-2025.html",
+          "date_iso": "2025-12-24"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_25-12-2025.html",
+          "date_iso": "2025-12-25"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_26-12-2025.html",
+          "date_iso": "2025-12-26"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_27-12-2025.html",
+          "date_iso": "2025-12-27"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_28-12-2025.html",
+          "date_iso": "2025-12-28"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_29-12-2025.html",
+          "date_iso": "2025-12-29"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_30-12-2025.html",
+          "date_iso": "2025-12-30"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_31-12-2025.html",
+          "date_iso": "2025-12-31"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_02-01-2026.html",
+          "date_iso": "2026-01-02"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_03-01-2026.html",
+          "date_iso": "2026-01-03"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_06-01-2026.html",
+          "date_iso": "2026-01-06"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_07-01-2026.html",
+          "date_iso": "2026-01-07"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_08-01-2026.html",
+          "date_iso": "2026-01-08"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_09-01-2026.html",
+          "date_iso": "2026-01-09"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_10-01-2026.html",
+          "date_iso": "2026-01-10"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_13-01-2026.html",
+          "date_iso": "2026-01-13"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_14-01-2026.html",
+          "date_iso": "2026-01-14"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_15-01-2026.html",
+          "date_iso": "2026-01-15"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_16-01-2026.html",
+          "date_iso": "2026-01-16"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_17-01-2026.html",
+          "date_iso": "2026-01-17"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_18-01-2026.html",
+          "date_iso": "2026-01-18"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_20-01-2026.html",
+          "date_iso": "2026-01-20"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        }
+      ]
+    },
+    {
+      "slug": "restos-a-pagar-rap",
+      "total_files": 221,
+      "retained_files": 7,
+      "ignored_by_retention": 214,
+      "latest_files": 1,
+      "monthly_files": 6,
+      "retained": [
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_12-08-2025.html",
+          "date_iso": "2025-08-12"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_13-08-2025.html",
+          "date_iso": "2025-08-13"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_14-08-2025.html",
+          "date_iso": "2025-08-14"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        }
+      ]
+    },
+    {
+      "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
+      "total_files": 218,
+      "retained_files": 8,
+      "ignored_by_retention": 210,
+      "latest_files": 1,
+      "monthly_files": 7,
+      "retained": [
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_14-08-2025.html",
+          "date_iso": "2025-08-14"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_21-10-2025.html",
+          "date_iso": "2025-10-21"
+        },
+        {
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_22-10-2025.html",
+          "date_iso": "2025-10-22"
+        }
+      ]
+    },
+    {
+      "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
+      "total_files": 140,
+      "retained_files": 5,
+      "ignored_by_retention": 135,
+      "latest_files": 1,
+      "monthly_files": 4,
+      "retained": [
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_08-12-2025.html",
+          "date_iso": "2025-12-08"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_09-12-2025.html",
+          "date_iso": "2025-12-09"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_10-12-2025.html",
+          "date_iso": "2025-12-10"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_11-12-2025.html",
+          "date_iso": "2025-12-11"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_12-12-2025.html",
+          "date_iso": "2025-12-12"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_13-12-2025.html",
+          "date_iso": "2025-12-13"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_14-12-2025.html",
+          "date_iso": "2025-12-14"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_17-12-2025.html",
+          "date_iso": "2025-12-17"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_19-12-2025.html",
+          "date_iso": "2025-12-19"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_20-12-2025.html",
+          "date_iso": "2025-12-20"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_21-12-2025.html",
+          "date_iso": "2025-12-21"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_22-12-2025.html",
+          "date_iso": "2025-12-22"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_23-12-2025.html",
+          "date_iso": "2025-12-23"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_24-12-2025.html",
+          "date_iso": "2025-12-24"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_25-12-2025.html",
+          "date_iso": "2025-12-25"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_26-12-2025.html",
+          "date_iso": "2025-12-26"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_27-12-2025.html",
+          "date_iso": "2025-12-27"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_28-12-2025.html",
+          "date_iso": "2025-12-28"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_29-12-2025.html",
+          "date_iso": "2025-12-29"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_30-12-2025.html",
+          "date_iso": "2025-12-30"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_31-12-2025.html",
+          "date_iso": "2025-12-31"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_02-01-2026.html",
+          "date_iso": "2026-01-02"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_03-01-2026.html",
+          "date_iso": "2026-01-03"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_06-01-2026.html",
+          "date_iso": "2026-01-06"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_07-01-2026.html",
+          "date_iso": "2026-01-07"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_08-01-2026.html",
+          "date_iso": "2026-01-08"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_09-01-2026.html",
+          "date_iso": "2026-01-09"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_10-01-2026.html",
+          "date_iso": "2026-01-10"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_13-01-2026.html",
+          "date_iso": "2026-01-13"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_14-01-2026.html",
+          "date_iso": "2026-01-14"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_15-01-2026.html",
+          "date_iso": "2026-01-15"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_16-01-2026.html",
+          "date_iso": "2026-01-16"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_17-01-2026.html",
+          "date_iso": "2026-01-17"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_18-01-2026.html",
+          "date_iso": "2026-01-18"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_20-01-2026.html",
+          "date_iso": "2026-01-20"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_03-02-2026.html",
+          "date_iso": "2026-02-03"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        }
+      ]
+    },
+    {
+      "slug": "saldo-por-natureza-de-despesa",
+      "total_files": 216,
+      "retained_files": 7,
+      "ignored_by_retention": 209,
+      "latest_files": 1,
+      "monthly_files": 6,
+      "retained": [
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_12-08-2025.html",
+          "date_iso": "2025-08-12"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_13-08-2025.html",
+          "date_iso": "2025-08-13"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_14-08-2025.html",
+          "date_iso": "2025-08-14"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/saldo-por-natureza-de-despesa/saldo-por-natureza-de-despesa_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        }
+      ]
+    },
+    {
+      "slug": "saldos-de-contas-de-contratos",
+      "total_files": 213,
+      "retained_files": 8,
+      "ignored_by_retention": 205,
+      "latest_files": 1,
+      "monthly_files": 7,
+      "retained": [
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_21-10-2025.html",
+          "date_iso": "2025-10-21"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_22-10-2025.html",
+          "date_iso": "2025-10-22"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_23-10-2025.html",
+          "date_iso": "2025-10-23"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_24-10-2025.html",
+          "date_iso": "2025-10-24"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_25-10-2025.html",
+          "date_iso": "2025-10-25"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_28-10-2025.html",
+          "date_iso": "2025-10-28"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_29-10-2025.html",
+          "date_iso": "2025-10-29"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_30-10-2025.html",
+          "date_iso": "2025-10-30"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_31-10-2025.html",
+          "date_iso": "2025-10-31"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_01-11-2025.html",
+          "date_iso": "2025-11-01"
+        },
+        {
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_04-11-2025.html",
+          "date_iso": "2025-11-04"
+        }
+      ]
+    },
+    {
+      "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
+      "total_files": 203,
+      "retained_files": 7,
+      "ignored_by_retention": 196,
+      "latest_files": 1,
+      "monthly_files": 6,
+      "retained": [
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_21-10-2025.html",
+          "date_iso": "2025-10-21"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_22-10-2025.html",
+          "date_iso": "2025-10-22"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_23-10-2025.html",
+          "date_iso": "2025-10-23"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_24-10-2025.html",
+          "date_iso": "2025-10-24"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_25-10-2025.html",
+          "date_iso": "2025-10-25"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_28-10-2025.html",
+          "date_iso": "2025-10-28"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_29-10-2025.html",
+          "date_iso": "2025-10-29"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_30-10-2025.html",
+          "date_iso": "2025-10-30"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_31-10-2025.html",
+          "date_iso": "2025-10-31"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_01-11-2025.html",
+          "date_iso": "2025-11-01"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_04-11-2025.html",
+          "date_iso": "2025-11-04"
+        },
+        {
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_05-11-2025.html",
+          "date_iso": "2025-11-05"
+        }
+      ]
+    },
+    {
+      "slug": "suprimento-de-fundos-empenhos",
+      "total_files": 226,
+      "retained_files": 8,
+      "ignored_by_retention": 218,
+      "latest_files": 1,
+      "monthly_files": 7,
+      "retained": [
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-09-2025.html",
+          "date_iso": "2025-09-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-10-2025.html",
+          "date_iso": "2025-10-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-12-2025.html",
+          "date_iso": "2025-12-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-01-2026.html",
+          "date_iso": "2026-01-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_12-08-2025.html",
+          "date_iso": "2025-08-12"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_13-08-2025.html",
+          "date_iso": "2025-08-13"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_14-08-2025.html",
+          "date_iso": "2025-08-14"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_15-08-2025.html",
+          "date_iso": "2025-08-15"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_16-08-2025.html",
+          "date_iso": "2025-08-16"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_19-08-2025.html",
+          "date_iso": "2025-08-19"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_20-08-2025.html",
+          "date_iso": "2025-08-20"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_21-08-2025.html",
+          "date_iso": "2025-08-21"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_22-08-2025.html",
+          "date_iso": "2025-08-22"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_23-08-2025.html",
+          "date_iso": "2025-08-23"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_26-08-2025.html",
+          "date_iso": "2025-08-26"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_27-08-2025.html",
+          "date_iso": "2025-08-27"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_28-08-2025.html",
+          "date_iso": "2025-08-28"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_29-08-2025.html",
+          "date_iso": "2025-08-29"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_30-08-2025.html",
+          "date_iso": "2025-08-30"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_02-09-2025.html",
+          "date_iso": "2025-09-02"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_03-09-2025.html",
+          "date_iso": "2025-09-03"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_04-09-2025.html",
+          "date_iso": "2025-09-04"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_05-09-2025.html",
+          "date_iso": "2025-09-05"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_06-09-2025.html",
+          "date_iso": "2025-09-06"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_09-09-2025.html",
+          "date_iso": "2025-09-09"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_10-09-2025.html",
+          "date_iso": "2025-09-10"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_11-09-2025.html",
+          "date_iso": "2025-09-11"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_12-09-2025.html",
+          "date_iso": "2025-09-12"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_13-09-2025.html",
+          "date_iso": "2025-09-13"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_16-09-2025.html",
+          "date_iso": "2025-09-16"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_17-09-2025.html",
+          "date_iso": "2025-09-17"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_18-09-2025.html",
+          "date_iso": "2025-09-18"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_19-09-2025.html",
+          "date_iso": "2025-09-19"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_20-09-2025.html",
+          "date_iso": "2025-09-20"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_23-09-2025.html",
+          "date_iso": "2025-09-23"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_24-09-2025.html",
+          "date_iso": "2025-09-24"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_25-09-2025.html",
+          "date_iso": "2025-09-25"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_26-09-2025.html",
+          "date_iso": "2025-09-26"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_27-09-2025.html",
+          "date_iso": "2025-09-27"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_30-09-2025.html",
+          "date_iso": "2025-09-30"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_02-10-2025.html",
+          "date_iso": "2025-10-02"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_03-10-2025.html",
+          "date_iso": "2025-10-03"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_04-10-2025.html",
+          "date_iso": "2025-10-04"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_07-10-2025.html",
+          "date_iso": "2025-10-07"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_08-10-2025.html",
+          "date_iso": "2025-10-08"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_09-10-2025.html",
+          "date_iso": "2025-10-09"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_10-10-2025.html",
+          "date_iso": "2025-10-10"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_11-10-2025.html",
+          "date_iso": "2025-10-11"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_13-10-2025.html",
+          "date_iso": "2025-10-13"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_14-10-2025.html",
+          "date_iso": "2025-10-14"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_15-10-2025.html",
+          "date_iso": "2025-10-15"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_16-10-2025.html",
+          "date_iso": "2025-10-16"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_17-10-2025.html",
+          "date_iso": "2025-10-17"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-empenhos/suprimento-de-fundos-empenhos_18-10-2025.html",
+          "date_iso": "2025-10-18"
+        }
+      ]
+    },
+    {
+      "slug": "suprimento-de-fundos-liquidacoes-e-pagamentos",
+      "total_files": 104,
+      "retained_files": 4,
+      "ignored_by_retention": 100,
+      "latest_files": 1,
+      "monthly_files": 3,
+      "retained": [
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_01-04-2026.html",
+          "date_iso": "2026-04-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_01-05-2026.html",
+          "date_iso": "2026-05-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_01-07-2026.html",
+          "date_iso": "2026-07-01",
+          "reasons": [
+            "first_business_day"
+          ]
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_02-07-2026.html",
+          "date_iso": "2026-07-02",
+          "reasons": [
+            "latest"
+          ]
+        }
+      ],
+      "ignored_sample": [
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_21-01-2026.html",
+          "date_iso": "2026-01-21"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_22-01-2026.html",
+          "date_iso": "2026-01-22"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_23-01-2026.html",
+          "date_iso": "2026-01-23"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_24-01-2026.html",
+          "date_iso": "2026-01-24"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_28-01-2026.html",
+          "date_iso": "2026-01-28"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_29-01-2026.html",
+          "date_iso": "2026-01-29"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_30-01-2026.html",
+          "date_iso": "2026-01-30"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_31-01-2026.html",
+          "date_iso": "2026-01-31"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_03-02-2026.html",
+          "date_iso": "2026-02-03"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_04-02-2026.html",
+          "date_iso": "2026-02-04"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_05-02-2026.html",
+          "date_iso": "2026-02-05"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_06-02-2026.html",
+          "date_iso": "2026-02-06"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_07-02-2026.html",
+          "date_iso": "2026-02-07"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_10-02-2026.html",
+          "date_iso": "2026-02-10"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_11-02-2026.html",
+          "date_iso": "2026-02-11"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_13-02-2026.html",
+          "date_iso": "2026-02-13"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_14-02-2026.html",
+          "date_iso": "2026-02-14"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_20-02-2026.html",
+          "date_iso": "2026-02-20"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_21-02-2026.html",
+          "date_iso": "2026-02-21"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_24-02-2026.html",
+          "date_iso": "2026-02-24"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_25-02-2026.html",
+          "date_iso": "2026-02-25"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_26-02-2026.html",
+          "date_iso": "2026-02-26"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_27-02-2026.html",
+          "date_iso": "2026-02-27"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_28-02-2026.html",
+          "date_iso": "2026-02-28"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_03-03-2026.html",
+          "date_iso": "2026-03-03"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_04-03-2026.html",
+          "date_iso": "2026-03-04"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_05-03-2026.html",
+          "date_iso": "2026-03-05"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_06-03-2026.html",
+          "date_iso": "2026-03-06"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_07-03-2026.html",
+          "date_iso": "2026-03-07"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_10-03-2026.html",
+          "date_iso": "2026-03-10"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_11-03-2026.html",
+          "date_iso": "2026-03-11"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_12-03-2026.html",
+          "date_iso": "2026-03-12"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_13-03-2026.html",
+          "date_iso": "2026-03-13"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_14-03-2026.html",
+          "date_iso": "2026-03-14"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_17-03-2026.html",
+          "date_iso": "2026-03-17"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_18-03-2026.html",
+          "date_iso": "2026-03-18"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_19-03-2026.html",
+          "date_iso": "2026-03-19"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_20-03-2026.html",
+          "date_iso": "2026-03-20"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_21-03-2026.html",
+          "date_iso": "2026-03-21"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_24-03-2026.html",
+          "date_iso": "2026-03-24"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_25-03-2026.html",
+          "date_iso": "2026-03-25"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_26-03-2026.html",
+          "date_iso": "2026-03-26"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_27-03-2026.html",
+          "date_iso": "2026-03-27"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_28-03-2026.html",
+          "date_iso": "2026-03-28"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_31-03-2026.html",
+          "date_iso": "2026-03-31"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_02-04-2026.html",
+          "date_iso": "2026-04-02"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_03-04-2026.html",
+          "date_iso": "2026-04-03"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_07-04-2026.html",
+          "date_iso": "2026-04-07"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_08-04-2026.html",
+          "date_iso": "2026-04-08"
+        },
+        {
+          "path": "emails/suprimento-de-fundos-liquidacoes-e-pagamentos/suprimento-de-fundos-liquidacoes-e-pagamentos_09-04-2026.html",
+          "date_iso": "2026-04-09"
+        }
+      ]
+    }
+  ]
 }
