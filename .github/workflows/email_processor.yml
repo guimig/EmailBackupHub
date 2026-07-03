@@ -10,6 +10,8 @@ on:
     paths-ignore:
       - 'data/**'
       - 'emails/**'
+      - 'docs/**'
+      - 'README.md'
       - '*.html'
 
 permissions:
