@@ -128,6 +128,16 @@ Dependências atuais:
 - `gitpython`
 - `bs4`
 
+## Testes
+
+A suíte mínima usa apenas `unittest`, da biblioteca padrão do Python:
+
+```bash
+python -m unittest discover -s tests
+```
+
+No GitHub Actions, os testes rodam depois da instalação das dependências e antes de `python main.py`. Assim, se uma regra crítica de parsing, retenção ou métrica falhar, a coleta não segue para o processamento de e-mails.
+
 ## GitHub Pages
 
 O projeto é compatível com GitHub Pages porque todo o consumo é feito por arquivos estáticos:
