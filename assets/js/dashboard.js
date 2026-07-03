@@ -70,7 +70,7 @@ let indexData = null;
       const [indexResponse, searchResponse, definitions] = await Promise.all([
         fetch('data/index.json'),
         fetch('data/search-index.json'),
-        loadReportDefinitions()
+        EmailBackupHub.loadReportDefinitions()
       ]);
       indexData = await indexResponse.json();
       searchData = await searchResponse.json();
@@ -80,17 +80,6 @@ let indexData = null;
       await loadFinancialReports();
       populateFilters();
       render();
-    }
-
-    async function loadReportDefinitions() {
-      try {
-        const response = await fetch('data/report-definitions.json');
-        if (!response.ok) return {};
-        const payload = await response.json();
-        return payload.reports || {};
-      } catch {
-        return {};
-      }
     }
 
     function populateFilters() {
@@ -121,7 +110,7 @@ let indexData = null;
     }
 
     function friendlyTitle(report) {
-      const definition = reportDefinitions[report.slug] || {};
+      const definition = EmailBackupHub.reportDefinition(reportDefinitions, report.slug);
       return definition.title || friendlyNames[report.slug] || report.title || report.slug || 'Relatório';
     }
 
@@ -377,7 +366,7 @@ let indexData = null;
     }
 
     function reportLabel(slug) {
-      return reportDefinitions[slug]?.title || friendlyNames[slug] || financialReports[slug]?.title || slug;
+      return EmailBackupHub.reportDefinition(reportDefinitions, slug).title || friendlyNames[slug] || financialReports[slug]?.title || slug;
     }
 
     function metricValue(slug, metric, fallbackColumns = []) {

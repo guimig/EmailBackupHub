@@ -117,18 +117,7 @@ let report = null;
     }
 
     function reportDefinition() {
-      return reportDefinitions[report?.slug] || {};
-    }
-
-    async function loadReportDefinitions() {
-      try {
-        const response = await fetch('data/report-definitions.json');
-        if (!response.ok) return {};
-        const payload = await response.json();
-        return payload.reports || {};
-      } catch {
-        return {};
-      }
+      return EmailBackupHub.reportDefinition(reportDefinitions, report?.slug);
     }
 
     function fixMojibake(value) {
@@ -149,7 +138,7 @@ let report = null;
       const url = reportUrl();
       const [response, definitions] = await Promise.all([
         fetch(url),
-        loadReportDefinitions()
+        EmailBackupHub.loadReportDefinitions()
       ]);
       reportDefinitions = definitions;
       report = await response.json();
