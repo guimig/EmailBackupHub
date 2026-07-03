@@ -253,24 +253,6 @@ let indexData = null;
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
     }
 
-    function updateDashboardInsights(values) {
-      setInsight('budgetBase', 'Provisionamentos', `${formatMoney(values.budget)} é o orçamento provisionado acompanhado. Use como base para avaliar quanto já foi comprometido por empenhos e quanto ainda está disponível para execução.`);
-      setInsight('creditAvailable', 'Crédito disponível', `${formatMoney(values.credit)} ainda está livre dentro do orçamento provisionado. Quando esse valor diminui, indica maior comprometimento da dotação.`);
-      setInsight('rapTotal', 'Restos a pagar', `${formatMoney(values.rapTotal)} em restos a pagar: ${formatMoney(values.rapPaid)} pagos e ${formatMoney(values.rapPayable)} ainda a pagar.`);
-      setInsight('gruCollected', 'GRU arrecadadas', `${formatMoney(values.gru)} em arrecadação própria identificada nos dados. Esse valor ajuda a acompanhar receitas registradas por GRU.`);
-      setInsight('committedTotal', 'Despesas empenhadas', `${formatMoney(values.committed)} já foram formalmente comprometidos. Compare com o provisionado para medir a pressão sobre o orçamento.`);
-      setInsight('liquidatedTotal', 'Despesas liquidadas', `${formatMoney(values.liquidated)} já tiveram entrega reconhecida. Esse é o estágio anterior ao pagamento.`);
-      setInsight('paidTotal', 'Despesas pagas', `${formatMoney(values.paid)} já foram efetivamente pagos. Compare com o liquidado para ver o ritmo de pagamento.`);
-      setInsight('trendValue', 'Evolução da execução', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. A distância entre os estágios mostra o andamento da execução.`);
-      setInsight('provisionShareValue', 'Uso do provisionado', `${formatPercent(values.committed, values.provisioned)} do provisionamento já está empenhado. O restante é saldo ainda não comprometido por empenhos.`);
-      setInsight('creditShareValue', 'Crédito livre no provisionado', `${formatPercent(values.credit, values.budget)} do provisionado aparece como crédito disponível. O indicador ajuda a identificar margem de execução.`);
-      setInsight('rapShareValue', 'Restos a pagar', `${formatPercent(values.rapPaid, values.rapTotal)} dos restos a pagar já foram pagos. O restante exige acompanhamento financeiro.`);
-      setInsight('gruValue', 'Arrecadação própria', `${formatMoney(values.gru)} em GRU. O mapa destaca os códigos de recolhimento mais relevantes quando disponíveis.`);
-      setInsight('committedGaugeValue', '% empenhado do provisionado', `${formatPercent(values.committed, values.provisioned)} do orçamento provisionado já foi empenhado.`);
-      setInsight('liquidatedGaugeValue', '% liquidado do empenhado', `${formatPercent(values.liquidated, values.committed)} do empenhado já foi liquidado.`);
-      setInsight('paidGaugeValue', '% pago do liquidado', `${formatPercent(values.paid, values.liquidated)} do liquidado já foi pago.`);
-    }
-
     function setInsight(anchorId, title, text) {
       const card = byId(anchorId)?.closest('.kpi-card, .chart-card');
       if (!card) return;
@@ -284,17 +266,6 @@ let indexData = null;
       setText('insightTitle', card.dataset.insightTitle || 'Explore o painel');
       setText('insightText', card.dataset.insightText || 'Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador.');
     }
-    function updateGraphInsights(values) {
-      setElementInsight('expenseTrendChart', 'Evolução das despesas', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. A diferença entre as etapas mostra o que ainda precisa ser liquidado ou pago.`);
-      setElementInsight('provisionDonut', 'Uso do provisionado', `Parte empenhada: ${formatMoney(values.committed)}. Saldo estimado a empenhar: ${formatMoney(Math.max(0, safeNumber(values.provisioned) - safeNumber(values.committed)))}.`);
-      setElementInsight('creditDonut', 'Crédito livre no provisionado', `Crédito disponível: ${formatMoney(values.credit)}. Provisionado já utilizado ou indisponível: ${formatMoney(Math.max(0, safeNumber(values.budget) - safeNumber(values.credit)))}.`);
-      setElementInsight('rapStackChart', 'Restos a pagar', `Pagos: ${formatMoney(values.rapPaid)}. A pagar: ${formatMoney(values.rapPayable)}. Total acompanhado: ${formatMoney(values.rapTotal)}.`);
-      setElementInsight('gruTreeChart', 'Arrecadação própria', `Total de GRU arrecadadas: ${formatMoney(values.gru)}. As áreas maiores indicam os códigos de recolhimento com maior participação.`);
-      setElementInsight('committedGauge', 'Percentual empenhado', `${formatPercent(values.committed, values.provisioned)} do provisionado já virou empenho.`);
-      setElementInsight('liquidatedGauge', 'Percentual liquidado', `${formatPercent(values.liquidated, values.committed)} do empenhado já teve entrega reconhecida.`);
-      setElementInsight('paidGauge', 'Percentual pago', `${formatPercent(values.paid, values.liquidated)} do liquidado já foi efetivamente pago.`);
-    }
-
     function setElementInsight(id, title, text) {
       const element = byId(id);
       if (!element) return;
@@ -302,36 +273,6 @@ let indexData = null;
       element.dataset.insightTitle = title;
       element.dataset.insightText = text;
       element.title = text;
-    }
-
-    function firstValue(values) {
-      return values.find(value => Number.isFinite(value) && value !== 0) ?? values.find(Number.isFinite);
-    }
-
-    function setText(id, value) {
-      const element = byId(id);
-      if (element) element.textContent = value;
-    }
-
-    function safeNumber(value) {
-      return Number.isFinite(value) ? value : 0;
-    }
-
-    function ratio(part, total) {
-      return Number.isFinite(part) && Number.isFinite(total) && total > 0 ? Math.max(0, Math.min(1, part / total)) : 0;
-    }
-
-    function latestFinancialDate() {
-      const dates = Object.values(financialReports).map(doc => doc?.date).filter(Boolean);
-      dates.sort();
-      return dates.length ? `Fechamento: ${dates[dates.length - 1]}` : 'Fechamento indisponível';
-    }
-
-    function totalValue(slug, column) {
-      const row = grandTotalRow(financialReports[slug]);
-      if (!row) return null;
-      if (column === 'last') return lastNumericValue(row);
-      return parseBrNumber(row[column]);
     }
 
     function grandTotalRow(doc) {
@@ -342,79 +283,10 @@ let indexData = null;
       return null;
     }
 
-    function lastNumericValue(row) {
-      const values = Object.values(row || {}).map(parseBrNumber).filter(Number.isFinite);
-      return values.length ? values[values.length - 1] : null;
-    }
-
-    function renderTrend(id, values) {
-      const numbers = values.map(safeNumber);
-      const max = Math.max(...numbers, 1);
-      const points = numbers.map((value, index) => {
-        const x = 18 + index * 62;
-        const y = 112 - (value / max) * 88;
-        return `${x},${y}`;
-      }).join(' ');
-      byId(id).innerHTML = `
-        <svg viewBox="0 0 170 128" width="100%" height="128" role="img" aria-label="Evolução das despesas">
-          <path d="M18 112 L80 112 L142 112" stroke="var(--line)" stroke-width="1"/>
-          <polygon points="18,112 ${points} 142,112" fill="var(--chart-fill)"/>
-          <polyline points="${points}" fill="none" stroke="var(--accent)" stroke-width="3"/>
-          ${numbers.map((value, index) => `<circle cx="${18 + index * 62}" cy="${112 - (value / max) * 88}" r="4" fill="var(--accent-2)"/>`).join('')}
-          <text x="18" y="124" font-size="8" fill="var(--muted)">Emp.</text>
-          <text x="75" y="124" font-size="8" fill="var(--muted)">Liq.</text>
-          <text x="138" y="124" font-size="8" fill="var(--muted)">Pago</text>
-        </svg>`;
-    }
-
-    function renderDonut(id, values, colors) {
-      const total = values.reduce((sum, value) => sum + safeNumber(value), 0) || 1;
-      let offset = 25;
-      const circles = values.map((value, index) => {
-        const pct = safeNumber(value) / total * 100;
-        const circle = `<circle cx="50" cy="50" r="34" fill="none" stroke="${colors[index]}" stroke-width="18" stroke-dasharray="${pct} ${100 - pct}" stroke-dashoffset="${offset}" pathLength="100"/>`;
-        offset -= pct;
-        return circle;
-      }).join('');
-      byId(id).innerHTML = `<svg viewBox="0 0 100 100" width="128" height="128" role="img" aria-label="Gráfico de rosca">${circles}<circle cx="50" cy="50" r="21" fill="var(--card)"/></svg>`;
-    }
-
-    function renderStack(id, paid, payable) {
-      const total = safeNumber(paid) + safeNumber(payable);
-      const paidPct = total ? safeNumber(paid) / total * 100 : 0;
-      const payablePct = Math.max(0, 100 - paidPct);
-      byId(id).innerHTML = `
-        <div class="stack-bar" role="img" aria-label="Restos a pagar pagos e a pagar">
-          <div class="stack-paid" style="height:${paidPct}%"></div>
-          <div class="stack-open" style="height:${payablePct}%"></div>
-        </div>`;
-    }
-
-    function renderGauge(id, value) {
-      const pct = Math.round(value * 100);
-      const dash = Math.max(0, Math.min(100, pct));
-      byId(id).innerHTML = `
-        <svg viewBox="0 0 160 94" width="100%" height="128" role="img" aria-label="Medidor ${pct}%">
-          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="var(--accent-soft)" stroke-width="18" pathLength="100"/>
-          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="var(--accent)" stroke-width="18" pathLength="100" stroke-dasharray="${dash} ${100 - dash}"/>
-          <text x="80" y="72" text-anchor="middle" font-size="20" fill="var(--text)">${pct}%</text>
-        </svg>`;
-    }
-
     function renderTreemap(id, legendId, items) {
       const top = items.slice(0, 4);
       byId(id).innerHTML = `<div class="treemap">${top.map(item => `<div class="tree-cell" title="${escapeHtml(item.label)}">${escapeHtml(shortLabel(item.label))}</div>`).join('')}</div>`;
       byId(legendId).innerHTML = top.map((item, index) => `<span><i class="legend-dot" style="background:${['var(--accent)', 'var(--tree-2)', 'var(--tree-3)', 'var(--tree-4)'][index]}"></i>${escapeHtml(shortLabel(item.label))}</span>`).join('');
-    }
-
-    function gruBreakdown() {
-      const doc = financialReports['recolhimento-proprio-gru'];
-      const totals = (doc?.row_types || []).filter(item => item.type === 'total').map(item => item.raw || {});
-      const result = totals.filter(row => normalize(row['Emissão - Mês'] || '').includes('total') && !normalize(row['Cód. Recolhimento GRU'] || '').includes('total')).map(row => ({
-        label: row['Cód. Recolhimento GRU (2)'] || row['Cód. Recolhimento GRU'] || 'GRU',
-        value: lastNumericValue(row)
-      })).filter(item => Number.isFinite(item.value) && item.value > 0);
-      return result.sort((a, b) => b.value - a.value);
     }
 
     function shortLabel(value) {
@@ -455,16 +327,6 @@ let indexData = null;
       const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
       const number = Number(normalized);
       return Number.isFinite(number) ? (negative ? -number : number) : null;
-    }
-
-    function formatMoney(value) {
-      if (!Number.isFinite(value)) return '-';
-      return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-
-    function formatPercent(part, total) {
-      if (!Number.isFinite(part) || !Number.isFinite(total) || total <= 0) return '-';
-      return (part / total).toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
     }
 
     function auditValue(value, source = 'Origem nao informada.', fallback = false) {
