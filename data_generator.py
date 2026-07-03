@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import re
+import time
 import unicodedata
 from pathlib import Path
 
@@ -72,6 +73,10 @@ def write_report_definitions(now):
     }
     write_json(REPORT_DEFINITIONS_PATH, payload)
     return REPORT_DEFINITIONS_PATH
+
+
+def elapsed_seconds(started_at):
+    return round(max(0, time.monotonic() - started_at), 3)
 
 
 def rel_path(path):
@@ -554,15 +559,38 @@ def cached_document(file_path, source_map, now, cache_index, stats):
     content_hash = content_hash_for_file(file_path)
     entry = cache_index.get(source_path) or {}
     snapshot_path = Path(REPO_ROOT) / entry.get("snapshot_path", "")
+    stats["cache_lookups"] += 1
     if entry.get("content_hash") == content_hash and snapshot_path.exists():
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
             return annotate_metrics(refresh_document_metadata(doc, source_map, now)), content_hash
 
+    if entry.get("content_hash") == content_hash and not snapshot_path.exists():
+        stats["cache_misses_missing_snapshot"] += 1
+    elif entry:
+        stats["cache_misses_changed"] += 1
+    else:
+        stats["cache_misses_new"] += 1
+
     stats["processed_files"] += 1
     doc = full_report_document(file_path, source_map, now)
     return doc, content_hash
+
+
+def processing_delta(before, after, started_at):
+    keys = [
+        "cache_lookups",
+        "cache_hits",
+        "cache_misses_new",
+        "cache_misses_changed",
+        "cache_misses_missing_snapshot",
+        "processed_files",
+        "snapshots_written",
+    ]
+    result = {key: after.get(key, 0) - before.get(key, 0) for key in keys}
+    result["duration_seconds"] = elapsed_seconds(started_at)
+    return result
 
 
 def retention_plan_item(slug, retained, ignored):
@@ -823,6 +851,7 @@ def build_series(slug, snapshots):
 
 
 def generate_data_files():
+    generation_started = time.monotonic()
     now = datetime.datetime.now(TIMEZONE)
     source_map = read_json(SOURCE_MAP_PATH, {})
     cache_index = read_json(CACHE_INDEX_PATH, {})
@@ -843,14 +872,19 @@ def generate_data_files():
         "removal_candidates": 0,
         "latest_files": 0,
         "monthly_close_files": 0,
+        "cache_lookups": 0,
         "processed_files": 0,
         "cache_hits": 0,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
         "snapshots_written": 0,
     }
     for slug, paths in sorted(grouped_files().items()):
+        report_started = time.monotonic()
         paths = sorted(paths, key=sort_key)
         retained_paths, ignored_paths = retention_selection(paths)
-        retention_items.append(retention_plan_item(slug, retained_paths, ignored_paths))
+        retention_item = retention_plan_item(slug, retained_paths, ignored_paths)
         retention_summary["total_files"] += len(paths)
         retention_summary["retained_files"] += len(retained_paths)
         retention_summary["ignored_by_retention"] += len(ignored_paths)
@@ -858,7 +892,10 @@ def generate_data_files():
         retention_summary["latest_files"] += sum(1 for item in retained_paths if "latest" in item["reasons"])
         retention_summary["monthly_close_files"] += sum(1 for item in retained_paths if "monthly_close" in item["reasons"])
         if not retained_paths:
+            retention_item["processing"] = processing_delta(retention_summary, retention_summary, report_started)
+            retention_items.append(retention_item)
             continue
+        before_report = dict(retention_summary)
         latest_path = paths[-1]
         retained_lookup = {item["path"] for item in retained_paths}
         if latest_path not in retained_lookup:
@@ -893,6 +930,8 @@ def generate_data_files():
         json_files.append(rel_path(series_path))
         history_count += len(snapshots)
         reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
+        retention_item["processing"] = processing_delta(before_report, retention_summary, report_started)
+        retention_items.append(retention_item)
     index_path = DATA_DIR / "index.json"
     search_index_path = DATA_DIR / "search-index.json"
     cache_index_path = CACHE_INDEX_PATH
@@ -901,6 +940,7 @@ def generate_data_files():
     write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count})
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
     write_json(cache_index_path, new_cache_index)
+    retention_summary["duration_seconds"] = elapsed_seconds(generation_started)
     write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_monthly_close": True, "monthly_close_source": "first_business_day_of_month", "closing_date_rule": "report_date_minus_one_day"}, "summary": retention_summary, "reports": retention_items})
     json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
