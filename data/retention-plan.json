@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-07-03T14:12:33.337161-03:00",
+  "generated_at": "2026-07-03T14:59:56.703574-03:00",
   "policy": {
     "dry_run": true,
     "keep_latest": true,
@@ -16,9 +16,14 @@
     "removal_candidates": 2586,
     "latest_files": 22,
     "monthly_close_files": 83,
+    "cache_lookups": 103,
     "processed_files": 0,
     "cache_hits": 103,
-    "snapshots_written": 103
+    "cache_misses_new": 0,
+    "cache_misses_changed": 0,
+    "cache_misses_missing_snapshot": 0,
+    "snapshots_written": 103,
+    "duration_seconds": 1.982
   },
   "reports": [
     {
@@ -38,7 +43,17 @@
           ]
         }
       ],
-      "removal_candidates_sample": []
+      "removal_candidates_sample": [],
+      "processing": {
+        "cache_lookups": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 1,
+        "duration_seconds": 0.247
+      }
     },
     {
       "slug": "2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
@@ -57,7 +72,17 @@
           ]
         }
       ],
-      "removal_candidates_sample": []
+      "removal_candidates_sample": [],
+      "processing": {
+        "cache_lookups": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 1,
+        "duration_seconds": 0.327
+      }
     },
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
@@ -354,7 +379,17 @@
           "date_iso": "2026-04-14",
           "closing_date_iso": "2026-04-13"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.271
+      }
     },
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
@@ -651,7 +686,17 @@
           "date_iso": "2026-04-16",
           "closing_date_iso": "2026-04-15"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.273
+      }
     },
     {
       "slug": "credito-disponivel-mes-lancamento",
@@ -948,7 +993,17 @@
           "date_iso": "2026-04-14",
           "closing_date_iso": "2026-04-13"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.015
+      }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-2024",
@@ -993,7 +1048,17 @@
           "date_iso": "2026-05-09",
           "closing_date_iso": "2026-05-08"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 1,
+        "duration_seconds": 0.032
+      }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-2025",
@@ -1032,7 +1097,17 @@
           ]
         }
       ],
-      "removal_candidates_sample": []
+      "removal_candidates_sample": [],
+      "processing": {
+        "cache_lookups": 3,
+        "cache_hits": 3,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 3,
+        "duration_seconds": 0.044
+      }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
@@ -1329,7 +1404,17 @@
           "date_iso": "2026-04-14",
           "closing_date_iso": "2026-04-13"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.038
+      }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu",
@@ -1626,7 +1711,17 @@
           "date_iso": "2025-10-18",
           "closing_date_iso": "2025-10-17"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.011
+      }
     },
     {
       "slug": "evolucao-das-despesas-empenhadas",
@@ -1923,7 +2018,17 @@
           "date_iso": "2026-04-11",
           "closing_date_iso": "2026-04-10"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.05
+      }
     },
     {
       "slug": "imoveis-por-ug-conta-contabil-e-rip",
@@ -1950,7 +2055,17 @@
           "date_iso": "2026-05-25",
           "closing_date_iso": "2026-05-24"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 1,
+        "duration_seconds": 0.035
+      }
     },
     {
       "slug": "limite-de-saque-conta-contabil",
@@ -2247,7 +2362,17 @@
           "date_iso": "2026-02-14",
           "closing_date_iso": "2026-02-13"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.006
+      }
     },
     {
       "slug": "provisionamentos",
@@ -2580,7 +2705,17 @@
           "date_iso": "2025-10-23",
           "closing_date_iso": "2025-10-22"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 8,
+        "cache_hits": 8,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 8,
+        "duration_seconds": 0.034
+      }
     },
     {
       "slug": "recolhimento-proprio-gru",
@@ -2895,7 +3030,17 @@
           "date_iso": "2026-01-29",
           "closing_date_iso": "2026-01-28"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 6,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 6,
+        "duration_seconds": 0.045
+      }
     },
     {
       "slug": "restos-a-pagar-rap",
@@ -3219,7 +3364,17 @@
           "date_iso": "2025-10-18",
           "closing_date_iso": "2025-10-17"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 7,
+        "cache_hits": 7,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 7,
+        "duration_seconds": 0.124
+      }
     },
     {
       "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
@@ -3552,7 +3707,17 @@
           "date_iso": "2025-10-22",
           "closing_date_iso": "2025-10-21"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 8,
+        "cache_hits": 8,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 8,
+        "duration_seconds": 0.149
+      }
     },
     {
       "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
@@ -3858,7 +4023,17 @@
           "date_iso": "2026-02-13",
           "closing_date_iso": "2026-02-12"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 5,
+        "cache_hits": 5,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 5,
+        "duration_seconds": 0.014
+      }
     },
     {
       "slug": "saldo-por-natureza-de-despesa",
@@ -4182,7 +4357,17 @@
           "date_iso": "2025-10-18",
           "closing_date_iso": "2025-10-17"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 7,
+        "cache_hits": 7,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 7,
+        "duration_seconds": 0.031
+      }
     },
     {
       "slug": "saldos-de-contas-de-contratos",
@@ -4515,7 +4700,17 @@
           "date_iso": "2025-11-04",
           "closing_date_iso": "2025-11-03"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 8,
+        "cache_hits": 8,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 8,
+        "duration_seconds": 0.025
+      }
     },
     {
       "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
@@ -4839,7 +5034,17 @@
           "date_iso": "2025-11-05",
           "closing_date_iso": "2025-11-04"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 7,
+        "cache_hits": 7,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 7,
+        "duration_seconds": 0.076
+      }
     },
     {
       "slug": "suprimento-de-fundos-empenhos",
@@ -5172,7 +5377,17 @@
           "date_iso": "2025-10-18",
           "closing_date_iso": "2025-10-17"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 8,
+        "cache_hits": 8,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 8,
+        "duration_seconds": 0.044
+      }
     },
     {
       "slug": "suprimento-de-fundos-liquidacoes-e-pagamentos",
@@ -5469,7 +5684,17 @@
           "date_iso": "2026-04-09",
           "closing_date_iso": "2026-04-08"
         }
-      ]
+      ],
+      "processing": {
+        "cache_lookups": 4,
+        "cache_hits": 4,
+        "cache_misses_new": 0,
+        "cache_misses_changed": 0,
+        "cache_misses_missing_snapshot": 0,
+        "processed_files": 0,
+        "snapshots_written": 4,
+        "duration_seconds": 0.02
+      }
     }
   ]
 }
