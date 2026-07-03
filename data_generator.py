@@ -469,9 +469,28 @@ def first_business_day(year, month):
     return day
 
 
+def closing_date_for_report(report_date):
+    return report_date - datetime.timedelta(days=1)
+
+
+def monthly_close_key(report_date):
+    closing_date = closing_date_for_report(report_date)
+    return f"{closing_date.year:04d}-{closing_date.month:02d}"
+
+
+def is_monthly_close_report(report_date):
+    return report_date == first_business_day(report_date.year, report_date.month)
+
+
 def dated_file_info(file_path):
     report_date, _ = parse_date_from_name(file_path)
-    return {"path": file_path, "date": report_date}
+    closing_date = closing_date_for_report(report_date)
+    return {
+        "path": file_path,
+        "date": report_date,
+        "closing_date": closing_date,
+        "monthly_close_for": monthly_close_key(report_date) if is_monthly_close_report(report_date) else None,
+    }
 
 
 def retention_selection(paths):
@@ -491,8 +510,8 @@ def retention_selection(paths):
     keep(latest, "latest")
     for item in dated_files:
         date = item["date"]
-        if date == first_business_day(date.year, date.month):
-            keep(item, "first_business_day")
+        if is_monthly_close_report(date):
+            keep(item, "monthly_close")
 
     retained = []
     ignored = []
@@ -546,21 +565,27 @@ def cached_document(file_path, source_map, now, cache_index, stats):
 
 
 def retention_plan_item(slug, retained, ignored):
+    def plan_entry(item, include_reasons=False):
+        entry = {
+            "path": rel_path(item["path"]),
+            "date_iso": item["date"].isoformat(),
+            "closing_date_iso": item["closing_date"].isoformat(),
+        }
+        if item.get("monthly_close_for"):
+            entry["monthly_close_for"] = item["monthly_close_for"]
+        if include_reasons:
+            entry["reasons"] = item["reasons"]
+        return entry
+
     return {
         "slug": slug,
         "total_files": len(retained) + len(ignored),
         "retained_files": len(retained),
         "ignored_by_retention": len(ignored),
         "latest_files": sum(1 for item in retained if "latest" in item["reasons"]),
-        "monthly_files": sum(1 for item in retained if "first_business_day" in item["reasons"]),
-        "retained": [
-            {"path": rel_path(item["path"]), "date_iso": item["date"].isoformat(), "reasons": item["reasons"]}
-            for item in retained
-        ],
-        "ignored_sample": [
-            {"path": rel_path(item["path"]), "date_iso": item["date"].isoformat()}
-            for item in ignored[:50]
-        ],
+        "monthly_close_files": sum(1 for item in retained if "monthly_close" in item["reasons"]),
+        "retained": [plan_entry(item, include_reasons=True) for item in retained],
+        "removal_candidates_sample": [plan_entry(item) for item in ignored[:50]],
     }
 
 
@@ -806,6 +831,9 @@ def generate_data_files():
         "total_files": 0,
         "retained_files": 0,
         "ignored_by_retention": 0,
+        "removal_candidates": 0,
+        "latest_files": 0,
+        "monthly_close_files": 0,
         "processed_files": 0,
         "cache_hits": 0,
         "snapshots_written": 0,
@@ -817,6 +845,9 @@ def generate_data_files():
         retention_summary["total_files"] += len(paths)
         retention_summary["retained_files"] += len(retained_paths)
         retention_summary["ignored_by_retention"] += len(ignored_paths)
+        retention_summary["removal_candidates"] += len(ignored_paths)
+        retention_summary["latest_files"] += sum(1 for item in retained_paths if "latest" in item["reasons"])
+        retention_summary["monthly_close_files"] += sum(1 for item in retained_paths if "monthly_close" in item["reasons"])
         if not retained_paths:
             continue
         latest_path = paths[-1]
@@ -861,7 +892,7 @@ def generate_data_files():
     write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count})
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
     write_json(cache_index_path, new_cache_index)
-    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_first_business_day_of_month": True}, "summary": retention_summary, "reports": retention_items})
+    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_monthly_close": True, "monthly_close_source": "first_business_day_of_month", "closing_date_rule": "report_date_minus_one_day"}, "summary": retention_summary, "reports": retention_items})
     json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
     print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")
