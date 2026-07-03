@@ -395,7 +395,7 @@ def full_report_document(file_path, source_map, now):
     if not soup.find("table"):
         issues.append("no_html_table")
     source_path = rel_path(file_path)
-    return {
+    doc = {
         "schema_version": SCHEMA_VERSION,
         "slug": slug,
         "title": title,
@@ -410,6 +410,7 @@ def full_report_document(file_path, source_map, now):
         "metadata": metadata_for(slug, title, report_date, content_hash, source_path, source_map, now, len(rows), len(columns)),
         "quality": quality_result(issues),
     }
+    return annotate_metrics(doc)
 
 
 def light_history_document(file_path, title, slug, source_map, now):
@@ -525,7 +526,7 @@ def cached_document(file_path, source_map, now, cache_index, stats):
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
-            return refresh_document_metadata(doc, source_map, now), content_hash
+            return annotate_metrics(refresh_document_metadata(doc, source_map, now)), content_hash
 
     stats["processed_files"] += 1
     doc = full_report_document(file_path, source_map, now)
@@ -632,30 +633,138 @@ def metric_value_from_rows(rows, columns, rule):
     return None
 
 
-def extract_metrics(doc):
+def total_label_text(total, columns):
+    raw = total.get("raw") or {}
+    candidates = [total.get("label"), raw.get(columns[0]) if columns else None]
+    return normalize_key(" ".join(str(value or "") for value in candidates))
+
+
+def safe_total_rows(totals, columns):
+    return [
+        total
+        for total in totals or []
+        if "total" in total_label_text(total, columns)
+    ]
+
+
+def rap_metric_from_totals(doc, metric, rule):
+    columns = doc.get("columns") or []
+    totals = safe_total_rows(doc.get("totals"), columns)
+    if not totals:
+        return None, {
+            "status": "unavailable",
+            "reason": "Linha de total geral de RAP nao encontrada.",
+            "source": "data/reports",
+            "fallback": False,
+        }
+    for column in metric_columns(columns, rule):
+        for total in reversed(totals):
+            values = total.get("values") or {}
+            raw = total.get("raw") or {}
+            value = values.get(column)
+            if value is None:
+                value = parse_br_number(raw.get(column))
+            if value is None:
+                continue
+            if abs(value) < 100:
+                return None, {
+                    "status": "invalid",
+                    "reason": f"Valor de RAP com magnitude suspeita: {value}.",
+                    "source": "data/reports",
+                    "line": total.get("label") or "total",
+                    "column": column,
+                    "fallback": bool(re.fullmatch(r"Valor\s+\d+", column or "", re.IGNORECASE)),
+                }
+            return value, {
+                "status": "ok",
+                "source": "data/reports",
+                "line": total.get("label") or "total",
+                "column": column,
+                "fallback": bool(re.fullmatch(r"Valor\s+\d+", column or "", re.IGNORECASE)),
+            }
+    return None, {
+        "status": "unavailable",
+        "reason": f"Coluna esperada para {metric} nao encontrada na linha de total de RAP.",
+        "source": "data/reports",
+        "fallback": False,
+    }
+
+
+def extract_rap_metrics(doc, rules):
+    metrics = {}
+    meta = {}
+    issues = set()
+    for metric in report_expected_metrics(doc.get("slug")):
+        rule = rules.get(metric)
+        if not rule:
+            continue
+        value, metric_meta = rap_metric_from_totals(doc, metric, rule)
+        meta[metric] = metric_meta
+        if value is not None:
+            metrics[metric] = value
+        else:
+            issues.add("rap_metric_unavailable" if metric_meta.get("status") == "unavailable" else "rap_metric_invalid")
+    if "rap_pago" in metrics and "rap_a_pagar" in metrics:
+        total = metrics["rap_pago"] + metrics["rap_a_pagar"]
+        if total <= 0:
+            issues.add("rap_metric_invalid")
+        elif metrics["rap_pago"] < 0 or metrics["rap_a_pagar"] < 0:
+            issues.add("rap_metric_invalid")
+    return metrics, meta, sorted(issues)
+
+
+def extract_metrics_with_meta(doc):
     slug = doc.get("slug")
     rules = report_metric_rules(slug)
     metrics = {}
+    meta = {}
+    issues = []
+    if slug == "restos-a-pagar-rap":
+        return extract_rap_metrics(doc, rules)
     for metric in report_expected_metrics(slug):
         rule = rules.get(metric)
         if not rule:
             continue
         value = metric_value_from_totals(doc.get("totals"), doc.get("columns") or [], rule)
+        source = "totals"
         if value is None:
             value = metric_value_from_rows(doc.get("rows"), doc.get("columns") or [], rule)
+            source = "rows_sum"
         if value is not None:
             metrics[metric] = value
+            meta[metric] = {"status": "ok", "source": source, "fallback": False}
+    return metrics, meta, issues
+
+
+def extract_metrics(doc):
+    metrics, _, _ = extract_metrics_with_meta(doc)
     return metrics
 
 
+def annotate_metrics(doc):
+    metrics, meta, issues = extract_metrics_with_meta(doc)
+    doc["metrics"] = metrics
+    doc["metrics_meta"] = meta
+    if issues:
+        quality = doc.setdefault("quality", {"ok": True, "issues": [], "warnings": []})
+        quality["issues"] = sorted(set((quality.get("issues") or []) + issues))
+        quality["ok"] = not quality["issues"]
+    return doc
+
+
 def series_item(doc):
+    metrics, meta, issues = extract_metrics_with_meta(doc)
     item = {
         "date": doc["date"],
         "date_iso": doc["date_iso"],
         "hash_conteudo": doc["metadata"]["hash_conteudo"],
         "totals": doc.get("totals") or [],
     }
-    item["metrics"] = extract_metrics(doc)
+    item["metrics"] = metrics
+    if meta:
+        item["metrics_meta"] = meta
+    if issues:
+        item["metrics_quality"] = {"ok": False, "issues": issues}
     return item
 
 

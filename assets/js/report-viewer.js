@@ -31,7 +31,9 @@ let report = null;
       date_from_filename: 'data obtida pelo nome do arquivo',
       date_from_mtime: 'data obtida pela modificação do arquivo',
       inconsistent_columns: 'largura de linhas normalizada',
-      totals_separated: 'totais separados da tabela principal'
+      totals_separated: 'totais separados da tabela principal',
+      rap_metric_unavailable: 'RAP sem linha de total geral confiável',
+      rap_metric_invalid: 'RAP com métrica monetária inválida ou suspeita'
     };
     const reportFriendlyNames = {
       '2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa': 'Liquida\u00e7\u00f5es e Pagamentos por Natureza - 2024',

@@ -30,7 +30,9 @@ let indexData = null;
       date_from_filename: 'data obtida pelo nome do arquivo',
       date_from_mtime: 'data obtida pela modificação do arquivo',
       inconsistent_columns: 'largura de linhas normalizada',
-      totals_separated: 'totais separados da tabela principal'
+      totals_separated: 'totais separados da tabela principal',
+      rap_metric_unavailable: 'RAP sem linha de total geral confiável',
+      rap_metric_invalid: 'RAP com métrica monetária inválida ou suspeita'
     };
     const qualityCodes = {
       date_from_filename: 'D',
@@ -486,9 +488,15 @@ let indexData = null;
       for (let index = series.length - 1; index >= 0; index -= 1) {
         const item = series[index];
         const value = item?.metrics?.[metric];
-        if (Number.isFinite(value)) return { value, date: item.date || item.date_iso };
+        if (Number.isFinite(value) && metricIsReliable(item, metric)) return { value, date: item.date || item.date_iso, meta: item?.metrics_meta?.[metric] };
       }
       return null;
+    }
+
+    function metricIsReliable(item, metric) {
+      if (item?.metrics_quality && item.metrics_quality.ok === false) return false;
+      const meta = item?.metrics_meta?.[metric];
+      return !meta || meta.status === 'ok';
     }
 
     function reportLabel(slug) {
@@ -500,7 +508,14 @@ let indexData = null;
       if (!doc) return auditValue(null, `Relatorio ausente: ${reportLabel(slug)}.`);
       const seriesMetric = latestSeriesMetric(doc, metric);
       if (seriesMetric) {
-        return auditValue(seriesMetric.value, `Fonte: ${reportLabel(slug)}; data: ${sourceDate(doc, seriesMetric)}; metrica: ${metric}; origem: data/series.`, false);
+        const meta = seriesMetric.meta || {};
+        const line = meta.line ? ` linha: ${meta.line};` : '';
+        const column = meta.column ? ` coluna: ${meta.column};` : '';
+        return auditValue(seriesMetric.value, `Fonte: ${reportLabel(slug)}; data: ${sourceDate(doc, seriesMetric)}; metrica: ${metric}; origem: data/series;${line}${column}`, Boolean(meta.fallback));
+      }
+      if (slug === 'restos-a-pagar-rap') {
+        const issueText = rapMetricIssue(metric);
+        return auditValue(null, issueText || `RAP indisponivel: ${metric}. Metrica exige total geral confiavel.`);
       }
       for (const column of fallbackColumns) {
         const fallback = totalValue(slug, column);
@@ -511,6 +526,20 @@ let indexData = null;
         }
       }
       return auditValue(null, `Dado indisponivel: ${reportLabel(slug)}; metrica: ${metric}.`);
+    }
+
+    function rapMetricIssue(metric) {
+      const doc = financialReports['restos-a-pagar-rap'];
+      const reportMeta = doc?.metrics_meta?.[metric];
+      if (reportMeta && reportMeta.status !== 'ok') return reportMeta.reason || 'Metrica de RAP insegura.';
+      const series = doc?.series_data?.series || [];
+      for (let index = series.length - 1; index >= 0; index -= 1) {
+        const meta = series[index]?.metrics_meta?.[metric];
+        if (meta && meta.status !== 'ok') return meta.reason || 'Metrica de RAP insegura na serie.';
+      }
+      const qualityIssues = doc?.quality?.issues || [];
+      if (qualityIssues.some(issue => String(issue).startsWith('rap_metric_'))) return qualityIssues.join(', ');
+      return null;
     }
 
     function firstValue(values) {
@@ -704,7 +733,7 @@ let indexData = null;
       return series.map(item => ({
         date: item.date || item.date_iso || '',
         dateIso: item.date_iso || item.date || '',
-        value: item?.metrics?.[metric]
+        value: metricIsReliable(item, metric) ? item?.metrics?.[metric] : null
       })).filter(point => Number.isFinite(point.value));
     }
 
@@ -731,6 +760,10 @@ let indexData = null;
     }
 
     function renderRapHistory(id, currentValues) {
+      if (!isAvailable(currentValues.rapPaid) || !isAvailable(currentValues.rapPayable)) {
+        unavailableChart(id);
+        return;
+      }
       renderHistoricalLineChart(id, historicalSeries('restos-a-pagar-rap', [
         { label: 'RAP pago', metric: 'rap_pago', color: 'var(--accent)', current: currentValues.rapPaid },
         { label: 'RAP a pagar', metric: 'rap_a_pagar', color: 'var(--accent-2)', current: currentValues.rapPayable }
@@ -902,6 +935,15 @@ let indexData = null;
             message: `RAP a pagar representa ${ratioValue.toLocaleString('pt-BR', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 })} do total acompanhado. Limite: 50%.`
           }));
         }
+      }
+      const rapIssue = rapMetricIssue('rap_pago') || rapMetricIssue('rap_a_pagar');
+      if (rapIssue) {
+        alerts.push(makeAlert({
+          level: 'critical',
+          type: 'RAP sem metrica confiavel',
+          report: reportBySlug('restos-a-pagar-rap'),
+          message: `Nao foi possivel validar os totais de Restos a Pagar. ${rapIssue}`
+        }));
       }
       if (isAvailable(values.credit) && isAvailable(values.provisioned) && valueOf(values.provisioned) > 0) {
         const ratioValue = valueOf(values.credit) / valueOf(values.provisioned);
