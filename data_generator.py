@@ -31,8 +31,18 @@ CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 SCHEMA_VERSION = "1.5"
-RETENTION_DRY_RUN = True
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
+
+
+def env_flag(name, default=False):
+    raw_value = os.getenv(name)
+    if raw_value is None:
+        return default
+    return raw_value.strip().lower() in {"1", "true", "yes", "sim", "on"}
+
+
+RETENTION_DRY_RUN = env_flag("RETENTION_DRY_RUN", True)
+RETENTION_APPLY_HTML_CLEANUP = env_flag("RETENTION_APPLY_HTML_CLEANUP", False)
 
 INFO_QUALITY_CODES = {
     "date_from_filename",
@@ -77,6 +87,17 @@ def write_report_definitions(now):
 
 def elapsed_seconds(started_at):
     return round(max(0, time.monotonic() - started_at), 3)
+
+
+def retention_policy():
+    return {
+        "dry_run": RETENTION_DRY_RUN,
+        "apply_html_cleanup": RETENTION_APPLY_HTML_CLEANUP,
+        "keep_latest": True,
+        "keep_monthly_close": True,
+        "monthly_close_source": "first_business_day_of_month",
+        "closing_date_rule": "report_date_minus_one_day",
+    }
 
 
 def rel_path(path):
@@ -618,6 +639,67 @@ def retention_plan_item(slug, retained, ignored):
     }
 
 
+def cleanup_retention_candidates():
+    started = time.monotonic()
+    enabled = RETENTION_APPLY_HTML_CLEANUP and not RETENTION_DRY_RUN
+    backup_root = (Path(REPO_ROOT) / BACKUP_FOLDER).resolve()
+    summary = {
+        "enabled": enabled,
+        "dry_run": RETENTION_DRY_RUN,
+        "apply_html_cleanup": RETENTION_APPLY_HTML_CLEANUP,
+        "total_files": 0,
+        "retained_files": 0,
+        "removal_candidates": 0,
+        "deleted_files": 0,
+        "protected_files": 0,
+        "errors_count": 0,
+        "deleted_sample": [],
+        "protected_sample": [],
+        "errors": [],
+    }
+
+    for slug, paths in sorted(grouped_files().items()):
+        retained, ignored = retention_selection(paths)
+        summary["total_files"] += len(paths)
+        summary["retained_files"] += len(retained)
+        summary["removal_candidates"] += len(ignored)
+
+        for item in ignored:
+            path = Path(item["path"])
+            try:
+                resolved = path.resolve()
+            except OSError as error:
+                summary["errors_count"] += 1
+                summary["errors"].append({"path": str(path), "error": str(error)})
+                continue
+
+            is_protected = path.suffix.lower() != ".html" or not resolved.is_relative_to(backup_root)
+            if is_protected:
+                summary["protected_files"] += 1
+                if len(summary["protected_sample"]) < 20:
+                    summary["protected_sample"].append(rel_path(path))
+                continue
+
+            if not enabled:
+                continue
+
+            try:
+                resolved.unlink()
+                summary["deleted_files"] += 1
+                if len(summary["deleted_sample"]) < 50:
+                    summary["deleted_sample"].append(rel_path(path))
+            except OSError as error:
+                summary["errors_count"] += 1
+                summary["errors"].append({"path": rel_path(path), "error": str(error)})
+
+    summary["duration_seconds"] = elapsed_seconds(started)
+    if enabled:
+        print(f"Limpeza de retencao: {summary['deleted_files']} HTML(s) removidos.")
+    else:
+        print(f"Limpeza de retencao em dry-run: {summary['removal_candidates']} candidato(s), nenhum arquivo removido.")
+    return summary
+
+
 def build_search_text(doc):
     parts = [doc["title"], doc["date"], doc["html_path"], " ".join(doc["columns"])]
     for row in doc["rows"]:
@@ -941,7 +1023,7 @@ def generate_data_files():
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
     write_json(cache_index_path, new_cache_index)
     retention_summary["duration_seconds"] = elapsed_seconds(generation_started)
-    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_monthly_close": True, "monthly_close_source": "first_business_day_of_month", "closing_date_rule": "report_date_minus_one_day"}, "summary": retention_summary, "reports": retention_items})
+    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": retention_policy(), "summary": retention_summary, "reports": retention_items})
     json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
     print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")

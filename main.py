@@ -1,4 +1,4 @@
-from data_generator import generate_data_files
+from data_generator import cleanup_retention_candidates, generate_data_files
 from email_processor import process_emails
 from git_utils import commit_changes
 from html_generator import create_latest_summary_html, update_root_index
@@ -13,6 +13,7 @@ if __name__ == '__main__':
         # 1. Processa novos e-mails e gera arquivos nas pastas
         email_result = process_emails(commit=False, return_details=True)
         processed_uids = email_result["processed_uids"]
+        cleanup_summary = cleanup_retention_candidates()
 
         # 2. Cria arquivos .html na raiz com os últimos relatórios de cada pasta
         create_latest_summary_html()
@@ -22,6 +23,7 @@ if __name__ == '__main__':
 
         # 4. Atualiza a API estática e os dados para páginas complementares
         generated_artifacts = generate_data_files() or {}
+        generated_artifacts["retention_cleanup"] = cleanup_summary
 
         # 5. Registra a execução antes do commit para versionar o log junto com os artefatos
         write_run_log_safely(finish_run(run_state, email_result, generated_artifacts))
