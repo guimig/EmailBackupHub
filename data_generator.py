@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 from config import BACKUP_FOLDER, REPO_ROOT, TIMEZONE
 from report_definitions import (
+    REPORT_DEFINITIONS,
     report_columns,
     report_definition,
     report_expected_metrics,
@@ -27,6 +28,7 @@ SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
 CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
+REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 SCHEMA_VERSION = "1.5"
 RETENTION_DRY_RUN = True
 
@@ -59,6 +61,16 @@ def read_json(path, default):
 def write_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def write_report_definitions(now):
+    payload = {
+        "schema_version": SCHEMA_VERSION,
+        "generated_at": now.isoformat(),
+        "reports": REPORT_DEFINITIONS,
+    }
+    write_json(REPORT_DEFINITIONS_PATH, payload)
+    return REPORT_DEFINITIONS_PATH
 
 
 def rel_path(path):
@@ -845,11 +857,12 @@ def generate_data_files():
     search_index_path = DATA_DIR / "search-index.json"
     cache_index_path = CACHE_INDEX_PATH
     retention_plan_path = RETENTION_PLAN_PATH
-    write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"}, "reports": reports, "history_count": history_count})
+    report_definitions_path = write_report_definitions(now)
+    write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count})
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
     write_json(cache_index_path, new_cache_index)
     write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_first_business_day_of_month": True}, "summary": retention_summary, "reports": retention_items})
-    json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path)])
+    json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
     print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")
     return {

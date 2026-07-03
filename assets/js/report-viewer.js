@@ -7,6 +7,7 @@ let report = null;
     let groupSumColumns = new Set();
     let renderTimer = null;
     let restoringState = false;
+    let reportDefinitions = {};
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -112,7 +113,22 @@ let report = null;
     }
 
     function friendlyReportTitle() {
-      return reportFriendlyNames[report?.slug] || fixMojibake(report?.title) || report?.slug || 'Relat\u00f3rio';
+      return reportDefinition()?.title || reportFriendlyNames[report?.slug] || fixMojibake(report?.title) || report?.slug || 'Relat\u00f3rio';
+    }
+
+    function reportDefinition() {
+      return reportDefinitions[report?.slug] || {};
+    }
+
+    async function loadReportDefinitions() {
+      try {
+        const response = await fetch('data/report-definitions.json');
+        if (!response.ok) return {};
+        const payload = await response.json();
+        return payload.reports || {};
+      } catch {
+        return {};
+      }
     }
 
     function fixMojibake(value) {
@@ -131,7 +147,11 @@ let report = null;
 
     async function loadReport() {
       const url = reportUrl();
-      const response = await fetch(url);
+      const [response, definitions] = await Promise.all([
+        fetch(url),
+        loadReportDefinitions()
+      ]);
+      reportDefinitions = definitions;
       report = await response.json();
       byId('title').textContent = friendlyReportTitle();
       byId('htmlLink').href = report.html_path || '#';
@@ -278,7 +298,7 @@ let report = null;
     }
 
     function friendlyColumns(columns) {
-      const friendly = columnFriendlyNames[report.slug] || [];
+      const friendly = reportDefinition().columns || columnFriendlyNames[report.slug] || [];
       const allColumns = report.columns || columns;
       const generated = allColumns.length && allColumns.every(column => /^Coluna \d+$/.test(column || ''));
       return columns.map((column, index) => {
@@ -802,7 +822,7 @@ let report = null;
     }
 
     function knownTotalHighlights(total) {
-      const rules = reportHighlightRules[report?.slug] || [];
+      const rules = highlightRules();
       return rules.map(([label, column, terms]) => {
         const matchedColumn = findTotalColumn(total, column, terms);
         const value = numericTotalValue(total, matchedColumn);
@@ -832,7 +852,7 @@ let report = null;
 
     function partialTotalHighlights(totals, grandTotals, columns, byColumn) {
       const grandSet = new Set(grandTotals);
-      const primaryRules = reportHighlightRules[report?.slug] || [];
+      const primaryRules = highlightRules();
       const primaryColumns = primaryRules.length
         ? primaryRules.slice(0, 2).map(([label, column, terms]) => ({ label, column, terms }))
         : monetaryColumns(columns, byColumn).slice(0, 2).map(column => ({ label: byColumn.get(column) || column, column }));
@@ -853,6 +873,14 @@ let report = null;
         .sort((a, b) => Math.abs(b.value) - Math.abs(a.value))
         .slice(0, 3)
         .map(item => [item.label, formatMoneyValue(item.value)]);
+    }
+
+    function highlightRules() {
+      const definitions = reportDefinition().highlights || [];
+      if (definitions.length) {
+        return definitions.map(item => [item.label, item.column, item.match_terms]);
+      }
+      return reportHighlightRules[report?.slug] || [];
     }
 
     function monetaryColumns(columns, byColumn) {

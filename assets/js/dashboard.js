@@ -2,6 +2,7 @@ let indexData = null;
     let searchData = null;
     let reports = [];
     let financialReports = {};
+    let reportDefinitions = {};
     let sortKey = 'title';
     let sortDir = 1;
 
@@ -66,17 +67,30 @@ let indexData = null;
     };
 
     async function loadData() {
-      const [indexResponse, searchResponse] = await Promise.all([
+      const [indexResponse, searchResponse, definitions] = await Promise.all([
         fetch('data/index.json'),
-        fetch('data/search-index.json')
+        fetch('data/search-index.json'),
+        loadReportDefinitions()
       ]);
       indexData = await indexResponse.json();
       searchData = await searchResponse.json();
+      reportDefinitions = definitions;
       const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
       reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: textBySlug[report.slug] || '' }));
       await loadFinancialReports();
       populateFilters();
       render();
+    }
+
+    async function loadReportDefinitions() {
+      try {
+        const response = await fetch('data/report-definitions.json');
+        if (!response.ok) return {};
+        const payload = await response.json();
+        return payload.reports || {};
+      } catch {
+        return {};
+      }
     }
 
     function populateFilters() {
@@ -107,7 +121,8 @@ let indexData = null;
     }
 
     function friendlyTitle(report) {
-      return friendlyNames[report.slug] || report.title || report.slug || 'Relatório';
+      const definition = reportDefinitions[report.slug] || {};
+      return definition.title || friendlyNames[report.slug] || report.title || report.slug || 'Relatório';
     }
 
     function qualitySummary(report) {
@@ -362,7 +377,7 @@ let indexData = null;
     }
 
     function reportLabel(slug) {
-      return friendlyNames[slug] || financialReports[slug]?.title || slug;
+      return reportDefinitions[slug]?.title || friendlyNames[slug] || financialReports[slug]?.title || slug;
     }
 
     function metricValue(slug, metric, fallbackColumns = []) {

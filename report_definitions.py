@@ -2,8 +2,8 @@
 
 This file intentionally contains only plain Python data so the current GitHub
 Actions workflow and GitHub Pages output keep working without new dependencies.
-JavaScript pages still keep temporary fallback copies of some rules; those can
-be migrated to a generated JSON artifact in a later phase.
+The static generator exports these definitions to data/report-definitions.json
+for JavaScript pages, which still keep fallback copies for older deployments.
 """
 
 
