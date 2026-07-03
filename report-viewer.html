@@ -27,20 +27,8 @@
       <button id="printHtml">Imprimir PDF</button>
     </div>
     <div id="quality" class="quality"></div>
-    <details id="totalsPanel" class="totals is-hidden">
-      <summary id="totalsSummary">Totais separados</summary>
-      <div id="totalsList" class="totals-list"></div>
-    </details>
-    <details id="customTotalsPanel" class="custom-totals">
-      <summary>Totais personalizados</summary>
-      <div class="custom-totals-body">
-        <p>Selecione manualmente as colunas que devem ser somadas. Esses totais entram ao final da tabela e na exportação HTML/PDF.</p>
-        <div id="customTotalOptions" class="custom-total-options"></div>
-        <div id="customTotalSummary" class="custom-total-summary"></div>
-      </div>
-    </details>
     <details class="viewer-controls">
-      <summary>Colunas e agrupamento</summary>
+      <summary>Colunas, agrupamento e somas</summary>
       <div class="viewer-controls-body">
         <div>
           <strong>Colunas visíveis</strong>
@@ -55,6 +43,12 @@
             <strong>Somar por grupo</strong>
             <div id="groupSumOptions" class="control-grid"></div>
           </div>
+        </div>
+        <div>
+          <strong>Somas da tabela</strong>
+          <p class="control-help">Selecione as colunas que devem ser somadas. Os totais aparecem em amarelo ao final da tabela, do CSV e do HTML/PDF exportado.</p>
+          <div id="customTotalOptions" class="control-grid"></div>
+          <div id="customTotalSummary" class="custom-total-summary"></div>
         </div>
       </div>
     </details>

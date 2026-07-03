@@ -158,14 +158,13 @@ let report = null;
       byId('quality').className = quality.ok ? 'quality' : 'quality bad';
       columnFilters = {};
       columnSort = { column: null, direction: '' };
-      selectedTotalColumns = new Set();
+      selectedTotalColumns = new Set(defaultSummableColumns(report.columns || []));
       visibleColumns = new Set(report.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
       byId('showTotals').checked = true;
       restoreStateFromUrl();
       renderTableShell();
-      renderTotals();
       renderColumnVisibilityControls();
       renderGroupingControls();
       renderCustomTotalsControls();
@@ -274,16 +273,6 @@ let report = null;
 
     function qualityLabel(code) {
       return qualityLabels[code] || code;
-    }
-
-    function renderTotals() {
-      const totals = report.totals || [];
-      byId('totalsPanel').style.display = totals.length ? 'block' : 'none';
-      byId('totalsSummary').textContent = `${totals.length} linha(s) de total separada(s)`;
-      byId('totalsList').innerHTML = totals.map(total => {
-        const values = Object.entries(total.values || {}).map(([key, value]) => `${escapeHtml(key)}: ${escapeHtml(value)}`).join(' | ');
-        return `<div><strong>${escapeHtml(total.label || 'Total')}</strong>${values ? `<br>${values}` : ''}</div>`;
-      }).join('');
     }
 
     function friendlyColumns(columns) {
@@ -481,6 +470,11 @@ let report = null;
       return rows.filter(item => item.type !== 'total');
     }
 
+    function defaultSummableColumns(columns) {
+      const displayColumns = friendlyColumns(columns);
+      return columns.filter((column, index) => isSummableColumn(column, displayColumns[index]));
+    }
+
     function customTotals(rows, columns) {
       const sourceRows = customTotalRows(rows);
       return columns.map(column => {
@@ -533,7 +527,7 @@ let report = null;
     function customTotalsReportHtml(rows, columns, displayColumns) {
       const totals = customTotals(rows, columns);
       if (!totals.length) return '';
-      return `<h2>Totais personalizados</h2><section class="grid">${totals.map(item => {
+      return `<h2>Somas da tabela</h2><section class="grid">${totals.map(item => {
         const index = columns.indexOf(item.column);
         const label = displayColumns[index] || item.column;
         const detail = item.count ? formatMoneyValue(item.total) : 'Sem valores num\u00e9ricos nas linhas filtradas';
@@ -545,7 +539,7 @@ let report = null;
       const totals = customTotals(rows, columns);
       if (!totals.length) return '';
       const totalByColumn = new Map(totals.map(item => [item.column, item]));
-      return `<tr>${columns.map((column, index) => {
+      return `<tr class="total-row">${columns.map((column, index) => {
         const total = totalByColumn.get(column);
         if (total) return `<td><strong>${escapeHtml(formatMoneyValue(total.total))}</strong></td>`;
         return `<td>${index === 0 ? '<strong>Total personalizado</strong>' : ''}</td>`;
@@ -556,7 +550,7 @@ let report = null;
       if (!groupColumn) {
         return rows.map(item => {
           const row = item.raw || item;
-          return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+          return `<tr class="${item.type === 'total' ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
         }).join('');
       }
       const groupHtml = groupedRows(rows).map(group => {
@@ -565,7 +559,7 @@ let report = null;
           <tr><td colspan="${Math.max(1, columns.length)}"><strong>${escapeHtml(friendlyColumnName(groupColumn))}: ${escapeHtml(group.key)}</strong> (${group.rows.length} linha(s))</td></tr>
           ${group.rows.map(item => {
             const row = item.raw || item;
-            return `<tr>${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+            return `<tr class="${item.type === 'total' ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
           }).join('')}
           ${groupSummaryRowHtml(totals, columns, 'Total do grupo')}
         `;
@@ -689,7 +683,8 @@ let report = null;
     table { width: 100%; border-collapse: collapse; background: var(--panel); }
     th, td { border: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; font-size: .82rem; }
     th { background: var(--soft); }
-    .totals div { border-top: 1px solid var(--line); padding: 8px 0; }
+    .total-row td, tr.total-row td { background: #fff4c2; color: #233128; font-weight: 700; }
+    .group-summary td { background: #fff4c2; color: #233128; font-weight: 700; }
     @media print { body { background: #fff; } header, main { padding: 14mm; } .card, .note, table { break-inside: avoid; } }
     @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } main, header { padding: 16px; } }
   </style>
@@ -708,7 +703,6 @@ let report = null;
     <h2>Principais informa\u00e7\u00f5es obtidas</h2>
     <section class="grid">${highlights.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
     ${customTotalsReportHtml(rows, columns, displayColumns)}
-    ${totalsReportHtml()}
     <h2>Tabela</h2>
     <table>
       <thead><tr>${displayColumns.map(column => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead>
@@ -732,7 +726,7 @@ let report = null;
       filters.push(['Colunas vis\u00edveis', visibleReportColumns().map(friendlyColumnName).join(', ') || 'Nenhuma']);
       filters.push(['Agrupamento', groupColumn ? friendlyColumnName(groupColumn) : 'Sem agrupamento']);
       filters.push(['Somas por grupo', groupSumColumns.size ? [...groupSumColumns].map(friendlyColumnName).join(', ') : 'Nenhuma coluna selecionada']);
-      filters.push(['Totais personalizados', selectedTotalColumns.size ? [...selectedTotalColumns].map(friendlyColumnName).join(', ') : 'Nenhuma coluna selecionada']);
+      filters.push(['Somas da tabela', selectedTotalColumns.size ? [...selectedTotalColumns].map(friendlyColumnName).join(', ') : 'Nenhuma coluna selecionada']);
       return filters;
     }
 
@@ -914,17 +908,6 @@ let report = null;
       if (classificationPattern.test(label)) return false;
       return /(r\$|valor|saldo|total|pago|pagos|pagamento|empenhado|empenhos|liquidado|liquidar|a pagar|credito|provisionado|provisionamento|despesa|arrecadado|inscrito|cancelado|disponivel|movim liquido|moeda origem)/.test(label);
     }
-    function totalsReportHtml() {
-      if (!byId('showTotals').checked) return '';
-      const totals = report.totals || [];
-      if (!totals.length) return '';
-      const visible = new Set(visibleReportColumns());
-      return `<h2>Totais separados</h2><section class="note totals">${totals.map(total => {
-        const values = Object.entries(total.values || {}).filter(([key]) => visible.has(key)).map(([key, value]) => `${escapeHtml(friendlyColumnName(key))}: ${escapeHtml(value)}`).join(' | ');
-        return `<div><strong>${escapeHtml(total.label || 'Total')}</strong>${values ? `<br>${values}` : ''}</div>`;
-      }).join('')}</section>`;
-    }
-
     function restoreStateFromUrl() {
       restoringState = true;
       const params = new URLSearchParams(location.search);
@@ -933,7 +916,7 @@ let report = null;
       byId('showTotals').checked = params.get('totals') !== '0';
       const visible = columnsFromIndexes(params.get('cols'));
       visibleColumns = new Set(visible.length ? visible : columns);
-      selectedTotalColumns = new Set(columnsFromIndexes(params.get('customTotals')));
+      selectedTotalColumns = params.has('customTotals') ? new Set(columnsFromIndexes(params.get('customTotals'))) : new Set(defaultSummableColumns(columns));
       groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')));
       const groupIndex = params.get('group');
       groupColumn = groupIndex === null || groupIndex === '' ? '' : columns[Number(groupIndex)] || '';
@@ -958,7 +941,7 @@ let report = null;
       setOrDelete(params, 'q', byId('globalSearch').value);
       params.set('totals', byId('showTotals').checked ? '1' : '0');
       setOrDelete(params, 'cols', visibleColumns.size === columns.length ? '' : indexList(visibleReportColumns()));
-      setOrDelete(params, 'customTotals', indexList([...selectedTotalColumns]));
+      params.set('customTotals', selectedTotalColumns.size ? indexList([...selectedTotalColumns]) : 'none');
       setOrDelete(params, 'group', groupColumn ? String(columnIndex(groupColumn)) : '');
       setOrDelete(params, 'groupSums', indexList([...groupSumColumns]));
       setOrDelete(params, 'sort', columnSort.column ? String(columnIndex(columnSort.column)) : '');
@@ -999,7 +982,7 @@ let report = null;
     byId('clearFilters').addEventListener('click', () => {
       columnFilters = {};
       columnSort = { column: null, direction: '' };
-      selectedTotalColumns = new Set();
+      selectedTotalColumns = new Set(defaultSummableColumns(report?.columns || []));
       visibleColumns = new Set(report?.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();

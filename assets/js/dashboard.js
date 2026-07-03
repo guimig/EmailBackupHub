@@ -631,10 +631,7 @@ let indexData = null;
         unavailableChart(id);
         return;
       }
-      renderHistoricalLineChart(id, historicalSeries('restos-a-pagar-rap', [
-        { label: 'RAP pago', metric: 'rap_pago', color: 'var(--accent)', current: currentValues.rapPaid },
-        { label: 'RAP a pagar', metric: 'rap_a_pagar', color: 'var(--accent-2)', current: currentValues.rapPayable }
-      ]), 'Evolucao historica de restos a pagar');
+      renderRapBars(id, currentValues.rapPaid, currentValues.rapPayable);
     }
 
     function renderGruHistory(id, legendId, currentValue) {
@@ -697,6 +694,29 @@ let indexData = null;
           </svg>
           <div class="chart-legend">${legend}</div>
           <div class="history-meta">Periodo: ${escapeHtml(firstDate)} a ${escapeHtml(lastPoint.date || '-')}. ${validPoints.length} ponto(s). Serie desde jan/2026. Ultima data: ${escapeHtml(lastPoint.date || '-')}.</div>
+        </div>`;
+    }
+
+    function renderRapBars(id, paid, payable) {
+      if (!isAvailable(paid) || !isAvailable(payable)) return unavailableChart(id);
+      const paidValue = valueOf(paid);
+      const payableValue = valueOf(payable);
+      const max = Math.max(paidValue, payableValue);
+      if (!Number.isFinite(max) || max <= 0) return unavailableChart(id);
+      const paidHeight = Math.max(2, paidValue / max * 100);
+      const payableHeight = Math.max(2, payableValue / max * 100);
+      byId(id).innerHTML = `
+        <div class="rap-bars" role="img" aria-label="Restos a pagar pagos e a pagar em barras">
+          <div class="rap-bar-item" title="RAP pago: ${escapeHtml(formatMoney(paid))}">
+            <div class="rap-bar-track"><div class="rap-bar-fill paid" style="height:${paidHeight}%"></div></div>
+            <span class="rap-bar-label">Pago</span>
+            <strong class="rap-bar-value">${escapeHtml(formatMoney(paid))}</strong>
+          </div>
+          <div class="rap-bar-item" title="RAP a pagar: ${escapeHtml(formatMoney(payable))}">
+            <div class="rap-bar-track"><div class="rap-bar-fill open" style="height:${payableHeight}%"></div></div>
+            <span class="rap-bar-label">A pagar</span>
+            <strong class="rap-bar-value">${escapeHtml(formatMoney(payable))}</strong>
+          </div>
         </div>`;
     }
 
