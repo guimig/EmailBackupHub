@@ -1,44 +1,146 @@
 # EmailBackupHub
 
-Coleta automaticamente relatórios enviados por e-mail, salva cada mensagem em uma pasta por assunto e mantém uma página `index.html` atualizada com o histórico completo e os links para os arquivos mais recentes.
+Repositório estático para coletar relatórios enviados por e-mail, preservar os artefatos relevantes e publicar uma interface de consulta no GitHub Pages.
 
-## Como funciona
-- Busca e-mails **não lidos** de `serpro.gov.br` via IMAP (`imap.gmail.com`), autenticando com `GMAIL_EMAIL` e `GMAIL_PASSWORD`.
-- Ignora qualquer mensagem cujo assunto ou corpo contenha a frase **“não houve retorno”** (com ou sem acento), evitando importar relatórios vazios.
-- Cria uma pasta em `emails/<assunto-normalizado>/` e grava o corpo do e-mail em `<assunto-normalizado>_DD-MM-AAAA.html` (mantendo um `.gitkeep`).
-- Copia o arquivo mais recente de cada pasta para a raiz do repositório, facilitando o acesso rápido aos relatórios atuais.
-- Regenera `index.html` listando as últimas atualizações e todo o histórico, com filtros e ordenação no próprio navegador.
-- Comita e faz push das alterações automaticamente (útil para uso em automações ou GitHub Actions).
+O projeto foi construído para funcionar sem backend: a coleta e a geração dos dados rodam em Python, enquanto o consumo é feito por páginas HTML, CSS e JavaScript estáticos.
 
-## Pré-requisitos
-- Python 3.10+ (recomendado)
-- Acesso IMAP habilitado na conta de e-mail usada para leitura
-- Dependências do projeto: `pip install -r requirements.txt`
+## O Que O Projeto Entrega
 
-## Configuração
-1. Defina variáveis de ambiente:
-   - `GMAIL_EMAIL` e `GMAIL_PASSWORD` (credenciais IMAP).
-2. Ajuste `config.py` se necessário:
-   - `EMAIL_SENDER`: remetente autorizado (padrão `serpro.gov.br`).
-   - `BACKUP_FOLDER`: pasta onde os relatórios são armazenados (padrão `emails`).
-   - `TIMEZONE`: fuso horário usado na marcação de datas.
-3. Garanta que o repositório tenha remoto configurado e permissões para push, pois o script comita e envia mudanças.
+- `dashboard.html`: painel principal com KPIs, alertas gerenciais, gráficos e tabela de relatórios.
+- `report-viewer.html`: visualizador de relatórios JSON com filtros, ordenação, colunas visíveis, agrupamento, totais e exportação.
+- `relatorios.html`: listagem secundária dos relatórios HTML.
+- `index.html`: entrada do GitHub Pages, redirecionando para o dashboard.
+- `data/*.json`: API estática usada pelo dashboard e pelo report-viewer.
+- `emails/<slug>/*.html`: relatórios HTML originais preservados conforme política de retenção.
 
-## Execução
+## Fluxo De Execução
+
+O ponto de entrada é:
+
 ```bash
 python main.py
 ```
-O fluxo executa em três etapas: (1) baixa e salva e-mails válidos, (2) gera/copias os relatórios mais recentes para a raiz e (3) atualiza o `index.html` consolidando links e metadados.
 
-## Estrutura gerada
-- `emails/<assunto-normalizado>/*.html`: histórico completo de cada assunto, separado por pasta.
-- `*.html` na raiz: cópia do arquivo mais recente de cada assunto, útil para links rápidos.
-- `index.html`: página principal com filtros de texto, data, categoria e ordenação.
+Fluxo principal:
 
-## Regras de bloqueio
-- Mensagens com “não houve retorno” no assunto ou corpo são descartadas e logadas no console.
-- Apenas e-mails do remetente configurado são considerados; o filtro IMAP usa apenas mensagens **não lidas**.
+1. Busca e-mails não lidos do remetente configurado.
+2. Ignora mensagens com indicação de ausência de retorno.
+3. Salva o corpo HTML do relatório em `emails/<slug>/`.
+4. Atualiza os HTMLs atuais na raiz do repositório.
+5. Gera JSONs estáticos em `data/`.
+6. Registra a execução em `data/run-log.json`.
+7. Comita e envia as alterações.
+8. Somente depois disso marca os e-mails processados como lidos.
 
-## Observações
-- O conteúdo do e-mail é salvo como HTML exatamente como recebido (corpo puro do e-mail); anexos não são processados.
-- Se não houver mudanças a comitar, o processo de git apenas informa no console.
+Essa ordem é importante: e-mails só devem ser marcados como lidos depois da geração, log, commit e push concluídos.
+
+## Datas E Fechamento
+
+Os relatórios do Tesouro Gerencial são gerados após o fechamento do sistema. Na prática, um relatório recebido ou gerado em determinado dia normalmente representa o fechamento do dia anterior.
+
+Exemplo:
+
+- relatório recebido em `2026-07-01`;
+- informação de fechamento: `2026-06-30`;
+- esse arquivo pode representar o fechamento mensal de junho/2026.
+
+Essa regra deve ser considerada em retenção, séries históricas, alertas e leitura gerencial.
+
+## Política De Retenção Pretendida
+
+O projeto não precisa preservar todos os relatórios diários indefinidamente. A necessidade operacional é manter:
+
+1. o relatório mais recente disponível de cada tipo;
+2. os relatórios de fechamento mensal;
+3. dados históricos suficientes para séries e auditoria.
+
+Regra proposta para fechamento mensal:
+
+- preservar o relatório recebido no 1º dia útil do mês;
+- interpretar esse relatório como fechamento do mês anterior.
+
+Exemplo:
+
+- recebido no 1º dia útil de julho/2026;
+- fechamento mensal de junho/2026.
+
+Essa política evita crescimento descontrolado do repositório sem perder a informação atual e os fechamentos mensais relevantes.
+
+## Séries Históricas
+
+Os gráficos históricos do dashboard devem priorizar dados a partir de janeiro de 2026. A virada de exercício pode zerar bases, saldos e indicadores, então misturar 2025 com 2026 pode distorcer a leitura gerencial.
+
+Dados antigos podem continuar disponíveis como arquivos arquivados, mas não devem contaminar os gráficos principais do cabeçalho do dashboard.
+
+## Estrutura Principal
+
+```text
+.
+├── main.py
+├── email_processor.py
+├── imap_client.py
+├── data_generator.py
+├── report_definitions.py
+├── run_logger.py
+├── html_generator.py
+├── dashboard.html
+├── report-viewer.html
+├── relatorios.html
+├── assets/
+│   ├── css/
+│   └── js/
+├── data/
+│   ├── index.json
+│   ├── report-definitions.json
+│   ├── reports/
+│   ├── series/
+│   ├── snapshots/
+│   ├── retention-plan.json
+│   └── run-log.json
+└── emails/
+```
+
+## Configuração
+
+Variáveis de ambiente necessárias:
+
+- `GMAIL_EMAIL`: conta usada para leitura via IMAP.
+- `GMAIL_PASSWORD`: senha ou app password usada no IMAP.
+
+Configurações principais em `config.py`:
+
+- `EMAIL_SENDER`: remetente autorizado.
+- `BACKUP_FOLDER`: pasta de relatórios HTML.
+- `TIMEZONE`: fuso horário de referência.
+
+Nunca versionar credenciais, tokens ou secrets.
+
+## Dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+Dependências atuais:
+
+- `python-dotenv`
+- `pytz`
+- `gitpython`
+- `bs4`
+
+## GitHub Pages
+
+O projeto é compatível com GitHub Pages porque todo o consumo é feito por arquivos estáticos:
+
+- HTML;
+- CSS;
+- JavaScript;
+- JSON.
+
+Não há necessidade de backend, banco de dados ou servidor de aplicação.
+
+## Documentação Técnica
+
+Mais detalhes estão em:
+
+- `docs/architecture.md`
