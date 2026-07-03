@@ -214,6 +214,23 @@
         "empenhado": 1539977.51,
         "liquidado": 287122.8,
         "pago": 256750.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -431,6 +448,23 @@
         "empenhado": 2734756.7,
         "liquidado": 637983.43,
         "pago": 603241.25
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -686,6 +720,23 @@
         "empenhado": 3340312.75,
         "liquidado": 1706608.28,
         "pago": 1569549.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -941,6 +992,23 @@
         "empenhado": 3340312.75,
         "liquidado": 1706608.28,
         "pago": 1569549.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     }
   ]

@@ -103,6 +103,23 @@
         "empenhado": 34650.0,
         "liquidado": 15238.01,
         "pago": 15238.01
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -206,6 +223,23 @@
         "empenhado": 39906.1,
         "liquidado": 18848.65,
         "pago": 18848.65
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -328,6 +362,23 @@
         "empenhado": 88800.0,
         "liquidado": 31620.26,
         "pago": 31620.26
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -450,6 +501,23 @@
         "empenhado": 88800.0,
         "liquidado": 37413.8,
         "pago": 37280.01
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     }
   ]

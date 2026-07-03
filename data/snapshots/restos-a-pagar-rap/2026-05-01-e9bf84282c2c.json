@@ -8182,7 +8182,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 62,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -8194,11 +8194,47 @@
     "limite_dias": 1
   },
   "quality": {
-    "ok": true,
-    "issues": [],
+    "ok": false,
+    "issues": [
+      "rap_metric_unavailable"
+    ],
     "warnings": [
       "date_from_filename",
       "totals_separated"
     ]
+  },
+  "metrics": {
+    "rap_inscrito": 2833269.99,
+    "rap_cancelado": 1382540.26,
+    "rap_pago": 1450729.73
+  },
+  "metrics_meta": {
+    "rap_inscrito": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 9",
+      "fallback": true
+    },
+    "rap_cancelado": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 10",
+      "fallback": true
+    },
+    "rap_pago": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 11",
+      "fallback": true
+    },
+    "rap_a_pagar": {
+      "status": "unavailable",
+      "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
+      "source": "data/reports",
+      "fallback": false
+    }
   }
 }

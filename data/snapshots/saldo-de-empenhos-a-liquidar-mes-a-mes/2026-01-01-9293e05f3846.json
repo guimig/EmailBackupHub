@@ -16837,7 +16837,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 182,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -16855,5 +16855,15 @@
       "date_from_filename",
       "totals_separated"
     ]
+  },
+  "metrics": {
+    "saldo_a_liquidar": 1645753.82
+  },
+  "metrics_meta": {
+    "saldo_a_liquidar": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
   }
 }

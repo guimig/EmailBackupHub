@@ -139,6 +139,13 @@
       ],
       "metrics": {
         "credito_disponivel": 314633.49
+      },
+      "metrics_meta": {
+        "credito_disponivel": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -234,6 +241,13 @@
       ],
       "metrics": {
         "credito_disponivel": 323653.65
+      },
+      "metrics_meta": {
+        "credito_disponivel": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -417,6 +431,13 @@
       ],
       "metrics": {
         "credito_disponivel": 425853.31
+      },
+      "metrics_meta": {
+        "credito_disponivel": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -600,6 +621,13 @@
       ],
       "metrics": {
         "credito_disponivel": 425853.31
+      },
+      "metrics_meta": {
+        "credito_disponivel": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     }
   ]

@@ -5991,7 +5991,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 274,
     "periodicidade": "diaria",
     "exercicio": 2025,
@@ -6009,5 +6009,33 @@
       "date_from_filename",
       "totals_separated"
     ]
+  },
+  "metrics": {
+    "empenhado": 6689067173.0,
+    "saldo_a_liquidar": 2095839.61,
+    "liquidado_a_pagar": 47958.76,
+    "pago": 3246651.21
+  },
+  "metrics_meta": {
+    "empenhado": {
+      "status": "ok",
+      "source": "rows_sum",
+      "fallback": false
+    },
+    "saldo_a_liquidar": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    },
+    "liquidado_a_pagar": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    },
+    "pago": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-07-02T21:39:46.461120-03:00",
+  "generated_at": "2026-07-02T21:45:14.502465-03:00",
   "policy": {
     "dry_run": true,
     "keep_latest": true,
@@ -11,8 +11,8 @@
     "total_files": 2673,
     "retained_files": 102,
     "ignored_by_retention": 2571,
-    "processed_files": 102,
-    "cache_hits": 0,
+    "processed_files": 0,
+    "cache_hits": 102,
     "snapshots_written": 102
   },
   "reports": [

@@ -6980,7 +6980,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 213,
     "periodicidade": "diaria",
     "exercicio": 2025,
@@ -6998,5 +6998,15 @@
       "date_from_filename",
       "totals_separated"
     ]
+  },
+  "metrics": {
+    "gru_arrecadada": 263326.35
+  },
+  "metrics_meta": {
+    "gru_arrecadada": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
   }
 }

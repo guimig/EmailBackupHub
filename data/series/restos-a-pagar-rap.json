@@ -7,11 +7,38 @@
       "date_iso": "2025-09-01",
       "hash_conteudo": "b500e6f0e3ef9477a8fcbb86aa4f2c61bb6ce90ffd609509855b5766712a878e",
       "totals": [],
-      "metrics": {
-        "rap_inscrito": 2819204.090000001,
-        "rap_cancelado": 3.6287171506843475e+22,
-        "rap_pago": 2.8452134366963094e+19,
-        "rap_a_pagar": 15.0
+      "metrics": {},
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_cancelado": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_pago": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_a_pagar": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        }
+      },
+      "metrics_quality": {
+        "ok": false,
+        "issues": [
+          "rap_metric_unavailable"
+        ]
       }
     },
     {
@@ -19,11 +46,38 @@
       "date_iso": "2025-10-01",
       "hash_conteudo": "bd7eeb42446f0c76ddd77b955ffd11c3c9fac73f94e3b19a03bd5ee9fdc5d8cc",
       "totals": [],
-      "metrics": {
-        "rap_inscrito": 2819204.090000001,
-        "rap_cancelado": 3.6287171506843475e+22,
-        "rap_pago": 2.8452134366963094e+19,
-        "rap_a_pagar": 15.0
+      "metrics": {},
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_cancelado": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_pago": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        },
+        "rap_a_pagar": {
+          "status": "unavailable",
+          "reason": "Linha de total geral de RAP nao encontrada.",
+          "source": "data/reports",
+          "fallback": false
+        }
+      },
+      "metrics_quality": {
+        "ok": false,
+        "issues": [
+          "rap_metric_unavailable"
+        ]
       }
     },
     {
@@ -1495,6 +1549,36 @@
         "rap_cancelado": 11857.0,
         "rap_pago": 2267613.29,
         "rap_a_pagar": 539683.8
+      },
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 9",
+          "fallback": true
+        },
+        "rap_cancelado": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 10",
+          "fallback": true
+        },
+        "rap_pago": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 11",
+          "fallback": true
+        },
+        "rap_a_pagar": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 12",
+          "fallback": true
+        }
       }
     },
     {
@@ -3057,8 +3141,42 @@
       "metrics": {
         "rap_inscrito": 2833269.99,
         "rap_cancelado": 1057066.49,
-        "rap_pago": 1776203.5,
-        "rap_a_pagar": 15.0
+        "rap_pago": 1776203.5
+      },
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 9",
+          "fallback": true
+        },
+        "rap_cancelado": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 10",
+          "fallback": true
+        },
+        "rap_pago": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 11",
+          "fallback": true
+        },
+        "rap_a_pagar": {
+          "status": "unavailable",
+          "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
+          "source": "data/reports",
+          "fallback": false
+        }
+      },
+      "metrics_quality": {
+        "ok": false,
+        "issues": [
+          "rap_metric_unavailable"
+        ]
       }
     },
     {
@@ -4622,8 +4740,42 @@
       "metrics": {
         "rap_inscrito": 2833269.99,
         "rap_cancelado": 1382540.26,
-        "rap_pago": 1450729.73,
-        "rap_a_pagar": 15.0
+        "rap_pago": 1450729.73
+      },
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 9",
+          "fallback": true
+        },
+        "rap_cancelado": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 10",
+          "fallback": true
+        },
+        "rap_pago": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 11",
+          "fallback": true
+        },
+        "rap_a_pagar": {
+          "status": "unavailable",
+          "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
+          "source": "data/reports",
+          "fallback": false
+        }
+      },
+      "metrics_quality": {
+        "ok": false,
+        "issues": [
+          "rap_metric_unavailable"
+        ]
       }
     },
     {
@@ -6295,6 +6447,36 @@
         "rap_cancelado": 145338.97,
         "rap_pago": 1643747.27,
         "rap_a_pagar": 1044183.75
+      },
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 9",
+          "fallback": true
+        },
+        "rap_cancelado": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 10",
+          "fallback": true
+        },
+        "rap_pago": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 11",
+          "fallback": true
+        },
+        "rap_a_pagar": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 12",
+          "fallback": true
+        }
       }
     },
     {
@@ -7966,6 +8148,36 @@
         "rap_cancelado": 145338.97,
         "rap_pago": 1646823.17,
         "rap_a_pagar": 1041107.85
+      },
+      "metrics_meta": {
+        "rap_inscrito": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 9",
+          "fallback": true
+        },
+        "rap_cancelado": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 10",
+          "fallback": true
+        },
+        "rap_pago": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 11",
+          "fallback": true
+        },
+        "rap_a_pagar": {
+          "status": "ok",
+          "source": "data/reports",
+          "line": "Total",
+          "column": "Valor 12",
+          "fallback": true
+        }
       }
     }
   ]

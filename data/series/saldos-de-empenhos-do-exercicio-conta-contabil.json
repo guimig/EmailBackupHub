@@ -349,6 +349,28 @@
         "saldo_a_liquidar": 2376091.48,
         "liquidado_a_pagar": 137165.72,
         "pago": 2743988.24
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -700,6 +722,28 @@
         "saldo_a_liquidar": 2095839.61,
         "liquidado_a_pagar": 47958.76,
         "pago": 3246651.21
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -1071,6 +1115,28 @@
         "saldo_a_liquidar": 2458345.25,
         "liquidado_a_pagar": 146427.45,
         "pago": 4458064.61
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -1297,6 +1363,28 @@
         "saldo_a_liquidar": 1252854.71,
         "liquidado_a_pagar": 30372.0,
         "pago": 256750.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -1526,6 +1614,28 @@
         "saldo_a_liquidar": 2096773.27,
         "liquidado_a_pagar": 34742.18,
         "pago": 603241.25
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -1795,6 +1905,28 @@
         "saldo_a_liquidar": 1633704.47,
         "liquidado_a_pagar": 137058.48,
         "pago": 1569549.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     },
     {
@@ -2064,6 +2196,28 @@
         "saldo_a_liquidar": 1633704.47,
         "liquidado_a_pagar": 137058.48,
         "pago": 1569549.8
+      },
+      "metrics_meta": {
+        "empenhado": {
+          "status": "ok",
+          "source": "rows_sum",
+          "fallback": false
+        },
+        "saldo_a_liquidar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "liquidado_a_pagar": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        },
+        "pago": {
+          "status": "ok",
+          "source": "totals",
+          "fallback": false
+        }
       }
     }
   ]

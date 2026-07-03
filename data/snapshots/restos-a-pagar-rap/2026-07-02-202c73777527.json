@@ -8737,7 +8737,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -8755,5 +8755,41 @@
       "date_from_filename",
       "totals_separated"
     ]
+  },
+  "metrics": {
+    "rap_inscrito": 2833269.99,
+    "rap_cancelado": 145338.97,
+    "rap_pago": 1646823.17,
+    "rap_a_pagar": 1041107.85
+  },
+  "metrics_meta": {
+    "rap_inscrito": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 9",
+      "fallback": true
+    },
+    "rap_cancelado": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 10",
+      "fallback": true
+    },
+    "rap_pago": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 11",
+      "fallback": true
+    },
+    "rap_a_pagar": {
+      "status": "ok",
+      "source": "data/reports",
+      "line": "Total",
+      "column": "Valor 12",
+      "fallback": true
+    }
   }
 }

@@ -7218,7 +7218,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T21:39:46.461120-03:00",
+    "ultima_atualizacao": "2026-07-02T21:45:14.502465-03:00",
     "idade_dias": 274,
     "periodicidade": "diaria",
     "exercicio": 2025,
@@ -7230,10 +7230,39 @@
     "limite_dias": 1
   },
   "quality": {
-    "ok": true,
-    "issues": [],
+    "ok": false,
+    "issues": [
+      "rap_metric_unavailable"
+    ],
     "warnings": [
       "date_from_filename"
     ]
+  },
+  "metrics": {},
+  "metrics_meta": {
+    "rap_inscrito": {
+      "status": "unavailable",
+      "reason": "Linha de total geral de RAP nao encontrada.",
+      "source": "data/reports",
+      "fallback": false
+    },
+    "rap_cancelado": {
+      "status": "unavailable",
+      "reason": "Linha de total geral de RAP nao encontrada.",
+      "source": "data/reports",
+      "fallback": false
+    },
+    "rap_pago": {
+      "status": "unavailable",
+      "reason": "Linha de total geral de RAP nao encontrada.",
+      "source": "data/reports",
+      "fallback": false
+    },
+    "rap_a_pagar": {
+      "status": "unavailable",
+      "reason": "Linha de total geral de RAP nao encontrada.",
+      "source": "data/reports",
+      "fallback": false
+    }
   }
 }
