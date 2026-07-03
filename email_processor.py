@@ -64,9 +64,9 @@ def process_emails(commit=True, return_details=False):
         if uid is not None and detail.get("status") in {"processed", "skipped"}:
             processed_uids.append(uid)
 
-    update_root_index()
-    generate_data_files()
     if commit:
+        update_root_index()
+        generate_data_files()
         commit_changes()
         mark_emails_as_seen(processed_uids)
     result = {

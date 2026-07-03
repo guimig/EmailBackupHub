@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.5",
+  "generated_at": null,
+  "policy": {
+    "dry_run": true,
+    "keep_latest": true,
+    "keep_first_business_day_of_month": true
+  },
+  "summary": {
+    "dry_run": true,
+    "total_files": 0,
+    "retained_files": 0,
+    "ignored_by_retention": 0,
+    "processed_files": 0,
+    "cache_hits": 0,
+    "snapshots_written": 0
+  },
+  "reports": []
+}

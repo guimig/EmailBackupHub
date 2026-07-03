@@ -25,7 +25,10 @@ REPORTS_DIR = DATA_DIR / "reports"
 SNAPSHOTS_DIR = DATA_DIR / "snapshots"
 SERIES_DIR = DATA_DIR / "series"
 SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
+CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
+RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 SCHEMA_VERSION = "1.5"
+RETENTION_DRY_RUN = True
 
 INFO_QUALITY_CODES = {
     "date_from_filename",
@@ -88,6 +91,14 @@ def cheap_hash(path):
     stat = os.stat(path)
     raw = f"{rel_path(path)}:{stat.st_size}:{int(stat.st_mtime)}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def content_hash_for_file(path):
+    digest = hashlib.sha256()
+    with open(path, "rb") as source:
+        for chunk in iter(lambda: source.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def extract_title(soup, file_path):
@@ -438,6 +449,108 @@ def sort_key(file_path):
     return report_date.isoformat(), os.path.getmtime(file_path)
 
 
+def first_business_day(year, month):
+    day = datetime.date(year, month, 1)
+    while day.weekday() >= 5:
+        day += datetime.timedelta(days=1)
+    return day
+
+
+def dated_file_info(file_path):
+    report_date, _ = parse_date_from_name(file_path)
+    return {"path": file_path, "date": report_date}
+
+
+def retention_selection(paths):
+    dated_files = sorted((dated_file_info(path) for path in paths), key=lambda item: (item["date"].isoformat(), os.path.getmtime(item["path"])))
+    if not dated_files:
+        return [], []
+
+    latest = dated_files[-1]
+    latest_path = latest["path"]
+    selected = {}
+    reasons = {}
+
+    def keep(item, reason):
+        selected[item["path"]] = item
+        reasons.setdefault(item["path"], set()).add(reason)
+
+    keep(latest, "latest")
+    for item in dated_files:
+        date = item["date"]
+        if date == first_business_day(date.year, date.month):
+            keep(item, "first_business_day")
+
+    retained = []
+    ignored = []
+    for item in dated_files:
+        path = item["path"]
+        if path in selected:
+            retained.append({**item, "reasons": sorted(reasons[path])})
+        else:
+            ignored.append(item)
+    return retained, ignored
+
+
+def refresh_document_metadata(doc, source_map, now):
+    if not doc:
+        return doc
+    try:
+        report_date = datetime.date.fromisoformat(doc["date_iso"])
+    except (KeyError, ValueError):
+        return doc
+    source_path = doc.get("html_path", "")
+    title = doc.get("title") or doc.get("category") or doc.get("slug") or ""
+    content_hash = (doc.get("metadata") or {}).get("hash_conteudo") or ""
+    doc["metadata"] = metadata_for(
+        doc.get("slug") or normalize_slug(Path(source_path).parent.name),
+        title,
+        report_date,
+        content_hash,
+        source_path,
+        source_map,
+        now,
+        len(doc.get("rows") or []),
+        len(doc.get("columns") or []),
+    )
+    return doc
+
+
+def cached_document(file_path, source_map, now, cache_index, stats):
+    source_path = rel_path(file_path)
+    content_hash = content_hash_for_file(file_path)
+    entry = cache_index.get(source_path) or {}
+    snapshot_path = Path(REPO_ROOT) / entry.get("snapshot_path", "")
+    if entry.get("content_hash") == content_hash and snapshot_path.exists():
+        doc = read_json(snapshot_path, None)
+        if doc:
+            stats["cache_hits"] += 1
+            return refresh_document_metadata(doc, source_map, now), content_hash
+
+    stats["processed_files"] += 1
+    doc = full_report_document(file_path, source_map, now)
+    return doc, content_hash
+
+
+def retention_plan_item(slug, retained, ignored):
+    return {
+        "slug": slug,
+        "total_files": len(retained) + len(ignored),
+        "retained_files": len(retained),
+        "ignored_by_retention": len(ignored),
+        "latest_files": sum(1 for item in retained if "latest" in item["reasons"]),
+        "monthly_files": sum(1 for item in retained if "first_business_day" in item["reasons"]),
+        "retained": [
+            {"path": rel_path(item["path"]), "date_iso": item["date"].isoformat(), "reasons": item["reasons"]}
+            for item in retained
+        ],
+        "ignored_sample": [
+            {"path": rel_path(item["path"]), "date_iso": item["date"].isoformat()}
+            for item in ignored[:50]
+        ],
+    }
+
+
 def build_search_text(doc):
     parts = [doc["title"], doc["date"], doc["html_path"], " ".join(doc["columns"])]
     for row in doc["rows"]:
@@ -557,6 +670,8 @@ def build_series(slug, snapshots):
 def generate_data_files():
     now = datetime.datetime.now(TIMEZONE)
     source_map = read_json(SOURCE_MAP_PATH, {})
+    cache_index = read_json(CACHE_INDEX_PATH, {})
+    new_cache_index = dict(cache_index)
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     SNAPSHOTS_DIR.mkdir(parents=True, exist_ok=True)
     SERIES_DIR.mkdir(parents=True, exist_ok=True)
@@ -564,22 +679,54 @@ def generate_data_files():
     search_documents = []
     history_count = 0
     json_files = []
+    retention_items = []
+    retention_summary = {
+        "dry_run": RETENTION_DRY_RUN,
+        "total_files": 0,
+        "retained_files": 0,
+        "ignored_by_retention": 0,
+        "processed_files": 0,
+        "cache_hits": 0,
+        "snapshots_written": 0,
+    }
     for slug, paths in sorted(grouped_files().items()):
         paths = sorted(paths, key=sort_key)
+        retained_paths, ignored_paths = retention_selection(paths)
+        retention_items.append(retention_plan_item(slug, retained_paths, ignored_paths))
+        retention_summary["total_files"] += len(paths)
+        retention_summary["retained_files"] += len(retained_paths)
+        retention_summary["ignored_by_retention"] += len(ignored_paths)
+        if not retained_paths:
+            continue
         latest_path = paths[-1]
-        latest_doc = full_report_document(latest_path, source_map, now)
+        retained_lookup = {item["path"] for item in retained_paths}
+        if latest_path not in retained_lookup:
+            latest_path = retained_paths[-1]["path"]
+        latest_doc, latest_hash = cached_document(latest_path, source_map, now, new_cache_index, retention_summary)
         report_json_path = REPORTS_DIR / f"{slug}.json"
         write_json(report_json_path, latest_doc)
         json_files.append(rel_path(report_json_path))
         search_documents.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_doc)})
         snapshots = []
-        for path in paths:
-            doc = latest_doc if path == latest_path else full_report_document(path, source_map, now)
+        for item in retained_paths:
+            path = item["path"]
+            if path == latest_path:
+                doc, content_hash = latest_doc, latest_hash
+            else:
+                doc, content_hash = cached_document(path, source_map, now, new_cache_index, retention_summary)
             snapshots.append(doc)
             snapshot_name = f"{doc['date_iso']}-{doc['metadata']['hash_conteudo'][:12]}.json"
             snapshot_path = SNAPSHOTS_DIR / slug / snapshot_name
             write_json(snapshot_path, doc)
+            new_cache_index[rel_path(path)] = {
+                "content_hash": content_hash,
+                "snapshot_path": rel_path(snapshot_path),
+                "date_iso": doc["date_iso"],
+                "slug": slug,
+                "updated_at": now.isoformat(),
+            }
             json_files.append(rel_path(snapshot_path))
+            retention_summary["snapshots_written"] += 1
         series_path = SERIES_DIR / f"{slug}.json"
         write_json(series_path, build_series(slug, snapshots))
         json_files.append(rel_path(series_path))
@@ -587,14 +734,20 @@ def generate_data_files():
         reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
     index_path = DATA_DIR / "index.json"
     search_index_path = DATA_DIR / "search-index.json"
+    cache_index_path = CACHE_INDEX_PATH
+    retention_plan_path = RETENTION_PLAN_PATH
     write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json"}, "reports": reports, "history_count": history_count})
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
-    json_files.extend([rel_path(index_path), rel_path(search_index_path)])
-    print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas.")
+    write_json(cache_index_path, new_cache_index)
+    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": {"dry_run": RETENTION_DRY_RUN, "keep_latest": True, "keep_first_business_day_of_month": True}, "summary": retention_summary, "reports": retention_items})
+    json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path)])
+    print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
+    print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")
     return {
         "generated_at": now.isoformat(),
         "reports_count": len(reports),
         "history_count": history_count,
         "updated_reports": [report["slug"] for report in reports],
+        "retention": retention_summary,
         "json_files": sorted(set(json_files)),
     }
