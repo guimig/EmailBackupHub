@@ -381,6 +381,8 @@ let indexData = null;
         return auditValue(seriesMetric.value, `Fonte: ${reportLabel(slug)}; data: ${sourceDate(doc, seriesMetric)}; metrica: ${metric}; origem: data/series;${line}${column}`, Boolean(meta.fallback));
       }
       if (slug === 'restos-a-pagar-rap') {
+        const reportMetric = metricFromReport(doc, slug, metric);
+        if (isAvailable(reportMetric)) return reportMetric;
         const fallback = rapMetricFromReportTotals(doc, metric, fallbackColumns);
         if (isAvailable(fallback)) return fallback;
         const issueText = rapMetricIssue(metric);
@@ -411,6 +413,17 @@ let indexData = null;
       return null;
     }
 
+    function metricFromReport(doc, slug, metric) {
+      const value = doc?.metrics?.[metric];
+      const meta = doc?.metrics_meta?.[metric] || {};
+      if (!Number.isFinite(value) || (meta.status && meta.status !== 'ok')) {
+        return auditValue(null, meta.reason || `Metrica indisponivel no JSON do relatorio: ${metric}.`);
+      }
+      const line = meta.line ? ` linha: ${meta.line};` : '';
+      const column = meta.column ? ` coluna: ${meta.column};` : '';
+      return auditValue(value, `Fonte: ${reportLabel(slug)}; data: ${doc.date || 'indisponivel'}; metrica: ${metric}; origem: data/reports;${line}${column}`, Boolean(meta.fallback));
+    }
+
     function rapMetricFromReportTotals(doc, metric, fallbackColumns = []) {
       const row = grandTotalRow(doc);
       if (!row) return auditValue(null, 'Linha de total geral de RAP nao encontrada.');
@@ -432,7 +445,8 @@ let indexData = null;
           : fallbackColumns;
       for (const candidate of preferred) {
         const exact = columns.find(column => normalize(column) === normalize(candidate));
-        if (exact && rapColumnMatches(exact, metric)) return exact;
+        const isConfiguredFallback = fallbackColumns.some(column => normalize(column) === normalize(candidate));
+        if (exact && (rapColumnMatches(exact, metric) || isConfiguredFallback)) return exact;
       }
       return columns.find(column => rapColumnMatches(column, metric)) || null;
     }
