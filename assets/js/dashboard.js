@@ -381,6 +381,8 @@ let indexData = null;
         return auditValue(seriesMetric.value, `Fonte: ${reportLabel(slug)}; data: ${sourceDate(doc, seriesMetric)}; metrica: ${metric}; origem: data/series;${line}${column}`, Boolean(meta.fallback));
       }
       if (slug === 'restos-a-pagar-rap') {
+        const fallback = rapMetricFromReportTotals(doc, metric, fallbackColumns);
+        if (isAvailable(fallback)) return fallback;
         const issueText = rapMetricIssue(metric);
         return auditValue(null, issueText || `RAP indisponivel: ${metric}. Metrica exige total geral confiavel.`);
       }
@@ -407,6 +409,40 @@ let indexData = null;
       const qualityIssues = doc?.quality?.issues || [];
       if (qualityIssues.some(issue => String(issue).startsWith('rap_metric_'))) return qualityIssues.join(', ');
       return null;
+    }
+
+    function rapMetricFromReportTotals(doc, metric, fallbackColumns = []) {
+      const row = grandTotalRow(doc);
+      if (!row) return auditValue(null, 'Linha de total geral de RAP nao encontrada.');
+      const column = rapMetricColumn(doc, row, metric, fallbackColumns);
+      if (!column) return auditValue(null, `Coluna confiavel de RAP nao encontrada para ${metric}.`);
+      const value = parseBrNumber(row[column]);
+      if (!Number.isFinite(value)) return auditValue(null, `Valor de RAP indisponivel na coluna ${column}.`);
+      const positional = /^Valor\s+\d+$/i.test(column);
+      const note = positional ? ' fallback posicional usado; auditoria limitada.' : ' coluna nomeada usada.';
+      return auditValue(value, `Fonte: ${reportLabel('restos-a-pagar-rap')}; data: ${doc.date || 'indisponivel'}; metrica: ${metric}; origem: data/reports; linha: total; coluna: ${column};${note}`, positional);
+    }
+
+    function rapMetricColumn(doc, row, metric, fallbackColumns = []) {
+      const columns = doc?.columns?.length ? doc.columns : Object.keys(row || {});
+      const preferred = metric === 'rap_pago'
+        ? ['RAP Pagos', 'RAP Pago', 'Pago', 'Pagos', ...fallbackColumns]
+        : metric === 'rap_a_pagar'
+          ? ['RAP a pagar', 'A pagar', ...fallbackColumns]
+          : fallbackColumns;
+      for (const candidate of preferred) {
+        const exact = columns.find(column => normalize(column) === normalize(candidate));
+        if (exact && rapColumnMatches(exact, metric)) return exact;
+      }
+      return columns.find(column => rapColumnMatches(column, metric)) || null;
+    }
+
+    function rapColumnMatches(column, metric) {
+      const label = normalize(column);
+      if (!label || label.includes('%') || label.includes('percentual')) return false;
+      if (metric === 'rap_pago') return (label.includes('rap') || label.includes('pago')) && (label.includes('pago') || label.includes('pagos')) && !label.includes('a pagar');
+      if (metric === 'rap_a_pagar') return label.includes('a pagar') || (label.includes('rap') && label.includes('pagar'));
+      return false;
     }
 
     function firstValue(values) {
@@ -823,7 +859,7 @@ let indexData = null;
           }));
         }
       }
-      const rapIssue = rapMetricIssue('rap_pago') || rapMetricIssue('rap_a_pagar');
+      const rapIssue = (!isAvailable(values.rapPaid) || !isAvailable(values.rapPayable)) ? (rapMetricIssue('rap_pago') || rapMetricIssue('rap_a_pagar')) : null;
       if (rapIssue) {
         alerts.push(makeAlert({
           level: 'critical',
