@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-07-06T04:00:45.480393-03:00",
+  "generated_at": "2026-07-06T08:28:32.035211-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -24,7 +24,7 @@
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 103,
-    "duration_seconds": 2.621
+    "duration_seconds": 2.082
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.325
+        "duration_seconds": 0.262
       }
     },
     {
@@ -82,7 +82,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.44
+        "duration_seconds": 0.352
       }
     },
     {
@@ -389,7 +389,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.601
+        "duration_seconds": 0.283
       }
     },
     {
@@ -696,7 +696,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.346
+        "duration_seconds": 0.305
       }
     },
     {
@@ -1058,7 +1058,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.03
+        "duration_seconds": 0.027
       }
     },
     {
@@ -1107,7 +1107,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 3,
-        "duration_seconds": 0.046
+        "duration_seconds": 0.044
       }
     },
     {
@@ -1414,7 +1414,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.041
+        "duration_seconds": 0.039
       }
     },
     {
@@ -1721,7 +1721,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.013
+        "duration_seconds": 0.012
       }
     },
     {
@@ -2028,7 +2028,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.05
+        "duration_seconds": 0.049
       }
     },
     {
@@ -2065,7 +2065,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.037
+        "duration_seconds": 0.034
       }
     },
     {
@@ -2715,7 +2715,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.037
+        "duration_seconds": 0.036
       }
     },
     {
@@ -3040,7 +3040,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.048
+        "duration_seconds": 0.047
       }
     },
     {
@@ -3374,7 +3374,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.129
+        "duration_seconds": 0.128
       }
     },
     {
@@ -3717,7 +3717,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.147
+        "duration_seconds": 0.145
       }
     },
     {
@@ -4033,7 +4033,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.017
+        "duration_seconds": 0.015
       }
     },
     {
@@ -4367,7 +4367,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.033
+        "duration_seconds": 0.034
       }
     },
     {
@@ -4710,7 +4710,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.027
+        "duration_seconds": 0.026
       }
     },
     {
@@ -5044,7 +5044,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.079
+        "duration_seconds": 0.077
       }
     },
     {
@@ -5387,7 +5387,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.046
+        "duration_seconds": 0.044
       }
     },
     {
@@ -5694,7 +5694,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.022
+        "duration_seconds": 0.021
       }
     }
   ]
