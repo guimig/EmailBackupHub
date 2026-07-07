@@ -1146,9 +1146,9 @@
       }
     },
     {
-      "date": "04/07/2026",
-      "date_iso": "2026-07-04",
-      "hash_conteudo": "938ca389b6163af53df62971643d21e1fe5d89a6733e36ea5926edac88771e6a",
+      "date": "07/07/2026",
+      "date_iso": "2026-07-07",
+      "hash_conteudo": "41472d61ab0712418b4267af6a89dc940f5ccaadcd1915dd056bc1360cb474ab",
       "totals": [
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
@@ -1326,6 +1326,45 @@
           }
         },
         {
+          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+          "values": {
+            "Grupo Despesa": 3.0,
+            "PI": -8.0,
+            "NC": 1.58125264222026e+20,
+            "Doc - Observação": -41233.33,
+            "Transação - Mês": 2026.0,
+            "Saldo - Moeda Origem (Item Informação)": 136640.0
+          },
+          "raw": {
+            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa": "3",
+            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+            "PI": "-8",
+            "PI (2)": "SEM INFORMACAO",
+            "NC": "158125264222026NC000325",
+            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 4/12 AVOS DOS VALORES PREVISTOS TOTALIZANDO 33,33% DO TOTAL DA LOA.",
+            "Transação - Mês": "JUL/2026",
+            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
+          }
+        },
+        {
+          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+          "values": {
+            "Saldo - Moeda Origem (Item Informação)": 136640.0
+          },
+          "raw": {
+            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa": "Total",
+            "Grupo Despesa (2)": "Total",
+            "PI": "",
+            "PI (2)": "",
+            "NC": "",
+            "Doc - Observação": "",
+            "Transação - Mês": "",
+            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
+          }
+        },
+        {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
             "Grupo Despesa": 3.0,
@@ -1446,7 +1485,7 @@
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3791166.06
+            "Saldo - Moeda Origem (Item Informação)": 3927806.06
           },
           "raw": {
             "Ação Governo": "Total",
@@ -1457,12 +1496,12 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.791.166,06"
+            "Saldo - Moeda Origem (Item Informação)": "3.927.806,06"
           }
         }
       ],
       "metrics": {
-        "provisionado": 3791166.06
+        "provisionado": 3927806.06
       },
       "metrics_meta": {
         "provisionado": {
