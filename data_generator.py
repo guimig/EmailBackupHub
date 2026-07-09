@@ -38,6 +38,7 @@ CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 SCHEMA_VERSION = "1.5"
+PARSER_VERSION = "2.0"
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
 
 INFO_QUALITY_CODES = {
@@ -542,13 +543,15 @@ def cached_document(file_path, source_map, now, cache_index, stats):
     entry = cache_index.get(source_path) or {}
     snapshot_path = Path(REPO_ROOT) / entry.get("snapshot_path", "")
     stats["cache_lookups"] += 1
-    if entry.get("content_hash") == content_hash and snapshot_path.exists():
+    if entry.get("content_hash") == content_hash and entry.get("parser_version") == PARSER_VERSION and snapshot_path.exists():
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
             return annotate_metrics(refresh_document_metadata(doc, source_map, now)), content_hash
 
-    if entry.get("content_hash") == content_hash and not snapshot_path.exists():
+    if entry.get("content_hash") == content_hash and entry.get("parser_version") != PARSER_VERSION:
+        stats["cache_misses_changed"] += 1
+    elif entry.get("content_hash") == content_hash and not snapshot_path.exists():
         stats["cache_misses_missing_snapshot"] += 1
     elif entry:
         stats["cache_misses_changed"] += 1
@@ -885,6 +888,7 @@ def generate_data_files():
             write_json(snapshot_path, doc)
             new_cache_index[rel_path(path)] = {
                 "content_hash": content_hash,
+                "parser_version": PARSER_VERSION,
                 "snapshot_path": rel_path(snapshot_path),
                 "date_iso": doc["date_iso"],
                 "slug": slug,
