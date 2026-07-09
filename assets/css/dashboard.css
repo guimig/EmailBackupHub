@@ -77,8 +77,10 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
     .dashboard-insight { display: none; }
     .dashboard-insight strong { display: block; color: var(--text); margin-bottom: 6px; }
     .dashboard-insight p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.4; }
-    .management-alerts { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; padding: 12px; margin: 14px 0 0; order: 3; }
-    .management-alerts h3 { margin: 0 0 8px; font-size: .98rem; color: var(--text); }
+    .management-alerts { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; padding: 12px; margin: 14px 0 0; order: 2; }
+    .management-alerts h3 { margin: 0 0 8px; font-size: .98rem; color: var(--text); cursor: pointer; }
+    .management-alerts.is-collapsed .alerts-list { display: none; }
+    .alert-count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 22px; margin-left: 8px; border-radius: 999px; background: var(--brand); color: var(--brand-contrast); font-size: .74rem; }
     .alerts-list { display: grid; gap: 8px; }
     .alert-item { border: 1px solid var(--line); border-left-width: 5px; background: var(--card); border-radius: 8px; padding: 10px; }
     .alert-item strong { display: block; color: var(--text); font-size: .9rem; margin-bottom: 3px; }
@@ -88,13 +90,14 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
     .alert-warning { border-left-color: var(--warn); }
     .alert-info { border-left-color: var(--brand); }
     .alert-empty { color: var(--muted); font-size: .86rem; margin: 0; }
-    .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; }
+    .dashboard-kpis { display: grid; grid-template-columns: repeat(4, minmax(170px, 1fr)); gap: 12px; order: 1; }
     .kpi-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 84px; }
     .kpi-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 8px; }
     .kpi-card strong { display: block; color: var(--text); font-size: 1.22rem; line-height: 1.2; overflow-wrap: anywhere; }
     .kpi-card small { display: block; color: var(--muted); margin-top: 8px; font-size: .72rem; }
     .dashboard-panel { display: flex; flex-direction: column; }
-    .dashboard-charts { display: grid; grid-template-columns: repeat(4, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; order: 2; }
+    .section-title { order: 3; margin: 16px 0 0; color: var(--text); font-size: 1rem; }
+    .dashboard-charts { display: grid; grid-template-columns: repeat(4, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; order: 4; }
     .chart-card { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 12px; min-height: 210px; }
     .chart-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
     .chart-card h3 { margin: 0 0 8px; color: var(--text); font-size: .95rem; font-weight: 700; }
@@ -107,6 +110,7 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
     .chart-empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; padding: 16px; font-size: .86rem; }
     .chart-legend { display: flex; flex-wrap: wrap; gap: 7px 10px; color: var(--muted); font-size: .74rem; line-height: 1.35; margin-top: 8px; min-width: 0; }
     .chart-legend span { display: inline-flex; align-items: center; max-width: 100%; overflow-wrap: anywhere; white-space: normal; }
+    .chart-legend span:nth-child(n+4) { display: none; }
     .chart-note { color: var(--muted); font-size: .72rem; line-height: 1.35; margin-top: 8px; }
 .history-meta { color: var(--muted); font-size: .68rem; line-height: 1.35; margin-top: 6px; text-align: center; }
 .legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }

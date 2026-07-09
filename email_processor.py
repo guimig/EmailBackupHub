@@ -11,10 +11,8 @@ from urllib.parse import urlparse
 from bs4 import BeautifulSoup, Comment
 
 from config import BACKUP_FOLDER, TIMEZONE
-from data_generator import generate_data_files, record_source_uid
-from html_generator import update_root_index
-from git_utils import commit_changes
-from imap_client import fetch_unread_emails, mark_emails_as_seen
+from data_generator import record_source_uid
+from imap_client import fetch_unread_emails
 
 DANGEROUS_TAGS = {
     "script",
@@ -36,7 +34,7 @@ SAFE_URL_SCHEMES = {"", "http", "https", "mailto"}
 DANGEROUS_STYLE_PATTERNS = ("expression", "javascript:", "url(", "behavior:", "-moz-binding")
 
 
-def process_emails(commit=True, return_details=False):
+def process_emails(commit=False, return_details=False):
     emails = fetch_unread_emails()
     print(f"Numero de e-mails encontrados: {len(emails)}")
 
@@ -65,10 +63,7 @@ def process_emails(commit=True, return_details=False):
             processed_uids.append(uid)
 
     if commit:
-        update_root_index()
-        generate_data_files()
-        commit_changes()
-        mark_emails_as_seen(processed_uids)
+        print("Aviso: process_emails(commit=True) nao executa geracao, commit ou marcacao como lido. Use main.py como orquestrador.")
     result = {
         "emails_found": len(emails),
         "emails": email_details,

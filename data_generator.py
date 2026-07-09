@@ -219,7 +219,42 @@ def looks_like_header(row):
     return len(text_cells) >= max(2, len(row) // 2)
 
 
+def looks_like_structural_header(row):
+    cells = [str(cell or "").strip() for cell in row if str(cell or "").strip()]
+    if len(cells) < 2:
+        return False
+    joined = normalize_key(" ".join(cells))
+    header_terms = [
+        "item informacao",
+        "mes lancamento",
+        "ano emissao",
+        "natureza despesa",
+        "conta contabil",
+        "saldo moeda",
+        "saldo r",
+        "unidade gestora",
+        "ug",
+    ]
+    month_or_year = sum(
+        1
+        for cell in cells
+        if re.fullmatch(r"(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)\s+20\d{2}", normalize_key(cell))
+        or re.fullmatch(r"20\d{2}", cell)
+        or re.fullmatch(r"\d{3}\s+20\d{2}", normalize_key(cell))
+    )
+    repeated = len(cells) - len(set(cells))
+    if month_or_year >= max(2, len(cells) // 3):
+        return True
+    if any(term in joined for term in header_terms) and repeated >= 1:
+        return True
+    if any(term in joined for term in header_terms) and sum(1 for cell in cells if parse_br_number(cell) is not None) >= 2:
+        return True
+    return False
+
+
 def looks_like_data(row):
+    if looks_like_structural_header(row):
+        return False
     cells = [cell for cell in row if cell]
     if len(cells) < 2:
         return False
@@ -325,7 +360,7 @@ def normalize_table(grid):
         data_rows = grid
         issues.append("columns_generated")
     else:
-        header_candidates = [row for row in grid[:data_start] if looks_like_header(row)]
+        header_candidates = [row for row in grid[:data_start] if looks_like_header(row) or looks_like_structural_header(row)]
         width = max(len(row) for row in grid[data_start:] + header_candidates)
         fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
         columns = merge_header_rows(header_candidates[-3:] or fallback_headers, width)
@@ -337,6 +372,9 @@ def normalize_table(grid):
     for raw_row in data_rows:
         padded = (raw_row + [""] * width)[:width]
         if not any(padded):
+            continue
+        if looks_like_structural_header(padded):
+            issues.append("header_rows_removed")
             continue
         row = {columns[idx]: padded[idx] for idx in range(width)}
         numeric_values = {columns[idx]: parse_br_number(padded[idx]) for idx in range(width) if parse_br_number(padded[idx]) is not None}

@@ -191,6 +191,11 @@ let report = null;
       return columns.filter(column => visibleColumns.has(column));
     }
 
+    function setColumnWarning(message = '') {
+      const warning = byId('columnVisibilityWarning');
+      if (warning) warning.textContent = message;
+    }
+
     function ensureDefaultVisibleColumns() {
       const columns = report?.columns || [];
       const params = new URLSearchParams(location.search);
@@ -355,6 +360,7 @@ let report = null;
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
       const options = byId('columnVisibilityOptions');
+      setColumnWarning('');
       options.innerHTML = columns.map((column, index) => `
         <label>
           <input type="checkbox" data-visible-column="${escapeHtml(column)}" ${visibleColumns.has(column) ? 'checked' : ''}>
@@ -366,7 +372,11 @@ let report = null;
           const column = event.target.dataset.visibleColumn;
           if (event.target.checked) visibleColumns.add(column);
           else visibleColumns.delete(column);
-          if (!visibleColumns.size) visibleColumns.add(column);
+          if (!visibleColumns.size) {
+            visibleColumns.add(column);
+            event.target.checked = true;
+            setColumnWarning('A tabela precisa manter pelo menos uma coluna visível.');
+          }
           renderTableShell();
           renderColumnVisibilityControls();
           renderGroupingControls();
@@ -386,12 +396,16 @@ let report = null;
         renderRows();
       };
       const options = byId('groupSumOptions');
-      options.innerHTML = columns.map((column, index) => `
+      const numericColumns = numericGroupColumns(filteredRows(), columns);
+      groupSumColumns = new Set([...groupSumColumns].filter(column => numericColumns.includes(column)));
+      options.innerHTML = numericColumns.length ? numericColumns.map(column => {
+        const index = columns.indexOf(column);
+        return `
         <label>
           <input type="checkbox" data-group-sum-column="${escapeHtml(column)}" ${groupSumColumns.has(column) ? 'checked' : ''}>
           <span>${escapeHtml(displayColumns[index])}</span>
-        </label>
-      `).join('');
+        </label>`;
+      }).join('') : '<span class="control-help">Nenhuma coluna numérica disponível nas linhas filtradas.</span>';
       options.querySelectorAll('input').forEach(input => {
         input.addEventListener('change', event => {
           const column = event.target.dataset.groupSumColumn;
@@ -404,7 +418,10 @@ let report = null;
 
     function scheduleRenderRows() {
       clearTimeout(renderTimer);
-      renderTimer = setTimeout(renderRows, 250);
+      renderTimer = setTimeout(() => {
+        renderGroupingControls();
+        renderRows();
+      }, 250);
     }
 
     function renderRows() {
@@ -414,6 +431,19 @@ let report = null;
       const tbody = byId('table').querySelector('tbody');
       tbody.innerHTML = groupedTableHtml(rows, columns);
       updateUrlState();
+    }
+
+    function numericGroupColumns(rows, columns) {
+      const displayColumns = friendlyColumns(columns);
+      return columns.filter((column, index) => {
+        if (!isSummableColumn(column, displayColumns[index])) return false;
+        let count = 0;
+        for (const item of customTotalRows(rows)) {
+          if (Number.isFinite(parseBrNumber((item.raw || item)[column]))) count += 1;
+          if (count >= 2) return true;
+        }
+        return count > 0;
+      });
     }
 
     function groupedTableHtml(rows, columns) {
@@ -556,6 +586,7 @@ let report = null;
       const activeFilters = activeFilterSummary();
       const highlights = numericHighlights(rows, columns, displayColumns);
       const quality = qualitySummary(report);
+      const isWideTable = columns.length > 8;
       const html = `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -578,11 +609,16 @@ let report = null;
     .note { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px; color: var(--muted); line-height: 1.45; }
     .footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     table { width: 100%; border-collapse: collapse; background: var(--panel); }
-    th, td { border: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; font-size: .82rem; }
+    th, td { border: 1px solid var(--line); padding: ${isWideTable ? '5px 6px' : '7px 8px'}; text-align: left; vertical-align: top; font-size: ${isWideTable ? '.72rem' : '.82rem'}; overflow-wrap: anywhere; }
     th { background: var(--soft); }
+    thead { display: table-header-group; }
+    .group-row td { background: #eef2f0; font-weight: 700; }
     .total-row td, tr.total-row td { background: #fff4c2; color: #233128; font-weight: 700; }
-    .group-summary td { background: #fff4c2; color: #233128; font-weight: 700; }
-    @media print { body { background: #fff; } header, main { padding: 14mm; } .card, .note, table { break-inside: avoid; } }
+    .group-summary td { background: #dfeee2; color: #233128; font-weight: 700; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; color: var(--muted); font-size: .82rem; }
+    .swatch { display: inline-block; width: 16px; height: 10px; border: 1px solid var(--line); margin-right: 5px; }
+    @page { size: A4 ${isWideTable ? 'landscape' : 'portrait'}; margin: 10mm; }
+    @media print { body { background: #fff; } header, main { padding: 10mm; } .card, .note, table { break-inside: avoid; } }
     @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } main, header { padding: 16px; } }
   </style>
 </head>
@@ -600,6 +636,8 @@ let report = null;
     <h2>Principais informa\u00e7\u00f5es obtidas</h2>
     <section class="grid">${highlights.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
     <h2>Tabela</h2>
+    ${isWideTable ? '<section class="note">Tabela larga: recomenda-se salvar em PDF na orientação paisagem.</section>' : ''}
+    <div class="legend"><span><i class="swatch" style="background:#eef2f0"></i>Grupo</span><span><i class="swatch" style="background:#dfeee2"></i>Total do grupo/agrupamento</span><span><i class="swatch" style="background:#fff4c2"></i>Total original do relatório</span></div>
     <table>
       <thead><tr>${displayColumns.map(column => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead>
       <tbody>${groupedReportTableHtml(rows, columns)}</tbody>
@@ -883,6 +921,23 @@ let report = null;
       byId('showTotals').checked = true;
       document.querySelectorAll('th input').forEach(input => { input.value = ''; });
       document.querySelectorAll('th select').forEach(select => { select.value = ''; });
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderGroupingControls();
+      renderRows();
+    });
+    byId('showAllColumns')?.addEventListener('click', () => {
+      visibleColumns = new Set(report?.columns || []);
+      setColumnWarning('');
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderGroupingControls();
+      renderRows();
+    });
+    byId('hideAllColumns')?.addEventListener('click', () => {
+      const columns = report?.columns || [];
+      visibleColumns = new Set(columns.slice(0, 1));
+      setColumnWarning('Mantida a primeira coluna para evitar uma tabela vazia.');
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
