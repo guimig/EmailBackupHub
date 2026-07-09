@@ -35,15 +35,6 @@
       "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "50,00"
     },
     {
-      "Cód. Recolhimento GRU": "28802",
-      "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-      "Emissão - Mês": "FEV/2026",
-      "Emissão - Dia": "24/02/2026",
-      "Recolhedor Doc.": "PJ",
-      "Conta Contábil / Doc - Valor": "795,16",
-      "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
-    },
-    {
       "Cód. Recolhimento GRU": "28808",
       "Cód. Recolhimento GRU (2)": "REC DE CONCES DIREITO REAL USO AREA PUBLICA",
       "Emissão - Mês": "JAN/2026",
@@ -1276,39 +1267,6 @@
       }
     },
     {
-      "label": "28802",
-      "values": {
-        "Cód. Recolhimento GRU": 28802.0,
-        "Emissão - Mês": 2026.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 795.16
-      },
-      "raw": {
-        "Cód. Recolhimento GRU": "28802",
-        "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-        "Emissão - Mês": "FEV/2026",
-        "Emissão - Dia": "Total",
-        "Recolhedor Doc.": "",
-        "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
-      }
-    },
-    {
-      "label": "28802",
-      "values": {
-        "Cód. Recolhimento GRU": 28802.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 795.16
-      },
-      "raw": {
-        "Cód. Recolhimento GRU": "28802",
-        "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-        "Emissão - Mês": "Total",
-        "Emissão - Dia": "",
-        "Recolhedor Doc.": "",
-        "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
-      }
-    },
-    {
       "label": "28808",
       "values": {
         "Cód. Recolhimento GRU": 28808.0,
@@ -1960,42 +1918,6 @@
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
         "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "451,59"
-      }
-    },
-    {
-      "type": "data",
-      "raw": {
-        "Cód. Recolhimento GRU": "28802",
-        "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-        "Emissão - Mês": "FEV/2026",
-        "Emissão - Dia": "24/02/2026",
-        "Recolhedor Doc.": "PJ",
-        "Conta Contábil / Doc - Valor": "795,16",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
-      }
-    },
-    {
-      "type": "total",
-      "raw": {
-        "Cód. Recolhimento GRU": "28802",
-        "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-        "Emissão - Mês": "FEV/2026",
-        "Emissão - Dia": "Total",
-        "Recolhedor Doc.": "",
-        "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
-      }
-    },
-    {
-      "type": "total",
-      "raw": {
-        "Cód. Recolhimento GRU": "28802",
-        "Cód. Recolhimento GRU (2)": "ALUGUEIS",
-        "Emissão - Mês": "Total",
-        "Emissão - Dia": "",
-        "Recolhedor Doc.": "",
-        "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "795,16"
       }
     },
     {
@@ -4028,20 +3950,22 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-09T15:07:36.910641-03:00",
+    "ultima_atualizacao": "2026-07-09T15:12:32.223629-03:00",
     "idade_dias": 8,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "5902",
     "hash_conteudo": "7330bcadd64d701d31d8a53a676cb51aa189d387c6d7de181985f31cd98d42db",
-    "row_count": 136,
+    "row_count": 135,
     "column_count": 7,
     "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
-    "ok": true,
-    "issues": [],
+    "ok": false,
+    "issues": [
+      "header_rows_removed"
+    ],
     "warnings": [
       "date_from_filename",
       "totals_separated"
