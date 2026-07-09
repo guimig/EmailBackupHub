@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-07-09T15:12:32.223629-03:00",
+  "generated_at": "2026-07-09T14:47:03.593703-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -18,13 +18,13 @@
     "latest_files": 22,
     "monthly_close_files": 83,
     "cache_lookups": 103,
-    "processed_files": 103,
-    "cache_hits": 0,
+    "processed_files": 0,
+    "cache_hits": 103,
     "cache_misses_new": 0,
-    "cache_misses_changed": 103,
+    "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 103,
-    "duration_seconds": 32.388
+    "duration_seconds": 2.115
   },
   "reports": [
     {
@@ -47,13 +47,13 @@
       "removal_candidates_sample": [],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
+        "cache_hits": 1,
         "cache_misses_new": 0,
-        "cache_misses_changed": 1,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 3.464
+        "duration_seconds": 0.263
       }
     },
     {
@@ -76,13 +76,13 @@
       "removal_candidates_sample": [],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
+        "cache_hits": 1,
         "cache_misses_new": 0,
-        "cache_misses_changed": 1,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 4.977
+        "duration_seconds": 0.35
       }
     },
     {
@@ -383,13 +383,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 5.222
+        "duration_seconds": 0.307
       }
     },
     {
@@ -690,13 +690,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 4.952
+        "duration_seconds": 0.303
       }
     },
     {
@@ -997,13 +997,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.055
+        "duration_seconds": 0.019
       }
     },
     {
@@ -1057,13 +1057,13 @@
       ],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
+        "cache_hits": 1,
         "cache_misses_new": 0,
-        "cache_misses_changed": 1,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.43
+        "duration_seconds": 0.028
       }
     },
     {
@@ -1106,13 +1106,13 @@
       "removal_candidates_sample": [],
       "processing": {
         "cache_lookups": 3,
-        "cache_hits": 0,
+        "cache_hits": 3,
         "cache_misses_new": 0,
-        "cache_misses_changed": 3,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 3,
+        "processed_files": 0,
         "snapshots_written": 3,
-        "duration_seconds": 1.059
+        "duration_seconds": 0.046
       }
     },
     {
@@ -1413,13 +1413,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.689
+        "duration_seconds": 0.041
       }
     },
     {
@@ -1720,13 +1720,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.08
+        "duration_seconds": 0.012
       }
     },
     {
@@ -2027,13 +2027,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.99
+        "duration_seconds": 0.049
       }
     },
     {
@@ -2064,13 +2064,13 @@
       ],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
+        "cache_hits": 1,
         "cache_misses_new": 0,
-        "cache_misses_changed": 1,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.361
+        "duration_seconds": 0.038
       }
     },
     {
@@ -2371,13 +2371,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.039
+        "duration_seconds": 0.007
       }
     },
     {
@@ -2714,13 +2714,13 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 0,
+        "cache_hits": 8,
         "cache_misses_new": 0,
-        "cache_misses_changed": 8,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 8,
+        "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.497
+        "duration_seconds": 0.037
       }
     },
     {
@@ -3039,13 +3039,13 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 0,
+        "cache_hits": 6,
         "cache_misses_new": 0,
-        "cache_misses_changed": 6,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 6,
+        "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.532
+        "duration_seconds": 0.048
       }
     },
     {
@@ -3373,13 +3373,13 @@
       ],
       "processing": {
         "cache_lookups": 7,
-        "cache_hits": 0,
+        "cache_hits": 7,
         "cache_misses_new": 0,
-        "cache_misses_changed": 7,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 7,
+        "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 1.786
+        "duration_seconds": 0.128
       }
     },
     {
@@ -3716,13 +3716,13 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 0,
+        "cache_hits": 8,
         "cache_misses_new": 0,
-        "cache_misses_changed": 8,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 8,
+        "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 3.55
+        "duration_seconds": 0.145
       }
     },
     {
@@ -4032,13 +4032,13 @@
       ],
       "processing": {
         "cache_lookups": 5,
-        "cache_hits": 0,
+        "cache_hits": 5,
         "cache_misses_new": 0,
-        "cache_misses_changed": 5,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 5,
+        "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.182
+        "duration_seconds": 0.015
       }
     },
     {
@@ -4366,13 +4366,13 @@
       ],
       "processing": {
         "cache_lookups": 7,
-        "cache_hits": 0,
+        "cache_hits": 7,
         "cache_misses_new": 0,
-        "cache_misses_changed": 7,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 7,
+        "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.416
+        "duration_seconds": 0.032
       }
     },
     {
@@ -4709,13 +4709,13 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 0,
+        "cache_hits": 8,
         "cache_misses_new": 0,
-        "cache_misses_changed": 8,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 8,
+        "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.626
+        "duration_seconds": 0.026
       }
     },
     {
@@ -5043,13 +5043,13 @@
       ],
       "processing": {
         "cache_lookups": 7,
-        "cache_hits": 0,
+        "cache_hits": 7,
         "cache_misses_new": 0,
-        "cache_misses_changed": 7,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 7,
+        "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 1.385
+        "duration_seconds": 0.078
       }
     },
     {
@@ -5386,13 +5386,13 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 0,
+        "cache_hits": 8,
         "cache_misses_new": 0,
-        "cache_misses_changed": 8,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 8,
+        "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.719
+        "duration_seconds": 0.044
       }
     },
     {
@@ -5693,13 +5693,13 @@
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 0,
+        "cache_hits": 4,
         "cache_misses_new": 0,
-        "cache_misses_changed": 4,
+        "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 4,
+        "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.301
+        "duration_seconds": 0.021
       }
     }
   ]

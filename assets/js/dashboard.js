@@ -792,19 +792,6 @@ let indexData = null;
       ];
       const container = byId('managementAlerts');
       if (!container) return;
-      const title = container.closest('.management-alerts')?.querySelector('h3');
-      if (title) {
-        title.innerHTML = `Alertas gerenciais <span class="alert-count">${alerts.length}</span>`;
-        title.setAttribute('role', 'button');
-        title.setAttribute('tabindex', '0');
-        title.onclick = () => title.closest('.management-alerts')?.classList.toggle('is-collapsed');
-        title.onkeydown = event => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            title.click();
-          }
-        };
-      }
       if (!alerts.length) {
         container.innerHTML = '<p class="alert-empty">Nenhum alerta gerencial identificado.</p>';
         return;

@@ -38,7 +38,6 @@ CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 SCHEMA_VERSION = "1.5"
-PARSER_VERSION = "2.0"
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
 
 INFO_QUALITY_CODES = {
@@ -220,42 +219,7 @@ def looks_like_header(row):
     return len(text_cells) >= max(2, len(row) // 2)
 
 
-def looks_like_structural_header(row):
-    cells = [str(cell or "").strip() for cell in row if str(cell or "").strip()]
-    if len(cells) < 2:
-        return False
-    joined = normalize_key(" ".join(cells))
-    header_terms = [
-        "item informacao",
-        "mes lancamento",
-        "ano emissao",
-        "natureza despesa",
-        "conta contabil",
-        "saldo moeda",
-        "saldo r",
-        "unidade gestora",
-        "ug",
-    ]
-    month_or_year = sum(
-        1
-        for cell in cells
-        if re.fullmatch(r"(jan|fev|mar|abr|mai|jun|jul|ago|set|out|nov|dez)\s+20\d{2}", normalize_key(cell))
-        or re.fullmatch(r"20\d{2}", cell)
-        or re.fullmatch(r"\d{3}\s+20\d{2}", normalize_key(cell))
-    )
-    repeated = len(cells) - len(set(cells))
-    if month_or_year >= max(2, len(cells) // 3):
-        return True
-    if any(term in joined for term in header_terms) and repeated >= 1:
-        return True
-    if any(term in joined for term in header_terms) and sum(1 for cell in cells if parse_br_number(cell) is not None) >= 2:
-        return True
-    return False
-
-
 def looks_like_data(row):
-    if looks_like_structural_header(row):
-        return False
     cells = [cell for cell in row if cell]
     if len(cells) < 2:
         return False
@@ -361,7 +325,7 @@ def normalize_table(grid):
         data_rows = grid
         issues.append("columns_generated")
     else:
-        header_candidates = [row for row in grid[:data_start] if looks_like_header(row) or looks_like_structural_header(row)]
+        header_candidates = [row for row in grid[:data_start] if looks_like_header(row)]
         width = max(len(row) for row in grid[data_start:] + header_candidates)
         fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
         columns = merge_header_rows(header_candidates[-3:] or fallback_headers, width)
@@ -373,9 +337,6 @@ def normalize_table(grid):
     for raw_row in data_rows:
         padded = (raw_row + [""] * width)[:width]
         if not any(padded):
-            continue
-        if looks_like_structural_header(padded):
-            issues.append("header_rows_removed")
             continue
         row = {columns[idx]: padded[idx] for idx in range(width)}
         numeric_values = {columns[idx]: parse_br_number(padded[idx]) for idx in range(width) if parse_br_number(padded[idx]) is not None}
@@ -543,15 +504,13 @@ def cached_document(file_path, source_map, now, cache_index, stats):
     entry = cache_index.get(source_path) or {}
     snapshot_path = Path(REPO_ROOT) / entry.get("snapshot_path", "")
     stats["cache_lookups"] += 1
-    if entry.get("content_hash") == content_hash and entry.get("parser_version") == PARSER_VERSION and snapshot_path.exists():
+    if entry.get("content_hash") == content_hash and snapshot_path.exists():
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
             return annotate_metrics(refresh_document_metadata(doc, source_map, now)), content_hash
 
-    if entry.get("content_hash") == content_hash and entry.get("parser_version") != PARSER_VERSION:
-        stats["cache_misses_changed"] += 1
-    elif entry.get("content_hash") == content_hash and not snapshot_path.exists():
+    if entry.get("content_hash") == content_hash and not snapshot_path.exists():
         stats["cache_misses_missing_snapshot"] += 1
     elif entry:
         stats["cache_misses_changed"] += 1
@@ -888,7 +847,6 @@ def generate_data_files():
             write_json(snapshot_path, doc)
             new_cache_index[rel_path(path)] = {
                 "content_hash": content_hash,
-                "parser_version": PARSER_VERSION,
                 "snapshot_path": rel_path(snapshot_path),
                 "date_iso": doc["date_iso"],
                 "slug": slug,

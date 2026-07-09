@@ -56,13 +56,12 @@
     tbody tr:hover td { background: var(--soft); }
 .total-row td { background: var(--total); font-weight: 700; }
 .is-hidden { display: none; }
+    .custom-total-summary { display: flex; flex-wrap: wrap; gap: 8px; }
+    .custom-total-pill { border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; background: var(--soft); color: var(--text); }
     .viewer-controls { margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
     .viewer-controls summary { cursor: pointer; padding: 10px 12px; color: var(--text); font-weight: 700; }
     .viewer-controls-body { display: grid; gap: 12px; padding: 0 12px 12px; color: var(--muted); }
     .control-help { margin: 6px 0 8px; color: var(--muted); font-size: .84rem; line-height: 1.35; }
-    .control-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
-    .control-actions button { padding: 7px 10px; font-size: .82rem; }
-    .control-warning { color: var(--warn); font-size: .82rem; min-height: 1.2em; }
     .control-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
     .control-grid label { display: flex; gap: 8px; align-items: flex-start; border: 1px solid var(--line); border-radius: 6px; padding: 8px; background: var(--soft); color: var(--text); font-size: .86rem; }
     .control-row { display: grid; grid-template-columns: minmax(220px, 360px) 1fr; gap: 12px; align-items: start; }

@@ -5950,6 +5950,28 @@
     {
       "Natureza Despesa": "339030",
       "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+      "Natureza Despesa Detalhada": "33903026",
+      "Natureza Despesa Detalhada (2)": "MATERIAL ELETRICO E ELETRONICO",
+      "NE CCor - Favorecido": "R. BUSETTO & F. KRUGER LTDA",
+      "NE CCor - Favorecido (2)": "32246085000189",
+      "DH - Tipo": "NOTA DE PAGAMENTO",
+      "Documento Hábil": "158459264222026NP000135",
+      "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 551, Contrato nº: 2026NE000067  - 32.246.085/0001-89 - R. BUSETTO e F. KRUGER LTDA, Proc.(s) núm.(s): 23349.000862/2026-44, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 04/2026.",
+      "DH - Dia Emissão": "10/04/2026",
+      "DH - Valor": "270",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB000337",
+      "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 551, CONTRATO Nº: 2026NE000067  - 32.246.085/0001-89 - R. BUSETTO E F. KRUGER LTDA, PROC.(S) NUM.(S): 23349.000862/2026-44, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 04/2026.",
+      "Emissão - Dia": "14/04/2026",
+      "Doc - Valor": "270",
+      "Item Informação / NE CCor": "158459264222026NE000067",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "0,00",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "270,00",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa": "339030",
+      "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
       "Natureza Despesa Detalhada": "33903028",
       "Natureza Despesa Detalhada (2)": "MATERIAL DE PROTECAO E SEGURANCA",
       "NE CCor - Favorecido": "MASTERSUL EQUIPAMENTOS DE SEGURANCA LTDA",
@@ -18908,6 +18930,31 @@
       "raw": {
         "Natureza Despesa": "339030",
         "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Natureza Despesa Detalhada": "33903026",
+        "Natureza Despesa Detalhada (2)": "MATERIAL ELETRICO E ELETRONICO",
+        "NE CCor - Favorecido": "R. BUSETTO & F. KRUGER LTDA",
+        "NE CCor - Favorecido (2)": "32246085000189",
+        "DH - Tipo": "NOTA DE PAGAMENTO",
+        "Documento Hábil": "158459264222026NP000135",
+        "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 551, Contrato nº: 2026NE000067  - 32.246.085/0001-89 - R. BUSETTO e F. KRUGER LTDA, Proc.(s) núm.(s): 23349.000862/2026-44, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 04/2026.",
+        "DH - Dia Emissão": "10/04/2026",
+        "DH - Valor": "270",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB000337",
+        "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 551, CONTRATO Nº: 2026NE000067  - 32.246.085/0001-89 - R. BUSETTO E F. KRUGER LTDA, PROC.(S) NUM.(S): 23349.000862/2026-44, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 04/2026.",
+        "Emissão - Dia": "14/04/2026",
+        "Doc - Valor": "270",
+        "Item Informação / NE CCor": "158459264222026NE000067",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "0,00",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "270,00",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
         "Natureza Despesa Detalhada": "33903028",
         "Natureza Despesa Detalhada (2)": "MATERIAL DE PROTECAO E SEGURANCA",
         "NE CCor - Favorecido": "MASTERSUL EQUIPAMENTOS DE SEGURANCA LTDA",
@@ -25755,22 +25802,20 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-09T15:12:32.223629-03:00",
+    "ultima_atualizacao": "2026-07-09T14:47:03.593703-03:00",
     "idade_dias": 69,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
     "hash_conteudo": "6c1711b03056de05894cc8ae5200ec5339ad42910a8fb15a848967e251dfe2cc",
-    "row_count": 532,
+    "row_count": 533,
     "column_count": 20,
     "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
-    "ok": false,
-    "issues": [
-      "header_rows_removed"
-    ],
+    "ok": true,
+    "issues": [],
     "warnings": [
       "date_from_filename",
       "totals_separated"
