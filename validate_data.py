@@ -350,6 +350,16 @@ def print_result(validation: Validation) -> None:
         print("\nOK: nenhum erro critico encontrado.")
 
 
+def validate_repository(strict: bool = False) -> Validation:
+    validation = Validation()
+    validate_static_files(validation)
+    if validate_required_data(validation, strict=strict):
+        validate_index(validation)
+        validate_all_jsons(validation)
+        validate_run_log_security(validation)
+    return validation
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Valida dados estaticos do EmailBackupHub.")
     parser.add_argument(
@@ -359,13 +369,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    validation = Validation()
-    validate_static_files(validation)
-    if validate_required_data(validation, strict=args.strict):
-        validate_index(validation)
-        validate_all_jsons(validation)
-        validate_run_log_security(validation)
-
+    validation = validate_repository(strict=args.strict)
     print_result(validation)
     return 1 if validation.errors else 0
 

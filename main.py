@@ -4,8 +4,10 @@ from git_utils import commit_changes
 from html_generator import create_latest_summary_html, update_root_index
 from imap_client import mark_emails_as_seen
 from run_logger import add_run_error, finish_run, start_run, write_run_log_safely
+from validate_data import validate_repository
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_state = start_run()
     email_result = {"emails_found": 0, "emails": [], "processed_uids": []}
     generated_artifacts = {}
@@ -15,20 +17,28 @@ if __name__ == '__main__':
         processed_uids = email_result["processed_uids"]
         cleanup_summary = cleanup_retention_candidates()
 
-        # 2. Cria arquivos .html na raiz com os últimos relatórios de cada pasta
+        # 2. Cria arquivos .html na raiz com os ultimos relatorios de cada pasta
         create_latest_summary_html()
 
         # 3. Atualiza o index.html com todos os links
         update_root_index()
 
-        # 4. Atualiza a API estática e os dados para páginas complementares
+        # 4. Atualiza a API estatica e os dados para paginas complementares
         generated_artifacts = generate_data_files() or {}
         generated_artifacts["retention_cleanup"] = cleanup_summary
+        validation = validate_repository(strict=True)
+        generated_artifacts["validation"] = {
+            "errors_count": len(validation.errors),
+            "warnings_count": len(validation.warnings),
+            "checked_json": validation.checked_json,
+        }
+        if validation.errors:
+            raise RuntimeError("Validacao estatica falhou: " + "; ".join(validation.errors[:5]))
 
-        # 5. Registra a execução antes do commit para versionar o log junto com os artefatos
+        # 5. Registra a execucao antes do commit para versionar o log junto com os artefatos
         write_run_log_safely(finish_run(run_state, email_result, generated_artifacts))
 
-        # 6. Publica os artefatos gerados e só então marca e-mails como lidos
+        # 6. Publica os artefatos gerados e so entao marca e-mails como lidos
         commit_changes()
         mark_emails_as_seen(processed_uids)
 

@@ -81,6 +81,13 @@ class ValidateDataHelpersTests(unittest.TestCase):
 
         self.assertEqual(validation.warnings, [])
 
+    def test_validate_repository_returns_validation_object(self):
+        validation = validate_data.validate_repository(strict=False)
+
+        self.assertIsInstance(validation, validate_data.Validation)
+        self.assertIsInstance(validation.errors, list)
+        self.assertIsInstance(validation.warnings, list)
+
 
 if __name__ == "__main__":
     unittest.main()
