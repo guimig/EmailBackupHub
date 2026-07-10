@@ -58,6 +58,21 @@ class ExperimentalTableParserTests(unittest.TestCase):
         self.assertEqual(parsed.columns, ["Natureza de Despesa", "RAP Inscrito", "RAP Pago", "RAP a Pagar"])
         self.assertEqual(parsed.rows[0]["RAP Pago"], "500,00")
 
+    def test_parse_largest_html_table_ignores_small_metadata_table(self):
+        html = """
+        <table><tr><td>Metadado</td></tr></table>
+        <table>
+          <tr><th>Natureza</th><th>Valor</th></tr>
+          <tr><td>Consumo</td><td>10,00</td></tr>
+          <tr><td>Servico</td><td>20,00</td></tr>
+        </table>
+        """
+
+        parsed = parser.parse_largest_html_table(html)
+
+        self.assertEqual(parsed.columns, ["Natureza", "Valor"])
+        self.assertEqual(len(parsed.rows), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -104,7 +104,7 @@ def select_header_rows(grid: list[list[str]], max_scan_rows: int = 12) -> list[i
     best_idx, best_score = max(scored, key=lambda item: (item[1], item[0]))
     selected = [best_idx]
     previous = best_idx - 1
-    while previous >= 0 and header_score(grid[previous]) >= max(2, best_score - 2):
+    while previous >= 0 and header_score(grid[previous]) >= 2:
         selected.insert(0, previous)
         previous -= 1
     return selected
@@ -165,3 +165,18 @@ def parse_html_table(html: str, table_index: int = 0) -> ParsedTable:
         warnings.append("generic_columns")
 
     return ParsedTable(columns, rows, header_rows, warnings)
+
+
+def parse_largest_html_table(html: str) -> ParsedTable:
+    soup = BeautifulSoup(html, "html.parser")
+    tables = soup.find_all("table")
+    if not tables:
+        return ParsedTable([], [], [], ["no_table"])
+
+    table_sizes = []
+    for idx, table in enumerate(tables):
+        rows = table.find_all("tr")
+        cell_count = sum(len(row.find_all(["td", "th"])) for row in rows)
+        table_sizes.append((idx, len(rows), cell_count))
+    table_index = max(table_sizes, key=lambda item: (item[1], item[2]))[0]
+    return parse_html_table(html, table_index)
