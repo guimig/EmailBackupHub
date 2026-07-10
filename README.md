@@ -34,6 +34,37 @@ Fluxo principal:
 
 Essa ordem é importante: e-mails só devem ser marcados como lidos depois da geração, log, commit e push concluídos.
 
+## Validação Antes Do Commit
+
+O `main.py` executa uma validação estrutural depois da geração dos JSONs e antes do log final, commit, push e marcação dos e-mails como lidos.
+
+Validação manual:
+
+```bash
+python validate_data.py
+```
+
+O validador verifica, entre outros pontos:
+
+- arquivos essenciais do GitHub Pages;
+- caminhos relativos usados pelo dashboard e pelo `report-viewer`;
+- JSONs parseáveis;
+- referências de relatórios em `data/index.json`;
+- sinais de métrica RAP suspeita;
+- ausência de credenciais ou conteúdo sensível no `run-log.json`.
+
+Erros críticos retornam código de saída `1`. Warnings não bloqueiam a execução, mas ficam visíveis para manutenção.
+
+## Baseline De Segurança
+
+Antes de mudanças em parsing, retenção, geração de dados ou visualização, rode:
+
+```bash
+python validate_baseline.py
+```
+
+Essa validação protege páginas e arquivos essenciais contra regressões simples, especialmente depois de alterações no dashboard, `report-viewer` ou geração dos JSONs.
+
 ## Datas E Fechamento
 
 Os relatórios do Tesouro Gerencial são gerados após o fechamento do sistema. Na prática, um relatório recebido ou gerado em determinado dia normalmente representa o fechamento do dia anterior.
@@ -71,6 +102,33 @@ Essa política evita crescimento descontrolado do repositório sem perder a info
 Os gráficos históricos do dashboard devem priorizar dados a partir de janeiro de 2026. A virada de exercício pode zerar bases, saldos e indicadores, então misturar 2025 com 2026 pode distorcer a leitura gerencial.
 
 Dados antigos podem continuar disponíveis como arquivos arquivados, mas não devem contaminar os gráficos principais do cabeçalho do dashboard.
+
+## RAP Auditável
+
+As métricas de Restos a Pagar exigem cuidado porque valores baixos demais podem indicar leitura de subtotal, coluna errada ou linha parcial. Por isso, a extração de RAP deve registrar origem e qualidade da métrica.
+
+Arquivos relacionados:
+
+- `diagnose_rap_totals.py`: diagnóstico conservador de totais RAP;
+- `experimental_rap_metrics.py`: extração experimental, usada para comparação e evolução controlada;
+- `rap_metrics.py`: validação e normalização segura das métricas RAP;
+- `validate_data.py`: alertas para RAP suspeito, baixo demais ou sem origem auditável.
+
+Quando a métrica não for confiável, o dashboard deve exibir informação indisponível ou alerta de qualidade, nunca converter ausência ou suspeita em `0`.
+
+## Diagnósticos De Parser
+
+O parser de produção não deve ser trocado de forma ampla sem comparação e validação. Para evoluções seguras, use os diagnósticos:
+
+```bash
+python diagnose_headers.py
+python compare_parser_outputs.py
+python diagnose_rap_totals.py
+```
+
+O workflow `parser_diagnostics.yml` roda diagnósticos auxiliares para ajudar a identificar problemas de cabeçalho, células mescladas e divergências entre parser atual e parser experimental.
+
+Esses diagnósticos são apoio técnico. Eles não devem substituir automaticamente a geração de dados sem uma fase específica, testes e validação visual.
 
 ## Estrutura Principal
 
