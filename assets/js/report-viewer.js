@@ -155,6 +155,7 @@ let report = null;
       const quality = qualitySummary(report);
       byId('quality').textContent = quality.text;
       byId('quality').className = quality.ok ? 'quality' : 'quality bad';
+      renderMetricAudit();
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       visibleColumns = new Set(report.columns || []);
@@ -555,6 +556,7 @@ let report = null;
       const tesouroContext = tesouroContextEntries();
       const activeFilters = activeFilterSummary();
       const highlights = numericHighlights(rows, columns, displayColumns);
+      const auditEntries = metricAuditEntries();
       const quality = qualitySummary(report);
       const html = `<!doctype html>
 <html lang="pt-BR">
@@ -599,6 +601,7 @@ let report = null;
     <section class="grid">${activeFilters.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
     <h2>Principais informa\u00e7\u00f5es obtidas</h2>
     <section class="grid">${highlights.map(([label, value]) => `<div class="card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join('')}</section>
+    ${metricAuditHtml(auditEntries)}
     <h2>Tabela</h2>
     <table>
       <thead><tr>${displayColumns.map(column => `<th>${escapeHtml(column)}</th>`).join('')}</tr></thead>
@@ -633,6 +636,51 @@ let report = null;
         appendObjectEntries(entries, 'Filtros/consulta do Tesouro Gerencial', report[key]);
       }
       return entries;
+    }
+
+    function metricAuditEntries() {
+      const metrics = report?.metrics || {};
+      const meta = report?.metrics_meta || report?.metric_sources || {};
+      return Object.entries(metrics).map(([metric, value]) => {
+        const source = meta[metric] || {};
+        const sourceParts = [
+          source.source ? `origem: ${source.source}` : null,
+          source.method ? `metodo: ${source.method}` : null,
+          source.line ? `linha: ${source.line}` : null,
+          source.column ? `coluna: ${source.column}` : null,
+          source.fallback ? 'fallback posicional' : null,
+          source.status && source.status !== 'ok' ? `status: ${source.status}` : null
+        ].filter(Boolean);
+        return {
+          metric,
+          value,
+          sourceText: sourceParts.join('; ') || 'Origem nao informada',
+          ok: source.status === 'ok' || Boolean(source.source || source.method)
+        };
+      });
+    }
+
+    function renderMetricAudit() {
+      const container = byId('metricAudit');
+      if (!container) return;
+      const entries = metricAuditEntries();
+      if (!entries.length) {
+        container.classList.add('is-hidden');
+        container.innerHTML = '';
+        return;
+      }
+      container.classList.remove('is-hidden');
+      container.innerHTML = `<h2>Metricas auditaveis</h2><div class="metric-audit-grid">${entries.map(entry => `
+        <div class="metric-audit-card">
+          <span>${escapeHtml(humanizeKey(entry.metric))}</span>
+          <strong>${escapeHtml(formatMetricValue(entry.value))}</strong>
+          <small>${escapeHtml(entry.sourceText)}</small>
+        </div>`).join('')}</div>`;
+    }
+
+    function metricAuditHtml(entries) {
+      if (!entries.length) return '';
+      return `<h2>Metricas auditaveis</h2><section class="grid">${entries.map(entry => `<div class="card"><span>${escapeHtml(humanizeKey(entry.metric))}</span><strong>${escapeHtml(formatMetricValue(entry.value))}</strong><br><small>${escapeHtml(entry.sourceText)}</small></div>`).join('')}</section>`;
     }
 
     function appendObjectEntries(target, group, value, skipKeys = new Set()) {
@@ -795,6 +843,11 @@ let report = null;
 
     function formatMoneyValue(value) {
       return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function formatMetricValue(value) {
+      const number = typeof value === 'number' ? value : parseBrNumber(value);
+      return Number.isFinite(number) ? formatMoneyValue(number) : String(value ?? '-');
     }
 
     function isSummableColumn(column, displayColumn) {
