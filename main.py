@@ -31,6 +31,8 @@ if __name__ == "__main__":
             "errors_count": len(validation.errors),
             "warnings_count": len(validation.warnings),
             "checked_json": validation.checked_json,
+            "errors": validation.errors[:10],
+            "warnings": validation.warnings[:10],
         }
         if validation.errors:
             raise RuntimeError("Validacao estatica falhou: " + "; ".join(validation.errors[:5]))
