@@ -355,14 +355,17 @@ let indexData = null;
       for (let index = series.length - 1; index >= 0; index -= 1) {
         const item = series[index];
         const value = item?.metrics?.[metric];
-        if (Number.isFinite(value) && metricIsReliable(item, metric)) return { value, date: item.date || item.date_iso, meta: item?.metrics_meta?.[metric] };
+        if (Number.isFinite(value) && metricIsReliable(item, metric, doc?.slug)) return { value, date: item.date || item.date_iso, meta: item?.metrics_meta?.[metric] };
       }
       return null;
     }
 
-    function metricIsReliable(item, metric) {
+    function metricIsReliable(item, metric, slug = '') {
       if (item?.metrics_quality && item.metrics_quality.ok === false) return false;
       const meta = item?.metrics_meta?.[metric];
+      if (slug === 'restos-a-pagar-rap') {
+        return Boolean(meta && meta.status === 'ok' && (meta.source || meta.method));
+      }
       return !meta || meta.status === 'ok';
     }
 
@@ -383,10 +386,8 @@ let indexData = null;
       if (slug === 'restos-a-pagar-rap') {
         const reportMetric = metricFromReport(doc, slug, metric);
         if (isAvailable(reportMetric)) return reportMetric;
-        const fallback = rapMetricFromReportTotals(doc, metric, fallbackColumns);
-        if (isAvailable(fallback)) return fallback;
         const issueText = rapMetricIssue(metric);
-        return auditValue(null, issueText || `RAP indisponivel: ${metric}. Metrica exige total geral confiavel.`);
+        return auditValue(null, issueText || `RAP indisponivel: ${metric}. Metrica exige origem auditavel no JSON.`);
       }
       for (const column of fallbackColumns) {
         const fallback = totalValue(slug, column);
@@ -403,10 +404,12 @@ let indexData = null;
       const doc = financialReports['restos-a-pagar-rap'];
       const reportMeta = doc?.metrics_meta?.[metric];
       if (reportMeta && reportMeta.status !== 'ok') return reportMeta.reason || 'Metrica de RAP insegura.';
+      if (doc?.metrics && metric in doc.metrics && !reportMeta) return 'Metrica de RAP sem origem auditavel no JSON do relatorio.';
       const series = doc?.series_data?.series || [];
       for (let index = series.length - 1; index >= 0; index -= 1) {
         const meta = series[index]?.metrics_meta?.[metric];
         if (meta && meta.status !== 'ok') return meta.reason || 'Metrica de RAP insegura na serie.';
+        if (series[index]?.metrics && metric in series[index].metrics && !meta) return 'Metrica de RAP sem origem auditavel na serie.';
       }
       const qualityIssues = doc?.quality?.issues || [];
       if (qualityIssues.some(issue => String(issue).startsWith('rap_metric_'))) return qualityIssues.join(', ');
@@ -416,47 +419,15 @@ let indexData = null;
     function metricFromReport(doc, slug, metric) {
       const value = doc?.metrics?.[metric];
       const meta = doc?.metrics_meta?.[metric] || {};
+      if (slug === 'restos-a-pagar-rap' && !(meta.status === 'ok' && (meta.source || meta.method))) {
+        return auditValue(null, meta.reason || `Metrica RAP sem origem auditavel: ${metric}.`);
+      }
       if (!Number.isFinite(value) || (meta.status && meta.status !== 'ok')) {
         return auditValue(null, meta.reason || `Metrica indisponivel no JSON do relatorio: ${metric}.`);
       }
       const line = meta.line ? ` linha: ${meta.line};` : '';
       const column = meta.column ? ` coluna: ${meta.column};` : '';
       return auditValue(value, `Fonte: ${reportLabel(slug)}; data: ${doc.date || 'indisponivel'}; metrica: ${metric}; origem: data/reports;${line}${column}`, Boolean(meta.fallback));
-    }
-
-    function rapMetricFromReportTotals(doc, metric, fallbackColumns = []) {
-      const row = grandTotalRow(doc);
-      if (!row) return auditValue(null, 'Linha de total geral de RAP nao encontrada.');
-      const column = rapMetricColumn(doc, row, metric, fallbackColumns);
-      if (!column) return auditValue(null, `Coluna confiavel de RAP nao encontrada para ${metric}.`);
-      const value = parseBrNumber(row[column]);
-      if (!Number.isFinite(value)) return auditValue(null, `Valor de RAP indisponivel na coluna ${column}.`);
-      const positional = /^Valor\s+\d+$/i.test(column);
-      const note = positional ? ' fallback posicional usado; auditoria limitada.' : ' coluna nomeada usada.';
-      return auditValue(value, `Fonte: ${reportLabel('restos-a-pagar-rap')}; data: ${doc.date || 'indisponivel'}; metrica: ${metric}; origem: data/reports; linha: total; coluna: ${column};${note}`, positional);
-    }
-
-    function rapMetricColumn(doc, row, metric, fallbackColumns = []) {
-      const columns = doc?.columns?.length ? doc.columns : Object.keys(row || {});
-      const preferred = metric === 'rap_pago'
-        ? ['RAP Pagos', 'RAP Pago', 'Pago', 'Pagos', ...fallbackColumns]
-        : metric === 'rap_a_pagar'
-          ? ['RAP a pagar', 'A pagar', ...fallbackColumns]
-          : fallbackColumns;
-      for (const candidate of preferred) {
-        const exact = columns.find(column => normalize(column) === normalize(candidate));
-        const isConfiguredFallback = fallbackColumns.some(column => normalize(column) === normalize(candidate));
-        if (exact && (rapColumnMatches(exact, metric) || isConfiguredFallback)) return exact;
-      }
-      return columns.find(column => rapColumnMatches(column, metric)) || null;
-    }
-
-    function rapColumnMatches(column, metric) {
-      const label = normalize(column);
-      if (!label || label.includes('%') || label.includes('percentual')) return false;
-      if (metric === 'rap_pago') return (label.includes('rap') || label.includes('pago')) && (label.includes('pago') || label.includes('pagos')) && !label.includes('a pagar');
-      if (metric === 'rap_a_pagar') return label.includes('a pagar') || (label.includes('rap') && label.includes('pagar'));
-      return false;
     }
 
     function firstValue(values) {
@@ -650,7 +621,7 @@ let indexData = null;
       return series.map(item => ({
         date: item.date || item.date_iso || '',
         dateIso: item.date_iso || item.date || '',
-        value: metricIsReliable(item, metric) ? item?.metrics?.[metric] : null
+        value: metricIsReliable(item, metric, slug) ? item?.metrics?.[metric] : null
       })).filter(point => Number.isFinite(point.value) && (!point.dateIso || point.dateIso >= SERIES_MIN_DATE));
     }
 
