@@ -39,6 +39,12 @@ jobs:
         run: |
           python -m unittest discover -s tests
 
+      - name: Validate static baseline and data
+        run: |
+          python validate_baseline.py
+          python validate_data.py
+          python diagnose_headers.py --max-rows 8 restos-a-pagar-rap.html
+
       - name: Run the email processing script
         run: |
           python main.py
