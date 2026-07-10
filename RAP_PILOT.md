@@ -19,6 +19,7 @@ O primeiro relatorio piloto para correcao controlada de parsing sera
 - Rodar `diagnose_headers.py`.
 - Rodar `compare_parser_outputs.py`.
 - Rodar `diagnose_rap_totals.py`.
+- Validar `experimental_rap_metrics.py` com testes unitarios.
 - Identificar a origem do valor:
   - linha;
   - coluna;
@@ -36,3 +37,9 @@ python diagnose_rap_totals.py
 ```
 
 O script e somente-leitura e nao grava JSON, cache, HTML ou log.
+
+## Extracao experimental
+
+`experimental_rap_metrics.py` transforma candidatos diagnosticados em metricas
+auditaveis apenas quando ha origem minimamente confiavel. Ele ainda nao e usado
+por `data_generator.py` e nao altera os JSONs oficiais.
