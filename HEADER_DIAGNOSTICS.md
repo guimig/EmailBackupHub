@@ -58,3 +58,15 @@ Rodar o diagnostico em ambiente com Python disponivel, salvar a saida e escolher
 um unico relatorio para correcao experimental. A primeira correcao deve ser feita
 em parser paralelo ou funcao isolada, comparando a saida antiga e nova antes de
 promover qualquer mudanca para a geracao oficial.
+
+## Workflow de diagnostico
+
+O workflow `Parser Diagnostics` executa os scripts em ambiente GitHub Actions,
+sem alterar arquivos do repositorio:
+
+- `python diagnose_headers.py > header-diagnostics.md`
+- `python compare_parser_outputs.py > parser-comparison.md`
+
+As saidas sao publicadas como artefato `parser-diagnostics`. Use esse artefato
+para escolher um unico relatorio piloto antes de qualquer alteracao no parser
+de producao.

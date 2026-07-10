@@ -1,0 +1,67 @@
+name: Parser Diagnostics
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'diagnose_headers.py'
+      - 'compare_parser_outputs.py'
+      - 'experimental_table_parser.py'
+      - 'data_generator.py'
+      - 'tests/test_diagnose_headers.py'
+      - 'tests/test_compare_parser_outputs.py'
+      - 'tests/test_experimental_table_parser.py'
+      - '.github/workflows/parser_diagnostics.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'diagnose_headers.py'
+      - 'compare_parser_outputs.py'
+      - 'experimental_table_parser.py'
+      - 'data_generator.py'
+      - 'tests/test_diagnose_headers.py'
+      - 'tests/test_compare_parser_outputs.py'
+      - 'tests/test_experimental_table_parser.py'
+      - '.github/workflows/parser_diagnostics.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  parser-diagnostics:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run parser unit tests
+        run: |
+          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_experimental_table_parser
+
+      - name: Generate header diagnostics
+        run: |
+          python diagnose_headers.py > header-diagnostics.md
+
+      - name: Generate parser comparison
+        run: |
+          python compare_parser_outputs.py > parser-comparison.md
+
+      - name: Upload diagnostics artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: parser-diagnostics
+          path: |
+            header-diagnostics.md
+            parser-comparison.md
