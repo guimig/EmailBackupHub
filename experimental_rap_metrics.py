@@ -8,53 +8,16 @@ from __future__ import annotations
 
 from typing import Any
 
-from diagnose_rap_totals import best_candidates, rap_total_candidates
-
-
-REQUIRED_RAP_METRICS = ("rap_pago", "rap_a_pagar")
-
-
-def source_from_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "column": candidate.get("column"),
-        "label": candidate.get("label"),
-        "total_index": candidate.get("total_index"),
-        "score": candidate.get("score"),
-        "quality": candidate.get("quality"),
-        "method": "experimental_rap_total_candidate",
-        "fallback": str(candidate.get("column") or "").startswith("Valor "),
-    }
+from rap_metrics import extract_rap_metrics_from_totals
 
 
 def extract_experimental_rap_metrics(doc: dict[str, Any]) -> dict[str, Any]:
-    candidates = rap_total_candidates(doc)
-    best = best_candidates(candidates)
-    metrics: dict[str, float] = {}
-    metric_sources: dict[str, dict[str, Any]] = {}
-    issues = []
-
-    for metric in REQUIRED_RAP_METRICS:
-        candidate = best.get(metric)
-        if not candidate:
-            issues.append(f"{metric}_unavailable")
-            continue
-        if candidate.get("quality") != "candidato":
-            issues.append(f"{metric}_{candidate.get('quality')}")
-            continue
-        value = candidate.get("value")
-        if not isinstance(value, (int, float)):
-            issues.append(f"{metric}_not_numeric")
-            continue
-        metrics[metric] = float(value)
-        metric_sources[metric] = source_from_candidate(candidate)
-
+    metrics, metric_sources, issues = extract_rap_metrics_from_totals(doc)
     rap_pago = metrics.get("rap_pago")
     rap_a_pagar = metrics.get("rap_a_pagar")
     if rap_pago is not None and rap_a_pagar is not None:
         total = rap_pago + rap_a_pagar
-        if total <= 0:
-            issues.append("rap_total_not_positive")
-        else:
+        if total > 0:
             metrics["rap_total"] = total
             metric_sources["rap_total"] = {
                 "method": "sum_rap_pago_rap_a_pagar",
@@ -69,5 +32,5 @@ def extract_experimental_rap_metrics(doc: dict[str, Any]) -> dict[str, Any]:
         "metrics": metrics,
         "metric_sources": metric_sources,
         "issues": issues,
-        "candidate_count": len(candidates),
+        "candidate_count": len(metric_sources),
     }

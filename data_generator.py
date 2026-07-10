@@ -21,6 +21,7 @@ from report_definitions import (
     report_status,
     report_title,
 )
+from rap_metrics import extract_rap_metrics_from_totals
 from retention import (
     RETENTION_DRY_RUN,
     cleanup_retention_candidates as cleanup_retention_candidates_for_policy,
@@ -686,26 +687,7 @@ def rap_metric_from_totals(doc, metric, rule):
 
 
 def extract_rap_metrics(doc, rules):
-    metrics = {}
-    meta = {}
-    issues = set()
-    for metric in report_expected_metrics(doc.get("slug")):
-        rule = rules.get(metric)
-        if not rule:
-            continue
-        value, metric_meta = rap_metric_from_totals(doc, metric, rule)
-        meta[metric] = metric_meta
-        if value is not None:
-            metrics[metric] = value
-        else:
-            issues.add("rap_metric_unavailable" if metric_meta.get("status") == "unavailable" else "rap_metric_invalid")
-    if "rap_pago" in metrics and "rap_a_pagar" in metrics:
-        total = metrics["rap_pago"] + metrics["rap_a_pagar"]
-        if total <= 0:
-            issues.add("rap_metric_invalid")
-        elif metrics["rap_pago"] < 0 or metrics["rap_a_pagar"] < 0:
-            issues.add("rap_metric_invalid")
-    return metrics, meta, sorted(issues)
+    return extract_rap_metrics_from_totals(doc)
 
 
 def extract_metrics_with_meta(doc):

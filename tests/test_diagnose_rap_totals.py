@@ -1,6 +1,6 @@
 import unittest
 
-import diagnose_rap_totals as rap
+import rap_metrics as rap
 
 
 class DiagnoseRapTotalsTests(unittest.TestCase):

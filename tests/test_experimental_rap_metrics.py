@@ -35,7 +35,7 @@ class ExperimentalRapMetricsTests(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertNotIn("rap_pago", result["metrics"])
         self.assertEqual(result["metrics"]["rap_a_pagar"], 800.0)
-        self.assertIn("rap_pago_unavailable", result["issues"])
+        self.assertIn("rap_metric_unavailable", result["issues"])
 
     def test_marks_positional_column_as_fallback_source(self):
         doc = {
@@ -55,8 +55,7 @@ class ExperimentalRapMetricsTests(unittest.TestCase):
 
         self.assertEqual(result["status"], "unavailable")
         self.assertEqual(result["metrics"], {})
-        self.assertIn("rap_pago_unavailable", result["issues"])
-        self.assertIn("rap_a_pagar_unavailable", result["issues"])
+        self.assertIn("rap_metric_unavailable", result["issues"])
 
 
 if __name__ == "__main__":

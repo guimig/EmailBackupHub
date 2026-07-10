@@ -41,5 +41,8 @@ O script e somente-leitura e nao grava JSON, cache, HTML ou log.
 ## Extracao experimental
 
 `experimental_rap_metrics.py` transforma candidatos diagnosticados em metricas
-auditaveis apenas quando ha origem minimamente confiavel. Ele ainda nao e usado
-por `data_generator.py` e nao altera os JSONs oficiais.
+auditaveis apenas quando ha origem minimamente confiavel.
+
+A logica compartilhada de candidatos RAP foi movida para `rap_metrics.py`.
+`data_generator.py` usa esse modulo apenas para o slug `restos-a-pagar-rap`,
+sem alterar o parser de tabelas e sem afetar outros relatorios.

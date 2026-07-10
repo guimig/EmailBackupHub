@@ -9,12 +9,14 @@ on:
       - 'diagnose_rap_totals.py'
       - 'experimental_rap_metrics.py'
       - 'experimental_table_parser.py'
+      - 'rap_metrics.py'
       - 'data_generator.py'
       - 'tests/test_diagnose_headers.py'
       - 'tests/test_compare_parser_outputs.py'
       - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_rap_metrics.py'
       - 'tests/test_experimental_table_parser.py'
+      - 'tests/test_rap_metrics.py'
       - '.github/workflows/parser_diagnostics.yml'
   push:
     branches:
@@ -25,12 +27,14 @@ on:
       - 'diagnose_rap_totals.py'
       - 'experimental_rap_metrics.py'
       - 'experimental_table_parser.py'
+      - 'rap_metrics.py'
       - 'data_generator.py'
       - 'tests/test_diagnose_headers.py'
       - 'tests/test_compare_parser_outputs.py'
       - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_rap_metrics.py'
       - 'tests/test_experimental_table_parser.py'
+      - 'tests/test_rap_metrics.py'
       - '.github/workflows/parser_diagnostics.yml'
 
 permissions:
@@ -56,7 +60,7 @@ jobs:
 
       - name: Run parser unit tests
         run: |
-          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_diagnose_rap_totals tests.test_experimental_rap_metrics tests.test_experimental_table_parser
+          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_diagnose_rap_totals tests.test_experimental_rap_metrics tests.test_experimental_table_parser tests.test_rap_metrics
 
       - name: Generate header diagnostics
         run: |
