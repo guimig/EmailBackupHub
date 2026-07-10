@@ -216,6 +216,14 @@ def validate_report_json(path: Path, validation: Validation) -> None:
     if quality is not None and not isinstance(quality, dict):
         validation.warn(f"quality deveria ser objeto em {rel(path)}")
 
+    if slug == RAP_SLUG:
+        validate_rap_metrics_payload(
+            validation,
+            rel(path),
+            data.get("metrics"),
+            data.get("metrics_meta") or data.get("metric_sources"),
+        )
+
 
 def numeric(value: Any) -> float | None:
     if isinstance(value, bool):
@@ -223,6 +231,34 @@ def numeric(value: Any) -> float | None:
     if isinstance(value, (int, float)):
         return float(value)
     return None
+
+
+def validate_rap_metrics_payload(
+    validation: Validation,
+    location: str,
+    metrics: Any,
+    metadata: Any,
+) -> None:
+    if not isinstance(metrics, dict):
+        return
+    meta = metadata if isinstance(metadata, dict) else {}
+    for metric in RAP_METRICS:
+        value = numeric(metrics.get(metric))
+        if value is not None and 0 < value < SUSPICIOUS_RAP_LIMIT:
+            validation.warn(f"RAP suspeito em {location}: {metric}={value}")
+        if metric in metrics and metric not in meta:
+            validation.warn(f"RAP sem origem auditavel em {location}: {metric}")
+            continue
+        metric_meta = meta.get(metric)
+        if metric_meta is not None and not isinstance(metric_meta, dict):
+            validation.warn(f"RAP com metadado invalido em {location}: {metric}")
+            continue
+        if isinstance(metric_meta, dict):
+            status = metric_meta.get("status")
+            if status and status != "ok":
+                validation.warn(f"RAP com origem nao confirmada em {location}: {metric} status={status}")
+            if not (metric_meta.get("source") or metric_meta.get("method")):
+                validation.warn(f"RAP sem source/method em {location}: {metric}")
 
 
 def validate_series_json(path: Path, validation: Validation) -> None:
@@ -256,12 +292,12 @@ def validate_series_json(path: Path, validation: Validation) -> None:
             continue
 
         if slug == RAP_SLUG and isinstance(metrics, dict):
-            for metric in RAP_METRICS:
-                value = numeric(metrics.get(metric))
-                if value is not None and 0 < value < SUSPICIOUS_RAP_LIMIT:
-                    validation.warn(
-                        f"RAP suspeito em {rel(path)} item #{idx}: {metric}={value}"
-                    )
+            validate_rap_metrics_payload(
+                validation,
+                f"{rel(path)} item #{idx}",
+                metrics,
+                item.get("metrics_meta") or item.get("metric_sources"),
+            )
 
 
 def validate_all_jsons(validation: Validation) -> None:

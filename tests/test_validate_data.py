@@ -57,6 +57,30 @@ class ValidateDataHelpersTests(unittest.TestCase):
         self.assertFalse(validation.errors)
         self.assertTrue(any("RAP suspeito" in warning for warning in validation.warnings))
 
+    def test_rap_metric_without_audit_source_warns(self):
+        validation = validate_data.Validation()
+
+        validate_data.validate_rap_metrics_payload(
+            validation,
+            "data/series/restos-a-pagar-rap.json item #1",
+            {"rap_pago": 1500.0},
+            {},
+        )
+
+        self.assertTrue(any("sem origem auditavel" in warning for warning in validation.warnings))
+
+    def test_rap_metric_with_audit_source_does_not_warn(self):
+        validation = validate_data.Validation()
+
+        validate_data.validate_rap_metrics_payload(
+            validation,
+            "data/series/restos-a-pagar-rap.json item #1",
+            {"rap_pago": 1500.0},
+            {"rap_pago": {"status": "ok", "source": "totals", "method": "rap_total_candidate"}},
+        )
+
+        self.assertEqual(validation.warnings, [])
+
 
 if __name__ == "__main__":
     unittest.main()
