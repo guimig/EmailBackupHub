@@ -6,10 +6,12 @@ on:
     paths:
       - 'diagnose_headers.py'
       - 'compare_parser_outputs.py'
+      - 'diagnose_rap_totals.py'
       - 'experimental_table_parser.py'
       - 'data_generator.py'
       - 'tests/test_diagnose_headers.py'
       - 'tests/test_compare_parser_outputs.py'
+      - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_table_parser.py'
       - '.github/workflows/parser_diagnostics.yml'
   push:
@@ -18,10 +20,12 @@ on:
     paths:
       - 'diagnose_headers.py'
       - 'compare_parser_outputs.py'
+      - 'diagnose_rap_totals.py'
       - 'experimental_table_parser.py'
       - 'data_generator.py'
       - 'tests/test_diagnose_headers.py'
       - 'tests/test_compare_parser_outputs.py'
+      - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_table_parser.py'
       - '.github/workflows/parser_diagnostics.yml'
 
@@ -48,7 +52,7 @@ jobs:
 
       - name: Run parser unit tests
         run: |
-          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_experimental_table_parser
+          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_diagnose_rap_totals tests.test_experimental_table_parser
 
       - name: Generate header diagnostics
         run: |
@@ -58,6 +62,10 @@ jobs:
         run: |
           python compare_parser_outputs.py > parser-comparison.md
 
+      - name: Generate RAP diagnostics
+        run: |
+          python diagnose_rap_totals.py > rap-diagnostics.md
+
       - name: Upload diagnostics artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -65,3 +73,4 @@ jobs:
           path: |
             header-diagnostics.md
             parser-comparison.md
+            rap-diagnostics.md
