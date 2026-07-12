@@ -1,3 +1,5 @@
+import sys
+
 from data_generator import cleanup_retention_candidates, generate_data_files
 from email_processor import process_emails
 from git_utils import commit_changes
@@ -48,3 +50,4 @@ if __name__ == "__main__":
         add_run_error(run_state, "main", e)
         write_run_log_safely(finish_run(run_state, email_result, generated_artifacts, status="error"))
         print(f"Erro no processo principal: {e}")
+        sys.exit(1)
