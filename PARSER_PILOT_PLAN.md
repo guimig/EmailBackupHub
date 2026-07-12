@@ -56,10 +56,11 @@ report-viewer ate passar por validacao.
 O script `generate_parser_pilot.py` gera:
 
 - `artifacts/parser-pilot-saldos-de-contas-de-contratos.json`
+- `artifacts/parser-pilot-saldos-de-contas-de-contratos.md`
 
-Esse arquivo e publicado apenas como artefato do workflow `Parser Diagnostics`.
-Ele nao e gravado em `data/`, nao altera JSON oficial e nao e carregado pelo
-dashboard ou pelo report-viewer.
+Esses arquivos sao publicados apenas como artefatos do workflow
+`Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
+oficial e nao sao carregados pelo dashboard ou pelo report-viewer.
 
 O artefato tambem inclui um bloco `readiness`, com resumo objetivo para revisao:
 
@@ -68,6 +69,10 @@ O artefato tambem inclui um bloco `readiness`, com resumo objetivo para revisao:
 - existencia de riscos ou avisos experimentais;
 - motivos que ainda exigem revisao manual;
 - `ready_for_production` sempre `false` nesta etapa.
+
+O resumo Markdown repete essas informacoes em formato legivel para revisao
+manual, incluindo contagens de linhas/colunas, riscos, avisos e colunas
+experimentais.
 
 ## Validacao automatica
 

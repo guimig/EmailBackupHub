@@ -19,6 +19,7 @@ from data_generator import full_report_document
 
 DEFAULT_REPORT = "saldos-de-contas-de-contratos.html"
 DEFAULT_OUTPUT = Path("artifacts") / "parser-pilot-saldos-de-contas-de-contratos.json"
+DEFAULT_SUMMARY_OUTPUT = Path("artifacts") / "parser-pilot-saldos-de-contas-de-contratos.md"
 
 
 def build_readiness_summary(production: dict, experimental, comparison: dict) -> dict[str, object]:
@@ -99,10 +100,88 @@ def write_json(path: Path, payload: dict[str, object]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def markdown_list(values: list[object]) -> str:
+    if not values:
+        return "- nenhum"
+    return "\n".join(f"- {value}" for value in values)
+
+
+def build_markdown_summary(payload: dict[str, object]) -> str:
+    production = payload.get("production") or {}
+    experimental = payload.get("experimental") or {}
+    readiness = payload.get("readiness") or {}
+    comparison = payload.get("comparison") or {}
+    production_columns = production.get("columns") or []
+    experimental_columns = experimental.get("columns") or []
+    production_rows = production.get("rows_count")
+    experimental_rows = experimental.get("rows_count")
+    manual_review_reasons = readiness.get("manual_review_reasons") or []
+    risks = comparison.get("experimental_risks") or []
+    warnings = experimental.get("warnings") or []
+
+    return "\n".join(
+        [
+            "# Piloto experimental do parser",
+            "",
+            "Este resumo e somente para revisao manual. Ele nao altera `data/`,",
+            "nao promove o parser experimental e nao e consumido pelo dashboard.",
+            "",
+            "## Status",
+            "",
+            f"- relatorio: `{payload.get('report')}`",
+            f"- somente leitura: `{payload.get('read_only')}`",
+            f"- status de promocao: `{payload.get('promotion_status')}`",
+            f"- pronto para revisao manual: `{readiness.get('ready_for_manual_review')}`",
+            f"- pronto para producao: `{readiness.get('ready_for_production')}`",
+            "",
+            "## Comparacao objetiva",
+            "",
+            f"- colunas na producao: `{len(production_columns)}`",
+            f"- colunas no experimental: `{len(experimental_columns)}`",
+            f"- linhas na producao: `{production_rows}`",
+            f"- linhas no experimental: `{experimental_rows}`",
+            f"- diferenca de linhas: `{readiness.get('row_count_delta')}`",
+            "",
+            "## Motivos para revisao manual",
+            "",
+            markdown_list(manual_review_reasons),
+            "",
+            "## Riscos experimentais",
+            "",
+            markdown_list(risks),
+            "",
+            "## Avisos experimentais",
+            "",
+            markdown_list(warnings),
+            "",
+            "## Colunas experimentais",
+            "",
+            markdown_list(experimental_columns),
+            "",
+            "## Proximos cuidados",
+            "",
+            "- revisar a diferenca de linhas antes de qualquer promocao;",
+            "- confirmar totais/subtotais e valores monetarios no JSON oficial;",
+            "- manter `ready_for_production=false` ate validacao manual explicita.",
+            "",
+        ]
+    )
+
+
+def write_markdown(path: Path, payload: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(build_markdown_summary(payload), encoding="utf-8")
+
+
 def main_with_args(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Gera artefato experimental do parser piloto.")
     parser.add_argument("--report", default=DEFAULT_REPORT, help="HTML do relatorio piloto")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT), help="caminho do artefato JSON")
+    parser.add_argument(
+        "--summary-output",
+        default=str(DEFAULT_SUMMARY_OUTPUT),
+        help="caminho do resumo Markdown",
+    )
     args = parser.parse_args(argv)
 
     report_path = Path(args.report)
@@ -111,7 +190,9 @@ def main_with_args(argv: list[str] | None = None) -> int:
 
     payload = build_pilot_payload(report_path)
     write_json(Path(args.output), payload)
+    write_markdown(Path(args.summary_output), payload)
     print(f"Artefato piloto gerado em {args.output}")
+    print(f"Resumo do piloto gerado em {args.summary_output}")
     print("Somente leitura: nenhum dado oficial foi alterado.")
     return 0
 

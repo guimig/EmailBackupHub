@@ -39,6 +39,7 @@ class GenerateParserPilotTests(unittest.TestCase):
             base = Path(temp_dir)
             report = base / "relatorio.html"
             output = base / "artifact.json"
+            summary = base / "artifact.md"
             report.write_text(
                 """
                 <table>
@@ -49,10 +50,35 @@ class GenerateParserPilotTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
-            code = pilot.main_with_args(["--report", str(report), "--output", str(output)])
+            code = pilot.main_with_args(
+                ["--report", str(report), "--output", str(output), "--summary-output", str(summary)]
+            )
 
             self.assertEqual(code, 0)
             self.assertTrue(output.exists())
+            self.assertTrue(summary.exists())
+            self.assertIn("Piloto experimental do parser", summary.read_text(encoding="utf-8"))
+
+    def test_markdown_summary_states_it_is_not_production_ready(self):
+        payload = {
+            "report": "relatorio.html",
+            "read_only": True,
+            "promotion_status": "not_promoted",
+            "production": {"columns": ["Coluna 1"], "rows_count": 2},
+            "experimental": {"columns": ["Saldo R$"], "rows_count": 1, "warnings": []},
+            "readiness": {
+                "ready_for_manual_review": True,
+                "ready_for_production": False,
+                "row_count_delta": 1,
+                "manual_review_reasons": ["row_count_delta:1"],
+            },
+            "comparison": {"experimental_risks": []},
+        }
+
+        summary = pilot.build_markdown_summary(payload)
+
+        self.assertIn("pronto para producao: `False`", summary)
+        self.assertIn("row_count_delta:1", summary)
 
 
 if __name__ == "__main__":
