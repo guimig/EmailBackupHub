@@ -25,6 +25,8 @@ DEFAULT_PILOT_REPORTS = [
     "evolucao-das-despesas-empenhadas.html",
     "restos-a-pagar-rap.html",
 ]
+DEFAULT_INDEX_OUTPUT = Path("artifacts") / "parser-pilot-index.json"
+DEFAULT_INDEX_SUMMARY_OUTPUT = Path("artifacts") / "parser-pilot-index.md"
 
 
 def build_readiness_summary(production: dict, experimental, comparison: dict) -> dict[str, object]:
@@ -183,10 +185,85 @@ def artifact_paths_for_report(report_path: Path, output_dir: Path) -> tuple[Path
     return output_dir / f"parser-pilot-{stem}.json", output_dir / f"parser-pilot-{stem}.md"
 
 
-def write_pilot_artifacts(report_path: Path, output_path: Path, summary_path: Path) -> None:
+def write_pilot_artifacts(report_path: Path, output_path: Path, summary_path: Path) -> dict[str, object]:
     payload = build_pilot_payload(report_path)
     write_json(output_path, payload)
     write_markdown(summary_path, payload)
+    return payload
+
+
+def build_index_payload(pilots: list[dict[str, object]]) -> dict[str, object]:
+    entries = []
+    for pilot in pilots:
+        production = pilot.get("production") or {}
+        experimental = pilot.get("experimental") or {}
+        readiness = pilot.get("readiness") or {}
+        entries.append(
+            {
+                "report": pilot.get("report"),
+                "promotion_status": pilot.get("promotion_status"),
+                "ready_for_manual_review": readiness.get("ready_for_manual_review"),
+                "ready_for_production": readiness.get("ready_for_production"),
+                "requires_manual_review": readiness.get("requires_manual_review"),
+                "manual_review_reasons": readiness.get("manual_review_reasons") or [],
+                "production_columns_count": len(production.get("columns") or []),
+                "experimental_columns_count": len(experimental.get("columns") or []),
+                "production_rows_count": production.get("rows_count"),
+                "experimental_rows_count": experimental.get("rows_count"),
+                "row_count_delta": readiness.get("row_count_delta"),
+                "experimental_warnings_count": len(experimental.get("warnings") or []),
+            }
+        )
+    return {
+        "schema_version": "1.0",
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "read_only": True,
+        "promotion_status": "not_promoted",
+        "pilots_count": len(entries),
+        "pilots": entries,
+    }
+
+
+def build_index_markdown(payload: dict[str, object]) -> str:
+    rows = [
+        "| Relatorio | Colunas prod./exp. | Linhas prod./exp. | Delta | Revisao manual | Producao |",
+        "| --- | ---: | ---: | ---: | --- | --- |",
+    ]
+    for pilot in payload.get("pilots") or []:
+        rows.append(
+            "| {report} | {prod_cols}/{exp_cols} | {prod_rows}/{exp_rows} | {delta} | {review} | {production} |".format(
+                report=pilot.get("report"),
+                prod_cols=pilot.get("production_columns_count"),
+                exp_cols=pilot.get("experimental_columns_count"),
+                prod_rows=pilot.get("production_rows_count"),
+                exp_rows=pilot.get("experimental_rows_count"),
+                delta=pilot.get("row_count_delta"),
+                review=pilot.get("requires_manual_review"),
+                production=pilot.get("ready_for_production"),
+            )
+        )
+    return "\n".join(
+        [
+            "# Indice dos pilotos experimentais",
+            "",
+            "Resumo somente leitura dos pilotos gerados pelo workflow `Parser Diagnostics`.",
+            "Nenhum item deste indice promove o parser experimental para producao.",
+            "",
+            *rows,
+            "",
+            "## Regra de seguranca",
+            "",
+            "- `ready_for_production` deve permanecer `False` ate revisao manual explicita.",
+            "- Diferencas de linhas, colunas ou avisos exigem analise antes de qualquer promocao.",
+            "",
+        ]
+    )
+
+
+def write_index_artifacts(pilots: list[dict[str, object]], output_dir: Path) -> None:
+    payload = build_index_payload(pilots)
+    write_json(output_dir / DEFAULT_INDEX_OUTPUT.name, payload)
+    (output_dir / DEFAULT_INDEX_SUMMARY_OUTPUT.name).write_text(build_index_markdown(payload), encoding="utf-8")
 
 
 def main_with_args(argv: list[str] | None = None) -> int:
@@ -207,14 +284,17 @@ def main_with_args(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.all_default_pilots:
+        pilots = []
         for report_name in DEFAULT_PILOT_REPORTS:
             report_path = Path(report_name)
             if not report_path.exists():
                 parser.error(f"arquivo ausente: {report_path}")
             output_path, summary_path = artifact_paths_for_report(report_path, Path(args.output_dir))
-            write_pilot_artifacts(report_path, output_path, summary_path)
+            pilots.append(write_pilot_artifacts(report_path, output_path, summary_path))
             print(f"Artefato piloto gerado em {output_path.as_posix()}")
             print(f"Resumo do piloto gerado em {summary_path.as_posix()}")
+        write_index_artifacts(pilots, Path(args.output_dir))
+        print(f"Indice dos pilotos gerado em {(Path(args.output_dir) / DEFAULT_INDEX_OUTPUT.name).as_posix()}")
         print("Somente leitura: nenhum dado oficial foi alterado.")
         return 0
 

@@ -89,6 +89,50 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertIn("pronto para producao: `False`", summary)
         self.assertIn("row_count_delta:1", summary)
 
+    def test_index_payload_keeps_pilots_read_only_and_not_promoted(self):
+        payload = {
+            "report": "relatorio.html",
+            "promotion_status": "not_promoted",
+            "production": {"columns": ["Coluna 1"], "rows_count": 2},
+            "experimental": {"columns": ["Saldo R$"], "rows_count": 1, "warnings": []},
+            "readiness": {
+                "ready_for_manual_review": True,
+                "ready_for_production": False,
+                "requires_manual_review": True,
+                "manual_review_reasons": ["row_count_delta:1"],
+                "row_count_delta": 1,
+            },
+        }
+
+        index = pilot.build_index_payload([payload])
+
+        self.assertTrue(index["read_only"])
+        self.assertEqual(index["promotion_status"], "not_promoted")
+        self.assertEqual(index["pilots_count"], 1)
+        self.assertFalse(index["pilots"][0]["ready_for_production"])
+
+    def test_index_markdown_contains_comparison_table(self):
+        index = {
+            "pilots": [
+                {
+                    "report": "relatorio.html",
+                    "production_columns_count": 2,
+                    "experimental_columns_count": 2,
+                    "production_rows_count": 10,
+                    "experimental_rows_count": 9,
+                    "row_count_delta": 1,
+                    "requires_manual_review": True,
+                    "ready_for_production": False,
+                }
+            ]
+        }
+
+        markdown = pilot.build_index_markdown(index)
+
+        self.assertIn("| Relatorio |", markdown)
+        self.assertIn("relatorio.html", markdown)
+        self.assertIn("ready_for_production", markdown)
+
 
 if __name__ == "__main__":
     unittest.main()

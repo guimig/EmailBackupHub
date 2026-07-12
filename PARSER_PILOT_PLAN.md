@@ -66,6 +66,14 @@ gera artefatos para estes relatorios criticos:
 - `evolucao-das-despesas-empenhadas.html`;
 - `restos-a-pagar-rap.html`.
 
+O modo em lote tambem gera:
+
+- `artifacts/parser-pilot-index.json`;
+- `artifacts/parser-pilot-index.md`.
+
+Esse indice consolida contagens de linhas/colunas, delta de linhas e status de
+revisao dos pilotos em uma unica visao.
+
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
 oficial e nao sao carregados pelo dashboard ou pelo report-viewer.
