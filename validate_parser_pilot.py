@@ -30,6 +30,18 @@ def validate_payload(payload: dict) -> tuple[list[str], list[str]]:
     if not str(payload.get("report") or "").endswith(".html"):
         errors.append("artifact must identify an HTML report")
 
+    readiness = payload.get("readiness") or {}
+    if not readiness:
+        errors.append("artifact must include readiness summary")
+    if readiness.get("ready_for_production") is True:
+        errors.append("artifact cannot be marked ready_for_production")
+    if readiness.get("requires_manual_review") is not True:
+        errors.append("artifact must require manual review")
+    if readiness.get("ready_for_manual_review") is False:
+        warnings.append("artifact is not ready for manual review")
+    if readiness.get("manual_review_reasons"):
+        warnings.append(f"manual review required: {readiness.get('manual_review_reasons')}")
+
     comparison = payload.get("comparison") or {}
     if comparison.get("experimental_risks"):
         errors.append(f"experimental risks present: {comparison.get('experimental_risks')}")

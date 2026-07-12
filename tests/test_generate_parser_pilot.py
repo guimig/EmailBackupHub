@@ -28,6 +28,11 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertEqual(payload["promotion_status"], "not_promoted")
         self.assertEqual(payload["experimental"]["columns"], ["UG", "Contrato", "Saldo R$"])
         self.assertIn("comparison", payload)
+        self.assertIn("readiness", payload)
+        self.assertTrue(payload["readiness"]["ready_for_manual_review"])
+        self.assertTrue(payload["readiness"]["requires_manual_review"])
+        self.assertFalse(payload["readiness"]["ready_for_production"])
+        self.assertEqual(payload["readiness"]["row_count_delta"], 0)
 
     def test_main_writes_requested_output(self):
         with tempfile.TemporaryDirectory() as temp_dir:

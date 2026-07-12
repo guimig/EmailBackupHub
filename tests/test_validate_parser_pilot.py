@@ -9,6 +9,12 @@ class ValidateParserPilotTests(unittest.TestCase):
             "read_only": True,
             "promotion_status": "not_promoted",
             "report": "saldos-de-contas-de-contratos.html",
+            "readiness": {
+                "ready_for_manual_review": True,
+                "requires_manual_review": True,
+                "manual_review_reasons": [],
+                "ready_for_production": False,
+            },
             "comparison": {"experimental_risks": []},
             "production": {"columns": ["UG", "Contrato"], "rows_count": 10},
             "experimental": {"columns": ["UG", "Contrato"], "rows_count": 10, "warnings": []},
@@ -27,6 +33,22 @@ class ValidateParserPilotTests(unittest.TestCase):
         errors, _warnings = validator.validate_payload(payload)
 
         self.assertTrue(any("not_promoted" in error for error in errors))
+
+    def test_rejects_production_ready_artifact(self):
+        payload = self.valid_payload()
+        payload["readiness"]["ready_for_production"] = True
+
+        errors, _warnings = validator.validate_payload(payload)
+
+        self.assertTrue(any("ready_for_production" in error for error in errors))
+
+    def test_rejects_artifact_without_manual_review_requirement(self):
+        payload = self.valid_payload()
+        payload["readiness"]["requires_manual_review"] = False
+
+        errors, _warnings = validator.validate_payload(payload)
+
+        self.assertTrue(any("manual review" in error for error in errors))
 
     def test_rejects_generic_experimental_columns(self):
         payload = self.valid_payload()
