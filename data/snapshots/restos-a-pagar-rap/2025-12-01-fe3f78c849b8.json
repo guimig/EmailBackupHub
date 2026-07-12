@@ -9765,8 +9765,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-09T22:53:15.287735-03:00",
-    "idade_dias": 220,
+    "ultima_atualizacao": "2026-07-12T10:43:31.635061-03:00",
+    "idade_dias": 223,
     "periodicidade": "diaria",
     "exercicio": 2025,
     "fonte_email_uid": null,
@@ -9785,38 +9785,30 @@
     ]
   },
   "metrics": {
-    "rap_inscrito": 2819154.09,
-    "rap_cancelado": 11857.0,
     "rap_pago": 2267613.29,
     "rap_a_pagar": 539683.8
   },
   "metrics_meta": {
-    "rap_inscrito": {
-      "status": "ok",
-      "source": "data/reports",
-      "line": "Total",
-      "column": "Valor 9",
-      "fallback": true
-    },
-    "rap_cancelado": {
-      "status": "ok",
-      "source": "data/reports",
-      "line": "Total",
-      "column": "Valor 10",
-      "fallback": true
-    },
     "rap_pago": {
       "status": "ok",
-      "source": "data/reports",
+      "source": "totals",
       "line": "Total",
       "column": "Valor 11",
+      "total_index": 63,
+      "score": 4,
+      "quality": "candidato",
+      "method": "rap_total_candidate",
       "fallback": true
     },
     "rap_a_pagar": {
       "status": "ok",
-      "source": "data/reports",
+      "source": "totals",
       "line": "Total",
       "column": "Valor 12",
+      "total_index": 63,
+      "score": 4,
+      "quality": "candidato",
+      "method": "rap_total_candidate",
       "fallback": true
     }
   }

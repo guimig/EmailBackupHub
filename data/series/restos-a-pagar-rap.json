@@ -1562,36 +1562,24 @@
         }
       ],
       "metrics": {
-        "rap_inscrito": 2833269.99,
-        "rap_cancelado": 1057066.49,
         "rap_pago": 1776203.5
       },
       "metrics_meta": {
-        "rap_inscrito": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 9",
-          "fallback": true
-        },
-        "rap_cancelado": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 10",
-          "fallback": true
-        },
         "rap_pago": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 11",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         },
         "rap_a_pagar": {
           "status": "unavailable",
-          "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
-          "source": "data/reports",
+          "reason": "Candidato confiavel para rap_a_pagar nao encontrado.",
+          "source": "totals",
           "fallback": false
         }
       },
@@ -3161,36 +3149,24 @@
         }
       ],
       "metrics": {
-        "rap_inscrito": 2833269.99,
-        "rap_cancelado": 1382540.26,
         "rap_pago": 1450729.73
       },
       "metrics_meta": {
-        "rap_inscrito": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 9",
-          "fallback": true
-        },
-        "rap_cancelado": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 10",
-          "fallback": true
-        },
         "rap_pago": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 11",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         },
         "rap_a_pagar": {
           "status": "unavailable",
-          "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
-          "source": "data/reports",
+          "reason": "Candidato confiavel para rap_a_pagar nao encontrado.",
+          "source": "totals",
           "fallback": false
         }
       },
@@ -4866,45 +4842,37 @@
         }
       ],
       "metrics": {
-        "rap_inscrito": 2833269.99,
-        "rap_cancelado": 145338.97,
         "rap_pago": 1643747.27,
         "rap_a_pagar": 1044183.75
       },
       "metrics_meta": {
-        "rap_inscrito": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 9",
-          "fallback": true
-        },
-        "rap_cancelado": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 10",
-          "fallback": true
-        },
         "rap_pago": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 11",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         },
         "rap_a_pagar": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 12",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         }
       }
     },
     {
-      "date": "09/07/2026",
-      "date_iso": "2026-07-09",
+      "date": "11/07/2026",
+      "date_iso": "2026-07-11",
       "hash_conteudo": "a7cdfec6ef97109e70722381875b3249c6d425ba91c0a4bacf3fd3a5ae35cede",
       "totals": [
         {
@@ -6567,38 +6535,30 @@
         }
       ],
       "metrics": {
-        "rap_inscrito": 2833269.99,
-        "rap_cancelado": 145338.97,
         "rap_pago": 1682913.65,
         "rap_a_pagar": 1005017.37
       },
       "metrics_meta": {
-        "rap_inscrito": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 9",
-          "fallback": true
-        },
-        "rap_cancelado": {
-          "status": "ok",
-          "source": "data/reports",
-          "line": "Total",
-          "column": "Valor 10",
-          "fallback": true
-        },
         "rap_pago": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 11",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         },
         "rap_a_pagar": {
           "status": "ok",
-          "source": "data/reports",
+          "source": "totals",
           "line": "Total",
           "column": "Valor 12",
+          "total_index": 71,
+          "score": 4,
+          "quality": "candidato",
+          "method": "rap_total_candidate",
           "fallback": true
         }
       }

@@ -8181,8 +8181,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-09T22:53:15.287735-03:00",
-    "idade_dias": 99,
+    "ultima_atualizacao": "2026-07-12T10:43:31.635061-03:00",
+    "idade_dias": 102,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
@@ -8203,36 +8203,24 @@
     ]
   },
   "metrics": {
-    "rap_inscrito": 2833269.99,
-    "rap_cancelado": 1057066.49,
     "rap_pago": 1776203.5
   },
   "metrics_meta": {
-    "rap_inscrito": {
-      "status": "ok",
-      "source": "data/reports",
-      "line": "Total",
-      "column": "Valor 9",
-      "fallback": true
-    },
-    "rap_cancelado": {
-      "status": "ok",
-      "source": "data/reports",
-      "line": "Total",
-      "column": "Valor 10",
-      "fallback": true
-    },
     "rap_pago": {
       "status": "ok",
-      "source": "data/reports",
+      "source": "totals",
       "line": "Total",
       "column": "Valor 11",
+      "total_index": 71,
+      "score": 4,
+      "quality": "candidato",
+      "method": "rap_total_candidate",
       "fallback": true
     },
     "rap_a_pagar": {
       "status": "unavailable",
-      "reason": "Coluna esperada para rap_a_pagar nao encontrada na linha de total de RAP.",
-      "source": "data/reports",
+      "reason": "Candidato confiavel para rap_a_pagar nao encontrado.",
+      "source": "totals",
       "fallback": false
     }
   }

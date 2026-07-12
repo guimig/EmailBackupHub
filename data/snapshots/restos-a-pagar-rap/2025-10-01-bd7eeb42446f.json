@@ -7218,8 +7218,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-09T22:53:15.287735-03:00",
-    "idade_dias": 281,
+    "ultima_atualizacao": "2026-07-12T10:43:31.635061-03:00",
+    "idade_dias": 284,
     "periodicidade": "diaria",
     "exercicio": 2025,
     "fonte_email_uid": null,
@@ -7240,28 +7240,16 @@
   },
   "metrics": {},
   "metrics_meta": {
-    "rap_inscrito": {
-      "status": "unavailable",
-      "reason": "Linha de total geral de RAP nao encontrada.",
-      "source": "data/reports",
-      "fallback": false
-    },
-    "rap_cancelado": {
-      "status": "unavailable",
-      "reason": "Linha de total geral de RAP nao encontrada.",
-      "source": "data/reports",
-      "fallback": false
-    },
     "rap_pago": {
       "status": "unavailable",
-      "reason": "Linha de total geral de RAP nao encontrada.",
-      "source": "data/reports",
+      "reason": "Candidato confiavel para rap_pago nao encontrado.",
+      "source": "totals",
       "fallback": false
     },
     "rap_a_pagar": {
       "status": "unavailable",
-      "reason": "Linha de total geral de RAP nao encontrada.",
-      "source": "data/reports",
+      "reason": "Candidato confiavel para rap_a_pagar nao encontrado.",
+      "source": "totals",
       "fallback": false
     }
   }
