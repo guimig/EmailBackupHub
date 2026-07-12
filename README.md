@@ -55,6 +55,25 @@ O validador verifica, entre outros pontos:
 
 Erros críticos retornam código de saída `1`. Warnings não bloqueiam a execução, mas ficam visíveis para manutenção.
 
+## Privacidade Do Log
+
+O `data/run-log.json` é versionado no repositório e, por padrão, registra apenas metadados resumidos:
+
+- slug do relatório;
+- status do processamento;
+- motivo de ignorância/falha;
+- arquivo HTML gerado;
+- data do e-mail;
+- contagens e artefatos gerados.
+
+Assunto, remetente e UID são mascarados ou omitidos por padrão. Metadados detalhados só devem ser habilitados deliberadamente via configuração:
+
+- `LOG_DETAILED_EMAIL_METADATA=true`;
+- `LOG_MASK_EMAIL_SENDER=false`;
+- `LOG_MASK_EMAIL_SUBJECT=false`.
+
+O log nunca deve registrar senha, token, corpo integral de e-mail, HTML integral ou headers completos.
+
 ## Baseline De Segurança
 
 Antes de mudanças em parsing, retenção, geração de dados ou visualização, rode:

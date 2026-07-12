@@ -3,12 +3,90 @@ import json
 import time
 from pathlib import Path
 
-from config import REPO_ROOT, TIMEZONE
+from config import (
+    LOG_DETAILED_EMAIL_METADATA,
+    LOG_MASK_EMAIL_SENDER,
+    LOG_MASK_EMAIL_SUBJECT,
+    LOG_MAX_EMAIL_ENTRIES,
+    LOG_MAX_LIST_ITEMS,
+    REPO_ROOT,
+    TIMEZONE,
+)
 
 
 RUN_LOG_PATH = Path(REPO_ROOT) / "data" / "run-log.json"
 RUN_LOG_SCHEMA_VERSION = "1.0"
 MAX_RECENT_RUNS = 20
+
+
+def mask_text(value, keep=0):
+    if value in (None, ""):
+        return None
+    text = str(value)
+    if keep <= 0:
+        return "[mascarado]"
+    return f"{text[:keep]}..." if len(text) > keep else text
+
+
+def safe_email_entry(item):
+    entry = {
+        "slug": item.get("slug"),
+        "status": item.get("status"),
+        "reason": item.get("reason"),
+        "html_path": item.get("html_path"),
+        "email_date": item.get("email_date"),
+    }
+    if LOG_DETAILED_EMAIL_METADATA:
+        entry["uid"] = item.get("uid")
+        entry["subject"] = item.get("subject")
+        entry["sender"] = item.get("sender")
+    else:
+        entry["uid"] = "[omitido]" if item.get("uid") else None
+        entry["subject"] = mask_text(item.get("subject")) if LOG_MASK_EMAIL_SUBJECT else item.get("subject")
+        entry["sender"] = mask_text(item.get("sender")) if LOG_MASK_EMAIL_SENDER else item.get("sender")
+    return {key: value for key, value in entry.items() if value not in (None, "", [])}
+
+
+def trim_list(value, limit=LOG_MAX_LIST_ITEMS):
+    if not isinstance(value, list):
+        return value
+    result = value[:limit]
+    if len(value) > limit:
+        result.append({"truncated": len(value) - limit})
+    return result
+
+
+def compact_generated_artifacts(artifacts):
+    result = {}
+    for key, value in dict(artifacts or {}).items():
+        if key in {"json_files", "html_reports"}:
+            result[key] = trim_list(value)
+        elif key == "retention":
+            retention = dict(value or {})
+            for sample_key in ("deleted_sample", "protected_sample", "errors"):
+                if sample_key in retention:
+                    retention[sample_key] = trim_list(retention[sample_key])
+            result[key] = retention
+        elif key == "retention_cleanup":
+            cleanup = dict(value or {})
+            for sample_key in ("deleted_sample", "protected_sample", "errors"):
+                if sample_key in cleanup:
+                    cleanup[sample_key] = trim_list(cleanup[sample_key])
+            result[key] = cleanup
+        else:
+            result[key] = value
+    return result
+
+
+def sanitize_run_record(run):
+    if not isinstance(run, dict):
+        return run
+    result = dict(run)
+    result["emails"] = [safe_email_entry(item) for item in (run.get("emails") or [])[:LOG_MAX_EMAIL_ENTRIES]]
+    if len(run.get("emails") or []) > LOG_MAX_EMAIL_ENTRIES:
+        result["emails"].append({"truncated": len(run.get("emails") or []) - LOG_MAX_EMAIL_ENTRIES})
+    result["generated_artifacts"] = compact_generated_artifacts(run.get("generated_artifacts") or {})
+    return result
 
 
 def start_run():
@@ -40,6 +118,9 @@ def finish_run(run_state, email_result=None, generated_artifacts=None, status=No
         for item in emails
         if item.get("status") == "skipped" and item.get("reason") == "nao_houve_retorno"
     ]
+    safe_emails = [safe_email_entry(item) for item in emails[:LOG_MAX_EMAIL_ENTRIES]]
+    if len(emails) > LOG_MAX_EMAIL_ENTRIES:
+        safe_emails.append({"truncated": len(emails) - LOG_MAX_EMAIL_ENTRIES})
     html_reports = [
         item.get("html_path")
         for item in emails
@@ -59,8 +140,8 @@ def finish_run(run_state, email_result=None, generated_artifacts=None, status=No
             status = "partial" if updated_reports else "error"
 
     duration_seconds = max(0, round(time.monotonic() - run_state.get("started_monotonic", time.monotonic()), 3))
-    artifact_summary = dict(generated_artifacts or {})
-    artifact_summary.setdefault("html_reports", html_reports)
+    artifact_summary = compact_generated_artifacts(generated_artifacts or {})
+    artifact_summary.setdefault("html_reports", trim_list(html_reports))
 
     return {
         "started_at": started_at.isoformat(),
@@ -73,7 +154,7 @@ def finish_run(run_state, email_result=None, generated_artifacts=None, status=No
         "emails_skipped_no_return": len(skipped_no_return),
         "errors_count": len(errors) + len(failed_emails),
         "updated_reports": updated_reports,
-        "emails": emails,
+        "emails": safe_emails,
         "generated_artifacts": artifact_summary,
         "errors": errors,
     }
@@ -81,6 +162,7 @@ def finish_run(run_state, email_result=None, generated_artifacts=None, status=No
 
 def write_run_log(last_run):
     RUN_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    last_run = sanitize_run_record(last_run)
     previous = {}
     if RUN_LOG_PATH.exists():
         try:
@@ -91,8 +173,11 @@ def write_run_log(last_run):
     recent_runs = [last_run]
     previous_last = previous.get("last_run")
     if previous_last:
-        recent_runs.append(previous_last)
-    recent_runs.extend(previous.get("recent_runs", []))
+        recent_runs.append(sanitize_run_record(previous_last))
+    previous_recent = previous.get("recent_runs", [])
+    if not isinstance(previous_recent, list):
+        previous_recent = []
+    recent_runs.extend(sanitize_run_record(item) for item in previous_recent)
 
     deduplicated = []
     seen_started_at = set()
