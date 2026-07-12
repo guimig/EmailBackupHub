@@ -81,6 +81,8 @@ def header_score(row: list[str]) -> int:
     non_empty = [cell for cell in row if cell]
     if len(non_empty) < 2:
         return 0
+    if len(set(non_empty)) == 1:
+        return 0
     numeric = sum(1 for cell in non_empty if numeric_like(cell))
     words = sum(1 for cell in non_empty if re.search(r"[A-Za-z]", cell))
     terms = sum(
