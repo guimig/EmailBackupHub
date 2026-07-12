@@ -97,6 +97,14 @@ Exemplo:
 
 Essa política evita crescimento descontrolado do repositório sem perder a informação atual e os fechamentos mensais relevantes.
 
+Auditoria segura da retenção:
+
+```bash
+python retention_audit.py
+```
+
+Esse comando gera `data/retention-audit.json` com os HTMLs preservados e os candidatos a remoção, mas não apaga arquivos, não acessa IMAP e não altera e-mails.
+
 ## Séries Históricas
 
 Os gráficos históricos do dashboard devem priorizar dados a partir de janeiro de 2026. A virada de exercício pode zerar bases, saldos e indicadores, então misturar 2025 com 2026 pode distorcer a leitura gerencial.

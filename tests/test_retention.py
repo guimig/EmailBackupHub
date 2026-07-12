@@ -67,6 +67,30 @@ class RetentionPolicyTests(unittest.TestCase):
         self.assertEqual(plan["retained"][0]["monthly_close_for"], "2026-06")
         self.assertEqual(plan["retained"][0]["reasons"], ["monthly_close"])
 
+    def test_build_retention_audit_summarizes_policy_without_deleting(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            report_dir = base / "relatorio"
+            report_dir.mkdir()
+            for name in (
+                "relatorio_01-07-2026.html",
+                "relatorio_02-07-2026.html",
+                "relatorio_03-07-2026.html",
+            ):
+                (report_dir / name).write_text("<html></html>", encoding="utf-8")
+
+            audit = retention.build_retention_audit(
+                lambda: {"relatorio": [str(path) for path in report_dir.glob("*.html")]},
+                parse_date_from_test_name,
+                lambda path: os.path.relpath(path, base).replace(os.sep, "/"),
+            )
+
+        self.assertTrue(audit["policy"]["dry_run"])
+        self.assertEqual(audit["summary"]["total_files"], 3)
+        self.assertEqual(audit["summary"]["retained_files"], 2)
+        self.assertEqual(audit["summary"]["ignored_by_retention"], 1)
+        self.assertEqual(audit["summary"]["removal_candidates"], 1)
+
     def test_cleanup_retention_candidates_dry_run_does_not_delete_files(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir)

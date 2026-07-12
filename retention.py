@@ -3,16 +3,13 @@ import os
 import time
 from pathlib import Path
 
-
-def env_flag(name, default=False):
-    raw_value = os.getenv(name)
-    if raw_value is None:
-        return default
-    return raw_value.strip().lower() in {"1", "true", "yes", "sim", "on"}
-
-
-RETENTION_DRY_RUN = env_flag("RETENTION_DRY_RUN", True)
-RETENTION_APPLY_HTML_CLEANUP = env_flag("RETENTION_APPLY_HTML_CLEANUP", False)
+from config import (
+    RETENTION_APPLY_HTML_CLEANUP,
+    RETENTION_DRY_RUN,
+    RETENTION_KEEP_LATEST,
+    RETENTION_KEEP_MONTHLY_CLOSE,
+    RETENTION_MAX_REMOVAL_SAMPLE,
+)
 
 
 def elapsed_seconds(started_at):
@@ -23,8 +20,8 @@ def retention_policy():
     return {
         "dry_run": RETENTION_DRY_RUN,
         "apply_html_cleanup": RETENTION_APPLY_HTML_CLEANUP,
-        "keep_latest": True,
-        "keep_monthly_close": True,
+        "keep_latest": RETENTION_KEEP_LATEST,
+        "keep_monthly_close": RETENTION_KEEP_MONTHLY_CLOSE,
         "monthly_close_source": "first_business_day_of_month",
         "closing_date_rule": "report_date_minus_one_day",
     }
@@ -77,10 +74,11 @@ def retention_selection(paths, parse_date_from_name):
         selected[item["path"]] = item
         reasons.setdefault(item["path"], set()).add(reason)
 
-    keep(latest, "latest")
+    if RETENTION_KEEP_LATEST:
+        keep(latest, "latest")
     for item in dated_files:
         date = item["date"]
-        if is_monthly_close_report(date):
+        if RETENTION_KEEP_MONTHLY_CLOSE and is_monthly_close_report(date):
             keep(item, "monthly_close")
 
     retained = []
@@ -115,7 +113,40 @@ def retention_plan_item(slug, retained, ignored, rel_path):
         "latest_files": sum(1 for item in retained if "latest" in item["reasons"]),
         "monthly_close_files": sum(1 for item in retained if "monthly_close" in item["reasons"]),
         "retained": [plan_entry(item, include_reasons=True) for item in retained],
-        "removal_candidates_sample": [plan_entry(item) for item in ignored[:50]],
+        "removal_candidates_sample": [plan_entry(item) for item in ignored[:RETENTION_MAX_REMOVAL_SAMPLE]],
+    }
+
+
+def build_retention_audit(grouped_files, parse_date_from_name, rel_path):
+    started = time.monotonic()
+    reports = []
+    summary = {
+        "dry_run": RETENTION_DRY_RUN,
+        "apply_html_cleanup": RETENTION_APPLY_HTML_CLEANUP,
+        "total_files": 0,
+        "retained_files": 0,
+        "ignored_by_retention": 0,
+        "removal_candidates": 0,
+        "latest_files": 0,
+        "monthly_close_files": 0,
+    }
+
+    for slug, paths in sorted(grouped_files().items()):
+        retained, ignored = retention_selection(paths, parse_date_from_name)
+        item = retention_plan_item(slug, retained, ignored, rel_path)
+        reports.append(item)
+        summary["total_files"] += item["total_files"]
+        summary["retained_files"] += item["retained_files"]
+        summary["ignored_by_retention"] += item["ignored_by_retention"]
+        summary["removal_candidates"] += item["ignored_by_retention"]
+        summary["latest_files"] += item["latest_files"]
+        summary["monthly_close_files"] += item["monthly_close_files"]
+
+    summary["duration_seconds"] = elapsed_seconds(started)
+    return {
+        "policy": retention_policy(),
+        "summary": summary,
+        "reports": reports,
     }
 
 
