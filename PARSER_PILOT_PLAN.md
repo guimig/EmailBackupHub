@@ -60,3 +60,18 @@ O script `generate_parser_pilot.py` gera:
 Esse arquivo e publicado apenas como artefato do workflow `Parser Diagnostics`.
 Ele nao e gravado em `data/`, nao altera JSON oficial e nao e carregado pelo
 dashboard ou pelo report-viewer.
+
+## Validacao automatica
+
+O script `validate_parser_pilot.py` valida o artefato antes do upload. A
+validacao falha se:
+
+- `read_only` nao for `true`;
+- `promotion_status` nao for `not_promoted`;
+- houver `experimental_risks`;
+- as colunas experimentais estiverem vazias;
+- as colunas experimentais ainda forem genericas (`Valor 1`, `Valor 2`, etc.);
+- a quantidade de linhas experimentais for invalida.
+
+Diferencas pequenas de quantidade de linhas sao tratadas como aviso, nao como
+erro, ate revisao manual do piloto.
