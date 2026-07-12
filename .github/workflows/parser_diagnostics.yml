@@ -86,7 +86,7 @@ jobs:
 
       - name: Generate parser comparison
         run: |
-          python compare_parser_outputs.py > parser-comparison.md
+          python compare_parser_outputs.py --json-output parser-comparison.json > parser-comparison.md
 
       - name: Generate RAP diagnostics
         run: |
@@ -99,4 +99,5 @@ jobs:
           path: |
             header-diagnostics.md
             parser-comparison.md
+            parser-comparison.json
             rap-diagnostics.md

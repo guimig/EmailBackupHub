@@ -1,4 +1,6 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import compare_parser_outputs as compare
 
@@ -27,6 +29,17 @@ class CompareParserOutputsTests(unittest.TestCase):
 
         self.assertIn("generic_columns", risks)
         self.assertIn("header_not_detected", risks)
+
+    def test_main_writes_json_output_for_missing_report(self):
+        with TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "comparison.json"
+            code = compare.main_with_args(["relatorio-ausente.html", "--json-output", str(output)])
+
+            self.assertEqual(code, 0)
+            text = output.read_text(encoding="utf-8")
+
+        self.assertIn('"read_only": true', text)
+        self.assertIn('"missing": true', text)
 
 
 if __name__ == "__main__":

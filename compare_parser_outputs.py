@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import sys
 from pathlib import Path
 
@@ -97,23 +98,40 @@ def print_comparison(result: dict[str, object]) -> None:
     print(f"- Colunas experimental: {result['experimental_sample_columns']}")
 
 
-def main() -> int:
+def main_with_args(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Compara parser atual e experimental.")
     parser.add_argument("reports", nargs="*", help="HTMLs especificos; se omitido, usa relatorios criticos")
     parser.add_argument("--fail-on-missing", action="store_true", help="retorna erro se algum HTML estiver ausente")
-    args = parser.parse_args()
+    parser.add_argument("--json-output", help="grava a comparacao em JSON estruturado")
+    args = parser.parse_args(argv)
 
     print("# Comparacao de parsers")
     print("Somente leitura: nenhum dado e gerado ou alterado.")
     missing = False
+    results = []
     for item in args.reports or CRITICAL_REPORTS:
         path = ROOT / item
         if not path.exists():
             missing = True
+            results.append({"file": item, "missing": True})
             print(f"\n## {item}\n- AUSENTE")
             continue
-        print_comparison(compare_file(path))
+        result = compare_file(path)
+        results.append(result)
+        print_comparison(result)
+    if args.json_output:
+        output = Path(args.json_output)
+        payload = {
+            "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            "read_only": True,
+            "results": results,
+        }
+        output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return 1 if missing and args.fail_on_missing else 0
+
+
+def main() -> int:
+    return main_with_args()
 
 
 if __name__ == "__main__":
