@@ -25,6 +25,12 @@ CRITICAL_REPORTS = [
     "saldo-de-empenhos-a-liquidar-mes-a-mes.html",
 ]
 
+FORBIDDEN_TITLE_PREFIXES = {
+    "restos-a-pagar-rap.html": ["Restos a Pagar - RAP"],
+    "saldos-de-contas-de-contratos.html": ["Saldos de Contas de Contratos"],
+    "evolucao-das-despesas-empenhadas.html": ["Evolução das Despesas Empenhadas", "Evolucao das Despesas Empenhadas"],
+}
+
 
 def similarity(left: list[str], right: list[str]) -> float:
     if not left and not right:
@@ -47,7 +53,7 @@ def compare_file(path: Path) -> dict[str, object]:
     exp_columns = experimental.columns
     prod_rows = production.get("rows") or []
     exp_rows = experimental.rows
-    return {
+    result = {
         "file": path.name,
         "production_columns": len(prod_columns),
         "experimental_columns": len(exp_columns),
@@ -59,6 +65,20 @@ def compare_file(path: Path) -> dict[str, object]:
         "production_sample_columns": prod_columns[:8],
         "experimental_sample_columns": exp_columns[:8],
     }
+    result["experimental_risks"] = experimental_risks(path.name, exp_columns, experimental.warnings)
+    return result
+
+
+def experimental_risks(file_name: str, columns: list[str], warnings: list[str]) -> list[str]:
+    risks = []
+    for title in FORBIDDEN_TITLE_PREFIXES.get(file_name, []):
+        if any(str(column).startswith(title) for column in columns):
+            risks.append(f"title_prefix:{title}")
+    if any(str(column).startswith("Valor ") for column in columns):
+        risks.append("generic_columns")
+    if "header_not_detected" in warnings:
+        risks.append("header_not_detected")
+    return sorted(set(risks))
 
 
 def print_comparison(result: dict[str, object]) -> None:
@@ -72,6 +92,7 @@ def print_comparison(result: dict[str, object]) -> None:
     print(f"- Linhas: producao={result['production_rows']} experimental={result['experimental_rows']}")
     print(f"- Qualidade producao: {result['production_quality']}")
     print(f"- Avisos experimental: {result['experimental_warnings']}")
+    print(f"- Riscos experimental: {result['experimental_risks']}")
     print(f"- Colunas producao: {result['production_sample_columns']}")
     print(f"- Colunas experimental: {result['experimental_sample_columns']}")
 

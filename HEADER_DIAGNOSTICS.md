@@ -81,7 +81,14 @@ sem alterar arquivos do repositorio:
 
 - `python diagnose_headers.py > header-diagnostics.md`
 - `python compare_parser_outputs.py > parser-comparison.md`
+- `python diagnose_rap_totals.py > rap-diagnostics.md`
 
 As saidas sao publicadas como artefato `parser-diagnostics`. Use esse artefato
 para escolher um unico relatorio piloto antes de qualquer alteracao no parser
 de producao.
+
+A comparacao de parsers tambem lista `Riscos experimental`, como:
+
+- `title_prefix:<titulo>`: uma linha visual de titulo entrou no nome das colunas;
+- `generic_columns`: o parser experimental ainda caiu em colunas genericas;
+- `header_not_detected`: nenhum cabecalho confiavel foi identificado.
