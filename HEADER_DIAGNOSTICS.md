@@ -34,6 +34,21 @@ parser principal.
 - Fallbacks como `Valor 9`, `Valor 10`, `Valor 11` e `Valor 12` devem ser tratados
   como baixa confiabilidade ate haver validacao por relatorio.
 
+## Casos controlados
+
+Os testes em `tests/test_merged_header_cases.py` cobrem exemplos pequenos dos
+problemas observados:
+
+- `restos-a-pagar-rap`: a linha-titulo `Restos a Pagar - RAP` nao pode virar
+  prefixo de coluna.
+- `saldos-de-contas-de-contratos`: o titulo do relatorio nao pode ser confundido
+  com cabecalho.
+- `evolucao-das-despesas-empenhadas`: cabecalho agrupado deve preservar o grupo
+  real, sem incluir o titulo da tabela.
+
+Esses testes protegem o parser experimental e nao alteram a geracao oficial de
+dados.
+
 ## Como executar
 
 ```powershell

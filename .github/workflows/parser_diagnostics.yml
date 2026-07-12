@@ -16,6 +16,7 @@ on:
       - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_rap_metrics.py'
       - 'tests/test_experimental_table_parser.py'
+      - 'tests/test_merged_header_cases.py'
       - 'tests/test_rap_metrics.py'
       - '.github/workflows/parser_diagnostics.yml'
   push:
@@ -34,6 +35,7 @@ on:
       - 'tests/test_diagnose_rap_totals.py'
       - 'tests/test_experimental_rap_metrics.py'
       - 'tests/test_experimental_table_parser.py'
+      - 'tests/test_merged_header_cases.py'
       - 'tests/test_rap_metrics.py'
       - '.github/workflows/parser_diagnostics.yml'
 
@@ -60,7 +62,7 @@ jobs:
 
       - name: Run parser unit tests
         run: |
-          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_diagnose_rap_totals tests.test_experimental_rap_metrics tests.test_experimental_table_parser tests.test_rap_metrics
+          python -m unittest tests.test_diagnose_headers tests.test_compare_parser_outputs tests.test_diagnose_rap_totals tests.test_experimental_rap_metrics tests.test_experimental_table_parser tests.test_merged_header_cases tests.test_rap_metrics
 
       - name: Generate header diagnostics
         run: |

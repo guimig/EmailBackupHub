@@ -91,7 +91,7 @@ def header_score(row: list[str]) -> int:
         if re.search(r"valor|saldo|pago|pagar|conta|natureza|ug|data|mes|r\$", cell, re.I)
     )
     repeated = len(non_empty) - len(set(non_empty))
-    return words + terms - numeric - (repeated * 2)
+    return words + terms - numeric - repeated
 
 
 def select_header_rows(grid: list[list[str]], max_scan_rows: int = 12) -> list[int]:
