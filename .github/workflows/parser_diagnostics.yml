@@ -49,6 +49,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            .github/workflows/
+            tests/
+            *.py
+            requirements.txt
+            restos-a-pagar-rap.html
+            saldos-de-contas-de-contratos.html
+            evolucao-das-despesas-empenhadas.html
+            despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.html
+            saldos-de-empenhos-do-exercicio-conta-contabil.html
+            saldo-de-empenhos-a-liquidar-mes-a-mes.html
+            credito-disponivel-mes-lancamento.html
+            provisionamentos.html
+            recolhimento-proprio-gru.html
 
       - name: Set up Python
         uses: actions/setup-python@v5
