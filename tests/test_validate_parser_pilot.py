@@ -67,6 +67,47 @@ class ValidateParserPilotTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertTrue(any("row count differs" in warning for warning in warnings))
 
+    def valid_index_payload(self):
+        return {
+            "read_only": True,
+            "promotion_status": "not_promoted",
+            "pilots_count": 1,
+            "pilots": [
+                {
+                    "report": "saldos-de-contas-de-contratos.html",
+                    "promotion_status": "not_promoted",
+                    "ready_for_manual_review": True,
+                    "ready_for_production": False,
+                    "requires_manual_review": True,
+                    "production_columns_count": 17,
+                    "experimental_columns_count": 17,
+                    "production_rows_count": 29,
+                    "experimental_rows_count": 28,
+                    "row_count_delta": 1,
+                }
+            ],
+        }
+
+    def test_valid_index_payload_has_no_errors(self):
+        errors, warnings = validator.validate_index_payload(self.valid_index_payload())
+
+        self.assertEqual(errors, [])
+        self.assertEqual(warnings, [])
+
+    def test_rejects_index_with_production_ready_pilot(self):
+        payload = self.valid_index_payload()
+        payload["pilots"][0]["ready_for_production"] = True
+
+        errors, _warnings = validator.validate_index_payload(payload)
+
+        self.assertTrue(any("ready_for_production" in error for error in errors))
+
+    def test_validate_artifact_dispatches_index_payload(self):
+        errors, warnings = validator.validate_artifact(self.valid_index_payload())
+
+        self.assertEqual(errors, [])
+        self.assertEqual(warnings, [])
+
 
 if __name__ == "__main__":
     unittest.main()

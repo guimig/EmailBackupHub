@@ -74,6 +74,52 @@ def validate_payload(payload: dict) -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
+def validate_index_payload(payload: dict) -> tuple[list[str], list[str]]:
+    errors: list[str] = []
+    warnings: list[str] = []
+
+    if payload.get("read_only") is not True:
+        errors.append("index must be read_only=true")
+    if payload.get("promotion_status") != "not_promoted":
+        errors.append("index must remain not_promoted")
+
+    pilots = payload.get("pilots")
+    if not isinstance(pilots, list) or not pilots:
+        errors.append("index must include a non-empty pilots list")
+        return errors, warnings
+
+    if payload.get("pilots_count") != len(pilots):
+        errors.append("pilots_count must match pilots list length")
+
+    for position, pilot in enumerate(pilots, start=1):
+        report = str(pilot.get("report") or "")
+        prefix = f"pilot {position} ({report or 'unknown'})"
+        if not report.endswith(".html"):
+            errors.append(f"{prefix}: report must identify an HTML file")
+        if pilot.get("promotion_status") != "not_promoted":
+            errors.append(f"{prefix}: must remain not_promoted")
+        if pilot.get("ready_for_production") is True:
+            errors.append(f"{prefix}: cannot be ready_for_production")
+        if pilot.get("requires_manual_review") is not True:
+            errors.append(f"{prefix}: must require manual review")
+        if pilot.get("ready_for_manual_review") is False:
+            warnings.append(f"{prefix}: not ready for manual review")
+        if not isinstance(pilot.get("production_columns_count"), int):
+            errors.append(f"{prefix}: production_columns_count must be numeric")
+        if not isinstance(pilot.get("experimental_columns_count"), int):
+            errors.append(f"{prefix}: experimental_columns_count must be numeric")
+        if not isinstance(pilot.get("experimental_rows_count"), int) or pilot.get("experimental_rows_count") <= 0:
+            errors.append(f"{prefix}: experimental_rows_count must be positive")
+
+    return errors, warnings
+
+
+def validate_artifact(payload: dict) -> tuple[list[str], list[str]]:
+    if "pilots" in payload:
+        return validate_index_payload(payload)
+    return validate_payload(payload)
+
+
 def main_with_args(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Valida artefato experimental de parser piloto.")
     parser.add_argument("artifact", nargs="?", default=str(DEFAULT_ARTIFACT))
@@ -84,7 +130,7 @@ def main_with_args(argv: list[str] | None = None) -> int:
         print(f"Artefato ausente: {path}", file=sys.stderr)
         return 1
 
-    errors, warnings = validate_payload(load_json(path))
+    errors, warnings = validate_artifact(load_json(path))
     print(f"Validacao do artefato piloto: {path.as_posix()}")
     for warning in warnings:
         print(f"AVISO: {warning}")

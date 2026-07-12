@@ -105,5 +105,13 @@ validacao falha se:
 - as colunas experimentais ainda forem genericas (`Valor 1`, `Valor 2`, etc.);
 - a quantidade de linhas experimentais for invalida.
 
+Quando recebe `parser-pilot-index.json`, o mesmo validador confere se:
+
+- o indice tambem e somente leitura;
+- a contagem de pilotos bate com a lista consolidada;
+- nenhum piloto esta marcado como pronto para producao;
+- todos os pilotos continuam exigindo revisao manual;
+- cada item referencia um HTML e possui contagens basicas validas.
+
 Diferencas pequenas de quantidade de linhas sao tratadas como aviso, nao como
 erro, ate revisao manual do piloto.
