@@ -72,6 +72,14 @@ class ValidateParserPilotTests(unittest.TestCase):
             "read_only": True,
             "promotion_status": "not_promoted",
             "pilots_count": 1,
+            "summary": {
+                "manual_review_required_count": 1,
+                "ready_for_manual_review_count": 1,
+                "row_delta_count": 1,
+                "experimental_warnings_count": 0,
+                "production_ready_count": 0,
+                "safe_to_promote_any": False,
+            },
             "pilots": [
                 {
                     "report": "saldos-de-contas-de-contratos.html",
@@ -101,6 +109,22 @@ class ValidateParserPilotTests(unittest.TestCase):
         errors, _warnings = validator.validate_index_payload(payload)
 
         self.assertTrue(any("ready_for_production" in error for error in errors))
+
+    def test_rejects_index_with_automatic_promotion_enabled(self):
+        payload = self.valid_index_payload()
+        payload["summary"]["safe_to_promote_any"] = True
+
+        errors, _warnings = validator.validate_index_payload(payload)
+
+        self.assertTrue(any("safe_to_promote_any" in error for error in errors))
+
+    def test_rejects_index_with_inconsistent_summary_count(self):
+        payload = self.valid_index_payload()
+        payload["summary"]["row_delta_count"] = 0
+
+        errors, _warnings = validator.validate_index_payload(payload)
+
+        self.assertTrue(any("row_delta_count" in error for error in errors))
 
     def test_validate_artifact_dispatches_index_payload(self):
         errors, warnings = validator.validate_artifact(self.valid_index_payload())

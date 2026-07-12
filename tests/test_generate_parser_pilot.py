@@ -110,9 +110,19 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertEqual(index["promotion_status"], "not_promoted")
         self.assertEqual(index["pilots_count"], 1)
         self.assertFalse(index["pilots"][0]["ready_for_production"])
+        self.assertEqual(index["summary"]["manual_review_required_count"], 1)
+        self.assertEqual(index["summary"]["row_delta_count"], 1)
+        self.assertFalse(index["summary"]["safe_to_promote_any"])
 
     def test_index_markdown_contains_comparison_table(self):
         index = {
+            "pilots_count": 1,
+            "summary": {
+                "manual_review_required_count": 1,
+                "row_delta_count": 1,
+                "production_ready_count": 0,
+                "safe_to_promote_any": False,
+            },
             "pilots": [
                 {
                     "report": "relatorio.html",
@@ -132,6 +142,7 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertIn("| Relatorio |", markdown)
         self.assertIn("relatorio.html", markdown)
         self.assertIn("ready_for_production", markdown)
+        self.assertIn("promocao automatica permitida: `False`", markdown)
 
 
 if __name__ == "__main__":

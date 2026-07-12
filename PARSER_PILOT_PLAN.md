@@ -72,7 +72,14 @@ O modo em lote tambem gera:
 - `artifacts/parser-pilot-index.md`.
 
 Esse indice consolida contagens de linhas/colunas, delta de linhas e status de
-revisao dos pilotos em uma unica visao.
+revisao dos pilotos em uma unica visao. Ele tambem inclui um bloco `summary`
+com:
+
+- quantidade de pilotos que exigem revisao manual;
+- quantidade de pilotos com diferenca de linhas;
+- quantidade de pilotos com avisos experimentais;
+- quantidade de pilotos marcados como prontos para producao;
+- `safe_to_promote_any`, que deve permanecer `false`.
 
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
@@ -111,6 +118,8 @@ Quando recebe `parser-pilot-index.json`, o mesmo validador confere se:
 - a contagem de pilotos bate com a lista consolidada;
 - nenhum piloto esta marcado como pronto para producao;
 - todos os pilotos continuam exigindo revisao manual;
+- `safe_to_promote_any` permanece `false`;
+- os contadores do `summary` batem com a lista de pilotos;
 - cada item referencia um HTML e possui contagens basicas validas.
 
 Diferencas pequenas de quantidade de linhas sao tratadas como aviso, nao como

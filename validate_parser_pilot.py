@@ -91,6 +91,16 @@ def validate_index_payload(payload: dict) -> tuple[list[str], list[str]]:
     if payload.get("pilots_count") != len(pilots):
         errors.append("pilots_count must match pilots list length")
 
+    summary = payload.get("summary") or {}
+    if summary.get("safe_to_promote_any") is not False:
+        errors.append("index safe_to_promote_any must be false")
+
+    manual_review_required_count = 0
+    ready_for_manual_review_count = 0
+    row_delta_count = 0
+    warnings_count = 0
+    production_ready_count = 0
+
     for position, pilot in enumerate(pilots, start=1):
         report = str(pilot.get("report") or "")
         prefix = f"pilot {position} ({report or 'unknown'})"
@@ -110,6 +120,27 @@ def validate_index_payload(payload: dict) -> tuple[list[str], list[str]]:
             errors.append(f"{prefix}: experimental_columns_count must be numeric")
         if not isinstance(pilot.get("experimental_rows_count"), int) or pilot.get("experimental_rows_count") <= 0:
             errors.append(f"{prefix}: experimental_rows_count must be positive")
+        if pilot.get("requires_manual_review") is True:
+            manual_review_required_count += 1
+        if pilot.get("ready_for_manual_review") is True:
+            ready_for_manual_review_count += 1
+        if pilot.get("row_count_delta"):
+            row_delta_count += 1
+        if pilot.get("experimental_warnings_count"):
+            warnings_count += 1
+        if pilot.get("ready_for_production") is True:
+            production_ready_count += 1
+
+    expected_counts = {
+        "manual_review_required_count": manual_review_required_count,
+        "ready_for_manual_review_count": ready_for_manual_review_count,
+        "row_delta_count": row_delta_count,
+        "experimental_warnings_count": warnings_count,
+        "production_ready_count": production_ready_count,
+    }
+    for key, expected in expected_counts.items():
+        if summary.get(key) != expected:
+            errors.append(f"index summary {key} must be {expected}")
 
     return errors, warnings
 

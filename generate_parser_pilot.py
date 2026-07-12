@@ -214,12 +214,25 @@ def build_index_payload(pilots: list[dict[str, object]]) -> dict[str, object]:
                 "experimental_warnings_count": len(experimental.get("warnings") or []),
             }
         )
+    manual_review_required_count = sum(1 for entry in entries if entry.get("requires_manual_review") is True)
+    ready_for_manual_review_count = sum(1 for entry in entries if entry.get("ready_for_manual_review") is True)
+    row_delta_count = sum(1 for entry in entries if entry.get("row_count_delta"))
+    warnings_count = sum(1 for entry in entries if entry.get("experimental_warnings_count"))
+    production_ready_count = sum(1 for entry in entries if entry.get("ready_for_production") is True)
     return {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "read_only": True,
         "promotion_status": "not_promoted",
         "pilots_count": len(entries),
+        "summary": {
+            "manual_review_required_count": manual_review_required_count,
+            "ready_for_manual_review_count": ready_for_manual_review_count,
+            "row_delta_count": row_delta_count,
+            "experimental_warnings_count": warnings_count,
+            "production_ready_count": production_ready_count,
+            "safe_to_promote_any": False,
+        },
         "pilots": entries,
     }
 
@@ -248,6 +261,14 @@ def build_index_markdown(payload: dict[str, object]) -> str:
             "",
             "Resumo somente leitura dos pilotos gerados pelo workflow `Parser Diagnostics`.",
             "Nenhum item deste indice promove o parser experimental para producao.",
+            "",
+            "## Resumo",
+            "",
+            f"- pilotos: `{payload.get('pilots_count')}`",
+            f"- exigem revisao manual: `{(payload.get('summary') or {}).get('manual_review_required_count')}`",
+            f"- com diferenca de linhas: `{(payload.get('summary') or {}).get('row_delta_count')}`",
+            f"- prontos para producao: `{(payload.get('summary') or {}).get('production_ready_count')}`",
+            f"- promocao automatica permitida: `{(payload.get('summary') or {}).get('safe_to_promote_any')}`",
             "",
             *rows,
             "",
