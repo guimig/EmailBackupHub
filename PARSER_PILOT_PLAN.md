@@ -50,3 +50,13 @@ Criar uma execucao paralela somente-leitura para o slug
 `saldos-de-contas-de-contratos`, gerando um artefato experimental separado para
 comparacao. Esse artefato nao deve ser consumido pelo dashboard nem pelo
 report-viewer ate passar por validacao.
+
+## Artefato paralelo
+
+O script `generate_parser_pilot.py` gera:
+
+- `artifacts/parser-pilot-saldos-de-contas-de-contratos.json`
+
+Esse arquivo e publicado apenas como artefato do workflow `Parser Diagnostics`.
+Ele nao e gravado em `data/`, nao altera JSON oficial e nao e carregado pelo
+dashboard ou pelo report-viewer.
