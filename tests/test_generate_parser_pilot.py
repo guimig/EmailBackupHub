@@ -59,6 +59,15 @@ class GenerateParserPilotTests(unittest.TestCase):
             self.assertTrue(summary.exists())
             self.assertIn("Piloto experimental do parser", summary.read_text(encoding="utf-8"))
 
+    def test_artifact_paths_for_report_use_report_stem(self):
+        json_path, summary_path = pilot.artifact_paths_for_report(
+            Path("restos-a-pagar-rap.html"),
+            Path("artifacts"),
+        )
+
+        self.assertEqual(json_path, Path("artifacts") / "parser-pilot-restos-a-pagar-rap.json")
+        self.assertEqual(summary_path, Path("artifacts") / "parser-pilot-restos-a-pagar-rap.md")
+
     def test_markdown_summary_states_it_is_not_production_ready(self):
         payload = {
             "report": "relatorio.html",

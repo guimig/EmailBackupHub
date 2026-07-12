@@ -20,6 +20,11 @@ from data_generator import full_report_document
 DEFAULT_REPORT = "saldos-de-contas-de-contratos.html"
 DEFAULT_OUTPUT = Path("artifacts") / "parser-pilot-saldos-de-contas-de-contratos.json"
 DEFAULT_SUMMARY_OUTPUT = Path("artifacts") / "parser-pilot-saldos-de-contas-de-contratos.md"
+DEFAULT_PILOT_REPORTS = [
+    "saldos-de-contas-de-contratos.html",
+    "evolucao-das-despesas-empenhadas.html",
+    "restos-a-pagar-rap.html",
+]
 
 
 def build_readiness_summary(production: dict, experimental, comparison: dict) -> dict[str, object]:
@@ -173,6 +178,17 @@ def write_markdown(path: Path, payload: dict[str, object]) -> None:
     path.write_text(build_markdown_summary(payload), encoding="utf-8")
 
 
+def artifact_paths_for_report(report_path: Path, output_dir: Path) -> tuple[Path, Path]:
+    stem = report_path.stem
+    return output_dir / f"parser-pilot-{stem}.json", output_dir / f"parser-pilot-{stem}.md"
+
+
+def write_pilot_artifacts(report_path: Path, output_path: Path, summary_path: Path) -> None:
+    payload = build_pilot_payload(report_path)
+    write_json(output_path, payload)
+    write_markdown(summary_path, payload)
+
+
 def main_with_args(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Gera artefato experimental do parser piloto.")
     parser.add_argument("--report", default=DEFAULT_REPORT, help="HTML do relatorio piloto")
@@ -182,15 +198,31 @@ def main_with_args(argv: list[str] | None = None) -> int:
         default=str(DEFAULT_SUMMARY_OUTPUT),
         help="caminho do resumo Markdown",
     )
+    parser.add_argument(
+        "--all-default-pilots",
+        action="store_true",
+        help="gera artefatos para todos os relatorios piloto padrao",
+    )
+    parser.add_argument("--output-dir", default="artifacts", help="diretorio para artefatos em lote")
     args = parser.parse_args(argv)
+
+    if args.all_default_pilots:
+        for report_name in DEFAULT_PILOT_REPORTS:
+            report_path = Path(report_name)
+            if not report_path.exists():
+                parser.error(f"arquivo ausente: {report_path}")
+            output_path, summary_path = artifact_paths_for_report(report_path, Path(args.output_dir))
+            write_pilot_artifacts(report_path, output_path, summary_path)
+            print(f"Artefato piloto gerado em {output_path.as_posix()}")
+            print(f"Resumo do piloto gerado em {summary_path.as_posix()}")
+        print("Somente leitura: nenhum dado oficial foi alterado.")
+        return 0
 
     report_path = Path(args.report)
     if not report_path.exists():
         parser.error(f"arquivo ausente: {report_path}")
 
-    payload = build_pilot_payload(report_path)
-    write_json(Path(args.output), payload)
-    write_markdown(Path(args.summary_output), payload)
+    write_pilot_artifacts(report_path, Path(args.output), Path(args.summary_output))
     print(f"Artefato piloto gerado em {args.output}")
     print(f"Resumo do piloto gerado em {args.summary_output}")
     print("Somente leitura: nenhum dado oficial foi alterado.")

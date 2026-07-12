@@ -53,10 +53,18 @@ report-viewer ate passar por validacao.
 
 ## Artefato paralelo
 
-O script `generate_parser_pilot.py` gera:
+O script `generate_parser_pilot.py` gera artefatos isolados. No modo padrao,
+ele continua gerando apenas o primeiro piloto:
 
 - `artifacts/parser-pilot-saldos-de-contas-de-contratos.json`
 - `artifacts/parser-pilot-saldos-de-contas-de-contratos.md`
+
+No workflow `Parser Diagnostics`, o script roda com `--all-default-pilots` e
+gera artefatos para estes relatorios criticos:
+
+- `saldos-de-contas-de-contratos.html`;
+- `evolucao-das-despesas-empenhadas.html`;
+- `restos-a-pagar-rap.html`.
 
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON

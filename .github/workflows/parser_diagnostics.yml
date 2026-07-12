@@ -102,11 +102,13 @@ jobs:
 
       - name: Generate parser pilot artifact
         run: |
-          python generate_parser_pilot.py
+          python generate_parser_pilot.py --all-default-pilots
 
       - name: Validate parser pilot artifact
         run: |
-          python validate_parser_pilot.py
+          for artifact in artifacts/parser-pilot-*.json; do
+            python validate_parser_pilot.py "$artifact"
+          done
 
       - name: Upload diagnostics artifacts
         uses: actions/upload-artifact@v4
@@ -117,5 +119,5 @@ jobs:
             parser-comparison.md
             parser-comparison.json
             rap-diagnostics.md
-            artifacts/parser-pilot-saldos-de-contas-de-contratos.json
-            artifacts/parser-pilot-saldos-de-contas-de-contratos.md
+            artifacts/parser-pilot-*.json
+            artifacts/parser-pilot-*.md
