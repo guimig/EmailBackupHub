@@ -135,3 +135,16 @@ Quando recebe `parser-pilot-index.json`, o mesmo validador confere se:
 
 Diferencas pequenas de quantidade de linhas sao tratadas como aviso, nao como
 erro, ate revisao manual do piloto.
+
+## Guarda de promocao
+
+O script `validate_parser_promotion_guard.py` roda no workflow
+`Parser Diagnostics` para impedir que arquivos do fluxo oficial importem ou
+referenciem o parser experimental. A validacao falha se arquivos como
+`main.py`, `email_processor.py`, `html_generator.py`, `data_generator.py` ou
+`run_logger.py` referenciarem `experimental_table_parser` ou
+`generate_parser_pilot`.
+
+Essa guarda nao impede testes e artefatos experimentais. Ela apenas evita que o
+parser experimental entre no processamento oficial sem uma fase futura de
+promocao explicita.
