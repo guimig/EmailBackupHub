@@ -22,6 +22,23 @@ class ValidateParserPromotionGuardTests(unittest.TestCase):
 
         self.assertTrue(any("experimental_table_parser" in error for error in errors))
 
+    def test_markdown_report_lists_checked_files_and_markers(self):
+        report = guard.build_markdown_report(["data_generator.py referencia parser experimental"])
+
+        self.assertIn("Guarda de promocao do parser", report)
+        self.assertIn("data_generator.py", report)
+        self.assertIn("experimental_table_parser", report)
+        self.assertIn("referencia parser experimental", report)
+
+    def test_write_report_creates_markdown_file(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "guard.md"
+            guard.write_report(output, [])
+
+            text = output.read_text(encoding="utf-8")
+
+        self.assertIn("resultado: `ok`", text)
+
 
 if __name__ == "__main__":
     unittest.main()

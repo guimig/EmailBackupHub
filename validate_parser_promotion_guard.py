@@ -7,6 +7,7 @@ a future phase explicitly promotes a reviewed pilot.
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -43,14 +44,56 @@ def validate_repository() -> list[str]:
     return errors
 
 
-def main() -> int:
+def build_markdown_report(errors: list[str]) -> str:
+    checked_files = "\n".join(f"- `{path.as_posix()}`" for path in PRODUCTION_FILES)
+    forbidden_markers = "\n".join(f"- `{marker}`" for marker in FORBIDDEN_MARKERS)
+    result = "falhou" if errors else "ok"
+    findings = "\n".join(f"- {error}" for error in errors) if errors else "- nenhum problema encontrado"
+    return "\n".join(
+        [
+            "# Guarda de promocao do parser",
+            "",
+            f"- resultado: `{result}`",
+            "- objetivo: impedir promocao acidental do parser experimental para o fluxo oficial",
+            "",
+            "## Arquivos verificados",
+            "",
+            checked_files,
+            "",
+            "## Marcadores proibidos",
+            "",
+            forbidden_markers,
+            "",
+            "## Achados",
+            "",
+            findings,
+            "",
+        ]
+    )
+
+
+def write_report(path: Path, errors: list[str]) -> None:
+    path.write_text(build_markdown_report(errors), encoding="utf-8")
+
+
+def main_with_args(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Valida isolamento do parser experimental.")
+    parser.add_argument("--report", help="caminho opcional para relatorio Markdown")
+    args = parser.parse_args(argv)
+
     errors = validate_repository()
+    if args.report:
+        write_report(Path(args.report), errors)
     if errors:
         for error in errors:
             print(f"ERRO: {error}", file=sys.stderr)
         return 1
     print("OK: parser experimental segue isolado do fluxo de producao.")
     return 0
+
+
+def main() -> int:
+    return main_with_args()
 
 
 if __name__ == "__main__":

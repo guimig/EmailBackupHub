@@ -148,3 +148,6 @@ referenciem o parser experimental. A validacao falha se arquivos como
 Essa guarda nao impede testes e artefatos experimentais. Ela apenas evita que o
 parser experimental entre no processamento oficial sem uma fase futura de
 promocao explicita.
+
+O workflow tambem publica `parser-promotion-guard.md`, com a lista dos arquivos
+verificados, marcadores proibidos e achados da validacao.

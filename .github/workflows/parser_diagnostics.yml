@@ -94,7 +94,7 @@ jobs:
 
       - name: Guard experimental parser isolation
         run: |
-          python validate_parser_promotion_guard.py
+          python validate_parser_promotion_guard.py --report parser-promotion-guard.md
 
       - name: Generate header diagnostics
         run: |
@@ -121,6 +121,10 @@ jobs:
       - name: Publish parser pilot summary
         run: |
           {
+            echo "## Parser promotion guard"
+            echo
+            cat parser-promotion-guard.md
+            echo
             echo "## Parser pilot review"
             echo
             cat artifacts/parser-pilot-index.md
@@ -134,6 +138,7 @@ jobs:
             header-diagnostics.md
             parser-comparison.md
             parser-comparison.json
+            parser-promotion-guard.md
             rap-diagnostics.md
             artifacts/parser-pilot-*.json
             artifacts/parser-pilot-*.md
