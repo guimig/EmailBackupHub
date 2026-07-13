@@ -87,6 +87,10 @@ quantidade de colunas, sinalizacao indevida de producao ou tentativa de consumo
 pelo dashboard/report-viewer. Diferencas pequenas de linhas viram aviso para
 revisao manual.
 
+O modulo `parser_feature_flags.py` define a superficie futura de promocao por
+slug. A flag de `saldos-de-contas-de-contratos` existe, mas permanece `False`
+por padrao e ainda nao e importada pelo fluxo oficial.
+
 Esse indice consolida contagens de linhas/colunas, delta de linhas e status de
 revisao dos pilotos em uma unica visao. Ele tambem inclui um bloco `summary`
 com:
