@@ -310,6 +310,17 @@ def build_index_markdown(payload: dict[str, object]) -> str:
             "- `ready_for_production` deve permanecer `False` ate revisao manual explicita.",
             "- Diferencas de linhas, colunas ou avisos exigem analise antes de qualquer promocao.",
             "",
+            "## Registro de decisao manual",
+            "",
+            "Preencher somente apos revisar os artefatos individuais e o HTML original.",
+            "",
+            "- decisao: `[ ] nao promover  [ ] manter em revisao  [ ] candidato a piloto controlado`",
+            "- revisor:",
+            "- data:",
+            "- justificativa:",
+            "- relatorios liberados para proxima etapa:",
+            "- pendencias antes de qualquer mudanca em producao:",
+            "",
         ]
     )
 

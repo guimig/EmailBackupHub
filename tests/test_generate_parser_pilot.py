@@ -155,6 +155,8 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertIn("promocao automatica permitida: `False`", markdown)
         self.assertIn("Proxima decisao recomendada", markdown)
         self.assertIn("permite mudanca em producao: `False`", markdown)
+        self.assertIn("Registro de decisao manual", markdown)
+        self.assertIn("[ ] nao promover", markdown)
 
 
 if __name__ == "__main__":

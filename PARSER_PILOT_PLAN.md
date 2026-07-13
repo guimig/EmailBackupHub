@@ -83,6 +83,9 @@ com:
 
 O indice tambem inclui `recommended_next_step`, que nesta fase deve apontar
 para `manual_review`, com `allow_production_change=false` e motivos objetivos.
+O Markdown do indice inclui ainda um registro de decisao manual, preenchido
+fora do processo automatico, para documentar se o piloto nao deve ser promovido,
+deve permanecer em revisao ou pode virar candidato a um piloto controlado.
 
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
