@@ -27,6 +27,8 @@ DEFAULT_PILOT_REPORTS = [
 ]
 DEFAULT_INDEX_OUTPUT = Path("artifacts") / "parser-pilot-index.json"
 DEFAULT_INDEX_SUMMARY_OUTPUT = Path("artifacts") / "parser-pilot-index.md"
+DEFAULT_EXPERIMENTAL_REPORT = "saldos-de-contas-de-contratos.html"
+DEFAULT_EXPERIMENTAL_REPORT_DIR = Path("artifacts") / "experimental-reports"
 
 
 def build_readiness_summary(production: dict, experimental, comparison: dict) -> dict[str, object]:
@@ -202,6 +204,50 @@ def write_pilot_artifacts(report_path: Path, output_path: Path, summary_path: Pa
     return payload
 
 
+def build_experimental_report_payload(report_path: Path) -> dict[str, object]:
+    experimental = experimental_table_parser.parse_largest_html_table(
+        report_path.read_text(encoding="utf-8", errors="replace")
+    )
+    return {
+        "schema_version": "experimental-report-1.0",
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "read_only": True,
+        "promotion_status": "not_promoted",
+        "report": report_path.name,
+        "source": {
+            "parser": "experimental_table_parser",
+            "html_path": report_path.as_posix(),
+            "consumed_by_dashboard": False,
+            "consumed_by_report_viewer": False,
+            "writes_data_reports": False,
+        },
+        "columns": experimental.columns,
+        "rows": experimental.rows,
+        "totals": [],
+        "quality": {
+            "ok": not experimental.warnings,
+            "warnings": experimental.warnings,
+            "requires_manual_review": True,
+            "ready_for_production": False,
+        },
+        "notes": [
+            "JSON experimental paralelo; nao substituir data/reports/*.json.",
+            "Nao consumido por dashboard.html ou report-viewer.html.",
+            "Usar apenas para comparacao manual controlada.",
+        ],
+    }
+
+
+def experimental_report_path(report_path: Path, output_dir: Path) -> Path:
+    return output_dir / f"{report_path.stem}.experimental-report.json"
+
+
+def write_experimental_report_artifact(report_path: Path, output_dir: Path) -> Path:
+    output_path = experimental_report_path(report_path, output_dir)
+    write_json(output_path, build_experimental_report_payload(report_path))
+    return output_path
+
+
 def build_index_payload(pilots: list[dict[str, object]]) -> dict[str, object]:
     entries = []
     for pilot in pilots:
@@ -346,6 +392,16 @@ def main_with_args(argv: list[str] | None = None) -> int:
         help="gera artefatos para todos os relatorios piloto padrao",
     )
     parser.add_argument("--output-dir", default="artifacts", help="diretorio para artefatos em lote")
+    parser.add_argument(
+        "--experimental-report",
+        default=DEFAULT_EXPERIMENTAL_REPORT,
+        help="HTML que tera JSON experimental paralelo no modo em lote",
+    )
+    parser.add_argument(
+        "--experimental-report-dir",
+        default=str(DEFAULT_EXPERIMENTAL_REPORT_DIR),
+        help="diretorio para JSON experimental paralelo",
+    )
     args = parser.parse_args(argv)
 
     if args.all_default_pilots:
@@ -360,6 +416,14 @@ def main_with_args(argv: list[str] | None = None) -> int:
             print(f"Resumo do piloto gerado em {summary_path.as_posix()}")
         write_index_artifacts(pilots, Path(args.output_dir))
         print(f"Indice dos pilotos gerado em {(Path(args.output_dir) / DEFAULT_INDEX_OUTPUT.name).as_posix()}")
+        experimental_report = Path(args.experimental_report)
+        if not experimental_report.exists():
+            parser.error(f"arquivo ausente: {experimental_report}")
+        experimental_output = write_experimental_report_artifact(
+            experimental_report,
+            Path(args.experimental_report_dir),
+        )
+        print(f"JSON experimental paralelo gerado em {experimental_output.as_posix()}")
         print("Somente leitura: nenhum dado oficial foi alterado.")
         return 0
 

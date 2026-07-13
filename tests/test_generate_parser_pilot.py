@@ -158,6 +158,49 @@ class GenerateParserPilotTests(unittest.TestCase):
         self.assertIn("Registro de decisao manual", markdown)
         self.assertIn("[ ] nao promover", markdown)
 
+    def test_experimental_report_payload_is_parallel_and_read_only(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            report = Path(temp_dir) / "saldos-de-contas-de-contratos.html"
+            report.write_text(
+                """
+                <table>
+                  <tr><th>UG</th><th>Contrato</th><th>Saldo R$</th></tr>
+                  <tr><td>158000</td><td>12/2026</td><td>1.000,00</td></tr>
+                </table>
+                """,
+                encoding="utf-8",
+            )
+
+            payload = pilot.build_experimental_report_payload(report)
+
+        self.assertTrue(payload["read_only"])
+        self.assertEqual(payload["promotion_status"], "not_promoted")
+        self.assertFalse(payload["source"]["consumed_by_dashboard"])
+        self.assertFalse(payload["source"]["consumed_by_report_viewer"])
+        self.assertFalse(payload["source"]["writes_data_reports"])
+        self.assertFalse(payload["quality"]["ready_for_production"])
+        self.assertEqual(payload["columns"], ["UG", "Contrato", "Saldo R$"])
+
+    def test_write_experimental_report_artifact_uses_isolated_directory(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            report = base / "relatorio.html"
+            output_dir = base / "experimental-reports"
+            report.write_text(
+                """
+                <table>
+                  <tr><th>Conta</th><th>Saldo R$</th></tr>
+                  <tr><td>1</td><td>10,00</td></tr>
+                </table>
+                """,
+                encoding="utf-8",
+            )
+
+            output = pilot.write_experimental_report_artifact(report, output_dir)
+
+            self.assertEqual(output, output_dir / "relatorio.experimental-report.json")
+            self.assertTrue(output.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

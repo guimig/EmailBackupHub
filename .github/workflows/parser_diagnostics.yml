@@ -158,6 +158,7 @@ jobs:
             rap-diagnostics.md
             artifacts/parser-pilot-*.json
             artifacts/parser-pilot-*.md
+            artifacts/experimental-reports/*.json
 
       - name: Fail if parser promotion guard failed
         if: always()

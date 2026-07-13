@@ -71,6 +71,15 @@ O modo em lote tambem gera:
 - `artifacts/parser-pilot-index.json`;
 - `artifacts/parser-pilot-index.md`.
 
+Para o primeiro piloto controlado, o workflow tambem gera um JSON experimental
+paralelo em:
+
+- `artifacts/experimental-reports/saldos-de-contas-de-contratos.experimental-report.json`.
+
+Esse JSON contem colunas e linhas extraidas pelo parser experimental, mas
+permanece somente leitura, `not_promoted`, nao e gravado em `data/` e nao e
+consumido pelo dashboard ou pelo report-viewer.
+
 Esse indice consolida contagens de linhas/colunas, delta de linhas e status de
 revisao dos pilotos em uma unica visao. Ele tambem inclui um bloco `summary`
 com:
