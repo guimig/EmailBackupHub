@@ -229,6 +229,15 @@ def build_index_payload(pilots: list[dict[str, object]]) -> dict[str, object]:
     row_delta_count = sum(1 for entry in entries if entry.get("row_count_delta"))
     warnings_count = sum(1 for entry in entries if entry.get("experimental_warnings_count"))
     production_ready_count = sum(1 for entry in entries if entry.get("ready_for_production") is True)
+    next_step_reasons = []
+    if manual_review_required_count:
+        next_step_reasons.append("manual_review_required")
+    if row_delta_count:
+        next_step_reasons.append("row_delta_present")
+    if warnings_count:
+        next_step_reasons.append("experimental_warnings_present")
+    if production_ready_count:
+        next_step_reasons.append("unexpected_production_ready_flag")
     return {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -242,6 +251,11 @@ def build_index_payload(pilots: list[dict[str, object]]) -> dict[str, object]:
             "experimental_warnings_count": warnings_count,
             "production_ready_count": production_ready_count,
             "safe_to_promote_any": False,
+        },
+        "recommended_next_step": {
+            "action": "manual_review",
+            "allow_production_change": False,
+            "reasons": next_step_reasons or ["pilot_artifacts_require_explicit_review"],
         },
         "pilots": entries,
     }
@@ -279,6 +293,15 @@ def build_index_markdown(payload: dict[str, object]) -> str:
             f"- com diferenca de linhas: `{(payload.get('summary') or {}).get('row_delta_count')}`",
             f"- prontos para producao: `{(payload.get('summary') or {}).get('production_ready_count')}`",
             f"- promocao automatica permitida: `{(payload.get('summary') or {}).get('safe_to_promote_any')}`",
+            "",
+            "## Proxima decisao recomendada",
+            "",
+            f"- acao: `{(payload.get('recommended_next_step') or {}).get('action')}`",
+            f"- permite mudanca em producao: `{(payload.get('recommended_next_step') or {}).get('allow_production_change')}`",
+            "",
+            "Motivos:",
+            "",
+            markdown_list((payload.get("recommended_next_step") or {}).get("reasons") or []),
             "",
             *rows,
             "",

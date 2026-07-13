@@ -95,6 +95,14 @@ def validate_index_payload(payload: dict) -> tuple[list[str], list[str]]:
     if summary.get("safe_to_promote_any") is not False:
         errors.append("index safe_to_promote_any must be false")
 
+    recommended_next_step = payload.get("recommended_next_step") or {}
+    if recommended_next_step.get("action") != "manual_review":
+        errors.append("index recommended_next_step action must be manual_review")
+    if recommended_next_step.get("allow_production_change") is not False:
+        errors.append("index recommended_next_step must not allow production change")
+    if not recommended_next_step.get("reasons"):
+        errors.append("index recommended_next_step must include reasons")
+
     manual_review_required_count = 0
     ready_for_manual_review_count = 0
     row_delta_count = 0

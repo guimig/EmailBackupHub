@@ -81,6 +81,9 @@ com:
 - quantidade de pilotos marcados como prontos para producao;
 - `safe_to_promote_any`, que deve permanecer `false`.
 
+O indice tambem inclui `recommended_next_step`, que nesta fase deve apontar
+para `manual_review`, com `allow_production_change=false` e motivos objetivos.
+
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
 oficial e nao sao carregados pelo dashboard ou pelo report-viewer.
@@ -121,6 +124,7 @@ Quando recebe `parser-pilot-index.json`, o mesmo validador confere se:
 - nenhum piloto esta marcado como pronto para producao;
 - todos os pilotos continuam exigindo revisao manual;
 - `safe_to_promote_any` permanece `false`;
+- `recommended_next_step` nao permite mudanca em producao;
 - os contadores do `summary` batem com a lista de pilotos;
 - cada item referencia um HTML e possui contagens basicas validas.
 

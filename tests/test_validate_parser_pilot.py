@@ -80,6 +80,11 @@ class ValidateParserPilotTests(unittest.TestCase):
                 "production_ready_count": 0,
                 "safe_to_promote_any": False,
             },
+            "recommended_next_step": {
+                "action": "manual_review",
+                "allow_production_change": False,
+                "reasons": ["manual_review_required", "row_delta_present"],
+            },
             "pilots": [
                 {
                     "report": "saldos-de-contas-de-contratos.html",
@@ -125,6 +130,14 @@ class ValidateParserPilotTests(unittest.TestCase):
         errors, _warnings = validator.validate_index_payload(payload)
 
         self.assertTrue(any("row_delta_count" in error for error in errors))
+
+    def test_rejects_index_that_allows_production_change(self):
+        payload = self.valid_index_payload()
+        payload["recommended_next_step"]["allow_production_change"] = True
+
+        errors, _warnings = validator.validate_index_payload(payload)
+
+        self.assertTrue(any("production change" in error for error in errors))
 
     def test_validate_artifact_dispatches_index_payload(self):
         errors, warnings = validator.validate_artifact(self.valid_index_payload())
