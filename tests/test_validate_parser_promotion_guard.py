@@ -28,6 +28,8 @@ class ValidateParserPromotionGuardTests(unittest.TestCase):
         self.assertIn("Guarda de promocao do parser", report)
         self.assertIn("data_generator.py", report)
         self.assertIn("experimental_table_parser", report)
+        self.assertIn("Feature flags experimentais desligadas", report)
+        self.assertIn("saldos-de-contas-de-contratos", report)
         self.assertIn("referencia parser experimental", report)
 
     def test_write_report_creates_markdown_file(self):
@@ -38,6 +40,18 @@ class ValidateParserPromotionGuardTests(unittest.TestCase):
             text = output.read_text(encoding="utf-8")
 
         self.assertIn("resultado: `ok`", text)
+
+    def test_validate_repository_rejects_enabled_feature_flags(self):
+        original = dict(guard.parser_feature_flags.EXPERIMENTAL_PARSER_BY_SLUG)
+        try:
+            guard.parser_feature_flags.EXPERIMENTAL_PARSER_BY_SLUG["saldos-de-contas-de-contratos"] = True
+
+            errors = guard.validate_repository()
+        finally:
+            guard.parser_feature_flags.EXPERIMENTAL_PARSER_BY_SLUG.clear()
+            guard.parser_feature_flags.EXPERIMENTAL_PARSER_BY_SLUG.update(original)
+
+        self.assertTrue(any("feature flag experimental ligada" in error for error in errors))
 
 
 if __name__ == "__main__":

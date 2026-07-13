@@ -11,6 +11,8 @@ import argparse
 import sys
 from pathlib import Path
 
+import parser_feature_flags
+
 
 PRODUCTION_FILES = [
     Path("main.py"),
@@ -41,12 +43,17 @@ def validate_repository() -> list[str]:
     errors: list[str] = []
     for path in PRODUCTION_FILES:
         errors.extend(validate_file(path))
+    enabled_flags = parser_feature_flags.enabled_flags()
+    for slug in enabled_flags:
+        errors.append(f"feature flag experimental ligada por padrao: {slug}")
     return errors
 
 
 def build_markdown_report(errors: list[str]) -> str:
     checked_files = "\n".join(f"- `{path.as_posix()}`" for path in PRODUCTION_FILES)
     forbidden_markers = "\n".join(f"- `{marker}`" for marker in FORBIDDEN_MARKERS)
+    disabled_flags = "\n".join(f"- `{slug}`" for slug in parser_feature_flags.disabled_flags()) or "- nenhuma"
+    enabled_flags = "\n".join(f"- `{slug}`" for slug in parser_feature_flags.enabled_flags()) or "- nenhuma"
     result = "falhou" if errors else "ok"
     findings = "\n".join(f"- {error}" for error in errors) if errors else "- nenhum problema encontrado"
     return "\n".join(
@@ -63,6 +70,14 @@ def build_markdown_report(errors: list[str]) -> str:
             "## Marcadores proibidos",
             "",
             forbidden_markers,
+            "",
+            "## Feature flags experimentais desligadas",
+            "",
+            disabled_flags,
+            "",
+            "## Feature flags experimentais ligadas",
+            "",
+            enabled_flags,
             "",
             "## Achados",
             "",
