@@ -151,3 +151,6 @@ promocao explicita.
 
 O workflow tambem publica `parser-promotion-guard.md`, com a lista dos arquivos
 verificados, marcadores proibidos e achados da validacao.
+Se a guarda detectar problema, o workflow preserva `parser-promotion-guard.md`
+e `parser-promotion-guard.exit` nos artefatos antes de falhar, para facilitar
+diagnostico sem perder evidencias.

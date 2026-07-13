@@ -94,7 +94,11 @@ jobs:
 
       - name: Guard experimental parser isolation
         run: |
+          set +e
           python validate_parser_promotion_guard.py --report parser-promotion-guard.md
+          guard_exit_code=$?
+          echo "$guard_exit_code" > parser-promotion-guard.exit
+          exit 0
 
       - name: Generate header diagnostics
         run: |
@@ -119,26 +123,46 @@ jobs:
           done
 
       - name: Publish parser pilot summary
+        if: always()
         run: |
           {
             echo "## Parser promotion guard"
             echo
-            cat parser-promotion-guard.md
+            if [ -f parser-promotion-guard.md ]; then
+              cat parser-promotion-guard.md
+            else
+              echo "Relatorio da guarda nao foi gerado."
+            fi
             echo
             echo "## Parser pilot review"
             echo
-            cat artifacts/parser-pilot-index.md
+            if [ -f artifacts/parser-pilot-index.md ]; then
+              cat artifacts/parser-pilot-index.md
+            else
+              echo "Indice dos pilotos nao foi gerado."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload diagnostics artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: parser-diagnostics
+          if-no-files-found: warn
           path: |
             header-diagnostics.md
             parser-comparison.md
             parser-comparison.json
             parser-promotion-guard.md
+            parser-promotion-guard.exit
             rap-diagnostics.md
             artifacts/parser-pilot-*.json
             artifacts/parser-pilot-*.md
+
+      - name: Fail if parser promotion guard failed
+        if: always()
+        run: |
+          if [ -f parser-promotion-guard.exit ] && [ "$(cat parser-promotion-guard.exit)" != "0" ]; then
+            echo "Parser promotion guard failed. See parser-promotion-guard.md."
+            exit 1
+          fi
