@@ -171,6 +171,16 @@ def build_markdown_summary(payload: dict[str, object]) -> str:
             "- confirmar totais/subtotais e valores monetarios no JSON oficial;",
             "- manter `ready_for_production=false` ate validacao manual explicita.",
             "",
+            "## Checklist de revisao manual",
+            "",
+            "- [ ] Conferir se as colunas experimentais correspondem ao cabecalho visual do HTML.",
+            "- [ ] Comparar a amostra de linhas com o relatorio original.",
+            "- [ ] Explicar qualquer diferenca de quantidade de linhas.",
+            "- [ ] Confirmar que totais e subtotais nao viraram linhas comuns indevidas.",
+            "- [ ] Confirmar que valores monetarios seguem parseaveis.",
+            "- [ ] Validar que o JSON oficial em `data/` continuaria compativel.",
+            "- [ ] Registrar a decisao antes de qualquer promocao futura.",
+            "",
         ]
     )
 

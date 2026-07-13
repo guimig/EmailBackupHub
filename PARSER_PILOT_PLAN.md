@@ -95,7 +95,9 @@ O artefato tambem inclui um bloco `readiness`, com resumo objetivo para revisao:
 
 O resumo Markdown repete essas informacoes em formato legivel para revisao
 manual, incluindo contagens de linhas/colunas, riscos, avisos e colunas
-experimentais.
+experimentais. Cada resumo tambem inclui um checklist de revisao manual para
+conferir cabecalhos, amostra de linhas, totais/subtotais, valores monetarios e
+compatibilidade do JSON oficial antes de qualquer promocao futura.
 
 ## Validacao automatica
 

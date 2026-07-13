@@ -88,6 +88,8 @@ class GenerateParserPilotTests(unittest.TestCase):
 
         self.assertIn("pronto para producao: `False`", summary)
         self.assertIn("row_count_delta:1", summary)
+        self.assertIn("Checklist de revisao manual", summary)
+        self.assertIn("Conferir se as colunas experimentais", summary)
 
     def test_index_payload_keeps_pilots_read_only_and_not_promoted(self):
         payload = {
