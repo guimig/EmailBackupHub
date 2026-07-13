@@ -90,6 +90,8 @@ deve permanecer em revisao ou pode virar candidato a um piloto controlado.
 Esses arquivos sao publicados apenas como artefatos do workflow
 `Parser Diagnostics`. Eles nao sao gravados em `data/`, nao alteram JSON
 oficial e nao sao carregados pelo dashboard ou pelo report-viewer.
+O arquivo `parser-pilot-index.md` tambem e copiado para o resumo da execucao do
+GitHub Actions, para permitir revisao rapida sem baixar o artefato.
 
 O artefato tambem inclui um bloco `readiness`, com resumo objetivo para revisao:
 

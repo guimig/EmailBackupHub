@@ -110,6 +110,14 @@ jobs:
             python validate_parser_pilot.py "$artifact"
           done
 
+      - name: Publish parser pilot summary
+        run: |
+          {
+            echo "## Parser pilot review"
+            echo
+            cat artifacts/parser-pilot-index.md
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload diagnostics artifacts
         uses: actions/upload-artifact@v4
         with:
