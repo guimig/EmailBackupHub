@@ -80,6 +80,13 @@ Esse JSON contem colunas e linhas extraidas pelo parser experimental, mas
 permanece somente leitura, `not_promoted`, nao e gravado em `data/` e nao e
 consumido pelo dashboard ou pelo report-viewer.
 
+O script `validate_experimental_report_comparison.py` compara esse JSON
+experimental com a leitura oficial do mesmo HTML. A validacao falha em riscos
+objetivos, como colunas vazias, colunas genericas no experimental, diferenca de
+quantidade de colunas, sinalizacao indevida de producao ou tentativa de consumo
+pelo dashboard/report-viewer. Diferencas pequenas de linhas viram aviso para
+revisao manual.
+
 Esse indice consolida contagens de linhas/colunas, delta de linhas e status de
 revisao dos pilotos em uma unica visao. Ele tambem inclui um bloco `summary`
 com:
