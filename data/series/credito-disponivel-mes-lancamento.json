@@ -443,9 +443,9 @@
       }
     },
     {
-      "date": "17/07/2026",
-      "date_iso": "2026-07-17",
-      "hash_conteudo": "cb8b88ba04e565f25f61dee3edd6d56190c1c8d2cacf058a46cac43a68827c05",
+      "date": "18/07/2026",
+      "date_iso": "2026-07-18",
+      "hash_conteudo": "857c3d6e8aed73ee20d33917a3860aded237ba10c7f5111d9898534ea81ff0ab",
       "totals": [
         {
           "label": "INVESTIMENTOS",
@@ -516,6 +516,28 @@
         {
           "label": "OUTRAS DESPESAS CORRENTES",
           "values": {
+            "Natureza Despesa": 339000.0,
+            "Unidade Orçamentária": 26422.0,
+            "Fonte Recursos Detalhada": 3050000191.0,
+            "Saldo - R$ (Conta Contábil) / JUL/2026": 35194.09
+          },
+          "raw": {
+            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+            "Natureza Despesa": "339000",
+            "Natureza Despesa (2)": "APLICACOES DIRETAS",
+            "Unidade Orçamentária": "26422",
+            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+            "Fonte Recursos Detalhada": "3050000191",
+            "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+            "PTRES": "Total",
+            "Métrica / PI": "",
+            "Métrica / PI (2)": "",
+            "Saldo - R$ (Conta Contábil) / JUL/2026": "35.194,09"
+          }
+        },
+        {
+          "label": "OUTRAS DESPESAS CORRENTES",
+          "values": {
             "Natureza Despesa": 339030.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1000000000.0,
@@ -560,7 +582,7 @@
         {
           "label": "Total",
           "values": {
-            "Saldo - R$ (Conta Contábil) / JUL/2026": 285498.07
+            "Saldo - R$ (Conta Contábil) / JUL/2026": 320692.16
           },
           "raw": {
             "Grupo Despesa": "Total",
@@ -573,12 +595,12 @@
             "PTRES": "",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / JUL/2026": "285.498,07"
+            "Saldo - R$ (Conta Contábil) / JUL/2026": "320.692,16"
           }
         }
       ],
       "metrics": {
-        "credito_disponivel": 285498.07
+        "credito_disponivel": 320692.16
       },
       "metrics_meta": {
         "credito_disponivel": {
