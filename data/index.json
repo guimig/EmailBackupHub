@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-07-27T22:28:07.847790-03:00",
+  "generated_at": "2026-07-28T01:53:57.502253-03:00",
   "api": {
     "reports": "data/reports/<slug>.json",
     "snapshots": "data/snapshots/<slug>/<date>-<hash>.json",
@@ -19,8 +19,8 @@
       "series_path": "data/series/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "viewer_path": "report-viewer.html?report=data/reports/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 32,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 33,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": null,
@@ -49,8 +49,8 @@
       "series_path": "data/series/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "viewer_path": "report-viewer.html?report=data/reports/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 32,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 33,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -79,8 +79,8 @@
       "series_path": "data/series/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 16,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 17,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6046",
@@ -88,7 +88,7 @@
         "row_count": 1341,
         "column_count": 19,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -108,8 +108,8 @@
       "series_path": "data/series/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 16,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 17,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6045",
@@ -117,7 +117,7 @@
         "row_count": 1341,
         "column_count": 20,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -138,16 +138,16 @@
       "series_path": "data/series/credito-disponivel-mes-lancamento.json",
       "viewer_path": "report-viewer.html?report=data/reports/credito-disponivel-mes-lancamento.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6188",
         "hash_conteudo": "92969a56b152d079242c0749880738767145984ff1ff6156d142301b4e7548ba",
         "row_count": 8,
         "column_count": 11,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -168,8 +168,8 @@
       "series_path": "data/series/despesas-empenhadas-liquidadas-e-pagas-2024.json",
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2024.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 19,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 20,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": "5996",
@@ -198,8 +198,8 @@
       "series_path": "data/series/despesas-empenhadas-liquidadas-e-pagas-2025.json",
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2025.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 26,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 27,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": "5911",
@@ -228,16 +228,16 @@
       "series_path": "data/series/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6187",
         "hash_conteudo": "625ab9fb0ef6cfeb8ce3cfe3b6c5429e51bb26dd655b298536f18d01a11de2d2",
         "row_count": 262,
         "column_count": 9,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -258,8 +258,8 @@
       "series_path": "data/series/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu.json",
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 208,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 209,
         "periodicidade": "mensal",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -288,16 +288,16 @@
       "series_path": "data/series/evolucao-das-despesas-empenhadas.json",
       "viewer_path": "report-viewer.html?report=data/reports/evolucao-das-despesas-empenhadas.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6196",
         "hash_conteudo": "e13e30d070f0f8f7a84796c02958a4e885ff348c607b18b7ab4aa7c37ad816d3",
         "row_count": 138,
         "column_count": 24,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -318,8 +318,8 @@
       "series_path": "data/series/imoveis-por-ug-conta-contabil-e-rip.json",
       "viewer_path": "report-viewer.html?report=data/reports/imoveis-por-ug-conta-contabil-e-rip.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 26,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 27,
         "periodicidade": "mensal",
         "exercicio": 2026,
         "fonte_email_uid": "5910",
@@ -347,16 +347,16 @@
       "series_path": "data/series/limite-de-saque-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/limite-de-saque-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6183",
         "hash_conteudo": "f318c79998e5ad30831d628741ae757e9ea803d4a74d199f42a702d83d6e5559",
         "row_count": 9,
         "column_count": 9,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -376,16 +376,16 @@
       "series_path": "data/series/provisionamentos.json",
       "viewer_path": "report-viewer.html?report=data/reports/provisionamentos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6189",
         "hash_conteudo": "53a503ce297a0a2d23a0b8c6b19aa2215daadfa884cdb1ee92586db73baf0ab8",
         "row_count": 22,
         "column_count": 9,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -406,16 +406,16 @@
       "series_path": "data/series/recolhimento-proprio-gru.json",
       "viewer_path": "report-viewer.html?report=data/reports/recolhimento-proprio-gru.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6191",
         "hash_conteudo": "bb234760bdc970757f3b3a90cb33c1b58f5948566c1503bbfdba5db1067ac410",
         "row_count": 162,
         "column_count": 7,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -436,16 +436,16 @@
       "series_path": "data/series/restos-a-pagar-rap.json",
       "viewer_path": "report-viewer.html?report=data/reports/restos-a-pagar-rap.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6192",
         "hash_conteudo": "bc71c6a9ae44ae630086036ddf02315c672bfe1701aa55bcc82a798ab6fbc44f",
         "row_count": 188,
         "column_count": 12,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -466,16 +466,16 @@
       "series_path": "data/series/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6193",
         "hash_conteudo": "54d3d5a8b6a1c149c4548da2440e96b24eca33fa25a5c74117be48c833be947c",
         "row_count": 319,
         "column_count": 21,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -496,16 +496,16 @@
       "series_path": "data/series/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6182",
         "hash_conteudo": "0059570731fee3b12c9762719bdc60cf382a66971a009162208983b561c24846",
         "row_count": 26,
         "column_count": 18,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -525,16 +525,16 @@
       "series_path": "data/series/saldo-por-natureza-de-despesa.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldo-por-natureza-de-despesa.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6190",
         "hash_conteudo": "accf74fca0a129b778cd29b0e430b63618cda34823640532ee9006448a6d175e",
         "row_count": 70,
         "column_count": 12,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -555,16 +555,16 @@
       "series_path": "data/series/saldos-de-contas-de-contratos.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-contas-de-contratos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6184",
         "hash_conteudo": "8710e2c05f675856c58742e2c0309a1f6c23ff2e9ebd26dbacc5c3b6dc58367b",
         "row_count": 29,
         "column_count": 17,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -585,16 +585,16 @@
       "series_path": "data/series/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6186",
         "hash_conteudo": "86efc74f6e297f70c9b74092af19d84581f8fdf0afef78146a5e0f7398f27db9",
         "row_count": 262,
         "column_count": 10,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -615,16 +615,16 @@
       "series_path": "data/series/suprimento-de-fundos-empenhos.json",
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-empenhos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6194",
         "hash_conteudo": "262d772755a917e6ad453d0e78f45adf098f1450b46265aa15c24653516d9e4e",
         "row_count": 81,
         "column_count": 11,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -645,16 +645,16 @@
       "series_path": "data/series/suprimento-de-fundos-liquidacoes-e-pagamentos.json",
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-liquidacoes-e-pagamentos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-07-27T22:28:07.847790-03:00",
-        "idade_dias": 2,
+        "ultima_atualizacao": "2026-07-28T01:53:57.502253-03:00",
+        "idade_dias": 3,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "6195",
         "hash_conteudo": "043172b067b17a4e961d049ff51de92e8a5ad7dbefbe1ec4b17acce4379d25af",
         "row_count": 54,
         "column_count": 11,
-        "status": "atualizado",
-        "limite_dias": 2
+        "status": "desatualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
