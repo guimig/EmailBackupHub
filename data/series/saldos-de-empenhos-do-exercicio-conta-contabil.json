@@ -795,9 +795,9 @@
       }
     },
     {
-      "date": "28/07/2026",
-      "date_iso": "2026-07-28",
-      "hash_conteudo": "6f973e67a74c8aa70fff6084963428ffcfcc79144b3285fd36fd47686ccf90b9",
+      "date": "29/07/2026",
+      "date_iso": "2026-07-29",
+      "hash_conteudo": "20391c2a41d76aae61de091f77ba78835eedede40b237b3f60807a41fe9c88ff",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
@@ -823,8 +823,8 @@
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 275717.35,
-            "Valor 9": 58600.0,
-            "Valor 10": 349227.43
+            "Valor 9": 0.0,
+            "Valor 10": 407827.43
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -835,8 +835,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "275.717,35",
-            "Valor 9": "58.600,00",
-            "Valor 10": "349.227,43"
+            "Valor 9": "0,00",
+            "Valor 10": "407.827,43"
           }
         },
         {
@@ -903,8 +903,8 @@
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
             "Valor 8": 348840.42,
-            "Valor 9": 53964.48,
-            "Valor 10": 749708.03
+            "Valor 9": 51060.88,
+            "Valor 10": 752611.63
           },
           "raw": {
             "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
@@ -915,8 +915,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "348.840,42",
-            "Valor 9": "53.964,48",
-            "Valor 10": "749.708,03"
+            "Valor 9": "51.060,88",
+            "Valor 10": "752.611,63"
           }
         },
         {
@@ -1041,8 +1041,8 @@
           "label": "Total",
           "values": {
             "Valor 8": 1364147.67,
-            "Valor 9": 172133.02,
-            "Valor 10": 2109504.7
+            "Valor 9": 110629.42,
+            "Valor 10": 2171008.3
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1053,16 +1053,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "1.364.147,67",
-            "Valor 9": "172.133,02",
-            "Valor 10": "2.109.504,70"
+            "Valor 9": "110.629,42",
+            "Valor 10": "2.171.008,30"
           }
         }
       ],
       "metrics": {
         "empenhado": 8868968548.0,
         "saldo_a_liquidar": 1364147.67,
-        "liquidado_a_pagar": 172133.02,
-        "pago": 2109504.7
+        "liquidado_a_pagar": 110629.42,
+        "pago": 2171008.3
       },
       "metrics_meta": {
         "empenhado": {
