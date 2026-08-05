@@ -795,16 +795,16 @@
       }
     },
     {
-      "date": "04/08/2026",
-      "date_iso": "2026-08-04",
-      "hash_conteudo": "f5c6eb5ada3dc05c1d3812e0f5604b918a3f77e12f99006f1fcb6fe07faf7f41",
+      "date": "05/08/2026",
+      "date_iso": "2026-08-05",
+      "hash_conteudo": "b6a51ff65ecf4327857faa7250a354e5f5fed1bf0a515e38aee8c8e5d355111b",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
             "Valor 8": 37569.78,
-            "Valor 9": 5678.94,
-            "Valor 10": 36251.28
+            "Valor 9": 3715.7,
+            "Valor 10": 38214.52
           },
           "raw": {
             "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
@@ -815,16 +815,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "37.569,78",
-            "Valor 9": "5.678,94",
-            "Valor 10": "36.251,28"
+            "Valor 9": "3.715,70",
+            "Valor 10": "38.214,52"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 271517.35,
-            "Valor 9": 4200.0,
-            "Valor 10": 407827.43
+            "Valor 8": 268417.35,
+            "Valor 9": 3100.0,
+            "Valor 10": 412027.43
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -834,17 +834,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "271.517,35",
-            "Valor 9": "4.200,00",
-            "Valor 10": "407.827,43"
+            "Valor 8": "268.417,35",
+            "Valor 9": "3.100,00",
+            "Valor 10": "412.027,43"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 151323.6,
-            "Valor 9": 28354.5,
-            "Valor 10": 239455.58
+            "Valor 8": 144743.84,
+            "Valor 9": 26416.93,
+            "Valor 10": 247972.91
           },
           "raw": {
             "Conta Contabil": "MATERIAL DE CONSUMO",
@@ -854,9 +854,9 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "151.323,60",
-            "Valor 9": "28.354,50",
-            "Valor 10": "239.455,58"
+            "Valor 8": "144.743,84",
+            "Valor 9": "26.416,93",
+            "Valor 10": "247.972,91"
           }
         },
         {
@@ -1021,8 +1021,8 @@
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
             "Valor 8": 86431.27,
-            "Valor 9": 252.42,
-            "Valor 10": 9520.0
+            "Valor 9": 0.0,
+            "Valor 10": 9772.42
           },
           "raw": {
             "Conta Contabil": "EQUIPAMENTOS E MATERIAL PERMANENTE",
@@ -1033,16 +1033,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "86.431,27",
-            "Valor 9": "252,42",
-            "Valor 10": "9.520,00"
+            "Valor 9": "0,00",
+            "Valor 10": "9.772,42"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 1232525.03,
-            "Valor 9": 198822.34,
-            "Valor 10": 2214438.02
+            "Valor 8": 1222845.27,
+            "Valor 9": 193569.11,
+            "Valor 10": 2229371.01
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1052,17 +1052,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "1.232.525,03",
-            "Valor 9": "198.822,34",
-            "Valor 10": "2.214.438,02"
+            "Valor 8": "1.222.845,27",
+            "Valor 9": "193.569,11",
+            "Valor 10": "2.229.371,01"
           }
         }
       ],
       "metrics": {
         "empenhado": 8868968548.0,
-        "saldo_a_liquidar": 1232525.03,
-        "liquidado_a_pagar": 198822.34,
-        "pago": 2214438.02
+        "saldo_a_liquidar": 1222845.27,
+        "liquidado_a_pagar": 193569.11,
+        "pago": 2229371.01
       },
       "metrics_meta": {
         "empenhado": {
