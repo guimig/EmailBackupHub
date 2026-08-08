@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-08-08T08:20:16.064880-03:00",
+  "generated_at": "2026-08-08T09:24:29.672028-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -18,13 +18,13 @@
     "latest_files": 22,
     "monthly_close_files": 83,
     "cache_lookups": 105,
-    "processed_files": 1,
-    "cache_hits": 104,
-    "cache_misses_new": 1,
+    "processed_files": 0,
+    "cache_hits": 105,
+    "cache_misses_new": 0,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 105,
-    "duration_seconds": 2.45
+    "duration_seconds": 2.129
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.271
+        "duration_seconds": 0.265
       }
     },
     {
@@ -82,7 +82,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.349
+        "duration_seconds": 0.35
       }
     },
     {
@@ -654,7 +654,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.3
+        "duration_seconds": 0.294
       }
     },
     {
@@ -1216,7 +1216,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.337
+        "duration_seconds": 0.311
       }
     },
     {
@@ -1898,7 +1898,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.019
+        "duration_seconds": 0.018
       }
     },
     {
@@ -1957,13 +1957,13 @@
       ],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
-        "cache_misses_new": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.264
+        "duration_seconds": 0.028
       }
     },
     {
@@ -2019,7 +2019,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.06
+        "duration_seconds": 0.057
       }
     },
     {
@@ -2701,7 +2701,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.045
+        "duration_seconds": 0.043
       }
     },
     {
@@ -3955,7 +3955,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.055
+        "duration_seconds": 0.052
       }
     },
     {
@@ -5949,7 +5949,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.039
+        "duration_seconds": 0.038
       }
     },
     {
@@ -6864,7 +6864,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.052
+        "duration_seconds": 0.05
       }
     },
     {
@@ -7948,7 +7948,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.093
+        "duration_seconds": 0.088
       }
     },
     {
@@ -9041,7 +9041,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.158
+        "duration_seconds": 0.154
       }
     },
     {
@@ -9917,7 +9917,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.018
+        "duration_seconds": 0.017
       }
     },
     {
@@ -11001,7 +11001,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.036
+        "duration_seconds": 0.034
       }
     },
     {
@@ -12094,7 +12094,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.029
+        "duration_seconds": 0.027
       }
     },
     {
@@ -13178,7 +13178,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.089
+        "duration_seconds": 0.081
       }
     },
     {
@@ -14271,7 +14271,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.049
+        "duration_seconds": 0.045
       }
     },
     {
@@ -14963,7 +14963,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.023
+        "duration_seconds": 0.021
       }
     }
   ]
