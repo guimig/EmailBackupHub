@@ -1146,9 +1146,9 @@
       }
     },
     {
-      "date": "07/08/2026",
-      "date_iso": "2026-08-07",
-      "hash_conteudo": "53a503ce297a0a2d23a0b8c6b19aa2215daadfa884cdb1ee92586db73baf0ab8",
+      "date": "08/08/2026",
+      "date_iso": "2026-08-08",
+      "hash_conteudo": "2b5029f98658d8a4d62b11a13803d9078f54b8f4e9fc707d3be46d6e16a1f0bd",
       "totals": [
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
@@ -1235,7 +1235,7 @@
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 2735068.32
+            "Saldo - Moeda Origem (Item Informação)": 3561206.36
           },
           "raw": {
             "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
@@ -1246,7 +1246,7 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "2.735.068,32"
+            "Saldo - Moeda Origem (Item Informação)": "3.561.206,36"
           }
         },
         {
@@ -1311,7 +1311,28 @@
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 190933.05
+            "Grupo Despesa": 3.0,
+            "PI": -8.0,
+            "NC": 1.58125264222026e+20,
+            "Transação - Mês": 2026.0,
+            "Saldo - Moeda Origem (Item Informação)": 54552.3
+          },
+          "raw": {
+            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa": "3",
+            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+            "PI": "-8",
+            "PI (2)": "SEM INFORMACAO",
+            "NC": "158125264222026NC000364",
+            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 75% DO TOTAL DA LOA.",
+            "Transação - Mês": "AGO/2026",
+            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
+          }
+        },
+        {
+          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+          "values": {
+            "Saldo - Moeda Origem (Item Informação)": 245485.35
           },
           "raw": {
             "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
@@ -1322,7 +1343,7 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "190.933,05"
+            "Saldo - Moeda Origem (Item Informação)": "245.485,35"
           }
         },
         {
@@ -1350,7 +1371,29 @@
         {
           "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 136640.0
+            "Grupo Despesa": 3.0,
+            "PI": -8.0,
+            "NC": 1.58125264222026e+20,
+            "Doc - Observação": -100.0,
+            "Transação - Mês": 2026.0,
+            "Saldo - Moeda Origem (Item Informação)": 273280.0
+          },
+          "raw": {
+            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa": "3",
+            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+            "PI": "-8",
+            "PI (2)": "SEM INFORMACAO",
+            "NC": "158125264222026NC000365",
+            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 100% DO TOTAL DA LOA.",
+            "Transação - Mês": "AGO/2026",
+            "Saldo - Moeda Origem (Item Informação)": "273.280,00"
+          }
+        },
+        {
+          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+          "values": {
+            "Saldo - Moeda Origem (Item Informação)": 409920.0
           },
           "raw": {
             "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
@@ -1361,7 +1404,7 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
+            "Saldo - Moeda Origem (Item Informação)": "409.920,00"
           }
         },
         {
@@ -1468,7 +1511,7 @@
         {
           "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 30000.0
+            "Saldo - Moeda Origem (Item Informação)": 35000.0
           },
           "raw": {
             "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
@@ -1479,13 +1522,13 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "30.000,00"
+            "Saldo - Moeda Origem (Item Informação)": "35.000,00"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3963000.15
+            "Saldo - Moeda Origem (Item Informação)": 5121970.49
           },
           "raw": {
             "Ação Governo": "Total",
@@ -1496,12 +1539,12 @@
             "NC": "",
             "Doc - Observação": "",
             "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.963.000,15"
+            "Saldo - Moeda Origem (Item Informação)": "5.121.970,49"
           }
         }
       ],
       "metrics": {
-        "provisionado": 3963000.15
+        "provisionado": 5121970.49
       },
       "metrics_meta": {
         "provisionado": {
