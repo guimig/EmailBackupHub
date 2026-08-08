@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-08-08T07:20:50.620265-03:00",
+  "generated_at": "2026-08-08T08:20:16.064880-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -11,20 +11,20 @@
   },
   "summary": {
     "dry_run": true,
-    "total_files": 3067,
+    "total_files": 3068,
     "retained_files": 105,
-    "ignored_by_retention": 2962,
-    "removal_candidates": 2962,
+    "ignored_by_retention": 2963,
+    "removal_candidates": 2963,
     "latest_files": 22,
     "monthly_close_files": 83,
     "cache_lookups": 105,
-    "processed_files": 0,
-    "cache_hits": 105,
-    "cache_misses_new": 0,
+    "processed_files": 1,
+    "cache_hits": 104,
+    "cache_misses_new": 1,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 105,
-    "duration_seconds": 2.185
+    "duration_seconds": 2.45
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.276
+        "duration_seconds": 0.271
       }
     },
     {
@@ -82,7 +82,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.361
+        "duration_seconds": 0.349
       }
     },
     {
@@ -654,7 +654,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.304
+        "duration_seconds": 0.3
       }
     },
     {
@@ -1216,7 +1216,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.311
+        "duration_seconds": 0.337
       }
     },
     {
@@ -1898,21 +1898,21 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.021
+        "duration_seconds": 0.019
       }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-2024",
-      "total_files": 7,
+      "total_files": 8,
       "retained_files": 1,
-      "ignored_by_retention": 6,
+      "ignored_by_retention": 7,
       "latest_files": 1,
       "monthly_close_files": 0,
       "retained": [
         {
-          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_08-07-2026.html",
-          "date_iso": "2026-07-08",
-          "closing_date_iso": "2026-07-07",
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_08-08-2026.html",
+          "date_iso": "2026-08-08",
+          "closing_date_iso": "2026-08-07",
           "reasons": [
             "latest"
           ]
@@ -1948,17 +1948,22 @@
           "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_09-06-2026.html",
           "date_iso": "2026-06-09",
           "closing_date_iso": "2026-06-08"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-2024/despesas-empenhadas-liquidadas-e-pagas-2024_08-07-2026.html",
+          "date_iso": "2026-07-08",
+          "closing_date_iso": "2026-07-07"
         }
       ],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 1,
-        "cache_misses_new": 0,
+        "cache_hits": 0,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 1,
-        "duration_seconds": 0.029
+        "duration_seconds": 0.264
       }
     },
     {
@@ -2014,7 +2019,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.059
+        "duration_seconds": 0.06
       }
     },
     {
@@ -2696,7 +2701,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.044
+        "duration_seconds": 0.045
       }
     },
     {
@@ -3268,7 +3273,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.013
+        "duration_seconds": 0.012
       }
     },
     {
@@ -3950,7 +3955,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.053
+        "duration_seconds": 0.055
       }
     },
     {
@@ -4851,7 +4856,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.009
+        "duration_seconds": 0.008
       }
     },
     {
@@ -6859,7 +6864,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.051
+        "duration_seconds": 0.052
       }
     },
     {
@@ -7943,7 +7948,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.089
+        "duration_seconds": 0.093
       }
     },
     {
@@ -9036,7 +9041,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.153
+        "duration_seconds": 0.158
       }
     },
     {
@@ -10996,7 +11001,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.035
+        "duration_seconds": 0.036
       }
     },
     {
@@ -13173,7 +13178,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.083
+        "duration_seconds": 0.089
       }
     },
     {
@@ -14266,7 +14271,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.047
+        "duration_seconds": 0.049
       }
     },
     {
@@ -14958,7 +14963,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.022
+        "duration_seconds": 0.023
       }
     }
   ]
