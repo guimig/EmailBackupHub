@@ -1235,9 +1235,9 @@
       "metrics": {}
     },
     {
-      "date": "08/08/2026",
-      "date_iso": "2026-08-08",
-      "hash_conteudo": "043172b067b17a4e961d049ff51de92e8a5ad7dbefbe1ec4b17acce4379d25af",
+      "date": "11/08/2026",
+      "date_iso": "2026-08-11",
+      "hash_conteudo": "9a9902b1ccf3319f98a98cb306c3c203a9386d6f6242cc711cddb143fd65fdbf",
       "totals": [
         {
           "label": "158459264222024SF000001",
@@ -1666,10 +1666,54 @@
           }
         },
         {
+          "label": "158459264222026SF000005",
+          "values": {
+            "Documento Hábil": 1.58459264222026e+20,
+            "DH - Dia Emissão": 3072026.0,
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1035.6,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1035.6
+          },
+          "raw": {
+            "Documento Hábil": "158459264222026SF000005",
+            "DH - Observação": "SUPRIMENTO DE FUNDOS N° 5/2026 PARA USO DO CARTÃO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO ÂMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO TIAGO JONES BACK E AUTORIZADAS PELA DIREÇÃO DE ADMINISTRAÇÃO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 - PROAD/IFC.",
+            "DH - Dia Emissão": "03/07/2026",
+            "DH - Valor": "Total",
+            "Doc - Tipo": "",
+            "Documento": "",
+            "Doc - Observação": "",
+            "Emissão - Dia": "",
+            "Item Informação / Doc - Valor": "",
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.035,60)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.035,60"
+          }
+        },
+        {
+          "label": "158459264222026SF000007",
+          "values": {
+            "Documento Hábil": 1.58459264222026e+20,
+            "DH - Dia Emissão": 3072026.0,
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -4185.12,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 4185.12
+          },
+          "raw": {
+            "Documento Hábil": "158459264222026SF000007",
+            "DH - Observação": "SUPRIMENTO DE FUNDOS Nº 7/2026 PARA USO DO CARTÃO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO ÂMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO ALESSANDRO EZIQUIEL DA PAIXÃO E AUTORIZADAS PELA DIREÇÃO DE ADMINISTRAÇÃO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+            "DH - Dia Emissão": "03/07/2026",
+            "DH - Valor": "Total",
+            "Doc - Tipo": "",
+            "Documento": "",
+            "Doc - Observação": "",
+            "Emissão - Dia": "",
+            "Item Informação / Doc - Valor": "",
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(4.185,12)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "4.185,12"
+          }
+        },
+        {
           "label": "Total",
           "values": {
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -160293.2,
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 160779.84
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -165513.92,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 166000.56
           },
           "raw": {
             "Documento Hábil": "Total",
@@ -1681,8 +1725,8 @@
             "Doc - Observação": "",
             "Emissão - Dia": "",
             "Item Informação / Doc - Valor": "",
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(160.293,20)",
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "160.779,84"
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(165.513,92)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "166.000,56"
           }
         }
       ],
