@@ -795,16 +795,16 @@
       }
     },
     {
-      "date": "13/08/2026",
-      "date_iso": "2026-08-13",
-      "hash_conteudo": "827a95649b4933cc5b7f660729de0788803c0230537f9b0868ec409cb9ea9836",
+      "date": "14/08/2026",
+      "date_iso": "2026-08-14",
+      "hash_conteudo": "eb2fae76002ca881d93b5f0d3cb7ca31331471c4f884a5f16709078026e9f070",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
             "Valor 8": 48746.66,
-            "Valor 9": 4671.48,
-            "Valor 10": 41081.86
+            "Valor 9": 3232.38,
+            "Valor 10": 42520.96
           },
           "raw": {
             "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
@@ -815,16 +815,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "48.746,66",
-            "Valor 9": "4.671,48",
-            "Valor 10": "41.081,86"
+            "Valor 9": "3.232,38",
+            "Valor 10": "42.520,96"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 264967.35,
-            "Valor 9": 50.0,
-            "Valor 10": 418527.43
+            "Valor 9": 300.0,
+            "Valor 10": 418277.43
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -835,8 +835,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "264.967,35",
-            "Valor 9": "50,00",
-            "Valor 10": "418.527,43"
+            "Valor 9": "300,00",
+            "Valor 10": "418.277,43"
           }
         },
         {
@@ -873,6 +873,24 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "1.087,20",
+            "Valor 9": "",
+            "Valor 10": ""
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "Valor 8": 149943.06
+          },
+          "raw": {
+            "Conta Contabil": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Empenhado": "Total",
+            "A Liquidar": "Total",
+            "Liquidado a Pagar": "",
+            "Pago": "",
+            "Valor 6": "",
+            "Valor 7": "",
+            "Valor 8": "149.943,06",
             "Valor 9": "",
             "Valor 10": ""
           }
@@ -1058,9 +1076,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2126458.96,
-            "Valor 9": 252145.27,
-            "Valor 10": 2407590.06
+            "Valor 8": 2276402.02,
+            "Valor 9": 250956.17,
+            "Valor 10": 2408779.16
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1070,17 +1088,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.126.458,96",
-            "Valor 9": "252.145,27",
-            "Valor 10": "2.407.590,06"
+            "Valor 8": "2.276.402,02",
+            "Valor 9": "250.956,17",
+            "Valor 10": "2.408.779,16"
           }
         }
       ],
       "metrics": {
-        "empenhado": 9094392249.0,
-        "saldo_a_liquidar": 2126458.96,
-        "liquidado_a_pagar": 252145.27,
-        "pago": 2407590.06
+        "empenhado": 9196101858.0,
+        "saldo_a_liquidar": 2276402.02,
+        "liquidado_a_pagar": 250956.17,
+        "pago": 2408779.16
       },
       "metrics_meta": {
         "empenhado": {

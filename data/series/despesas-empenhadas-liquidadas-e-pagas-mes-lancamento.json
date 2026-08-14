@@ -742,16 +742,16 @@
       }
     },
     {
-      "date": "13/08/2026",
-      "date_iso": "2026-08-13",
-      "hash_conteudo": "6553943ef9980bb5a73705e388e5322d955dadcb6a6469322d0c868392fe005d",
+      "date": "14/08/2026",
+      "date_iso": "2026-08-14",
+      "hash_conteudo": "3b9446f570cc111e7f4db1c946f226af355c3039f22e40f1c313a9cb7ac5ef84",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
             "Valor 7": 94500.0,
             "Valor 8": 45753.34,
-            "Valor 9": 41081.86
+            "Valor 9": 42520.96
           },
           "raw": {
             "Mes": "DIARIAS - PESSOAL CIVIL",
@@ -762,7 +762,7 @@
             "Valor 6": "",
             "Valor 7": "94.500,00",
             "Valor 8": "45.753,34",
-            "Valor 9": "41.081,86"
+            "Valor 9": "42.520,96"
           }
         },
         {
@@ -770,7 +770,7 @@
           "values": {
             "Valor 7": 683544.78,
             "Valor 8": 418577.43,
-            "Valor 9": 418527.43
+            "Valor 9": 418277.43
           },
           "raw": {
             "Mes": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -781,7 +781,7 @@
             "Valor 6": "",
             "Valor 7": "683.544,78",
             "Valor 8": "418.577,43",
-            "Valor 9": "418.527,43"
+            "Valor 9": "418.277,43"
           }
         },
         {
@@ -816,6 +816,23 @@
             "Liquidado a Pagar": "",
             "Valor 6": "",
             "Valor 7": "1.087,20",
+            "Valor 8": "",
+            "Valor 9": ""
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "Valor 7": 149943.06
+          },
+          "raw": {
+            "Mes": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Empenhado": "Total",
+            "Liquidado": "Total",
+            "Pago": "",
+            "Liquidado a Pagar": "",
+            "Valor 6": "",
+            "Valor 7": "149.943,06",
             "Valor 8": "",
             "Valor 9": ""
           }
@@ -992,9 +1009,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 7": 4786194.29,
+            "Valor 7": 4936137.35,
             "Valor 8": 2659735.33,
-            "Valor 9": 2407590.06
+            "Valor 9": 2408779.16
           },
           "raw": {
             "Mes": "Total",
@@ -1003,16 +1020,16 @@
             "Pago": "",
             "Liquidado a Pagar": "",
             "Valor 6": "",
-            "Valor 7": "4.786.194,29",
+            "Valor 7": "4.936.137,35",
             "Valor 8": "2.659.735,33",
-            "Valor 9": "2.407.590,06"
+            "Valor 9": "2.408.779,16"
           }
         }
       ],
       "metrics": {
-        "empenhado": 4786194.29,
+        "empenhado": 4936137.35,
         "liquidado": 2659735.33,
-        "pago": 2407590.06
+        "pago": 2408779.16
       },
       "metrics_meta": {
         "empenhado": {
