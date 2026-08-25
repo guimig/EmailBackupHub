@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-08-25T10:40:54.896307-03:00",
+  "generated_at": "2026-08-25T11:35:09.639185-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -11,20 +11,20 @@
   },
   "summary": {
     "dry_run": true,
-    "total_files": 3222,
+    "total_files": 3224,
     "retained_files": 105,
-    "ignored_by_retention": 3117,
-    "removal_candidates": 3117,
+    "ignored_by_retention": 3119,
+    "removal_candidates": 3119,
     "latest_files": 22,
     "monthly_close_files": 83,
     "cache_lookups": 105,
-    "processed_files": 0,
-    "cache_hits": 105,
-    "cache_misses_new": 0,
+    "processed_files": 2,
+    "cache_hits": 103,
+    "cache_misses_new": 2,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 105,
-    "duration_seconds": 2.241
+    "duration_seconds": 5.18
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.29
+        "duration_seconds": 0.294
       }
     },
     {
@@ -82,14 +82,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.363
+        "duration_seconds": 0.371
       }
     },
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
-      "total_files": 107,
+      "total_files": 108,
       "retained_files": 4,
-      "ignored_by_retention": 103,
+      "ignored_by_retention": 104,
       "latest_files": 1,
       "monthly_close_files": 3,
       "retained": [
@@ -121,9 +121,9 @@
           ]
         },
         {
-          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-07-2026.html",
-          "date_iso": "2026-07-11",
-          "closing_date_iso": "2026-07-10",
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_25-08-2026.html",
+          "date_iso": "2026-08-25",
+          "closing_date_iso": "2026-08-24",
           "reasons": [
             "latest"
           ]
@@ -644,24 +644,29 @@
           "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_10-07-2026.html",
           "date_iso": "2026-07-10",
           "closing_date_iso": "2026-07-09"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-07-2026.html",
+          "date_iso": "2026-07-11",
+          "closing_date_iso": "2026-07-10"
         }
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 4,
-        "cache_misses_new": 0,
+        "cache_hits": 3,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 4,
-        "duration_seconds": 0.312
+        "duration_seconds": 1.894
       }
     },
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
-      "total_files": 105,
+      "total_files": 106,
       "retained_files": 4,
-      "ignored_by_retention": 101,
+      "ignored_by_retention": 102,
       "latest_files": 1,
       "monthly_close_files": 3,
       "retained": [
@@ -693,9 +698,9 @@
           ]
         },
         {
-          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_11-07-2026.html",
-          "date_iso": "2026-07-11",
-          "closing_date_iso": "2026-07-10",
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_25-08-2026.html",
+          "date_iso": "2026-08-25",
+          "closing_date_iso": "2026-08-24",
           "reasons": [
             "latest"
           ]
@@ -1206,17 +1211,22 @@
           "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_10-07-2026.html",
           "date_iso": "2026-07-10",
           "closing_date_iso": "2026-07-09"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_11-07-2026.html",
+          "date_iso": "2026-07-11",
+          "closing_date_iso": "2026-07-10"
         }
       ],
       "processing": {
         "cache_lookups": 4,
-        "cache_hits": 4,
-        "cache_misses_new": 0,
+        "cache_hits": 3,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 4,
-        "duration_seconds": 0.309
+        "duration_seconds": 1.677
       }
     },
     {
@@ -1953,7 +1963,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.021
+        "duration_seconds": 0.019
       }
     },
     {
@@ -2018,7 +2028,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.03
+        "duration_seconds": 0.029
       }
     },
     {
@@ -2074,7 +2084,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.059
+        "duration_seconds": 0.057
       }
     },
     {
@@ -2811,7 +2821,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.046
+        "duration_seconds": 0.045
       }
     },
     {
@@ -4164,7 +4174,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 2,
-        "duration_seconds": 0.057
+        "duration_seconds": 0.054
       }
     },
     {
@@ -5076,7 +5086,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.01
+        "duration_seconds": 0.009
       }
     },
     {
@@ -6169,7 +6179,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.041
+        "duration_seconds": 0.039
       }
     },
     {
@@ -7139,7 +7149,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.055
+        "duration_seconds": 0.052
       }
     },
     {
@@ -8223,7 +8233,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.091
+        "duration_seconds": 0.09
       }
     },
     {
@@ -11331,7 +11341,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.037
+        "duration_seconds": 0.036
       }
     },
     {
@@ -13508,7 +13518,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.087
+        "duration_seconds": 0.085
       }
     },
     {
@@ -14601,7 +14611,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.05
+        "duration_seconds": 0.047
       }
     },
     {
@@ -15348,7 +15358,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.024
+        "duration_seconds": 0.023
       }
     }
   ]
