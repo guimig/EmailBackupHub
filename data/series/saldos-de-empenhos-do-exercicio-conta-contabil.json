@@ -795,15 +795,15 @@
       }
     },
     {
-      "date": "29/08/2026",
-      "date_iso": "2026-08-29",
-      "hash_conteudo": "850ea411ccae4e4746c95b29845ebeb9c8ab248ed7e9954f829b675f83ca95d8",
+      "date": "01/09/2026",
+      "date_iso": "2026-09-01",
+      "hash_conteudo": "16d49e4f0502dff9d381895f162a576f7c7a62976c6c1ce6cf25cfe62458066a",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 29021.72,
-            "Valor 9": 0.0,
+            "Valor 8": 27730.94,
+            "Valor 9": 1290.78,
             "Valor 10": 65478.28
           },
           "raw": {
@@ -814,8 +814,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "29.021,72",
-            "Valor 9": "0,00",
+            "Valor 8": "27.730,94",
+            "Valor 9": "1.290,78",
             "Valor 10": "65.478,28"
           }
         },
@@ -842,8 +842,8 @@
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 119501.64,
-            "Valor 9": 5192.52,
+            "Valor 8": 119124.14,
+            "Valor 9": 5570.02,
             "Valor 10": 282573.67
           },
           "raw": {
@@ -854,8 +854,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "119.501,64",
-            "Valor 9": "5.192,52",
+            "Valor 8": "119.124,14",
+            "Valor 9": "5.570,02",
             "Valor 10": "282.573,67"
           }
         },
@@ -1058,8 +1058,8 @@
         {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
-            "Valor 8": 24123.27,
-            "Valor 9": 2072.91,
+            "Valor 8": 3252.0,
+            "Valor 9": 22944.18,
             "Valor 10": 73362.41
           },
           "raw": {
@@ -1070,16 +1070,16 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "24.123,27",
-            "Valor 9": "2.072,91",
+            "Valor 8": "3.252,00",
+            "Valor 9": "22.944,18",
             "Valor 10": "73.362,41"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2065032.3,
-            "Valor 9": 160662.49,
+            "Valor 8": 2042492.75,
+            "Valor 9": 183202.04,
             "Valor 10": 2744729.18
           },
           "raw": {
@@ -1090,16 +1090,16 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.065.032,30",
-            "Valor 9": "160.662,49",
+            "Valor 8": "2.042.492,75",
+            "Valor 9": "183.202,04",
             "Valor 10": "2.744.729,18"
           }
         }
       ],
       "metrics": {
         "empenhado": 9467331538.0,
-        "saldo_a_liquidar": 2065032.3,
-        "liquidado_a_pagar": 160662.49,
+        "saldo_a_liquidar": 2042492.75,
+        "liquidado_a_pagar": 183202.04,
         "pago": 2744729.18
       },
       "metrics_meta": {
