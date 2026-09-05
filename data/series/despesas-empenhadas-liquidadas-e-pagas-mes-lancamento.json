@@ -1052,16 +1052,16 @@
       }
     },
     {
-      "date": "04/09/2026",
-      "date_iso": "2026-09-04",
-      "hash_conteudo": "978d370e5c3d2894dec6fa30fc89f7ccbe878df88b70ad23108c36c13f805098",
+      "date": "05/09/2026",
+      "date_iso": "2026-09-05",
+      "hash_conteudo": "6de43d79d97eec3270cae5eae636200645a5a562b584e503302924054b765bd2",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
             "Valor 7": 100987.8,
             "Valor 8": 68685.62,
-            "Valor 9": 65478.28
+            "Valor 9": 68685.62
           },
           "raw": {
             "Mes": "DIARIAS - PESSOAL CIVIL",
@@ -1072,7 +1072,7 @@
             "Valor 6": "",
             "Valor 7": "100.987,80",
             "Valor 8": "68.685,62",
-            "Valor 9": "65.478,28"
+            "Valor 9": "68.685,62"
           }
         },
         {
@@ -1080,7 +1080,7 @@
           "values": {
             "Valor 7": 707544.78,
             "Valor 8": 506541.17,
-            "Valor 9": 495341.17
+            "Valor 9": 506491.17
           },
           "raw": {
             "Mes": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1091,15 +1091,15 @@
             "Valor 6": "",
             "Valor 7": "707.544,78",
             "Valor 8": "506.541,17",
-            "Valor 9": "495.341,17"
+            "Valor 9": "506.491,17"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
             "Valor 7": 407643.43,
-            "Valor 8": 288143.69,
-            "Valor 9": 287814.7
+            "Valor 8": 290034.19,
+            "Valor 9": 289705.2
           },
           "raw": {
             "Mes": "MATERIAL DE CONSUMO",
@@ -1109,8 +1109,8 @@
             "Liquidado a Pagar": "",
             "Valor 6": "",
             "Valor 7": "407.643,43",
-            "Valor 8": "288.143,69",
-            "Valor 9": "287.814,70"
+            "Valor 8": "290.034,19",
+            "Valor 9": "289.705,20"
           }
         },
         {
@@ -1188,7 +1188,7 @@
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 7": 1651943.19,
+            "Valor 7": 1666402.67,
             "Valor 8": 955068.41,
             "Valor 9": 904461.35
           },
@@ -1199,7 +1199,7 @@
             "Pago": "",
             "Liquidado a Pagar": "",
             "Valor 6": "",
-            "Valor 7": "1.651.943,19",
+            "Valor 7": "1.666.402,67",
             "Valor 8": "955.068,41",
             "Valor 9": "904.461,35"
           }
@@ -1207,7 +1207,7 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 7": 1388365.33,
+            "Valor 7": 1373365.33,
             "Valor 8": 721838.14,
             "Valor 9": 718089.09
           },
@@ -1218,7 +1218,7 @@
             "Pago": "",
             "Liquidado a Pagar": "",
             "Valor 6": "",
-            "Valor 7": "1.388.365,33",
+            "Valor 7": "1.373.365,33",
             "Valor 8": "721.838,14",
             "Valor 9": "718.089,09"
           }
@@ -1300,6 +1300,23 @@
           }
         },
         {
+          "label": "OBRAS E INSTALACOES",
+          "values": {
+            "Valor 7": 499982.21
+          },
+          "raw": {
+            "Mes": "OBRAS E INSTALACOES",
+            "Empenhado": "Total",
+            "Liquidado": "Total",
+            "Pago": "",
+            "Liquidado a Pagar": "",
+            "Valor 6": "",
+            "Valor 7": "499.982,21",
+            "Valor 8": "",
+            "Valor 9": ""
+          }
+        },
+        {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
             "Valor 7": 99558.59,
@@ -1321,9 +1338,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 7": 4977287.37,
-            "Valor 8": 2954274.88,
-            "Valor 9": 2871382.83
+            "Valor 7": 5476729.06,
+            "Valor 8": 2956165.38,
+            "Valor 9": 2887630.67
           },
           "raw": {
             "Mes": "Total",
@@ -1332,16 +1349,16 @@
             "Pago": "",
             "Liquidado a Pagar": "",
             "Valor 6": "",
-            "Valor 7": "4.977.287,37",
-            "Valor 8": "2.954.274,88",
-            "Valor 9": "2.871.382,83"
+            "Valor 7": "5.476.729,06",
+            "Valor 8": "2.956.165,38",
+            "Valor 9": "2.887.630,67"
           }
         }
       ],
       "metrics": {
-        "empenhado": 4977287.37,
-        "liquidado": 2954274.88,
-        "pago": 2871382.83
+        "empenhado": 5476729.06,
+        "liquidado": 2956165.38,
+        "pago": 2887630.67
       },
       "metrics_meta": {
         "empenhado": {
