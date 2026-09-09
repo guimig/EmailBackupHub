@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5",
-  "generated_at": "2026-09-09T11:55:11.378382-03:00",
+  "generated_at": "2026-09-09T15:09:28.825869-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -18,13 +18,13 @@
     "latest_files": 22,
     "monthly_close_files": 100,
     "cache_lookups": 121,
-    "processed_files": 1,
-    "cache_hits": 120,
-    "cache_misses_new": 1,
+    "processed_files": 0,
+    "cache_hits": 121,
+    "cache_misses_new": 0,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 121,
-    "duration_seconds": 2.967
+    "duration_seconds": 2.693
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.283
+        "duration_seconds": 0.285
       }
     },
     {
@@ -82,7 +82,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.358
+        "duration_seconds": 0.363
       }
     },
     {
@@ -713,7 +713,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.496
+        "duration_seconds": 0.505
       }
     },
     {
@@ -1334,7 +1334,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.463
+        "duration_seconds": 0.467
       }
     },
     {
@@ -2189,13 +2189,13 @@
       ],
       "processing": {
         "cache_lookups": 1,
-        "cache_hits": 0,
-        "cache_misses_new": 1,
+        "cache_hits": 1,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.313
+        "duration_seconds": 0.029
       }
     },
     {
@@ -2251,7 +2251,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.058
+        "duration_seconds": 0.069
       }
     },
     {
@@ -3042,7 +3042,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.058
+        "duration_seconds": 0.057
       }
     },
     {
@@ -4405,7 +4405,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.064
+        "duration_seconds": 0.065
       }
     },
     {
@@ -4456,7 +4456,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 2,
-        "duration_seconds": 0.056
+        "duration_seconds": 0.055
       }
     },
     {
@@ -5422,7 +5422,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.011
+        "duration_seconds": 0.01
       }
     },
     {
@@ -6524,7 +6524,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.043
+        "duration_seconds": 0.042
       }
     },
     {
@@ -8641,7 +8641,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.102
+        "duration_seconds": 0.103
       }
     },
     {
@@ -9743,7 +9743,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.187
+        "duration_seconds": 0.173
       }
     },
     {
@@ -14016,7 +14016,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.102
+        "duration_seconds": 0.099
       }
     },
     {
@@ -15118,7 +15118,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.054
+        "duration_seconds": 0.053
       }
     },
     {
@@ -15919,7 +15919,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.029
+        "duration_seconds": 0.028
       }
     }
   ]
