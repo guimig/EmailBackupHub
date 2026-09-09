@@ -1126,15 +1126,15 @@
       }
     },
     {
-      "date": "05/09/2026",
-      "date_iso": "2026-09-05",
-      "hash_conteudo": "d65306e9ea7e96f5d3e83f9387ec3d2d6f5a78bea3c04d15653fa308ea57da37",
+      "date": "09/09/2026",
+      "date_iso": "2026-09-09",
+      "hash_conteudo": "3b1952a091759902e1dd8dc17ea5f130946147735c93d67c97b71a474669ff9f",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 32302.18,
-            "Valor 9": 0.0,
+            "Valor 8": 31238.04,
+            "Valor 9": 1064.14,
             "Valor 10": 68685.62
           },
           "raw": {
@@ -1145,8 +1145,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "32.302,18",
-            "Valor 9": "0,00",
+            "Valor 8": "31.238,04",
+            "Valor 9": "1.064,14",
             "Valor 10": "68.685,62"
           }
         },
@@ -1154,8 +1154,8 @@
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 201003.61,
-            "Valor 9": 50.0,
-            "Valor 10": 506491.17
+            "Valor 9": 0.0,
+            "Valor 10": 506541.17
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1166,8 +1166,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "201.003,61",
-            "Valor 9": "50,00",
-            "Valor 10": "506.491,17"
+            "Valor 9": "0,00",
+            "Valor 10": "506.541,17"
           }
         },
         {
@@ -1229,8 +1229,8 @@
         {
           "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
           "values": {
-            "Valor 8": 52562.13,
-            "Valor 9": 0.0,
+            "Valor 8": 52040.13,
+            "Valor 9": 522.0,
             "Valor 10": 6132.86
           },
           "raw": {
@@ -1241,8 +1241,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "52.562,13",
-            "Valor 9": "0,00",
+            "Valor 8": "52.040,13",
+            "Valor 9": "522,00",
             "Valor 10": "6.132,86"
           }
         },
@@ -1269,8 +1269,8 @@
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 711334.26,
-            "Valor 9": 50607.06,
+            "Valor 8": 680653.85,
+            "Valor 9": 81287.47,
             "Valor 10": 904461.35
           },
           "raw": {
@@ -1281,16 +1281,16 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "711.334,26",
-            "Valor 9": "50.607,06",
+            "Valor 8": "680.653,85",
+            "Valor 9": "81.287,47",
             "Valor 10": "904.461,35"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 651527.19,
-            "Valor 9": 3749.05,
+            "Valor 8": 651393.03,
+            "Valor 9": 3883.21,
             "Valor 10": 718089.09
           },
           "raw": {
@@ -1301,16 +1301,16 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "651.527,19",
-            "Valor 9": "3.749,05",
+            "Valor 8": "651.393,03",
+            "Valor 9": "3.883,21",
             "Valor 10": "718.089,09"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 30896.54,
-            "Valor 9": 0.0,
+            "Valor 8": 26466.9,
+            "Valor 9": 4429.64,
             "Valor 10": 14662.26
           },
           "raw": {
@@ -1321,8 +1321,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "30.896,54",
-            "Valor 9": "0,00",
+            "Valor 8": "26.466,90",
+            "Valor 9": "4.429,64",
             "Valor 10": "14.662,26"
           }
         },
@@ -1427,9 +1427,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2520563.68,
-            "Valor 9": 68534.71,
-            "Valor 10": 2887630.67
+            "Valor 8": 2483733.33,
+            "Valor 9": 105315.06,
+            "Valor 10": 2887680.67
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1439,17 +1439,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.520.563,68",
-            "Valor 9": "68.534,71",
-            "Valor 10": "2.887.630,67"
+            "Valor 8": "2.483.733,33",
+            "Valor 9": "105.315,06",
+            "Valor 10": "2.887.680,67"
           }
         }
       ],
       "metrics": {
         "empenhado": 9546139747.0,
-        "saldo_a_liquidar": 2520563.68,
-        "liquidado_a_pagar": 68534.71,
-        "pago": 2887630.67
+        "saldo_a_liquidar": 2483733.33,
+        "liquidado_a_pagar": 105315.06,
+        "pago": 2887680.67
       },
       "metrics_meta": {
         "empenhado": {
