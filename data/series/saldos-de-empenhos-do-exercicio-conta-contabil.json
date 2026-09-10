@@ -1126,9 +1126,9 @@
       }
     },
     {
-      "date": "09/09/2026",
-      "date_iso": "2026-09-09",
-      "hash_conteudo": "3b1952a091759902e1dd8dc17ea5f130946147735c93d67c97b71a474669ff9f",
+      "date": "10/09/2026",
+      "date_iso": "2026-09-10",
+      "hash_conteudo": "150ae543e3526c88f42d79cb3e762c5afe08d52e937c44df3634ee7a5660f0d5",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
@@ -1154,8 +1154,8 @@
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 201003.61,
-            "Valor 9": 0.0,
-            "Valor 10": 506541.17
+            "Valor 9": 1100.0,
+            "Valor 10": 505441.17
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1166,8 +1166,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "201.003,61",
-            "Valor 9": "0,00",
-            "Valor 10": "506.541,17"
+            "Valor 9": "1.100,00",
+            "Valor 10": "505.441,17"
           }
         },
         {
@@ -1249,8 +1249,8 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 43695.03,
-            "Valor 9": 4853.62,
+            "Valor 8": 34428.65,
+            "Valor 9": 14853.62,
             "Valor 10": 232968.96
           },
           "raw": {
@@ -1261,8 +1261,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "43.695,03",
-            "Valor 9": "4.853,62",
+            "Valor 8": "34.428,65",
+            "Valor 9": "14.853,62",
             "Valor 10": "232.968,96"
           }
         },
@@ -1289,8 +1289,8 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 651393.03,
-            "Valor 9": 3883.21,
+            "Valor 8": 651203.03,
+            "Valor 9": 4073.21,
             "Valor 10": 718089.09
           },
           "raw": {
@@ -1301,8 +1301,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "651.393,03",
-            "Valor 9": "3.883,21",
+            "Valor 8": "651.203,03",
+            "Valor 9": "4.073,21",
             "Valor 10": "718.089,09"
           }
         },
@@ -1369,8 +1369,8 @@
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 10741.95,
-            "Valor 9": 8824.72,
+            "Valor 8": 8741.95,
+            "Valor 9": 10824.72,
             "Valor 10": 38739.78
           },
           "raw": {
@@ -1381,8 +1381,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "10.741,95",
-            "Valor 9": "8.824,72",
+            "Valor 8": "8.741,95",
+            "Valor 9": "10.824,72",
             "Valor 10": "38.739,78"
           }
         },
@@ -1427,9 +1427,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2483733.33,
-            "Valor 9": 105315.06,
-            "Valor 10": 2887680.67
+            "Valor 8": 2472276.95,
+            "Valor 9": 118605.06,
+            "Valor 10": 2886580.67
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1439,17 +1439,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.483.733,33",
-            "Valor 9": "105.315,06",
-            "Valor 10": "2.887.680,67"
+            "Valor 8": "2.472.276,95",
+            "Valor 9": "118.605,06",
+            "Valor 10": "2.886.580,67"
           }
         }
       ],
       "metrics": {
         "empenhado": 9546139747.0,
-        "saldo_a_liquidar": 2483733.33,
-        "liquidado_a_pagar": 105315.06,
-        "pago": 2887680.67
+        "saldo_a_liquidar": 2472276.95,
+        "liquidado_a_pagar": 118605.06,
+        "pago": 2886580.67
       },
       "metrics_meta": {
         "empenhado": {
