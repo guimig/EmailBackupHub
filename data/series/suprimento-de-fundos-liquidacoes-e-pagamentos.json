@@ -1733,9 +1733,9 @@
       "metrics": {}
     },
     {
-      "date": "10/09/2026",
-      "date_iso": "2026-09-10",
-      "hash_conteudo": "9a9902b1ccf3319f98a98cb306c3c203a9386d6f6242cc711cddb143fd65fdbf",
+      "date": "11/09/2026",
+      "date_iso": "2026-09-11",
+      "hash_conteudo": "a36d47ae62e034a8908153fec26e06652e18a4a89b7b84a68091edcb17b6a129",
       "totals": [
         {
           "label": "158459264222024SF000001",
@@ -2168,8 +2168,8 @@
           "values": {
             "Documento Hábil": 1.58459264222026e+20,
             "DH - Dia Emissão": 3072026.0,
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1035.6,
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1035.6
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -5555.52,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 5555.52
           },
           "raw": {
             "Documento Hábil": "158459264222026SF000005",
@@ -2181,8 +2181,30 @@
             "Doc - Observação": "",
             "Emissão - Dia": "",
             "Item Informação / Doc - Valor": "",
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.035,60)",
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.035,60"
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(5.555,52)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "5.555,52"
+          }
+        },
+        {
+          "label": "158459264222026SF000006",
+          "values": {
+            "Documento Hábil": 1.58459264222026e+20,
+            "DH - Dia Emissão": 3072026.0,
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -2464.4,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 2464.4
+          },
+          "raw": {
+            "Documento Hábil": "158459264222026SF000006",
+            "DH - Observação": "SUPRIMENTO DE FUNDOS N° 6/2026 PARA USO DO CARTÃO DE PAGAMENTO DO GOVERNO FEDERAL (CPGF) NO ÂMBITO DO IFC - CAMPUS ARAQUARI PARA PAGAMENTO DE DESPESAS PREVIAMENTE ENCAMINHADAS AO SUPRIDO JOÃO RICARDO TECHIO E AUTORIZADAS PELA DIREÇÃO DE ADMINISTRAÇÃO E PLANEJAMENTO E/OU QUE ESTEJAM EM CONFORMIDADE COM OS TERMOS DA PORTARIA NORMATIVA Nº 05/2024 ¿ PROAD/IFC.",
+            "DH - Dia Emissão": "03/07/2026",
+            "DH - Valor": "Total",
+            "Doc - Tipo": "",
+            "Documento": "",
+            "Doc - Observação": "",
+            "Emissão - Dia": "",
+            "Item Informação / Doc - Valor": "",
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(2.464,40)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "2.464,40"
           }
         },
         {
@@ -2210,8 +2232,8 @@
         {
           "label": "Total",
           "values": {
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -165513.92,
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 166000.56
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -172498.24,
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 172984.88
           },
           "raw": {
             "Documento Hábil": "Total",
@@ -2223,8 +2245,8 @@
             "Doc - Observação": "",
             "Emissão - Dia": "",
             "Item Informação / Doc - Valor": "",
-            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(165.513,92)",
-            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "166.000,56"
+            "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(172.498,24)",
+            "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "172.984,88"
           }
         }
       ],
