@@ -1126,9 +1126,9 @@
       }
     },
     {
-      "date": "17/09/2026",
-      "date_iso": "2026-09-17",
-      "hash_conteudo": "8abe70406f5b4d4b4b2d73af7ccb573a959fce1ad63956a14f0a67e2c381368e",
+      "date": "18/09/2026",
+      "date_iso": "2026-09-18",
+      "hash_conteudo": "1ae6e509ad0aeb8a3fe1a28e48b6062d362821aaf5e51e9acd2ebfe36e6c257e",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
@@ -1154,8 +1154,8 @@
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 211520.06,
-            "Valor 9": 0.0,
-            "Valor 10": 516024.72
+            "Valor 9": 50.0,
+            "Valor 10": 515974.72
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1166,8 +1166,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "211.520,06",
-            "Valor 9": "0,00",
-            "Valor 10": "516.024,72"
+            "Valor 9": "50,00",
+            "Valor 10": "515.974,72"
           }
         },
         {
@@ -1249,9 +1249,9 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 1928.65,
+            "Valor 8": 1928.67,
             "Valor 9": 4675.01,
-            "Valor 10": 275647.57
+            "Valor 10": 275647.55
           },
           "raw": {
             "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
@@ -1261,9 +1261,9 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "1.928,65",
+            "Valor 8": "1.928,67",
             "Valor 9": "4.675,01",
-            "Valor 10": "275.647,57"
+            "Valor 10": "275.647,55"
           }
         },
         {
@@ -1370,8 +1370,8 @@
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
             "Valor 8": 2241.95,
-            "Valor 9": 8500.0,
-            "Valor 10": 47564.5
+            "Valor 9": 8566.66,
+            "Valor 10": 47497.84
           },
           "raw": {
             "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
@@ -1382,8 +1382,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "2.241,95",
-            "Valor 9": "8.500,00",
-            "Valor 10": "47.564,50"
+            "Valor 9": "8.566,66",
+            "Valor 10": "47.497,84"
           }
         },
         {
@@ -1427,9 +1427,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2410045.0,
-            "Valor 9": 42216.68,
-            "Valor 10": 3040998.13
+            "Valor 8": 2410045.02,
+            "Valor 9": 42333.34,
+            "Valor 10": 3040881.45
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1439,17 +1439,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.410.045,00",
-            "Valor 9": "42.216,68",
-            "Valor 10": "3.040.998,13"
+            "Valor 8": "2.410.045,02",
+            "Valor 9": "42.333,34",
+            "Valor 10": "3.040.881,45"
           }
         }
       ],
       "metrics": {
         "empenhado": 9715655433.0,
-        "saldo_a_liquidar": 2410045.0,
-        "liquidado_a_pagar": 42216.68,
-        "pago": 3040998.13
+        "saldo_a_liquidar": 2410045.02,
+        "liquidado_a_pagar": 42333.34,
+        "pago": 3040881.45
       },
       "metrics_meta": {
         "empenhado": {
