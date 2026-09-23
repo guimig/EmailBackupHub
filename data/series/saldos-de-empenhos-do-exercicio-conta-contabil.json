@@ -1126,16 +1126,16 @@
       }
     },
     {
-      "date": "22/09/2026",
-      "date_iso": "2026-09-22",
-      "hash_conteudo": "67eaef0ce8c25e47a04f6f881e31097246873a20d8c7b51de0347fa3d8a09c83",
+      "date": "23/09/2026",
+      "date_iso": "2026-09-23",
+      "hash_conteudo": "5586a86d29c33482e1b865f238a8c1c7a5cd1224760e855a4d90d529db511822",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
             "Valor 8": 30156.44,
-            "Valor 9": 687.46,
-            "Valor 10": 70143.9
+            "Valor 9": 0.0,
+            "Valor 10": 70831.36
           },
           "raw": {
             "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
@@ -1146,16 +1146,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "30.156,44",
-            "Valor 9": "687,46",
-            "Valor 10": "70.143,90"
+            "Valor 9": "0,00",
+            "Valor 10": "70.831,36"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
             "Valor 8": 144220.06,
-            "Valor 9": 65550.0,
-            "Valor 10": 517774.72
+            "Valor 9": 31150.0,
+            "Valor 10": 552174.72
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1166,8 +1166,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "144.220,06",
-            "Valor 9": "65.550,00",
-            "Valor 10": "517.774,72"
+            "Valor 9": "31.150,00",
+            "Valor 10": "552.174,72"
           }
         },
         {
@@ -1429,8 +1429,8 @@
           "label": "Total",
           "values": {
             "Valor 8": 2295086.51,
-            "Valor 9": 125493.09,
-            "Valor 10": 3069425.39
+            "Valor 9": 90405.63,
+            "Valor 10": 3104512.85
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1441,16 +1441,16 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "2.295.086,51",
-            "Valor 9": "125.493,09",
-            "Valor 10": "3.069.425,39"
+            "Valor 9": "90.405,63",
+            "Valor 10": "3.104.512,85"
           }
         }
       ],
       "metrics": {
         "empenhado": 9749558455.0,
         "saldo_a_liquidar": 2295086.51,
-        "liquidado_a_pagar": 125493.09,
-        "pago": 3069425.39
+        "liquidado_a_pagar": 90405.63,
+        "pago": 3104512.85
       },
       "metrics_meta": {
         "empenhado": {
