@@ -1126,15 +1126,15 @@
       }
     },
     {
-      "date": "23/09/2026",
-      "date_iso": "2026-09-23",
-      "hash_conteudo": "5586a86d29c33482e1b865f238a8c1c7a5cd1224760e855a4d90d529db511822",
+      "date": "24/09/2026",
+      "date_iso": "2026-09-24",
+      "hash_conteudo": "ee6e745faaccb9246d48306e6bd479c0ec76c328107bb1f4a776ebf6ee97d9f2",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 30156.44,
-            "Valor 9": 0.0,
+            "Valor 8": 27824.88,
+            "Valor 9": 2331.56,
             "Valor 10": 70831.36
           },
           "raw": {
@@ -1145,17 +1145,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "30.156,44",
-            "Valor 9": "0,00",
+            "Valor 8": "27.824,88",
+            "Valor 9": "2.331,56",
             "Valor 10": "70.831,36"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 144220.06,
-            "Valor 9": 31150.0,
-            "Valor 10": 552174.72
+            "Valor 8": 191720.06,
+            "Valor 9": 50.0,
+            "Valor 10": 583274.72
           },
           "raw": {
             "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1165,9 +1165,9 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "144.220,06",
-            "Valor 9": "31.150,00",
-            "Valor 10": "552.174,72"
+            "Valor 8": "191.720,06",
+            "Valor 9": "50,00",
+            "Valor 10": "583.274,72"
           }
         },
         {
@@ -1270,8 +1270,8 @@
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 675170.75,
-            "Valor 9": 28132.88,
+            "Valor 8": 578213.13,
+            "Valor 9": 125090.5,
             "Valor 10": 957615.94
           },
           "raw": {
@@ -1282,8 +1282,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "675.170,75",
-            "Valor 9": "28.132,88",
+            "Valor 8": "578.213,13",
+            "Valor 9": "125.090,50",
             "Valor 10": "957.615,94"
           }
         },
@@ -1428,9 +1428,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2295086.51,
-            "Valor 9": 90405.63,
-            "Valor 10": 3104512.85
+            "Valor 8": 2243297.33,
+            "Valor 9": 158594.81,
+            "Valor 10": 3135612.85
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1440,17 +1440,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.295.086,51",
-            "Valor 9": "90.405,63",
-            "Valor 10": "3.104.512,85"
+            "Valor 8": "2.243.297,33",
+            "Valor 9": "158.594,81",
+            "Valor 10": "3.135.612,85"
           }
         }
       ],
       "metrics": {
-        "empenhado": 9749558455.0,
-        "saldo_a_liquidar": 2295086.51,
-        "liquidado_a_pagar": 90405.63,
-        "pago": 3104512.85
+        "empenhado": 9783460256.0,
+        "saldo_a_liquidar": 2243297.33,
+        "liquidado_a_pagar": 158594.81,
+        "pago": 3135612.85
       },
       "metrics_meta": {
         "empenhado": {
