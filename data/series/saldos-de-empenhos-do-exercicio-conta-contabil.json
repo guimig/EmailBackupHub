@@ -1477,9 +1477,9 @@
       }
     },
     {
-      "date": "03/10/2026",
-      "date_iso": "2026-10-03",
-      "hash_conteudo": "0b966eac1aec001612ca14ba771c1c4d87dc6fc86bf7e1e1423bb4af8f04fe0a",
+      "date": "06/10/2026",
+      "date_iso": "2026-10-06",
+      "hash_conteudo": "54d51bc6d61e595959e5c0bcc6165fbd1ec0ddf80105563da8836ebd3fa2542b",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
@@ -1504,8 +1504,8 @@
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 190048.06,
-            "Valor 9": 1722.0,
+            "Valor 8": 171848.06,
+            "Valor 9": 19922.0,
             "Valor 10": 583274.72
           },
           "raw": {
@@ -1516,8 +1516,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "190.048,06",
-            "Valor 9": "1.722,00",
+            "Valor 8": "171.848,06",
+            "Valor 9": "19.922,00",
             "Valor 10": "583.274,72"
           }
         },
@@ -1642,8 +1642,8 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 507349.86,
-            "Valor 9": 79527.64,
+            "Valor 8": 453269.39,
+            "Valor 9": 133608.11,
             "Valor 10": 764487.83
           },
           "raw": {
@@ -1654,8 +1654,8 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "507.349,86",
-            "Valor 9": "79.527,64",
+            "Valor 8": "453.269,39",
+            "Valor 9": "133.608,11",
             "Valor 10": "764.487,83"
           }
         },
@@ -1703,8 +1703,8 @@
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
             "Valor 8": 5194.35,
-            "Valor 9": 695.68,
-            "Valor 10": 109.97
+            "Valor 9": 0.0,
+            "Valor 10": 805.65
           },
           "raw": {
             "Conta Contabil": "INDENIZACOES E RESTITUICOES",
@@ -1715,8 +1715,8 @@
             "Valor 6": "",
             "Valor 7": "",
             "Valor 8": "5.194,35",
-            "Valor 9": "695,68",
-            "Valor 10": "109,97"
+            "Valor 9": "0,00",
+            "Valor 10": "805,65"
           }
         },
         {
@@ -1780,9 +1780,9 @@
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2641629.63,
-            "Valor 9": 223723.62,
-            "Valor 10": 3176858.09
+            "Valor 8": 2569349.16,
+            "Valor 9": 295308.41,
+            "Valor 10": 3177553.77
           },
           "raw": {
             "Conta Contabil": "Total",
@@ -1792,17 +1792,17 @@
             "Pago": "",
             "Valor 6": "",
             "Valor 7": "",
-            "Valor 8": "2.641.629,63",
-            "Valor 9": "223.723,62",
-            "Valor 10": "3.176.858,09"
+            "Valor 8": "2.569.349,16",
+            "Valor 9": "295.308,41",
+            "Valor 10": "3.177.553,77"
           }
         }
       ],
       "metrics": {
         "empenhado": 9885169275.0,
-        "saldo_a_liquidar": 2641629.63,
-        "liquidado_a_pagar": 223723.62,
-        "pago": 3176858.09
+        "saldo_a_liquidar": 2569349.16,
+        "liquidado_a_pagar": 295308.41,
+        "pago": 3177553.77
       },
       "metrics_meta": {
         "empenhado": {

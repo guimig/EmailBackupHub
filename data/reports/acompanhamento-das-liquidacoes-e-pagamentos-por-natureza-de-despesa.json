@@ -2,9 +2,9 @@
   "schema_version": "1.5",
   "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
   "title": "Liquidações e Pagamentos por Natureza",
-  "date": "03/10/2026",
-  "date_iso": "2026-10-03",
-  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_03-10-2026.html",
+  "date": "06/10/2026",
+  "date_iso": "2026-10-06",
+  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_06-10-2026.html",
   "category": "Liquidações e Pagamentos por Natureza",
   "columns": [
     "Natureza Despesa Detalhada",
@@ -41466,6 +41466,25 @@
       "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
     },
     {
+      "Natureza Despesa Detalhada": "33909314",
+      "Natureza Despesa Detalhada (2)": "RESSARCIMENTO DE PASSAGENS E DESP.C/LOCOMOCAO",
+      "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "NE CCor - Favorecido (2)": "158459",
+      "DH - Tipo": "REEMBOLSO DE DESPESA",
+      "Documento Hábil": "158459264222026RB000002",
+      "DH - Observação": "Proc 001763/26 DOC GERADO PELO SCDP. PCDP 001763/26 P/ PGTO. DE INDENIZACAO DE VALORES NO PERIODO DE  12/09/2026 A  15/09/2026.",
+      "DH - Dia Emissão": "02/10/2026",
+      "DH - Valor": "695,68",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002106",
+      "Doc - Observação": "PROC 001763/26 DOC GERADO PELO SCDP. PCDP 001763/26 P/ PGTO. DE INDENIZACAO DE VALORES NO PERIODO DE  12/09/2026 A  15/09/2026.",
+      "Emissão - Dia": "05/10/2026",
+      "Doc - Valor": "695,68",
+      "Item Informação / NE CCor": "158459264222026NE000136",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "695,68",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
       "Natureza Despesa Detalhada": "33914718",
       "Natureza Despesa Detalhada (2)": "CONTRIBUICAO PREVIDENCIARIA - SERVICOS TERCEIROS (PF)",
       "NE CCor - Favorecido": "COORD.GERAL DE ORCAMENTO, FINANCAS E CONTAB.",
@@ -42718,6 +42737,25 @@
       "Item Informação / NE CCor": "158459264222025NE000216",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
       "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "79.196,75"
+    },
+    {
+      "Natureza Despesa Detalhada": "44905191",
+      "Natureza Despesa Detalhada (2)": "OBRAS EM ANDAMENTO",
+      "NE CCor - Favorecido": "PROMETAL CURITIBA LTDA",
+      "NE CCor - Favorecido (2)": "44498589000175",
+      "DH - Tipo": "NOTA DE PAGAMENTO",
+      "Documento Hábil": "158459264222026NP000384",
+      "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 93, Contrato nº: 00168/2025  - 44.498.589/0001-75 - PROMETAL CURITIBA LTDA, Proc.(s) núm.(s): 23349.000692/2025-17, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 08/2026.",
+      "DH - Dia Emissão": "31/08/2026",
+      "DH - Valor": "137446,18",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002107",
+      "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 93, CONTRATO Nº: 00168/2025  - 44.498.589/0001-75 - PROMETAL CURITIBA LTDA, PROC.(S) NUM.(S): 23349.000692/2025-17, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 08/2026.",
+      "Emissão - Dia": "05/10/2026",
+      "Doc - Valor": "126656,66",
+      "Item Informação / NE CCor": "158459264222025NE000216",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "126.656,66"
     },
     {
       "Natureza Despesa Detalhada": "44905210",
@@ -44130,8 +44168,8 @@
     {
       "label": "Total",
       "values": {
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3068754.49,
-        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 1874609.03
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3069450.17,
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 2001265.69
       },
       "raw": {
         "Natureza Despesa Detalhada": "Total",
@@ -44149,8 +44187,8 @@
         "Emissão - Dia": "",
         "Doc - Valor": "",
         "Item Informação / NE CCor": "",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.068.754,49",
-        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.874.609,03"
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.069.450,17",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.001.265,69"
       }
     }
   ],
@@ -92140,6 +92178,28 @@
     {
       "type": "data",
       "raw": {
+        "Natureza Despesa Detalhada": "33909314",
+        "Natureza Despesa Detalhada (2)": "RESSARCIMENTO DE PASSAGENS E DESP.C/LOCOMOCAO",
+        "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "NE CCor - Favorecido (2)": "158459",
+        "DH - Tipo": "REEMBOLSO DE DESPESA",
+        "Documento Hábil": "158459264222026RB000002",
+        "DH - Observação": "Proc 001763/26 DOC GERADO PELO SCDP. PCDP 001763/26 P/ PGTO. DE INDENIZACAO DE VALORES NO PERIODO DE  12/09/2026 A  15/09/2026.",
+        "DH - Dia Emissão": "02/10/2026",
+        "DH - Valor": "695,68",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002106",
+        "Doc - Observação": "PROC 001763/26 DOC GERADO PELO SCDP. PCDP 001763/26 P/ PGTO. DE INDENIZACAO DE VALORES NO PERIODO DE  12/09/2026 A  15/09/2026.",
+        "Emissão - Dia": "05/10/2026",
+        "Doc - Valor": "695,68",
+        "Item Informação / NE CCor": "158459264222026NE000136",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "695,68",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
         "Natureza Despesa Detalhada": "33914718",
         "Natureza Despesa Detalhada (2)": "CONTRIBUICAO PREVIDENCIARIA - SERVICOS TERCEIROS (PF)",
         "NE CCor - Favorecido": "COORD.GERAL DE ORCAMENTO, FINANCAS E CONTAB.",
@@ -93587,6 +93647,28 @@
         "Item Informação / NE CCor": "158459264222025NE000216",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "79.196,75"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa Detalhada": "44905191",
+        "Natureza Despesa Detalhada (2)": "OBRAS EM ANDAMENTO",
+        "NE CCor - Favorecido": "PROMETAL CURITIBA LTDA",
+        "NE CCor - Favorecido (2)": "44498589000175",
+        "DH - Tipo": "NOTA DE PAGAMENTO",
+        "Documento Hábil": "158459264222026NP000384",
+        "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 93, Contrato nº: 00168/2025  - 44.498.589/0001-75 - PROMETAL CURITIBA LTDA, Proc.(s) núm.(s): 23349.000692/2025-17, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 08/2026.",
+        "DH - Dia Emissão": "31/08/2026",
+        "DH - Valor": "137446,18",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002107",
+        "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 93, CONTRATO Nº: 00168/2025  - 44.498.589/0001-75 - PROMETAL CURITIBA LTDA, PROC.(S) NUM.(S): 23349.000692/2025-17, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 08/2026.",
+        "Emissão - Dia": "05/10/2026",
+        "Doc - Valor": "126656,66",
+        "Item Informação / NE CCor": "158459264222025NE000216",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "126.656,66"
       }
     },
     {
@@ -95235,22 +95317,22 @@
         "Emissão - Dia": "",
         "Doc - Valor": "",
         "Item Informação / NE CCor": "",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.068.754,49",
-        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.874.609,03"
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.069.450,17",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.001.265,69"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-05T23:43:16.242330-03:00",
-    "idade_dias": 2,
+    "ultima_atualizacao": "2026-10-06T06:36:50.371756-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "6998",
-    "hash_conteudo": "6b423d75c755f9c7c5ffd87b510ab71e48e23c8567eab3fd1e3c9fd92402e7f4",
-    "row_count": 2321,
+    "fonte_email_uid": "7015",
+    "hash_conteudo": "200646eb889d19da673e6c915a76e04e7b46571037a6f97a0cab9d58e05d37df",
+    "row_count": 2323,
     "column_count": 17,
     "status": "atualizado",
-    "limite_dias": 2
+    "limite_dias": 1
   },
   "quality": {
     "ok": true,

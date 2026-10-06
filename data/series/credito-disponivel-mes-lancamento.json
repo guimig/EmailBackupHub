@@ -823,9 +823,9 @@
       }
     },
     {
-      "date": "03/10/2026",
-      "date_iso": "2026-10-03",
-      "hash_conteudo": "b158b0ec797036e493366a8c5aba7c53fa5c157bb25c46530fc23a684bc87ea4",
+      "date": "06/10/2026",
+      "date_iso": "2026-10-06",
+      "hash_conteudo": "e305a303d378c025b45954c5794aac5613ca93e2a90de778e0529efd5f303ecd",
       "totals": [
         {
           "label": "INVESTIMENTOS",
@@ -855,7 +855,7 @@
             "Natureza Despesa": 339000.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1000000000.0,
-            "Saldo - R$ (Conta Contábil) / OUT/2026": 43918.94
+            "Saldo - R$ (Conta Contábil) / OUT/2026": 806614.44
           },
           "raw": {
             "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -868,7 +868,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / OUT/2026": "43.918,94"
+            "Saldo - R$ (Conta Contábil) / OUT/2026": "806.614,44"
           }
         },
         {
@@ -877,7 +877,7 @@
             "Natureza Despesa": 339000.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1050000191.0,
-            "Saldo - R$ (Conta Contábil) / OUT/2026": 1763.1
+            "Saldo - R$ (Conta Contábil) / OUT/2026": 35680.63
           },
           "raw": {
             "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -890,7 +890,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / OUT/2026": "1.763,10"
+            "Saldo - R$ (Conta Contábil) / OUT/2026": "35.680,63"
           }
         },
         {
@@ -960,9 +960,31 @@
           }
         },
         {
+          "label": "OUTRAS DESPESAS CORRENTES",
+          "values": {
+            "Natureza Despesa": 339047.0,
+            "Unidade Orçamentária": 26422.0,
+            "Fonte Recursos Detalhada": 1050000191.0,
+            "Saldo - R$ (Conta Contábil) / OUT/2026": 82.47
+          },
+          "raw": {
+            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+            "Natureza Despesa": "339047",
+            "Natureza Despesa (2)": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Unidade Orçamentária": "26422",
+            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+            "Fonte Recursos Detalhada": "1050000191",
+            "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+            "PTRES": "Total",
+            "Métrica / PI": "",
+            "Métrica / PI (2)": "",
+            "Saldo - R$ (Conta Contábil) / OUT/2026": "82,47"
+          }
+        },
+        {
           "label": "Total",
           "values": {
-            "Saldo - R$ (Conta Contábil) / OUT/2026": 133746.95
+            "Saldo - R$ (Conta Contábil) / OUT/2026": 930442.45
           },
           "raw": {
             "Grupo Despesa": "Total",
@@ -975,12 +997,12 @@
             "PTRES": "",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / OUT/2026": "133.746,95"
+            "Saldo - R$ (Conta Contábil) / OUT/2026": "930.442,45"
           }
         }
       ],
       "metrics": {
-        "credito_disponivel": 133746.95
+        "credito_disponivel": 930442.45
       },
       "metrics_meta": {
         "credito_disponivel": {
