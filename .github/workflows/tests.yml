@@ -67,6 +67,9 @@ jobs:
         run: |
           python -m unittest discover -s tests
 
+      - name: Validate browser financial calculations
+        run: node tests/test_financial_numbers.js
+
       - name: Validate static baseline and data
         run: |
           python validate_baseline.py

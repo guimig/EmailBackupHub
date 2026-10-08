@@ -291,13 +291,14 @@ let report = null;
         const sourceIndex = originalIndex >= 0 ? originalIndex : index;
         const inferred = inferredColumnName(column, sourceIndex);
         if (inferred) return inferred;
-        if (generated && friendly[sourceIndex]) return friendly[sourceIndex];
+        if (generated && friendly.length === allColumns.length && friendly[sourceIndex]) return friendly[sourceIndex];
         if (/^Coluna \d+$/.test(column || '')) return index === 0 ? 'Descricao' : `Valor ${index}`;
         return column;
       });
     }
 
     function inferredColumnName(column, index) {
+      if (report?.parser_version) return null;
       if (report?.slug === 'restos-a-pagar-rap') {
         const labels = {
           'Valor 8': 'Valor do empenho',
@@ -853,6 +854,7 @@ let report = null;
     function isSummableColumn(column, displayColumn) {
       const label = normalize(fixMojibake(`${column || ''} ${displayColumn || ''}`));
       const classificationPattern = /(codigo|cod\.?|classificacao|fonte|recurso|ug|uo|ptres|programa|acao|plano|natureza|nd|elemento|subitem|modalidade|categoria|grupo|identificador|id\b|cpf|cnpj|conta contabil|rip|mes|ano|data)/;
+      if (/(saldo|r\$|moeda origem|despesas empenhadas|despesas liquidadas|despesas pagas)/.test(label)) return true;
       if (classificationPattern.test(label)) return false;
       return /(r\$|valor|saldo|total|pago|pagos|pagamento|empenhado|empenhos|liquidado|liquidar|a pagar|credito|provisionado|provisionamento|despesa|arrecadado|inscrito|cancelado|disponivel|movim liquido|moeda origem)/.test(label);
     }
@@ -903,12 +905,16 @@ let report = null;
     }
 
     function parseBrNumber(value) {
-      if (typeof value === 'number') return value;
-      const clean = String(value || '').replace(/[^\d,.-]/g, '');
-      if (!clean) return null;
-      const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
-      const number = Number(normalized);
-      return Number.isFinite(number) ? number : null;
+      if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+      let text = String(value ?? '').trim();
+      const negative = text.startsWith('(') && text.endsWith(')');
+      if (negative) text = text.slice(1, -1).trim();
+      text = text.replace(/^R\$\s*/i, '').replace(/\s*%$/, '').trim();
+      if (!/^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text)) return null;
+      if (text.includes(',')) text = text.replace(/\./g, '').replace(',', '.');
+      else if (/^[+-]?\d{1,3}(?:\.\d{3})+$/.test(text)) text = text.replace(/\./g, '');
+      const number = Number(text);
+      return Number.isFinite(number) ? (negative ? -number : number) : null;
     }
 
     function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }

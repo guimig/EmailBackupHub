@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+import re
+import unicodedata
 from typing import Any
 
 
 RAP_METRICS = {
-    "rap_pago": ["RAP Pago", "Pago", "Valor 11"],
-    "rap_a_pagar": ["RAP a Pagar", "A Pagar", "Valor 12"],
+    "rap_pago": ["RAP Pago", "Pago", "RESTOS A PAGAR PAGOS (PROC E N PROC)", "Valor 11"],
+    "rap_a_pagar": ["RAP a Pagar", "A Pagar", "RESTOS A PAGAR A PAGAR (PROC E N PROC)", "Valor 12"],
 }
 REQUIRED_RAP_METRICS = ("rap_pago", "rap_a_pagar")
 SUSPICIOUS_LOW_LIMIT = 100.0
@@ -48,6 +50,15 @@ def candidate_quality(value: float | None, score: int) -> str:
     return "candidato"
 
 
+def column_matches(actual: str, expected: str) -> bool:
+    def normalized(text):
+        text = unicodedata.normalize("NFKD", text or "")
+        text = "".join(char for char in text if not unicodedata.combining(char))
+        return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
+    actual_key, expected_key = normalized(actual), normalized(expected)
+    return actual_key == expected_key or (len(expected_key) > 15 and expected_key in actual_key)
+
+
 def rap_total_candidates(doc: dict[str, Any]) -> list[dict[str, Any]]:
     totals = doc.get("totals") or []
     candidates = []
@@ -56,7 +67,11 @@ def rap_total_candidates(doc: dict[str, Any]) -> list[dict[str, Any]]:
             values = total.get("values") or {}
             raw = total.get("raw") or {}
             label = str(total.get("label") or raw.get("Descricao") or raw.get("Natureza de Despesa") or "")
-            for column in columns:
+            if label_score(label) < 3:
+                continue
+            for column in values:
+                if not any(column_matches(column, expected) for expected in columns):
+                    continue
                 value = numeric(values.get(column))
                 if value is None:
                     continue
