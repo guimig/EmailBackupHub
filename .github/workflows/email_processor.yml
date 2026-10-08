@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: financial-data-main
+  cancel-in-progress: false
+
 jobs:
   process:
     runs-on: ubuntu-22.04

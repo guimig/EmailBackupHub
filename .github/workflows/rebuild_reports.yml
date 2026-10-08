@@ -1,0 +1,51 @@
+name: Rebuild Financial Reports
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data_generator.py'
+      - 'report_definitions.py'
+      - 'rap_metrics.py'
+      - '.github/workflows/rebuild_reports.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: financial-data-main
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate financial calculations
+        run: |
+          python -m unittest discover -s tests
+          node tests/test_financial_numbers.js
+
+      - name: Rebuild reports and historical series from preserved HTML
+        run: |
+          python -c "from data_generator import generate_data_files; result = generate_data_files(); print('Static financial data rebuilt successfully')"
+
+      - name: Validate regenerated data
+        run: |
+          python validate_baseline.py
+          python validate_data.py
+
+      - name: Publish regenerated data
+        run: |
+          python -c "from git_utils import commit_changes; commit_changes()"
