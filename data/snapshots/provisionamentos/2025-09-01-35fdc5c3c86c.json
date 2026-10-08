@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "provisionamentos",
   "title": "Provisionamentos",
   "date": "01/09/2025",
@@ -372,7 +373,6 @@
     {
       "label": "20RG",
       "values": {
-        "Ação Governo": 20.0,
         "Saldo - Moeda Origem (Item Informação)": 100000.0
       },
       "raw": {
@@ -388,7 +388,6 @@
     {
       "label": "20RL",
       "values": {
-        "Ação Governo": 20.0,
         "Saldo - Moeda Origem (Item Informação)": 4151724.74
       },
       "raw": {
@@ -953,7 +952,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-08T11:12:59.849452-03:00",
+    "ultima_atualizacao": "2026-10-08T11:50:35.578722-03:00",
     "idade_dias": 402,
     "periodicidade": "diaria",
     "exercicio": 2025,
@@ -973,12 +972,12 @@
     ]
   },
   "metrics": {
-    "provisionado": 40000.0
+    "provisionado": 5124488.600000001
   },
   "metrics_meta": {
     "provisionado": {
       "status": "ok",
-      "source": "totals",
+      "source": "rows_sum",
       "fallback": false
     }
   }

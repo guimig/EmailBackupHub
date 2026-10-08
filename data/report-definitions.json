@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.5",
-  "generated_at": "2026-10-08T11:12:59.849452-03:00",
+  "schema_version": "1.6",
+  "generated_at": "2026-10-08T11:50:35.578722-03:00",
   "reports": {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
       "title": "Liquidações e Pagamentos por Natureza - 2024",
@@ -172,7 +172,7 @@
       "metric_rules": {
         "empenhado": {
           "columns": [
-            "Empenhado"
+            "DESPESAS EMPENHADAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 7"
@@ -180,7 +180,7 @@
         },
         "liquidado": {
           "columns": [
-            "Liquidado"
+            "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 8"
@@ -188,7 +188,7 @@
         },
         "pago": {
           "columns": [
-            "Pago"
+            "DESPESAS PAGAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 9"
@@ -229,7 +229,7 @@
       "metric_rules": {
         "empenhado": {
           "columns": [
-            "Empenhado"
+            "DESPESAS EMPENHADAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 7"
@@ -237,7 +237,7 @@
         },
         "liquidado": {
           "columns": [
-            "Liquidado"
+            "DESPESAS LIQUIDADAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 8"
@@ -245,7 +245,7 @@
         },
         "pago": {
           "columns": [
-            "Pago"
+            "DESPESAS PAGAS (CONTROLE EMPENHO)"
           ],
           "fallback_columns": [
             "Valor 9"
@@ -494,7 +494,8 @@
         },
         "saldo_a_liquidar": {
           "columns": [
-            "A Liquidar"
+            "A Liquidar",
+            "EMPENHOS A LIQUIDAR"
           ],
           "fallback_columns": [
             "Valor 8"
@@ -502,7 +503,8 @@
         },
         "liquidado_a_pagar": {
           "columns": [
-            "Liquidado a Pagar"
+            "Liquidado a Pagar",
+            "EMPENHOS LIQUIDADOS A PAGAR"
           ],
           "fallback_columns": [
             "Valor 9"
@@ -510,7 +512,8 @@
         },
         "pago": {
           "columns": [
-            "Pago"
+            "Pago",
+            "EMPENHOS PAGOS"
           ],
           "fallback_columns": [
             "Valor 10"

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
   "series_min_date": "2026-01-01",
   "omitted_before_min_date": 3,
@@ -12,229 +12,223 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 29338.43,
-            "Valor 9": 0.0,
-            "Valor 10": 5161.57
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 29338.43,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 5161.57
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "29.338,43",
-            "Valor 9": "0,00",
-            "Valor 10": "5.161,57"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "29.338,43",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "5.161,57"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 39600.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 39600.0
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "39.600,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "39.600,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 103384.82,
-            "Valor 9": 1920.09,
-            "Valor 10": 38001.55
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 103384.82,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 1920.09,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 38001.55
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "103.384,82",
-            "Valor 9": "1.920,09",
-            "Valor 10": "38.001,55"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "103.384,82",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.920,09",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "38.001,55"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 30661.78,
-            "Valor 9": 4088.33,
-            "Valor 10": 33078.34
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 30661.78,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4088.33,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 33078.34
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "30.661,78",
-            "Valor 9": "4.088,33",
-            "Valor 10": "33.078,34"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "30.661,78",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.088,33",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "33.078,34"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 512588.41,
-            "Valor 9": 16873.25,
-            "Valor 10": 147757.9
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 512588.41,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 16873.25,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 147757.9
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "512.588,41",
-            "Valor 9": "16.873,25",
-            "Valor 10": "147.757,90"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "512.588,41",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "16.873,25",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "147.757,90"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 509331.78,
-            "Valor 9": 57.0,
-            "Valor 10": 29979.18
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 509331.78,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 57.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 29979.18
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "509.331,78",
-            "Valor 9": "57,00",
-            "Valor 10": "29.979,18"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "509.331,78",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "57,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "29.979,18"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 12982.88
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 12982.88
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "12.982,88",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "12.982,88",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Valor 8": 6399.94,
-            "Valor 9": 0.0,
-            "Valor 10": 2772.26
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 6399.94,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 2772.26
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "6.399,94",
-            "Valor 9": "0,00",
-            "Valor 10": "2.772,26"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "6.399,94",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.772,26"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 1000.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1000.0
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.000,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.000,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 7566.67,
-            "Valor 9": 7433.33
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 7566.67,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 7433.33
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "7.566,67",
-            "Valor 9": "7.433,33",
-            "Valor 10": ""
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "7.566,67",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "7.433,33",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 1252854.71,
-            "Valor 9": 30372.0,
-            "Valor 10": 256750.8
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1252854.71,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 30372.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 256750.8
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.252.854,71",
-            "Valor 9": "30.372,00",
-            "Valor 10": "256.750,80"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.252.854,71",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "30.372,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "256.750,80"
           }
         }
       ],
       "metrics": {
-        "empenhado": 3593759636.0,
         "saldo_a_liquidar": 1252854.71,
         "liquidado_a_pagar": 30372.0,
         "pago": 256750.8
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "rows_sum",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",
@@ -260,232 +254,226 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 24976.88,
-            "Valor 9": 0.0,
-            "Valor 10": 9523.12
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 24976.88,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 9523.12
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "24.976,88",
-            "Valor 9": "0,00",
-            "Valor 10": "9.523,12"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "24.976,88",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "9.523,12"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 230100.0,
-            "Valor 9": 0.0,
-            "Valor 10": 111394.78
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 230100.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 111394.78
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "230.100,00",
-            "Valor 9": "0,00",
-            "Valor 10": "111.394,78"
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "230.100,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "111.394,78"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 90813.61,
-            "Valor 9": 2929.77,
-            "Valor 10": 94478.88
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 90813.61,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 2929.77,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 94478.88
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "90.813,61",
-            "Valor 9": "2.929,77",
-            "Valor 10": "94.478,88"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "90.813,61",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "2.929,77",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "94.478,88"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 40214.08,
-            "Valor 9": 4125.0,
-            "Valor 10": 70541.67
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 40214.08,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4125.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 70541.67
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "40.214,08",
-            "Valor 9": "4.125,00",
-            "Valor 10": "70.541,67"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "40.214,08",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.125,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "70.541,67"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 846891.7,
-            "Valor 9": 20030.11,
-            "Valor 10": 242547.75
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 846891.7,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 20030.11,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 242547.75
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "846.891,70",
-            "Valor 9": "20.030,11",
-            "Valor 10": "242.547,75"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "846.891,70",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "20.030,11",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "242.547,75"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 820335.59,
-            "Valor 9": 157.3,
-            "Valor 10": 63820.84
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 820335.59,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 157.3,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 63820.84
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "820.335,59",
-            "Valor 9": "157,30",
-            "Valor 10": "63.820,84"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "820.335,59",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "157,30",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "63.820,84"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 25603.42
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 25603.42
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "25.603,42",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "25.603,42",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Valor 8": 9271.32,
-            "Valor 9": 0.0,
-            "Valor 10": 3500.88
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 9271.32,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 3500.88
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "9.271,32",
-            "Valor 9": "0,00",
-            "Valor 10": "3.500,88"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "9.271,32",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "3.500,88"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 1000.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1000.0
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.000,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.000,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 7566.67,
-            "Valor 9": 7500.0,
-            "Valor 10": 7433.33
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 7566.67,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 7500.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 7433.33
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "7.566,67",
-            "Valor 9": "7.500,00",
-            "Valor 10": "7.433,33"
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "7.566,67",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "7.500,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "7.433,33"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2096773.27,
-            "Valor 9": 34742.18,
-            "Valor 10": 603241.25
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2096773.27,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 34742.18,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 603241.25
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "2.096.773,27",
-            "Valor 9": "34.742,18",
-            "Valor 10": "603.241,25"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.096.773,27",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "34.742,18",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "603.241,25"
           }
         }
       ],
       "metrics": {
-        "empenhado": 5017685319.0,
         "saldo_a_liquidar": 2096773.27,
         "liquidado_a_pagar": 34742.18,
         "pago": 603241.25
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "rows_sum",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",
@@ -511,272 +499,266 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 46247.78,
-            "Valor 9": 0.0,
-            "Valor 10": 33252.22
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 46247.78,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 33252.22
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "46.247,78",
-            "Valor 9": "0,00",
-            "Valor 10": "33.252,22"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "46.247,78",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "33.252,22"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 388592.17,
-            "Valor 9": 0.0,
-            "Valor 10": 266952.61
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 388592.17,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 266952.61
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "388.592,17",
-            "Valor 9": "0,00",
-            "Valor 10": "266.952,61"
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "388.592,17",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "266.952,61"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 66035.04,
-            "Valor 9": 409.59,
-            "Valor 10": 181407.68
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 66035.04,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 409.59,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 181407.68
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "66.035,04",
-            "Valor 9": "409,59",
-            "Valor 10": "181.407,68"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "66.035,04",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "409,59",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "181.407,68"
           }
         },
         {
           "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
           "values": {
-            "Valor 8": 57606.99,
-            "Valor 9": 0.0,
-            "Valor 10": 1088.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 57606.99,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1088.0
           },
           "raw": {
-            "Conta Contabil": "PASSAGENS E DESPESAS COM LOCOMOCAO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "57.606,99",
-            "Valor 9": "0,00",
-            "Valor 10": "1.088,00"
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "57.606,99",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.088,00"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 7766.38,
-            "Valor 9": 4400.0,
-            "Valor 10": 147766.67
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 7766.38,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4400.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 147766.67
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "7.766,38",
-            "Valor 9": "4.400,00",
-            "Valor 10": "147.766,67"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "7.766,38",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.400,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "147.766,67"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 491859.65,
-            "Valor 9": 121080.09,
-            "Valor 10": 539573.19
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 491859.65,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 121080.09,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 539573.19
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "491.859,65",
-            "Valor 9": "121.080,09",
-            "Valor 10": "539.573,19"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "491.859,65",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "121.080,09",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "539.573,19"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 532688.93,
-            "Valor 9": 3168.8,
-            "Valor 10": 363340.52
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 532688.93,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 3168.8,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 363340.52
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "532.688,93",
-            "Valor 9": "3.168,80",
-            "Valor 10": "363.340,52"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "532.688,93",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "3.168,80",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "363.340,52"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 19829.35,
-            "Valor 9": 0.0,
-            "Valor 10": 5774.07
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 19829.35,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 5774.07
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "19.829,35",
-            "Valor 9": "0,00",
-            "Valor 10": "5.774,07"
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "19.829,35",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "5.774,07"
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Valor 8": 5991.51,
-            "Valor 9": 0.0,
-            "Valor 10": 7961.51
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 5991.51,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 7961.51
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "5.991,51",
-            "Valor 9": "0,00",
-            "Valor 10": "7.961,51"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "5.991,51",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "7.961,51"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 6000.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 6000.0
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "6.000,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "6.000,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 1566.67,
-            "Valor 9": 8000.0,
-            "Valor 10": 22433.33
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1566.67,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 8000.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 22433.33
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.566,67",
-            "Valor 9": "8.000,00",
-            "Valor 10": "22.433,33"
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.566,67",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "8.000,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "22.433,33"
           }
         },
         {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
-            "Valor 8": 9520.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 9520.0
           },
           "raw": {
-            "Conta Contabil": "EQUIPAMENTOS E MATERIAL PERMANENTE",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "9.520,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "9.520,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 1633704.47,
-            "Valor 9": 137058.48,
-            "Valor 10": 1569549.8
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1633704.47,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 137058.48,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1569549.8
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.633.704,47",
-            "Valor 9": "137.058,48",
-            "Valor 10": "1.569.549,80"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.633.704,47",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "137.058,48",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.569.549,80"
           }
         }
       ],
       "metrics": {
-        "empenhado": 6791654258.0,
         "saldo_a_liquidar": 1633704.47,
         "liquidado_a_pagar": 137058.48,
         "pago": 1569549.8
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "rows_sum",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",
@@ -802,312 +784,306 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 27730.94,
-            "Valor 9": 1290.78,
-            "Valor 10": 65478.28
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 27730.94,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 1290.78,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 65478.28
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "27.730,94",
-            "Valor 9": "1.290,78",
-            "Valor 10": "65.478,28"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "27.730,94",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.290,78",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "65.478,28"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 214653.61,
-            "Valor 9": 35400.0,
-            "Valor 10": 457491.17
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 214653.61,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 35400.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 457491.17
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "214.653,61",
-            "Valor 9": "35.400,00",
-            "Valor 10": "457.491,17"
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "214.653,61",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "35.400,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "457.491,17"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 119124.14,
-            "Valor 9": 5570.02,
-            "Valor 10": 282573.67
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 119124.14,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 5570.02,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 282573.67
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "119.124,14",
-            "Valor 9": "5.570,02",
-            "Valor 10": "282.573,67"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "119.124,14",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "5.570,02",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "282.573,67"
           }
         },
         {
           "label": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
           "values": {
-            "Valor 8": 1087.2
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1087.2
           },
           "raw": {
-            "Conta Contabil": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.087,20",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.087,20",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
           "values": {
-            "Valor 8": 149943.06
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 149943.06
           },
           "raw": {
-            "Conta Contabil": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "149.943,06",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "149.943,06",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
           "values": {
-            "Valor 8": 52562.13,
-            "Valor 9": 0.0,
-            "Valor 10": 6132.86
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 52562.13,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 6132.86
           },
           "raw": {
-            "Conta Contabil": "PASSAGENS E DESPESAS COM LOCOMOCAO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "52.562,13",
-            "Valor 9": "0,00",
-            "Valor 10": "6.132,86"
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "52.562,13",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "6.132,86"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 43695.03,
-            "Valor 9": 4853.62,
-            "Valor 10": 232968.96
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 43695.03,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4853.62,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 232968.96
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "43.695,03",
-            "Valor 9": "4.853,62",
-            "Valor 10": "232.968,96"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "43.695,03",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.853,62",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "232.968,96"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 706918.88,
-            "Valor 9": 40562.96,
-            "Valor 10": 904461.35
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 706918.88,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 40562.96,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 904461.35
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "706.918,88",
-            "Valor 9": "40.562,96",
-            "Valor 10": "904.461,35"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "706.918,88",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "40.562,96",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "904.461,35"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 667260.19,
-            "Valor 9": 63755.76,
-            "Valor 10": 657349.38
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 667260.19,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 63755.76,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 657349.38
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "667.260,19",
-            "Valor 9": "63.755,76",
-            "Valor 10": "657.349,38"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "667.260,19",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "63.755,76",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "657.349,38"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 30896.54,
-            "Valor 9": 0.0,
-            "Valor 10": 14662.26
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 30896.54,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 14662.26
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "30.896,54",
-            "Valor 9": "0,00",
-            "Valor 10": "14.662,26"
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "30.896,54",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "14.662,26"
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Valor 8": 8737.05,
-            "Valor 9": 0.0,
-            "Valor 10": 11399.09
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 8737.05,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 11399.09
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "8.737,05",
-            "Valor 9": "0,00",
-            "Valor 10": "11.399,09"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "8.737,05",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "11.399,09"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 5890.03,
-            "Valor 9": 0.0,
-            "Valor 10": 109.97
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 5890.03,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 109.97
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "5.890,03",
-            "Valor 9": "0,00",
-            "Valor 10": "109,97"
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "5.890,03",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "109,97"
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 10741.95,
-            "Valor 9": 8824.72,
-            "Valor 10": 38739.78
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 10741.95,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 8824.72,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 38739.78
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "10.741,95",
-            "Valor 9": "8.824,72",
-            "Valor 10": "38.739,78"
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "10.741,95",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "8.824,72",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "38.739,78"
           }
         },
         {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
-            "Valor 8": 3252.0,
-            "Valor 9": 22944.18,
-            "Valor 10": 73362.41
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 3252.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 22944.18,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 73362.41
           },
           "raw": {
-            "Conta Contabil": "EQUIPAMENTOS E MATERIAL PERMANENTE",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "3.252,00",
-            "Valor 9": "22.944,18",
-            "Valor 10": "73.362,41"
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "3.252,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "22.944,18",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "73.362,41"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2042492.75,
-            "Valor 9": 183202.04,
-            "Valor 10": 2744729.18
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2042492.75,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 183202.04,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 2744729.18
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "2.042.492,75",
-            "Valor 9": "183.202,04",
-            "Valor 10": "2.744.729,18"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.042.492,75",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "183.202,04",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.744.729,18"
           }
         }
       ],
       "metrics": {
-        "empenhado": 9467331538.0,
         "saldo_a_liquidar": 2042492.75,
         "liquidado_a_pagar": 183202.04,
         "pago": 2744729.18
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "rows_sum",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",
@@ -1133,332 +1109,326 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 36361.64,
-            "Valor 9": 0.0,
-            "Valor 10": 74626.16
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 36361.64,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 74626.16
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "36.361,64",
-            "Valor 9": "0,00",
-            "Valor 10": "74.626,16"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "36.361,64",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "74.626,16"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 191720.06,
-            "Valor 9": 50.0,
-            "Valor 10": 583274.72
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 191720.06,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 50.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 583274.72
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "191.720,06",
-            "Valor 9": "50,00",
-            "Valor 10": "583.274,72"
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "191.720,06",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "50,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "583.274,72"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 165111.24,
-            "Valor 9": 6243.55,
-            "Valor 10": 308788.04
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 165111.24,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 6243.55,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 308788.04
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "165.111,24",
-            "Valor 9": "6.243,55",
-            "Valor 10": "308.788,04"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "165.111,24",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "6.243,55",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "308.788,04"
           }
         },
         {
           "label": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
           "values": {
-            "Valor 8": 0.0,
-            "Valor 9": 0.0,
-            "Valor 10": 1087.2
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1087.2
           },
           "raw": {
-            "Conta Contabil": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "0,00",
-            "Valor 9": "0,00",
-            "Valor 10": "1.087,20"
+            "Natureza Despesa": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.087,20"
           }
         },
         {
           "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
           "values": {
-            "Valor 8": 149943.06
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 149943.06
           },
           "raw": {
-            "Conta Contabil": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "149.943,06",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "149.943,06",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
           "values": {
-            "Valor 8": 52040.13,
-            "Valor 9": 0.0,
-            "Valor 10": 6654.86
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 52040.13,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 6654.86
           },
           "raw": {
-            "Conta Contabil": "PASSAGENS E DESPESAS COM LOCOMOCAO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "52.040,13",
-            "Valor 9": "0,00",
-            "Valor 10": "6.654,86"
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "52.040,13",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "6.654,86"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 1928.67,
-            "Valor 9": 4675.01,
-            "Valor 10": 275647.55
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1928.67,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4675.01,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 275647.55
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.928,67",
-            "Valor 9": "4.675,01",
-            "Valor 10": "275.647,55"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.928,67",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.675,01",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "275.647,55"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 513213.28,
-            "Valor 9": 103757.02,
-            "Valor 10": 978949.42
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 513213.28,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 103757.02,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 978949.42
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "513.213,28",
-            "Valor 9": "103.757,02",
-            "Valor 10": "978.949,42"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "513.213,28",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "103.757,02",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "978.949,42"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 583348.04,
-            "Valor 9": 3529.46,
-            "Valor 10": 764487.83
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 583348.04,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 3529.46,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 764487.83
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "583.348,04",
-            "Valor 9": "3.529,46",
-            "Valor 10": "764.487,83"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "583.348,04",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "3.529,46",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "764.487,83"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 26466.9,
-            "Valor 9": 0.0,
-            "Valor 10": 19091.9
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 26466.9,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 19091.9
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "26.466,90",
-            "Valor 9": "0,00",
-            "Valor 10": "19.091,90"
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "26.466,90",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "19.091,90"
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Valor 8": 6959.95,
-            "Valor 9": 0.0,
-            "Valor 10": 20390.61
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 6959.95,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 20390.61
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "6.959,95",
-            "Valor 9": "0,00",
-            "Valor 10": "20.390,61"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "6.959,95",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "20.390,61"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 5890.03,
-            "Valor 9": 0.0,
-            "Valor 10": 109.97
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 5890.03,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 109.97
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "5.890,03",
-            "Valor 9": "0,00",
-            "Valor 10": "109,97"
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "5.890,03",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "109,97"
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 2241.94,
-            "Valor 9": 8500.0,
-            "Valor 10": 47564.51
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2241.94,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 8500.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 47564.51
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "2.241,94",
-            "Valor 9": "8.500,00",
-            "Valor 10": "47.564,51"
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.241,94",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "8.500,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "47.564,51"
           }
         },
         {
           "label": "OBRAS E INSTALACOES",
           "values": {
-            "Valor 8": 500000.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 500000.0
           },
           "raw": {
-            "Conta Contabil": "OBRAS E INSTALACOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "500.000,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "OBRAS E INSTALACOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "500.000,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
-            "Valor 8": 3252.0,
-            "Valor 9": 121.27,
-            "Valor 10": 96185.32
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 3252.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 121.27,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 96185.32
           },
           "raw": {
-            "Conta Contabil": "EQUIPAMENTOS E MATERIAL PERMANENTE",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "3.252,00",
-            "Valor 9": "121,27",
-            "Valor 10": "96.185,32"
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "3.252,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "121,27",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "96.185,32"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2238476.94,
-            "Valor 9": 126876.31,
-            "Valor 10": 3176858.09
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2238476.94,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 126876.31,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 3176858.09
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "2.238.476,94",
-            "Valor 9": "126.876,31",
-            "Valor 10": "3.176.858,09"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.238.476,94",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "126.876,31",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "3.176.858,09"
           }
         }
       ],
       "metrics": {
-        "empenhado": 9885169275.0,
         "saldo_a_liquidar": 2238476.94,
         "liquidado_a_pagar": 126876.31,
         "pago": 3176858.09
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "rows_sum",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",
@@ -1484,354 +1454,326 @@
         {
           "label": "DIARIAS - PESSOAL CIVIL",
           "values": {
-            "Valor 8": 32182.66,
-            "Valor 9": 0.0,
-            "Valor 10": 78805.14
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 32182.66,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 78805.14
           },
           "raw": {
-            "Conta Contabil": "DIARIAS - PESSOAL CIVIL",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "32.182,66",
-            "Valor 9": "0,00",
-            "Valor 10": "78.805,14"
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "32.182,66",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "78.805,14"
           }
         },
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "Valor 8": 278933.67,
-            "Valor 9": 5980.0,
-            "Valor 10": 603196.72
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 278933.67,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 5980.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 603196.72
           },
           "raw": {
-            "Conta Contabil": "AUXILIO FINANCEIRO A ESTUDANTES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "278.933,67",
-            "Valor 9": "5.980,00",
-            "Valor 10": "603.196,72"
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "278.933,67",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "5.980,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "603.196,72"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "Valor 8": 171305.01,
-            "Valor 9": 16664.78,
-            "Valor 10": 308788.04
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 171305.01,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 16664.78,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 308788.04
           },
           "raw": {
-            "Conta Contabil": "MATERIAL DE CONSUMO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "171.305,01",
-            "Valor 9": "16.664,78",
-            "Valor 10": "308.788,04"
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "171.305,01",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "16.664,78",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "308.788,04"
           }
         },
         {
           "label": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
           "values": {
-            "Valor 8": 0.0,
-            "Valor 9": 0.0,
-            "Valor 10": 1087.2
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1087.2
           },
           "raw": {
-            "Conta Contabil": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "0,00",
-            "Valor 9": "0,00",
-            "Valor 10": "1.087,20"
+            "Natureza Despesa": "PREMIACOES CULT., ART., CIENT., DESP. E OUTR.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.087,20"
           }
         },
         {
           "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
           "values": {
-            "Valor 8": 149943.06
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 149943.06
           },
           "raw": {
-            "Conta Contabil": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "149.943,06",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "149.943,06",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
           "values": {
-            "Valor 8": 40989.66,
-            "Valor 9": 11050.47,
-            "Valor 10": 6654.86
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 40989.66,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 11050.47,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 6654.86
           },
           "raw": {
-            "Conta Contabil": "PASSAGENS E DESPESAS COM LOCOMOCAO",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "40.989,66",
-            "Valor 9": "11.050,47",
-            "Valor 10": "6.654,86"
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "40.989,66",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "11.050,47",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "6.654,86"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
           "values": {
-            "Valor 8": 47263.47,
-            "Valor 9": 4675.01,
-            "Valor 10": 275815.05
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 47263.47,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 4675.01,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 275815.05
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "47.263,47",
-            "Valor 9": "4.675,01",
-            "Valor 10": "275.815,05"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "47.263,47",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "4.675,01",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "275.815,05"
           }
         },
         {
           "label": "LOCACAO DE MAO-DE-OBRA",
           "values": {
-            "Valor 8": 423115.07,
-            "Valor 9": 128274.72,
-            "Valor 10": 1044529.93
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 423115.07,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 128274.72,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1044529.93
           },
           "raw": {
-            "Conta Contabil": "LOCACAO DE MAO-DE-OBRA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "423.115,07",
-            "Valor 9": "128.274,72",
-            "Valor 10": "1.044.529,93"
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "423.115,07",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "128.274,72",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.044.529,93"
           }
         },
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "Valor 8": 453269.39,
-            "Valor 9": 57609.93,
-            "Valor 10": 840486.01
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 453269.39,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 57609.93,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 840486.01
           },
           "raw": {
-            "Conta Contabil": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "453.269,39",
-            "Valor 9": "57.609,93",
-            "Valor 10": "840.486,01"
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "453.269,39",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "57.609,93",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "840.486,01"
           }
         },
         {
           "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
           "values": {
-            "Valor 8": 26466.9,
-            "Valor 9": 0.0,
-            "Valor 10": 19091.9
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 26466.9,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 19091.9
           },
           "raw": {
-            "Conta Contabil": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "26.466,90",
-            "Valor 9": "0,00",
-            "Valor 10": "19.091,90"
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "26.466,90",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "19.091,90"
           }
         },
         {
           "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
           "values": {
-            "Empenhado": 33904708.0,
-            "Liquidado a Pagar": 1.58459264222026e+20,
-            "Valor 7": 82.47,
-            "Valor 8": 0.0,
-            "Valor 9": 82.47
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 6959.95,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 82.47,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 20390.61
           },
           "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "33904708",
-            "A Liquidar": "IMPOSTO S/SERVICOS DE QUALQUER NATUREZA-ISSQN",
-            "Liquidado a Pagar": "158459264222026NE000255",
-            "Pago": "EMPENHO PARA PAGAMENTO DE JUROS E MULTA DE ISS DEVIDOS A PREFEITURA DE ARAQUARI. REF. CONCORRENCIA ELETRONICA Nº 90319/2025. CONTRATO Nº 0168/2025. PROCESSO: 23349.000692/2025-17. TED Nº 16221. Nº DOCTO: 6347818. VENCTO: 09/10/2026. VALOR TOTAL DA GUIA: 2.831,39. VALOR TOTAL DA MULTA E JUROS: R$82,47.",
-            "Valor 6": "MUNICIPIO DE ARAQUARI",
-            "Valor 7": "82,47",
-            "Valor 8": "0,00",
-            "Valor 9": "82,47",
-            "Valor 10": ""
-          }
-        },
-        {
-          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-          "values": {
-            "Valor 8": 6959.95,
-            "Valor 9": 82.47,
-            "Valor 10": 20390.61
-          },
-          "raw": {
-            "Conta Contabil": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "6.959,95",
-            "Valor 9": "82,47",
-            "Valor 10": "20.390,61"
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "6.959,95",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "82,47",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "20.390,61"
           }
         },
         {
           "label": "INDENIZACOES E RESTITUICOES",
           "values": {
-            "Valor 8": 5194.35,
-            "Valor 9": 0.0,
-            "Valor 10": 805.65
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 5194.35,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 805.65
           },
           "raw": {
-            "Conta Contabil": "INDENIZACOES E RESTITUICOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "5.194,35",
-            "Valor 9": "0,00",
-            "Valor 10": "805,65"
+            "Natureza Despesa": "INDENIZACOES E RESTITUICOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "5.194,35",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "805,65"
           }
         },
         {
           "label": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
           "values": {
-            "Valor 8": 11291.94,
-            "Valor 9": 8500.0,
-            "Valor 10": 47564.51
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 11291.94,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 8500.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 47564.51
           },
           "raw": {
-            "Conta Contabil": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "11.291,94",
-            "Valor 9": "8.500,00",
-            "Valor 10": "47.564,51"
+            "Natureza Despesa": "OBRIG.TRIBUT.E CONTRIB-OP.INTRA-ORCAMENTARIAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "11.291,94",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "8.500,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "47.564,51"
           }
         },
         {
           "label": "OBRAS E INSTALACOES",
           "values": {
-            "Valor 8": 1000000.0
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 1000000.0
           },
           "raw": {
-            "Conta Contabil": "OBRAS E INSTALACOES",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "1.000.000,00",
-            "Valor 9": "",
-            "Valor 10": ""
+            "Natureza Despesa": "OBRAS E INSTALACOES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.000.000,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
           }
         },
         {
           "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
           "values": {
-            "Valor 8": 0.0,
-            "Valor 9": 3373.27,
-            "Valor 10": 96185.32
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 3373.27,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 96185.32
           },
           "raw": {
-            "Conta Contabil": "EQUIPAMENTOS E MATERIAL PERMANENTE",
-            "Empenhado": "Total",
-            "A Liquidar": "Total",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "0,00",
-            "Valor 9": "3.373,27",
-            "Valor 10": "96.185,32"
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "3.373,27",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "96.185,32"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Valor 8": 2646915.13,
-            "Valor 9": 236210.65,
-            "Valor 10": 3343400.94
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2646915.13,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 236210.65,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 3343400.94
           },
           "raw": {
-            "Conta Contabil": "Total",
-            "Empenhado": "",
-            "A Liquidar": "",
-            "Liquidado a Pagar": "",
-            "Pago": "",
-            "Valor 6": "",
-            "Valor 7": "",
-            "Valor 8": "2.646.915,13",
-            "Valor 9": "236.210,65",
-            "Valor 10": "3.343.400,94"
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.646.915,13",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "236.210,65",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "3.343.400,94"
           }
         }
       ],
       "metrics": {
-        "empenhado": 33904708.0,
         "saldo_a_liquidar": 2646915.13,
-        "liquidado_a_pagar": 1.58459264222026e+20,
+        "liquidado_a_pagar": 236210.65,
         "pago": 3343400.94
       },
       "metrics_meta": {
-        "empenhado": {
-          "status": "ok",
-          "source": "totals",
-          "fallback": false
-        },
         "saldo_a_liquidar": {
           "status": "ok",
           "source": "totals",

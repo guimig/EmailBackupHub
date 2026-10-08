@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "slug": "provisionamentos",
   "series_min_date": "2026-01-01",
   "omitted_before_min_date": 3,
@@ -63,112 +63,6 @@
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Doc - Observação": -0.5,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 911215.82
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 50% DO TOTAL DA LOA DESCONTADA AS RETENCOES.",
-            "Transação - Mês": "JUN/2025",
-            "Saldo - Moeda Origem (Item Informação)": "911.215,82"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 376363.66
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 58,33% (7/12 AVOS) DO TOTAL DA LOA, DESCONTADA AS RETENCOES.",
-            "Transação - Mês": "JUL/2025",
-            "Saldo - Moeda Origem (Item Informação)": "376.363,66"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 904815.03
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 75% (9/12 AVOS) DO TOTAL DA LOA, DESCONTADA AS RETENCOES ATE 06/2025 E ADIANTAMENTOS.",
-            "Transação - Mês": "AGO/2025",
-            "Saldo - Moeda Origem (Item Informação)": "904.815,03"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 49042.32
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 91,67% (11/12 AVOS) DO TOTAL DA LOA, DESCONTADA AS RETENCOES PREVISTAS ATE 12/2025.",
-            "Transação - Mês": "OUT/2025",
-            "Saldo - Moeda Origem (Item Informação)": "49.042,32"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 246872.68
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 97,00% DO TOTAL DA LOA, DESCONTADA AS RETENCOES PREVISTAS ATE 12/2025 E OS PEDIDOS DE ALTERACAO ORCAMENTARIA.",
-            "Transação - Mês": "NOV/2025",
-            "Saldo - Moeda Origem (Item Informação)": "246.872,68"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
             "Saldo - Moeda Origem (Item Informação)": 5129789.05
           },
           "raw": {
@@ -215,134 +109,6 @@
             "Doc - Observação": "",
             "Transação - Mês": "",
             "Saldo - Moeda Origem (Item Informação)": "250.000,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Doc - Observação": -362025.5,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 157190.57
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS CONFORME MEMORANDO 36/2025, CONSIDERANDO 50% DO TOTAL.",
-            "Transação - Mês": "ABR/2025",
-            "Saldo - Moeda Origem (Item Informação)": "157.190,57"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 11198.43
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 58,33% (7/12 AVOS) DO TOTAL DA LOA.",
-            "Transação - Mês": "JUL/2025",
-            "Saldo - Moeda Origem (Item Informação)": "11.198,43"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Doc - Observação": -0.75912,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 52396.86
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 75% (9/12 AVOS) DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2025",
-            "Saldo - Moeda Origem (Item Informação)": "52.396,86"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 52396.85
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS, TOTALIZANDO 91,67% (11/12 AVOS) DO TOTAL DA LOA.",
-            "Transação - Mês": "OUT/2025",
-            "Saldo - Moeda Origem (Item Informação)": "52.396,85"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 174000.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 12/2025 - PAE CONFORME MEMORANDO 55 E 60/2025 TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2025",
-            "Saldo - Moeda Origem (Item Informação)": "174.000,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": -9.0,
-            "Transação - Mês": 2025.0,
-            "Saldo - Moeda Origem (Item Informação)": 13878.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "-9",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 21/2025 - TECNOLOGIA ASSISTIVA CONFORME MEMORANDO 51/2025.50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2025",
-            "Saldo - Moeda Origem (Item Informação)": "13.878,00"
           }
         },
         {
@@ -416,147 +182,103 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 89872.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 89872.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "89.872,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "89.872,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 1462510.55
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 1462510.55
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "1.462.510,55"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "1.462.510,55"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 81828.45
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 81828.45
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "81.828,45"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "81.828,45"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 136400.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 136400.0
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "136.400,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "136.400,00"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 1854611.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": 1854611.0
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "1.854.611,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO": "",
+            "NC / 158125264222026NC000134": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026.": "",
+            "Transação - Mês / MAR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00": "1.854.611,00"
           }
         }
       ],
@@ -579,231 +301,103 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 237114.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 237114.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "237.114,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "237.114,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 2340920.82
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 859410.27
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000183",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DESCONTADA AS RETENCOES, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "859.410,27"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 2340920.82
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "2.340.920,82"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "2.340.920,82"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 136380.75
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000178",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 136380.75
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "136.380,75"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "136.380,75"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 259994.78
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000179",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35094.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000180",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 15/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 49/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.094,78"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 259994.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "259.994,78"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "259.994,78"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3058410.35
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 3058410.35
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.058.410,35"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "3.058.410,35"
           }
         }
       ],
@@ -826,311 +420,120 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 237114.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 237114.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "237.114,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "237.114,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 2674874.23
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 859410.27
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000183",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DESCONTADA AS RETENCOES, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "859.410,27"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 2674874.23
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "2.674.874,23"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "2.674.874,23"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 190933.05
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000178",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000270",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 58,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 190933.05
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "190.933,05"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "190.933,05"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 142450.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 549244.78
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000268",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 17/2026 - PAE NO MONTANTE DE 55% DOS VALORES INDICADOS NO MEMORANDO 55/2026 - PROPESSOAS/REI, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "142.450,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000179",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000267",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35094.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000180",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 15/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 49/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.094,78"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 549244.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "549.244,78"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "549.244,78"
           }
         },
         {
           "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 30000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 30000.0
           },
           "raw": {
-            "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "30.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "30.000,00"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3766166.06
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 3766166.06
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.766.166,06"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "3.766.166,06"
           }
         }
       ],
@@ -1153,393 +556,137 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 237114.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 237114.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "237.114,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "237.114,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 3561206.36
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 859410.27
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000183",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DESCONTADA AS RETENCOES, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "859.410,27"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3561206.36
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.561.206,36"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "3.561.206,36"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 245485.35
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000178",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000270",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 58,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000364",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 75% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 245485.35
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "245.485,35"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "245.485,35"
           }
         },
         {
           "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -41233.33,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 136640.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 409920.0
           },
           "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000325",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 4/12 AVOS DOS VALORES PREVISTOS TOTALIZANDO 33,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUL/2026",
-            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -100.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 273280.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000365",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 100% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "273.280,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 409920.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "409.920,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "409.920,00"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 142450.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 549244.78
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000268",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 17/2026 - PAE NO MONTANTE DE 55% DOS VALORES INDICADOS NO MEMORANDO 55/2026 - PROPESSOAS/REI, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "142.450,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000179",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000267",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35094.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000180",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 15/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 49/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.094,78"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 549244.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "549.244,78"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "549.244,78"
           }
         },
         {
           "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 41487.8
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 41487.8
           },
           "raw": {
-            "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "41.487,80"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "41.487,80"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 5128458.29
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 5128458.29
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "5.128.458,29"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "5.128.458,29"
           }
         }
       ],
@@ -1562,410 +709,154 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 237114.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 237114.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "237.114,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "237.114,00"
           }
         },
         {
           "label": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 1000000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 1000000.0
           },
           "raw": {
-            "Ação Governo": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "1.000.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "1.000.000,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 3561206.36
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 859410.27
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000183",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DESCONTADA AS RETENCOES, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "859.410,27"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 3561206.36
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "3.561.206,36"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "3.561.206,36"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 245485.35
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000178",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000270",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 58,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000364",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 75% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 245485.35
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "245.485,35"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "245.485,35"
           }
         },
         {
           "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -41233.33,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 136640.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 409920.0
           },
           "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000325",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 4/12 AVOS DOS VALORES PREVISTOS TOTALIZANDO 33,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUL/2026",
-            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -100.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 273280.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000365",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 100% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "273.280,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 409920.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "409.920,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "409.920,00"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 142450.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 596744.78
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000268",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 17/2026 - PAE NO MONTANTE DE 55% DOS VALORES INDICADOS NO MEMORANDO 55/2026 - PROPESSOAS/REI, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "142.450,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000179",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000267",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35094.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000180",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 15/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 49/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.094,78"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 596744.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "596.744,78"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "596.744,78"
           }
         },
         {
           "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 41487.8
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 41487.8
           },
           "raw": {
-            "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "41.487,80"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "41.487,80"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 6175958.29
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 6175958.29
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "6.175.958,29"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "6.175.958,29"
           }
         }
       ],
@@ -1988,515 +879,154 @@
         {
           "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 237114.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 237114.0
           },
           "raw": {
-            "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "237.114,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "237.114,00"
           }
         },
         {
           "label": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 1000000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 1000000.0
           },
           "raw": {
-            "Ação Governo": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "1.000.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "1.000.000,00"
           }
         },
         {
           "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -2122026.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 484548.78
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 4190283.95
           },
           "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000076",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-            "Transação - Mês": "FEV/2026",
-            "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -3122026.1,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 438675.69
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000102",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 3/12 AVOS DA LOA 2026, COM 10% DAS RETENCOES PREVISTAS.",
-            "Transação - Mês": "MAR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "438.675,69"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 859410.27
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000183",
-            "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DESCONTADA AS RETENCOES, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "859.410,27"
-          }
-        },
-        {
-          "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 4190283.95
-          },
-          "raw": {
-            "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "4.190.283,95"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "4.190.283,95"
           }
         },
         {
           "label": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 84000.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 84000.0
           },
           "raw": {
-            "Ação Governo": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "84.000,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "FOMENTO AS ACOES DE ENSINO, PESQUISA, EXTENSAO, INOVACAO E S",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "84.000,00"
           }
         },
         {
           "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 300037.65
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000178",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE DE 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT, TOTALIZANDO 41,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000270",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 58,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000364",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 75% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 54552.3
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000476",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AEE PARA ATENDER DESPESAS COM DESPESAS DISCRICIONARIAS CONSIDERANDO 2/12 AVOS DOS VALORES INDICADOS NO MEMORANDO 15/2026 - PROEN/REIT TOTALIZANDO 91,67% DO TOTAL DA LOA.",
-            "Transação - Mês": "OUT/2026",
-            "Saldo - Moeda Origem (Item Informação)": "54.552,30"
-          }
-        },
-        {
-          "label": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 300037.65
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "300.037,65"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA PARA ATENDIMENTO A PESSOAS COM DEFICIENCIA",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "300.037,65"
           }
         },
         {
           "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -41233.33,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 136640.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 409920.0
           },
           "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000325",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 4/12 AVOS DOS VALORES PREVISTOS TOTALIZANDO 33,33% DO TOTAL DA LOA.",
-            "Transação - Mês": "JUL/2026",
-            "Saldo - Moeda Origem (Item Informação)": "136.640,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Doc - Observação": -100.0,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 273280.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000365",
-            "Doc - Observação": "PROVISAO CUSTEIO - ALIMENTACAO DO ESTUDANTE PARA ATENDER DESPESAS DISCRICIONARIAS DO PROGRAMA BARRIGA CHEIA CONSIDERANDO 100% DO TOTAL DA LOA.",
-            "Transação - Mês": "AGO/2026",
-            "Saldo - Moeda Origem (Item Informação)": "273.280,00"
-          }
-        },
-        {
-          "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 409920.0
-          },
-          "raw": {
-            "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "409.920,00"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "409.920,00"
           }
         },
         {
           "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
           "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 142450.0
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 709810.39
           },
           "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000268",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 17/2026 - PAE NO MONTANTE DE 55% DOS VALORES INDICADOS NO MEMORANDO 55/2026 - PROPESSOAS/REI, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "142.450,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 25500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000472",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 17/2026 - PAE NO MONTANTE DE 10% DOS VALORES INDICADOS NO MEMORANDO 55/2026 - PROPESSOAS/REI, TOTALIZANDO 85% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "OUT/2026",
-            "Saldo - Moeda Origem (Item Informação)": "25.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": -8.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 36125.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "-8",
-            "PI (2)": "SEM INFORMACAO",
-            "NC": "158125264222026NC000475",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM A LISTA DE ESPERA DOS EDITAIS NO MONTANTE DE 85% DOS VALORES INDICADOS NO MEMORANDO 131/2026 - PROPESSOAS/REI, TOTALIZANDO 85% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "OUT/2026",
-            "Saldo - Moeda Origem (Item Informação)": "36.125,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000179",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 50% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 88500.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000267",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 16/2026 - PAE NO MONTANTE DE 25% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 75% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "JUN/2026",
-            "Saldo - Moeda Origem (Item Informação)": "88.500,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942300.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35400.0
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2300N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PAE",
-            "NC": "158125264222026NC000471",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM O EDITAL 16/2026 - PAE NO MONTANTE DE 10% DOS VALORES INDICADOS NO MEMORANDO 1/2026 - CGPPES/REIT, TOTALIZANDO 85% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "OUT/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.400,00"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 35094.78
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000180",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 15/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 49/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "ABR/2026",
-            "Saldo - Moeda Origem (Item Informação)": "35.094,78"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Grupo Despesa": 3.0,
-            "PI": 29942301.0,
-            "NC": 1.58125264222026e+20,
-            "Transação - Mês": 2026.0,
-            "Saldo - Moeda Origem (Item Informação)": 16040.61
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "3",
-            "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-            "PI": "L2994P2301N",
-            "PI (2)": "ASSISTENCIA ESTUDANTIL - PCD",
-            "NC": "158125264222026NC000474",
-            "Doc - Observação": "PROVISAO ASSISTENCIA - AUXILIO FINANCEIRO PARA ATENDER DESPESAS DO EDITAL 62/2026 - TECNOLOGIA ASSISTIVA CONFORME VALORES INDICADOS NO MEMORANDO 129/2026 - PROPESSOAS/REIT, TOTALIZANDO 100% DO TOTAL DO EDITAL.",
-            "Transação - Mês": "OUT/2026",
-            "Saldo - Moeda Origem (Item Informação)": "16.040,61"
-          }
-        },
-        {
-          "label": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-          "values": {
-            "Saldo - Moeda Origem (Item Informação)": 709810.39
-          },
-          "raw": {
-            "Ação Governo": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "709.810,39"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "ASSISTENCIA AOS ESTUDANTES DA REDE FEDERAL DE EDUCACAO PROFI",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "709.810,39"
           }
         },
         {
           "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 41487.8
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 41487.8
           },
           "raw": {
-            "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
-            "Grupo Despesa": "Total",
-            "Grupo Despesa (2)": "Total",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "41.487,80"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+            "Grupo Despesa / 3": "Total",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "Total",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "41.487,80"
           }
         },
         {
           "label": "Total",
           "values": {
-            "Saldo - Moeda Origem (Item Informação)": 6972653.79
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": 6972653.79
           },
           "raw": {
-            "Ação Governo": "Total",
-            "Grupo Despesa": "",
-            "Grupo Despesa (2)": "",
-            "PI": "",
-            "PI (2)": "",
-            "NC": "",
-            "Doc - Observação": "",
-            "Transação - Mês": "",
-            "Saldo - Moeda Origem (Item Informação)": "6.972.653,79"
+            "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)": "Total",
+            "Grupo Despesa / 3": "",
+            "Grupo Despesa / OUTRAS DESPESAS CORRENTES": "",
+            "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J": "",
+            "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA": "",
+            "NC / 158125264222026NC000134 / 158125264222026NC000175": "",
+            "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.": "",
+            "Transação - Mês / MAR/2026 / ABR/2026": "",
+            "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00": "6.972.653,79"
           }
         }
       ],

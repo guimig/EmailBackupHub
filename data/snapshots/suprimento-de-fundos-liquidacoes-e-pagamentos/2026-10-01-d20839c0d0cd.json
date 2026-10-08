@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "suprimento-de-fundos-liquidacoes-e-pagamentos",
   "title": "Suprimento de Fundos - Liquidações e Pagamentos",
   "date": "01/10/2026",
@@ -71,6 +72,32 @@
       "Item Informação / Doc - Valor": "1832,5",
       "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.832,50)",
       "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.832,50"
+    },
+    {
+      "Documento Hábil": "158459264222024SF000002",
+      "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
+      "DH - Dia Emissão": "28/06/2024",
+      "DH - Valor": "17600",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222024OB001430",
+      "Doc - Observação": "PAGAMENTO DA FATURA DO CARTAO DE SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZEQUIEL DA PAIXAO, REFERENTE A AQUISICAO DE MATERIAIS DE CONSUMO. PERIODO DE APLICACAO 15/06/2024 A 15/09/2024. PRESTACAO DE CONTAS: ATE 15/10/2024. PROCESSO 23349.001818/2024-90. VENCIMENTO 10/10/2024. VALOR TOTAL DA FATURA: R$ 2.985,95.",
+      "Emissão - Dia": "10/10/2024",
+      "Item Informação / Doc - Valor": "1695,95",
+      "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.695,95)",
+      "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.695,95"
+    },
+    {
+      "Documento Hábil": "158459264222024SF000002",
+      "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
+      "DH - Dia Emissão": "28/06/2024",
+      "DH - Valor": "17600",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222024OB001431",
+      "Doc - Observação": "PAGAMENTO DA FATURA DO CARTAO DE SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZEQUIEL DA PAIXAO, REFERENTE A PRESTACAO DE SERVICO. PERIODO DE APLICACAO 15/06/2024 A 15/09/2024. PRESTACAO DE CONTAS: ATE 15/10/2024. PROCESSO 23349.001818/2024-90. VENCIMENTO 10/10/2024. VALOR TOTAL DA FATURA: R$ 2.985,95.",
+      "Emissão - Dia": "10/10/2024",
+      "Item Informação / Doc - Valor": "1290",
+      "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.290,00)",
+      "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.290,00"
     },
     {
       "Documento Hábil": "158459264222024SF000003",
@@ -805,8 +832,6 @@
     {
       "label": "158459264222024SF000001",
       "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 28062024.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -9932.15,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 9932.15
       },
@@ -827,60 +852,6 @@
     {
       "label": "158459264222024SF000002",
       "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 28062024.0,
-        "DH - Valor": 17600.0,
-        "Documento": 1.58459264222024e+20,
-        "Emissão - Dia": 10102024.0,
-        "Item Informação / Doc - Valor": 1695.95,
-        "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1695.95,
-        "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1695.95
-      },
-      "raw": {
-        "Documento Hábil": "158459264222024SF000002",
-        "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
-        "DH - Dia Emissão": "28/06/2024",
-        "DH - Valor": "17600",
-        "Doc - Tipo": "ORDEM BANCARIA",
-        "Documento": "158459264222024OB001430",
-        "Doc - Observação": "PAGAMENTO DA FATURA DO CARTAO DE SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZEQUIEL DA PAIXAO, REFERENTE A AQUISICAO DE MATERIAIS DE CONSUMO. PERIODO DE APLICACAO 15/06/2024 A 15/09/2024. PRESTACAO DE CONTAS: ATE 15/10/2024. PROCESSO 23349.001818/2024-90. VENCIMENTO 10/10/2024. VALOR TOTAL DA FATURA: R$ 2.985,95.",
-        "Emissão - Dia": "10/10/2024",
-        "Item Informação / Doc - Valor": "1695,95",
-        "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.695,95)",
-        "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.695,95"
-      }
-    },
-    {
-      "label": "158459264222024SF000002",
-      "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 28062024.0,
-        "DH - Valor": 17600.0,
-        "Documento": 1.58459264222024e+20,
-        "Emissão - Dia": 10102024.0,
-        "Item Informação / Doc - Valor": 1290.0,
-        "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1290.0,
-        "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1290.0
-      },
-      "raw": {
-        "Documento Hábil": "158459264222024SF000002",
-        "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
-        "DH - Dia Emissão": "28/06/2024",
-        "DH - Valor": "17600",
-        "Doc - Tipo": "ORDEM BANCARIA",
-        "Documento": "158459264222024OB001431",
-        "Doc - Observação": "PAGAMENTO DA FATURA DO CARTAO DE SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZEQUIEL DA PAIXAO, REFERENTE A PRESTACAO DE SERVICO. PERIODO DE APLICACAO 15/06/2024 A 15/09/2024. PRESTACAO DE CONTAS: ATE 15/10/2024. PROCESSO 23349.001818/2024-90. VENCIMENTO 10/10/2024. VALOR TOTAL DA FATURA: R$ 2.985,95.",
-        "Emissão - Dia": "10/10/2024",
-        "Item Informação / Doc - Valor": "1290",
-        "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": "(1.290,00)",
-        "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": "1.290,00"
-      }
-    },
-    {
-      "label": "158459264222024SF000002",
-      "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 28062024.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -4818.45,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 4818.45
       },
@@ -901,8 +872,6 @@
     {
       "label": "158459264222024SF000003",
       "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 26092024.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -4996.1,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 4996.1
       },
@@ -923,8 +892,6 @@
     {
       "label": "158459264222024SF000004",
       "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 27092024.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -6213.24,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 6213.24
       },
@@ -945,8 +912,6 @@
     {
       "label": "158459264222024SF000005",
       "values": {
-        "Documento Hábil": 1.58459264222024e+20,
-        "DH - Dia Emissão": 12112024.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -4522.8,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 4522.8
       },
@@ -967,8 +932,6 @@
     {
       "label": "158459264222025SF000001",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 6022025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -9555.0,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 9555.0
       },
@@ -989,8 +952,6 @@
     {
       "label": "158459264222025SF000003",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 7032025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -7156.97,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 7156.97
       },
@@ -1011,8 +972,6 @@
     {
       "label": "158459264222025SF000004",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 7032025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1102.09,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1102.09
       },
@@ -1033,8 +992,6 @@
     {
       "label": "158459264222025SF000005",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 7032025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -10437.82,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 10437.82
       },
@@ -1055,8 +1012,6 @@
     {
       "label": "158459264222025SF000006",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 27022025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -1742.0,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 1742.0
       },
@@ -1077,8 +1032,6 @@
     {
       "label": "158459264222025SF000007",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 27052025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -634.12,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 634.12
       },
@@ -1099,8 +1052,6 @@
     {
       "label": "158459264222025SF000008",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 26062025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -17940.99,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 17940.99
       },
@@ -1121,8 +1072,6 @@
     {
       "label": "158459264222025SF000009",
       "values": {
-        "Documento Hábil": 1.58459264222025e+20,
-        "DH - Dia Emissão": 17102025.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -23707.6,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 23707.6
       },
@@ -1143,8 +1092,6 @@
     {
       "label": "158459264222026SF000001",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 13012026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -17473.73,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 17473.73
       },
@@ -1165,8 +1112,6 @@
     {
       "label": "158459264222026SF000002",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 24032026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -2380.23,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 2380.23
       },
@@ -1187,8 +1132,6 @@
     {
       "label": "158459264222026SF000003",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 6042026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -25735.76,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 26222.4
       },
@@ -1209,8 +1152,6 @@
     {
       "label": "158459264222026SF000004",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 6042026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -11944.15,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 11944.15
       },
@@ -1231,8 +1172,6 @@
     {
       "label": "158459264222026SF000005",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 3072026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -5555.52,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 5661.12
       },
@@ -1253,8 +1192,6 @@
     {
       "label": "158459264222026SF000006",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 3072026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -2464.4,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 2464.4
       },
@@ -1275,8 +1212,6 @@
     {
       "label": "158459264222026SF000007",
       "values": {
-        "Documento Hábil": 1.58459264222026e+20,
-        "DH - Dia Emissão": 3072026.0,
         "58 / DDR COMPROMETIDA P/LIQUIDACAO (821130000) / Movim. Líquido - R$ (Conta Contábil)": -4185.12,
         "59 / DDR UTILIZADA (821140000) / Movim. Líquido - R$ (Conta Contábil)": 4185.12
       },
@@ -1397,7 +1332,7 @@
       }
     },
     {
-      "type": "total",
+      "type": "data",
       "raw": {
         "Documento Hábil": "158459264222024SF000002",
         "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
@@ -1413,7 +1348,7 @@
       }
     },
     {
-      "type": "total",
+      "type": "data",
       "raw": {
         "Documento Hábil": "158459264222024SF000002",
         "DH - Observação": "SUPRIMENTO DE FUNDOS 02/2024 - SUPRIDO: ALESSANDRO EZIQUIEL DA PAIXÃO. PERIODO DE APLICAÇÃO 15/06/2024 A 15/09/2024. PRESTAÇÃO DE CONTAS: ATÉ 15/10/2024. PROCESSO 23349.001818/2024-90.",
@@ -2646,13 +2581,13 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-08T11:12:59.849452-03:00",
+    "ultima_atualizacao": "2026-10-08T11:50:35.578722-03:00",
     "idade_dias": 7,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "6959",
     "hash_conteudo": "d20839c0d0cd18d1b6cfa3ca570b6d567fcb2af5f5999b67cc5037b47af9a740",
-    "row_count": 60,
+    "row_count": 62,
     "column_count": 11,
     "status": "desatualizado",
     "limite_dias": 1
