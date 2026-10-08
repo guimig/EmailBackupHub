@@ -77,9 +77,9 @@ REPORT_DEFINITIONS = {
         ],
         "expected_metrics": ["empenhado", "liquidado", "pago"],
         "metric_rules": {
-            "empenhado": {"columns": ["Empenhado"], "fallback_columns": ["Valor 7"]},
-            "liquidado": {"columns": ["Liquidado"], "fallback_columns": ["Valor 8"]},
-            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 9"]},
+            "empenhado": {"columns": ["DESPESAS EMPENHADAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 7"]},
+            "liquidado": {"columns": ["DESPESAS LIQUIDADAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 8"]},
+            "pago": {"columns": ["DESPESAS PAGAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 9"]},
         },
     },
     "despesas-empenhadas-liquidadas-e-pagas-strictu-sensu": {
@@ -94,9 +94,9 @@ REPORT_DEFINITIONS = {
         ],
         "expected_metrics": ["empenhado", "liquidado", "pago"],
         "metric_rules": {
-            "empenhado": {"columns": ["Empenhado"], "fallback_columns": ["Valor 7"]},
-            "liquidado": {"columns": ["Liquidado"], "fallback_columns": ["Valor 8"]},
-            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 9"]},
+            "empenhado": {"columns": ["DESPESAS EMPENHADAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 7"]},
+            "liquidado": {"columns": ["DESPESAS LIQUIDADAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 8"]},
+            "pago": {"columns": ["DESPESAS PAGAS (CONTROLE EMPENHO)"], "fallback_columns": ["Valor 9"]},
         },
     },
     "evolucao-das-despesas-empenhadas": {
@@ -195,9 +195,9 @@ REPORT_DEFINITIONS = {
         "expected_metrics": ["empenhado", "saldo_a_liquidar", "liquidado_a_pagar", "pago"],
         "metric_rules": {
             "empenhado": {"columns": ["Empenhado"]},
-            "saldo_a_liquidar": {"columns": ["A Liquidar"], "fallback_columns": ["Valor 8"]},
-            "liquidado_a_pagar": {"columns": ["Liquidado a Pagar"], "fallback_columns": ["Valor 9"]},
-            "pago": {"columns": ["Pago"], "fallback_columns": ["Valor 10"]},
+            "saldo_a_liquidar": {"columns": ["A Liquidar", "EMPENHOS A LIQUIDAR"], "fallback_columns": ["Valor 8"]},
+            "liquidado_a_pagar": {"columns": ["Liquidado a Pagar", "EMPENHOS LIQUIDADOS A PAGAR"], "fallback_columns": ["Valor 9"]},
+            "pago": {"columns": ["Pago", "EMPENHOS PAGOS"], "fallback_columns": ["Valor 10"]},
         },
     },
     "suprimento-de-fundos-empenhos": {

@@ -1,6 +1,7 @@
 import datetime
 import hashlib
 import json
+import math
 import os
 import re
 import time
@@ -38,7 +39,8 @@ SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
 CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
-SCHEMA_VERSION = "1.5"
+SCHEMA_VERSION = "1.6"
+PARSER_VERSION = "2026-10-08.1"
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
 
 INFO_QUALITY_CODES = {
@@ -142,19 +144,26 @@ def apply_report_overrides(slug, title):
 
 
 def parse_br_number(value):
-    value = (value or "").strip()
-    if not value:
+    if isinstance(value, bool):
         return None
-    negative = value.startswith("(") and value.endswith(")")
-    value = re.sub(r"[^\d,.-]", "", value.strip("()"))
-    if not value:
+    if isinstance(value, (int, float)):
+        return float(value) if math.isfinite(value) else None
+    text = str(value or "").strip()
+    if not text:
         return None
-    if "," in value:
-        value = value.replace(".", "").replace(",", ".")
-    try:
-        number = float(value)
-    except ValueError:
+    negative = text.startswith("(") and text.endswith(")")
+    if negative:
+        text = text[1:-1].strip()
+    text = re.sub(r"^R\$\s*", "", text, flags=re.IGNORECASE).strip()
+    text = re.sub(r"\s*%$", "", text).strip()
+    # Validate the whole cell: identifiers, dates and prose are never money.
+    if not re.fullmatch(r"[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)", text):
         return None
+    if "," in text:
+        text = text.replace(".", "").replace(",", ".")
+    elif re.fullmatch(r"[+-]?\d{1,3}(?:\.\d{3})+", text):
+        text = text.replace(".", "")
+    number = float(text)
     return -number if negative else number
 
 
@@ -248,7 +257,7 @@ def has_generated_column_names(columns):
 
 def apply_column_overrides(slug, columns):
     friendly = report_columns(slug)
-    if not friendly or not has_generated_column_names(columns):
+    if not friendly or len(friendly) != len(columns) or not has_generated_column_names(columns):
         return columns
     result = []
     for idx, column in enumerate(columns):
@@ -297,15 +306,20 @@ def merge_header_rows(header_rows, width):
 
 
 def classify_row(row):
-    joined = normalize_slug(" ".join(cell for cell in row if cell)).replace("-", " ")
-    first_cell = next((cell for cell in row if cell), "")
-    first_slug = normalize_slug(first_cell).replace("-", " ")
-    numeric_count = sum(1 for cell in row if parse_br_number(cell) is not None)
-    if re.search(r"\b(total|subtotal|sub total|totalizador|soma)\b", first_slug):
-        return "total"
-    if numeric_count and re.search(r"\b(total|subtotal|sub total|totalizador|soma)\b", joined):
-        return "total"
-    return "data"
+    # A description mentioning "total" is still a detail row.
+    labels = {"total", "total geral", "subtotal", "sub total", "totalizador", "soma"}
+    return "total" if any(normalize_key(cell) in labels for cell in row if cell) else "data"
+
+
+def source_header_row(row):
+    labels = {
+        "natureza despesa", "natureza despesa detalhada", "item informacao",
+        "mes lancamento", "ne ccor", "ne ccor descricao", "ne ccor favorecido",
+        "ne ccor num processo", "ne ccor valor", "ne ccor ano emissao",
+        "conta contabil", "conta contabil numero", "conta contabil nome",
+        "entidade ccor", "grupo despesa", "metrica",
+    }
+    return sum(normalize_key(cell) in labels for cell in row if cell) >= 2
 
 
 def quality_result(codes):
@@ -319,17 +333,24 @@ def normalize_table(grid):
     if not grid:
         return [], [], [], [], ["no_table"]
     issues = []
-    data_start = next((idx for idx, row in enumerate(grid) if looks_like_data(row)), None)
+    data_start = next(
+        (idx for idx, row in enumerate(grid) if not source_header_row(row) and looks_like_data(row)),
+        None,
+    )
     if data_start is None:
         width = max(len(row) for row in grid)
         columns = [f"Coluna {idx + 1}" for idx in range(width)]
         data_rows = grid
         issues.append("columns_generated")
     else:
-        header_candidates = [row for row in grid[:data_start] if looks_like_header(row)]
+        header_candidates = [
+            row for row in grid[:data_start]
+            if len(set(cell for cell in row if cell)) > 1
+            and (source_header_row(row) or looks_like_header(row))
+        ]
         width = max(len(row) for row in grid[data_start:] + header_candidates)
         fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
-        columns = merge_header_rows(header_candidates[-3:] or fallback_headers, width)
+        columns = merge_header_rows(header_candidates or fallback_headers, width)
         data_rows = grid[data_start:]
     width = len(columns)
     rows = []
@@ -422,6 +443,7 @@ def full_report_document(file_path, source_map, now):
     source_path = rel_path(file_path)
     doc = {
         "schema_version": SCHEMA_VERSION,
+        "parser_version": PARSER_VERSION,
         "slug": slug,
         "title": title,
         "date": report_date.strftime("%d/%m/%Y"),
@@ -505,7 +527,7 @@ def cached_document(file_path, source_map, now, cache_index, stats):
     entry = cache_index.get(source_path) or {}
     snapshot_path = Path(REPO_ROOT) / entry.get("snapshot_path", "")
     stats["cache_lookups"] += 1
-    if entry.get("content_hash") == content_hash and snapshot_path.exists():
+    if entry.get("content_hash") == content_hash and entry.get("parser_version") == PARSER_VERSION and snapshot_path.exists():
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
@@ -609,7 +631,7 @@ def metric_columns(columns, rule):
 
 def metric_value_from_totals(totals, columns, rule):
     for column in metric_columns(columns, rule):
-        for total in reversed(totals or []):
+        for total in reversed(grand_total_rows(totals, columns)):
             values = total.get("values") or {}
             if column in values and values[column] is not None:
                 return values[column]
@@ -635,12 +657,19 @@ def total_label_text(total, columns):
     return normalize_key(" ".join(str(value or "") for value in candidates))
 
 
+def grand_total_rows(totals, columns):
+    result = []
+    for total in totals or []:
+        raw = total.get("raw") or {}
+        label = normalize_key(str(total.get("label") or ""))
+        first = normalize_key(str(raw.get(columns[0]) or "")) if columns else ""
+        if label in {"total", "total geral"} or first in {"total", "total geral"}:
+            result.append(total)
+    return result
+
+
 def safe_total_rows(totals, columns):
-    return [
-        total
-        for total in totals or []
-        if "total" in total_label_text(total, columns)
-    ]
+    return grand_total_rows(totals, columns)
 
 
 def rap_metric_from_totals(doc, metric, rule):
@@ -829,6 +858,7 @@ def generate_data_files():
             write_json(snapshot_path, doc)
             new_cache_index[rel_path(path)] = {
                 "content_hash": content_hash,
+                "parser_version": PARSER_VERSION,
                 "snapshot_path": rel_path(snapshot_path),
                 "date_iso": doc["date_iso"],
                 "slug": slug,

@@ -208,7 +208,10 @@ let indexData = null;
       ]);
       const liquidated = firstValue([
         metricValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'liquidado', ['Valor 8']),
-        metricValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'liquidado_a_pagar', ['Valor 9'])
+        sumAudit('Despesas liquidadas', [
+          metricValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'pago', ['Valor 10']),
+          metricValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'liquidado_a_pagar', ['Valor 9'])
+        ])
       ]);
       const paid = firstValue([
         metricValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'pago', ['Valor 10']),
@@ -282,8 +285,10 @@ let indexData = null;
 
     function grandTotalRow(doc) {
       const totals = doc?.totals || [];
-      if (totals.length) return totals[totals.length - 1].raw || totals[totals.length - 1].values || null;
-      const typedTotals = (doc?.row_types || []).filter(item => item.type === 'total').map(item => item.raw || item);
+      const firstColumn = doc?.columns?.[0];
+      const grand = totals.filter(total => ['total', 'total geral'].includes(normalize(total.label || '')) || ['total', 'total geral'].includes(normalize(total.raw?.[firstColumn] || '')));
+      if (grand.length) return grand[grand.length - 1].raw || grand[grand.length - 1].values || null;
+      const typedTotals = (doc?.row_types || []).filter(item => item.type === 'total' && ['total', 'total geral'].includes(normalize(item.raw?.[firstColumn] || ''))).map(item => item.raw || item);
       if (typedTotals.length) return typedTotals[typedTotals.length - 1];
       return null;
     }
@@ -324,13 +329,15 @@ let indexData = null;
     }
 
     function parseBrNumber(value) {
-      if (typeof value === 'number') return value;
-      const text = String(value || '').trim();
+      if (typeof value === 'number') return Number.isFinite(value) ? value : null;
+      let text = String(value ?? '').trim();
       const negative = text.startsWith('(') && text.endsWith(')');
-      const clean = text.replace(/[^\d,.-]/g, '');
-      if (!clean) return null;
-      const normalized = clean.includes(',') ? clean.replace(/\./g, '').replace(',', '.') : clean;
-      const number = Number(normalized);
+      if (negative) text = text.slice(1, -1).trim();
+      text = text.replace(/^R\$\s*/i, '').replace(/\s*%$/, '').trim();
+      if (!/^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text)) return null;
+      if (text.includes(',')) text = text.replace(/\./g, '').replace(',', '.');
+      else if (/^[+-]?\d{1,3}(?:\.\d{3})+$/.test(text)) text = text.replace(/\./g, '');
+      const number = Number(text);
       return Number.isFinite(number) ? (negative ? -number : number) : null;
     }
 
@@ -354,6 +361,7 @@ let indexData = null;
       const series = doc?.series_data?.series || [];
       for (let index = series.length - 1; index >= 0; index -= 1) {
         const item = series[index];
+        if (item?.date_iso !== doc?.date_iso || item?.hash_conteudo !== doc?.metadata?.hash_conteudo) continue;
         const value = item?.metrics?.[metric];
         if (Number.isFinite(value) && metricIsReliable(item, metric, doc?.slug)) return { value, date: item.date || item.date_iso, meta: item?.metrics_meta?.[metric] };
       }
@@ -376,6 +384,9 @@ let indexData = null;
     function metricValue(slug, metric, fallbackColumns = []) {
       const doc = financialReports[slug];
       if (!doc) return auditValue(null, `Relatorio ausente: ${reportLabel(slug)}.`);
+      const reportMetric = metricFromReport(doc, slug, metric);
+      if (isAvailable(reportMetric)) return reportMetric;
+      if (doc?.metrics_meta?.[metric]?.status && doc.metrics_meta[metric].status !== 'ok') return reportMetric;
       const seriesMetric = latestSeriesMetric(doc, metric);
       if (seriesMetric) {
         const meta = seriesMetric.meta || {};
