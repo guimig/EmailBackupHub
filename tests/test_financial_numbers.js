@@ -30,7 +30,7 @@ const context = vm.createContext({financialReports: {expense: doc},
   normalize: text => String(text).trim().toLowerCase(), reportLabel: slug => slug});
 for (const name of ['parseBrNumber', 'auditValue', 'valueOf', 'isAvailable', 'sourceDate',
   'metricIsReliable', 'latestSeriesMetric', 'metricFromReport', 'metricValue',
-  'grandTotalRow', 'sumAudit']) {
+  'grandTotalRow', 'auditSource', 'auditSources', 'sumAudit']) {
   vm.runInContext(extract(dashboard, name), context);
 }
 assert.equal(context.metricValue('expense', 'pago').value, 3343400.94);
