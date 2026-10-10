@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
   "title": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
-  "date": "09/10/2026",
-  "date_iso": "2026-10-09",
-  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_09-10-2026.html",
+  "date": "10/10/2026",
+  "date_iso": "2026-10-10",
+  "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_10-10-2026.html",
   "category": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
   "columns": [
     "Natureza Despesa",
@@ -215,7 +215,7 @@
       "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00",
       "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00",
-      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00"
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "14.200,00"
     },
     {
       "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -236,7 +236,7 @@
       "NE CCor - Descrição": "EMPENHO PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM A LISTA DE ESPERA DOS EDITAIS PAE (16/2026, 17/2026 E 61/2026), CONFORME MEMORANDO 131/2026 - PROPESSOAS/REI - NAO SE APLICA Nº25/2026.",
       "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "36.125,00",
-      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "35.700,00",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
     },
     {
@@ -247,7 +247,7 @@
       "NE CCor - Descrição": "PAGAMENTO DE AUXILIOS ESTUDANTIS (PAE) DO IFC - CAMPUS ARAQUARI, NO AMBITO DO EDITAL Nº 61/2026 - ASSEG/GABI - NAO SE APLICA Nº 23/2026 - PROCESSO Nº 23349.003986/2026-81.",
       "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "29.300,00",
-      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "9.100,00",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
     },
     {
@@ -1363,6 +1363,17 @@
     },
     {
       "Natureza Despesa": "MATERIAL DE CONSUMO",
+      "Natureza Despesa Detalhada": "33903024",
+      "Natureza Despesa Detalhada (2)": "MATERIAL P/ MANUT.DE BENS IMOVEIS/INSTALACOES",
+      "NE CCor": "158459264222026NE000261",
+      "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE EMPRESA ESPECIALIZADA EM PRESTACAO DE SERVICO DE MANUTENCAO DE SUBESTACAO DE ENERGIA, SISTEMA SPDA/PDA E MANUTENCAO DE USINA FOTOVOLTAICA PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI, CONFORME MEMO Nº 23/2026 - CAMP/ARAQ. ADESAO INTERNA Nº 157/2026 - 23349.004218/2026-45. PREGAO ELETRONICO Nº 90099/2026 - 23353.003625/2025-95. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+      "Item Informação / NE CCor - Favorecido": "PIO ENGENHARIA DE MANUTENCAO COMISSIONAMENTO E SEGURAN",
+      "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.000,00",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa": "MATERIAL DE CONSUMO",
       "Natureza Despesa Detalhada": "33903025",
       "Natureza Despesa Detalhada (2)": "MATERIAL P/ MANUTENCAO DE BENS MOVEIS",
       "NE CCor": "158459264222026NE000094",
@@ -1679,6 +1690,17 @@
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70",
       "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70"
+    },
+    {
+      "Natureza Despesa": "MATERIAL DE CONSUMO",
+      "Natureza Despesa Detalhada": "33903026",
+      "Natureza Despesa Detalhada (2)": "MATERIAL ELETRICO E ELETRONICO",
+      "NE CCor": "158459264222026NE000263",
+      "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE PECAS E ACESSORIOS PARA CONTRATACAO DE MAO DE OBRA ESPECIALIZADA EM INSTALACAO E MANUTENCAO DE CENTRAIS DE ALARME E INCENDIO, PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE - CAMPUS ARAQUARI, CONFORME MEMO Nº 36/2026 - DIP/ARAQ. ADESAO INTERNA Nº 160/2026 - 23349.004247/2026-15. PREGAO ELETRONICO Nº 90024/2025 - 23352.001082/2025-81 - IFC/VIDEIRA. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+      "Item Informação / NE CCor - Favorecido": "PLANEJE TECNOLOGIA E SERVICOS LTDA",
+      "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "9.800,00",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
     },
     {
       "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -2491,7 +2513,7 @@
       "NE CCor - Descrição": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
       "Item Informação / NE CCor - Favorecido": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "893.137,21",
-      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "607.307,22",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "704.775,77",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "570.743,27"
     },
     {
@@ -2569,6 +2591,28 @@
       "Item Informação / NE CCor - Favorecido": "PROMETAL CURITIBA LTDA",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.566,72",
       "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.566,72",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Natureza Despesa Detalhada": "33903916",
+      "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+      "NE CCor": "158459264222026NE000260",
+      "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE EMPRESA ESPECIALIZADA EM PRESTACAO DE SERVICO DE MANUTENCAO DE SUBESTACAO DE ENERGIA, SISTEMA SPDA/PDA E MANUTENCAO DE USINA FOTOVOLTAICA PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI, CONFORME MEMO Nº 23/2026 - CAMP/ARAQ. ADESAO INTERNA Nº 157/2026 - 23349.004218/2026-45. PREGAO ELETRONICO Nº 90099/2026 - 23353.003625/2025-95. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+      "Item Informação / NE CCor - Favorecido": "PIO ENGENHARIA DE MANUTENCAO COMISSIONAMENTO E SEGURAN",
+      "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.700,00",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Natureza Despesa Detalhada": "33903916",
+      "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+      "NE CCor": "158459264222026NE000264",
+      "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE REFORMA PARA O GINASIO DE ESPORTES DO IFC CAMPUS ARAQUARI. CONTRATO N. 11/2025 - CAMP/ARAQ. CONCORRENCIA 90004/2024. PROCESSO N. 23349.002467/2024-34.",
+      "Item Informação / NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
+      "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "69.033,17",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
     },
     {
@@ -2843,6 +2887,17 @@
       "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE SERVICOS DE SOB DEMANDA DE MANUTENCAO DE CENTRAIS DE ALARMES, REDES ELETRICAS E CABEAMENTO ESTRUTURAL PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE CAMPUS ARAQUARI. PREGAO ELETRONICO Nº 90024/2025. ADESAO INTERNA Nº 263/2025 - CONTRATO Nº 209/2025. PROCESSO Nº 23349.005087/2025-32. SETOR REQUISITANTE: COORDENACAO DE TECNOLOGIA DA INFORMACAO. FISCAIS TITULAR / SUBSTITUTO: JOAO RICARDO TECHIO / CARINA LEMOS DA SILVA.",
       "Item Informação / NE CCor - Favorecido": "MICROCABLE SERVICOS E EQUIPAMENTOS LTDA",
       "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "19.470,00",
+      "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Natureza Despesa Detalhada": "33903979",
+      "Natureza Despesa Detalhada (2)": "SERV. DE APOIO ADMIN., TECNICO E OPERACIONAL",
+      "NE CCor": "158459264222026NE000262",
+      "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE MAO DE OBRA ESPECIALIZADA EM INSTALACAO E MANUTENCAO DE CENTRAIS DE ALARME E INCENDIO, PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE - CAMPUS ARAQUARI, CONFORME MEMO Nº 36/2026 - DIP/ARAQ. ADESAO INTERNA Nº 160/2026 - 23349.004247/2026-15. PREGAO ELETRONICO Nº 90024/2025 - 23352.001082/2025-81 - IFC/VIDEIRA. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+      "Item Informação / NE CCor - Favorecido": "PLANEJE TECNOLOGIA E SERVICOS LTDA",
+      "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "10.080,00",
       "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
     },
@@ -3267,8 +3322,8 @@
       "label": "AUXILIO FINANCEIRO A ESTUDANTES",
       "values": {
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 888110.39,
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 625217.33,
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 609176.72
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 670017.33,
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 605176.72
       },
       "raw": {
         "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -3278,14 +3333,14 @@
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "888.110,39",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "625.217,33",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "609.176,72"
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "670.017,33",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "605.176,72"
       }
     },
     {
       "label": "MATERIAL DE CONSUMO",
       "values": {
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 496757.83,
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 507557.83,
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 325452.82,
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 314778.01
       },
@@ -3296,7 +3351,7 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "496.757,83",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "507.557,83",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "325.452,82",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "314.778,01"
       }
@@ -3379,7 +3434,7 @@
       "label": "LOCACAO DE MAO-DE-OBRA",
       "values": {
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1595919.72,
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1172804.65,
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1270273.2,
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1044871.48
       },
       "raw": {
@@ -3390,14 +3445,14 @@
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.595.919,72",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.172.804,65",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.270.273,20",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.044.871,48"
       }
     },
     {
       "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
       "values": {
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1351365.33,
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1449178.5,
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 900683.45,
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 841567.62
       },
@@ -3408,7 +3463,7 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.351.365,33",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.449.178,50",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "900.683,45",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "841.567,62"
       }
@@ -3528,9 +3583,9 @@
     {
       "label": "Total",
       "values": {
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 6226526.72,
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3602745.72,
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3362315.01
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 6335139.89,
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3745014.27,
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3358315.01
       },
       "raw": {
         "Natureza Despesa": "Total",
@@ -3539,9 +3594,9 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "6.226.526,72",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.602.745,72",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.362.315,01"
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "6.335.139,89",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.745.014,27",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.358.315,01"
       }
     }
   ],
@@ -3809,7 +3864,7 @@
         "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.200,00"
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "14.200,00"
       }
     },
     {
@@ -3836,7 +3891,7 @@
         "NE CCor - Descrição": "EMPENHO PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA ATENDER DESPESAS COM A LISTA DE ESPERA DOS EDITAIS PAE (16/2026, 17/2026 E 61/2026), CONFORME MEMORANDO 131/2026 - PROPESSOAS/REI - NAO SE APLICA Nº25/2026.",
         "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "36.125,00",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "35.700,00",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
       }
     },
@@ -3850,7 +3905,7 @@
         "NE CCor - Descrição": "PAGAMENTO DE AUXILIOS ESTUDANTIS (PAE) DO IFC - CAMPUS ARAQUARI, NO AMBITO DO EDITAL Nº 61/2026 - ASSEG/GABI - NAO SE APLICA Nº 23/2026 - PROCESSO Nº 23349.003986/2026-81.",
         "Item Informação / NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "29.300,00",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "9.100,00",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
       }
     },
@@ -3864,8 +3919,8 @@
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "888.110,39",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "625.217,33",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "609.176,72"
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "670.017,33",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "605.176,72"
       }
     },
     {
@@ -5286,6 +5341,20 @@
       "type": "data",
       "raw": {
         "Natureza Despesa": "MATERIAL DE CONSUMO",
+        "Natureza Despesa Detalhada": "33903024",
+        "Natureza Despesa Detalhada (2)": "MATERIAL P/ MANUT.DE BENS IMOVEIS/INSTALACOES",
+        "NE CCor": "158459264222026NE000261",
+        "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE EMPRESA ESPECIALIZADA EM PRESTACAO DE SERVICO DE MANUTENCAO DE SUBESTACAO DE ENERGIA, SISTEMA SPDA/PDA E MANUTENCAO DE USINA FOTOVOLTAICA PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI, CONFORME MEMO Nº 23/2026 - CAMP/ARAQ. ADESAO INTERNA Nº 157/2026 - 23349.004218/2026-45. PREGAO ELETRONICO Nº 90099/2026 - 23353.003625/2025-95. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+        "Item Informação / NE CCor - Favorecido": "PIO ENGENHARIA DE MANUTENCAO COMISSIONAMENTO E SEGURAN",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.000,00",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "MATERIAL DE CONSUMO",
         "Natureza Despesa Detalhada": "33903025",
         "Natureza Despesa Detalhada (2)": "MATERIAL P/ MANUTENCAO DE BENS MOVEIS",
         "NE CCor": "158459264222026NE000094",
@@ -5686,6 +5755,20 @@
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.059,70"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "MATERIAL DE CONSUMO",
+        "Natureza Despesa Detalhada": "33903026",
+        "Natureza Despesa Detalhada (2)": "MATERIAL ELETRICO E ELETRONICO",
+        "NE CCor": "158459264222026NE000263",
+        "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE PECAS E ACESSORIOS PARA CONTRATACAO DE MAO DE OBRA ESPECIALIZADA EM INSTALACAO E MANUTENCAO DE CENTRAIS DE ALARME E INCENDIO, PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE - CAMPUS ARAQUARI, CONFORME MEMO Nº 36/2026 - DIP/ARAQ. ADESAO INTERNA Nº 160/2026 - 23349.004247/2026-15. PREGAO ELETRONICO Nº 90024/2025 - 23352.001082/2025-81 - IFC/VIDEIRA. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+        "Item Informação / NE CCor - Favorecido": "PLANEJE TECNOLOGIA E SERVICOS LTDA",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "9.800,00",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
       }
     },
     {
@@ -6565,7 +6648,7 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "496.757,83",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "507.557,83",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "325.452,82",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "314.778,01"
       }
@@ -6790,7 +6873,7 @@
         "NE CCor - Descrição": "EMPENHO PARA PAGAMENTO DA PRESTACAO DE SERVICO DE LIMPEZA. CONTRATO 81/2023. PREGAO 41/2023. PROCESSO 23349.000344/2023-88.",
         "Item Informação / NE CCor - Favorecido": "ORBENK ADMINISTRACAO E SERVICOS LTDA.",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "893.137,21",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "607.307,22",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "704.775,77",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "570.743,27"
       }
     },
@@ -6818,7 +6901,7 @@
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.595.919,72",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.172.804,65",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.270.273,20",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.044.871,48"
       }
     },
@@ -6903,6 +6986,34 @@
         "Item Informação / NE CCor - Favorecido": "PROMETAL CURITIBA LTDA",
         "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.566,72",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.566,72",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Natureza Despesa Detalhada": "33903916",
+        "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+        "NE CCor": "158459264222026NE000260",
+        "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE EMPRESA ESPECIALIZADA EM PRESTACAO DE SERVICO DE MANUTENCAO DE SUBESTACAO DE ENERGIA, SISTEMA SPDA/PDA E MANUTENCAO DE USINA FOTOVOLTAICA PARA ATENDER AS NECESSIDADES DO IFC - CAMPUS ARAQUARI, CONFORME MEMO Nº 23/2026 - CAMP/ARAQ. ADESAO INTERNA Nº 157/2026 - 23349.004218/2026-45. PREGAO ELETRONICO Nº 90099/2026 - 23353.003625/2025-95. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+        "Item Informação / NE CCor - Favorecido": "PIO ENGENHARIA DE MANUTENCAO COMISSIONAMENTO E SEGURAN",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "18.700,00",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Natureza Despesa Detalhada": "33903916",
+        "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+        "NE CCor": "158459264222026NE000264",
+        "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE REFORMA PARA O GINASIO DE ESPORTES DO IFC CAMPUS ARAQUARI. CONTRATO N. 11/2025 - CAMP/ARAQ. CONCORRENCIA 90004/2024. PROCESSO N. 23349.002467/2024-34.",
+        "Item Informação / NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "69.033,17",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
       }
     },
@@ -7260,6 +7371,20 @@
       "type": "data",
       "raw": {
         "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Natureza Despesa Detalhada": "33903979",
+        "Natureza Despesa Detalhada (2)": "SERV. DE APOIO ADMIN., TECNICO E OPERACIONAL",
+        "NE CCor": "158459264222026NE000262",
+        "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE MAO DE OBRA ESPECIALIZADA EM INSTALACAO E MANUTENCAO DE CENTRAIS DE ALARME E INCENDIO, PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE - CAMPUS ARAQUARI, CONFORME MEMO Nº 36/2026 - DIP/ARAQ. ADESAO INTERNA Nº 160/2026 - 23349.004247/2026-15. PREGAO ELETRONICO Nº 90024/2025 - 23352.001082/2025-81 - IFC/VIDEIRA. FISCAIS: NIVALDO ALVES DE CARVALHO E TIAGO JONES BACK.",
+        "Item Informação / NE CCor - Favorecido": "PLANEJE TECNOLOGIA E SERVICOS LTDA",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "10.080,00",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
         "Natureza Despesa Detalhada": "33903983",
         "Natureza Despesa Detalhada (2)": "SERVICOS DE COPIAS E REPRODUCAO DE DOCUMENTOS",
         "NE CCor": "158459264222026NE000106",
@@ -7377,7 +7502,7 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.351.365,33",
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.449.178,50",
         "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "900.683,45",
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "841.567,62"
       }
@@ -7867,20 +7992,20 @@
         "NE CCor": "",
         "NE CCor - Descrição": "",
         "Item Informação / NE CCor - Favorecido": "",
-        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "6.226.526,72",
-        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.602.745,72",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.362.315,01"
+        "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "6.335.139,89",
+        "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.745.014,27",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.358.315,01"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-10T00:14:11.640620-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-10-10T07:14:42.270900-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7061",
-    "hash_conteudo": "071f0bdbf7443b61a5b4297280e43d4b36d6f62d35ffb6cc8299efdba6a9ab96",
-    "row_count": 293,
+    "fonte_email_uid": "7070",
+    "hash_conteudo": "1018c071ffcbd47872c04d4e50a7764a80f5bcd997449092aaf2a7e619c1c0eb",
+    "row_count": 298,
     "column_count": 9,
     "status": "atualizado",
     "limite_dias": 1
@@ -7894,9 +8019,9 @@
     ]
   },
   "metrics": {
-    "empenhado": 6226526.72,
-    "liquidado": 3602745.72,
-    "pago": 3362315.01
+    "empenhado": 6335139.89,
+    "liquidado": 3745014.27,
+    "pago": 3358315.01
   },
   "metrics_meta": {
     "empenhado": {
