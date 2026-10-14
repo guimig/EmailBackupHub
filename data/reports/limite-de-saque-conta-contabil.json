@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
-  "date": "10/10/2026",
-  "date_iso": "2026-10-10",
-  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_10-10-2026.html",
+  "date": "14/10/2026",
+  "date_iso": "2026-10-14",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_14-10-2026.html",
   "category": "Limite de Saque por Conta Contábil",
   "columns": [
     "UG Executora Nome",
@@ -27,8 +27,8 @@
       "Vinculação Pagamento Código": "400",
       "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.869,79",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "297.575,34",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "65.552,21"
     },
     {
       "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
@@ -131,8 +131,8 @@
         "Vinculação Pagamento Código": "400",
         "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "5.869,79",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "297.575,34",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "65.552,21"
       }
     },
     {
@@ -249,15 +249,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-14T05:10:11.777607-03:00",
-    "idade_dias": 4,
+    "ultima_atualizacao": "2026-10-14T11:11:54.293521-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7069",
-    "hash_conteudo": "0a6d93ea711607b92bdb7e5b0a033674de41ca540965043ff945ec48d436f307",
+    "fonte_email_uid": "7092",
+    "hash_conteudo": "8e16f438d833941b78855931f7374900003efb312f384c5d7eadc065ab272c4c",
     "row_count": 9,
     "column_count": 9,
-    "status": "desatualizado",
+    "status": "atualizado",
     "limite_dias": 1
   },
   "quality": {

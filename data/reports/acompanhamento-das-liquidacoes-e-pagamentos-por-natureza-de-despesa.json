@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
   "title": "Liquidações e Pagamentos por Natureza",
-  "date": "10/10/2026",
-  "date_iso": "2026-10-10",
-  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_10-10-2026.html",
+  "date": "14/10/2026",
+  "date_iso": "2026-10-14",
+  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa_14-10-2026.html",
   "category": "Liquidações e Pagamentos por Natureza",
   "columns": [
     "Natureza Despesa Detalhada",
@@ -37857,6 +37857,25 @@
       "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "30.984,07"
     },
     {
+      "Natureza Despesa Detalhada": "33903916",
+      "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+      "NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
+      "NE CCor - Favorecido (2)": "31548384000105",
+      "DH - Tipo": "NOTA DE PAGAMENTO",
+      "Documento Hábil": "158459264222026NP000434",
+      "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 106, Contrato nº: 00011/2025  - 31.548.384/0001-05 - VILE CONSTRUCOES E REFORMAS LTDA, Proc.(s) núm.(s): 23349.002467/2024-34, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 09/2026.",
+      "DH - Dia Emissão": "13/10/2026",
+      "DH - Valor": "69031,93",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002205",
+      "Doc - Observação": "RETENCAO DE ISS SOBRE A NF 106 - VILE CONSTRUCOES E REFORMAS, REFERENTE AO SERVICO DE REFORMA DO GINASIO DO CAMPUS ARAQUARI, EM 09/2026, CONFORME LC Nº 341/2021 - ARAQUARI - SC.",
+      "Emissão - Dia": "13/10/2026",
+      "Doc - Valor": "1380,64",
+      "Item Informação / NE CCor": "158459264222026NE000264",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.380,64",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
       "Natureza Despesa Detalhada": "33903917",
       "Natureza Despesa Detalhada (2)": "MANUT. E CONSERV. DE MAQUINAS E EQUIPAMENTOS",
       "NE CCor - Favorecido": "VICARI COMERCIO DE EXTINTORES LTDA",
@@ -45708,7 +45727,7 @@
     {
       "label": "Total",
       "values": {
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3250211.41,
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3251592.05,
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 2007568.06
       },
       "raw": {
@@ -45727,7 +45746,7 @@
         "Emissão - Dia": "",
         "Doc - Valor": "",
         "Item Informação / NE CCor": "",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.250.211,41",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.251.592,05",
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.007.568,06"
       }
     }
@@ -89538,6 +89557,28 @@
     {
       "type": "data",
       "raw": {
+        "Natureza Despesa Detalhada": "33903916",
+        "Natureza Despesa Detalhada (2)": "MANUTENCAO E CONSERV. DE BENS IMOVEIS",
+        "NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
+        "NE CCor - Favorecido (2)": "31548384000105",
+        "DH - Tipo": "NOTA DE PAGAMENTO",
+        "Documento Hábil": "158459264222026NP000434",
+        "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 106, Contrato nº: 00011/2025  - 31.548.384/0001-05 - VILE CONSTRUCOES E REFORMAS LTDA, Proc.(s) núm.(s): 23349.002467/2024-34, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 09/2026.",
+        "DH - Dia Emissão": "13/10/2026",
+        "DH - Valor": "69031,93",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002205",
+        "Doc - Observação": "RETENCAO DE ISS SOBRE A NF 106 - VILE CONSTRUCOES E REFORMAS, REFERENTE AO SERVICO DE REFORMA DO GINASIO DO CAMPUS ARAQUARI, EM 09/2026, CONFORME LC Nº 341/2021 - ARAQUARI - SC.",
+        "Emissão - Dia": "13/10/2026",
+        "Doc - Valor": "1380,64",
+        "Item Informação / NE CCor": "158459264222026NE000264",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.380,64",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
         "Natureza Despesa Detalhada": "33903917",
         "Natureza Despesa Detalhada (2)": "MANUT. E CONSERV. DE MAQUINAS E EQUIPAMENTOS",
         "NE CCor - Favorecido": "VICARI COMERCIO DE EXTINTORES LTDA",
@@ -98639,21 +98680,21 @@
         "Emissão - Dia": "",
         "Doc - Valor": "",
         "Item Informação / NE CCor": "",
-        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.250.211,41",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.251.592,05",
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.007.568,06"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-14T05:10:11.777607-03:00",
-    "idade_dias": 4,
+    "ultima_atualizacao": "2026-10-14T11:11:54.293521-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7084",
-    "hash_conteudo": "cb4e711d89e807fa1e57c86fd88bc3329e8d8609689b418d7e16d100d3a7a6a3",
-    "row_count": 2404,
+    "fonte_email_uid": "7101",
+    "hash_conteudo": "4309aa57ab9dc0fa256c943ac219664fb1cd24a80bad9ed09fcbc9949e226320",
+    "row_count": 2405,
     "column_count": 17,
-    "status": "desatualizado",
+    "status": "atualizado",
     "limite_dias": 1
   },
   "quality": {
