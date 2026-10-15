@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "credito-disponivel-mes-lancamento",
   "title": "Crédito Disponível por Mês de Lançamento",
-  "date": "14/10/2026",
-  "date_iso": "2026-10-14",
-  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_14-10-2026.html",
+  "date": "15/10/2026",
+  "date_iso": "2026-10-15",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_15-10-2026.html",
   "category": "Crédito Disponível por Mês de Lançamento",
   "columns": [
     "Grupo Despesa",
@@ -97,7 +97,7 @@
       "PTRES": "230446",
       "Métrica / PI": "CFF53M9601N",
       "Métrica / PI (2)": "PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO",
-      "Saldo - R$ (Conta Contábil) / OUT/2026": "76.784,94"
+      "Saldo - R$ (Conta Contábil) / OUT/2026": "34.517,94"
     },
     {
       "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -221,7 +221,7 @@
         "Natureza Despesa": 339032.0,
         "Unidade Orçamentária": 26298.0,
         "Fonte Recursos Detalhada": 1133000000.0,
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 87170.94
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 44903.94
       },
       "raw": {
         "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -234,13 +234,13 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "87.170,94"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "44.903,94"
       }
     },
     {
       "label": "Total",
       "values": {
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 197735.25
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 155468.25
       },
       "raw": {
         "Grupo Despesa": "Total",
@@ -253,7 +253,7 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "197.735,25"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "155.468,25"
       }
     }
   ],
@@ -415,7 +415,7 @@
         "PTRES": "230446",
         "Métrica / PI": "CFF53M9601N",
         "Métrica / PI (2)": "PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "76.784,94"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "34.517,94"
       }
     },
     {
@@ -463,7 +463,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "87.170,94"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "44.903,94"
       }
     },
     {
@@ -479,17 +479,17 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "197.735,25"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "155.468,25"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-15T03:42:20.173160-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-10-15T09:17:30.921633-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7091",
-    "hash_conteudo": "60eb9d09f98e932ad87950e79e619c7fa79a5ce9395114d42668bea1c16256f2",
+    "fonte_email_uid": "7109",
+    "hash_conteudo": "8af24345489552b748893c8fa23da40bd63dcd71aa84293b273c54e85d121e18",
     "row_count": 8,
     "column_count": 11,
     "status": "atualizado",
@@ -504,7 +504,7 @@
     ]
   },
   "metrics": {
-    "credito_disponivel": 197735.25
+    "credito_disponivel": 155468.25
   },
   "metrics_meta": {
     "credito_disponivel": {
