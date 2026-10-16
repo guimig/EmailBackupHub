@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "credito-disponivel-mes-lancamento",
   "title": "Crédito Disponível por Mês de Lançamento",
-  "date": "15/10/2026",
-  "date_iso": "2026-10-15",
-  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_15-10-2026.html",
+  "date": "16/10/2026",
+  "date_iso": "2026-10-16",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_16-10-2026.html",
   "category": "Crédito Disponível por Mês de Lançamento",
   "columns": [
     "Grupo Despesa",
@@ -71,7 +71,7 @@
       "PTRES": "231502",
       "Métrica / PI": "-8",
       "Métrica / PI (2)": "SEM INFORMACAO",
-      "Saldo - R$ (Conta Contábil) / OUT/2026": "35.680,63"
+      "Saldo - R$ (Conta Contábil) / OUT/2026": "15.680,63"
     },
     {
       "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -85,6 +85,19 @@
       "Métrica / PI": "-8",
       "Métrica / PI (2)": "SEM INFORMACAO",
       "Saldo - R$ (Conta Contábil) / OUT/2026": "0,11"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339030",
+      "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1050000191",
+      "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "PTRES": "231502",
+      "Métrica / PI": "L20RLP0100N",
+      "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+      "Saldo - R$ (Conta Contábil) / OUT/2026": "6.650,14"
     },
     {
       "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -124,6 +137,19 @@
       "Métrica / PI": "JFF53B9601J",
       "Métrica / PI (2)": "PNAE - ALIMENTACAO ESCOLAR - EJA",
       "Saldo - R$ (Conta Contábil) / OUT/2026": "6.954,00"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339039",
+      "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1050000191",
+      "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+      "PTRES": "231502",
+      "Métrica / PI": "L20RLP0100N",
+      "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+      "Saldo - R$ (Conta Contábil) / OUT/2026": "8.800,00"
     }
   ],
   "totals": [
@@ -177,7 +203,7 @@
         "Natureza Despesa": 339000.0,
         "Unidade Orçamentária": 26422.0,
         "Fonte Recursos Detalhada": 1050000191.0,
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 35680.63
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 15680.63
       },
       "raw": {
         "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -190,7 +216,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "35.680,63"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "15.680,63"
       }
     },
     {
@@ -218,6 +244,28 @@
     {
       "label": "OUTRAS DESPESAS CORRENTES",
       "values": {
+        "Natureza Despesa": 339030.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1050000191.0,
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 6650.14
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "6.650,14"
+      }
+    },
+    {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
         "Natureza Despesa": 339032.0,
         "Unidade Orçamentária": 26298.0,
         "Fonte Recursos Detalhada": 1133000000.0,
@@ -238,9 +286,31 @@
       }
     },
     {
+      "label": "OUTRAS DESPESAS CORRENTES",
+      "values": {
+        "Natureza Despesa": 339039.0,
+        "Unidade Orçamentária": 26422.0,
+        "Fonte Recursos Detalhada": 1050000191.0,
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 8800.0
+      },
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339039",
+        "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "8.800,00"
+      }
+    },
+    {
       "label": "Total",
       "values": {
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 155468.25
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 150918.39
       },
       "raw": {
         "Grupo Despesa": "Total",
@@ -253,7 +323,7 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "155.468,25"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "150.918,39"
       }
     }
   ],
@@ -351,7 +421,7 @@
         "PTRES": "231502",
         "Métrica / PI": "-8",
         "Métrica / PI (2)": "SEM INFORMACAO",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "35.680,63"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "15.680,63"
       }
     },
     {
@@ -367,7 +437,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "35.680,63"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "15.680,63"
       }
     },
     {
@@ -400,6 +470,38 @@
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
         "Saldo - R$ (Conta Contábil) / OUT/2026": "0,11"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "231502",
+        "Métrica / PI": "L20RLP0100N",
+        "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "6.650,14"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339030",
+        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "6.650,14"
       }
     },
     {
@@ -467,6 +569,38 @@
       }
     },
     {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339039",
+        "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "231502",
+        "Métrica / PI": "L20RLP0100N",
+        "Métrica / PI (2)": "FUNCIONAMENTO - CUSTEIO GERAL",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "8.800,00"
+      }
+    },
+    {
+      "type": "total",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339039",
+        "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1050000191",
+        "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
+        "PTRES": "Total",
+        "Métrica / PI": "",
+        "Métrica / PI (2)": "",
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "8.800,00"
+      }
+    },
+    {
       "type": "total",
       "raw": {
         "Grupo Despesa": "Total",
@@ -479,18 +613,18 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "155.468,25"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "150.918,39"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-16T04:40:02.605869-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-10-16T09:51:40.454389-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7109",
-    "hash_conteudo": "8af24345489552b748893c8fa23da40bd63dcd71aa84293b273c54e85d121e18",
-    "row_count": 8,
+    "fonte_email_uid": "7124",
+    "hash_conteudo": "be095592dacb2111d9237e07fb794fe5a42c23a713700ee1b3ff528073ecf5ab",
+    "row_count": 10,
     "column_count": 11,
     "status": "atualizado",
     "limite_dias": 1
@@ -504,7 +638,7 @@
     ]
   },
   "metrics": {
-    "credito_disponivel": 155468.25
+    "credito_disponivel": 150918.39
   },
   "metrics_meta": {
     "credito_disponivel": {
