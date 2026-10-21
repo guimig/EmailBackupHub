@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "credito-disponivel-mes-lancamento",
   "title": "Crédito Disponível por Mês de Lançamento",
-  "date": "20/10/2026",
-  "date_iso": "2026-10-20",
-  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_20-10-2026.html",
+  "date": "21/10/2026",
+  "date_iso": "2026-10-21",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_21-10-2026.html",
   "category": "Crédito Disponível por Mês de Lançamento",
   "columns": [
     "Grupo Despesa",
@@ -71,7 +71,7 @@
       "PTRES": "231502",
       "Métrica / PI": "-8",
       "Métrica / PI (2)": "SEM INFORMACAO",
-      "Saldo - R$ (Conta Contábil) / OUT/2026": "31.275,61"
+      "Saldo - R$ (Conta Contábil) / OUT/2026": "26.275,61"
     },
     {
       "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -177,7 +177,7 @@
         "Natureza Despesa": 339000.0,
         "Unidade Orçamentária": 26422.0,
         "Fonte Recursos Detalhada": 1050000191.0,
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 31275.61
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 26275.61
       },
       "raw": {
         "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -190,7 +190,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "31.275,61"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "26.275,61"
       }
     },
     {
@@ -240,7 +240,7 @@
     {
       "label": "Total",
       "values": {
-        "Saldo - R$ (Conta Contábil) / OUT/2026": 151063.23
+        "Saldo - R$ (Conta Contábil) / OUT/2026": 146063.23
       },
       "raw": {
         "Grupo Despesa": "Total",
@@ -253,7 +253,7 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "151.063,23"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "146.063,23"
       }
     }
   ],
@@ -351,7 +351,7 @@
         "PTRES": "231502",
         "Métrica / PI": "-8",
         "Métrica / PI (2)": "SEM INFORMACAO",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "31.275,61"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "26.275,61"
       }
     },
     {
@@ -367,7 +367,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "31.275,61"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "26.275,61"
       }
     },
     {
@@ -479,17 +479,17 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / OUT/2026": "151.063,23"
+        "Saldo - R$ (Conta Contábil) / OUT/2026": "146.063,23"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-21T03:47:15.833237-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-10-21T09:35:39.282073-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7157",
-    "hash_conteudo": "4585a8d3778940cf7b9839321ac090e1e67c76f7159f86142678512ae270b754",
+    "fonte_email_uid": "7183",
+    "hash_conteudo": "77598d35ecb02d86d54a9a78bac9475438d26a31f2755394ab94de1bb79210b2",
     "row_count": 8,
     "column_count": 11,
     "status": "atualizado",
@@ -504,7 +504,7 @@
     ]
   },
   "metrics": {
-    "credito_disponivel": 151063.23
+    "credito_disponivel": 146063.23
   },
   "metrics_meta": {
     "credito_disponivel": {
