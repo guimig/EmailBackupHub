@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "recolhimento-proprio-gru",
   "title": "Recolhimento Próprio - GRU",
-  "date": "24/10/2026",
-  "date_iso": "2026-10-24",
-  "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_24-10-2026.html",
+  "date": "27/10/2026",
+  "date_iso": "2026-10-27",
+  "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_27-10-2026.html",
   "category": "Recolhimento Próprio - GRU",
   "columns": [
     "Cód. Recolhimento GRU",
@@ -1530,6 +1530,15 @@
       "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "34,00"
     },
     {
+      "Cód. Recolhimento GRU": "28830",
+      "Cód. Recolhimento GRU (2)": "SERVICOS ADMINISTRATIVOS",
+      "Emissão - Mês": "OUT/2026",
+      "Emissão - Dia": "23/10/2026",
+      "Recolhedor Doc.": "PF",
+      "Conta Contábil / Doc - Valor": "11",
+      "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "11,00"
+    },
+    {
       "Cód. Recolhimento GRU": "28832",
       "Cód. Recolhimento GRU (2)": "SERVICOS EDUCACIONAIS",
       "Emissão - Mês": "JAN/2026",
@@ -2617,7 +2626,7 @@
       "label": "28830",
       "values": {
         "Cód. Recolhimento GRU": 28830.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 144.0
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 155.0
       },
       "raw": {
         "Cód. Recolhimento GRU": "28830",
@@ -2626,14 +2635,14 @@
         "Emissão - Dia": "Total",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "144,00"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "155,00"
       }
     },
     {
       "label": "28830",
       "values": {
         "Cód. Recolhimento GRU": 28830.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 1209.0
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 1220.0
       },
       "raw": {
         "Cód. Recolhimento GRU": "28830",
@@ -2642,7 +2651,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.209,00"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.220,00"
       }
     },
     {
@@ -3000,7 +3009,7 @@
     {
       "label": "Total",
       "values": {
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 237824.79
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 237835.79
       },
       "raw": {
         "Cód. Recolhimento GRU": "Total",
@@ -3009,7 +3018,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "237.824,79"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "237.835,79"
       }
     }
   ],
@@ -5451,6 +5460,18 @@
       }
     },
     {
+      "type": "data",
+      "raw": {
+        "Cód. Recolhimento GRU": "28830",
+        "Cód. Recolhimento GRU (2)": "SERVICOS ADMINISTRATIVOS",
+        "Emissão - Mês": "OUT/2026",
+        "Emissão - Dia": "23/10/2026",
+        "Recolhedor Doc.": "PF",
+        "Conta Contábil / Doc - Valor": "11",
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "11,00"
+      }
+    },
+    {
       "type": "total",
       "raw": {
         "Cód. Recolhimento GRU": "28830",
@@ -5459,7 +5480,7 @@
         "Emissão - Dia": "Total",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "144,00"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "155,00"
       }
     },
     {
@@ -5471,7 +5492,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.209,00"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.220,00"
       }
     },
     {
@@ -6443,20 +6464,20 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "237.824,79"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "237.835,79"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-27T04:02:11.446422-03:00",
-    "idade_dias": 3,
+    "ultima_atualizacao": "2026-10-27T10:02:25.679579-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7231",
-    "hash_conteudo": "9b4513e1752990cccb06480e28d338762a7ca29d508cfaa8da5468a7ecea5a2b",
-    "row_count": 226,
+    "fonte_email_uid": "7251",
+    "hash_conteudo": "605823cba077fa9cdf02bd56caa502cef41fba2faf4c7932ef57b7fbf057f06b",
+    "row_count": 227,
     "column_count": 7,
-    "status": "desatualizado",
+    "status": "atualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -6468,7 +6489,7 @@
     ]
   },
   "metrics": {
-    "gru_arrecadada": 237824.79
+    "gru_arrecadada": 237835.79
   },
   "metrics_meta": {
     "gru_arrecadada": {
