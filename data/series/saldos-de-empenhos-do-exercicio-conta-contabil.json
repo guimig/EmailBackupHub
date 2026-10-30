@@ -1447,9 +1447,9 @@
       }
     },
     {
-      "date": "29/10/2026",
-      "date_iso": "2026-10-29",
-      "hash_conteudo": "d934d2c55564139d2bb77bb8842959be9c9ad97a97f5118c673f3f124816de61",
+      "date": "30/10/2026",
+      "date_iso": "2026-10-30",
+      "hash_conteudo": "4cc01b1df02de974ca9d4c402ebc1bcdcddbbac9ea0e4bf4fe9da9247dd02ce5",
       "totals": [
         {
           "label": "DIARIAS - PESSOAL CIVIL",
@@ -1474,9 +1474,9 @@
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 232968.06,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 7300.0,
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 750567.33
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 233018.06,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 757817.33
           },
           "raw": {
             "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -1486,16 +1486,16 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "232.968,06",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "7.300,00",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "750.567,33"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "233.018,06",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "757.817,33"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 193211.9,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 7120.64,
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 184153.9,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 16178.64,
             "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 341947.44
           },
           "raw": {
@@ -1506,8 +1506,8 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "193.211,90",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "7.120,64",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "184.153,90",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "16.178,64",
             "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "341.947,44"
           }
         },
@@ -1752,9 +1752,9 @@
         {
           "label": "Total",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2906392.42,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 97348.24,
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 3951552.89
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2897384.42,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 99106.24,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 3958802.89
           },
           "raw": {
             "Natureza Despesa": "Total",
@@ -1764,16 +1764,16 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.906.392,42",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "97.348,24",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "3.951.552,89"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.897.384,42",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "99.106,24",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "3.958.802,89"
           }
         }
       ],
       "metrics": {
-        "saldo_a_liquidar": 2906392.42,
-        "liquidado_a_pagar": 97348.24,
-        "pago": 3951552.89
+        "saldo_a_liquidar": 2897384.42,
+        "liquidado_a_pagar": 99106.24,
+        "pago": 3958802.89
       },
       "metrics_meta": {
         "saldo_a_liquidar": {
