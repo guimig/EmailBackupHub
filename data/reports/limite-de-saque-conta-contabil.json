@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
-  "date": "04/11/2026",
-  "date_iso": "2026-11-04",
-  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_04-11-2026.html",
+  "date": "05/11/2026",
+  "date_iso": "2026-11-05",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_05-11-2026.html",
   "category": "Limite de Saque por Conta Contábil",
   "columns": [
     "UG Executora Nome",
@@ -28,7 +28,7 @@
       "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
       "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "47.193,54",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "21.618,00"
+      "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
     },
     {
       "UG Executora Nome": "IF CATARINENSE - CAMPUS ARAQUARI",
@@ -71,7 +71,7 @@
       "Vinculação Pagamento Código": "400",
       "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101.741,79",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101.773,79",
       "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
     },
     {
@@ -132,7 +132,7 @@
         "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
         "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "47.193,54",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "21.618,00"
+        "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
       }
     },
     {
@@ -187,7 +187,7 @@
         "Vinculação Pagamento Código": "400",
         "Vinculação Pagamento Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVESTIMENTO - RESUL.PRIM = 2",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101.741,79",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "101.773,79",
         "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
       }
     },
@@ -249,12 +249,12 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-04T21:39:00.615464-03:00",
+    "ultima_atualizacao": "2026-11-05T04:34:06.396126-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7328",
-    "hash_conteudo": "bb172e38988318b4548248b5c6da487b55373b4a3fd5b6b385fd0243b285c050",
+    "fonte_email_uid": "7338",
+    "hash_conteudo": "bbdfb4de5ff5a4569f8894b9d93ea944c8cbedbad12100250982c64a2cee2568",
     "row_count": 9,
     "column_count": 9,
     "status": "atualizado",
