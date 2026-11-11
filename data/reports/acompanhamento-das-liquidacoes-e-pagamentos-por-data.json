@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
   "title": "Liquidações e Pagamentos por Data",
-  "date": "10/11/2026",
-  "date_iso": "2026-11-10",
-  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_10-11-2026.html",
+  "date": "11/11/2026",
+  "date_iso": "2026-11-11",
+  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-11-2026.html",
   "category": "Liquidações e Pagamentos por Data",
   "columns": [
     "Natureza Despesa Detalhada",
@@ -55372,6 +55372,25 @@
       "Doc - Valor": "1968,94",
       "Item Informação / NE CCor": "158459264222026NE000190",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.968,94",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa Detalhada": "33903941",
+      "Natureza Despesa Detalhada (2)": "FORNECIMENTO DE ALIMENTACAO",
+      "NE CCor - Favorecido": "MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA",
+      "NE CCor - Favorecido (2)": "15340396000193",
+      "DH - Tipo": "NOTA DE PAGAMENTO",
+      "Documento Hábil": "158459264222026NP000462",
+      "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 894, Contrato nº: 00015/2023  - 15.340.396/0001-93 - MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA, Proc.(s) núm.(s): 23349.005597/2022-67, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 10/2026.",
+      "DH - Dia Emissão": "30/10/2026",
+      "DH - Valor": "107973,18",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002661",
+      "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 894, CONTRATO Nº: 00015/2023  - 15.340.396/0001-93 - MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA, PROC.(S) NUM.(S): 23349.005597/2022-67, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 10/2026.",
+      "Emissão - Dia": "10/11/2026",
+      "Doc - Valor": "47193,54",
+      "Item Informação / NE CCor": "158459264222026NE000190",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "47.193,54",
       "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
     }
   ],
@@ -119462,16 +119481,38 @@
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.968,94",
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
       }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa Detalhada": "33903941",
+        "Natureza Despesa Detalhada (2)": "FORNECIMENTO DE ALIMENTACAO",
+        "NE CCor - Favorecido": "MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA",
+        "NE CCor - Favorecido (2)": "15340396000193",
+        "DH - Tipo": "NOTA DE PAGAMENTO",
+        "Documento Hábil": "158459264222026NP000462",
+        "DH - Observação": "Liquidação do(s) Instr.(s) de Cobrança(s) núm.(s): 894, Contrato nº: 00015/2023  - 15.340.396/0001-93 - MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA, Proc.(s) núm.(s): 23349.005597/2022-67, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 10/2026.",
+        "DH - Dia Emissão": "30/10/2026",
+        "DH - Valor": "107973,18",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002661",
+        "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 894, CONTRATO Nº: 00015/2023  - 15.340.396/0001-93 - MAOS PERUANAS RESTAURANTE, LANCHONETE E EVENTOS LTDA, PROC.(S) NUM.(S): 23349.005597/2022-67, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 10/2026.",
+        "Emissão - Dia": "10/11/2026",
+        "Doc - Valor": "47193,54",
+        "Item Informação / NE CCor": "158459264222026NE000190",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "47.193,54",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-10T23:24:18.790354-03:00",
+    "ultima_atualizacao": "2026-11-11T07:02:16.943568-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7386",
-    "hash_conteudo": "73493f9468e294b77584d4c6e13e612624fccfdb450be3cda2fc395f7b1d7f45",
-    "row_count": 2913,
+    "fonte_email_uid": "7398",
+    "hash_conteudo": "57cff466a41abe0f74281017841330d63946cc453649cb7f7f41529db529577e",
+    "row_count": 2914,
     "column_count": 17,
     "status": "atualizado",
     "limite_dias": 1
