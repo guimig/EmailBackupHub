@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-13T07:19:40.127556-03:00",
+  "generated_at": "2026-11-13T15:18:40.339598-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -18,13 +18,13 @@
     "latest_files": 22,
     "monthly_close_files": 118,
     "cache_lookups": 138,
-    "processed_files": 12,
-    "cache_hits": 126,
-    "cache_misses_new": 12,
+    "processed_files": 0,
+    "cache_hits": 138,
+    "cache_misses_new": 0,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 138,
-    "duration_seconds": 5.634
+    "duration_seconds": 3.461
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.218
+        "duration_seconds": 0.283
       }
     },
     {
@@ -82,7 +82,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.285
+        "duration_seconds": 0.367
       }
     },
     {
@@ -936,13 +936,13 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 5,
-        "cache_misses_new": 1,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 2.346
+        "duration_seconds": 0.692
       }
     },
     {
@@ -1752,7 +1752,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.525
+        "duration_seconds": 0.677
       }
     },
     {
@@ -2766,11 +2766,11 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 5,
-        "cache_misses_new": 1,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 6,
         "duration_seconds": 0.036
       }
@@ -2847,7 +2847,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.026
+        "duration_seconds": 0.033
       }
     },
     {
@@ -2911,7 +2911,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.052
+        "duration_seconds": 0.065
       }
     },
     {
@@ -3925,13 +3925,13 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 5,
-        "cache_misses_new": 1,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.184
+        "duration_seconds": 0.097
       }
     },
     {
@@ -4503,7 +4503,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.014
+        "duration_seconds": 0.018
       }
     },
     {
@@ -5517,13 +5517,13 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 5,
-        "cache_misses_new": 1,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.514
+        "duration_seconds": 0.12
       }
     },
     {
@@ -5583,7 +5583,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 3,
-        "duration_seconds": 0.062
+        "duration_seconds": 0.072
       }
     },
     {
@@ -6652,13 +6652,13 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 5,
-        "cache_misses_new": 1,
+        "cache_hits": 6,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.016
+        "duration_seconds": 0.013
       }
     },
     {
@@ -7763,13 +7763,13 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 9,
-        "cache_misses_new": 1,
+        "cache_hits": 10,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 10,
-        "duration_seconds": 0.062
+        "duration_seconds": 0.054
       }
     },
     {
@@ -8856,13 +8856,13 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 7,
-        "cache_misses_new": 1,
+        "cache_hits": 8,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 8,
-        "duration_seconds": 0.122
+        "duration_seconds": 0.078
       }
     },
     {
@@ -9958,13 +9958,13 @@
       ],
       "processing": {
         "cache_lookups": 9,
-        "cache_hits": 8,
-        "cache_misses_new": 1,
+        "cache_hits": 9,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.207
+        "duration_seconds": 0.136
       }
     },
     {
@@ -11069,13 +11069,13 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 9,
-        "cache_misses_new": 1,
+        "cache_hits": 10,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 10,
-        "duration_seconds": 0.424
+        "duration_seconds": 0.238
       }
     },
     {
@@ -12153,13 +12153,13 @@
       ],
       "processing": {
         "cache_lookups": 7,
-        "cache_hits": 6,
-        "cache_misses_new": 1,
+        "cache_hits": 7,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 7,
-        "duration_seconds": 0.04
+        "duration_seconds": 0.025
       }
     },
     {
@@ -13261,7 +13261,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.043
+        "duration_seconds": 0.054
       }
     },
     {
@@ -14366,13 +14366,13 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 9,
-        "cache_misses_new": 1,
+        "cache_hits": 10,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 10,
-        "duration_seconds": 0.051
+        "duration_seconds": 0.038
       }
     },
     {
@@ -15468,13 +15468,13 @@
       ],
       "processing": {
         "cache_lookups": 9,
-        "cache_hits": 8,
-        "cache_misses_new": 1,
+        "cache_hits": 9,
+        "cache_misses_new": 0,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 1,
+        "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.241
+        "duration_seconds": 0.156
       }
     },
     {
@@ -16585,7 +16585,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 10,
-        "duration_seconds": 0.049
+        "duration_seconds": 0.061
       }
     },
     {
@@ -17575,7 +17575,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.027
+        "duration_seconds": 0.033
       }
     }
   ]
