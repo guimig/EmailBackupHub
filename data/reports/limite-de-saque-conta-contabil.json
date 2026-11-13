@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
-  "date": "12/11/2026",
-  "date_iso": "2026-11-12",
-  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_12-11-2026.html",
+  "date": "13/11/2026",
+  "date_iso": "2026-11-13",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_13-11-2026.html",
   "category": "Limite de Saque por Conta Contábil",
   "columns": [
     "UG Executora Nome",
@@ -60,7 +60,7 @@
       "Vinculação Pagamento Código": "415",
       "Vinculação Pagamento Nome": "CUSTEIO/INVEST. PAC",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST. PAC",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "8.040,60",
       "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
     },
     {
@@ -82,7 +82,7 @@
       "Vinculação Pagamento Código": "499",
       "Vinculação Pagamento Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "81,62",
       "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
     },
     {
@@ -173,7 +173,7 @@
         "Vinculação Pagamento Código": "415",
         "Vinculação Pagamento Nome": "CUSTEIO/INVEST. PAC",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST. PAC",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "8.040,60",
         "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
       }
     },
@@ -201,7 +201,7 @@
         "Vinculação Pagamento Código": "499",
         "Vinculação Pagamento Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "PAG.DE DESPESA OBRIGATORIA- RESUL.PRIM=1",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "81,62",
         "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
       }
     },
@@ -249,12 +249,12 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-12T23:18:08.122536-03:00",
+    "ultima_atualizacao": "2026-11-13T07:19:40.127556-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7399",
-    "hash_conteudo": "d402aad54c5d311574f57f258a6264b55384d838a691d7440ac4cae0382762e0",
+    "fonte_email_uid": "7413",
+    "hash_conteudo": "f7da65c578faeb2e769da3efbe8ccaebf260f485a54655909d454f6dbfcb5758",
     "row_count": 9,
     "column_count": 9,
     "status": "atualizado",

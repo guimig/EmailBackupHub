@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-12T23:18:08.122536-03:00",
+  "generated_at": "2026-11-13T07:19:40.127556-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -11,20 +11,20 @@
   },
   "summary": {
     "dry_run": true,
-    "total_files": 4064,
+    "total_files": 4076,
     "retained_files": 138,
-    "ignored_by_retention": 3926,
-    "removal_candidates": 3926,
+    "ignored_by_retention": 3938,
+    "removal_candidates": 3938,
     "latest_files": 22,
     "monthly_close_files": 118,
     "cache_lookups": 138,
-    "processed_files": 0,
-    "cache_hits": 138,
-    "cache_misses_new": 0,
+    "processed_files": 12,
+    "cache_hits": 126,
+    "cache_misses_new": 12,
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 138,
-    "duration_seconds": 3.575
+    "duration_seconds": 5.634
   },
   "reports": [
     {
@@ -53,7 +53,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.284
+        "duration_seconds": 0.218
       }
     },
     {
@@ -82,14 +82,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.363
+        "duration_seconds": 0.285
       }
     },
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
-      "total_files": 162,
+      "total_files": 163,
       "retained_files": 6,
-      "ignored_by_retention": 156,
+      "ignored_by_retention": 157,
       "latest_files": 1,
       "monthly_close_files": 5,
       "retained": [
@@ -139,9 +139,9 @@
           ]
         },
         {
-          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -927,17 +927,22 @@
           "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_11-11-2026.html",
           "date_iso": "2026-11-11",
           "closing_date_iso": "2026-11-10"
+        },
+        {
+          "path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_12-11-2026.html",
+          "date_iso": "2026-11-12",
+          "closing_date_iso": "2026-11-11"
         }
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 6,
-        "cache_misses_new": 0,
+        "cache_hits": 5,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 6,
-        "duration_seconds": 0.713
+        "duration_seconds": 2.346
       }
     },
     {
@@ -1747,14 +1752,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.688
+        "duration_seconds": 0.525
       }
     },
     {
       "slug": "credito-disponivel-mes-lancamento",
-      "total_files": 194,
+      "total_files": 195,
       "retained_files": 6,
-      "ignored_by_retention": 188,
+      "ignored_by_retention": 189,
       "latest_files": 1,
       "monthly_close_files": 5,
       "retained": [
@@ -1804,9 +1809,9 @@
           ]
         },
         {
-          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -2752,17 +2757,22 @@
           "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_11-11-2026.html",
           "date_iso": "2026-11-11",
           "closing_date_iso": "2026-11-10"
+        },
+        {
+          "path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_12-11-2026.html",
+          "date_iso": "2026-11-12",
+          "closing_date_iso": "2026-11-11"
         }
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 6,
-        "cache_misses_new": 0,
+        "cache_hits": 5,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 6,
-        "duration_seconds": 0.037
+        "duration_seconds": 0.036
       }
     },
     {
@@ -2837,7 +2847,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.036
+        "duration_seconds": 0.026
       }
     },
     {
@@ -2901,14 +2911,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.071
+        "duration_seconds": 0.052
       }
     },
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
-      "total_files": 194,
+      "total_files": 195,
       "retained_files": 6,
-      "ignored_by_retention": 188,
+      "ignored_by_retention": 189,
       "latest_files": 1,
       "monthly_close_files": 5,
       "retained": [
@@ -2958,9 +2968,9 @@
           ]
         },
         {
-          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -3906,17 +3916,22 @@
           "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_11-11-2026.html",
           "date_iso": "2026-11-11",
           "closing_date_iso": "2026-11-10"
+        },
+        {
+          "path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_12-11-2026.html",
+          "date_iso": "2026-11-12",
+          "closing_date_iso": "2026-11-11"
         }
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 6,
-        "cache_misses_new": 0,
+        "cache_hits": 5,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 6,
-        "duration_seconds": 0.103
+        "duration_seconds": 0.184
       }
     },
     {
@@ -4488,14 +4503,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 4,
-        "duration_seconds": 0.019
+        "duration_seconds": 0.014
       }
     },
     {
       "slug": "evolucao-das-despesas-empenhadas",
-      "total_files": 194,
+      "total_files": 195,
       "retained_files": 6,
-      "ignored_by_retention": 188,
+      "ignored_by_retention": 189,
       "latest_files": 1,
       "monthly_close_files": 5,
       "retained": [
@@ -4545,9 +4560,9 @@
           ]
         },
         {
-          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -5493,17 +5508,22 @@
           "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_11-11-2026.html",
           "date_iso": "2026-11-11",
           "closing_date_iso": "2026-11-10"
+        },
+        {
+          "path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_12-11-2026.html",
+          "date_iso": "2026-11-12",
+          "closing_date_iso": "2026-11-11"
         }
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 6,
-        "cache_misses_new": 0,
+        "cache_hits": 5,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 6,
-        "duration_seconds": 0.125
+        "duration_seconds": 0.514
       }
     },
     {
@@ -5563,14 +5583,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 3,
-        "duration_seconds": 0.078
+        "duration_seconds": 0.062
       }
     },
     {
       "slug": "limite-de-saque-conta-contabil",
-      "total_files": 229,
+      "total_files": 230,
       "retained_files": 6,
-      "ignored_by_retention": 223,
+      "ignored_by_retention": 224,
       "latest_files": 1,
       "monthly_close_files": 5,
       "retained": [
@@ -5620,9 +5640,9 @@
           ]
         },
         {
-          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -6632,20 +6652,20 @@
       ],
       "processing": {
         "cache_lookups": 6,
-        "cache_hits": 6,
-        "cache_misses_new": 0,
+        "cache_hits": 5,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 6,
-        "duration_seconds": 0.015
+        "duration_seconds": 0.016
       }
     },
     {
       "slug": "provisionamentos",
-      "total_files": 315,
+      "total_files": 316,
       "retained_files": 10,
-      "ignored_by_retention": 305,
+      "ignored_by_retention": 306,
       "latest_files": 1,
       "monthly_close_files": 9,
       "retained": [
@@ -6731,9 +6751,9 @@
           ]
         },
         {
-          "path": "emails/provisionamentos/provisionamentos_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/provisionamentos/provisionamentos_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -7743,20 +7763,20 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 10,
-        "cache_misses_new": 0,
+        "cache_hits": 9,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 10,
-        "duration_seconds": 0.057
+        "duration_seconds": 0.062
       }
     },
     {
       "slug": "recolhimento-proprio-gru",
-      "total_files": 238,
+      "total_files": 239,
       "retained_files": 8,
-      "ignored_by_retention": 230,
+      "ignored_by_retention": 231,
       "latest_files": 1,
       "monthly_close_files": 7,
       "retained": [
@@ -7824,9 +7844,9 @@
           ]
         },
         {
-          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -8836,20 +8856,20 @@
       ],
       "processing": {
         "cache_lookups": 8,
-        "cache_hits": 8,
-        "cache_misses_new": 0,
+        "cache_hits": 7,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 8,
-        "duration_seconds": 0.082
+        "duration_seconds": 0.122
       }
     },
     {
       "slug": "restos-a-pagar-rap",
-      "total_files": 313,
+      "total_files": 314,
       "retained_files": 9,
-      "ignored_by_retention": 304,
+      "ignored_by_retention": 305,
       "latest_files": 1,
       "monthly_close_files": 8,
       "retained": [
@@ -8926,9 +8946,9 @@
           ]
         },
         {
-          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -9938,20 +9958,20 @@
       ],
       "processing": {
         "cache_lookups": 9,
-        "cache_hits": 9,
-        "cache_misses_new": 0,
+        "cache_hits": 8,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 9,
-        "duration_seconds": 0.142
+        "duration_seconds": 0.207
       }
     },
     {
       "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
-      "total_files": 310,
+      "total_files": 311,
       "retained_files": 10,
-      "ignored_by_retention": 300,
+      "ignored_by_retention": 301,
       "latest_files": 1,
       "monthly_close_files": 9,
       "retained": [
@@ -10037,9 +10057,9 @@
           ]
         },
         {
-          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -11049,20 +11069,20 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 10,
-        "cache_misses_new": 0,
+        "cache_hits": 9,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 10,
-        "duration_seconds": 0.254
+        "duration_seconds": 0.424
       }
     },
     {
       "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
-      "total_files": 232,
+      "total_files": 233,
       "retained_files": 7,
-      "ignored_by_retention": 225,
+      "ignored_by_retention": 226,
       "latest_files": 1,
       "monthly_close_files": 6,
       "retained": [
@@ -11121,9 +11141,9 @@
           ]
         },
         {
-          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -12133,13 +12153,13 @@
       ],
       "processing": {
         "cache_lookups": 7,
-        "cache_hits": 7,
-        "cache_misses_new": 0,
+        "cache_hits": 6,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 7,
-        "duration_seconds": 0.026
+        "duration_seconds": 0.04
       }
     },
     {
@@ -13241,14 +13261,14 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.055
+        "duration_seconds": 0.043
       }
     },
     {
       "slug": "saldos-de-contas-de-contratos",
-      "total_files": 305,
+      "total_files": 306,
       "retained_files": 10,
-      "ignored_by_retention": 295,
+      "ignored_by_retention": 296,
       "latest_files": 1,
       "monthly_close_files": 9,
       "retained": [
@@ -13334,9 +13354,9 @@
           ]
         },
         {
-          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -14346,20 +14366,20 @@
       ],
       "processing": {
         "cache_lookups": 10,
-        "cache_hits": 10,
-        "cache_misses_new": 0,
+        "cache_hits": 9,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 10,
-        "duration_seconds": 0.042
+        "duration_seconds": 0.051
       }
     },
     {
       "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
-      "total_files": 295,
+      "total_files": 296,
       "retained_files": 9,
-      "ignored_by_retention": 286,
+      "ignored_by_retention": 287,
       "latest_files": 1,
       "monthly_close_files": 8,
       "retained": [
@@ -14436,9 +14456,9 @@
           ]
         },
         {
-          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_12-11-2026.html",
-          "date_iso": "2026-11-12",
-          "closing_date_iso": "2026-11-11",
+          "path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_13-11-2026.html",
+          "date_iso": "2026-11-13",
+          "closing_date_iso": "2026-11-12",
           "reasons": [
             "latest"
           ]
@@ -15448,13 +15468,13 @@
       ],
       "processing": {
         "cache_lookups": 9,
-        "cache_hits": 9,
-        "cache_misses_new": 0,
+        "cache_hits": 8,
+        "cache_misses_new": 1,
         "cache_misses_changed": 0,
         "cache_misses_missing_snapshot": 0,
-        "processed_files": 0,
+        "processed_files": 1,
         "snapshots_written": 9,
-        "duration_seconds": 0.167
+        "duration_seconds": 0.241
       }
     },
     {
@@ -16565,7 +16585,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 10,
-        "duration_seconds": 0.063
+        "duration_seconds": 0.049
       }
     },
     {
@@ -17555,7 +17575,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 6,
-        "duration_seconds": 0.036
+        "duration_seconds": 0.027
       }
     }
   ]
