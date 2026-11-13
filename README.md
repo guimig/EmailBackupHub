@@ -1,4 +1,4 @@
-# EmailBackupHub
+# ConsultaTesouro
 
 Repositório estático para coletar relatórios enviados por e-mail, preservar os artefatos relevantes e publicar uma interface de consulta no GitHub Pages.
 
