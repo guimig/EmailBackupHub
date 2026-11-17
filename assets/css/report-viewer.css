@@ -173,6 +173,8 @@ body.table-expanded .pagination { flex: 0 0 auto; }
   .toolbar .search-field { flex-basis: 100%; }
   .reading-bar { align-items: flex-start; flex-wrap: wrap; }
   .table-wrap { max-height: 72vh; }
+  #table .first-data-col { position: static; box-shadow: none; }
+  #table th.first-data-col { position: sticky; top: 0; z-index: 4; }
   .advanced-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
