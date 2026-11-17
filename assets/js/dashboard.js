@@ -8,6 +8,12 @@ let indexData = null;
     let searchIndexState = 'idle';
     let searchIndexPromise = null;
     const SERIES_MIN_DATE = '2026-01-01';
+    let historyRange = 0; // 0 = toda a serie confiavel.
+    const CHART_SOURCE_SLUG = {
+      expenseTrendChart: 'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento',
+      creditDonut: 'credito-disponivel-mes-lancamento',
+      gruTreeChart: 'recolhimento-proprio-gru'
+    };
 
     const byId = id => document.getElementById(id);
 
@@ -736,58 +742,21 @@ let indexData = null;
     }
 
     function renderHistoricalLineChart(id, series, ariaLabel) {
-      const validSeries = series.filter(item => item.points.length);
-      const validPoints = validSeries.flatMap(item => item.points);
       const container = byId(id);
       if (!container) return;
-      if (!validPoints.length) {
-        container.innerHTML = '<div class="chart-empty" role="img" aria-label="Historico insuficiente desde janeiro de 2026">Historico insuficiente desde jan/2026</div>';
+      const module = window.EmailBackupHubCharts;
+      if (!module?.renderTime) {
+        unavailableChart(id);
         return;
       }
-      const dates = [...new Set(validPoints.map(point => point.dateIso || point.date))].sort();
-      if (dates.length < 2) {
-        const values = validSeries.map(item => {
-          const point = item.points[item.points.length - 1];
-          return point ? `${item.label}: ${formatMoney(point.value)}` : null;
-        }).filter(Boolean).join(' | ');
-        container.innerHTML = `<div class="chart-empty" role="img" aria-label="Apenas um ponto historico disponivel desde janeiro de 2026">Valor atual: ${escapeHtml(values || '-')}<br><small>${escapeHtml(validPoints[0]?.date || 'data indisponivel')} - serie desde jan/2026</small></div>`;
-        return;
-      }
-      const values = validPoints.map(point => point.value);
-      const min = Math.min(...values);
-      const max = Math.max(...values);
-      const span = max - min || 1;
-      const width = 220;
-      const height = 126;
-      const padX = 18;
-      const padY = 16;
-      const xFor = date => {
-        const index = Math.max(0, dates.indexOf(date));
-        return dates.length === 1 ? width / 2 : padX + index * ((width - padX * 2) / (dates.length - 1));
-      };
-      const yFor = value => height - padY - ((value - min) / span) * (height - padY * 2);
-      const lines = validSeries.map(item => {
-        const points = item.points.map(point => `${xFor(point.dateIso || point.date)},${yFor(point.value)}`).join(' ');
-        const circles = item.points.map(point => `<circle cx="${xFor(point.dateIso || point.date)}" cy="${yFor(point.value)}" r="2.8" fill="${item.color}"><title>${escapeHtml(item.label)} - ${escapeHtml(point.date)}: ${escapeHtml(formatMoney(point.value))}</title></circle>`).join('');
-        return `<polyline points="${points}" fill="none" stroke="${item.color}" stroke-width="2.5"/>${circles}`;
-      }).join('');
-      const firstPoint = validPoints.find(point => (point.dateIso || point.date) === dates[0]) || validPoints[0];
-      const firstDate = firstPoint?.date || dates[0] || '-';
-      const lastPoint = validPoints.reduce((latest, point) => (String(point.dateIso || point.date) > String(latest.dateIso || latest.date) ? point : latest), validPoints[0]);
-      const legend = validSeries.map(item => {
-        const last = item.points[item.points.length - 1];
-        return `<span><i class="legend-dot" style="background:${item.color}"></i>${escapeHtml(item.label)}: ${escapeHtml(formatMoney(last.value))}</span>`;
-      }).join('');
-      container.innerHTML = `
-        <div>
-          <svg viewBox="0 0 ${width} ${height}" width="100%" height="128" role="img" aria-label="${escapeHtml(ariaLabel)}">
-            <path d="M${padX} ${height - padY} H${width - padX}" stroke="var(--line)" stroke-width="1"/>
-            <path d="M${padX} ${padY} V${height - padY}" stroke="var(--line)" stroke-width="1"/>
-            ${lines}
-          </svg>
-          <div class="chart-legend">${legend}</div>
-          <div class="history-meta">Periodo: ${escapeHtml(firstDate)} a ${escapeHtml(lastPoint.date || '-')}. ${validPoints.length} ponto(s). Serie desde jan/2026. Ultima data: ${escapeHtml(lastPoint.date || '-')}.</div>
-        </div>`;
+      const slug = CHART_SOURCE_SLUG[id];
+      const path = reports.find(report => report.slug === slug)?.json_path;
+      const reportUrl = path ? 'report-viewer.html?report=' + encodeURIComponent(path) : '';
+      module.renderTime(container, series, {
+        ariaLabel,
+        rangeDays: historyRange,
+        reportUrl
+      });
     }
 
     function renderRapBars(id, paid, payable) {
@@ -991,6 +960,13 @@ let indexData = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
+    const rangeSelect = byId('historyRange');
+    if (rangeSelect) rangeSelect.addEventListener('change', event => {
+      const chosen = Number(event.target.value);
+      if (![0, 30, 90, 365].includes(chosen)) return;
+      historyRange = chosen;
+      if (Object.keys(financialReports).length) renderFinancialSummary();
+    });
     byId('search').addEventListener('input', handleSearchInput);
     byId('periodicity').addEventListener('change', renderReportCatalog);
     byId('status').addEventListener('change', renderReportCatalog);
