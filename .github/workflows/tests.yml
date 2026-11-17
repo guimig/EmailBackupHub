@@ -76,6 +76,21 @@ jobs:
           node --check assets/js/report-viewer.js
           node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs
 
+      - name: Browser UX smoke test (desktop and mobile)
+        run: |
+          node --check tests/viewer_smoke_browser.js
+          node --check tests/viewer_browser_smoke.cjs
+          node tests/viewer_browser_smoke.cjs
+
+      - name: Upload viewer UX screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: viewer-ux-preview
+          path: artifacts/viewer-ui/*.png
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Validate static baseline and data
         run: |
           python validate_baseline.py
