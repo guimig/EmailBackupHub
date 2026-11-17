@@ -58,6 +58,17 @@
     qa.clickRowOpensDetails = $('rowDialog').open;
     $('closeRowDialog').click();
 
+    $('reportChart').open = true;
+    $('reportChart').dispatchEvent(new Event('toggle'));
+    qa.chartOptionalAndAvailable = $('reportChart').open &&
+      $('chartMeasure').options.length > 0 && $('reportChartVisual').querySelectorAll('[data-record-index]').length === 12;
+    const chartFirst = $('reportChartVisual').querySelector('[data-record-index]');
+    if (chartFirst) chartFirst.click();
+    qa.chartOpensOriginalRecord = $('rowDialog').open && $('rowDetails').querySelectorAll('dt').length === 11;
+    if ($('rowDialog').open) $('closeRowDialog').click();
+    qa.chartHasNoAutomaticTotal = $('reportChartVisual').querySelectorAll('[data-record-index]').length === 12;
+    $('reportChart').open = false;
+
     $('expandTable').click();
     qa.expandedMode = document.body.classList.contains('table-expanded')
       && $('readerWorkspace').getBoundingClientRect().width >= window.innerWidth - 30;
