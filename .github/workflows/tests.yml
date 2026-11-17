@@ -117,6 +117,13 @@ jobs:
 
       - name: Validate static baseline and data
         run: |
+          # This sparse checkout contains only four real JSON fixtures for
+          # financial provenance tests, not the complete generated data tree.
+          # Keep the existing validator's sparse-checkout behavior, without
+          # weakening its production rules or changing the Git repository.
+          if [ -d data ] && [ ! -f data/index.json ]; then
+            mv data "$RUNNER_TEMP/emailbackuphub-reference-fixtures"
+          fi
           python validate_baseline.py
           python validate_data.py
           python diagnose_headers.py --max-rows 8 restos-a-pagar-rap.html
