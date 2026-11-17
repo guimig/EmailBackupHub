@@ -566,6 +566,7 @@ let report = null;
       groupSelect.value = groupColumn || '';
       groupSelect.onchange = event => {
         groupColumn = event.target.value;
+        currentPage = 1;
         renderRows();
       };
       const options = byId('groupSumOptions');
@@ -826,7 +827,8 @@ let report = null;
       const filters = [];
       filters.push(['Busca geral', byId('globalSearch').value || 'Sem busca geral']);
       for (const [column, value] of Object.entries(columnFilters)) {
-        if (value) filters.push([friendlyColumnName(column), value]);
+        if (value) filters.push([friendlyColumnName(column),
+          typeof value === 'string' ? 'contém ' + value : Filters.describe(value, columnMetaFor(column))]);
       }
       if (columnSort.column && columnSort.direction) filters.push(['Ordena\u00e7\u00e3o', `${friendlyColumnName(columnSort.column)} (${columnSort.direction === 'az' ? 'A-Z' : 'Z-A'})`]);
       filters.push(['Totais na tabela', byId('showTotals').checked ? 'Inclu\u00eddos' : 'Ocultos']);
@@ -1073,18 +1075,35 @@ let report = null;
       byId('showTotals').checked = params.get('totals') !== '0';
       const visible = columnsFromIndexes(params.get('cols'));
       visibleColumns = new Set(visible.length ? visible : columns);
-      groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')));
+      groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')).filter(eligibleSumColumn));
       const groupIndex = params.get('group');
       groupColumn = groupIndex === null || groupIndex === '' ? '' : columns[Number(groupIndex)] || '';
       const sortIndex = params.get('sort');
       columnSort = {
         column: sortIndex === null || sortIndex === '' ? null : columns[Number(sortIndex)] || null,
-        direction: params.get('dir') || ''
+        direction: ['az', 'za'].includes(params.get('dir')) ? params.get('dir') : ''
       };
+      const requestedSize = Number(params.get('ps'));
+      pageSize = [25, 50, 100].includes(requestedSize) ? requestedSize : 50;
+      const requestedPage = Number(params.get('p'));
+      currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
       columnFilters = {};
       columns.forEach((column, index) => {
-        const value = params.get(`f${index}`);
-        if (value) columnFilters[column] = value;
+        const typed = params.get(`tf${index}`);
+        if (typed && typed.length <= 4000) {
+          try {
+            const parsed = JSON.parse(typed);
+            if (Filters.validFilter(parsed, columnMetaFor(column))) {
+              columnFilters[column] = parsed;
+              return;
+            }
+          } catch (error) {
+            console.warn('Filtro compartilhado inválido ignorado:', index, error);
+          }
+        }
+        // Legacy URLs from prior releases use text substring filters f0, f1...
+        const legacy = params.get(`f${index}`);
+        if (legacy && legacy.length <= 500) columnFilters[column] = legacy;
       });
       restoringState = false;
     }
@@ -1102,7 +1121,13 @@ let report = null;
       setOrDelete(params, 'groupSums', indexList([...groupSumColumns]));
       setOrDelete(params, 'sort', columnSort.column ? String(columnIndex(columnSort.column)) : '');
       setOrDelete(params, 'dir', columnSort.direction);
-      columns.forEach((column, index) => setOrDelete(params, `f${index}`, columnFilters[column] || ''));
+      setOrDelete(params, 'ps', pageSize === 50 ? '' : String(pageSize));
+      setOrDelete(params, 'p', currentPage <= 1 ? '' : String(currentPage));
+      columns.forEach((column, index) => {
+        const spec = columnFilters[column];
+        setOrDelete(params, `f${index}`, typeof spec === 'string' ? spec : '');
+        setOrDelete(params, `tf${index}`, spec && typeof spec === 'object' ? JSON.stringify(spec) : '');
+      });
       history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
     }
 
@@ -1144,26 +1169,57 @@ let report = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
-    byId('globalSearch').addEventListener('input', scheduleRenderRows);
+    byId('globalSearch').addEventListener('input', () => {
+      currentPage = 1;
+      scheduleRenderRows();
+    });
     byId('clearFilters').addEventListener('click', () => {
+      clearTimeout(renderTimer);
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       visibleColumns = new Set(report?.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
+      currentPage = 1;
       byId('globalSearch').value = '';
       byId('showTotals').checked = true;
-      document.querySelectorAll('th input').forEach(input => { input.value = ''; });
-      document.querySelectorAll('th select').forEach(select => { select.value = ''; });
+      closeFilterEditor();
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
       renderRows();
+    });
+    byId('closeFilterEditor').addEventListener('click', closeFilterEditor);
+    byId('applyColumnFilter').addEventListener('click', applyColumnFilter);
+    byId('removeColumnFilter').addEventListener('click', () => removeColumnFilter(filterColumn));
+    byId('pageSize').addEventListener('change', event => {
+      const size = Number(event.target.value);
+      if (![25, 50, 100].includes(size)) return;
+      pageSize = size;
+      currentPage = 1;
+      renderRows();
+    });
+    byId('previousPage').addEventListener('click', () => {
+      if (currentPage <= 1) return;
+      currentPage -= 1;
+      renderRows();
+    });
+    byId('nextPage').addEventListener('click', () => {
+      const total = filteredRows().length;
+      if (currentPage * pageSize >= total) return;
+      currentPage += 1;
+      renderRows();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !byId('filterEditor').hidden) closeFilterEditor();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
     byId('printHtml').addEventListener('click', printHtmlReport);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
-    byId('showTotals').addEventListener('change', renderRows);
+    byId('showTotals').addEventListener('change', () => {
+      currentPage = 1;
+      renderRows();
+    });
     loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });
