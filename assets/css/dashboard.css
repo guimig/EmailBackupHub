@@ -79,6 +79,10 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
     .dashboard-insight p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.4; }
     .management-alerts { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; margin: 14px 0 0; order: 3; }
     .management-alerts-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; padding: 12px 14px; color: var(--text); font-size: .94rem; font-weight: 700; }
+    .management-alerts-summary { list-style: none; }
+    .management-alerts-summary::-webkit-details-marker { display: none; }
+    .management-alerts-summary::before { content: '▸'; color: var(--brand); font-size: 1.05rem; flex: 0 0 auto; transition: transform .15s ease; }
+    .management-alerts[open] > .management-alerts-summary::before { transform: rotate(90deg); }
     .management-alerts-summary:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 7px; }
     .management-alerts-heading { flex: 1 1 auto; min-width: 0; }
     .management-alerts-heading small { display: block; color: var(--muted); font-size: .75rem; font-weight: 400; line-height: 1.4; margin-top: 3px; }
