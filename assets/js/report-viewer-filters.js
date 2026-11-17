@@ -6,6 +6,7 @@
   const VALID_OPS = new Set(['contains', 'equals', 'starts', 'range', 'in', 'is_empty', 'not_empty', 'is_zero', 'not_zero']);
   const NUMERIC = new Set(['money', 'number', 'percent']);
   const MAX_VALUES = 120;
+  const EMPTY_MARKERS = new Set(['', '-', '--', 'n/a', 'na', 'null', 'none', 'sem dado']);
 
   function text(value) {
     return String(value ?? '').trim();
@@ -17,7 +18,7 @@
 
   function isEmpty(value) {
     if (value === null || value === undefined) return true;
-    return new Set(['', '-', '--', 'n/a', 'na', 'null', 'none', 'sem dado']).has(normalize(value));
+    return EMPTY_MARKERS.has(normalize(value));
   }
 
   function parseNumber(value) {
