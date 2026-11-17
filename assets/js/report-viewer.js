@@ -14,6 +14,10 @@ let report = null;
     let filteredCache = null;
     let columnMetaCache = new Map();
     let columnOptionsCache = new Map();
+    let displayedRows = [];
+    let baseColumnWidth = 250;
+    let columnWidths = new Map();
+    let expanded = false;
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -173,12 +177,14 @@ let report = null;
       visibleColumns = new Set(report.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
-      byId('showTotals').checked = true;
+      byId('showTotals').checked = false;
       restoreStateFromUrl();
       ensureDefaultVisibleColumns();
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
+      byId('columnWidthRange').value = String(baseColumnWidth);
+      byId('columnWidthValue').textContent = baseColumnWidth + ' px';
       renderRows();
     }
 
@@ -230,11 +236,22 @@ let report = null;
       return columns.filter(column => visibleColumns.has(column));
     }
 
+    function suggestedVisibleColumns() {
+      const columns = report?.columns || [];
+      if (columns.length <= 8) return new Set(columns);
+      const chosen = new Set([...columns.slice(0, 3), ...columns.slice(-3)]);
+      // The primary document key is often in the middle of an exported report.
+      for (const column of columns) {
+        if (/(^ptres$|^ne ccor$|\brip\b|n[uú]m.*processo)/i.test(column)) chosen.add(column);
+      }
+      return chosen;
+    }
+
     function ensureDefaultVisibleColumns() {
       const columns = report?.columns || [];
       const params = new URLSearchParams(location.search);
       if (!params.has('cols') || !visibleColumns.size) {
-        visibleColumns = new Set(columns);
+        visibleColumns = suggestedVisibleColumns();
       }
     }
 
@@ -1072,7 +1089,7 @@ let report = null;
       const params = new URLSearchParams(location.search);
       const columns = report.columns || [];
       byId('globalSearch').value = params.get('q') || '';
-      byId('showTotals').checked = params.get('totals') !== '0';
+      byId('showTotals').checked = params.get('totals') === '1';
       const visible = columnsFromIndexes(params.get('cols'));
       visibleColumns = new Set(visible.length ? visible : columns);
       groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')).filter(eligibleSumColumn));
