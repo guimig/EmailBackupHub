@@ -8,6 +8,7 @@ let report = null;
     let restoringState = false;
     let reportDefinitions = {};
     const Filters = window.EmailBackupHubFilters;
+    const SavedViews = window.EmailBackupHubSavedViews;
     const Charts = window.EmailBackupHubCharts;
     let filterColumn = null;
     let currentPage = 1;
@@ -188,6 +189,7 @@ let report = null;
       byId('columnWidthValue').textContent = baseColumnWidth + ' px';
       renderRows();
       prepareReportChartControls();
+      refreshSavedViews();
     }
 
     function columnMetaFor(column) {
@@ -1418,6 +1420,125 @@ let report = null;
     }
 
 
+
+    function savedViewStorage() {
+      try { return window.localStorage; } catch { return null; }
+    }
+
+    function setSavedViewStatus(message) {
+      const status = byId('savedViewStatus');
+      if (status) status.textContent = message || '';
+    }
+
+    function currentViewSettings() {
+      return {
+        search: byId('globalSearch').value,
+        visibleColumns: [...visibleColumns],
+        columnFilters,
+        sort: columnSort,
+        groupColumn,
+        groupSumColumns: [...groupSumColumns],
+        showTotals: byId('showTotals').checked,
+        pageSize,
+        wrapCells: byId('wrapCells').checked,
+        baseColumnWidth,
+        columnWidths: Object.fromEntries(columnWidths)
+      };
+    }
+
+    function refreshSavedViews(preferredName = '') {
+      if (!report || !SavedViews) return;
+      const data = SavedViews.read(savedViewStorage(), report);
+      const select = byId('savedViewSelect');
+      if (!select) return;
+      const oldValue = preferredName || select.value;
+      select.replaceChildren();
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = data.views.length ? 'Selecione uma consulta...' : 'Nenhuma consulta salva';
+      select.appendChild(placeholder);
+      for (const view of data.views) {
+        const item = document.createElement('option');
+        item.value = view.name;
+        item.textContent = view.name;
+        select.appendChild(item);
+      }
+      select.value = data.views.some(view => view.name === oldValue) ? oldValue : '';
+      byId('loadView').disabled = !select.value;
+      byId('deleteView').disabled = !select.value;
+      byId('saveView').disabled = !data.available;
+      byId('savedViewsCount').textContent = data.views.length ? '(' + data.views.length + ')' : '';
+      if (data.error) setSavedViewStatus(data.error);
+    }
+
+    function saveCurrentView() {
+      if (!report || !SavedViews) return;
+      const name = byId('savedViewName').value.trim();
+      const result = SavedViews.save(savedViewStorage(), report, name,
+        currentViewSettings(), Filters, columnMetaFor);
+      setSavedViewStatus(result.message);
+      if (result.ok) {
+        byId('savedViewName').value = '';
+        refreshSavedViews(result.name);
+      }
+    }
+
+    function applySavedView() {
+      const name = byId('savedViewSelect').value;
+      if (!name || !report || !SavedViews) return;
+      const data = SavedViews.read(savedViewStorage(), report);
+      const view = data.views.find(item => item.name === name);
+      if (!view) { setSavedViewStatus('Consulta não encontrada neste navegador.'); return; }
+      const result = SavedViews.reconcile(report, view.snapshot, Filters, columnMetaFor);
+      const state = result.state;
+      clearTimeout(renderTimer);
+      byId('globalSearch').value = state.search;
+      columnFilters = Object.fromEntries(Object.entries(state.columnFilters));
+      columnSort = { ...state.sort };
+      visibleColumns = new Set(state.visibleColumns);
+      groupColumn = state.groupColumn;
+      groupSumColumns = new Set(state.groupSumColumns);
+      pageSize = state.pageSize;
+      currentPage = 1;
+      byId('showTotals').checked = state.showTotals;
+      byId('wrapCells').checked = state.wrapCells;
+      baseColumnWidth = state.baseColumnWidth;
+      columnWidths = new Map(Object.entries(state.columnWidths));
+      byId('columnWidthRange').value = String(baseColumnWidth);
+      filteredCache = null;
+      closeFilterEditor();
+      applyWrapPreference();
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderGroupingControls();
+      renderRows();
+      const removed = result.removedColumns.length;
+      setSavedViewStatus(removed
+        ? 'Consulta aplicada. ' + removed + ' coluna(s) já não existem neste relatório e foram ignoradas.'
+        : 'Consulta "' + name + '" aplicada. A URL foi atualizada para compartilhar a seleção.');
+    }
+
+    function deleteSavedView() {
+      const name = byId('savedViewSelect').value;
+      if (!name || !report || !SavedViews) return;
+      if (typeof window.confirm === 'function' && !window.confirm('Excluir a consulta "' + name + '" deste navegador?')) return;
+      const result = SavedViews.remove(savedViewStorage(), report, name);
+      refreshSavedViews();
+      setSavedViewStatus(result.message);
+    }
+
+    async function copyCurrentViewLink() {
+      if (!report) return;
+      updateUrlState();
+      try {
+        if (!window.navigator?.clipboard?.writeText) throw new Error('Área de transferência indisponível');
+        await window.navigator.clipboard.writeText(window.location.href);
+        setSavedViewStatus('Link da consulta atual copiado. Ele inclui os filtros e pode ser compartilhado.');
+      } catch {
+        setSavedViewStatus('Não foi possível copiar automaticamente. Copie o endereço da barra do navegador.');
+      }
+    }
+
     function setExpanded(next) {
       expanded = Boolean(next);
       document.body.classList.toggle('table-expanded', expanded);
@@ -1513,6 +1634,15 @@ let report = null;
       }
       const row = event.target.closest('tbody tr[data-row-index]');
       if (row) openRowDetails(Number(row.dataset.rowIndex));
+    });
+    byId('saveView').addEventListener('click', saveCurrentView);
+    byId('loadView').addEventListener('click', applySavedView);
+    byId('deleteView').addEventListener('click', deleteSavedView);
+    byId('copyViewLink').addEventListener('click', copyCurrentViewLink);
+    byId('savedViewSelect').addEventListener('change', event => {
+      const chosen = Boolean(event.target.value);
+      byId('loadView').disabled = !chosen;
+      byId('deleteView').disabled = !chosen;
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
