@@ -286,7 +286,9 @@
     let offset=0;
     const arcs=positive.map((item,i)=>{
       const share=item.value/total*100;
-      const arc='<circle cx="80" cy="80" r="61" fill="none" stroke="'+colors[i]+'" stroke-width="23"'
+      const arc='<circle class="smart-chart-arc" tabindex="0" role="button" data-smart-chart-index="'+result.points.indexOf(item)+'"'
+        +' aria-label="'+escape('Filtrar '+item.label+' ('+decimal.format(share)+'%)')+'"'
+        +' cx="80" cy="80" r="61" fill="none" stroke="'+colors[i]+'" stroke-width="23"'
         +' stroke-dasharray="'+share.toFixed(5)+' '+(100-share).toFixed(5)+'"'
         +' stroke-dashoffset="'+(-offset).toFixed(5)+'" pathLength="100"></circle>';
       offset+=share;return arc;
@@ -355,10 +357,18 @@
       if(typeof handlers?.onSelect==='function')handlers.onSelect(point,result);
     };
     container.querySelectorAll('[data-smart-chart-index]').forEach(node=>{
-      node.addEventListener('click',()=>choose(Number(node.dataset.smartChartIndex)));
+      const index=Number(node.dataset.smartChartIndex);
+      const preview=()=>{
+        const point=result.points[index];
+        const status=container.querySelector('.smart-chart-line-selection');
+        if(point&&status)status.textContent=point.label+' · '+formatValue(point.value,result.unit);
+      };
+      node.addEventListener('click',()=>choose(index));
+      node.addEventListener('focus',preview);
+      node.addEventListener('mouseenter',preview);
       if(node.tagName?.toLowerCase()==='circle'){
         node.addEventListener('keydown',event=>{
-          if(event.key==='Enter'||event.key===' '){event.preventDefault();choose(Number(node.dataset.smartChartIndex));}
+          if(event.key==='Enter'||event.key===' '){event.preventDefault();choose(index);}
         });
       }
     });
