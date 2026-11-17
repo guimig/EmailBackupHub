@@ -7,80 +7,149 @@
   <link rel="stylesheet" href="assets/css/report-viewer.css">
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-top">
       <div class="header-main">
-        <p><a href="dashboard.html">← Dashboard</a> | <a href="relatorios.html">Listagem</a> | <a id="htmlLink" href="#">HTML original</a> | <a id="jsonLink" href="#">JSON</a></p>
+        <nav class="breadcrumbs" aria-label="Navegação">
+          <a href="dashboard.html">← Painel</a>
+          <a href="relatorios.html">Relatórios</a>
+          <a id="htmlLink" href="#">HTML original</a>
+        </nav>
         <h1 id="title">Carregando relatório...</h1>
-        <div class="meta" id="meta"></div>
+        <div class="meta" id="meta" aria-label="Informações do relatório"></div>
       </div>
-      <button id="themeToggle" class="theme-toggle" type="button">Tema claro</button>
+      <button id="themeToggle" class="secondary-button theme-toggle" type="button">Tema claro</button>
     </div>
   </header>
-  <main>
-    <div class="toolbar">
-      <input id="globalSearch" type="search" placeholder="Pesquisar em todas as colunas">
-      <label class="toggle"><input id="showTotals" type="checkbox" checked> Mostrar totais</label>
-      <button id="clearFilters">Limpar filtros</button>
-      <button id="exportCsv">Exportar CSV</button>
-      <button id="exportHtml">Exportar HTML</button>
-      <button id="printHtml">Imprimir PDF</button>
-    </div>
-    <div id="quality" class="quality"></div>
-    <div id="metricAudit" class="metric-audit is-hidden"></div>
-    <details class="viewer-controls">
-      <summary>Colunas, agrupamento e somas</summary>
-      <div class="viewer-controls-body">
-        <div>
-          <strong>Colunas visíveis</strong>
-          <div id="columnVisibilityOptions" class="control-grid"></div>
-        </div>
-        <div class="control-row">
-          <label>
-            <span>Agrupar por</span>
-            <select id="groupColumn"></select>
-          </label>
-          <div>
-            <strong>Somar por grupo</strong>
-            <div id="groupSumOptions" class="control-grid"></div>
+
+  <main class="viewer-main">
+    <section class="reader-workspace" id="readerWorkspace" aria-label="Explorar relatório">
+      <div class="toolbar" role="group" aria-label="Ferramentas principais">
+        <label class="search-field" for="globalSearch">
+          <span class="visually-hidden">Buscar nos registros</span>
+          <input id="globalSearch" type="search" placeholder="🔎  Buscar em todos os registros..." autocomplete="off">
+        </label>
+        <button id="openFilterPanel" type="button" class="toolbar-button">+ Filtro</button>
+        <button id="toggleColumns" type="button" class="toolbar-button" aria-expanded="false" aria-controls="columnPanel">Colunas <span id="visibleColumnsCount"></span></button>
+        <button id="clearFilters" type="button" class="toolbar-link">Limpar</button>
+        <details id="exportMenu" class="export-menu">
+          <summary class="toolbar-button">Exportar ▾</summary>
+          <div class="export-menu-options">
+            <button id="exportCsv" type="button">Planilha CSV</button>
+            <button id="exportHtml" type="button">Relatório HTML</button>
+            <button id="printHtml" type="button">Imprimir / PDF</button>
           </div>
+        </details>
+      </div>
+
+      <section id="columnPanel" class="column-panel" hidden aria-labelledby="columnPanelTitle">
+        <div class="panel-heading">
+          <div>
+            <h2 id="columnPanelTitle">Colunas visíveis</h2>
+            <p>Mostre só o que interessa. Os demais campos continuam disponíveis nos detalhes de cada linha.</p>
+          </div>
+          <button id="closeColumnPanel" class="secondary-button small-button" type="button">Fechar</button>
+        </div>
+        <div class="column-panel-actions">
+          <input id="columnSearch" type="search" placeholder="Localizar uma coluna" aria-label="Localizar coluna">
+          <button id="showAllColumns" class="secondary-button small-button" type="button">Mostrar todas</button>
+          <button id="resetColumns" class="secondary-button small-button" type="button">Sugestão automática</button>
+          <button id="resetWidths" class="secondary-button small-button" type="button">Restaurar larguras</button>
+        </div>
+        <div id="columnVisibilityOptions" class="control-grid"></div>
+      </section>
+
+      <section id="filterEditor" class="filter-editor" hidden aria-labelledby="filterEditorTitle">
+        <div class="panel-heading">
+          <div>
+            <h2 id="filterEditorTitle">Filtrar resultados</h2>
+            <p>Escolha uma coluna e um critério. É possível combinar vários filtros.</p>
+          </div>
+          <button type="button" id="closeFilterEditor" class="secondary-button small-button">Fechar</button>
+        </div>
+        <label class="column-picker-label" for="filterColumnPicker">
+          Coluna
+          <select id="filterColumnPicker"></select>
+        </label>
+        <div id="filterEditorFields" class="filter-editor-fields"></div>
+        <div class="filter-editor-actions">
+          <button type="button" id="applyColumnFilter">Aplicar filtro</button>
+          <button type="button" id="removeColumnFilter" class="secondary-button">Remover filtro</button>
+          <p id="filterError" role="alert" class="filter-error" hidden></p>
+        </div>
+      </section>
+
+      <div class="results-row">
+        <span id="quickStatus" aria-live="polite">Preparando tabela...</span>
+        <div id="filterChips" class="filter-chips" aria-label="Filtros aplicados"></div>
+      </div>
+
+      <div class="reading-bar">
+        <div class="reading-preferences">
+          <label class="width-control" for="columnWidthRange">Largura
+            <input id="columnWidthRange" type="range" min="150" max="440" step="10" value="250">
+            <output id="columnWidthValue" for="columnWidthRange">250 px</output>
+          </label>
+          <label class="toggle"><input id="wrapCells" type="checkbox"> Quebrar texto</label>
+          <label class="toggle"><input id="showTotals" type="checkbox" checked> Totais</label>
+        </div>
+        <button id="expandTable" class="secondary-button expand-button" type="button" aria-pressed="false">Ampliar tabela</button>
+      </div>
+
+      <div class="table-stage">
+        <p class="table-tip" id="tableTip">Role para os lados para ver outras colunas. Arraste a borda dos cabeçalhos para redimensionar; clique em uma linha para ver todos os campos.</p>
+        <section class="table-wrap" id="tableWrap" role="region" tabindex="0" aria-label="Tabela de resultados; use a rolagem horizontal para outras colunas">
+          <table id="table"></table>
+        </section>
+        <nav class="pagination" aria-label="Paginação dos resultados">
+          <span id="pageInfo" role="status" aria-live="polite">Carregando registros...</span>
+          <div class="page-controls">
+            <label for="pageSize">Por página</label>
+            <select id="pageSize" aria-label="Registros por página">
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+            </select>
+            <button type="button" id="previousPage" class="secondary-button small-button">← Anterior</button>
+            <span id="pageNumber">1 de 1</span>
+            <button type="button" id="nextPage" class="secondary-button small-button">Próxima →</button>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <details id="advancedTools" class="disclosure">
+      <summary>Ferramentas avançadas: agrupamentos e cálculos</summary>
+      <div class="disclosure-body">
+        <p>Agrupe os registros filtrados e, somente quando fizer sentido contabilmente, selecione valores para totalização. A soma não é automática.</p>
+        <div class="advanced-layout">
+          <label for="groupColumn">Agrupar registros por <select id="groupColumn"></select></label>
+          <div><strong>Calcular totais por grupo</strong><div id="groupSumOptions" class="control-grid"></div></div>
         </div>
       </div>
     </details>
-    <section id="filterEditor" class="filter-editor" aria-labelledby="filterEditorTitle" hidden>
-      <div class="filter-editor-heading">
-        <h2 id="filterEditorTitle">Filtro de coluna</h2>
-        <button type="button" id="closeFilterEditor" class="secondary-button" aria-label="Fechar filtro">Fechar</button>
+
+    <details id="sourceDetails" class="disclosure">
+      <summary>Informações técnicas, métricas e qualidade dos dados</summary>
+      <div class="disclosure-body">
+        <p><a id="jsonLink" href="#">Consultar JSON original</a> · <a href="https://github.com/guimig/EmailBackupHub">Código-fonte e documentação</a></p>
+        <div id="quality" class="quality"></div>
+        <div id="metricAudit" class="metric-audit is-hidden"></div>
       </div>
-      <div id="filterEditorFields" class="filter-editor-fields"></div>
-      <div class="filter-editor-actions">
-        <button type="button" id="applyColumnFilter">Aplicar filtro</button>
-        <button type="button" id="removeColumnFilter" class="secondary-button">Remover filtro</button>
-        <p id="filterError" role="alert" class="filter-error" hidden></p>
-      </div>
-    </section>
-    <div id="filterChips" class="filter-chips" aria-live="polite"></div>
-    <section class="table-wrap" aria-label="Resultados filtrados">
-      <table id="table"></table>
-    </section>
-    <nav class="pagination" aria-label="Paginação dos resultados">
-      <span id="pageInfo" role="status" aria-live="polite">Carregando registros...</span>
-      <div class="page-controls">
-        <label for="pageSize">Linhas por página</label>
-        <select id="pageSize" aria-label="Linhas por página">
-          <option value="25">25</option>
-          <option value="50" selected>50</option>
-          <option value="100">100</option>
-        </select>
-        <button type="button" id="previousPage" class="secondary-button">Anterior</button>
-        <span id="pageNumber">Página 1 de 1</span>
-        <button type="button" id="nextPage" class="secondary-button">Próxima</button>
-      </div>
-    </nav>
+    </details>
   </main>
+
+  <dialog id="rowDialog" class="row-dialog" aria-labelledby="rowDialogTitle">
+    <div class="row-dialog-heading">
+      <div><p class="eyebrow">REGISTRO COMPLETO</p><h2 id="rowDialogTitle">Detalhes do registro</h2></div>
+      <button id="closeRowDialog" type="button" class="secondary-button small-button">Fechar ✕</button>
+    </div>
+    <p id="rowDialogHint">Todos os campos do registro, inclusive colunas ocultas.</p>
+    <dl id="rowDetails" class="row-details"></dl>
+  </dialog>
   <footer class="site-footer">
     <span>Desenvolvido por Guilherme Migliorini.</span>
-    <a href="https://github.com/guimig/EmailBackupHub">Página do GitHub</a>
+    <a href="https://github.com/guimig/EmailBackupHub">GitHub</a>
   </footer>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/report-viewer-filters.js"></script>

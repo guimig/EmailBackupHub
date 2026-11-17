@@ -153,7 +153,7 @@ test('agrupamento multipagina nunca calcula subtotal parcial', () => {
   assert.match(tbody.innerHTML, /Grupo: B/);
   assert.match(tbody.innerHTML, /Total do grupo/);
   assert.equal((tbody.innerHTML.match(/class="group-row"/g) || []).length, 2);
-  assert.equal((tbody.innerHTML.match(/<tr class=""/g) || []).length, 25);
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 25);
 });
 
 test('URLs legadas f0 e novos filtros tf0 e pagina permanecem compartilháveis', () => {

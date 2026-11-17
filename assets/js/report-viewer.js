@@ -14,6 +14,10 @@ let report = null;
     let filteredCache = null;
     let columnMetaCache = new Map();
     let columnOptionsCache = new Map();
+    let displayedRows = [];
+    let baseColumnWidth = 250;
+    let columnWidths = new Map();
+    let expanded = false;
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -173,12 +177,14 @@ let report = null;
       visibleColumns = new Set(report.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
-      byId('showTotals').checked = true;
+      byId('showTotals').checked = false;
       restoreStateFromUrl();
       ensureDefaultVisibleColumns();
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
+      byId('columnWidthRange').value = String(baseColumnWidth);
+      byId('columnWidthValue').textContent = baseColumnWidth + ' px';
       renderRows();
     }
 
@@ -230,11 +236,22 @@ let report = null;
       return columns.filter(column => visibleColumns.has(column));
     }
 
+    function suggestedVisibleColumns() {
+      const columns = report?.columns || [];
+      if (columns.length <= 8) return new Set(columns);
+      const chosen = new Set([...columns.slice(0, 3), ...columns.slice(-3)]);
+      // The primary document key is often in the middle of an exported report.
+      for (const column of columns) {
+        if (/(^ptres$|^ne ccor$|\brip\b|n[uú]m.*processo)/i.test(column)) chosen.add(column);
+      }
+      return chosen;
+    }
+
     function ensureDefaultVisibleColumns() {
       const columns = report?.columns || [];
       const params = new URLSearchParams(location.search);
       if (!params.has('cols') || !visibleColumns.size) {
-        visibleColumns = new Set(columns);
+        visibleColumns = suggestedVisibleColumns();
       }
     }
 
@@ -356,41 +373,119 @@ let report = null;
       return String(meaningful).replace(/\s+/g, ' ').trim();
     }
 
+
+    function defaultColumnWidth(column) {
+      if (columnWidths.has(column)) return columnWidths.get(column);
+      const kind = columnMetaFor(column)?.type;
+      const label = normalize(column);
+      const factor = kind === 'identifier' ? .83
+        : ['money', 'number', 'percent'].includes(kind) ? .85
+          : /descricao|observacao|historico|favorecido|justificativa/.test(label) ? 1.4
+            : /^(ptres|mes|ano|data)$/.test(label) ? .67 : 1;
+      return Math.max(150, Math.min(560, Math.round(baseColumnWidth * factor)));
+    }
+
+    function applyColumnSizing() {
+      const table = byId('table');
+      if (!table?.querySelectorAll) return;
+      const columns = visibleReportColumns();
+      const cols = table.querySelectorAll('col[data-column-index]');
+      let total = 52;
+      cols.forEach((col, index) => {
+        const width = defaultColumnWidth(columns[index]);
+        col.style.width = width + 'px';
+        total += width;
+      });
+      table.style.width = total + 'px';
+      table.style.minWidth = total + 'px';
+      byId('columnWidthValue').textContent = baseColumnWidth + ' px';
+    }
+
+    function toggleSort(column) {
+      if (columnSort.column !== column) columnSort = { column, direction: 'az' };
+      else if (columnSort.direction === 'az') columnSort.direction = 'za';
+      else columnSort = { column: null, direction: '' };
+      currentPage = 1;
+      renderTableShell();
+      renderRows();
+    }
+
+    function attachColumnResizers() {
+      document.querySelectorAll('[data-resize-column]').forEach(grip => {
+        const column = grip.dataset.resizeColumn;
+        grip.addEventListener('pointerdown', event => {
+          if (event.button !== 0) return;
+          event.preventDefault();
+          event.stopPropagation();
+          const startX = event.clientX;
+          const initialWidth = defaultColumnWidth(column);
+          const move = next => {
+            columnWidths.set(column, Math.max(150, Math.min(720, Math.round(initialWidth + next.clientX - startX))));
+            applyColumnSizing();
+          };
+          const finish = () => {
+            document.removeEventListener('pointermove', move);
+            document.removeEventListener('pointerup', finish);
+            document.removeEventListener('pointercancel', finish);
+          };
+          document.addEventListener('pointermove', move);
+          document.addEventListener('pointerup', finish);
+          document.addEventListener('pointercancel', finish);
+        });
+        grip.addEventListener('keydown', event => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          columnWidths.set(column, Math.max(150, Math.min(720, defaultColumnWidth(column) + (event.key === 'ArrowRight' ? 25 : -25))));
+          applyColumnSizing();
+        });
+      });
+    }
+
     function renderTableShell() {
       const columns = visibleReportColumns();
       const displayColumns = friendlyColumns(columns);
+      const tableWrap = byId('tableWrap');
+      const previousScroll = tableWrap?.scrollLeft || 0;
       byId('table').innerHTML = `
-        <thead><tr>${columns.map((column, index) => `
-          <th scope="col">
-            <span class="column-heading">${escapeHtml(displayColumns[index])}</span>
-            <div class="column-heading-actions">
-              <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
-                data-filter-column="${escapeHtml(column)}" aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
-                aria-pressed="${Boolean(columnFilters[column])}">Filtro${columnFilters[column] ? ' ●' : ''}</button>
-              <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
-                <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
-                <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>Crescente</option>
-                <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Decrescente</option>
-              </select>
-            </div>
-          </th>
-        `).join('')}</tr></thead>
+        <colgroup>
+          <col class="action-column" style="width:52px">
+          ${columns.map((column, index) => `<col data-column-index="${index}" style="width:${defaultColumnWidth(column)}px">`).join('')}
+        </colgroup>
+        <thead><tr>
+          <th class="action-head" scope="col" title="Abrir registro completo">Ver</th>
+          ${columns.map((column, index) => {
+            const active = columnSort.column === column && Boolean(columnSort.direction);
+            const sort = active ? (columnSort.direction === 'az' ? '↑' : '↓') : '↕';
+            const ariaSort = active ? (columnSort.direction === 'az' ? 'ascending' : 'descending') : 'none';
+            return `<th scope="col" class="${index === 0 ? 'first-data-col' : ''}" aria-sort="${ariaSort}">
+              <div class="th-inner">
+                <button type="button" data-sort-heading="${escapeHtml(column)}"
+                  class="sort-heading${active ? ' is-active' : ''}" title="Ordenar por ${escapeHtml(displayColumns[index])}">
+                  ${escapeHtml(displayColumns[index])}<span class="sort-mark" aria-hidden="true">${sort}</span>
+                </button>
+                <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
+                  data-filter-column="${escapeHtml(column)}" title="Filtrar ${escapeHtml(displayColumns[index])}"
+                  aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
+                  aria-pressed="${Boolean(columnFilters[column])}">⌕</button>
+              </div>
+              <span class="resize-grip" role="separator" tabindex="0" aria-orientation="vertical"
+                aria-label="Redimensionar ${escapeHtml(displayColumns[index])}" data-resize-column="${escapeHtml(column)}"></span>
+            </th>`;
+          }).join('')}
+        </tr></thead>
         <tbody></tbody>
         <tfoot></tfoot>
       `;
-      document.querySelectorAll('th button[data-filter-column]').forEach(button => {
+      applyColumnSizing();
+      if (tableWrap) tableWrap.scrollLeft = previousScroll;
+      document.querySelectorAll('[data-filter-column]').forEach(button => {
         button.addEventListener('click', event => openFilterEditor(event.currentTarget.dataset.filterColumn));
       });
-      document.querySelectorAll('th select[data-sort-column]').forEach(select => {
-        select.addEventListener('change', event => {
-          document.querySelectorAll('th select[data-sort-column]').forEach(item => {
-            if (item !== event.target) item.value = '';
-          });
-          columnSort = { column: event.target.dataset.sortColumn, direction: event.target.value };
-          currentPage = 1;
-          renderRows();
-        });
+      document.querySelectorAll('[data-sort-heading]').forEach(button => {
+        button.addEventListener('click', event => toggleSort(event.currentTarget.dataset.sortHeading));
       });
+      attachColumnResizers();
+      updateColumnCount();
     }
 
     function filterOperationOptions(operations, selected) {
@@ -399,7 +494,13 @@ let report = null;
 
     function openFilterEditor(column) {
       if (!(report?.columns || []).includes(column)) return;
+      closeColumnPanel();
       filterColumn = column;
+      const picker = byId('filterColumnPicker');
+      picker.innerHTML = (report.columns || []).map(key =>
+        `<option value="${escapeHtml(key)}">${escapeHtml(friendlyColumnName(key))}</option>`
+      ).join('');
+      picker.value = column;
       const meta = columnMetaFor(column);
       const kind = Filters.filterKind(meta);
       const existing = columnFilters[column];
@@ -450,7 +551,7 @@ let report = null;
               placeholder="Digite parte do conteúdo" value="${escapeHtml(typeof existing === 'string' ? existing : spec?.value || '')}"></label>
           </div>`;
       }
-      byId('filterEditorTitle').textContent = `Filtro: ${friendlyColumnName(column)} · ${meta.type}`;
+      byId('filterEditorTitle').textContent = `Filtrar registros`;
       byId('filterError').hidden = true;
       byId('filterEditor').hidden = false;
       const opSelect = fields.querySelector('[data-filter-operation]');
@@ -528,12 +629,52 @@ let report = null;
       });
     }
 
+
+    function updateColumnCount() {
+      const count = visibleReportColumns().length;
+      const total = report?.columns?.length || 0;
+      const label = byId('visibleColumnsCount');
+      if (label) label.textContent = `(${count}/${total})`;
+    }
+
+    function closeColumnPanel() {
+      byId('columnPanel').hidden = true;
+      byId('toggleColumns').setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleColumnPanel() {
+      const panel = byId('columnPanel');
+      if (panel.hidden) {
+        closeFilterEditor();
+        panel.hidden = false;
+        byId('toggleColumns').setAttribute('aria-expanded', 'true');
+        renderColumnVisibilityControls();
+        byId('columnSearch').focus();
+      } else closeColumnPanel();
+    }
+
+    function refreshColumnSearch() {
+      const term = normalize(byId('columnSearch').value);
+      byId('columnVisibilityOptions').querySelectorAll('[data-column-label]').forEach(label => {
+        label.hidden = Boolean(term) && !normalize(label.dataset.columnLabel).includes(term);
+      });
+    }
+
+    function selectVisibleColumns(next) {
+      visibleColumns = new Set(next);
+      if (!visibleColumns.size && report?.columns?.length) visibleColumns.add(report.columns[0]);
+      currentPage = 1;
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderRows();
+    }
+
     function renderColumnVisibilityControls() {
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
       const options = byId('columnVisibilityOptions');
       options.innerHTML = columns.map((column, index) => `
-        <label>
+        <label data-column-label="${escapeHtml(displayColumns[index])}">
           <input type="checkbox" data-visible-column="${escapeHtml(column)}" ${visibleColumns.has(column) ? 'checked' : ''}>
           <span>${escapeHtml(displayColumns[index])}</span>
         </label>
@@ -546,10 +687,11 @@ let report = null;
           if (!visibleColumns.size) visibleColumns.add(column);
           renderTableShell();
           renderColumnVisibilityControls();
-          renderGroupingControls();
           renderRows();
         });
       });
+      updateColumnCount();
+      refreshColumnSearch();
     }
 
     function eligibleSumColumn(column) {
@@ -596,6 +738,7 @@ let report = null;
       if (!report) return;
       const columns = visibleReportColumns();
       const rows = filteredRows();
+      displayedRows = rows;
       const count = rows.length;
       const totalPages = Math.max(1, Math.ceil(count / pageSize));
       currentPage = Math.max(1, Math.min(currentPage, totalPages));
@@ -604,10 +747,12 @@ let report = null;
       const tbody = byId('table').querySelector('tbody');
       tbody.innerHTML = count
         ? groupedTableHtml(rows, columns, start, end)
-        : `<tr><td colspan="${Math.max(1, columns.length)}">Nenhum registro corresponde aos filtros.</td></tr>`;
+        : `<tr class="empty-row"><td colspan="${Math.max(1, columns.length + 1)}">Nenhum registro corresponde aos filtros. Ajuste ou remova os filtros para ampliar a pesquisa.</td></tr>`;
       byId('pageInfo').textContent = count
-        ? `Exibindo ${start + 1}–${end} de ${count} registros filtrados.`
+        ? `Exibindo ${start + 1}–${end} de ${count} registros.`
         : 'Nenhum registro encontrado.';
+      const quickStatus = byId('quickStatus');
+      if (quickStatus) quickStatus.textContent = `${count} registros · ${columns.length} de ${report.columns?.length || 0} colunas`;
       byId('pageNumber').textContent = `Página ${currentPage} de ${totalPages}`;
       byId('previousPage').disabled = currentPage <= 1;
       byId('nextPage').disabled = currentPage >= totalPages;
@@ -629,7 +774,7 @@ let report = null;
         const to = Math.min(group.rows.length, end - groupStart);
         const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
         output.push(`
-          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)}
+          <tr class="group-row"><td colspan="${Math.max(1, columns.length + 1)}">${escapeHtml(label)}
             (${group.rows.length} linha(s)${from ? ', continuação' : ''})</td></tr>
           ${group.rows.slice(from, to).map(item => rowHtml(item, columns)).join('')}
         `);
@@ -642,20 +787,53 @@ let report = null;
       return output.join('');
     }
 
+
     function rowHtml(item, columns) {
       const row = item.raw || item;
       const isTotal = item.type === 'total';
-      return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+      const index = displayedRows.indexOf(item);
+      const cells = columns.map((column, position) => {
+        const value = String(row[column] ?? '');
+        const safe = escapeHtml(value);
+        return `<td class="${position === 0 ? 'first-data-col' : ''}"
+          title="${escapeHtml(value.slice(0, 300))}"><span class="cell-value">${safe || '—'}</span></td>`;
+      }).join('');
+      return `<tr class="${isTotal ? 'total-row' : ''} row-openable" data-row-index="${index}">
+        <td class="row-open-cell"><button class="row-open-button" type="button"
+          data-open-row="${index}" aria-label="Abrir registro ${index + 1} completo" title="Ver todos os campos">↗</button></td>
+        ${cells}
+      </tr>`;
     }
 
     function groupSummaryRowHtml(totals, columns, label) {
       if (!totals.length) return '';
       const totalByColumn = new Map(totals.map(item => [item.column, item]));
-      return `<tr class="group-summary">${columns.map((column, index) => {
+      return `<tr class="group-summary"><td class="row-open-cell"></td>${columns.map((column, index) => {
         const total = totalByColumn.get(column);
-        if (total) return `<td>${escapeHtml(formatMoneyValue(total.total))}</td>`;
-        return `<td>${index === 0 ? escapeHtml(label) : ''}</td>`;
+        if (total) return `<td class="${index === 0 ? 'first-data-col' : ''}">${escapeHtml(formatMoneyValue(total.total))}</td>`;
+        return `<td class="${index === 0 ? 'first-data-col' : ''}">${index === 0 ? escapeHtml(label) : ''}</td>`;
       }).join('')}</tr>`;
+    }
+
+    function openRowDetails(index) {
+      if (!report || !Number.isSafeInteger(index) || index < 0 || index >= displayedRows.length) return;
+      const item = displayedRows[index];
+      const row = item.raw || item;
+      const names = friendlyColumns(report.columns || []);
+      byId('rowDialogTitle').textContent = `Registro ${index + 1}${item.type === 'total' ? ' · Total' : ''}`;
+      byId('rowDetails').innerHTML = (report.columns || []).map((column, position) => `
+        <div><dt>${escapeHtml(names[position] || column)}</dt>
+          <dd>${escapeHtml(row[column] ?? '') || '—'}</dd></div>
+      `).join('');
+      const dialog = byId('rowDialog');
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    }
+
+    function closeRowDetails() {
+      const dialog = byId('rowDialog');
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
     }
 
     function customTotalRows(rows) {
@@ -1072,7 +1250,7 @@ let report = null;
       const params = new URLSearchParams(location.search);
       const columns = report.columns || [];
       byId('globalSearch').value = params.get('q') || '';
-      byId('showTotals').checked = params.get('totals') !== '0';
+      byId('showTotals').checked = params.get('totals') === '1';
       const visible = columnsFromIndexes(params.get('cols'));
       visibleColumns = new Set(visible.length ? visible : columns);
       groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')).filter(eligibleSumColumn));
@@ -1169,6 +1347,26 @@ let report = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
+
+    function setExpanded(next) {
+      expanded = Boolean(next);
+      document.body.classList.toggle('table-expanded', expanded);
+      byId('expandTable').textContent = expanded ? 'Fechar ampliação' : 'Ampliar tabela';
+      byId('expandTable').setAttribute('aria-pressed', String(expanded));
+      if (expanded) byId('tableWrap').focus();
+    }
+
+    function applyWrapPreference() {
+      byId('readerWorkspace').classList.toggle('wrap-cells', byId('wrapCells').checked);
+    }
+
+    function clearColumnWidths() {
+      columnWidths.clear();
+      baseColumnWidth = 250;
+      byId('columnWidthRange').value = '250';
+      applyColumnSizing();
+    }
+
     byId('globalSearch').addEventListener('input', () => {
       currentPage = 1;
       scheduleRenderRows();
@@ -1177,18 +1375,17 @@ let report = null;
       clearTimeout(renderTimer);
       columnFilters = {};
       columnSort = { column: null, direction: '' };
-      visibleColumns = new Set(report?.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
       currentPage = 1;
       byId('globalSearch').value = '';
-      byId('showTotals').checked = true;
       closeFilterEditor();
       renderTableShell();
-      renderColumnVisibilityControls();
       renderGroupingControls();
       renderRows();
     });
+    byId('openFilterPanel').addEventListener('click', () => openFilterEditor(filterColumn || visibleReportColumns()[0] || report?.columns?.[0]));
+    byId('filterColumnPicker').addEventListener('change', event => openFilterEditor(event.target.value));
     byId('closeFilterEditor').addEventListener('click', closeFilterEditor);
     byId('applyColumnFilter').addEventListener('click', applyColumnFilter);
     byId('removeColumnFilter').addEventListener('click', () => removeColumnFilter(filterColumn));
@@ -1211,7 +1408,33 @@ let report = null;
       renderRows();
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && !byId('filterEditor').hidden) closeFilterEditor();
+      if (event.key !== 'Escape') return;
+      if (!byId('filterEditor').hidden) closeFilterEditor();
+      else if (!byId('columnPanel').hidden) closeColumnPanel();
+      else if (expanded && !byId('rowDialog').open) setExpanded(false);
+    });
+    byId('toggleColumns').addEventListener('click', toggleColumnPanel);
+    byId('closeColumnPanel').addEventListener('click', closeColumnPanel);
+    byId('columnSearch').addEventListener('input', refreshColumnSearch);
+    byId('showAllColumns').addEventListener('click', () => selectVisibleColumns(report?.columns || []));
+    byId('resetColumns').addEventListener('click', () => selectVisibleColumns(suggestedVisibleColumns()));
+    byId('columnWidthRange').addEventListener('input', event => {
+      baseColumnWidth = Number(event.target.value) || 250;
+      columnWidths.clear();
+      applyColumnSizing();
+    });
+    byId('resetWidths').addEventListener('click', clearColumnWidths);
+    byId('wrapCells').addEventListener('change', applyWrapPreference);
+    byId('expandTable').addEventListener('click', () => setExpanded(!expanded));
+    byId('closeRowDialog').addEventListener('click', closeRowDetails);
+    byId('table').addEventListener('click', event => {
+      const button = event.target.closest('[data-open-row]');
+      if (button) {
+        openRowDetails(Number(button.dataset.openRow));
+        return;
+      }
+      const row = event.target.closest('tbody tr[data-row-index]');
+      if (row) openRowDetails(Number(row.dataset.rowIndex));
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
