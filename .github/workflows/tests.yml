@@ -91,6 +91,7 @@ jobs:
       - name: Browser UX smoke test (desktop and mobile)
         run: |
           node --check tests/viewer_smoke_browser.js
+          node --check tests/smart_chart_browser.js
           node --check tests/viewer_browser_smoke.cjs
           node tests/viewer_browser_smoke.cjs
 
