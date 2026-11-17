@@ -47,15 +47,43 @@
         </div>
       </div>
     </details>
-    <section class="table-wrap">
+    <section id="filterEditor" class="filter-editor" aria-labelledby="filterEditorTitle" hidden>
+      <div class="filter-editor-heading">
+        <h2 id="filterEditorTitle">Filtro de coluna</h2>
+        <button type="button" id="closeFilterEditor" class="secondary-button" aria-label="Fechar filtro">Fechar</button>
+      </div>
+      <div id="filterEditorFields" class="filter-editor-fields"></div>
+      <div class="filter-editor-actions">
+        <button type="button" id="applyColumnFilter">Aplicar filtro</button>
+        <button type="button" id="removeColumnFilter" class="secondary-button">Remover filtro</button>
+        <p id="filterError" role="alert" class="filter-error" hidden></p>
+      </div>
+    </section>
+    <div id="filterChips" class="filter-chips" aria-live="polite"></div>
+    <section class="table-wrap" aria-label="Resultados filtrados">
       <table id="table"></table>
     </section>
+    <nav class="pagination" aria-label="Paginação dos resultados">
+      <span id="pageInfo" role="status" aria-live="polite">Carregando registros...</span>
+      <div class="page-controls">
+        <label for="pageSize">Linhas por página</label>
+        <select id="pageSize" aria-label="Linhas por página">
+          <option value="25">25</option>
+          <option value="50" selected>50</option>
+          <option value="100">100</option>
+        </select>
+        <button type="button" id="previousPage" class="secondary-button">Anterior</button>
+        <span id="pageNumber">Página 1 de 1</span>
+        <button type="button" id="nextPage" class="secondary-button">Próxima</button>
+      </div>
+    </nav>
   </main>
   <footer class="site-footer">
     <span>Desenvolvido por Guilherme Migliorini.</span>
     <a href="https://github.com/guimig/EmailBackupHub">Página do GitHub</a>
   </footer>
   <script src="assets/js/common.js"></script>
+  <script src="assets/js/report-viewer-filters.js"></script>
   <script src="assets/js/report-viewer.js"></script>
 </body>
 </html>
