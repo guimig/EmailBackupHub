@@ -174,7 +174,7 @@
         + '</span><strong class="financial-bar-value">' + (available ? escapeHtml(currency.format(item.value)) : 'Sem registros') + '</strong></div>';
     }).join('');
     const note = result.records + ' registros reconciliados com o total auditado (' + currency.format(result.total)
-      + '). Mês da emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
+      + '). Mês de emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
       + result.sourceDate.split('-').reverse().join('/') + '.';
     container.innerHTML = '<div class="financial-monthly" role="group" aria-label="GRU por mês de emissão">'
       + bars + '<p class="financial-chart-note">' + escapeHtml(note) + '</p>'
