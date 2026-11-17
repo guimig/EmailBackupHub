@@ -7,6 +7,13 @@ let report = null;
     let renderTimer = null;
     let restoringState = false;
     let reportDefinitions = {};
+    const Filters = window.EmailBackupHubFilters;
+    let filterColumn = null;
+    let currentPage = 1;
+    let pageSize = 50;
+    let filteredCache = null;
+    let columnMetaCache = new Map();
+    let columnOptionsCache = new Map();
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -158,6 +165,11 @@ let report = null;
       renderMetricAudit();
       columnFilters = {};
       columnSort = { column: null, direction: '' };
+      filteredCache = null;
+      columnMetaCache = new Map();
+      columnOptionsCache = new Map();
+      currentPage = 1;
+      pageSize = 50;
       visibleColumns = new Set(report.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
@@ -170,20 +182,46 @@ let report = null;
       renderRows();
     }
 
+    function columnMetaFor(column) {
+      if (columnMetaCache.has(column)) return columnMetaCache.get(column);
+      let meta = Filters.columnMeta(report, column);
+      if (Filters.filterKind(meta) === 'choices') {
+        const options = Filters.distinctOptions(report.rows || [], column, meta);
+        if (options) columnOptionsCache.set(column, options);
+        else meta = { ...meta, type: 'text', filter_kind: 'text', inferred_from: 'high_cardinality_fallback' };
+      }
+      columnMetaCache.set(column, meta);
+      return meta;
+    }
+
     function filteredRows() {
       const term = normalize(byId('globalSearch').value);
+      const cacheKey = JSON.stringify([term, columnFilters, columnSort, byId('showTotals').checked]);
+      if (filteredCache?.report === report && filteredCache.key === cacheKey) return filteredCache.rows;
+      const filters = Object.entries(columnFilters)
+        .filter(([, spec]) => Boolean(spec))
+        .map(([column, spec]) => [column, spec, columnMetaFor(column)]);
       const rows = visibleRows().filter(item => {
         const row = item.raw || item;
-        const values = Object.values(row).join(' ');
-        if (term && !normalize(values).includes(term)) return false;
-        return Object.entries(columnFilters).every(([column, value]) => !value || normalize(row[column]).includes(normalize(value)));
+        if (term && !normalize(Object.values(row).join(' ')).includes(term)) return false;
+        return filters.every(([column, spec, meta]) =>
+          typeof spec === 'string'
+            ? normalize(row[column]).includes(normalize(spec)) // Preserve old ?f0=... URLs.
+            : Filters.matches(row[column], spec, meta)
+        );
       });
-      if (!columnSort.column || !columnSort.direction) return rows;
-      return rows.sort((a, b) => {
-        const av = sortCellValue((a.raw || a)[columnSort.column]);
-        const bv = sortCellValue((b.raw || b)[columnSort.column]);
-        return compareCellValues(av, bv) * (columnSort.direction === 'az' ? 1 : -1);
-      });
+      if (columnSort.column && columnSort.direction) {
+        const meta = columnMetaFor(columnSort.column);
+        const factor = columnSort.direction === 'az' ? 1 : -1;
+        rows.sort((a, b) => {
+          const av = (a.raw || a)[columnSort.column];
+          const bv = (b.raw || b)[columnSort.column];
+          if (Filters.isEmpty(av) !== Filters.isEmpty(bv)) return Filters.isEmpty(av) ? 1 : -1;
+          return Filters.compare(av, bv, meta) * factor;
+        });
+      }
+      filteredCache = { report, key: cacheKey, rows };
+      return rows;
     }
 
     function visibleReportColumns() {
@@ -226,7 +264,7 @@ let report = null;
     }
 
     function groupTotals(rows) {
-      return [...groupSumColumns].map(column => {
+      return [...groupSumColumns].filter(eligibleSumColumn).map(column => {
         let total = 0;
         let count = 0;
         for (const item of customTotalRows(rows)) {
@@ -323,33 +361,170 @@ let report = null;
       const displayColumns = friendlyColumns(columns);
       byId('table').innerHTML = `
         <thead><tr>${columns.map((column, index) => `
-          <th>
-            ${escapeHtml(displayColumns[index])}
-            <input data-column="${escapeHtml(column)}" placeholder="Filtrar" value="${escapeHtml(columnFilters[column] || '')}">
-            <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
-              <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
-              <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>A-Z</option>
-              <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Z-A</option>
-            </select>
+          <th scope="col">
+            <span class="column-heading">${escapeHtml(displayColumns[index])}</span>
+            <div class="column-heading-actions">
+              <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
+                data-filter-column="${escapeHtml(column)}" aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
+                aria-pressed="${Boolean(columnFilters[column])}">Filtro${columnFilters[column] ? ' ●' : ''}</button>
+              <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
+                <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
+                <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>Crescente</option>
+                <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Decrescente</option>
+              </select>
+            </div>
           </th>
         `).join('')}</tr></thead>
         <tbody></tbody>
         <tfoot></tfoot>
       `;
-      document.querySelectorAll('th input').forEach(input => {
-        input.addEventListener('input', event => {
-          columnFilters[event.target.dataset.column] = event.target.value;
-          scheduleRenderRows();
-        });
+      document.querySelectorAll('th button[data-filter-column]').forEach(button => {
+        button.addEventListener('click', event => openFilterEditor(event.currentTarget.dataset.filterColumn));
       });
-      document.querySelectorAll('th select').forEach(select => {
+      document.querySelectorAll('th select[data-sort-column]').forEach(select => {
         select.addEventListener('change', event => {
-          document.querySelectorAll('th select').forEach(item => {
+          document.querySelectorAll('th select[data-sort-column]').forEach(item => {
             if (item !== event.target) item.value = '';
           });
           columnSort = { column: event.target.dataset.sortColumn, direction: event.target.value };
+          currentPage = 1;
           renderRows();
         });
+      });
+    }
+
+    function filterOperationOptions(operations, selected) {
+      return operations.map(([op, label]) => `<option value="${op}" ${selected === op ? 'selected' : ''}>${label}</option>`).join('');
+    }
+
+    function openFilterEditor(column) {
+      if (!(report?.columns || []).includes(column)) return;
+      filterColumn = column;
+      const meta = columnMetaFor(column);
+      const kind = Filters.filterKind(meta);
+      const existing = columnFilters[column];
+      const spec = typeof existing === 'object' && existing ? existing : null;
+      const select = (operations, fallback) => `<label>Operação
+        <select data-filter-operation>${filterOperationOptions(operations, spec?.op || fallback)}</select>
+      </label>`;
+      const textOperations = [
+        ['contains', 'Contém'], ['equals', 'Igual a'], ['starts', 'Começa com'],
+        ['is_empty', 'Está vazio'], ['not_empty', 'Está preenchido']
+      ];
+      const emptyOperations = [['is_empty', 'Está vazio'], ['not_empty', 'Está preenchido']];
+      const fields = byId('filterEditorFields');
+      if (kind === 'numeric') {
+        fields.innerHTML = select([
+          ['range', 'Intervalo'], ['is_zero', 'Igual a zero'], ['not_zero', 'Diferente de zero'],
+          ...emptyOperations
+        ], 'range') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Mínimo (inclusive)<input type="text" inputmode="decimal" data-filter-min
+              placeholder="Ex.: -1.234,56" value="${escapeHtml(spec?.min || '')}"></label>
+            <label>Máximo (inclusive)<input type="text" inputmode="decimal" data-filter-max
+              placeholder="Ex.: 1.234,56" value="${escapeHtml(spec?.max || '')}"></label>
+          </div>`;
+      } else if (kind === 'date') {
+        fields.innerHTML = select([['range', 'Intervalo de datas'], ...emptyOperations], 'range') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Data inicial<input type="date" data-filter-min value="${escapeHtml(spec?.min || '')}"></label>
+            <label>Data final<input type="date" data-filter-max value="${escapeHtml(spec?.max || '')}"></label>
+          </div>`;
+      } else if (kind === 'choices') {
+        const options = columnOptionsCache.get(column) || [];
+        const selected = new Set(spec?.values || []);
+        fields.innerHTML = select([['in', 'Uma ou mais opções'], ...emptyOperations], 'in') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Selecione uma ou mais opções
+              <select multiple size="${Math.min(8, Math.max(3, options.length))}" class="facet-select" data-filter-values
+                aria-label="Opções da coluna ${escapeHtml(friendlyColumnName(column))}">
+                ${options.map(value => `<option value="${escapeHtml(value)}" ${selected.has(value) ? 'selected' : ''}>${escapeHtml(value)}</option>`).join('')}
+              </select>
+            </label>
+            <small>Use Ctrl ou Cmd para selecionar vários valores. As opções da mesma coluna funcionam como alternativas.</small>
+          </div>`;
+      } else {
+        fields.innerHTML = select(textOperations, 'contains') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Texto a pesquisar<input type="search" data-filter-text
+              placeholder="Digite parte do conteúdo" value="${escapeHtml(typeof existing === 'string' ? existing : spec?.value || '')}"></label>
+          </div>`;
+      }
+      byId('filterEditorTitle').textContent = `Filtro: ${friendlyColumnName(column)} · ${meta.type}`;
+      byId('filterError').hidden = true;
+      byId('filterEditor').hidden = false;
+      const opSelect = fields.querySelector('[data-filter-operation]');
+      opSelect.addEventListener('change', updateFilterInputVisibility);
+      updateFilterInputVisibility();
+      opSelect.focus();
+    }
+
+    function updateFilterInputVisibility() {
+      const fields = byId('filterEditorFields');
+      const op = fields.querySelector('[data-filter-operation]')?.value;
+      const inputs = fields.querySelector('[data-filter-input-fields]');
+      if (inputs) inputs.hidden = ['is_empty', 'not_empty', 'is_zero', 'not_zero'].includes(op);
+    }
+
+    function closeFilterEditor() {
+      byId('filterEditor').hidden = true;
+      filterColumn = null;
+      byId('filterError').hidden = true;
+    }
+
+    function applyColumnFilter() {
+      if (!filterColumn) return;
+      const meta = columnMetaFor(filterColumn);
+      const kind = Filters.filterKind(meta);
+      const fields = byId('filterEditorFields');
+      const op = fields.querySelector('[data-filter-operation]')?.value;
+      let spec = { op };
+      if (op === 'range') {
+        spec.min = fields.querySelector('[data-filter-min]')?.value.trim() || '';
+        spec.max = fields.querySelector('[data-filter-max]')?.value.trim() || '';
+      } else if (op === 'in') {
+        spec.values = [...(fields.querySelector('[data-filter-values]')?.selectedOptions || [])].map(item => item.value);
+      } else if (['contains', 'equals', 'starts'].includes(op)) {
+        spec.value = fields.querySelector('[data-filter-text]')?.value.trim() || '';
+      }
+      if (!Filters.validFilter(spec, meta)) {
+        const message = byId('filterError');
+        message.textContent = kind === 'numeric'
+          ? 'Informe um intervalo válido no formato brasileiro, ou selecione outra operação.'
+          : kind === 'date' ? 'Informe um intervalo válido de datas.'
+            : kind === 'choices' ? 'Selecione pelo menos uma opção.'
+              : 'Informe o texto a pesquisar.';
+        message.hidden = false;
+        return;
+      }
+      columnFilters[filterColumn] = spec;
+      currentPage = 1;
+      closeFilterEditor();
+      renderTableShell();
+      renderRows();
+    }
+
+    function removeColumnFilter(column) {
+      if (!column) return;
+      delete columnFilters[column];
+      currentPage = 1;
+      if (filterColumn === column) closeFilterEditor();
+      renderTableShell();
+      renderRows();
+    }
+
+    function renderFilterChips() {
+      const entries = Object.entries(columnFilters).filter(([, spec]) => Boolean(spec));
+      const container = byId('filterChips');
+      container.innerHTML = entries.length
+        ? entries.map(([column, spec]) => `
+            <button type="button" class="filter-chip" data-remove-filter="${escapeHtml(column)}"
+              aria-label="Remover filtro de ${escapeHtml(friendlyColumnName(column))}">
+              ${escapeHtml(friendlyColumnName(column))}: ${escapeHtml(typeof spec === 'string' ? 'contém ' + spec : Filters.describe(spec, columnMetaFor(column)))} ×
+            </button>`).join('')
+        : '<span class="control-help">Nenhum filtro de coluna ativo.</span>';
+      container.querySelectorAll('[data-remove-filter]').forEach(button => {
+        button.addEventListener('click', () => removeColumnFilter(button.dataset.removeFilter));
       });
     }
 
@@ -377,6 +552,12 @@ let report = null;
       });
     }
 
+    function eligibleSumColumn(column) {
+      const kind = columnMetaFor(column).type;
+      // Manual opt-in only; no automatic sum from a monetary-looking label.
+      return kind === 'money' || kind === 'number';
+    }
+
     function renderGroupingControls() {
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
@@ -385,19 +566,21 @@ let report = null;
       groupSelect.value = groupColumn || '';
       groupSelect.onchange = event => {
         groupColumn = event.target.value;
+        currentPage = 1;
         renderRows();
       };
       const options = byId('groupSumOptions');
-      options.innerHTML = columns.map((column, index) => `
+      options.innerHTML = '<p class="control-help">Somas são opcionais e aplicadas apenas aos registros de detalhe filtrados. Não somar saldos de períodos diferentes sem verificar sua natureza contábil.</p>'
+        + columns.filter(eligibleSumColumn).map(column => `
         <label>
           <input type="checkbox" data-group-sum-column="${escapeHtml(column)}" ${groupSumColumns.has(column) ? 'checked' : ''}>
-          <span>${escapeHtml(displayColumns[index])}</span>
+          <span>${escapeHtml(friendlyColumnName(column))}</span>
         </label>
       `).join('');
       options.querySelectorAll('input').forEach(input => {
         input.addEventListener('change', event => {
           const column = event.target.dataset.groupSumColumn;
-          if (event.target.checked) groupSumColumns.add(column);
+          if (event.target.checked && eligibleSumColumn(column)) groupSumColumns.add(column);
           else groupSumColumns.delete(column);
           renderRows();
         });
@@ -413,25 +596,50 @@ let report = null;
       if (!report) return;
       const columns = visibleReportColumns();
       const rows = filteredRows();
+      const count = rows.length;
+      const totalPages = Math.max(1, Math.ceil(count / pageSize));
+      currentPage = Math.max(1, Math.min(currentPage, totalPages));
+      const start = (currentPage - 1) * pageSize;
+      const end = Math.min(count, start + pageSize);
       const tbody = byId('table').querySelector('tbody');
-      tbody.innerHTML = groupedTableHtml(rows, columns);
+      tbody.innerHTML = count
+        ? groupedTableHtml(rows, columns, start, end)
+        : `<tr><td colspan="${Math.max(1, columns.length)}">Nenhum registro corresponde aos filtros.</td></tr>`;
+      byId('pageInfo').textContent = count
+        ? `Exibindo ${start + 1}–${end} de ${count} registros filtrados.`
+        : 'Nenhum registro encontrado.';
+      byId('pageNumber').textContent = `Página ${currentPage} de ${totalPages}`;
+      byId('previousPage').disabled = currentPage <= 1;
+      byId('nextPage').disabled = currentPage >= totalPages;
+      byId('pageSize').value = String(pageSize);
+      renderFilterChips();
       updateUrlState();
     }
 
-    function groupedTableHtml(rows, columns) {
-      if (!groupColumn) {
-        return rows.map(item => rowHtml(item, columns)).join('');
-      }
-      const groupHtml = groupedRows(rows).map(group => {
+    function groupedTableHtml(rows, columns, start = 0, end = rows.length) {
+      if (!groupColumn) return rows.slice(start, end).map(item => rowHtml(item, columns)).join('');
+      let cursor = 0;
+      const output = [];
+      for (const group of groupedRows(rows)) {
+        const groupStart = cursor;
+        const groupEnd = cursor + group.rows.length;
+        cursor = groupEnd;
+        if (groupEnd <= start || groupStart >= end) continue;
+        const from = Math.max(0, start - groupStart);
+        const to = Math.min(group.rows.length, end - groupStart);
         const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
-        const totals = groupTotals(group.rows);
-        return `
-          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)} (${group.rows.length} linha(s))</td></tr>
-          ${group.rows.map(item => rowHtml(item, columns)).join('')}
-          ${groupSummaryRowHtml(totals, columns, 'Total do grupo')}
-        `;
-      }).join('');
-      return `${groupHtml}${groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento')}`;
+        output.push(`
+          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)}
+            (${group.rows.length} linha(s)${from ? ', continuação' : ''})</td></tr>
+          ${group.rows.slice(from, to).map(item => rowHtml(item, columns)).join('')}
+        `);
+        // Totals always refer to the FULL filtered group, never only to this page.
+        if (to === group.rows.length) {
+          output.push(groupSummaryRowHtml(groupTotals(group.rows), columns, 'Total do grupo'));
+        }
+      }
+      if (end >= rows.length) output.push(groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento'));
+      return output.join('');
     }
 
     function rowHtml(item, columns) {
@@ -619,7 +827,8 @@ let report = null;
       const filters = [];
       filters.push(['Busca geral', byId('globalSearch').value || 'Sem busca geral']);
       for (const [column, value] of Object.entries(columnFilters)) {
-        if (value) filters.push([friendlyColumnName(column), value]);
+        if (value) filters.push([friendlyColumnName(column),
+          typeof value === 'string' ? 'contém ' + value : Filters.describe(value, columnMetaFor(column))]);
       }
       if (columnSort.column && columnSort.direction) filters.push(['Ordena\u00e7\u00e3o', `${friendlyColumnName(columnSort.column)} (${columnSort.direction === 'az' ? 'A-Z' : 'Z-A'})`]);
       filters.push(['Totais na tabela', byId('showTotals').checked ? 'Inclu\u00eddos' : 'Ocultos']);
@@ -866,18 +1075,35 @@ let report = null;
       byId('showTotals').checked = params.get('totals') !== '0';
       const visible = columnsFromIndexes(params.get('cols'));
       visibleColumns = new Set(visible.length ? visible : columns);
-      groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')));
+      groupSumColumns = new Set(columnsFromIndexes(params.get('groupSums')).filter(eligibleSumColumn));
       const groupIndex = params.get('group');
       groupColumn = groupIndex === null || groupIndex === '' ? '' : columns[Number(groupIndex)] || '';
       const sortIndex = params.get('sort');
       columnSort = {
         column: sortIndex === null || sortIndex === '' ? null : columns[Number(sortIndex)] || null,
-        direction: params.get('dir') || ''
+        direction: ['az', 'za'].includes(params.get('dir')) ? params.get('dir') : ''
       };
+      const requestedSize = Number(params.get('ps'));
+      pageSize = [25, 50, 100].includes(requestedSize) ? requestedSize : 50;
+      const requestedPage = Number(params.get('p'));
+      currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
       columnFilters = {};
       columns.forEach((column, index) => {
-        const value = params.get(`f${index}`);
-        if (value) columnFilters[column] = value;
+        const typed = params.get(`tf${index}`);
+        if (typed && typed.length <= 4000) {
+          try {
+            const parsed = JSON.parse(typed);
+            if (Filters.validFilter(parsed, columnMetaFor(column))) {
+              columnFilters[column] = parsed;
+              return;
+            }
+          } catch (error) {
+            console.warn('Filtro compartilhado inválido ignorado:', index, error);
+          }
+        }
+        // Legacy URLs from prior releases use text substring filters f0, f1...
+        const legacy = params.get(`f${index}`);
+        if (legacy && legacy.length <= 500) columnFilters[column] = legacy;
       });
       restoringState = false;
     }
@@ -895,7 +1121,13 @@ let report = null;
       setOrDelete(params, 'groupSums', indexList([...groupSumColumns]));
       setOrDelete(params, 'sort', columnSort.column ? String(columnIndex(columnSort.column)) : '');
       setOrDelete(params, 'dir', columnSort.direction);
-      columns.forEach((column, index) => setOrDelete(params, `f${index}`, columnFilters[column] || ''));
+      setOrDelete(params, 'ps', pageSize === 50 ? '' : String(pageSize));
+      setOrDelete(params, 'p', currentPage <= 1 ? '' : String(currentPage));
+      columns.forEach((column, index) => {
+        const spec = columnFilters[column];
+        setOrDelete(params, `f${index}`, typeof spec === 'string' ? spec : '');
+        setOrDelete(params, `tf${index}`, spec && typeof spec === 'object' ? JSON.stringify(spec) : '');
+      });
       history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
     }
 
@@ -937,26 +1169,57 @@ let report = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
-    byId('globalSearch').addEventListener('input', scheduleRenderRows);
+    byId('globalSearch').addEventListener('input', () => {
+      currentPage = 1;
+      scheduleRenderRows();
+    });
     byId('clearFilters').addEventListener('click', () => {
+      clearTimeout(renderTimer);
       columnFilters = {};
       columnSort = { column: null, direction: '' };
       visibleColumns = new Set(report?.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
+      currentPage = 1;
       byId('globalSearch').value = '';
       byId('showTotals').checked = true;
-      document.querySelectorAll('th input').forEach(input => { input.value = ''; });
-      document.querySelectorAll('th select').forEach(select => { select.value = ''; });
+      closeFilterEditor();
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
       renderRows();
+    });
+    byId('closeFilterEditor').addEventListener('click', closeFilterEditor);
+    byId('applyColumnFilter').addEventListener('click', applyColumnFilter);
+    byId('removeColumnFilter').addEventListener('click', () => removeColumnFilter(filterColumn));
+    byId('pageSize').addEventListener('change', event => {
+      const size = Number(event.target.value);
+      if (![25, 50, 100].includes(size)) return;
+      pageSize = size;
+      currentPage = 1;
+      renderRows();
+    });
+    byId('previousPage').addEventListener('click', () => {
+      if (currentPage <= 1) return;
+      currentPage -= 1;
+      renderRows();
+    });
+    byId('nextPage').addEventListener('click', () => {
+      const total = filteredRows().length;
+      if (currentPage * pageSize >= total) return;
+      currentPage += 1;
+      renderRows();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !byId('filterEditor').hidden) closeFilterEditor();
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
     byId('printHtml').addEventListener('click', printHtmlReport);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
-    byId('showTotals').addEventListener('change', renderRows);
+    byId('showTotals').addEventListener('change', () => {
+      currentPage = 1;
+      renderRows();
+    });
     loadReport().catch(error => { byId('title').textContent = `Erro ao carregar relatório: ${error.message}`; });

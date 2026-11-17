@@ -248,6 +248,28 @@ python validate_data.py
 
 Não usar `main.py` apenas para testar a interface: ele aciona a rotina de e-mails e publicação. A geração real do resumo ocorre na próxima execução regular já configurada, após o merge.
 
+## Etapa 3 — Filtros inteligentes e paginação do visualizador
+
+O visualizador `report-viewer.html` utiliza `assets/js/report-viewer-filters.js`, um módulo JavaScript nativo, sem dependências externas ou backend. A estrutura é **genérica**: novos relatórios são reconhecidos pelas colunas e pelos metadados `column_schema` gerados na etapa 2; se o JSON ainda não contiver metadados, o visualizador usa uma inferência conservadora baseada nos cabeçalhos.
+
+- O botão **Filtro** de cada coluna abre um editor único, acima da tabela, sem elementos escondidos pelo scroll horizontal.
+- **Monetário/número:** intervalos mínimo/máximo em formato brasileiro, zero, diferente de zero, vazio e preenchido. **Data:** datas inicial/final. **Categoria, booleano e competência:** uma ou várias opções selecionadas. **Texto e identificadores:** contém, igual ou começa com. Vários filtros de colunas combinam-se por **E**; valores múltiplos em uma coluna combinam-se por **OU**.
+- A competência `013/2025` e `014/2025` mantém seu significado contábil, inclusive na ordenação e nas seleções; jamais é convertida em mês civil.
+- A tabela mostra **25, 50 ou 100 registros por página**, mantendo o conjunto filtrado e ordenado em memória para navegação rápida. A paginação não corta exportações: **CSV/HTML/PDF usam todos os registros filtrados**, independentemente da página exibida.
+- Agrupamentos atravessam páginas sem recalcular um subtotal a partir de apenas uma página: os subtotais se referem ao grupo filtrado integral e só aparecem depois da última linha do grupo. As somas são **solicitadas pelo usuário** e restringidas a colunas numéricas/monetárias; não há soma monetária automática.
+- Filtros ativos aparecem em marcadores removíveis. O endereço do navegador preserva o estado: `tfN` para filtros tipados, `p` e `ps` para paginação. Os antigos links com `fN` (busca textual por coluna) permanecem válidos.
+- A página `relatorios.html`, os HTMLs originais, a leitura dos e-mails, a geração dos dados e sua publicação não foram alterados.
+
+### Testes isolados
+
+```bash
+node --check assets/js/report-viewer-filters.js
+node --check assets/js/report-viewer.js
+node --test tests/report_viewer_stage3.test.cjs
+```
+
+A suíte CI `Unit Tests` também executa os testes do visualizador e os regressivos das etapas 1 e 2. `main.py` não deve ser executado apenas para testar filtros, pois processa e-mails.
+
 ## GitHub Pages
 
 O projeto é compatível com GitHub Pages porque todo o consumo é feito por arquivos estáticos:

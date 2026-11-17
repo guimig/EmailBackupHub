@@ -70,6 +70,12 @@ jobs:
       - name: Validate browser financial calculations
         run: node tests/test_financial_numbers.js
 
+      - name: Validate report viewer JavaScript and UI regression tests
+        run: |
+          node --check assets/js/report-viewer-filters.js
+          node --check assets/js/report-viewer.js
+          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs
+
       - name: Validate static baseline and data
         run: |
           python validate_baseline.py

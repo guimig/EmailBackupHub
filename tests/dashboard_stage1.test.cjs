@@ -65,7 +65,9 @@ function viewerCsv() {
   const source = fs.readFileSync(path.join(ROOT, 'assets/js/report-viewer.js'), 'utf8');
   const cut = source.indexOf("    byId('globalSearch').addEventListener('input',");
   assert.ok(cut > 0, 'Ponto de inicializacao do viewer alterado');
-  const context = vm.createContext({});
+  // The viewer now injects its optional typed-filter helper into the browser global.
+  // This stage-1 CSV harness does not exercise the helper itself.
+  const context = vm.createContext({ window: { EmailBackupHubFilters: {} } });
   vm.runInContext(source.slice(0, cut) + ';globalThis.csv = csvCell;', context);
   return context.csv;
 }
