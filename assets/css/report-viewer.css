@@ -307,3 +307,6 @@ body.table-expanded .pagination { flex: 0 0 auto; }
   .smart-chart-slice small { display:none; }
   .chart-summary-hint { display:block; margin:4px 0 0; }
 }
+
+.smart-chart-arc { cursor:pointer; pointer-events:stroke; }
+.smart-chart-arc:focus-visible { stroke-width:27; outline:none; filter:brightness(1.12); }
