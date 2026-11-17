@@ -172,3 +172,31 @@ test('URLs legadas f0 e novos filtros tf0 e pagina permanecem compartilháveis',
   assert.equal(api.filtered().length, 27);
   assert.match(decodeURIComponent(location.search), /tf1=/);
 });
+
+test('3254 registros: paginação, filtro por zero, exportação integral e execução repetida', () => {
+  const { api, tbody, el } = fixture();
+  api.set(makeReport(3254));
+  const start = performance.now();
+  api.render();
+  const elapsed = performance.now() - start;
+  assert.equal(api.filtered().length, 3254);
+  assert.equal(el('pageNumber').textContent, 'Página 1 de 131');
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 25);
+  assert.ok(elapsed < 5000, 'Renderização inicial excedeu 5 segundos: ' + elapsed.toFixed(1) + 'ms');
+  api.filter('Saldo', { op: 'is_zero' });
+  api.render();
+  assert.equal(api.filtered().length, 651);
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 25);
+  assert.equal(api.exportAll().split('\n').length, 652);
+  api.render();
+  assert.equal(api.filtered().length, 651);
+});
+
+test('relatório vazio continua legível e não cria linhas fictícias', () => {
+  const { api, tbody, el } = fixture();
+  api.set(makeReport(0));
+  api.render();
+  assert.equal(api.filtered().length, 0);
+  assert.match(tbody.innerHTML, /Nenhum registro/);
+  assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
+});
