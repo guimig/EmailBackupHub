@@ -130,7 +130,11 @@
         const p=temporalValue(value,type,F);return p&&p.order!==null;
       }));
       return {column,type,count:valid.size};
-    }).sort((a,b)=>b.count-a.count)[0];
+    }).sort((a,b)=>{
+      const rank=item=>item.type==='period'&&item.count>=3&&item.count<=24?100+item.count
+        :item.type==='date'&&item.count>=3?60+Math.min(item.count,24):item.count;
+      return rank(b)-rank(a);
+    })[0];
     if(wide.length>=6 && data.length && data.some(item=>wide.some(m=>F.parseNumber(item.row[m.column])!==null))) {
       const sample=data.find(item=>wide.filter(m=>F.parseNumber(item.row[m.column])!==null).length>=2)||data[0];
       const special=wide.some(m=>m.month>12);
@@ -215,7 +219,9 @@
       result.description=(mode==='count'?'Quantidade de registros':'Soma dos valores da coluna selecionada')
         +' por '+dimension+', considerando todos os registros filtrados (exceto linhas de total).';
       if(mode==='sum'){
-        result.warning='A soma foi selecionada explicitamente. Confira se os registros são mutuamente exclusivos e se a medida é aditiva; saldos e valores de exercícios distintos podem não ser comparáveis.';
+        result.warning=genuinelyTransactional(measure)
+          ? 'Movimentações agrupadas por '+dimension+'. O campo temporal é da própria fonte; confira a abrangência e a competência.'
+          : 'Soma configurada pelo usuário. Confira se os registros são mutuamente exclusivos e se a medida é aditiva; saldos e valores de exercícios distintos podem não ser comparáveis.';
       }
     }
     if(!points.length){result.reason='Não há valores válidos suficientes para a visualização escolhida.';return result;}
