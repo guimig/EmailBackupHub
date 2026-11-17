@@ -618,7 +618,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-17T11:00:27.637671-03:00",
+    "ultima_atualizacao": "2026-11-17T14:54:45.598136-03:00",
     "idade_dias": 139,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -646,5 +646,158 @@
       "source": "totals",
       "fallback": false
     }
-  }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Grupo Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 4,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Unidade Orçamentária",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Unidade Orçamentária (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PTRES",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / PI",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / PI (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - R$ (Conta Contábil) / JUN/2026",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 10,
+      "nonempty_samples": 10,
+      "missing_samples": 0,
+      "distinct_samples": 10,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JUN/2026",
+        "year": 2026,
+        "number": 6,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    }
+  ]
 }

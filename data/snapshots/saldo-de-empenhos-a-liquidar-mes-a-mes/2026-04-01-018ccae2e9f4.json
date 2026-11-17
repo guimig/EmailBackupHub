@@ -16740,7 +16740,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-17T11:00:27.637671-03:00",
+    "ultima_atualizacao": "2026-11-17T14:54:45.598136-03:00",
     "idade_dias": 230,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -16760,5 +16760,379 @@
     ]
   },
   "metrics": {},
-  "metrics_meta": {}
+  "metrics_meta": {},
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Natureza Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 16,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 65,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 64,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 242,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Descrição",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 134,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Favorecido",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 144,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Mês Lançamento / NE CCor - Valor",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 219,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "JAN/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 13,
+      "missing_samples": 243,
+      "distinct_samples": 12,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JAN/2025",
+        "year": 2025,
+        "number": 1,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "FEV/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 23,
+      "missing_samples": 233,
+      "distinct_samples": 16,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "FEV/2025",
+        "year": 2025,
+        "number": 2,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "MAR/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 42,
+      "missing_samples": 214,
+      "distinct_samples": 25,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "MAR/2025",
+        "year": 2025,
+        "number": 3,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "ABR/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 54,
+      "missing_samples": 202,
+      "distinct_samples": 32,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "ABR/2025",
+        "year": 2025,
+        "number": 4,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "MAI/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 70,
+      "missing_samples": 186,
+      "distinct_samples": 42,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "MAI/2025",
+        "year": 2025,
+        "number": 5,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "JUN/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 105,
+      "missing_samples": 151,
+      "distinct_samples": 61,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JUN/2025",
+        "year": 2025,
+        "number": 6,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "JUL/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 123,
+      "missing_samples": 133,
+      "distinct_samples": 56,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JUL/2025",
+        "year": 2025,
+        "number": 7,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "AGO/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 133,
+      "missing_samples": 123,
+      "distinct_samples": 65,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "AGO/2025",
+        "year": 2025,
+        "number": 8,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "SET/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 155,
+      "missing_samples": 101,
+      "distinct_samples": 79,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "SET/2025",
+        "year": 2025,
+        "number": 9,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "OUT/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 185,
+      "missing_samples": 71,
+      "distinct_samples": 81,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "OUT/2025",
+        "year": 2025,
+        "number": 10,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "NOV/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 226,
+      "missing_samples": 30,
+      "distinct_samples": 107,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "NOV/2025",
+        "year": 2025,
+        "number": 11,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "DEZ/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "DEZ/2025",
+        "year": 2025,
+        "number": 12,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "013/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "013/2025",
+        "year": 2025,
+        "number": 13,
+        "kind": "accounting_period",
+        "calendar_month": false
+      }
+    },
+    {
+      "name": "014/2025 / Saldo - R$ (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "014/2025",
+        "year": 2025,
+        "number": 14,
+        "kind": "accounting_period",
+        "calendar_month": false
+      }
+    }
+  ]
 }
