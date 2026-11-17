@@ -494,7 +494,13 @@ let report = null;
 
     function openFilterEditor(column) {
       if (!(report?.columns || []).includes(column)) return;
+      closeColumnPanel();
       filterColumn = column;
+      const picker = byId('filterColumnPicker');
+      picker.innerHTML = (report.columns || []).map(key =>
+        `<option value="${escapeHtml(key)}">${escapeHtml(friendlyColumnName(key))}</option>`
+      ).join('');
+      picker.value = column;
       const meta = columnMetaFor(column);
       const kind = Filters.filterKind(meta);
       const existing = columnFilters[column];
@@ -545,7 +551,7 @@ let report = null;
               placeholder="Digite parte do conteúdo" value="${escapeHtml(typeof existing === 'string' ? existing : spec?.value || '')}"></label>
           </div>`;
       }
-      byId('filterEditorTitle').textContent = `Filtro: ${friendlyColumnName(column)} · ${meta.type}`;
+      byId('filterEditorTitle').textContent = `Filtrar registros`;
       byId('filterError').hidden = true;
       byId('filterEditor').hidden = false;
       const opSelect = fields.querySelector('[data-filter-operation]');
@@ -623,12 +629,52 @@ let report = null;
       });
     }
 
+
+    function updateColumnCount() {
+      const count = visibleReportColumns().length;
+      const total = report?.columns?.length || 0;
+      const label = byId('visibleColumnsCount');
+      if (label) label.textContent = `(${count}/${total})`;
+    }
+
+    function closeColumnPanel() {
+      byId('columnPanel').hidden = true;
+      byId('toggleColumns').setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleColumnPanel() {
+      const panel = byId('columnPanel');
+      if (panel.hidden) {
+        closeFilterEditor();
+        panel.hidden = false;
+        byId('toggleColumns').setAttribute('aria-expanded', 'true');
+        renderColumnVisibilityControls();
+        byId('columnSearch').focus();
+      } else closeColumnPanel();
+    }
+
+    function refreshColumnSearch() {
+      const term = normalize(byId('columnSearch').value);
+      byId('columnVisibilityOptions').querySelectorAll('[data-column-label]').forEach(label => {
+        label.hidden = Boolean(term) && !normalize(label.dataset.columnLabel).includes(term);
+      });
+    }
+
+    function selectVisibleColumns(next) {
+      visibleColumns = new Set(next);
+      if (!visibleColumns.size && report?.columns?.length) visibleColumns.add(report.columns[0]);
+      currentPage = 1;
+      renderTableShell();
+      renderColumnVisibilityControls();
+      renderRows();
+    }
+
     function renderColumnVisibilityControls() {
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
       const options = byId('columnVisibilityOptions');
       options.innerHTML = columns.map((column, index) => `
-        <label>
+        <label data-column-label="${escapeHtml(displayColumns[index])}">
           <input type="checkbox" data-visible-column="${escapeHtml(column)}" ${visibleColumns.has(column) ? 'checked' : ''}>
           <span>${escapeHtml(displayColumns[index])}</span>
         </label>
@@ -641,10 +687,11 @@ let report = null;
           if (!visibleColumns.size) visibleColumns.add(column);
           renderTableShell();
           renderColumnVisibilityControls();
-          renderGroupingControls();
           renderRows();
         });
       });
+      updateColumnCount();
+      refreshColumnSearch();
     }
 
     function eligibleSumColumn(column) {
