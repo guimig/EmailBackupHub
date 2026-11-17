@@ -90,7 +90,9 @@ async function launch(chrome,url,label,size){
  const match=stdout.match(/data-viewer-qa="([^"]+)"/);
  assert.ok(match,label+': medicao nao concluida');
  const checks=JSON.parse(decodeURIComponent(match[1]));
- for(const [name,result] of Object.entries(checks))assert.equal(result,true,label+': '+name);
+ console.log(label+' verificacoes: '+JSON.stringify(checks));
+ const failed=Object.entries(checks).filter(([,result])=>result!==true).map(([name])=>name);
+ assert.deepEqual(failed,[],label+': verificacoes com falha');
  assert.ok(fs.statSync(screenshot).size>5000,label+': screenshot ausente');
  console.log(label+': '+Object.keys(checks).length+' verificacoes aprovadas');
 }
