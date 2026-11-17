@@ -17,6 +17,10 @@ let report = null;
     let filterColumn = null;
     let currentPage = 1;
     let pageSize = 50;
+    const PAGE_SIZES = [25, 50, 100, 250, 500, 1000];
+    const TABLE_RENDER_BATCH_SIZE = 150;
+    let tableRenderVersion = 0;
+    let displayedRowIndexes = new Map();
     let filteredCache = null;
     let columnMetaCache = new Map();
     let columnOptionsCache = new Map();
@@ -937,6 +941,12 @@ let report = null;
       });
     }
 
+    function normalizedPageSize(value) {
+      if (value === 'all') return 'all';
+      const parsed = Number(value);
+      return PAGE_SIZES.includes(parsed) ? parsed : 50;
+    }
+
     function scheduleRenderRows() {
       clearTimeout(renderTimer);
       renderTimer = setTimeout(renderRows, 250);
@@ -944,33 +954,63 @@ let report = null;
 
     function renderRows() {
       if (!report) return;
+      // A pending frame from an earlier filter or page cannot append stale rows.
+      const renderVersion = ++tableRenderVersion;
       const columns = visibleReportColumns();
       const rows = filteredRows();
       displayedRows = rows;
+      displayedRowIndexes = new Map(rows.map((item, index) => [item, index]));
       const count = rows.length;
-      const totalPages = Math.max(1, Math.ceil(count / pageSize));
-      currentPage = Math.max(1, Math.min(currentPage, totalPages));
-      const start = (currentPage - 1) * pageSize;
-      const end = Math.min(count, start + pageSize);
+      const allRows = pageSize === 'all';
+      const totalPages = allRows ? 1 : Math.max(1, Math.ceil(count / pageSize));
+      currentPage = allRows ? 1 : Math.max(1, Math.min(currentPage, totalPages));
+      const start = allRows ? 0 : (currentPage - 1) * pageSize;
+      const end = allRows ? count : Math.min(count, start + pageSize);
       const tbody = byId('table').querySelector('tbody');
-      tbody.innerHTML = count
-        ? groupedTableHtml(rows, columns, start, end)
-        : `<tr class="empty-row"><td colspan="${Math.max(1, columns.length + 1)}">Nenhum registro corresponde aos filtros. Ajuste ou remova os filtros para ampliar a pesquisa.</td></tr>`;
-      byId('pageInfo').textContent = count
-        ? `Exibindo ${start + 1}–${end} de ${count} registros.`
+      const pageInfo = byId('pageInfo');
+      const completeLabel = count
+        ? allRows ? `Exibindo todas as ${count} linhas filtradas.`
+          : `Exibindo ${start + 1}–${end} de ${count} registros.`
         : 'Nenhum registro encontrado.';
+      const incremental = count && end - start > TABLE_RENDER_BATCH_SIZE
+        && typeof requestAnimationFrame === 'function'
+        && typeof tbody.insertAdjacentHTML === 'function';
+
+      if (incremental) {
+        let cursor = start;
+        const appendBatch = () => {
+          if (renderVersion !== tableRenderVersion) return;
+          const next = Math.min(end, cursor + TABLE_RENDER_BATCH_SIZE);
+          const html = groupedTableHtml(rows, columns, cursor, next, cursor > start);
+          if (cursor === start) tbody.innerHTML = html;
+          else tbody.insertAdjacentHTML('beforeend', html);
+          cursor = next;
+          if (cursor < end) {
+            pageInfo.textContent = `Carregando ${cursor - start} de ${end - start} linhas desta página (${count} registros filtrados)...`;
+            requestAnimationFrame(appendBatch);
+          } else {
+            pageInfo.textContent = completeLabel;
+          }
+        };
+        appendBatch();
+      } else {
+        tbody.innerHTML = count
+          ? groupedTableHtml(rows, columns, start, end)
+          : `<tr class="empty-row"><td colspan="${Math.max(1, columns.length + 1)}">Nenhum registro corresponde aos filtros. Ajuste ou remova os filtros para ampliar a pesquisa.</td></tr>`;
+        pageInfo.textContent = completeLabel;
+      }
       const quickStatus = byId('quickStatus');
       if (quickStatus) quickStatus.textContent = `${count} registros · ${columns.length} de ${report.columns?.length || 0} colunas`;
       byId('pageNumber').textContent = `Página ${currentPage} de ${totalPages}`;
       byId('previousPage').disabled = currentPage <= 1;
-      byId('nextPage').disabled = currentPage >= totalPages;
+      byId('nextPage').disabled = allRows || currentPage >= totalPages;
       byId('pageSize').value = String(pageSize);
       renderFilterChips();
       updateUrlState();
       if (byId('reportChart')?.open) renderReportChart();
     }
 
-    function groupedTableHtml(rows, columns, start = 0, end = rows.length) {
+    function groupedTableHtml(rows, columns, start = 0, end = rows.length, continuedBatch = false) {
       if (!groupColumn) return rows.slice(start, end).map(item => rowHtml(item, columns)).join('');
       let cursor = 0;
       const output = [];
@@ -982,11 +1022,12 @@ let report = null;
         const from = Math.max(0, start - groupStart);
         const to = Math.min(group.rows.length, end - groupStart);
         const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
-        output.push(`
+        if (from === 0 || !continuedBatch) output.push(`
           <tr class="group-row"><td colspan="${Math.max(1, columns.length + 1)}">${escapeHtml(label)}
             (${group.rows.length} linha(s)${from ? ', continuação' : ''})</td></tr>
           ${group.rows.slice(from, to).map(item => rowHtml(item, columns)).join('')}
         `);
+        else output.push(group.rows.slice(from, to).map(item => rowHtml(item, columns)).join(''));
         // Totals always refer to the FULL filtered group, never only to this page.
         if (to === group.rows.length) {
           output.push(groupSummaryRowHtml(groupTotals(group.rows), columns, 'Total do grupo'));
@@ -1000,7 +1041,7 @@ let report = null;
     function rowHtml(item, columns) {
       const row = item.raw || item;
       const isTotal = item.type === 'total';
-      const index = displayedRows.indexOf(item);
+      const index = displayedRowIndexes.get(item) ?? displayedRows.indexOf(item);
       const cells = columns.map((column, position) => {
         const value = String(row[column] ?? '');
         const safe = escapeHtml(value);
@@ -1470,8 +1511,7 @@ let report = null;
         column: sortIndex === null || sortIndex === '' ? null : columns[Number(sortIndex)] || null,
         direction: ['az', 'za'].includes(params.get('dir')) ? params.get('dir') : ''
       };
-      const requestedSize = Number(params.get('ps'));
-      pageSize = [25, 50, 100].includes(requestedSize) ? requestedSize : 50;
+      pageSize = normalizedPageSize(params.get('ps'));
       const requestedPage = Number(params.get('p'));
       currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
       columnFilters = {};
@@ -1738,9 +1778,8 @@ let report = null;
       byId(id).addEventListener('change', onChartControlsChanged));
     byId('chartUseSuggestion').addEventListener('click', applyChartSuggestion);
     byId('pageSize').addEventListener('change', event => {
-      const size = Number(event.target.value);
-      if (![25, 50, 100].includes(size)) return;
-      pageSize = size;
+      if (event.target.value !== 'all' && !PAGE_SIZES.includes(Number(event.target.value))) return;
+      pageSize = normalizedPageSize(event.target.value);
       currentPage = 1;
       renderRows();
     });
@@ -1751,7 +1790,7 @@ let report = null;
     });
     byId('nextPage').addEventListener('click', () => {
       const total = filteredRows().length;
-      if (currentPage * pageSize >= total) return;
+      if (pageSize === 'all' || currentPage * pageSize >= total) return;
       currentPage += 1;
       renderRows();
     });
