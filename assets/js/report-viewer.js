@@ -264,7 +264,7 @@ let report = null;
     }
 
     function groupTotals(rows) {
-      return [...groupSumColumns].map(column => {
+      return [...groupSumColumns].filter(eligibleSumColumn).map(column => {
         let total = 0;
         let count = 0;
         for (const item of customTotalRows(rows)) {
@@ -417,6 +417,12 @@ let report = null;
       });
     }
 
+    function eligibleSumColumn(column) {
+      const kind = columnMetaFor(column).type;
+      // Manual opt-in only; no automatic sum from a monetary-looking label.
+      return kind === 'money' || kind === 'number';
+    }
+
     function renderGroupingControls() {
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
@@ -428,16 +434,17 @@ let report = null;
         renderRows();
       };
       const options = byId('groupSumOptions');
-      options.innerHTML = columns.map((column, index) => `
+      options.innerHTML = '<p class="control-help">Somas são opcionais e aplicadas apenas aos registros de detalhe filtrados. Não somar saldos de períodos diferentes sem verificar sua natureza contábil.</p>'
+        + columns.filter(eligibleSumColumn).map(column => `
         <label>
           <input type="checkbox" data-group-sum-column="${escapeHtml(column)}" ${groupSumColumns.has(column) ? 'checked' : ''}>
-          <span>${escapeHtml(displayColumns[index])}</span>
+          <span>${escapeHtml(friendlyColumnName(column))}</span>
         </label>
       `).join('');
       options.querySelectorAll('input').forEach(input => {
         input.addEventListener('change', event => {
           const column = event.target.dataset.groupSumColumn;
-          if (event.target.checked) groupSumColumns.add(column);
+          if (event.target.checked && eligibleSumColumn(column)) groupSumColumns.add(column);
           else groupSumColumns.delete(column);
           renderRows();
         });
@@ -453,25 +460,50 @@ let report = null;
       if (!report) return;
       const columns = visibleReportColumns();
       const rows = filteredRows();
+      const count = rows.length;
+      const totalPages = Math.max(1, Math.ceil(count / pageSize));
+      currentPage = Math.max(1, Math.min(currentPage, totalPages));
+      const start = (currentPage - 1) * pageSize;
+      const end = Math.min(count, start + pageSize);
       const tbody = byId('table').querySelector('tbody');
-      tbody.innerHTML = groupedTableHtml(rows, columns);
+      tbody.innerHTML = count
+        ? groupedTableHtml(rows, columns, start, end)
+        : `<tr><td colspan="${Math.max(1, columns.length)}">Nenhum registro corresponde aos filtros.</td></tr>`;
+      byId('pageInfo').textContent = count
+        ? `Exibindo ${start + 1}–${end} de ${count} registros filtrados.`
+        : 'Nenhum registro encontrado.';
+      byId('pageNumber').textContent = `Página ${currentPage} de ${totalPages}`;
+      byId('previousPage').disabled = currentPage <= 1;
+      byId('nextPage').disabled = currentPage >= totalPages;
+      byId('pageSize').value = String(pageSize);
+      renderFilterChips();
       updateUrlState();
     }
 
-    function groupedTableHtml(rows, columns) {
-      if (!groupColumn) {
-        return rows.map(item => rowHtml(item, columns)).join('');
-      }
-      const groupHtml = groupedRows(rows).map(group => {
+    function groupedTableHtml(rows, columns, start = 0, end = rows.length) {
+      if (!groupColumn) return rows.slice(start, end).map(item => rowHtml(item, columns)).join('');
+      let cursor = 0;
+      const output = [];
+      for (const group of groupedRows(rows)) {
+        const groupStart = cursor;
+        const groupEnd = cursor + group.rows.length;
+        cursor = groupEnd;
+        if (groupEnd <= start || groupStart >= end) continue;
+        const from = Math.max(0, start - groupStart);
+        const to = Math.min(group.rows.length, end - groupStart);
         const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
-        const totals = groupTotals(group.rows);
-        return `
-          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)} (${group.rows.length} linha(s))</td></tr>
-          ${group.rows.map(item => rowHtml(item, columns)).join('')}
-          ${groupSummaryRowHtml(totals, columns, 'Total do grupo')}
-        `;
-      }).join('');
-      return `${groupHtml}${groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento')}`;
+        output.push(`
+          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)}
+            (${group.rows.length} linha(s)${from ? ', continuação' : ''})</td></tr>
+          ${group.rows.slice(from, to).map(item => rowHtml(item, columns)).join('')}
+        `);
+        // Totals always refer to the FULL filtered group, never only to this page.
+        if (to === group.rows.length) {
+          output.push(groupSummaryRowHtml(groupTotals(group.rows), columns, 'Total do grupo'));
+        }
+      }
+      if (end >= rows.length) output.push(groupSummaryRowHtml(groupTotals(rows), columns, 'Total geral do agrupamento'));
+      return output.join('');
     }
 
     function rowHtml(item, columns) {
