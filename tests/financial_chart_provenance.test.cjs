@@ -74,6 +74,8 @@ test('GRU has valid month data without depending on snapshots; code never equate
 test('Brazilian numeric interpretation is strict, zero is different from absent', () => {
   assert.equal(parseAmount('0'),0);
   assert.equal(parseAmount('5.853,52'),5853.52);
+  assert.equal(parseAmount('(50,00)'),-50); // Real estorno contábil no relatório de GRU.
+  assert.equal(parseAmount('(-50,00)'),null);
   assert.equal(parseAmount(''),null);
   assert.equal(parseAmount('123/2026'),null);
   assert.equal(parseAmount('=1+1'),null);
