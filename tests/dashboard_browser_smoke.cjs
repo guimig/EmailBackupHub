@@ -54,6 +54,24 @@ const index={generated_at:generated,reports:slugs.map(slug=>({
  quality:{ok:true,issues:[],warnings:[]}
 }))};
 const summary={generated_at:generated,summary_version:'1',reports:summaryDocs};
+const GRU_MONTHS=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV'];
+const GRU_AMOUNTS=[100,150,175,200,225,250,275,300,325,350,150]; // 2500; reconciliation independent of snapshots.
+const GRU_NET_COLUMN='724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)';
+const gruDocument={
+ slug:'recolhimento-proprio-gru', date:'17/11/2026',date_iso:'2026-11-17',
+ metadata:{exercicio:2026,hash_conteudo:'test-hash'},
+ quality:{ok:true,issues:[],warnings:[]},
+ metrics:{gru_arrecadada:2500},
+ metrics_meta:{gru_arrecadada:{status:'ok',source:'totals'}},
+ columns:['Emissão - Mês','Emissão - Dia','Conta Contábil / Doc - Valor',GRU_NET_COLUMN],
+ rows:GRU_MONTHS.map((month,index)=>({
+  'Emissão - Mês':month+'/2026',
+  'Emissão - Dia':'05/'+String(index+1).padStart(2,'0')+'/2026',
+  'Conta Contábil / Doc - Valor':String(GRU_AMOUNTS[index]).replace('.',','),
+  [GRU_NET_COLUMN]:GRU_AMOUNTS[index].toFixed(2).replace('.',',')
+ }))
+};
+
 
 const server=http.createServer((req,res)=>{
  let pathname;
@@ -63,7 +81,8 @@ const server=http.createServer((req,res)=>{
   '/data/index.json':index,
   '/data/dashboard-summary.json':summary,
   '/data/report-definitions.json':{reports:{}},
-  '/data/search-index.json':{documents:[]}
+  '/data/search-index.json':{documents:[]},
+  '/data/reports/recolhimento-proprio-gru.json':gruDocument
  };
  if(Object.hasOwn(json,pathname)){
   res.writeHead(200,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});
