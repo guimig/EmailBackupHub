@@ -78,3 +78,35 @@
     .metric-audit-card small { display: block; margin-top: 6px; color: var(--muted); line-height: 1.3; }
     .site-footer { padding: 18px 16px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     @media (max-width: 800px) { .header-top { display: block; } .theme-toggle { width: 100%; margin-top: 12px; } .toolbar { grid-template-columns: 1fr; } main { padding: 10px; } .site-footer { display: block; } }
+
+    /* Typed column filters: controls remain outside the scroll-clipped table. */
+    .filter-editor { margin: 14px 0; border: 1px solid var(--line); border-radius: 9px; padding: 14px; background: var(--panel); }
+    .filter-editor[hidden], .filter-error[hidden] { display: none; }
+    .filter-editor-heading, .filter-editor-actions, .pagination, .page-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .filter-editor-heading { justify-content: space-between; margin-bottom: 12px; }
+    .filter-editor h2 { font-size: 1rem; margin: 0; }
+    .filter-editor-fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+    .filter-editor-fields label { display: flex; flex-direction: column; gap: 5px; min-width: 160px; font-size: .87rem; }
+    .filter-editor-fields input, .filter-editor-fields select { max-width: min(100%, 320px); }
+    .filter-editor-fields .facet-select { width: min(100%, 380px); min-width: 230px; height: auto; }
+    .filter-editor-fields small { width: 100%; color: var(--muted); }
+    .filter-editor-actions { margin-top: 12px; }
+    .filter-error { color: var(--bad); font-size: .87rem; margin: 0; }
+    .secondary-button { background: var(--panel); color: var(--text); border-color: var(--line); }
+    .secondary-button:disabled, .pagination button:disabled { opacity: .5; cursor: not-allowed; }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 24px; margin: 10px 0; align-items: center; }
+    .filter-chip { border-radius: 999px; border: 1px solid var(--line); padding: 5px 8px; font-size: .81rem; background: var(--soft); color: var(--text); cursor: pointer; font-weight: 400; }
+    .filter-chip:focus-visible, .column-filter-button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .column-heading { display: block; margin-bottom: 4px; overflow-wrap: anywhere; }
+    .column-heading-actions { display: flex; align-items: center; gap: 6px; }
+    .column-filter-button { padding: 5px 8px; background: var(--panel); color: var(--brand); border-color: var(--line); font-size: .78rem; }
+    .column-filter-button.is-active { background: var(--brand); color: var(--brand-contrast); }
+    th select[data-sort-column] { flex: 1; width: min(180px, 100%); margin-top: 0; }
+    .pagination { justify-content: space-between; margin: 12px 0 18px; color: var(--muted); font-size: .87rem; }
+    .pagination select, .pagination button { padding: 8px 10px; font-size: .88rem; }
+    .page-controls { justify-content: flex-end; }
+    @media (max-width: 800px) {
+      .pagination, .page-controls { justify-content: flex-start; }
+      .filter-editor-fields label, .filter-editor-fields .facet-select { width: 100%; }
+      .column-heading-actions { flex-wrap: wrap; }
+    }
