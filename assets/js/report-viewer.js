@@ -1351,7 +1351,7 @@ let report = null;
     function setExpanded(next) {
       expanded = Boolean(next);
       document.body.classList.toggle('table-expanded', expanded);
-      byId('expandTable').textContent = expanded ? '↙ Sair da ampliação' : '⛶ Ampliar tabela';
+      byId('expandTable').textContent = expanded ? 'Fechar ampliação' : 'Ampliar tabela';
       byId('expandTable').setAttribute('aria-pressed', String(expanded));
       if (expanded) byId('tableWrap').focus();
     }
