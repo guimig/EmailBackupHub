@@ -81,5 +81,8 @@ test('dashboard loads reusable chart script before page code',()=>{
   const source=fs.readFileSync(path.join(__dirname,'..','dashboard.html'),'utf8');
   assert.ok(source.indexOf('interactive-charts.js')>0);
   assert.ok(source.indexOf('interactive-charts.js')<source.indexOf('dashboard.js'));
-  assert.match(source,/id="historyRange"/);
+  // Historical drawing remains available as a reusable primitive, but dashboard
+  // no longer presents extraction timestamps as financial posting dates.
+  assert.doesNotMatch(source,/id="historyRange"/);
+  assert.match(source,/financial-chart-provenance.js/);
 });
