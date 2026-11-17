@@ -20,12 +20,16 @@
 
   function parseAmount(value) {
     if (typeof value === 'number') return Number.isFinite(value) ? value : null;
-    const text = String(value ?? '').trim().replace(/^R\$\s*/i, '');
-    if (!text || !/^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text)) return null;
+    let text = String(value ?? '').trim();
+    const accountingNegative = text.startsWith('(') && text.endsWith(')');
+    if (accountingNegative) text = text.slice(1, -1).trim();
+    text = text.replace(/^R\$\s*/i, '');
+    if (!text || !/^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text)
+      || (accountingNegative && /^[+-]/.test(text))) return null;
     const normalized = text.includes(',') ? text.replace(/\./g, '').replace(',', '.')
       : /^[+-]?\d{1,3}(?:\.\d{3})+$/.test(text) ? text.replace(/\./g, '') : text;
     const amount = Number(normalized);
-    return Number.isFinite(amount) ? amount : null;
+    return Number.isFinite(amount) ? (accountingNegative ? -amount : amount) : null;
   }
 
   function amountCents(value) {
