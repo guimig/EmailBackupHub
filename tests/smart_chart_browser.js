@@ -55,6 +55,25 @@
       results.noAutomaticCrossEmpenhoSum=$('chartMode').value==='wide' &&
         !$('chartSummary').textContent.includes('Soma configurada pelo usuário');
     }
+    if (gru) {
+      $('pageSize').value = 'all';
+      $('pageSize').dispatchEvent(new Event('change', { bubbles: true }));
+      let frames = 0;
+      const checkAllRows = () => {
+        const count = $('table').querySelectorAll('tbody tr[data-row-index]').length;
+        if (count < 242 && frames++ < 50) return setTimeout(checkAllRows, 40);
+        results.allGruRowsLoaded = count === 242 &&
+          $('pageInfo').textContent.includes('todas as 242 linhas filtradas');
+        results.allGruRowsOnOnePage = $('pageNumber').textContent === 'Página 1 de 1' &&
+          $('nextPage').disabled && $('previousPage').disabled;
+        results.allGruRowsShareable = new URLSearchParams(location.search).get('ps') === 'all';
+        results.internalVerticalScrollRemains = $('tableWrap').scrollHeight > $('tableWrap').clientHeight;
+        results.noHorizontalOverflow = document.documentElement.scrollWidth <= window.innerWidth + 4;
+        document.documentElement.dataset.viewerQa = encodeURIComponent(JSON.stringify(results));
+      };
+      checkAllRows();
+      return;
+    }
     results.noHorizontalOverflow=document.documentElement.scrollWidth<=window.innerWidth+4;
     document.documentElement.dataset.viewerQa=encodeURIComponent(JSON.stringify(results));
   }

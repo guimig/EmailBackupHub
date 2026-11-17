@@ -54,12 +54,19 @@ test('qualquer relatorio novo tem tipo generico sem cadastrar slug', () => {
   assert.equal(Filters.distinctOptions(rows, 'Outra coluna', { type: 'category' }), null);
 });
 
-function fixture(params = '?report=data/reports/novo.json') {
+function fixture(params = '?report=data/reports/novo.json', options = {}) {
   const source = fs.readFileSync(path.join(ROOT, 'assets/js/report-viewer.js'), 'utf8');
   const cutoff = source.indexOf("    byId('globalSearch').addEventListener('input',");
   assert.ok(cutoff > 0, 'Bootstrap do viewer mudou');
   const elements = new Map();
-  const tbody = { innerHTML: '' };
+  const frameQueue = [];
+  const tbody = {
+    innerHTML: '',
+    insertAdjacentHTML(position, markup) {
+      assert.equal(position, 'beforeend');
+      this.innerHTML += markup;
+    }
+  };
   const getElementById = id => {
     if (!elements.has(id)) elements.set(id, {
       value: '', checked: id === 'showTotals', disabled: false, hidden: false,
@@ -74,6 +81,7 @@ function fixture(params = '?report=data/reports/novo.json') {
     location.search = '?' + url.split('?').slice(1).join('?');
   } };
   const context = vm.createContext({
+    ...(options.animation ? { requestAnimationFrame: callback => frameQueue.push(callback) } : {}),
     window: { EmailBackupHubFilters: Filters },
     document: { getElementById },
     location, history, URLSearchParams, console,
@@ -92,6 +100,7 @@ function fixture(params = '?report=data/reports/novo.json') {
     '  group: column => { groupColumn = column; },',
     '  sum: column => { groupSumColumns = new Set([column]); },',
     '  page: value => { currentPage = value; },',
+    '  size: value => { pageSize = normalizedPageSize(value); currentPage = 1; },',
     '  render: () => renderRows(),',
     '  filtered: () => filteredRows(),',
     '  exportAll: () => { exportCsv(); return csvOutput; },',
@@ -101,7 +110,7 @@ function fixture(params = '?report=data/reports/novo.json') {
     '};'
   ].join('\n');
   vm.runInContext(source.slice(0, cutoff) + driver, context, { filename: 'report-viewer.js' });
-  return { api: context.driver, el: getElementById, tbody, location };
+  return { api: context.driver, el: getElementById, tbody, location, frameQueue };
 }
 
 function makeReport(length = 135) {
@@ -199,4 +208,99 @@ test('relatório vazio continua legível e não cria linhas fictícias', () => {
   assert.equal(api.filtered().length, 0);
   assert.match(tbody.innerHTML, /Nenhum registro/);
   assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
+});
+
+test('seletor amplia para 250, 500, 1000 e todas as linhas, sem perder paginacao', () => {
+  const { api, tbody, el, location } = fixture();
+  api.set(makeReport(3254));
+  for (const size of [250, 500, 1000]) {
+    api.size(size);
+    api.render();
+    assert.equal(api.getPageSize(), size);
+    assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, size);
+    assert.equal(el('pageSize').value, String(size));
+    assert.match(location.search, new RegExp('ps=' + size));
+  }
+  api.size('all');
+  api.render();
+  assert.equal(api.getPageSize(), 'all');
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 3254);
+  assert.equal(el('pageInfo').textContent, 'Exibindo todas as 3254 linhas filtradas.');
+  assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
+  assert.equal(el('previousPage').disabled, true);
+  assert.equal(el('nextPage').disabled, true);
+  assert.equal(el('pageSize').value, 'all');
+  assert.match(location.search, /ps=all/);
+  api.filter('Saldo', {op:'is_zero'});
+  api.render();
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 651);
+  assert.equal(api.exportAll().split('\n').length, 652);
+});
+
+test('URL com ps=all volta a uma pagina unica, preserva filtro e dispensa p= antigo', () => {
+  const { api, el, location } = fixture('?report=data/reports/novo.json&ps=all&p=99&f1=0');
+  api.set(makeReport(135));
+  api.restore();
+  api.render();
+  assert.equal(api.getPageSize(), 'all');
+  assert.equal(api.getPage(), 1);
+  assert.equal(api.filtered().length, 27);
+  assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
+  assert.match(location.search, /ps=all/);
+  assert.doesNotMatch(location.search, /[?&]p=/);
+  assert.equal(api.getFilters().Saldo, '0');
+  const invalid = fixture('?report=data/reports/novo.json&ps=999999');
+  invalid.api.set(makeReport());
+  invalid.api.restore();
+  assert.equal(invalid.api.getPageSize(), 50);
+});
+
+test('todas as linhas agrupadas exibem subtotal correto uma vez, sem dividir o grupo', () => {
+  const { api, tbody } = fixture();
+  api.set(makeReport(135));
+  api.group('Grupo');
+  api.sum('Saldo');
+  api.size('all');
+  api.render();
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 135);
+  assert.equal((tbody.innerHTML.match(/class="group-row"/g) || []).length, 2);
+  assert.equal((tbody.innerHTML.match(/Total do grupo/g) || []).length, 2);
+  assert.equal((tbody.innerHTML.match(/Total geral do agrupamento/g) || []).length, 1);
+});
+
+test('carregamento progressivo pode ser interrompido por outro filtro, sem linhas antigas', () => {
+  const { api, tbody, el, frameQueue } = fixture('?report=data/reports/novo.json', { animation: true });
+  api.set(makeReport(3254));
+  api.group('Grupo');
+  api.sum('Saldo');
+  api.size('all');
+  api.render();
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 150);
+  assert.match(el('pageInfo').textContent, /Carregando 150 de 3254/);
+  assert.ok(frameQueue.length);
+  api.filter('Saldo', {op:'is_zero'});
+  api.render();
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 150);
+  let frames = 0;
+  while (frameQueue.length) {
+    frameQueue.shift()();
+    frames++;
+    assert.ok(frames < 100, 'Numa sessao real, os lotes precisam finalizar');
+  }
+  assert.equal((tbody.innerHTML.match(/data-row-index="/g) || []).length, 651);
+  assert.equal((tbody.innerHTML.match(/class="group-row"/g) || []).length, 2);
+  assert.equal((tbody.innerHTML.match(/Total do grupo/g) || []).length, 2);
+  assert.equal((tbody.innerHTML.match(/Total geral do agrupamento/g) || []).length, 1);
+  assert.equal(el('pageInfo').textContent, 'Exibindo todas as 651 linhas filtradas.');
+});
+
+test('todas as linhas de relatorio vazio mantem controles e estado consistentes', () => {
+  const { api, tbody, el } = fixture();
+  api.set(makeReport(0));
+  api.size('all');
+  api.render();
+  assert.match(tbody.innerHTML, /Nenhum registro/);
+  assert.equal(el('pageInfo').textContent, 'Nenhum registro encontrado.');
+  assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
+  assert.equal(el('nextPage').disabled, true);
 });
