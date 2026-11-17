@@ -860,6 +860,14 @@ let indexData = null;
       renderer.renderGruMonthly(container, result, { url: chartSourceUrl(slug) });
     }
 
+    function renderRapHistory(id, currentValues) {
+      if (!isAvailable(currentValues.rapPaid) || !isAvailable(currentValues.rapPayable)) {
+        unavailableChart(id);
+        return;
+      }
+      renderRapBars(id, currentValues.rapPaid, currentValues.rapPayable);
+    }
+
     function renderRapBars(id, paid, payable) {
       if (!isAvailable(paid) || !isAvailable(payable)) return unavailableChart(id);
       const paidValue = valueOf(paid);
