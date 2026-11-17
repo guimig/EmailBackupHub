@@ -393,6 +393,141 @@ let report = null;
       });
     }
 
+    function filterOperationOptions(operations, selected) {
+      return operations.map(([op, label]) => `<option value="${op}" ${selected === op ? 'selected' : ''}>${label}</option>`).join('');
+    }
+
+    function openFilterEditor(column) {
+      if (!(report?.columns || []).includes(column)) return;
+      filterColumn = column;
+      const meta = columnMetaFor(column);
+      const kind = Filters.filterKind(meta);
+      const existing = columnFilters[column];
+      const spec = typeof existing === 'object' && existing ? existing : null;
+      const select = (operations, fallback) => `<label>Operação
+        <select data-filter-operation>${filterOperationOptions(operations, spec?.op || fallback)}</select>
+      </label>`;
+      const textOperations = [
+        ['contains', 'Contém'], ['equals', 'Igual a'], ['starts', 'Começa com'],
+        ['is_empty', 'Está vazio'], ['not_empty', 'Está preenchido']
+      ];
+      const emptyOperations = [['is_empty', 'Está vazio'], ['not_empty', 'Está preenchido']];
+      const fields = byId('filterEditorFields');
+      if (kind === 'numeric') {
+        fields.innerHTML = select([
+          ['range', 'Intervalo'], ['is_zero', 'Igual a zero'], ['not_zero', 'Diferente de zero'],
+          ...emptyOperations
+        ], 'range') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Mínimo (inclusive)<input type="text" inputmode="decimal" data-filter-min
+              placeholder="Ex.: -1.234,56" value="${escapeHtml(spec?.min || '')}"></label>
+            <label>Máximo (inclusive)<input type="text" inputmode="decimal" data-filter-max
+              placeholder="Ex.: 1.234,56" value="${escapeHtml(spec?.max || '')}"></label>
+          </div>`;
+      } else if (kind === 'date') {
+        fields.innerHTML = select([['range', 'Intervalo de datas'], ...emptyOperations], 'range') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Data inicial<input type="date" data-filter-min value="${escapeHtml(spec?.min || '')}"></label>
+            <label>Data final<input type="date" data-filter-max value="${escapeHtml(spec?.max || '')}"></label>
+          </div>`;
+      } else if (kind === 'choices') {
+        const options = columnOptionsCache.get(column) || [];
+        const selected = new Set(spec?.values || []);
+        fields.innerHTML = select([['in', 'Uma ou mais opções'], ...emptyOperations], 'in') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Selecione uma ou mais opções
+              <select multiple size="${Math.min(8, Math.max(3, options.length))}" class="facet-select" data-filter-values
+                aria-label="Opções da coluna ${escapeHtml(friendlyColumnName(column))}">
+                ${options.map(value => `<option value="${escapeHtml(value)}" ${selected.has(value) ? 'selected' : ''}>${escapeHtml(value)}</option>`).join('')}
+              </select>
+            </label>
+            <small>Use Ctrl ou Cmd para selecionar vários valores. As opções da mesma coluna funcionam como alternativas.</small>
+          </div>`;
+      } else {
+        fields.innerHTML = select(textOperations, 'contains') + `
+          <div class="filter-input-fields" data-filter-input-fields>
+            <label>Texto a pesquisar<input type="search" data-filter-text
+              placeholder="Digite parte do conteúdo" value="${escapeHtml(typeof existing === 'string' ? existing : spec?.value || '')}"></label>
+          </div>`;
+      }
+      byId('filterEditorTitle').textContent = `Filtro: ${friendlyColumnName(column)} · ${meta.type}`;
+      byId('filterError').hidden = true;
+      byId('filterEditor').hidden = false;
+      const opSelect = fields.querySelector('[data-filter-operation]');
+      opSelect.addEventListener('change', updateFilterInputVisibility);
+      updateFilterInputVisibility();
+      opSelect.focus();
+    }
+
+    function updateFilterInputVisibility() {
+      const fields = byId('filterEditorFields');
+      const op = fields.querySelector('[data-filter-operation]')?.value;
+      const inputs = fields.querySelector('[data-filter-input-fields]');
+      if (inputs) inputs.hidden = ['is_empty', 'not_empty', 'is_zero', 'not_zero'].includes(op);
+    }
+
+    function closeFilterEditor() {
+      byId('filterEditor').hidden = true;
+      filterColumn = null;
+      byId('filterError').hidden = true;
+    }
+
+    function applyColumnFilter() {
+      if (!filterColumn) return;
+      const meta = columnMetaFor(filterColumn);
+      const kind = Filters.filterKind(meta);
+      const fields = byId('filterEditorFields');
+      const op = fields.querySelector('[data-filter-operation]')?.value;
+      let spec = { op };
+      if (op === 'range') {
+        spec.min = fields.querySelector('[data-filter-min]')?.value.trim() || '';
+        spec.max = fields.querySelector('[data-filter-max]')?.value.trim() || '';
+      } else if (op === 'in') {
+        spec.values = [...(fields.querySelector('[data-filter-values]')?.selectedOptions || [])].map(item => item.value);
+      } else if (['contains', 'equals', 'starts'].includes(op)) {
+        spec.value = fields.querySelector('[data-filter-text]')?.value.trim() || '';
+      }
+      if (!Filters.validFilter(spec, meta)) {
+        const message = byId('filterError');
+        message.textContent = kind === 'numeric'
+          ? 'Informe um intervalo válido no formato brasileiro, ou selecione outra operação.'
+          : kind === 'date' ? 'Informe um intervalo válido de datas.'
+            : kind === 'choices' ? 'Selecione pelo menos uma opção.'
+              : 'Informe o texto a pesquisar.';
+        message.hidden = false;
+        return;
+      }
+      columnFilters[filterColumn] = spec;
+      currentPage = 1;
+      closeFilterEditor();
+      renderTableShell();
+      renderRows();
+    }
+
+    function removeColumnFilter(column) {
+      if (!column) return;
+      delete columnFilters[column];
+      currentPage = 1;
+      if (filterColumn === column) closeFilterEditor();
+      renderTableShell();
+      renderRows();
+    }
+
+    function renderFilterChips() {
+      const entries = Object.entries(columnFilters).filter(([, spec]) => Boolean(spec));
+      const container = byId('filterChips');
+      container.innerHTML = entries.length
+        ? entries.map(([column, spec]) => `
+            <button type="button" class="filter-chip" data-remove-filter="${escapeHtml(column)}"
+              aria-label="Remover filtro de ${escapeHtml(friendlyColumnName(column))}">
+              ${escapeHtml(friendlyColumnName(column))}: ${escapeHtml(typeof spec === 'string' ? 'contém ' + spec : Filters.describe(spec, columnMetaFor(column)))} ×
+            </button>`).join('')
+        : '<span class="control-help">Nenhum filtro de coluna ativo.</span>';
+      container.querySelectorAll('[data-remove-filter]').forEach(button => {
+        button.addEventListener('click', () => removeColumnFilter(button.dataset.removeFilter));
+      });
+    }
+
     function renderColumnVisibilityControls() {
       const columns = report.columns || [];
       const displayColumns = friendlyColumns(columns);
