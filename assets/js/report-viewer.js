@@ -328,6 +328,7 @@ let report = null;
       chartRecommended = suggested;
       byId('chartSuggestedTitle').textContent = 'Sugestão: ' + suggested.title;
       byId('chartSuggestedReason').textContent = suggested.reason;
+      byId('chartPreview').textContent = 'Sugestão para este relatório: ' + suggested.title;
     }
 
     function prepareReportChartControls() {
