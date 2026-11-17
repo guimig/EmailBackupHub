@@ -38,6 +38,28 @@
       expense.querySelectorAll('.financial-bar-row').length === 3 &&
       gru.querySelectorAll('.financial-month-row').length === 11;
     qa.chartHelpAccessible = getComputedStyle(document.querySelector('.chart-help')).display !== 'none';
+    const rap = el('rapStackChart');
+    qa.rapPercentClearlyNamed = el('rapShareValue').textContent.includes('83,3')
+      && el('rapShareMeaning').textContent.includes('do total de RAP acompanhado');
+    qa.rapShowsOneStackedComposition = rap.querySelectorAll('.rap-composition-track').length === 1
+      && rap.querySelectorAll('.rap-composition-fill').length === 2
+      && rap.querySelectorAll('.rap-bars').length === 0;
+    qa.rapExplainsBothPercentagesAndDenominator = ['10.000','2.000','12.000','83,3','16,7']
+      .every(part => rap.textContent.includes(part))
+      && rap.textContent.includes('base dos percentuais');
+    qa.rapOpensOriginalReport = Boolean(rap.querySelector('.rap-composition-link[href*="restos-a-pagar-rap"]'));
+    const managementPanel = el('managementAlertsPanel');
+    const managementList = el('managementAlerts');
+    qa.managementInitiallyCollapsed = !managementPanel.open
+      && managementPanel.tagName.toLowerCase() === 'details';
+    const managementCount = managementList.querySelectorAll('.alert-item').length;
+    qa.managementCountMatchesGeneratedAlerts = el('managementAlertCount').textContent ===
+      (managementCount === 1 ? '1 aviso' : managementCount + ' avisos');
+    managementPanel.open = true;
+    qa.managementExpandsWithoutDroppingAlerts = managementPanel.open
+      && managementList.querySelectorAll('.alert-item').length === managementCount;
+    managementPanel.open = false;
+    qa.managementClosesAgain = !managementPanel.open;
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');

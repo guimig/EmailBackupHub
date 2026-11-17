@@ -38,10 +38,16 @@
         <strong id="insightTitle">Explore o painel</strong>
         <p id="insightText">Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador e sua utilidade para acompanhar a execução orçamentária e financeira.</p>
       </div>
-      <section class="management-alerts" aria-label="Alertas gerenciais">
-        <h3>Alertas gerenciais</h3>
-        <div id="managementAlerts" class="alerts-list" aria-live="polite"><p class="alert-empty">Carregando alertas gerenciais...</p></div>
-      </section>
+      <details id="managementAlertsPanel" class="management-alerts">
+        <summary class="management-alerts-summary">
+          <span class="management-alerts-heading">Avisos gerenciais <small>Gestão dos relatórios do Tesouro Gerencial</small></span>
+          <span id="managementAlertCount" class="management-alert-count" aria-live="polite">Carregando...</span>
+        </summary>
+        <div class="management-alerts-body">
+          <p class="management-alerts-description">Acompanhamento de atualização, qualidade das fontes e indicadores que exigem conferência pela gestão dos relatórios.</p>
+          <div id="managementAlerts" class="alerts-list"><p class="alert-empty">Carregando avisos gerenciais...</p></div>
+        </div>
+      </details>
       <div class="dashboard-kpis">
         <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
         <div class="kpi-card"><span>Crédito disponível (R$)</span><strong id="creditAvailable">-</strong><small>Saldo na posição atual do relatório</small></div>
@@ -56,7 +62,18 @@
         <article class="chart-card"><div class="chart-card-head"><h3>Execução das despesas — posição atual</h3><details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Compara os montantes atuais de empenhado, liquidado e pago na última extração disponível. Não representa evolução temporal nem lançamentos de cada mês.</p></details></div><div class="chart-value" id="trendValue">-</div><div class="chart-slot" id="expenseTrendChart"></div><div class="chart-legend">Comparativo de valores consolidados, não histórico de lançamentos.</div></article>
         <article class="chart-card"><div class="chart-card-head"><h3>Uso do provisionado</h3><details class="chart-help"><summary aria-label="Explicar provisionamento">?</summary><p>Mostra quanto do orçamento provisionado já virou empenho. O saldo a empenhar indica a parte ainda não comprometida.</p></details></div><div class="chart-value" id="provisionShareValue">-</div><div class="chart-slot" id="provisionDonut"></div><div class="chart-legend"><span><i class="legend-dot legend-accent"></i>Empenhado</span><span><i class="legend-dot legend-accent-2"></i>Saldo a empenhar</span></div><div class="chart-note">Empenhado em relação ao orçamento provisionado.</div></article>
         <article class="chart-card"><div class="chart-card-head"><h3>Crédito disponível e provisionamentos</h3><details class="chart-help"><summary aria-label="Explicar saldos de crédito e provisionamento">?</summary><p>Compara dois valores auditados em relatórios distintos, sem presumir que sejam parcelas complementares do mesmo total. Não há reconstrução de movimentos por data.</p></details></div><div class="chart-value" id="creditShareValue">-</div><div class="chart-slot" id="creditDonut"></div><div class="chart-legend">Saldos da última extração; não são necessariamente partes de um mesmo total.</div><div class="chart-note">Não se presume que a diferença corresponda a valor empenhado ou utilizado.</div></article>
-        <article class="chart-card"><div class="chart-card-head"><h3>Restos a Pagar</h3><details class="chart-help"><summary aria-label="Explicar restos a pagar">?</summary><p>Restos a pagar são compromissos de anos anteriores. O gráfico separa o que já foi pago do que ainda está a pagar.</p></details></div><div class="chart-value" id="rapShareValue">-</div><div class="chart-slot" id="rapStackChart"></div><div class="chart-legend"><span><i class="legend-dot legend-accent"></i>Pago</span><span><i class="legend-dot legend-accent-2"></i>A pagar</span></div></article>
+        <article class="chart-card">
+          <div class="chart-card-head">
+            <h3>Restos a Pagar — pagos e a pagar</h3>
+            <details class="chart-help"><summary aria-label="Explicar composição dos restos a pagar">?</summary><p>O percentual mostra RAP pago dividido pela soma de RAP pago e RAP a pagar, conforme os indicadores auditados. Não utiliza o valor originalmente inscrito como denominador.</p></details>
+          </div>
+          <div class="rap-share-summary">
+            <strong id="rapShareValue">-</strong>
+            <span id="rapShareMeaning">do total acompanhado já foi pago</span>
+          </div>
+          <div class="chart-slot" id="rapStackChart"></div>
+          <p class="chart-note">Base: RAP pago + RAP a pagar, e não o total originalmente inscrito.</p>
+        </article>
         <article class="chart-card"><div class="chart-card-head"><h3>GRU por mês de emissão</h3><details class="chart-help"><summary aria-label="Explicar GRU por mês de emissão">?</summary><p>Agrupa as movimentações líquidas dos documentos pelo mês de emissão indicado no próprio relatório. O gráfico só é exibido quando a soma reconcilia com a métrica auditada; emissão não é necessariamente a data da arrecadação.</p></details></div><div class="chart-value" id="gruValue">-</div><div class="chart-slot" id="gruTreeChart"></div><div class="chart-legend" id="gruLegend"></div></article>
         <article class="chart-card"><div class="chart-card-head"><h3>% empenhado do provisionado</h3><details class="chart-help"><summary aria-label="Explicar percentual empenhado">?</summary><p>Indica a parcela do provisionamento que já foi formalmente comprometida como despesa.</p></details></div><div class="chart-value" id="committedGaugeValue">-</div><div class="chart-slot" id="committedGauge"></div></article>
         <article class="chart-card"><div class="chart-card-head"><h3>% liquidado do empenhado</h3><details class="chart-help"><summary aria-label="Explicar percentual liquidado">?</summary><p>Indica quanto dos empenhos já teve entrega reconhecida e está apto ao pagamento.</p></details></div><div class="chart-value" id="liquidatedGaugeValue">-</div><div class="chart-slot" id="liquidatedGauge"></div></article>

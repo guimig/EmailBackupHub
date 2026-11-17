@@ -380,7 +380,12 @@ let indexData = null;
       setText('trendValue', isAvailable(committed) ? `${formatMoney(committed)} empenhados` : 'indisponivel');
       setText('provisionShareValue', formatPercent(committed, provisioned));
       setText('creditShareValue', formatMoney(credit));
-      setText('rapShareValue', formatPercent(rapPaid, rapTotal));
+      const rapCompositionValid = isAvailable(rapPaid) && isAvailable(rapPayable)
+        && valueOf(rapPaid) >= 0 && valueOf(rapPayable) >= 0 && valueOf(rapTotal) > 0;
+      setText('rapShareValue', rapCompositionValid ? formatPercent(rapPaid, rapTotal) : '-');
+      setText('rapShareMeaning', rapCompositionValid
+        ? 'do total de RAP acompanhado já foi pago'
+        : 'percentual indisponível: total nulo, negativo ou não auditável');
       setText('gruValue', formatMoney(gru));
       setText('committedGaugeValue', formatPercent(committed, provisioned));
       setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
@@ -752,7 +757,7 @@ let indexData = null;
       setInsight('trendValue', 'Situacao da despesa', `Fotografia dos valores auditados na extração mais recente, sem reconstituir datas de lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setInsight('provisionShareValue', 'Uso do provisionado', percentInsight(values.committed, values.provisioned, 'do provisionamento ja esta empenhado.'));
       setInsight('creditShareValue', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
-      setInsight('rapShareValue', 'Restos a pagar', percentInsight(values.rapPaid, values.rapTotal, 'dos restos a pagar ja foram pagos.'));
+      setInsight('rapShareValue', 'Proporção de RAP pagos', percentInsight(values.rapPaid, values.rapTotal, 'de RAP pago + RAP a pagar corresponde ao valor pago, sem usar o total originalmente inscrito.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
       setInsight('committedGaugeValue', '% empenhado do provisionado', percentInsight(values.committed, values.provisioned, 'do orcamento provisionado ja foi empenhado.'));
       setInsight('liquidatedGaugeValue', '% liquidado do empenhado', percentInsight(values.liquidated, values.committed, 'do empenhado ja foi liquidado.'));
@@ -763,7 +768,7 @@ let indexData = null;
       setElementInsight('expenseTrendChart', 'Execução da despesa na última extração', `Comparação entre indicadores atuais, não evolução por lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setElementInsight('provisionDonut', 'Uso do provisionado', `Parte empenhada: ${formatMoney(values.committed)}. Saldo estimado a empenhar: ${formatMoney(values.provisionOpen)}. ${auditSources([values.committed, values.provisionOpen])}`);
       setElementInsight('creditDonut', 'Crédito disponível e provisionado', `Comparação de dois saldos auditados, sem subtração ou hipótese de composição. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
-      setElementInsight('rapStackChart', 'Restos a pagar', `Pagos: ${formatMoney(values.rapPaid)}. A pagar: ${formatMoney(values.rapPayable)}. Total acompanhado: ${formatMoney(values.rapTotal)}. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
+      setElementInsight('rapStackChart', 'Composição de Restos a Pagar', `RAP pagos: ${formatMoney(values.rapPaid)}. RAP a pagar: ${formatMoney(values.rapPayable)}. Base do percentual: a soma dessas duas parcelas, ${formatMoney(values.rapTotal)}. Não é o total originalmente inscrito. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
       setElementInsight('gruTreeChart', 'GRU por mês de emissão', `O total de ${formatMoney(values.gru)} é auditado. As barras mensais são recompostas pelos documentos e só aparecem se sua soma reconciliar; o mês da emissão não é necessariamente a data da arrecadação efetiva. ${auditSource(values.gru)}`);
       setElementInsight('committedGauge', 'Percentual empenhado', percentInsight(values.committed, values.provisioned, 'do provisionado ja virou empenho.'));
       setElementInsight('liquidatedGauge', 'Percentual liquidado', percentInsight(values.liquidated, values.committed, 'do empenhado ja teve entrega reconhecida.'));
@@ -872,23 +877,45 @@ let indexData = null;
       if (!isAvailable(paid) || !isAvailable(payable)) return unavailableChart(id);
       const paidValue = valueOf(paid);
       const payableValue = valueOf(payable);
-      const max = Math.max(paidValue, payableValue);
-      if (!Number.isFinite(max) || max <= 0) return unavailableChart(id);
-      const paidHeight = Math.max(2, paidValue / max * 100);
-      const payableHeight = Math.max(2, payableValue / max * 100);
-      byId(id).innerHTML = `
-        <div class="rap-bars" role="img" aria-label="Restos a pagar pagos e a pagar em barras">
-          <div class="rap-bar-item" title="RAP pago: ${escapeHtml(formatMoney(paid))}">
-            <div class="rap-bar-track"><div class="rap-bar-fill paid" style="height:${paidHeight}%"></div></div>
-            <span class="rap-bar-label">Pago</span>
-            <strong class="rap-bar-value">${escapeHtml(formatMoney(paid))}</strong>
-          </div>
-          <div class="rap-bar-item" title="RAP a pagar: ${escapeHtml(formatMoney(payable))}">
-            <div class="rap-bar-track"><div class="rap-bar-fill open" style="height:${payableHeight}%"></div></div>
-            <span class="rap-bar-label">A pagar</span>
-            <strong class="rap-bar-value">${escapeHtml(formatMoney(payable))}</strong>
-          </div>
-        </div>`;
+      const total = paidValue + payableValue;
+      if (!Number.isFinite(total) || paidValue < 0 || payableValue < 0) {
+        byId(id).innerHTML = '<p class="chart-empty" role="status">Não é possível representar a composição: verifique os valores auditados de RAP pagos e a pagar.</p>';
+        return;
+      }
+      if (total === 0) {
+        byId(id).innerHTML = '<p class="chart-empty" role="status">RAP pagos e a pagar são ambos R$ 0,00. Não há total positivo para calcular uma proporção.</p>';
+        return;
+      }
+      const paidPercent = paidValue / total * 100;
+      const payablePercent = payableValue / total * 100;
+      const percentLabel = value => (value / total).toLocaleString('pt-BR', {
+        style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1
+      });
+      const formatValue = value => escapeHtml(formatMoney(value));
+      const url = chartSourceUrl('restos-a-pagar-rap');
+      const detailsLink = url
+        ? '<a class="rap-composition-link" href="' + escapeHtml(url) + '">Consultar relatório de Restos a Pagar</a>'
+        : '';
+      byId(id).innerHTML =
+        '<div class="rap-composition" role="group" aria-label="Composição de RAP pagos e a pagar, relativa ao total acompanhado">' +
+          '<div class="rap-composition-track" role="img" aria-label="RAP pago: ' + escapeHtml(percentLabel(paidValue)) +
+              '; RAP a pagar: ' + escapeHtml(percentLabel(payableValue)) + '">' +
+            '<span class="rap-composition-fill paid" style="width:' + paidPercent.toFixed(3) + '%"></span>' +
+            '<span class="rap-composition-fill open" style="width:' + payablePercent.toFixed(3) + '%"></span>' +
+          '</div>' +
+          '<dl class="rap-composition-details">' +
+            '<div class="rap-composition-item">' +
+              '<dt><i class="legend-dot legend-accent" aria-hidden="true"></i>RAP pagos</dt>' +
+              '<dd><strong>' + formatValue(paidValue) + '</strong><span>' + escapeHtml(percentLabel(paidValue)) + '</span></dd>' +
+            '</div>' +
+            '<div class="rap-composition-item">' +
+              '<dt><i class="legend-dot legend-accent-2" aria-hidden="true"></i>RAP a pagar</dt>' +
+              '<dd><strong>' + formatValue(payableValue) + '</strong><span>' + escapeHtml(percentLabel(payableValue)) + '</span></dd>' +
+            '</div>' +
+          '</dl>' +
+          '<div class="rap-composition-total">Total acompanhado (base dos percentuais): <strong>' + formatValue(total) + '</strong></div>' +
+          detailsLink +
+        '</div>';
     }
 
     function gruBreakdown() {
@@ -913,6 +940,7 @@ let indexData = null;
       ];
       const container = byId('managementAlerts');
       if (!container) return;
+      setText('managementAlertCount', alerts.length === 1 ? '1 aviso' : String(alerts.length) + ' avisos');
       if (!alerts.length) {
         container.innerHTML = '<p class="alert-empty">Nenhum alerta gerencial identificado.</p>';
         return;
