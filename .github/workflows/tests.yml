@@ -74,7 +74,9 @@ jobs:
         run: |
           node --check assets/js/report-viewer-filters.js
           node --check assets/js/report-viewer.js
-          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs
+          node --check assets/js/interactive-charts.js
+          node --check assets/js/dashboard.js
+          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs
 
       - name: Browser UX smoke test (desktop and mobile)
         run: |
