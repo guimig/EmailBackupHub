@@ -7,6 +7,13 @@ let report = null;
     let renderTimer = null;
     let restoringState = false;
     let reportDefinitions = {};
+    const Filters = window.EmailBackupHubFilters;
+    let filterColumn = null;
+    let currentPage = 1;
+    let pageSize = 50;
+    let filteredCache = null;
+    let columnMetaCache = new Map();
+    let columnOptionsCache = new Map();
     const byId = id => document.getElementById(id);
 
     const THEME_KEY = 'dap-dashboard-theme';
@@ -158,6 +165,11 @@ let report = null;
       renderMetricAudit();
       columnFilters = {};
       columnSort = { column: null, direction: '' };
+      filteredCache = null;
+      columnMetaCache = new Map();
+      columnOptionsCache = new Map();
+      currentPage = 1;
+      pageSize = 50;
       visibleColumns = new Set(report.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
@@ -170,20 +182,46 @@ let report = null;
       renderRows();
     }
 
+    function columnMetaFor(column) {
+      if (columnMetaCache.has(column)) return columnMetaCache.get(column);
+      let meta = Filters.columnMeta(report, column);
+      if (Filters.filterKind(meta) === 'choices') {
+        const options = Filters.distinctOptions(report.rows || [], column, meta);
+        if (options) columnOptionsCache.set(column, options);
+        else meta = { ...meta, type: 'text', filter_kind: 'text', inferred_from: 'high_cardinality_fallback' };
+      }
+      columnMetaCache.set(column, meta);
+      return meta;
+    }
+
     function filteredRows() {
       const term = normalize(byId('globalSearch').value);
+      const cacheKey = JSON.stringify([term, columnFilters, columnSort, byId('showTotals').checked]);
+      if (filteredCache?.report === report && filteredCache.key === cacheKey) return filteredCache.rows;
+      const filters = Object.entries(columnFilters)
+        .filter(([, spec]) => Boolean(spec))
+        .map(([column, spec]) => [column, spec, columnMetaFor(column)]);
       const rows = visibleRows().filter(item => {
         const row = item.raw || item;
-        const values = Object.values(row).join(' ');
-        if (term && !normalize(values).includes(term)) return false;
-        return Object.entries(columnFilters).every(([column, value]) => !value || normalize(row[column]).includes(normalize(value)));
+        if (term && !normalize(Object.values(row).join(' ')).includes(term)) return false;
+        return filters.every(([column, spec, meta]) =>
+          typeof spec === 'string'
+            ? normalize(row[column]).includes(normalize(spec)) // Preserve old ?f0=... URLs.
+            : Filters.matches(row[column], spec, meta)
+        );
       });
-      if (!columnSort.column || !columnSort.direction) return rows;
-      return rows.sort((a, b) => {
-        const av = sortCellValue((a.raw || a)[columnSort.column]);
-        const bv = sortCellValue((b.raw || b)[columnSort.column]);
-        return compareCellValues(av, bv) * (columnSort.direction === 'az' ? 1 : -1);
-      });
+      if (columnSort.column && columnSort.direction) {
+        const meta = columnMetaFor(columnSort.column);
+        const factor = columnSort.direction === 'az' ? 1 : -1;
+        rows.sort((a, b) => {
+          const av = (a.raw || a)[columnSort.column];
+          const bv = (b.raw || b)[columnSort.column];
+          if (Filters.isEmpty(av) !== Filters.isEmpty(bv)) return Filters.isEmpty(av) ? 1 : -1;
+          return Filters.compare(av, bv, meta) * factor;
+        });
+      }
+      filteredCache = { report, key: cacheKey, rows };
+      return rows;
     }
 
     function visibleReportColumns() {
