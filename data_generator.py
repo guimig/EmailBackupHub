@@ -10,6 +10,9 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from column_schema import COLUMN_SCHEMA_VERSION, build_column_schema
+from dashboard_summary import SUMMARY_VERSION, compact_report
+
 from config import BACKUP_FOLDER, REPO_ROOT, TIMEZONE
 from report_definitions import (
     REPORT_DEFINITIONS,
@@ -39,6 +42,7 @@ SOURCE_MAP_PATH = DATA_DIR / "source-map.json"
 CACHE_INDEX_PATH = DATA_DIR / "cache-index.json"
 RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
+DASHBOARD_SUMMARY_PATH = DATA_DIR / "dashboard-summary.json"
 SCHEMA_VERSION = "1.6"
 PARSER_VERSION = "2026-10-08.1"
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
@@ -460,6 +464,20 @@ def full_report_document(file_path, source_map, now):
     return annotate_metrics(doc)
 
 
+def annotate_column_schema(doc):
+    """Attach non-destructive column metadata for known and future report types."""
+    columns = doc.get("columns") or []
+    if not columns:
+        doc["column_schema_version"] = COLUMN_SCHEMA_VERSION
+        doc["column_schema"] = []
+        return doc
+    definition = report_definition(doc.get("slug") or "")
+    overrides = definition.get("column_schema_overrides") or {}
+    doc["column_schema_version"] = COLUMN_SCHEMA_VERSION
+    doc["column_schema"] = build_column_schema(columns, doc.get("rows") or [], overrides)
+    return doc
+
+
 def light_history_document(file_path, title, slug, source_map, now):
     report_date, date_issue = parse_date_from_name(file_path)
     source_path = rel_path(file_path)
@@ -801,6 +819,7 @@ def generate_data_files():
     SERIES_DIR.mkdir(parents=True, exist_ok=True)
     reports = []
     search_documents = []
+    summary_reports = {}
     history_count = 0
     json_files = []
     retention_items = []
@@ -841,6 +860,7 @@ def generate_data_files():
         if latest_path not in retained_lookup:
             latest_path = retained_paths[-1]["path"]
         latest_doc, latest_hash = cached_document(latest_path, source_map, now, new_cache_index, retention_summary)
+        annotate_column_schema(latest_doc)
         report_json_path = REPORTS_DIR / f"{slug}.json"
         write_json(report_json_path, latest_doc)
         json_files.append(rel_path(report_json_path))
@@ -852,6 +872,7 @@ def generate_data_files():
                 doc, content_hash = latest_doc, latest_hash
             else:
                 doc, content_hash = cached_document(path, source_map, now, new_cache_index, retention_summary)
+                annotate_column_schema(doc)
             snapshots.append(doc)
             snapshot_name = f"{doc['date_iso']}-{doc['metadata']['hash_conteudo'][:12]}.json"
             snapshot_path = SNAPSHOTS_DIR / slug / snapshot_name
@@ -867,7 +888,9 @@ def generate_data_files():
             json_files.append(rel_path(snapshot_path))
             retention_summary["snapshots_written"] += 1
         series_path = SERIES_DIR / f"{slug}.json"
-        write_json(series_path, build_series(slug, snapshots))
+        series_document = build_series(slug, snapshots)
+        write_json(series_path, series_document)
+        summary_reports[slug] = compact_report(latest_doc, series_document)
         json_files.append(rel_path(series_path))
         history_count += len(snapshots)
         reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
@@ -880,10 +903,16 @@ def generate_data_files():
     report_definitions_path = write_report_definitions(now)
     write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count})
     write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
+    write_json(DASHBOARD_SUMMARY_PATH, {
+        "schema_version": SCHEMA_VERSION,
+        "summary_version": SUMMARY_VERSION,
+        "generated_at": now.isoformat(),
+        "reports": summary_reports,
+    })
     write_json(cache_index_path, new_cache_index)
     retention_summary["duration_seconds"] = elapsed_seconds(generation_started)
     write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": retention_policy(), "summary": retention_summary, "reports": retention_items})
-    json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
+    json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(DASHBOARD_SUMMARY_PATH), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
     print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")
     return {

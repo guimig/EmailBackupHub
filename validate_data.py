@@ -216,6 +216,23 @@ def validate_report_json(path: Path, validation: Validation) -> None:
     if quality is not None and not isinstance(quality, dict):
         validation.warn(f"quality deveria ser objeto em {rel(path)}")
 
+    column_schema = data.get("column_schema")
+    if column_schema is not None:
+        if not isinstance(column_schema, list):
+            validation.error(f"column_schema deve ser lista em {rel(path)}")
+        elif isinstance(columns, list):
+            schema_names = [item.get("name") if isinstance(item, dict) else None for item in column_schema]
+            if schema_names != columns:
+                validation.error(f"column_schema nao corresponde aos cabecalhos em {rel(path)}")
+            for item in column_schema:
+                if not isinstance(item, dict):
+                    continue
+                if item.get("type") not in {"money", "number", "percent", "date", "period", "category", "identifier", "text", "boolean"}:
+                    validation.error(f"Tipo de coluna invalido em {rel(path)}: {item.get('type')}")
+                period = item.get("period")
+                if isinstance(period, dict) and period.get("number") in {13, 14} and period.get("calendar_month") is not False:
+                    validation.error(f"Periodo contabil interpretado como mes civil em {rel(path)}")
+
     if slug == RAP_SLUG:
         validate_rap_metrics_payload(
             validation,
@@ -319,6 +336,24 @@ def validate_all_jsons(validation: Validation) -> None:
         path = DATA_DIR / item
         if path.exists():
             read_json(path, validation)
+
+    summary_path = DATA_DIR / "dashboard-summary.json"
+    if summary_path.exists():
+        summary = read_json(summary_path, validation)
+        if not isinstance(summary, dict) or not isinstance(summary.get("reports"), dict):
+            validation.error("data/dashboard-summary.json nao contem mapa de relatorios")
+        else:
+            index = read_json(DATA_DIR / "index.json", validation)
+            if isinstance(index, dict) and summary.get("generated_at") != index.get("generated_at"):
+                validation.warn("Resumo do dashboard com geracao diferente do indice: fallback sera usado")
+            for slug, document in summary["reports"].items():
+                if not isinstance(document, dict) or document.get("slug") != slug:
+                    validation.error(f"Resumo invalido para {slug}")
+                    continue
+                if "rows" in document:
+                    validation.error(f"Resumo contem linhas de detalhe desnecessarias: {slug}")
+                if not isinstance(document.get("series_data", {}).get("series"), list):
+                    validation.error(f"Resumo sem serie em formato esperado: {slug}")
 
 
 def validate_run_log_security(validation: Validation) -> None:

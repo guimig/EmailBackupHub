@@ -223,6 +223,31 @@ python -m unittest discover -s tests
 
 No GitHub Actions, os testes rodam depois da instalação das dependências e antes de `python main.py`. Assim, se uma regra crítica de parsing, retenção ou métrica falhar, a coleta não segue para o processamento de e-mails.
 
+## Etapa 2 — Metadados Semânticos e Resumo Compacto
+
+A geração mantém os relatórios HTML, o fluxo de IMAP, a publicação e os arquivos JSON de detalhe compatíveis com a versão anterior. Recursos adicionados:
+
+- **Metadados automáticos das colunas:** `column_schema_version` e `column_schema` em `data/reports/<slug>.json` e nos snapshots, sem alterar cabeçalhos nem células. A inferência usa amostragem limitada (até 256 linhas), indícios do nome da coluna e validação conservadora dos dados. Colunas sem evidência suficiente permanecem como texto.
+- **Tipos:** `text`, `identifier`, `category`, `boolean`, `number`, `money`, `percent`, `date`, `period`. `filter_kind`, confiança, origem e cobertura observada deixam a interface preparada para filtros por tipo na etapa seguinte.
+- **Competências especiais:** `013/2025` e `014/2025` mantêm seus nomes originais; os metadados indicam `kind: accounting_period`, `number: 13/14` e `calendar_month: false`. Não converter esses períodos em datas de janeiro/fevereiro do ano seguinte nem descartá-los.
+- **Identificadores:** NE, PTRES, RIP, CPF/CNPJ, códigos contábeis e outros identificadores não são convertidos em valores para operações matemáticas.
+- **Agregação:** a classificação monetária **não** autoriza soma automática. `aggregation` permanece `none`, salvo configuração explícita da coluna em `report_definitions.py` (`column_schema_overrides`). Isso evita somar saldos acumulados ou dados contábeis incompatíveis.
+- **Novos relatórios:** a inferência é genérica e não exige cadastro manual do `slug`. As regras explícitas são exceções para casos ambíguos, e não requisito para processamento.
+- **Resumo compacto:** `data/dashboard-summary.json` é produzido junto dos dados existentes, contendo informações selecionadas dos relatórios, totais auditáveis, métricas com proveniência e séries resumidas, **sem linhas de detalhe**. O dashboard verifica a coincidência de `generated_at` com `data/index.json`; se o resumo não existe, está desatualizado ou incompleto, usa os JSONs anteriores.
+
+O painel utiliza resumos somente quando consistentes e mantém as regras atuais de qualidade de RAP. O visualizador continua utilizando o JSON detalhado, e a página `relatorios.html` permanece inalterada.
+
+Validações sem acesso a e-mail:
+
+```bash
+python -m unittest discover -s tests
+node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs
+python validate_baseline.py
+python validate_data.py
+```
+
+Não usar `main.py` apenas para testar a interface: ele aciona a rotina de e-mails e publicação. A geração real do resumo ocorre na próxima execução regular já configurada, após o merge.
+
 ## GitHub Pages
 
 O projeto é compatível com GitHub Pages porque todo o consumo é feito por arquivos estáticos:
