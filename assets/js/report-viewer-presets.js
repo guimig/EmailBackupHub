@@ -74,6 +74,15 @@
     const groupColumn = checkColumn(input.groupColumn) ? input.groupColumn : '';
     const baseColumnWidth = Number.isInteger(input.baseColumnWidth) && input.baseColumnWidth >= 150 && input.baseColumnWidth <= 440
       ? input.baseColumnWidth : 250;
+    const proposedChart = input.chart && typeof input.chart === 'object' && !Array.isArray(input.chart) ? input.chart : null;
+    const chart = proposedChart && ['records','count','sum','wide'].includes(proposedChart.mode)
+      ? {
+        mode: proposedChart.mode,
+        type: ['bar','pie','line'].includes(proposedChart.type) ? proposedChart.type : 'bar',
+        dimension: proposedChart.dimension && checkColumn(proposedChart.dimension) ? proposedChart.dimension : '',
+        measure: proposedChart.measure && checkColumn(proposedChart.measure) ? proposedChart.measure : '',
+        limit: [10,15,30,60].includes(proposedChart.limit) ? proposedChart.limit : 15
+      } : null;
     return {
       state: {
         search: typeof input.search === 'string' ? input.search.slice(0, MAX_SEARCH) : '',
@@ -86,7 +95,8 @@
         pageSize: [25, 50, 100].includes(input.pageSize) ? input.pageSize : 50,
         wrapCells: input.wrapCells === true,
         baseColumnWidth,
-        columnWidths: widths
+        columnWidths: widths,
+        chart
       },
       removedColumns: [...invalidColumns]
     };
