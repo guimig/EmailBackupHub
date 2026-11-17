@@ -738,6 +738,7 @@ let report = null;
       if (!report) return;
       const columns = visibleReportColumns();
       const rows = filteredRows();
+      displayedRows = rows;
       const count = rows.length;
       const totalPages = Math.max(1, Math.ceil(count / pageSize));
       currentPage = Math.max(1, Math.min(currentPage, totalPages));
@@ -746,10 +747,12 @@ let report = null;
       const tbody = byId('table').querySelector('tbody');
       tbody.innerHTML = count
         ? groupedTableHtml(rows, columns, start, end)
-        : `<tr><td colspan="${Math.max(1, columns.length)}">Nenhum registro corresponde aos filtros.</td></tr>`;
+        : `<tr class="empty-row"><td colspan="${Math.max(1, columns.length + 1)}">Nenhum registro corresponde aos filtros. Ajuste ou remova os filtros para ampliar a pesquisa.</td></tr>`;
       byId('pageInfo').textContent = count
-        ? `Exibindo ${start + 1}–${end} de ${count} registros filtrados.`
+        ? `Exibindo ${start + 1}–${end} de ${count} registros.`
         : 'Nenhum registro encontrado.';
+      const quickStatus = byId('quickStatus');
+      if (quickStatus) quickStatus.textContent = `${count} registros · ${columns.length} de ${report.columns?.length || 0} colunas`;
       byId('pageNumber').textContent = `Página ${currentPage} de ${totalPages}`;
       byId('previousPage').disabled = currentPage <= 1;
       byId('nextPage').disabled = currentPage >= totalPages;
@@ -771,7 +774,7 @@ let report = null;
         const to = Math.min(group.rows.length, end - groupStart);
         const label = `${friendlyColumnName(groupColumn)}: ${group.key}`;
         output.push(`
-          <tr class="group-row"><td colspan="${Math.max(1, columns.length)}">${escapeHtml(label)}
+          <tr class="group-row"><td colspan="${Math.max(1, columns.length + 1)}">${escapeHtml(label)}
             (${group.rows.length} linha(s)${from ? ', continuação' : ''})</td></tr>
           ${group.rows.slice(from, to).map(item => rowHtml(item, columns)).join('')}
         `);
@@ -784,20 +787,53 @@ let report = null;
       return output.join('');
     }
 
+
     function rowHtml(item, columns) {
       const row = item.raw || item;
       const isTotal = item.type === 'total';
-      return `<tr class="${isTotal ? 'total-row' : ''}">${columns.map(column => `<td>${escapeHtml(row[column])}</td>`).join('')}</tr>`;
+      const index = displayedRows.indexOf(item);
+      const cells = columns.map((column, position) => {
+        const value = String(row[column] ?? '');
+        const safe = escapeHtml(value);
+        return `<td class="${position === 0 ? 'first-data-col' : ''}"
+          title="${escapeHtml(value.slice(0, 300))}"><span class="cell-value">${safe || '—'}</span></td>`;
+      }).join('');
+      return `<tr class="${isTotal ? 'total-row' : ''}">
+        <td class="row-open-cell"><button class="row-open-button" type="button"
+          data-open-row="${index}" aria-label="Abrir registro ${index + 1} completo" title="Ver todos os campos">↗</button></td>
+        ${cells}
+      </tr>`;
     }
 
     function groupSummaryRowHtml(totals, columns, label) {
       if (!totals.length) return '';
       const totalByColumn = new Map(totals.map(item => [item.column, item]));
-      return `<tr class="group-summary">${columns.map((column, index) => {
+      return `<tr class="group-summary"><td class="row-open-cell"></td>${columns.map((column, index) => {
         const total = totalByColumn.get(column);
-        if (total) return `<td>${escapeHtml(formatMoneyValue(total.total))}</td>`;
-        return `<td>${index === 0 ? escapeHtml(label) : ''}</td>`;
+        if (total) return `<td class="${index === 0 ? 'first-data-col' : ''}">${escapeHtml(formatMoneyValue(total.total))}</td>`;
+        return `<td class="${index === 0 ? 'first-data-col' : ''}">${index === 0 ? escapeHtml(label) : ''}</td>`;
       }).join('')}</tr>`;
+    }
+
+    function openRowDetails(index) {
+      if (!report || !Number.isSafeInteger(index) || index < 0 || index >= displayedRows.length) return;
+      const item = displayedRows[index];
+      const row = item.raw || item;
+      const names = friendlyColumns(report.columns || []);
+      byId('rowDialogTitle').textContent = `Registro ${index + 1}${item.type === 'total' ? ' · Total' : ''}`;
+      byId('rowDetails').innerHTML = (report.columns || []).map((column, position) => `
+        <div><dt>${escapeHtml(names[position] || column)}</dt>
+          <dd>${escapeHtml(row[column] ?? '') || '—'}</dd></div>
+      `).join('');
+      const dialog = byId('rowDialog');
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    }
+
+    function closeRowDetails() {
+      const dialog = byId('rowDialog');
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
     }
 
     function customTotalRows(rows) {
