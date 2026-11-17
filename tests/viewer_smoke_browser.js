@@ -59,6 +59,11 @@
     qa.expandedMode = document.body.classList.contains('table-expanded')
       && $('readerWorkspace').getBoundingClientRect().width >= window.innerWidth - 30;
     $('expandTable').click();
+    $('tableWrap').blur();
+    $('expandTable').blur();
+    $('themeToggle').click();
+    qa.lightTheme = document.documentElement.dataset.theme === 'light' &&
+      getComputedStyle(document.body).backgroundColor !== 'rgba(0, 0, 0, 0)';
 
     qa.toolbarShort = $('readerWorkspace').querySelector('.toolbar').getBoundingClientRect().height < 115;
     qa.noRepeatedLongControls = $('table').querySelectorAll('[data-filter-column]').length === dataHeaders.length
