@@ -26,7 +26,7 @@
       gru.textContent.includes('2.500');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
       gru.textContent.includes('NOV/2026') &&
-      gru.textContent.includes('mês de emissão');
+      gru.textContent.toLocaleLowerCase('pt-BR').includes('mês de emissão');
     qa.provenanceInfoVisible = document.querySelector('.dashboard-provenance')
       ?.textContent.includes('não a data de cada lançamento');
     qa.noFalseHistorySelector = el('historyRange') === null;
