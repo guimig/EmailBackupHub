@@ -5,6 +5,10 @@ let indexData = null;
     let reportDefinitions = {};
     let sortKey = 'title';
     let sortDir = 1;
+    const Catalog = typeof window !== 'undefined' ? window.EmailBackupHubCatalog : null;
+    let catalogState = { version: 1, seen: [], unread: [], favorites: [] };
+    let catalogPersistence = false;
+    let catalogWarning = '';
     let searchIndexState = 'idle';
     let searchIndexPromise = null;
     const SERIES_MIN_DATE = '2026-01-01';
@@ -85,6 +89,7 @@ let indexData = null;
       indexData = await indexResponse.json();
       reportDefinitions = definitions;
       reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: '' }));
+      initializeCatalog();
       populateFilters();
       renderReportCatalog();
       // Os indicadores nao bloqueiam a listagem e nao sao recalculados durante a pesquisa.
@@ -123,6 +128,56 @@ let indexData = null;
       renderReportCatalog();
     }
 
+    function browserCatalogStorage() {
+      try { return localStorage; } catch { return null; }
+    }
+
+    function initializeCatalog() {
+      if (!Catalog) return;
+      const result = Catalog.read(browserCatalogStorage(), reports.map(report => report.slug));
+      catalogState = result.state;
+      catalogPersistence = result.available;
+      catalogWarning = result.message;
+      renderCatalogNotice();
+    }
+
+    function renderCatalogNotice() {
+      const panel = byId('catalogNotice');
+      if (!panel) return;
+      const count = catalogState.unread.length;
+      const parts = [];
+      if (count) parts.push(count + (count === 1
+        ? ' novo relatório identificado neste navegador desde o último acesso.'
+        : ' novos relatórios identificados neste navegador desde o último acesso.'));
+      if (catalogWarning) parts.push(catalogWarning);
+      panel.hidden = parts.length === 0;
+      byId('catalogNoticeText').textContent = parts.join(' ');
+      byId('catalogMarkSeen').hidden = count === 0;
+    }
+
+    function toggleCatalogFavorite(slug) {
+      if (!Catalog || !reports.some(report => report.slug === slug)) return;
+      catalogState = Catalog.toggleFavorite(catalogState, slug);
+      if (catalogPersistence && !Catalog.persist(browserCatalogStorage(), catalogState)) {
+        catalogPersistence = false;
+        catalogWarning = 'Favoritos disponíveis apenas durante esta visita.';
+      }
+      renderCatalogNotice();
+      renderReportCatalog();
+    }
+
+    function acknowledgeCatalogReports() {
+      if (!Catalog) return;
+      catalogState = Catalog.acknowledge(catalogState);
+      if (catalogPersistence && !Catalog.persist(browserCatalogStorage(), catalogState)) {
+        catalogPersistence = false;
+        catalogWarning = 'A marcação foi aplicada apenas nesta visita.';
+      }
+      byId('catalogScope').value = 'all';
+      renderCatalogNotice();
+      renderReportCatalog();
+    }
+
     function populateFilters() {
       const values = [...new Set(reports.map(report => report.metadata.periodicidade).filter(Boolean))].sort();
       byId('periodicity').insertAdjacentHTML('beforeend', values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join(''));
@@ -132,7 +187,9 @@ let indexData = null;
       const term = normalize(byId('search').value);
       const periodicity = byId('periodicity').value;
       const status = byId('status').value;
-      return reports.filter(report => {
+      const scope = byId('catalogScope')?.value || 'all';
+      const scoped = Catalog ? Catalog.filterByScope(reports, scope, catalogState) : reports;
+      return scoped.filter(report => {
         const matchesTerm = !term || normalize(`${report.displayTitle} ${report.title} ${report.date} ${report.html_path} ${report.searchText}`).includes(term);
         const matchesPeriodicity = !periodicity || report.metadata.periodicidade === periodicity;
         const matchesStatus = !status || reportStatus(report) === status;
@@ -250,17 +307,41 @@ let indexData = null;
         : searching && searchIndexState === 'error'
           ? '<tr><td colspan="7">Pesquisa por conteúdo indisponível; exibindo resultados por título e metadados.</td></tr>'
           : '';
-      byId('rows').innerHTML = searchNotice + rows.map(report => `
+      const emptyNotice = !rows.length && !searchNotice
+        ? '<tr><td colspan="7">Nenhum relatório corresponde aos filtros escolhidos.</td></tr>' : '';
+      byId('rows').innerHTML = searchNotice + emptyNotice + rows.map(report => {
+        const favorite = catalogState.favorites.includes(report.slug);
+        const unread = catalogState.unread.includes(report.slug);
+        const validFavorite = Catalog && Catalog.validSlug(report.slug);
+        const star = validFavorite
+          ? `<button type="button" class="catalog-favorite" data-favorite-report="${escapeHtml(report.slug)}"
+              aria-pressed="${favorite}" title="${favorite ? 'Retirar dos favoritos' : 'Adicionar aos favoritos'}"
+              aria-label="${favorite ? 'Retirar dos favoritos:' : 'Adicionar aos favoritos:'} ${escapeHtml(report.displayTitle)}">${favorite ? '★' : '☆'}</button>`
+          : '';
+        const newLabel = unread ? '<span class="catalog-new">Novo neste catálogo</span>' : '';
+        const htmlPath = safeCatalogLink(report.html_path);
+        const jsonPath = safeCatalogLink(report.json_path);
+        const seriesPath = safeCatalogLink(report.series_path);
+        return `
         <tr>
-          <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.displayTitle)}</a></td>
-          <td>${report.date}</td>
-          <td><span class="tag">${report.metadata.periodicidade}</span></td>
-          <td class="${reportStatus(report) === 'atualizado' ? 'ok' : 'bad'}">${reportStatus(report)}</td>
-          <td>${report.metadata.idade_dias} dias${reportLimit(report) != null ? ` / limite ${reportLimit(report)}` : ''}</td>
+          <td><div class="catalog-row-title">${star}<span>
+            <a href="report-viewer.html?report=${encodeURIComponent(jsonPath)}">${escapeHtml(report.displayTitle)}</a>${newLabel}
+          </span></div></td>
+          <td>${escapeHtml(report.date)}</td>
+          <td><span class="tag">${escapeHtml(report.metadata?.periodicidade)}</span></td>
+          <td class="${reportStatus(report) === 'atualizado' ? 'ok' : 'bad'}">${escapeHtml(reportStatus(report))}</td>
+          <td>${escapeHtml(report.metadata?.idade_dias)} dias${reportLimit(report) != null ? ` / limite ${escapeHtml(reportLimit(report))}` : ''}</td>
           <td>${qualityBadges(report)}</td>
-          <td><a href="${report.html_path}">HTML</a> | <a href="${report.json_path}">JSON</a> | <a href="${report.series_path}">Série</a></td>
-        </tr>
-      `).join('');
+          <td><a href="${escapeHtml(htmlPath)}">HTML</a> | <a href="${escapeHtml(jsonPath)}">JSON</a> | <a href="${escapeHtml(seriesPath)}">Série</a></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function safeCatalogLink(input) {
+      const path = String(input || '').trim();
+      if (!path || /^(?:[a-z][a-z0-9+.-]*:|\/\/|\/)/i.test(path)
+        || /(?:^|\/)\.\.(?:\/|$)/.test(path) || /[\\<>"'\r\n]/.test(path)) return '#';
+      return path;
     }
 
     function renderFinancialSummary() {
@@ -969,6 +1050,12 @@ let indexData = null;
     });
     byId('search').addEventListener('input', handleSearchInput);
     byId('periodicity').addEventListener('change', renderReportCatalog);
+    byId('catalogScope').addEventListener('change', renderReportCatalog);
+    byId('catalogMarkSeen').addEventListener('click', acknowledgeCatalogReports);
+    byId('rows').addEventListener('click', event => {
+      const button = event.target.closest('[data-favorite-report]');
+      if (button) toggleCatalogFavorite(button.dataset.favoriteReport);
+    });
     byId('status').addEventListener('change', renderReportCatalog);
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
