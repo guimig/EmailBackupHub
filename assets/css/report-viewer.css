@@ -233,3 +233,17 @@ body.table-expanded .pagination { flex: 0 0 auto; }
   .record-chart-track { grid-column: 1 / -1; grid-row: 2; }
   .report-chart-controls label { flex-basis:100%; }
 }
+
+/* Saved query presets: opt-in and tucked below the primary table. */
+.saved-view-controls { display:flex; align-items:end; flex-wrap:wrap; gap:10px; margin:13px 0 7px; }
+.saved-view-controls label { display:flex; flex-direction:column; gap:5px; flex:1 1 205px; min-width:180px; color:var(--muted); font-size:.82rem; }
+.saved-view-controls input, .saved-view-controls select { width:100%; min-height:38px; padding:8px 10px; }
+.saved-view-controls button { min-height:38px; padding:8px 11px; font-size:.83rem; }
+.saved-view-controls button:disabled { opacity:.45; cursor:not-allowed; }
+.saved-view-status { min-height:1.4em; margin:8px 0 0; font-size:.82rem; color:var(--muted); }
+#savedViewsCount { color:var(--brand); font-weight:500; }
+@media(max-width:700px) {
+  .saved-view-controls { align-items:stretch; }
+  .saved-view-controls label { flex:1 1 100%; }
+  .saved-view-controls button { flex:1 1 auto; }
+}

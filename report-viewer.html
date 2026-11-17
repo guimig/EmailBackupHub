@@ -118,6 +118,28 @@
       </div>
     </section>
 
+    <details id="savedViews" class="disclosure">
+      <summary>Minhas consultas salvas <span id="savedViewsCount"></span></summary>
+      <div class="disclosure-body">
+        <p>Guarde filtros, colunas, ordenação e preferências de leitura para usar novamente neste relatório. As configurações ficam somente neste navegador, inclusive os termos pesquisados; não são compartilhadas automaticamente nem incluem os dados do relatório.</p>
+        <div class="saved-view-controls">
+          <label for="savedViewName">Nome da nova consulta
+            <input id="savedViewName" type="text" autocomplete="off" maxlength="60" placeholder="Ex.: empenhos a liquidar">
+          </label>
+          <button id="saveView" type="button" class="secondary-button">Salvar consulta atual</button>
+          <label for="savedViewSelect">Consultas deste relatório
+            <select id="savedViewSelect" aria-label="Selecionar consulta salva">
+              <option value="">Nenhuma consulta salva</option>
+            </select>
+          </label>
+          <button id="loadView" type="button" class="secondary-button" disabled>Aplicar</button>
+          <button id="deleteView" type="button" class="secondary-button" disabled>Excluir</button>
+          <button id="copyViewLink" type="button" class="secondary-button">Copiar link da consulta atual</button>
+        </div>
+        <p id="savedViewStatus" class="saved-view-status" role="status" aria-live="polite"></p>
+      </div>
+    </details>
+
     <details id="reportChart" class="disclosure report-chart-disclosure">
       <summary>Visualizar dados em gráfico</summary>
       <div class="disclosure-body">
@@ -171,6 +193,7 @@
   </footer>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/report-viewer-filters.js"></script>
+  <script src="assets/js/report-viewer-presets.js"></script>
   <script src="assets/js/interactive-charts.js"></script>
   <script src="assets/js/report-viewer.js"></script>
 </body>
