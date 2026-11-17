@@ -127,6 +127,21 @@
       $('savedViewStatus').textContent.includes('excluída');
     $('savedViews').open = false;
 
+    qa.pageSizeOffersAllChoices = ['25','50','100','250','500','1000','all'].every(value =>
+      [...$('pageSize').options].some(option => option.value === value));
+    $('pageSize').value = 'all';
+    $('pageSize').dispatchEvent(new Event('change', { bubbles: true }));
+    qa.allRowsVisible = $('table').querySelectorAll('tbody tr[data-row-index]').length === 12 &&
+      $('pageInfo').textContent.includes('todas as 12 linhas filtradas');
+    qa.allRowsHasSinglePage = $('pageNumber').textContent === 'Página 1 de 1' &&
+      $('previousPage').disabled && $('nextPage').disabled;
+    qa.allRowsLinkShareable = new URLSearchParams(location.search).get('ps') === 'all';
+    $('pageSize').value = '100';
+    $('pageSize').dispatchEvent(new Event('change', { bubbles: true }));
+    qa.largerPageRestored = $('pageSize').value === '100' &&
+      new URLSearchParams(location.search).get('ps') === '100';
+    $('pageSize').value = '50';
+    $('pageSize').dispatchEvent(new Event('change', { bubbles: true }));
     qa.toolbarShort = $('readerWorkspace').querySelector('.toolbar').getBoundingClientRect().height < 115;
     qa.noRepeatedLongControls = $('table').querySelectorAll('[data-filter-column]').length === dataHeaders.length
       && $('table').querySelectorAll('thead select').length === 0;
