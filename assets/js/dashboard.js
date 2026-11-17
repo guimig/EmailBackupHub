@@ -961,7 +961,7 @@ let indexData = null;
     }
 
     const rangeSelect = byId('historyRange');
-    if (rangeSelect) rangeSelect.addEventListener('change', event => {
+    if (rangeSelect?.addEventListener) rangeSelect.addEventListener('change', event => {
       const chosen = Number(event.target.value);
       if (![0, 30, 90, 365].includes(chosen)) return;
       historyRange = chosen;
