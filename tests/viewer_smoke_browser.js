@@ -17,7 +17,7 @@
     const dataColumns = $('table').querySelectorAll('col[data-column-index]');
     const originalWidth = Number(dataColumns[0].style.width.replace('px', ''));
     const qa = {
-      loaded: $('title').textContent.includes('Crédito disponível'),
+      loaded: $('title').textContent.toLocaleLowerCase('pt-BR').includes('crédito disponível'),
       defaultDataOnly: rows.length === 12 && !$('showTotals').checked,
       progressiveDisclosure: !$('advancedTools').open && !$('sourceDetails').open,
       noSortSelectInHeader: $('table').querySelectorAll('thead select').length === 0,
