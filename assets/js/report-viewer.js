@@ -373,41 +373,119 @@ let report = null;
       return String(meaningful).replace(/\s+/g, ' ').trim();
     }
 
+
+    function defaultColumnWidth(column) {
+      if (columnWidths.has(column)) return columnWidths.get(column);
+      const kind = columnMetaFor(column)?.type;
+      const label = normalize(column);
+      const factor = kind === 'identifier' ? .83
+        : ['money', 'number', 'percent'].includes(kind) ? .85
+          : /descricao|observacao|historico|favorecido|justificativa/.test(label) ? 1.4
+            : /^(ptres|mes|ano|data)$/.test(label) ? .67 : 1;
+      return Math.max(150, Math.min(560, Math.round(baseColumnWidth * factor)));
+    }
+
+    function applyColumnSizing() {
+      const table = byId('table');
+      if (!table?.querySelectorAll) return;
+      const columns = visibleReportColumns();
+      const cols = table.querySelectorAll('col[data-column-index]');
+      let total = 52;
+      cols.forEach((col, index) => {
+        const width = defaultColumnWidth(columns[index]);
+        col.style.width = width + 'px';
+        total += width;
+      });
+      table.style.width = total + 'px';
+      table.style.minWidth = total + 'px';
+      byId('columnWidthValue').textContent = baseColumnWidth + ' px';
+    }
+
+    function toggleSort(column) {
+      if (columnSort.column !== column) columnSort = { column, direction: 'az' };
+      else if (columnSort.direction === 'az') columnSort.direction = 'za';
+      else columnSort = { column: null, direction: '' };
+      currentPage = 1;
+      renderTableShell();
+      renderRows();
+    }
+
+    function attachColumnResizers() {
+      document.querySelectorAll('[data-resize-column]').forEach(grip => {
+        const column = grip.dataset.resizeColumn;
+        grip.addEventListener('pointerdown', event => {
+          if (event.button !== 0) return;
+          event.preventDefault();
+          event.stopPropagation();
+          const startX = event.clientX;
+          const initialWidth = defaultColumnWidth(column);
+          const move = next => {
+            columnWidths.set(column, Math.max(150, Math.min(720, Math.round(initialWidth + next.clientX - startX))));
+            applyColumnSizing();
+          };
+          const finish = () => {
+            document.removeEventListener('pointermove', move);
+            document.removeEventListener('pointerup', finish);
+            document.removeEventListener('pointercancel', finish);
+          };
+          document.addEventListener('pointermove', move);
+          document.addEventListener('pointerup', finish);
+          document.addEventListener('pointercancel', finish);
+        });
+        grip.addEventListener('keydown', event => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          columnWidths.set(column, Math.max(150, Math.min(720, defaultColumnWidth(column) + (event.key === 'ArrowRight' ? 25 : -25))));
+          applyColumnSizing();
+        });
+      });
+    }
+
     function renderTableShell() {
       const columns = visibleReportColumns();
       const displayColumns = friendlyColumns(columns);
+      const tableWrap = byId('tableWrap');
+      const previousScroll = tableWrap?.scrollLeft || 0;
       byId('table').innerHTML = `
-        <thead><tr>${columns.map((column, index) => `
-          <th scope="col">
-            <span class="column-heading">${escapeHtml(displayColumns[index])}</span>
-            <div class="column-heading-actions">
-              <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
-                data-filter-column="${escapeHtml(column)}" aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
-                aria-pressed="${Boolean(columnFilters[column])}">Filtro${columnFilters[column] ? ' ●' : ''}</button>
-              <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
-                <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
-                <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>Crescente</option>
-                <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Decrescente</option>
-              </select>
-            </div>
-          </th>
-        `).join('')}</tr></thead>
+        <colgroup>
+          <col class="action-column" style="width:52px">
+          ${columns.map((column, index) => `<col data-column-index="${index}" style="width:${defaultColumnWidth(column)}px">`).join('')}
+        </colgroup>
+        <thead><tr>
+          <th class="action-head" scope="col" title="Abrir registro completo">Ver</th>
+          ${columns.map((column, index) => {
+            const active = columnSort.column === column && Boolean(columnSort.direction);
+            const sort = active ? (columnSort.direction === 'az' ? '↑' : '↓') : '↕';
+            const ariaSort = active ? (columnSort.direction === 'az' ? 'ascending' : 'descending') : 'none';
+            return `<th scope="col" class="${index === 0 ? 'first-data-col' : ''}" aria-sort="${ariaSort}">
+              <div class="th-inner">
+                <button type="button" data-sort-heading="${escapeHtml(column)}"
+                  class="sort-heading${active ? ' is-active' : ''}" title="Ordenar por ${escapeHtml(displayColumns[index])}">
+                  ${escapeHtml(displayColumns[index])}<span class="sort-mark" aria-hidden="true">${sort}</span>
+                </button>
+                <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
+                  data-filter-column="${escapeHtml(column)}" title="Filtrar ${escapeHtml(displayColumns[index])}"
+                  aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
+                  aria-pressed="${Boolean(columnFilters[column])}">⌕</button>
+              </div>
+              <span class="resize-grip" role="separator" tabindex="0" aria-orientation="vertical"
+                aria-label="Redimensionar ${escapeHtml(displayColumns[index])}" data-resize-column="${escapeHtml(column)}"></span>
+            </th>`;
+          }).join('')}
+        </tr></thead>
         <tbody></tbody>
         <tfoot></tfoot>
       `;
-      document.querySelectorAll('th button[data-filter-column]').forEach(button => {
+      applyColumnSizing();
+      if (tableWrap) tableWrap.scrollLeft = previousScroll;
+      document.querySelectorAll('[data-filter-column]').forEach(button => {
         button.addEventListener('click', event => openFilterEditor(event.currentTarget.dataset.filterColumn));
       });
-      document.querySelectorAll('th select[data-sort-column]').forEach(select => {
-        select.addEventListener('change', event => {
-          document.querySelectorAll('th select[data-sort-column]').forEach(item => {
-            if (item !== event.target) item.value = '';
-          });
-          columnSort = { column: event.target.dataset.sortColumn, direction: event.target.value };
-          currentPage = 1;
-          renderRows();
-        });
+      document.querySelectorAll('[data-sort-heading]').forEach(button => {
+        button.addEventListener('click', event => toggleSort(event.currentTarget.dataset.sortHeading));
       });
+      attachColumnResizers();
+      updateColumnCount();
     }
 
     function filterOperationOptions(operations, selected) {
