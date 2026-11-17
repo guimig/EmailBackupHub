@@ -108,6 +108,7 @@ label.toggle input { accent-color: var(--brand); }
 #table .resize-grip { position: absolute; right: -5px; top: 0; bottom: 0; width: 11px; cursor: col-resize; z-index: 8; touch-action: none; }
 #table .resize-grip:after { content: ""; position: absolute; top: 18px; bottom: 18px; left: 5px; border-left: 2px solid var(--line); }
 #table .resize-grip:hover:after, #table .resize-grip:focus-visible:after { border-color: var(--brand); }
+#table tbody tr.row-openable { cursor: pointer; }
 #table tbody tr:hover td { background: var(--soft-2); }
 #table tbody td { height: 43px; white-space: nowrap; }
 #table tbody .cell-value { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
