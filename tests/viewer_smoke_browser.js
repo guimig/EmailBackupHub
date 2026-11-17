@@ -54,6 +54,9 @@
     opener.click();
     qa.detailShowsAllColumns = $('rowDialog').open && $('rowDetails').querySelectorAll('dt').length === 11;
     $('closeRowDialog').click();
+    $('table').querySelector('tbody tr[data-row-index] td:not(.row-open-cell)').click();
+    qa.clickRowOpensDetails = $('rowDialog').open;
+    $('closeRowDialog').click();
 
     $('expandTable').click();
     qa.expandedMode = document.body.classList.contains('table-expanded')
