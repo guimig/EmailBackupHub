@@ -69,6 +69,7 @@
     qa.chartHasNoAutomaticTotal = $('reportChartVisual').querySelectorAll('[data-record-index]').length === 12;
     qa.chartSuggestionAvailable = $('chartSuggestedTitle').textContent.includes('Sugestão:') &&
       $('chartSuggestedReason').textContent.includes('sem somas automáticas');
+    qa.suggestionVisibleWhenCollapsed = $('chartPreview').textContent.includes('Maiores valores por registro');
     $('chartMode').value = 'count';
     $('chartMode').dispatchEvent(new Event('change', { bubbles:true }));
     $('chartDimension').value = 'Grupo Despesa';
