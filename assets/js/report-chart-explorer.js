@@ -23,6 +23,8 @@
       && !/(doc\s*-\s*valor|movim.*liquido|saldo\s*-|valor\s*-\s*r\$)/.test(h);
   }
   function typeFor(report,column,F) {
+    // Exported classification codes often look numeric but are not measures.
+    if (/^grupo despesa\s*\/\s*\d+$/i.test(norm(column))) return 'identifier';
     if (isIdHeader(column)) return 'identifier';
     const t=F.columnMeta(report,column).type;
     return ['money','number','percent','date','period','category','identifier','text'].includes(t)?t:'text';
@@ -197,6 +199,10 @@
     } else {
       if(!dimensions(report,F).includes(dimension)){result.reason='Escolha um campo de classificação ou período.';return result;}
       if(mode==='sum' && !numericColumns(report,F).includes(measure)){result.reason='Selecione uma coluna numérica para a soma explícita.';return result;}
+      if(mode==='sum' && typeFor(report,measure,F)==='percent'){
+        result.reason='Percentuais não devem ser somados como valores absolutos. Escolha uma medida aditiva ou a contagem.';
+        return result;
+      }
       const map=new Map();
       for(const item of data) {
         const key=safeKey(item.row,dimension);
