@@ -13,7 +13,7 @@
         <h1>DAP - Dashboard de Relatórios</h1>
         <p class="sub">Visualização complementar baseada na API estática em JSON. Os HTMLs originais permanecem preservados.</p>
       </div>
-      <div class="header-actions"><a class="theme-toggle header-link" href="relatorios.html">Relatórios</a><button id="themeToggle" class="theme-toggle" type="button">Tema escuro</button></div>
+      <div class="header-actions"><a class="theme-toggle header-link" href="#catalogo">Catálogo</a><a class="theme-toggle header-link" href="relatorios.html">Relatórios</a><button id="themeToggle" class="theme-toggle" type="button">Tema escuro</button></div>
     </div>
     <section class="dashboard-panel" aria-label="Resumo orçamentário e financeiro">
       <div class="dashboard-panel-head">
@@ -80,12 +80,21 @@
       <div class="metric"><strong id="staleReports">0</strong><span>desatualizados</span></div>
       <div class="metric"><strong id="qualityIssues">0</strong><span>com problema de parsing</span></div>
     </section>
-    <section class="toolbar">
+    <section class="toolbar" id="catalogo" aria-label="Localizar relatórios">
       <input id="search" type="search" placeholder="Pesquisar por título, data, termo, coluna ou conteúdo indexado">
       <select id="periodicity"><option value="">Todas periodicidades</option></select>
       <select id="status"><option value="">Todos status</option><option value="atualizado">Atualizado</option><option value="desatualizado">Desatualizado</option></select>
+      <select id="catalogScope" aria-label="Mostrar relatórios">
+        <option value="all">Todos os relatórios</option>
+        <option value="favorites">Somente favoritos</option>
+        <option value="new">Novos desde meu último acesso</option>
+      </select>
       <button id="exportCsv">Exportar CSV</button>
     </section>
+    <div id="catalogNotice" class="catalog-notice" hidden aria-live="polite">
+      <span id="catalogNoticeText"></span>
+      <button id="catalogMarkSeen" type="button" class="catalog-seen-button" hidden>Marcar novidades como vistas</button>
+    </div>
     <section class="table-wrap">
       <table>
         <thead>
@@ -117,6 +126,7 @@
   </footer>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/interactive-charts.js"></script>
+  <script src="assets/js/report-catalog.js"></script>
   <script src="assets/js/dashboard.js"></script>
 </body>
 </html>
