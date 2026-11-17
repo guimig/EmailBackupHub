@@ -36,6 +36,17 @@
       chart.querySelectorAll('circle.history-point').length === 4;
     qa.chartHelpAccessible = getComputedStyle(document.querySelector('.chart-help')).display !== 'none';
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
+    qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
+    const firstFavorite = document.querySelector('#rows [data-favorite-report]');
+    if (firstFavorite) firstFavorite.click();
+    qa.favoriteTogglePersists = document.querySelector('#rows [data-favorite-report]')?.getAttribute('aria-pressed') === 'true' &&
+      Boolean(localStorage.getItem('emailbackuphub:catalog:v1')?.includes('favorites'));
+    el('catalogScope').value = 'favorites';
+    el('catalogScope').dispatchEvent(new Event('change', { bubbles: true }));
+    qa.favoriteFilterWorks = document.querySelectorAll('#rows tr').length === 1;
+    el('catalogScope').value = 'all';
+    el('catalogScope').dispatchEvent(new Event('change', { bubbles: true }));
+    qa.allReportsRestored = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
   }
   setTimeout(verify, 100);
