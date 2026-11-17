@@ -52,6 +52,10 @@ jobs:
             credito-disponivel-mes-lancamento.html
             provisionamentos.html
             recolhimento-proprio-gru.html
+            data/reports/recolhimento-proprio-gru.json
+            data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json
+            data/reports/credito-disponivel-mes-lancamento.json
+            data/series/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
