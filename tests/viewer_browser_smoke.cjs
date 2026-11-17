@@ -56,9 +56,14 @@ const server = http.createServer((req,res)=>{
   res.writeHead(404).end('Not found');return;
  }
  let content=fs.readFileSync(filename);
- if(pathname==='/report-viewer.html')
+ if(pathname==='/report-viewer.html'){
+  const name=new URL(req.url,'http://localhost').searchParams.get('report')||'';
+  const script=name.includes('recolhimento-proprio-gru.json')||
+    name.includes('saldo-de-empenhos-a-liquidar-mes-a-mes.json')
+    ? 'smart_chart_browser.js' : 'viewer_smoke_browser.js';
   content=Buffer.from(content.toString('utf8').replace('</body>',
-    '<script src="/tests/viewer_smoke_browser.js"></script></body>'));
+    '<script src="/tests/'+script+'"></script></body>'));
+ }
  const mime=filename.endsWith('.js')?'text/javascript':filename.endsWith('.css')?'text/css':'text/html';
  res.writeHead(200,{'Content-Type':mime+'; charset=utf-8'}).end(content);
 });
@@ -104,6 +109,11 @@ async function main(){
  try{
   await launch(chrome,url,'desktop','1440,900');
   await launch(chrome,url,'mobile','440,900');
+  const base='http://127.0.0.1:'+server.address().port+'/report-viewer.html?report=';
+  await launch(chrome,base+'data/reports/recolhimento-proprio-gru.json','gru-desktop','1440,900');
+  await launch(chrome,base+'data/reports/recolhimento-proprio-gru.json','gru-mobile','440,900');
+  await launch(chrome,base+'data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json','saldo-desktop','1440,900');
+  await launch(chrome,base+'data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json','saldo-mobile','440,900');
  }finally{await new Promise(resolve=>server.close(resolve));}
 }
 main().catch(err=>{console.error(err);process.exitCode=1});

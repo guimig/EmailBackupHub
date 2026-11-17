@@ -1,4 +1,6 @@
-# Gráficos interativos — etapas 4 e 5
+# Gráficos interativos — histórico das etapas 4 e 5
+
+> **Documento histórico.** Os gráficos do dashboard foram corrigidos para distinguir data de extração de lançamento financeiro, conforme [proveniência financeira](financial-chart-provenance.md). O visualizador evoluiu para **gráficos inteligentes com barras, rosca, linhas e recomendação automática**, conforme [documentação atual](report-chart-explorer.md). As descrições abaixo registram as versões anteriores e não devem ser usadas como manual operacional vigente.
 
 ## Objetivo
 

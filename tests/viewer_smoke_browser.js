@@ -67,6 +67,33 @@
     qa.chartOpensOriginalRecord = $('rowDialog').open && $('rowDetails').querySelectorAll('dt').length === 11;
     if ($('rowDialog').open) $('closeRowDialog').click();
     qa.chartHasNoAutomaticTotal = $('reportChartVisual').querySelectorAll('[data-record-index]').length === 12;
+    qa.chartSuggestionAvailable = $('chartSuggestedTitle').textContent.includes('Sugestão:') &&
+      $('chartSuggestedReason').textContent.includes('sem somas automáticas');
+    qa.suggestionVisibleWhenCollapsed = $('chartPreview').textContent.includes('Maiores valores por registro');
+    $('chartMode').value = 'count';
+    $('chartMode').dispatchEvent(new Event('change', { bubbles:true }));
+    $('chartDimension').value = 'Grupo Despesa';
+    $('chartDimension').dispatchEvent(new Event('change', { bubbles:true }));
+    $('chartType').value = 'pie';
+    $('chartType').dispatchEvent(new Event('change', { bubbles:true }));
+    qa.pieShowsDistribution = $('reportChartVisual').querySelectorAll('.smart-chart-slice').length === 2;
+    $('reportChartVisual').querySelector('.smart-chart-slice').click();
+    qa.pieFiltersRealTable = $('pageInfo').textContent.includes(' de 8 registros') ||
+      $('pageInfo').textContent.includes(' de 4 registros');
+    $('clearFilters').click();
+    qa.clearRestoresFullSet = $('pageInfo').textContent.includes(' de 12 registros');
+    $('chartMode').value = 'sum';
+    $('chartMode').dispatchEvent(new Event('change', { bubbles:true }));
+    $('chartType').value = 'bar';
+    $('chartType').dispatchEvent(new Event('change', { bubbles:true }));
+    qa.sumRequiresInterpretation = $('chartSummary').textContent.includes('Soma configurada pelo usuário');
+    $('chartType').value = 'line';
+    $('chartType').dispatchEvent(new Event('change', { bubbles:true }));
+    qa.lineBlocksNonTemporal = $('chartSummary').textContent.includes('Linha exige uma coluna');
+    $('chartUseSuggestion').click();
+    qa.recommendationRestoresSafeDefault = $('chartMode').value === 'records' &&
+      $('chartType').value === 'bar' &&
+      $('reportChartVisual').querySelectorAll('[data-record-index]').length === 12;
     $('reportChart').open = false;
 
     $('expandTable').click();
