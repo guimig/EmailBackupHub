@@ -92,7 +92,8 @@
         groupColumn,
         groupSumColumns: sums,
         showTotals: input.showTotals === true,
-        pageSize: [25, 50, 100].includes(input.pageSize) ? input.pageSize : 50,
+        pageSize: input.pageSize === 'all' ? 'all'
+          : [25, 50, 100, 250, 500, 1000].includes(Number(input.pageSize)) ? Number(input.pageSize) : 50,
         wrapCells: input.wrapCells === true,
         baseColumnWidth,
         columnWidths: widths,
