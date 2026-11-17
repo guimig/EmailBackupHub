@@ -200,6 +200,12 @@ let report = null;
     function columnMetaFor(column) {
       if (columnMetaCache.has(column)) return columnMetaCache.get(column);
       let meta = Filters.columnMeta(report, column);
+      // Some Tesouro Gerencial exports infer code-like fields as numbers.
+      // Keep identifiers textual even when their values look numeric.
+      if (ChartExplorer && ChartExplorer.typeFor(report, column, Filters) === 'identifier'
+        && meta.type !== 'identifier') {
+        meta = { ...meta, type:'identifier', filter_kind:'text', inferred_from:'identifier_header' };
+      }
       if (Filters.filterKind(meta) === 'choices') {
         const options = Filters.distinctOptions(report.rows || [], column, meta);
         if (options) columnOptionsCache.set(column, options);
@@ -1557,7 +1563,14 @@ let report = null;
         pageSize,
         wrapCells: byId('wrapCells').checked,
         baseColumnWidth,
-        columnWidths: Object.fromEntries(columnWidths)
+        columnWidths: Object.fromEntries(columnWidths),
+        chart: chartSettings ? {
+          mode: chartSettings.mode,
+          type: chartSettings.type,
+          dimension: chartSettings.dimension,
+          measure: chartSettings.measure,
+          limit: chartSettings.limit
+        } : null
       };
     }
 
@@ -1627,6 +1640,9 @@ let report = null;
       renderColumnVisibilityControls();
       renderGroupingControls();
       renderRows();
+      chartSettings = state.chart ? { ...state.chart, rowIndex:0 } : null;
+      prepareReportChartControls();
+      if (byId('reportChart')?.open) renderReportChart();
       const removed = result.removedColumns.length;
       setSavedViewStatus(removed
         ? 'Consulta aplicada. ' + removed + ' coluna(s) já não existem neste relatório e foram ignoradas.'
