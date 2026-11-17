@@ -182,6 +182,23 @@ let indexData = null;
         'provisionamentos'
       ];
       const targets = reports.filter(report => slugs.includes(report.slug));
+      // O resumo e opcional, com versao e horario consistentes com o indice.
+      // Checkouts antigos continuam consumindo os JSONs completos sem modificacoes.
+      try {
+        const summaryResponse = await fetch('data/dashboard-summary.json');
+        if (summaryResponse.ok) {
+          const summary = await summaryResponse.json();
+          const entries = summary?.reports;
+          if (summary?.generated_at === indexData?.generated_at
+            && summary?.summary_version === '1'
+            && entries && targets.every(report => entries[report.slug]?.slug === report.slug)) {
+            financialReports = Object.fromEntries(targets.map(report => [report.slug, entries[report.slug]]));
+            return;
+          }
+        }
+      } catch (error) {
+        console.warn('Resumo compacto indisponivel; usando relatorios completos.', error);
+      }
       const loaded = await Promise.all(targets.map(async report => {
         try {
           const [reportResponse, seriesResponse] = await Promise.all([
