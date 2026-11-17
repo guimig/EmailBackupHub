@@ -1347,6 +1347,26 @@ let report = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
+
+    function setExpanded(next) {
+      expanded = Boolean(next);
+      document.body.classList.toggle('table-expanded', expanded);
+      byId('expandTable').textContent = expanded ? '↙ Sair da ampliação' : '⛶ Ampliar tabela';
+      byId('expandTable').setAttribute('aria-pressed', String(expanded));
+      if (expanded) byId('tableWrap').focus();
+    }
+
+    function applyWrapPreference() {
+      byId('readerWorkspace').classList.toggle('wrap-cells', byId('wrapCells').checked);
+    }
+
+    function clearColumnWidths() {
+      columnWidths.clear();
+      baseColumnWidth = 250;
+      byId('columnWidthRange').value = '250';
+      applyColumnSizing();
+    }
+
     byId('globalSearch').addEventListener('input', () => {
       currentPage = 1;
       scheduleRenderRows();
@@ -1355,18 +1375,17 @@ let report = null;
       clearTimeout(renderTimer);
       columnFilters = {};
       columnSort = { column: null, direction: '' };
-      visibleColumns = new Set(report?.columns || []);
       groupColumn = '';
       groupSumColumns = new Set();
       currentPage = 1;
       byId('globalSearch').value = '';
-      byId('showTotals').checked = true;
       closeFilterEditor();
       renderTableShell();
-      renderColumnVisibilityControls();
       renderGroupingControls();
       renderRows();
     });
+    byId('openFilterPanel').addEventListener('click', () => openFilterEditor(filterColumn || visibleReportColumns()[0] || report?.columns?.[0]));
+    byId('filterColumnPicker').addEventListener('change', event => openFilterEditor(event.target.value));
     byId('closeFilterEditor').addEventListener('click', closeFilterEditor);
     byId('applyColumnFilter').addEventListener('click', applyColumnFilter);
     byId('removeColumnFilter').addEventListener('click', () => removeColumnFilter(filterColumn));
@@ -1389,7 +1408,28 @@ let report = null;
       renderRows();
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && !byId('filterEditor').hidden) closeFilterEditor();
+      if (event.key !== 'Escape') return;
+      if (!byId('filterEditor').hidden) closeFilterEditor();
+      else if (!byId('columnPanel').hidden) closeColumnPanel();
+      else if (expanded && !byId('rowDialog').open) setExpanded(false);
+    });
+    byId('toggleColumns').addEventListener('click', toggleColumnPanel);
+    byId('closeColumnPanel').addEventListener('click', closeColumnPanel);
+    byId('columnSearch').addEventListener('input', refreshColumnSearch);
+    byId('showAllColumns').addEventListener('click', () => selectVisibleColumns(report?.columns || []));
+    byId('resetColumns').addEventListener('click', () => selectVisibleColumns(suggestedVisibleColumns()));
+    byId('columnWidthRange').addEventListener('input', event => {
+      baseColumnWidth = Number(event.target.value) || 250;
+      columnWidths.clear();
+      applyColumnSizing();
+    });
+    byId('resetWidths').addEventListener('click', clearColumnWidths);
+    byId('wrapCells').addEventListener('change', applyWrapPreference);
+    byId('expandTable').addEventListener('click', () => setExpanded(!expanded));
+    byId('closeRowDialog').addEventListener('click', closeRowDetails);
+    byId('table').addEventListener('click', event => {
+      const button = event.target.closest('[data-open-row]');
+      if (button) openRowDetails(Number(button.dataset.openRow));
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
