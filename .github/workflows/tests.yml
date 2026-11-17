@@ -52,6 +52,10 @@ jobs:
             credito-disponivel-mes-lancamento.html
             provisionamentos.html
             recolhimento-proprio-gru.html
+            data/reports/recolhimento-proprio-gru.json
+            data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json
+            data/reports/credito-disponivel-mes-lancamento.json
+            data/series/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -77,8 +81,9 @@ jobs:
           node --check assets/js/report-viewer-presets.js
           node --check assets/js/interactive-charts.js
           node --check assets/js/dashboard.js
+          node --check assets/js/financial-chart-provenance.js
           node --check assets/js/report-catalog.js
-          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs
+          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs tests/financial_chart_provenance.test.cjs
 
       - name: Browser UX smoke test (desktop and mobile)
         run: |
@@ -112,6 +117,13 @@ jobs:
 
       - name: Validate static baseline and data
         run: |
+          # This sparse checkout contains only four real JSON fixtures for
+          # financial provenance tests, not the complete generated data tree.
+          # Keep the existing validator's sparse-checkout behavior, without
+          # weakening its production rules or changing the Git repository.
+          if [ -d data ] && [ ! -f data/index.json ]; then
+            mv data "$RUNNER_TEMP/emailbackuphub-reference-fixtures"
+          fi
           python validate_baseline.py
           python validate_data.py
           python diagnose_headers.py --max-rows 8 restos-a-pagar-rap.html

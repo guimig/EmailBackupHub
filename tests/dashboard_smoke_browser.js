@@ -3,37 +3,40 @@
   let attempts = 0;
   function verify() {
     const el = id => document.getElementById(id);
-    const chart = el('expenseTrendChart');
-    const points = chart.querySelectorAll('circle.history-point');
-    if (!points.length) {
+
+    const expense = el('expenseTrendChart');
+    const credit = el('creditDonut');
+    const gru = el('gruTreeChart');
+    if (!expense.querySelector('.financial-comparison') || !gru.querySelector('.financial-monthly')) {
       if (attempts++ < 50) return setTimeout(verify, 100);
-      document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({loaded:false}));
+      document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({ loaded: false,
+        expense: expense.textContent.slice(0,100), gru: gru.textContent.slice(0,100) }));
       return;
     }
     const qa = {};
     qa.loaded = el('totalReports').textContent === '7';
     qa.auditedKpis = /50\.000/.test(el('committedTotal').textContent) &&
       /100\.000/.test(el('budgetBase').textContent);
-    qa.timeSeriesAvailable = points.length === 15;
-    qa.sourceLink = Boolean(chart.querySelector('a.history-source-link[href*="report-viewer.html"]'));
-    qa.legendVisible = chart.querySelectorAll('.history-series-toggle').length === 3;
-    qa.correctInitialRange = el('historyRange').value === '0';
-    const firstSeries = chart.querySelector('.history-series-toggle');
-    firstSeries.click();
-    qa.toggleSeries = firstSeries.dataset.seriesLabel &&
-      chart.querySelectorAll('circle.history-point').length === 10 &&
-      chart.querySelector('[data-series-label="' + firstSeries.dataset.seriesLabel + '"]').getAttribute('aria-pressed') === 'false';
-    el('historyRange').value = '30';
-    el('historyRange').dispatchEvent(new Event('change',{bubbles:true}));
-    qa.rangeUpdates = chart.querySelectorAll('circle.history-point').length === 4;
-    const point = chart.querySelector('circle.history-point');
-    point.dispatchEvent(new Event('focus'));
-    qa.pointDetails = chart.querySelector('.history-hover').textContent.includes('R$');
-    qa.temporalMetadata = chart.textContent.includes('Último ponto');
+    qa.expenseShowsCurrentBalances = expense.querySelectorAll('.financial-bar-row').length === 3 &&
+      !expense.querySelector('circle.history-point');
+    qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-bar-row').length === 2 &&
+      !credit.querySelector('circle.history-point');
+    qa.creditFigureIsNotTemporalPercent = el('creditShareValue').textContent.includes('40.000');
+    qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
+      gru.textContent.includes('2.500');
+    qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
+      gru.textContent.includes('NOV/2026') &&
+      gru.textContent.toLocaleLowerCase('pt-BR').includes('mês de emissão');
+    qa.provenanceInfoVisible = document.querySelector('.dashboard-provenance')
+      ?.textContent.includes('não a data de cada lançamento');
+    qa.noFalseHistorySelector = el('historyRange') === null;
+    qa.noSnapshotLinePoints = document.querySelectorAll('circle.history-point').length === 0;
+    qa.expenseSourceLink = Boolean(expense.querySelector('a.financial-chart-link[href*="report-viewer.html"]'));
     const oldTheme = document.documentElement.dataset.theme;
     el('themeToggle').click();
-    qa.themeKeepsHistory = document.documentElement.dataset.theme !== oldTheme &&
-      chart.querySelectorAll('circle.history-point').length === 4;
+    qa.themeKeepsAccurateCharts = document.documentElement.dataset.theme !== oldTheme &&
+      expense.querySelectorAll('.financial-bar-row').length === 3 &&
+      gru.querySelectorAll('.financial-month-row').length === 11;
     qa.chartHelpAccessible = getComputedStyle(document.querySelector('.chart-help')).display !== 'none';
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;

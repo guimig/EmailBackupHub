@@ -11,13 +11,9 @@ let indexData = null;
     let catalogWarning = '';
     let searchIndexState = 'idle';
     let searchIndexPromise = null;
-    const SERIES_MIN_DATE = '2026-01-01';
-    let historyRange = 0; // 0 = toda a serie confiavel.
-    const CHART_SOURCE_SLUG = {
-      expenseTrendChart: 'despesas-empenhadas-liquidadas-e-pagas-mes-lancamento',
-      creditDonut: 'credito-disponivel-mes-lancamento',
-      gruTreeChart: 'recolhimento-proprio-gru'
-    };
+    // Cache only the current GRU document for accurate emission-month reconciliation.
+    // Historical extraction snapshots are never treated as transaction movements.
+    let gruDetailState = { key: '', status: 'idle', document: null, error: '' };
 
     const byId = id => document.getElementById(id);
 
@@ -372,7 +368,6 @@ let indexData = null;
       const paidRatio = ratio(paid, liquidated);
       const rapPaidRatio = ratio(rapPaid, rapTotal);
       const provisionOpen = subtractAudit('Saldo estimado a empenhar', provisioned, committed);
-      const creditUsed = subtractAudit('Provisionado utilizado ou indisponível', budget, credit);
 
       setText('budgetBase', formatMoney(budget));
       setText('creditAvailable', formatMoney(credit));
@@ -384,23 +379,23 @@ let indexData = null;
       setText('financePanelDate', latestFinancialDate());
       setText('trendValue', isAvailable(committed) ? `${formatMoney(committed)} empenhados` : 'indisponivel');
       setText('provisionShareValue', formatPercent(committed, provisioned));
-      setText('creditShareValue', formatPercent(credit, budget));
+      setText('creditShareValue', formatMoney(credit));
       setText('rapShareValue', formatPercent(rapPaid, rapTotal));
       setText('gruValue', formatMoney(gru));
       setText('committedGaugeValue', formatPercent(committed, provisioned));
       setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
       setText('paidGaugeValue', formatPercent(paid, liquidated));
 
-      renderExpenseHistory('expenseTrendChart', { committed, liquidated, paid });
+      renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
       renderDonut('provisionDonut', [committed, provisionOpen], ['var(--accent)', 'var(--accent-2)']);
-      renderCreditHistory('creditDonut', credit);
+      renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
-      renderGruHistory('gruTreeChart', 'gruLegend', gru);
+      renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
       renderGauge('committedGauge', committedRatio);
       renderGauge('liquidatedGauge', liquidatedRatio);
       renderGauge('paidGauge', paidRatio);
-      updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, creditUsed, rapPaidRatio });
-      updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, creditUsed });
+      updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio });
+      updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
     }
 
@@ -748,15 +743,15 @@ let indexData = null;
 
     function updateDashboardInsights(values) {
       setInsight('budgetBase', 'Provisionamentos', valueInsight(values.budget, 'Orcamento provisionado acompanhado.'));
-      setInsight('creditAvailable', 'Credito disponivel', valueInsight(values.credit, 'Parcela livre dentro do orcamento provisionado.'));
+      setInsight('creditAvailable', 'Credito disponivel', valueInsight(values.credit, 'Saldo disponível conforme relatório de crédito; não é movimento do mês.'));
       setInsight('rapTotal', 'Restos a pagar', valueInsight(values.rapTotal, `Total calculado a partir de RAP pago (${formatMoney(values.rapPaid)}) e RAP a pagar (${formatMoney(values.rapPayable)}).`));
       setInsight('gruCollected', 'GRU arrecadadas', valueInsight(values.gru, 'Arrecadacao propria identificada nos dados.'));
       setInsight('committedTotal', 'Despesas empenhadas', valueInsight(values.committed, 'Valor formalmente comprometido.'));
       setInsight('liquidatedTotal', 'Despesas liquidadas', valueInsight(values.liquidated, 'Despesa com entrega reconhecida.'));
       setInsight('paidTotal', 'Despesas pagas', valueInsight(values.paid, 'Valor efetivamente pago.'));
-      setInsight('trendValue', 'Evolucao da execucao', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
+      setInsight('trendValue', 'Situacao da despesa', `Fotografia dos valores auditados na extração mais recente, sem reconstituir datas de lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setInsight('provisionShareValue', 'Uso do provisionado', percentInsight(values.committed, values.provisioned, 'do provisionamento ja esta empenhado.'));
-      setInsight('creditShareValue', 'Credito livre no provisionado', percentInsight(values.credit, values.budget, 'do provisionado aparece como credito disponivel.'));
+      setInsight('creditShareValue', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setInsight('rapShareValue', 'Restos a pagar', percentInsight(values.rapPaid, values.rapTotal, 'dos restos a pagar ja foram pagos.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
       setInsight('committedGaugeValue', '% empenhado do provisionado', percentInsight(values.committed, values.provisioned, 'do orcamento provisionado ja foi empenhado.'));
@@ -765,45 +760,104 @@ let indexData = null;
     }
 
     function updateGraphInsights(values) {
-      setElementInsight('expenseTrendChart', 'Evolucao das despesas', `Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
+      setElementInsight('expenseTrendChart', 'Execução da despesa na última extração', `Comparação entre indicadores atuais, não evolução por lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setElementInsight('provisionDonut', 'Uso do provisionado', `Parte empenhada: ${formatMoney(values.committed)}. Saldo estimado a empenhar: ${formatMoney(values.provisionOpen)}. ${auditSources([values.committed, values.provisionOpen])}`);
-      setElementInsight('creditDonut', 'Credito livre no provisionado', `Credito disponivel: ${formatMoney(values.credit)}. Provisionado ja utilizado ou indisponivel: ${formatMoney(values.creditUsed)}. ${auditSources([values.credit, values.creditUsed])}`);
+      setElementInsight('creditDonut', 'Crédito disponível e provisionado', `Comparação de dois saldos auditados, sem subtração ou hipótese de composição. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setElementInsight('rapStackChart', 'Restos a pagar', `Pagos: ${formatMoney(values.rapPaid)}. A pagar: ${formatMoney(values.rapPayable)}. Total acompanhado: ${formatMoney(values.rapTotal)}. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
-      setElementInsight('gruTreeChart', 'Arrecadacao propria', `${formatMoney(values.gru)} em GRU. ${auditSource(values.gru)}`);
+      setElementInsight('gruTreeChart', 'GRU por mês de emissão', `O total de ${formatMoney(values.gru)} é auditado. As barras mensais são recompostas pelos documentos e só aparecem se sua soma reconciliar; o mês da emissão não é necessariamente a data da arrecadação efetiva. ${auditSource(values.gru)}`);
       setElementInsight('committedGauge', 'Percentual empenhado', percentInsight(values.committed, values.provisioned, 'do provisionado ja virou empenho.'));
       setElementInsight('liquidatedGauge', 'Percentual liquidado', percentInsight(values.liquidated, values.committed, 'do empenhado ja teve entrega reconhecida.'));
       setElementInsight('paidGauge', 'Percentual pago', percentInsight(values.paid, values.liquidated, 'do liquidado ja foi efetivamente pago.'));
     }
 
-    function seriesPoints(slug, metric) {
-      const series = financialReports[slug]?.series_data?.series || [];
-      return series.map(item => ({
-        date: item.date || item.date_iso || '',
-        dateIso: item.date_iso || item.date || '',
-        value: metricIsReliable(item, metric, slug) ? item?.metrics?.[metric] : null
-      })).filter(point => Number.isFinite(point.value) && (!point.dateIso || point.dateIso >= SERIES_MIN_DATE));
+
+    function chartSourceUrl(slug) {
+      const path = reports.find(report => report.slug === slug)?.json_path;
+      return path ? 'report-viewer.html?report=' + encodeURIComponent(path) : '';
     }
 
-    function historicalSeries(slug, entries) {
-      return entries.map(entry => ({
-        ...entry,
-        points: seriesPoints(slug, entry.metric)
-      }));
+    function renderExpenseComparison(id, currentValues) {
+      const renderer = window.EmailBackupHubFinancialCharts;
+      if (!renderer?.renderComparison) return unavailableChart(id);
+      const date = financialReports['despesas-empenhadas-liquidadas-e-pagas-mes-lancamento']?.date || 'não informada';
+      renderer.renderComparison(byId(id), [
+        { label: 'Empenhado', value: valueOf(currentValues.committed) },
+        { label: 'Liquidado', value: valueOf(currentValues.liquidated) },
+        { label: 'Pago', value: valueOf(currentValues.paid) }
+      ], {
+        note: 'Posição consultada em ' + date
+          + '. Valores acumulados/auditados na extração, não lançamentos por data.',
+        url: chartSourceUrl('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento')
+      });
     }
 
-    function renderExpenseHistory(id, currentValues) {
-      const series = historicalSeries('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', [
-        { label: 'Empenhado', metric: 'empenhado', color: 'var(--accent)', current: currentValues.committed },
-        { label: 'Liquidado', metric: 'liquidado', color: 'var(--accent-2)', current: currentValues.liquidated },
-        { label: 'Pago', metric: 'pago', color: 'var(--warn)', current: currentValues.paid }
-      ]);
-      renderHistoricalLineChart(id, series, 'Evolucao historica de empenhado, liquidado e pago');
+    function renderCreditComparison(id, currentValues) {
+      const renderer = window.EmailBackupHubFinancialCharts;
+      if (!renderer?.renderComparison) return unavailableChart(id);
+      const creditDate = financialReports['credito-disponivel-mes-lancamento']?.date || '-';
+      const provisionDate = financialReports['provisionamentos']?.date || '-';
+      renderer.renderComparison(byId(id), [
+        { label: 'Crédito disponível', value: valueOf(currentValues.credit) },
+        { label: 'Provisionamentos', value: valueOf(currentValues.provisioned) }
+      ], {
+        note: 'Saldos de relatórios diferentes, com referência em ' + creditDate
+          + ' e ' + provisionDate + ', respectivamente. Não representam parcelas complementares.',
+        url: chartSourceUrl('credito-disponivel-mes-lancamento')
+      });
     }
 
-    function renderCreditHistory(id, currentValue) {
-      renderHistoricalLineChart(id, historicalSeries('credito-disponivel-mes-lancamento', [
-        { label: 'Credito disponivel', metric: 'credito_disponivel', color: 'var(--accent)', current: currentValue }
-      ]), 'Evolucao historica do credito disponivel');
+    function renderGruMonthlyView(id, legendId, currentValue) {
+      const renderer = window.EmailBackupHubFinancialCharts;
+      if (!renderer?.renderGruMonthly) return unavailableChart(id);
+      const container = byId(id);
+      const slug = 'recolhimento-proprio-gru';
+      const report = reports.find(item => item.slug === slug);
+      const compact = financialReports[slug];
+      const legend = byId(legendId);
+      if (legend) legend.textContent = 'Distribuição da movimentação líquida conforme mês de emissão, sujeita à reconciliação.';
+      if (!isAvailable(currentValue) || !report?.json_path) {
+        renderer.renderGruMonthly(container, { ok: false, reason: 'Total auditado ou fonte GRU indisponível.' });
+        return;
+      }
+      const key = String(indexData?.generated_at || '') + '|' + report.json_path;
+      if (gruDetailState.key !== key) {
+        gruDetailState = { key, status: 'loading', document: null, error: '' };
+        fetch(report.json_path)
+          .then(response => {
+            if (!response.ok) throw new Error('Falha HTTP ' + response.status);
+            return response.json();
+          })
+          .then(document => {
+            if (gruDetailState.key !== key) return;
+            gruDetailState = { key, status: 'ready', document, error: '' };
+            renderGruMonthlyView(id, legendId, currentValue);
+          })
+          .catch(error => {
+            if (gruDetailState.key !== key) return;
+            gruDetailState = { key, status: 'error', document: null, error: String(error.message || error) };
+            renderGruMonthlyView(id, legendId, currentValue);
+          });
+      }
+      if (gruDetailState.status === 'loading') {
+        container.innerHTML = '<p class="chart-empty" role="status">Conferindo datas de emissão e reconciliando a GRU com o total auditado...</p>';
+        return;
+      }
+      if (gruDetailState.status === 'error') {
+        renderer.renderGruMonthly(container, {
+          ok: false, reason: 'Falha ao carregar os registros detalhados (' + gruDetailState.error + ').'
+        });
+        return;
+      }
+      const doc = gruDetailState.document;
+      const expectedHash = compact?.metadata?.hash_conteudo;
+      if (expectedHash && doc?.metadata?.hash_conteudo !== expectedHash) {
+        renderer.renderGruMonthly(container, {
+          ok: false, reason: 'O detalhe da GRU não corresponde à mesma versão do resumo auditado.'
+        });
+        return;
+      }
+      const result = renderer.buildGruMonthly(doc, valueOf(currentValue));
+      renderer.renderGruMonthly(container, result, { url: chartSourceUrl(slug) });
     }
 
     function renderRapHistory(id, currentValues) {
@@ -812,32 +866,6 @@ let indexData = null;
         return;
       }
       renderRapBars(id, currentValues.rapPaid, currentValues.rapPayable);
-    }
-
-    function renderGruHistory(id, legendId, currentValue) {
-      renderHistoricalLineChart(id, historicalSeries('recolhimento-proprio-gru', [
-        { label: 'GRU arrecadada', metric: 'gru_arrecadada', color: 'var(--accent)', current: currentValue }
-      ]), 'Evolucao historica de GRU arrecadada');
-      const legend = byId(legendId);
-      if (legend) legend.innerHTML = '<span><i class="legend-dot" style="background:var(--accent)"></i>GRU arrecadada</span>';
-    }
-
-    function renderHistoricalLineChart(id, series, ariaLabel) {
-      const container = byId(id);
-      if (!container) return;
-      const module = window.EmailBackupHubCharts;
-      if (!module?.renderTime) {
-        unavailableChart(id);
-        return;
-      }
-      const slug = CHART_SOURCE_SLUG[id];
-      const path = reports.find(report => report.slug === slug)?.json_path;
-      const reportUrl = path ? 'report-viewer.html?report=' + encodeURIComponent(path) : '';
-      module.renderTime(container, series, {
-        ariaLabel,
-        rangeDays: historyRange,
-        reportUrl
-      });
     }
 
     function renderRapBars(id, paid, payable) {
@@ -1041,13 +1069,6 @@ let indexData = null;
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
-    const rangeSelect = byId('historyRange');
-    if (rangeSelect?.addEventListener) rangeSelect.addEventListener('change', event => {
-      const chosen = Number(event.target.value);
-      if (![0, 30, 90, 365].includes(chosen)) return;
-      historyRange = chosen;
-      if (Object.keys(financialReports).length) renderFinancialSummary();
-    });
     byId('search').addEventListener('input', handleSearchInput);
     byId('periodicity').addEventListener('change', renderReportCatalog);
     byId('catalogScope').addEventListener('change', renderReportCatalog);
