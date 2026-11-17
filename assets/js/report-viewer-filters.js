@@ -16,7 +16,8 @@
   }
 
   function isEmpty(value) {
-    return value === null || value === undefined || text(value) === '';
+    if (value === null || value === undefined) return true;
+    return new Set(['', '-', '--', 'n/a', 'na', 'null', 'none', 'sem dado']).has(normalize(value));
   }
 
   function parseNumber(value) {
