@@ -917,7 +917,13 @@ let report = null;
       return Number.isFinite(number) ? (negative ? -number : number) : null;
     }
 
-    function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
+    function csvCell(value) {
+      const text = String(value ?? '');
+      // Conservar zeros e evitar interpretacao de texto como formula em planilhas.
+      const numeric = /^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text.trim());
+      const safeText = !numeric && (/^[\t\r\n]/.test(text) || /^\s*[=+@-]/.test(text)) ? `'${text}` : text;
+      return `"${safeText.replace(/"/g, '""')}"`;
+    }
     function download(name, content, type = 'text/csv;charset=utf-8') {
       const blob = new Blob([content], { type });
       const url = URL.createObjectURL(blob);

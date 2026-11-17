@@ -5,6 +5,8 @@ let indexData = null;
     let reportDefinitions = {};
     let sortKey = 'title';
     let sortDir = 1;
+    let searchIndexState = 'idle';
+    let searchIndexPromise = null;
     const SERIES_MIN_DATE = '2026-01-01';
 
     const byId = id => document.getElementById(id);
@@ -17,6 +19,7 @@ let indexData = null;
       try { localStorage.setItem(THEME_KEY, nextTheme); } catch {}
       const button = byId('themeToggle');
       if (button) button.textContent = nextTheme === 'dark' ? 'Tema claro' : 'Tema escuro';
+      // O grafico precisa refletir o novo tema, mas nao deve redesenhar em filtros do catalogo.
       if (Object.keys(financialReports).length) renderFinancialSummary();
     }
 
@@ -68,24 +71,55 @@ let indexData = null;
     };
 
     async function loadData() {
-      const [indexResponse, searchResponse, definitions] = await Promise.all([
+      const [indexResponse, definitions] = await Promise.all([
         fetch('data/index.json'),
-        fetch('data/search-index.json'),
         EmailBackupHub.loadReportDefinitions()
       ]);
+      if (!indexResponse.ok) throw new Error(`Índice de relatórios indisponível (HTTP ${indexResponse.status}).`);
       indexData = await indexResponse.json();
-      searchData = await searchResponse.json();
       reportDefinitions = definitions;
-      const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
-      reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: textBySlug[report.slug] || '' }));
-      await loadFinancialReports();
+      reports = (indexData.reports || []).map(report => ({ ...report, displayTitle: friendlyTitle(report), searchText: '' }));
       populateFilters();
-      render();
+      renderReportCatalog();
+      // Os indicadores nao bloqueiam a listagem e nao sao recalculados durante a pesquisa.
+      loadFinancialReports().then(renderFinancialSummary).catch(error => {
+        const notice = byId('financePanelDate');
+        if (notice) notice.textContent = 'Indicadores indisponíveis';
+        console.error('Falha no carregamento financeiro:', error);
+      });
+    }
+
+    function ensureSearchIndex() {
+      if (searchIndexState !== 'idle') return searchIndexPromise;
+      searchIndexState = 'loading';
+      searchIndexPromise = fetch('data/search-index.json')
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then(data => {
+          searchData = data;
+          const textBySlug = Object.fromEntries((searchData.documents || []).map(item => [item.slug, item.text || '']));
+          reports.forEach(report => { report.searchText = textBySlug[report.slug] || ''; });
+          searchIndexState = 'ready';
+          renderReportCatalog();
+        })
+        .catch(error => {
+          searchIndexState = 'error';
+          console.warn('Índice de busca textual indisponível; pesquisa por metadados preservada.', error);
+          renderReportCatalog();
+        });
+      return searchIndexPromise;
+    }
+
+    function handleSearchInput() {
+      if (byId('search').value.trim() && searchIndexState === 'idle') ensureSearchIndex();
+      renderReportCatalog();
     }
 
     function populateFilters() {
       const values = [...new Set(reports.map(report => report.metadata.periodicidade).filter(Boolean))].sort();
-      byId('periodicity').insertAdjacentHTML('beforeend', values.map(value => `<option value="${value}">${value}</option>`).join(''));
+      byId('periodicity').insertAdjacentHTML('beforeend', values.map(value => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`).join(''));
     }
 
     function filteredReports() {
@@ -181,14 +215,19 @@ let indexData = null;
       return metadata.limite_dias;
     }
 
-    function render() {
+    function renderReportCatalog() {
       const rows = filteredReports();
       byId('totalReports').textContent = reports.length;
       byId('updatedReports').textContent = reports.filter(report => reportStatus(report) === 'atualizado').length;
       byId('staleReports').textContent = reports.filter(report => reportStatus(report) === 'desatualizado').length;
       byId('qualityIssues').textContent = reports.filter(report => !qualitySummary(report).ok).length;
-      renderFinancialSummary();
-      byId('rows').innerHTML = rows.map(report => `
+      const searching = Boolean(byId('search').value.trim());
+      const searchNotice = searching && searchIndexState === 'loading'
+        ? '<tr><td colspan="7">Carregando busca no conteúdo dos relatórios...</td></tr>'
+        : searching && searchIndexState === 'error'
+          ? '<tr><td colspan="7">Pesquisa por conteúdo indisponível; exibindo resultados por título e metadados.</td></tr>'
+          : '';
+      byId('rows').innerHTML = searchNotice + rows.map(report => `
         <tr>
           <td><a href="report-viewer.html?report=${encodeURIComponent(report.json_path)}">${escapeHtml(report.displayTitle)}</a></td>
           <td>${report.date}</td>
@@ -475,9 +514,14 @@ let indexData = null;
     }
 
     function latestFinancialDate() {
-      const dates = Object.values(financialReports).map(doc => doc?.date).filter(Boolean);
-      dates.sort();
-      return dates.length ? `Fechamento: ${dates[dates.length - 1]}` : 'Fechamento indisponivel';
+      const latest = Object.values(financialReports)
+        .map(doc => doc?.date_iso)
+        .filter(value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value))
+        .sort()
+        .at(-1);
+      return latest
+        ? `Último relatório: ${latest.slice(8, 10)}/${latest.slice(5, 7)}/${latest.slice(0, 4)}`
+        : 'Data indisponível';
     }
 
     function totalValue(slug, column) {
@@ -911,7 +955,12 @@ let indexData = null;
       download('relatorios.csv', lines.join('\n'));
     }
 
-    function csvCell(value) { return `"${String(value || '').replace(/"/g, '""')}"`; }
+    function csvCell(value) {
+      const text = String(value ?? '');
+      const numeric = /^[+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+(?:[.,]\d+)?)$/.test(text.trim());
+      const safeText = !numeric && (/^[\t\r\n]/.test(text) || /^\s*[=+@-]/.test(text)) ? `'${text}` : text;
+      return `"${safeText.replace(/"/g, '""')}"`;
+    }
     function download(name, content) {
       const blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
       const url = URL.createObjectURL(blob);
@@ -922,12 +971,12 @@ let indexData = null;
       URL.revokeObjectURL(url);
     }
     function escapeHtml(value) {
-      return String(value || '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
+      return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
 
-    byId('search').addEventListener('input', render);
-    byId('periodicity').addEventListener('change', render);
-    byId('status').addEventListener('change', render);
+    byId('search').addEventListener('input', handleSearchInput);
+    byId('periodicity').addEventListener('change', renderReportCatalog);
+    byId('status').addEventListener('change', renderReportCatalog);
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
@@ -943,6 +992,6 @@ let indexData = null;
       const nextKey = th.dataset.sort;
       sortDir = sortKey === nextKey ? -sortDir : 1;
       sortKey = nextKey;
-      render();
+      renderReportCatalog();
     }));
     loadData().catch(error => { byId('rows').innerHTML = `<tr><td colspan="7">Erro ao carregar dados: ${escapeHtml(error.message)}</td></tr>`; });
