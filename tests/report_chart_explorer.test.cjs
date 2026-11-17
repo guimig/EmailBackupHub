@@ -177,3 +177,22 @@ test('3,254 rows remain bounded to 15 visual elements',()=>{
   assert.equal(result.totalDataRows,3254);
   assert.ok(performance.now()-start<5000,'chart processing exceeded generous CI budget');
 });
+
+test('codes and percentages are protected from financial aggregation',()=>{
+  const r={columns:['Grupo Despesa / 3','Vinculação Pagamento Código','Percentual'],
+    column_schema:[
+      {name:'Grupo Despesa / 3',type:'number'},
+      {name:'Vinculação Pagamento Código',type:'money'},
+      {name:'Percentual',type:'percent'}
+    ],
+    rows:[{'Grupo Despesa / 3':'4','Vinculação Pagamento Código':'400',Percentual:'40%'},
+      {'Grupo Despesa / 3':'3','Vinculação Pagamento Código':'300',Percentual:'30%'}]};
+  assert.equal(Charts.typeFor(r,'Grupo Despesa / 3',Filters),'identifier');
+  assert.equal(Charts.typeFor(r,'Vinculação Pagamento Código',Filters),'identifier');
+  const measures=Charts.numericColumns(r,Filters);
+  assert.deepEqual(measures,['Percentual']);
+  const result=Charts.build(r,docs(r),{mode:'sum',type:'bar',
+    dimension:'Grupo Despesa / 3',measure:'Percentual'},Filters);
+  assert.equal(result.ok,false);
+  assert.match(result.reason,/Percentuais não devem ser somados/);
+});
