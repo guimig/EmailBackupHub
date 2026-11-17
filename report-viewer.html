@@ -118,6 +118,24 @@
       </div>
     </section>
 
+    <details id="reportChart" class="disclosure report-chart-disclosure">
+      <summary>Visualizar dados em gráfico</summary>
+      <div class="disclosure-body">
+        <p>Compare valores dos registros atualmente filtrados. Cada barra representa um registro original, sem soma automática de saldos ou competências.</p>
+        <div class="report-chart-controls">
+          <label for="chartDimension">Identificar cada registro por
+            <select id="chartDimension"></select>
+          </label>
+          <label for="chartMeasure">Valor a comparar
+            <select id="chartMeasure"></select>
+          </label>
+        </div>
+        <div id="reportChartVisual" class="report-chart-visual" role="region" aria-label="Gráfico dos registros filtrados">
+          <p class="chart-empty">Abra esta seção para visualizar os registros.</p>
+        </div>
+      </div>
+    </details>
+
     <details id="advancedTools" class="disclosure">
       <summary>Ferramentas avançadas: agrupamentos e cálculos</summary>
       <div class="disclosure-body">
@@ -153,6 +171,7 @@
   </footer>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/report-viewer-filters.js"></script>
+  <script src="assets/js/interactive-charts.js"></script>
   <script src="assets/js/report-viewer.js"></script>
 </body>
 </html>

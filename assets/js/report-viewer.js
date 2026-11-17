@@ -8,6 +8,7 @@ let report = null;
     let restoringState = false;
     let reportDefinitions = {};
     const Filters = window.EmailBackupHubFilters;
+    const Charts = window.EmailBackupHubCharts;
     let filterColumn = null;
     let currentPage = 1;
     let pageSize = 50;
@@ -186,6 +187,7 @@ let report = null;
       byId('columnWidthRange').value = String(baseColumnWidth);
       byId('columnWidthValue').textContent = baseColumnWidth + ' px';
       renderRows();
+      prepareReportChartControls();
     }
 
     function columnMetaFor(column) {
@@ -278,6 +280,73 @@ let report = null;
         groups.get(key).push(item);
       }
       return [...groups.entries()].map(([key, items]) => ({ key, rows: items }));
+    }
+
+    function measureColumns() {
+      return (report?.columns || []).filter(column =>
+        ['money', 'number', 'percent'].includes(columnMetaFor(column).type)
+      );
+    }
+
+    function prepareReportChartControls() {
+      if (!report) return;
+      const dimensions = report.columns || [];
+      const measures = measureColumns();
+      const names = friendlyColumns(dimensions);
+      const currentDimension = byId('chartDimension').value;
+      const currentMeasure = byId('chartMeasure').value;
+      byId('chartDimension').innerHTML = dimensions.map((column, index) =>
+        `<option value="${escapeHtml(column)}">${escapeHtml(names[index])}</option>`
+      ).join('');
+      const bestDimension = dimensions.find(column =>
+        ['date', 'period'].includes(columnMetaFor(column).type)) ||
+        dimensions.find(column => !['money', 'number', 'percent'].includes(columnMetaFor(column).type)) || dimensions[0];
+      byId('chartDimension').value = dimensions.includes(currentDimension) ? currentDimension : bestDimension || '';
+      byId('chartMeasure').innerHTML = measures.map(column =>
+        `<option value="${escapeHtml(column)}">${escapeHtml(friendlyColumnName(column))}</option>`
+      ).join('');
+      byId('chartMeasure').value = measures.includes(currentMeasure) ? currentMeasure : measures[0] || '';
+    }
+
+    function renderReportChart() {
+      const container = byId('reportChartVisual');
+      if (!byId('reportChart').open || !report || !container) return;
+      const dimension = byId('chartDimension').value;
+      const measure = byId('chartMeasure').value;
+      const kind = columnMetaFor(measure)?.type;
+      if (!dimension || !measure || !measureColumns().includes(measure)) {
+        container.innerHTML = '<p class="chart-empty">Não há uma medida numérica identificada com segurança neste relatório. Continue usando a busca e a tabela para consultar os registros.</p>';
+        return;
+      }
+      if (!Charts?.renderCategory) {
+        container.innerHTML = '<p class="chart-empty">Visualização indisponível. A tabela e as exportações continuam funcionando.</p>';
+        return;
+      }
+      const visible = filteredRows();
+      const items = visible.map((item, index) => {
+        const raw = item.raw || item;
+        const parsed = Filters.parseNumber(raw[measure]);
+        return {
+          rowIndex: index,
+          label: String(raw[dimension] ?? '').trim() || '(sem identificação)',
+          value: item.type === 'total' ? null : parsed
+        };
+      });
+      // Date and accounting periods are sorted for display only; the table order is unchanged.
+      if (['period', 'date'].includes(columnMetaFor(dimension).type)) {
+        const meta = columnMetaFor(dimension);
+        items.sort((a, b) => Filters.compare(a.label, b.label, meta));
+      }
+      const integer = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
+      const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+      const formatter = value => kind === 'money' ? currency.format(value)
+        : kind === 'percent' ? integer.format(value) + '%'
+          : integer.format(value);
+      Charts.renderCategory(container, items, {
+        limit: 25,
+        formatValue: formatter,
+        onSelect: index => openRowDetails(index)
+      });
     }
 
     function groupTotals(rows) {
@@ -759,6 +828,7 @@ let report = null;
       byId('pageSize').value = String(pageSize);
       renderFilterChips();
       updateUrlState();
+      if (byId('reportChart')?.open) renderReportChart();
     }
 
     function groupedTableHtml(rows, columns, start = 0, end = rows.length) {
@@ -1389,6 +1459,14 @@ let report = null;
     byId('closeFilterEditor').addEventListener('click', closeFilterEditor);
     byId('applyColumnFilter').addEventListener('click', applyColumnFilter);
     byId('removeColumnFilter').addEventListener('click', () => removeColumnFilter(filterColumn));
+    byId('reportChart').addEventListener('toggle', () => {
+      if (byId('reportChart').open) {
+        prepareReportChartControls();
+        renderReportChart();
+      }
+    });
+    byId('chartDimension').addEventListener('change', renderReportChart);
+    byId('chartMeasure').addEventListener('change', renderReportChart);
     byId('pageSize').addEventListener('change', event => {
       const size = Number(event.target.value);
       if (![25, 50, 100].includes(size)) return;
