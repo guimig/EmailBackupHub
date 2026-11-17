@@ -142,3 +142,28 @@ test('corrupted storage and disabled private mode do not erase data or crash', (
   assert.equal(Views.save(blocked, report, 'Normal', state(), Filters).ok, false);
   assert.equal(Views.keyFor({ slug: '../mau' }), '');
 });
+
+test('optional chart preferences are saved by column name and survive reordered reports', () => {
+  const report=fixture();
+  const input={...state(),chart:{mode:'sum',type:'bar',dimension:'Competência',
+    measure:'Saldo - R$',limit:30,rowIndex:172}};
+  const snapshot=Views.capture(report,input,Filters);
+  assert.deepEqual(snapshot.chart,{mode:'sum',type:'bar',dimension:'Competência',
+    measure:'Saldo - R$',limit:30});
+  assert.ok(!JSON.stringify(snapshot.chart).includes('rowIndex'));
+  const reordered={...report,columns:['Saldo - R$','Descrição','Competência','NE CCor']};
+  const back=Views.reconcile(reordered,snapshot,Filters).state.chart;
+  assert.equal(back.dimension,'Competência');
+  assert.equal(back.measure,'Saldo - R$');
+  assert.equal(back.mode,'sum');
+  const reduced={...report,columns:['NE CCor','Competência','Descrição']};
+  const recovered=Views.reconcile(reduced,snapshot,Filters);
+  assert.equal(recovered.state.chart.measure,'');
+  assert.ok(recovered.removedColumns.includes('Saldo - R$'));
+});
+
+test('old local views without a chart keep a compatible null preference', () => {
+  assert.equal(Views.reconcile(fixture(),state(),Filters).state.chart,null);
+  const unsafe={...state(),chart:{mode:'javascript:alert(1)',type:'pie',dimension:'Competência'}};
+  assert.equal(Views.reconcile(fixture(),unsafe,Filters).state.chart,null);
+});
