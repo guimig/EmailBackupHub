@@ -19,6 +19,8 @@ let indexData = null;
       try { localStorage.setItem(THEME_KEY, nextTheme); } catch {}
       const button = byId('themeToggle');
       if (button) button.textContent = nextTheme === 'dark' ? 'Tema claro' : 'Tema escuro';
+      // O grafico precisa refletir o novo tema, mas nao deve redesenhar em filtros do catalogo.
+      if (Object.keys(financialReports).length) renderFinancialSummary();
     }
 
     function initTheme() {
