@@ -141,20 +141,56 @@
     </details>
 
     <details id="reportChart" class="disclosure report-chart-disclosure">
-      <summary>Visualizar dados em gráfico</summary>
+      <summary>Explorar dados em gráficos <span class="chart-summary-hint">Sugestão automática e opções personalizáveis</span></summary>
       <div class="disclosure-body">
-        <p>Compare valores dos registros atualmente filtrados. Cada barra representa um registro original, sem soma automática de saldos ou competências.</p>
-        <div class="report-chart-controls">
-          <label for="chartDimension">Identificar cada registro por
+        <div class="smart-chart-recommendation" role="region" aria-label="Visualização recomendada">
+          <div class="smart-chart-recommendation-heading">
+            <div>
+              <strong id="chartSuggestedTitle">Analisando o relatório...</strong>
+              <p id="chartSuggestedReason">A sugestão considera a estrutura e os tipos dos dados.</p>
+            </div>
+            <button type="button" id="chartUseSuggestion" class="secondary-button small-button">Aplicar sugestão</button>
+          </div>
+        </div>
+        <div class="smart-chart-controls" role="group" aria-label="Personalizar gráfico">
+          <label for="chartMode">Análise
+            <select id="chartMode">
+              <option value="records">Valores por registro (sem soma)</option>
+              <option value="count">Quantidade de registros por categoria</option>
+              <option value="sum">Somar valores por categoria (opcional)</option>
+              <option value="wide">Um registro ao longo das competências</option>
+            </select>
+          </label>
+          <label for="chartType">Formato
+            <select id="chartType">
+              <option value="bar">Barras</option>
+              <option value="pie">Pizza / rosca</option>
+              <option value="line">Linha temporal</option>
+            </select>
+          </label>
+          <label id="chartDimensionControl" for="chartDimension">Agrupar ou identificar por
             <select id="chartDimension"></select>
           </label>
-          <label for="chartMeasure">Valor a comparar
+          <label id="chartMeasureControl" for="chartMeasure">Medida
             <select id="chartMeasure"></select>
           </label>
+          <label id="chartRowControl" for="chartRecord" hidden>Registro para acompanhar
+            <select id="chartRecord"></select>
+          </label>
+          <label for="chartLimit">Elementos exibidos
+            <select id="chartLimit">
+              <option value="10">Até 10</option>
+              <option value="15" selected>Até 15</option>
+              <option value="30">Até 30</option>
+              <option value="60">Até 60</option>
+            </select>
+          </label>
         </div>
+        <p id="chartSummary" class="smart-chart-status" role="status" aria-live="polite">Abra a seção para gerar um gráfico a partir dos registros filtrados.</p>
         <div id="reportChartVisual" class="report-chart-visual" role="region" aria-label="Gráfico dos registros filtrados">
-          <p class="chart-empty">Abra esta seção para visualizar os registros.</p>
+          <p class="chart-empty">Aguardando dados...</p>
         </div>
+        <p class="smart-chart-help">As barras individuais abrem o registro completo. Em gráficos por categoria, selecione uma barra, parcela ou ponto para <strong>filtrar a tabela</strong>. Todos os filtros atuais são respeitados. Nenhum gráfico altera o relatório original.</p>
       </div>
     </details>
 
@@ -195,6 +231,7 @@
   <script src="assets/js/report-viewer-filters.js"></script>
   <script src="assets/js/report-viewer-presets.js"></script>
   <script src="assets/js/interactive-charts.js"></script>
+  <script src="assets/js/report-chart-explorer.js"></script>
   <script src="assets/js/report-viewer.js"></script>
 </body>
 </html>
