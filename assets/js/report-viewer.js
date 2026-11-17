@@ -13,6 +13,7 @@ let report = null;
     const ChartExplorer = window.EmailBackupHubChartExplorer;
     let chartSettings = null;
     let chartRecommended = null;
+    let chartSelectedRow = null;
     let filterColumn = null;
     let currentPage = 1;
     let pageSize = 50;
@@ -192,6 +193,7 @@ let report = null;
       byId('columnWidthValue').textContent = baseColumnWidth + ' px';
       chartSettings = null;
       chartRecommended = null;
+      chartSelectedRow = null;
       renderRows();
       prepareReportChartControls();
       refreshSavedViews();
@@ -363,20 +365,27 @@ let report = null;
 
     function populateChartRecords() {
       const select = byId('chartRecord');
+      const all = filteredRows();
+      const data = all.filter(item => item.type !== 'total');
       const previous = Number(chartSettings?.rowIndex);
-      const rows = filteredRows().filter(item => item.type !== 'total');
+      const remembered = chartSelectedRow
+        ? all.findIndex(item => (item.raw || item) === chartSelectedRow) : -1;
       select.replaceChildren();
-      const max = Math.min(rows.length, 200);
-      // Keep original filtered indices so a chart point can open the correct source row.
-      let chosen = 0;
+      const max = Math.min(data.length, 200);
+      let chosen = 0, found = false;
       for (let i = 0; i < max; i++) {
-        const index = filteredRows().indexOf(rows[i]);
-        chartOption(select, String(index), chartRowLabel(rows[i], index));
-        if (index === previous) chosen = index;
+        const index = all.indexOf(data[i]);
+        chartOption(select, String(index), chartRowLabel(data[i], index));
+        if (index === remembered || (chartSelectedRow === null && index === previous)) {
+          chosen = index;
+          found = true;
+        }
       }
-      if (rows.length > max) chartOption(select, '', 'Filtre a tabela para localizar outros registros (' + rows.length + ' no total)');
-      select.value = String(chosen);
+      if (data.length > max) chartOption(select, '', 'Filtre a tabela para localizar outros registros (' + data.length + ' no total)');
+      if (!found && max) chosen = all.indexOf(data[0]);
+      select.value = max ? String(chosen) : '';
       chartSettings.rowIndex = chosen;
+      chartSelectedRow = max ? (all[chosen].raw || all[chosen]) : null;
     }
 
     function updateChartControlVisibility() {
@@ -436,6 +445,7 @@ let report = null;
       const container = byId('reportChartVisual');
       if (!byId('reportChart')?.open || !report || !container || !ChartExplorer) return;
       if (!chartSettings) prepareReportChartControls();
+      if (chartSettings.mode === 'wide') populateChartRecords();
       const source = filteredRows();
       updateChartSuggestion();
       const result = ChartExplorer.build(report, source, chartSettings, Filters);
@@ -453,13 +463,18 @@ let report = null;
     function applyChartSuggestion() {
       if (!chartRecommended || !report) return;
       chartSettings = { ...chartRecommended };
+      chartSelectedRow = null;
       prepareReportChartControls();
       renderReportChart();
     }
 
-    function onChartControlsChanged() {
+    function onChartControlsChanged(event) {
       const priorMode = chartSettings?.mode;
       readChartSettingsFromControls();
+      if (event?.target?.id === 'chartRecord') {
+        const item = filteredRows()[chartSettings.rowIndex];
+        chartSelectedRow = item ? (item.raw || item) : null;
+      }
       if (priorMode !== chartSettings.mode) {
         if (chartSettings.mode === 'wide') populateChartRecords();
         if (chartSettings.mode === 'count' && chartSettings.type === 'line'
@@ -1641,6 +1656,7 @@ let report = null;
       renderGroupingControls();
       renderRows();
       chartSettings = state.chart ? { ...state.chart, rowIndex:0 } : null;
+      chartSelectedRow = null;
       prepareReportChartControls();
       if (byId('reportChart')?.open) renderReportChart();
       const removed = result.removedColumns.length;
