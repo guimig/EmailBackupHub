@@ -79,6 +79,27 @@
     qa.lightTheme = document.documentElement.dataset.theme === 'light' &&
       getComputedStyle(document.body).backgroundColor !== 'rgba(0, 0, 0, 0)';
 
+    qa.savedViewsInitiallyClosed = !$('savedViews').open;
+    $('savedViews').open = true;
+    $('savedViewName').value = 'Consulta de teste';
+    $('saveView').click();
+    qa.savedViewStored = $('savedViewSelect').options.length === 2 &&
+      $('savedViewStatus').textContent.includes('salva');
+    $('globalSearch').value = 'inexistente-para-teste';
+    $('globalSearch').dispatchEvent(new Event('input', { bubbles: true }));
+    $('savedViewSelect').value = 'Consulta de teste';
+    $('savedViewSelect').dispatchEvent(new Event('change', { bubbles: true }));
+    $('loadView').click();
+    qa.savedViewRestored = $('globalSearch').value === '' &&
+      $('savedViewStatus').textContent.includes('aplicada');
+    const previousConfirm = window.confirm;
+    window.confirm = () => true;
+    $('deleteView').click();
+    window.confirm = previousConfirm;
+    qa.savedViewDeleted = $('savedViewSelect').options.length === 1 &&
+      $('savedViewStatus').textContent.includes('excluída');
+    $('savedViews').open = false;
+
     qa.toolbarShort = $('readerWorkspace').querySelector('.toolbar').getBoundingClientRect().height < 115;
     qa.noRepeatedLongControls = $('table').querySelectorAll('[data-filter-column]').length === dataHeaders.length
       && $('table').querySelectorAll('thead select').length === 0;
