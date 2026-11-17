@@ -149,6 +149,7 @@
     const valid = (items || []).filter(item => Number.isFinite(item.value));
     const shown = valid.slice(0,max);
     const scale = Math.max(1,...shown.map(item=>Math.abs(item.value)));
+    const format = typeof options.formatValue === 'function' ? options.formatValue : money;
     if (!shown.length) {
       container.innerHTML = '<p class="chart-empty">Não há registros numéricos confiáveis para o gráfico. Nenhum valor ausente foi convertido em zero.</p>';
       return;
@@ -158,10 +159,10 @@
       const neg=item.value<0;
       return `<button type="button" class="record-chart-bar" data-record-index="${item.rowIndex}"
         title="Abrir registro: ${escape(item.label)}"
-        aria-label="${escape(item.label)}, ${escape(money(item.value))}. Abrir registro completo">
+        aria-label="${escape(item.label)}, ${escape(format(item.value))}. Abrir registro completo">
         <span class="record-chart-label" title="${escape(item.label)}">${escape(item.label)}</span>
         <span class="record-chart-track"><span class="record-chart-fill${neg?' is-negative':''}" style="width:${p.toFixed(1)}%"></span></span>
-        <span class="record-chart-value">${escape(money(item.value))}</span>
+        <span class="record-chart-value">${escape(format(item.value))}</span>
       </button>`;
     }).join('');
     container.innerHTML = `<div class="record-chart-bars">${bars}</div>
