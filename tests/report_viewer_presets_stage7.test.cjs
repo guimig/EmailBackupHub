@@ -167,3 +167,13 @@ test('old local views without a chart keep a compatible null preference', () => 
   const unsafe={...state(),chart:{mode:'javascript:alert(1)',type:'pie',dimension:'Competência'}};
   assert.equal(Views.reconcile(fixture(),unsafe,Filters).state.chart,null);
 });
+
+test('consultas salvas preservam paginas maiores e a opcao todas sem alterar registros', () => {
+  const report=fixture();
+  for (const pageSize of [250,500,1000,'all']) {
+    const snapshot=Views.capture(report,{...state(),pageSize},Filters);
+    assert.equal(snapshot.pageSize,pageSize);
+    assert.equal(Views.reconcile(report,snapshot,Filters).state.pageSize,pageSize);
+  }
+  assert.equal(Views.reconcile(report,{...state(),pageSize:999999},Filters).state.pageSize,50);
+});
