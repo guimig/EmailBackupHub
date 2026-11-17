@@ -798,7 +798,7 @@ let report = null;
         return `<td class="${position === 0 ? 'first-data-col' : ''}"
           title="${escapeHtml(value.slice(0, 300))}"><span class="cell-value">${safe || '—'}</span></td>`;
       }).join('');
-      return `<tr class="${isTotal ? 'total-row' : ''}">
+      return `<tr class="${isTotal ? 'total-row' : ''} row-openable" data-row-index="${index}">
         <td class="row-open-cell"><button class="row-open-button" type="button"
           data-open-row="${index}" aria-label="Abrir registro ${index + 1} completo" title="Ver todos os campos">↗</button></td>
         ${cells}
@@ -1429,7 +1429,12 @@ let report = null;
     byId('closeRowDialog').addEventListener('click', closeRowDetails);
     byId('table').addEventListener('click', event => {
       const button = event.target.closest('[data-open-row]');
-      if (button) openRowDetails(Number(button.dataset.openRow));
+      if (button) {
+        openRowDetails(Number(button.dataset.openRow));
+        return;
+      }
+      const row = event.target.closest('tbody tr[data-row-index]');
+      if (row) openRowDetails(Number(row.dataset.rowIndex));
     });
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('exportHtml').addEventListener('click', exportHtmlReport);
