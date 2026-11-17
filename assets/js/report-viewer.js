@@ -10,6 +10,9 @@ let report = null;
     const Filters = window.EmailBackupHubFilters;
     const SavedViews = window.EmailBackupHubSavedViews;
     const Charts = window.EmailBackupHubCharts;
+    const ChartExplorer = window.EmailBackupHubChartExplorer;
+    let chartSettings = null;
+    let chartRecommended = null;
     let filterColumn = null;
     let currentPage = 1;
     let pageSize = 50;
@@ -187,6 +190,8 @@ let report = null;
       renderGroupingControls();
       byId('columnWidthRange').value = String(baseColumnWidth);
       byId('columnWidthValue').textContent = baseColumnWidth + ' px';
+      chartSettings = null;
+      chartRecommended = null;
       renderRows();
       prepareReportChartControls();
       refreshSavedViews();
@@ -285,70 +290,180 @@ let report = null;
     }
 
     function measureColumns() {
-      return (report?.columns || []).filter(column =>
-        ['money', 'number', 'percent'].includes(columnMetaFor(column).type)
-      );
+      return ChartExplorer ? ChartExplorer.numericColumns(report, Filters) : (report?.columns || []).filter(column =>
+        ['money','number','percent'].includes(columnMetaFor(column).type));
+    }
+
+    function chartOption(select, value, label) {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = label;
+      select.appendChild(option);
+    }
+
+    function chartFieldNames() {
+      return friendlyColumns(report?.columns || []);
+    }
+
+    function chartRowLabel(item, index) {
+      const row = item.raw || item;
+      const identity = (report.columns || []).find(column =>
+        /(ne ccor$|ptres$|c[oó]d.*recolhimento|rip$|numero.*processo)/i.test(column));
+      const named = identity ? String(row[identity] || '').trim() : '';
+      const title = named || String(Object.values(row).find(value => String(value || '').trim()) || '').trim();
+      return 'Registro ' + (index + 1) + (title ? ' · ' + (title.length > 80 ? title.slice(0, 77) + '…' : title) : '');
+    }
+
+    function updateChartSuggestion() {
+      if (!ChartExplorer || !report) return;
+      const suggested = ChartExplorer.suggest(report, filteredRows(), Filters);
+      chartRecommended = suggested;
+      byId('chartSuggestedTitle').textContent = 'Sugestão: ' + suggested.title;
+      byId('chartSuggestedReason').textContent = suggested.reason;
     }
 
     function prepareReportChartControls() {
-      if (!report) return;
-      const dimensions = report.columns || [];
+      if (!report || !ChartExplorer) return;
+      updateChartSuggestion();
+      if (!chartSettings) chartSettings = { ...chartRecommended };
+      const dimensions = ChartExplorer.dimensions(report, Filters);
       const measures = measureColumns();
-      const names = friendlyColumns(dimensions);
-      const currentDimension = byId('chartDimension').value;
-      const currentMeasure = byId('chartMeasure').value;
-      byId('chartDimension').innerHTML = dimensions.map((column, index) =>
-        `<option value="${escapeHtml(column)}">${escapeHtml(names[index])}</option>`
-      ).join('');
-      const bestDimension = dimensions.find(column =>
-        ['date', 'period'].includes(columnMetaFor(column).type)) ||
-        dimensions.find(column => !['money', 'number', 'percent'].includes(columnMetaFor(column).type)) || dimensions[0];
-      byId('chartDimension').value = dimensions.includes(currentDimension) ? currentDimension : bestDimension || '';
-      byId('chartMeasure').innerHTML = measures.map(column =>
-        `<option value="${escapeHtml(column)}">${escapeHtml(friendlyColumnName(column))}</option>`
-      ).join('');
-      byId('chartMeasure').value = measures.includes(currentMeasure) ? currentMeasure : measures[0] || '';
+      const columnNames = chartFieldNames();
+      const dimSelect = byId('chartDimension');
+      const measureSelect = byId('chartMeasure');
+      dimSelect.replaceChildren();
+      measureSelect.replaceChildren();
+      dimensions.forEach(column => chartOption(dimSelect, column,
+        columnNames[(report.columns || []).indexOf(column)] || column));
+      measures.forEach(column => chartOption(measureSelect, column,
+        columnNames[(report.columns || []).indexOf(column)] || column));
+      const hasWide = ChartExplorer.wideColumns(report, Filters).length >= 2;
+      const wideOption = byId('chartMode').querySelector('option[value="wide"]');
+      if (wideOption) wideOption.disabled = !hasWide;
+      if (chartSettings.mode === 'wide' && !hasWide) chartSettings = { ...chartRecommended };
+      if (!dimensions.includes(chartSettings.dimension)) chartSettings.dimension = dimensions[0] || '';
+      if (!measures.includes(chartSettings.measure)) chartSettings.measure = measures[0] || '';
+      const modes = ['records','count','sum','wide'];
+      if (!modes.includes(chartSettings.mode)) chartSettings.mode = chartRecommended.mode;
+      if (!['bar','pie','line'].includes(chartSettings.type)) chartSettings.type = chartRecommended.type;
+      byId('chartMode').value = chartSettings.mode;
+      byId('chartType').value = chartSettings.type;
+      dimSelect.value = chartSettings.dimension;
+      measureSelect.value = chartSettings.measure;
+      byId('chartLimit').value = String(chartSettings.limit || 15);
+      populateChartRecords();
+      updateChartControlVisibility();
+    }
+
+    function populateChartRecords() {
+      const select = byId('chartRecord');
+      const previous = Number(chartSettings?.rowIndex);
+      const rows = filteredRows().filter(item => item.type !== 'total');
+      select.replaceChildren();
+      const max = Math.min(rows.length, 200);
+      // Keep original filtered indices so a chart point can open the correct source row.
+      let chosen = 0;
+      for (let i = 0; i < max; i++) {
+        const index = filteredRows().indexOf(rows[i]);
+        chartOption(select, String(index), chartRowLabel(rows[i], index));
+        if (index === previous) chosen = index;
+      }
+      if (rows.length > max) chartOption(select, '', 'Filtre a tabela para localizar outros registros (' + rows.length + ' no total)');
+      select.value = String(chosen);
+      chartSettings.rowIndex = chosen;
+    }
+
+    function updateChartControlVisibility() {
+      const mode = chartSettings?.mode;
+      byId('chartDimensionControl').hidden = mode === 'wide';
+      byId('chartMeasureControl').hidden = mode === 'wide' || mode === 'count';
+      byId('chartRowControl').hidden = mode !== 'wide';
+      byId('chartType').querySelector('option[value="pie"]').disabled = mode === 'records' || mode === 'wide';
+      byId('chartType').querySelector('option[value="line"]').disabled = mode === 'records';
+    }
+
+    function readChartSettingsFromControls() {
+      if (!chartSettings) chartSettings = { ...chartRecommended };
+      const mode = byId('chartMode').value;
+      const type = byId('chartType').value;
+      chartSettings = {
+        ...chartSettings, mode, type,
+        dimension: byId('chartDimension').value,
+        measure: byId('chartMeasure').value,
+        rowIndex: Number(byId('chartRecord').value) || 0,
+        limit: Number(byId('chartLimit').value) || 15
+      };
+      if (mode === 'records' && (type === 'pie' || type === 'line')) chartSettings.type = 'bar';
+      if (mode === 'wide' && type === 'pie') chartSettings.type = 'bar';
+      byId('chartType').value = chartSettings.type;
+      updateChartControlVisibility();
+    }
+
+    function chartSelectPoint(point, result) {
+      if (result.mode === 'records' || result.mode === 'wide') {
+        openRowDetails(point.rowIndex);
+        return;
+      }
+      const column = result.dimension;
+      const meta = columnMetaFor(column);
+      const key = point.key;
+      let filter;
+      if (!key) filter = { op:'is_empty' };
+      else if (meta.type === 'date') filter = { op:'range', min:key, max:key };
+      else if (Filters.filterKind(meta) === 'choices') filter = { op:'in', values:[key] };
+      else filter = { op:'equals', value:key };
+      if (!Filters.validFilter(filter,meta)) {
+        byId('chartSummary').textContent = 'Não foi possível aplicar um filtro seguro para esta categoria.';
+        return;
+      }
+      columnFilters[column] = filter;
+      filteredCache = null;
+      currentPage = 1;
+      renderRows();
+      byId('chartSummary').textContent = 'Filtro aplicado à tabela: ' + friendlyColumnName(column) + ' = ' +
+        (key || '(vazio)') + '. Use “Limpar” para desfazer.';
+      const table = byId('readerWorkspace');
+      if (typeof table.scrollIntoView === 'function') table.scrollIntoView({ behavior:'smooth',block:'start' });
     }
 
     function renderReportChart() {
       const container = byId('reportChartVisual');
-      if (!byId('reportChart').open || !report || !container) return;
-      const dimension = byId('chartDimension').value;
-      const measure = byId('chartMeasure').value;
-      const kind = columnMetaFor(measure)?.type;
-      if (!dimension || !measure || !measureColumns().includes(measure)) {
-        container.innerHTML = '<p class="chart-empty">Não há uma medida numérica identificada com segurança neste relatório. Continue usando a busca e a tabela para consultar os registros.</p>';
-        return;
+      if (!byId('reportChart')?.open || !report || !container || !ChartExplorer) return;
+      if (!chartSettings) prepareReportChartControls();
+      const source = filteredRows();
+      updateChartSuggestion();
+      const result = ChartExplorer.build(report, source, chartSettings, Filters);
+      const label = byId('chartSummary');
+      if (result.ok) {
+        const shown = result.points.length;
+        label.textContent = (result.description || '') + ' Registros filtrados: ' + result.totalDataRows +
+          '. Itens no gráfico: ' + shown +
+          (result.omitted ? '. Valores inválidos/vazios ignorados: ' + result.omitted : '') +
+          (result.warning ? ' Atenção: ' + result.warning : '');
+      } else label.textContent = result.reason;
+      ChartExplorer.render(container, result, { onSelect:chartSelectPoint });
+    }
+
+    function applyChartSuggestion() {
+      if (!chartRecommended || !report) return;
+      chartSettings = { ...chartRecommended };
+      prepareReportChartControls();
+      renderReportChart();
+    }
+
+    function onChartControlsChanged() {
+      const priorMode = chartSettings?.mode;
+      readChartSettingsFromControls();
+      if (priorMode !== chartSettings.mode) {
+        if (chartSettings.mode === 'wide') populateChartRecords();
+        if (chartSettings.mode === 'count' && chartSettings.type === 'line'
+          && !['period','date'].includes(columnMetaFor(chartSettings.dimension).type)) {
+          chartSettings.type = 'bar';
+          byId('chartType').value = 'bar';
+        }
+        updateChartControlVisibility();
       }
-      if (!Charts?.renderCategory) {
-        container.innerHTML = '<p class="chart-empty">Visualização indisponível. A tabela e as exportações continuam funcionando.</p>';
-        return;
-      }
-      const visible = filteredRows();
-      const items = visible.map((item, index) => {
-        const raw = item.raw || item;
-        const parsed = Filters.parseNumber(raw[measure]);
-        return {
-          rowIndex: index,
-          label: String(raw[dimension] ?? '').trim() || '(sem identificação)',
-          value: item.type === 'total' ? null : parsed
-        };
-      });
-      // Date and accounting periods are sorted for display only; the table order is unchanged.
-      if (['period', 'date'].includes(columnMetaFor(dimension).type)) {
-        const meta = columnMetaFor(dimension);
-        items.sort((a, b) => Filters.compare(a.label, b.label, meta));
-      }
-      const integer = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
-      const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
-      const formatter = value => kind === 'money' ? currency.format(value)
-        : kind === 'percent' ? integer.format(value) + '%'
-          : integer.format(value);
-      Charts.renderCategory(container, items, {
-        limit: 25,
-        formatValue: formatter,
-        onSelect: index => openRowDetails(index)
-      });
+      renderReportChart();
     }
 
     function groupTotals(rows) {
@@ -1586,8 +1701,9 @@ let report = null;
         renderReportChart();
       }
     });
-    byId('chartDimension').addEventListener('change', renderReportChart);
-    byId('chartMeasure').addEventListener('change', renderReportChart);
+    ['chartMode','chartType','chartDimension','chartMeasure','chartLimit','chartRecord'].forEach(id =>
+      byId(id).addEventListener('change', onChartControlsChanged));
+    byId('chartUseSuggestion').addEventListener('click', applyChartSuggestion);
     byId('pageSize').addEventListener('change', event => {
       const size = Number(event.target.value);
       if (![25, 50, 100].includes(size)) return;
