@@ -361,31 +361,33 @@ let report = null;
       const displayColumns = friendlyColumns(columns);
       byId('table').innerHTML = `
         <thead><tr>${columns.map((column, index) => `
-          <th>
-            ${escapeHtml(displayColumns[index])}
-            <input data-column="${escapeHtml(column)}" placeholder="Filtrar" value="${escapeHtml(columnFilters[column] || '')}">
-            <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
-              <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
-              <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>A-Z</option>
-              <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Z-A</option>
-            </select>
+          <th scope="col">
+            <span class="column-heading">${escapeHtml(displayColumns[index])}</span>
+            <div class="column-heading-actions">
+              <button type="button" class="column-filter-button${columnFilters[column] ? ' is-active' : ''}"
+                data-filter-column="${escapeHtml(column)}" aria-label="Filtrar ${escapeHtml(displayColumns[index])}"
+                aria-pressed="${Boolean(columnFilters[column])}">Filtro${columnFilters[column] ? ' ●' : ''}</button>
+              <select data-sort-column="${escapeHtml(column)}" aria-label="Ordenar ${escapeHtml(displayColumns[index])}">
+                <option value="" ${columnSort.column === column && !columnSort.direction ? 'selected' : ''}>Ordem original</option>
+                <option value="az" ${columnSort.column === column && columnSort.direction === 'az' ? 'selected' : ''}>Crescente</option>
+                <option value="za" ${columnSort.column === column && columnSort.direction === 'za' ? 'selected' : ''}>Decrescente</option>
+              </select>
+            </div>
           </th>
         `).join('')}</tr></thead>
         <tbody></tbody>
         <tfoot></tfoot>
       `;
-      document.querySelectorAll('th input').forEach(input => {
-        input.addEventListener('input', event => {
-          columnFilters[event.target.dataset.column] = event.target.value;
-          scheduleRenderRows();
-        });
+      document.querySelectorAll('th button[data-filter-column]').forEach(button => {
+        button.addEventListener('click', event => openFilterEditor(event.currentTarget.dataset.filterColumn));
       });
-      document.querySelectorAll('th select').forEach(select => {
+      document.querySelectorAll('th select[data-sort-column]').forEach(select => {
         select.addEventListener('change', event => {
-          document.querySelectorAll('th select').forEach(item => {
+          document.querySelectorAll('th select[data-sort-column]').forEach(item => {
             if (item !== event.target) item.value = '';
           });
           columnSort = { column: event.target.dataset.sortColumn, direction: event.target.value };
+          currentPage = 1;
           renderRows();
         });
       });
