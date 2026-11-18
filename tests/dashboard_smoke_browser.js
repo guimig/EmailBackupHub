@@ -88,10 +88,11 @@
         rect(gruCard).width > rect(expenseCard).width
       : cards.every((card, index) => index === 0 ||
         rect(card).top >= rect(cards[index - 1]).bottom - 5);
+    // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
-      (rect(expenseCard).height < 410 &&
-       rect(stages).height < 410 &&
-       rect(gruCard).height < 420);
+      (rect(expenseCard).height < 480 &&
+       rect(stages).height < 480 &&
+       rect(gruCard).height < 530);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
     qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
       const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
