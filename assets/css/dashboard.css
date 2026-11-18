@@ -682,6 +682,7 @@ h1 {
   line-height: 1.4;
 }
 .rap-composition-item dd strong,
+.chart-card--rap .rap-composition-item dd strong,
 .rap-composition-total strong {
   font-size: var(--font-label);
   line-height: 1.4;
