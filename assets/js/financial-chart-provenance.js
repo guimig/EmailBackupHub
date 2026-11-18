@@ -146,7 +146,7 @@
     });
     if (options.audited === false) return reason('Uma ou mais métricas não têm origem auditável na mesma posição.');
     if (options.quality === false) return reason('O relatório de origem apresenta problemas de qualidade.');
-    if (options.date !== undefined && !/^\\d{4}-\\d{2}-\\d{2}$/.test(String(options.date))) {
+    if (options.date !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(String(options.date))) {
       return reason('Data de referência do relatório indisponível ou inválida.');
     }
     if (raw.some(value => !Number.isFinite(value) || value < 0)) {
