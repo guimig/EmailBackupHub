@@ -388,7 +388,7 @@
         + escapeHtml(valid ? currency.format(item.value) : 'Sem registros')
         + '" data-gru-records="' + item.records + '" title="'
         + escapeHtml(item.label + ': ' + (valid ? currency.format(item.value) : 'Sem registros'))
-        + '" aria-label="' + escapeHtml(item.label + ', '
+        + '" aria-pressed="false" aria-label="' + escapeHtml(item.label + ', '
           + (valid ? currency.format(item.value) : 'sem registros') + ', '
           + item.records + ' documento(s)') + '">'
         + '<span class="gru-month-plot"><span class="gru-month-column-fill" style="height:'
