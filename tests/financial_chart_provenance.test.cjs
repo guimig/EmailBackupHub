@@ -195,7 +195,7 @@ test('GRU chronological timeline preserves monthly values in accessible detailed
 });
 
 test('GRU code composition reconciles by code and description, including reversals', () => {
-  const { buildGruByCode, renderGruCodes } = charts;
+  const { buildGruByCode, renderGruCodes } = require('../assets/js/financial-chart-provenance.js');
   const valueColumn = '724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)';
   const report = {
     date_iso:'2026-11-17', metadata:{exercicio:2026}, quality:{ok:true},
@@ -222,7 +222,7 @@ test('GRU code composition reconciles by code and description, including reversa
 });
 
 test('indicative committed/provisioned ratio requires audited same date and exercise', () => {
-  const { buildCommitmentProvisionRatio } = charts;
+  const { buildCommitmentProvisionRatio } = require('../assets/js/financial-chart-provenance.js');
   const doc=(key,value,date='2026-11-17')=>({
     date_iso:date,metadata:{exercicio:2026},quality:{ok:true},
     metrics:{[key]:value},metrics_meta:{[key]:{status:'ok',fallback:false}}
