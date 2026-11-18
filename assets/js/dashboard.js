@@ -369,6 +369,9 @@ let indexData = null;
         && stageKeys.every(key => Number.isFinite(stagesDoc.metrics?.[key])
           && stagesDoc.metrics_meta?.[key]?.status === 'ok'
           && !stagesDoc.metrics_meta?.[key]?.fallback));
+      const provisionGaugeModel = window.EmailBackupHubFinancialCharts?.buildCommitmentProvisionRatio(
+        financialReports['provisionamentos'], stagesDoc
+      ) || { ok: false, reason: 'Comparação indisponível.' };
       const stageModel = window.EmailBackupHubFinancialCharts?.buildExpenseStages(
         stageAudited ? {
           committed: stagesDoc.metrics.empenhado,
@@ -412,6 +415,9 @@ let indexData = null;
         ? formatPercent(stageModel.paid, stageModel.committed) : '-');
       setText('openGaugeValue', stageModel.ok && stageModel.liquidated > 0
         ? formatPercent(stageModel.unpaidLiquidated, stageModel.liquidated) : '-');
+      setText('provisionGaugeValue', provisionGaugeModel.ok
+        ? (provisionGaugeModel.value * 100).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + '%' : '-');
+      byId('provisionGaugeValue').title = provisionGaugeModel.reason;
 
       renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
@@ -424,6 +430,7 @@ let indexData = null;
       renderHalfGauge('paidGauge', stageModel.ok ? stageModel.rates.paidOfCommitted : null);
       renderHalfGauge('openGauge', stageModel.ok && stageModel.liquidated > 0
         ? stageModel.unpaidLiquidated / stageModel.liquidated : null);
+      renderHalfGauge('provisionGauge', provisionGaugeModel.ok ? provisionGaugeModel.value : null);
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
@@ -447,26 +454,6 @@ let indexData = null;
     // Interpret only auditable relationships; avoid status thresholds without
     // institutionally defined targets or conflating different budget balances.
     function renderExecutiveInsights(values) {
-      const committed = valueOf(values.committed);
-      const paid = valueOf(values.paid);
-      const expenseTitle = byId('expenseTakeawayTitle');
-      const expenseText = byId('expenseTakeawayText');
-      const expensePanel = byId('expenseTakeaway');
-      const comparable = values.stageModel
-        ? values.stageModel.ok
-        : Number.isFinite(committed) && committed > 0 &&
-          Number.isFinite(paid) && paid >= 0 && paid <= committed;
-      if (expenseTitle && expenseText) {
-        setText('expenseTakeawayTitle', comparable
-          ? formatPercent(values.stageModel?.paid ?? values.paid, values.stageModel?.committed ?? values.committed)
-              + ' do valor empenhado consta como pago'
-          : 'Comparação percentual indisponível');
-        setText('expenseTakeawayText', comparable
-          ? 'Valores acumulados da posição auditada; não indica pagamentos realizados no dia da extração.'
-          : 'Confira a comparabilidade e a auditoria das três etapas no mesmo relatório; não calculamos percentuais entre fontes divergentes.');
-        if (expensePanel) expensePanel.dataset.availability = comparable ? 'available' : 'missing';
-      }
-
       const payable = valueOf(values.rapPayable);
       const rapPaid = valueOf(values.rapPaid);
       const rapTotal = valueOf(values.rapTotal);
@@ -940,6 +927,8 @@ let indexData = null;
       const renderer = window.EmailBackupHubFinancialCharts;
       if (!renderer?.renderGruMonthly) return unavailableChart(id);
       const container = byId(id);
+      const codesContainer = byId('gruCodesChart');
+      const showCodesUnavailable = reason => renderer.renderGruCodes(codesContainer, { ok: false, reason });
       const slug = 'recolhimento-proprio-gru';
       const report = reports.find(item => item.slug === slug);
       const compact = financialReports[slug];
@@ -947,6 +936,7 @@ let indexData = null;
       if (legend) legend.textContent = 'Distribuição da movimentação líquida conforme mês de emissão, sujeita à reconciliação.';
       if (!isAvailable(currentValue) || !report?.json_path) {
         renderer.renderGruMonthly(container, { ok: false, reason: 'Total auditado ou fonte GRU indisponível.' });
+        showCodesUnavailable('Total auditado ou fonte GRU indisponível.');
         return;
       }
       const key = String(indexData?.generated_at || '') + '|' + report.json_path;
@@ -970,12 +960,14 @@ let indexData = null;
       }
       if (gruDetailState.status === 'loading') {
         container.innerHTML = '<p class="chart-empty" role="status">Conferindo datas de emissão e reconciliando a GRU com o total auditado...</p>';
+        if (codesContainer) codesContainer.innerHTML = '';
         return;
       }
       if (gruDetailState.status === 'error') {
         renderer.renderGruMonthly(container, {
           ok: false, reason: 'Falha ao carregar os registros detalhados (' + gruDetailState.error + ').'
         });
+        showCodesUnavailable('Falha ao carregar o relatório detalhado.');
         return;
       }
       const doc = gruDetailState.document;
@@ -984,10 +976,12 @@ let indexData = null;
         renderer.renderGruMonthly(container, {
           ok: false, reason: 'O detalhe da GRU não corresponde à mesma versão do resumo auditado.'
         });
+        showCodesUnavailable('Versão do relatório divergente.');
         return;
       }
       const result = renderer.buildGruMonthly(doc, valueOf(currentValue));
       renderer.renderGruMonthly(container, result, { url: chartSourceUrl(slug) });
+      renderer.renderGruCodes(codesContainer, renderer.buildGruByCode(doc, valueOf(currentValue)));
     }
 
     function renderRapHistory(id, currentValues) {
