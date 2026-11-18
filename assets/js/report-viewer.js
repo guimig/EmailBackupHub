@@ -1804,9 +1804,12 @@ let report = null;
       prepareReportChartControls();
       if (byId('reportChart')?.open) renderReportChart();
       const removed = result.removedColumns.length;
+      const renamed = result.renamedColumns?.length || 0;
       setSavedViewStatus(removed
-        ? 'Consulta aplicada. ' + removed + ' coluna(s) já não existem neste relatório e foram ignoradas.'
-        : 'Consulta "' + name + '" aplicada. A URL foi atualizada para compartilhar a seleção.');
+        ? 'Consulta aplicada com ressalvas: ' + removed + ' campo(s) ausente(s) foram ignorados. Confira a estrutura da origem.'
+        : renamed
+          ? 'Consulta aplicada; ' + renamed + ' nome(s) de campo foram normalizados. Confira a correspondência.'
+          : 'Consulta "' + name + '" aplicada. A URL foi atualizada para compartilhar a seleção.');
     }
 
     function deleteSavedView() {
