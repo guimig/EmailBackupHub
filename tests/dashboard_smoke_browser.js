@@ -2,6 +2,7 @@
 (function () {
   let attempts = 0;
   function verify() {
+    try {
     const el = id => document.getElementById(id);
 
     const expense = el('expenseTrendChart');
@@ -249,6 +250,11 @@
     if (document.documentElement.dataset.theme !== oldTheme) el('themeToggle').click();
     qa.themeRestoredForScreenshots = document.documentElement.dataset.theme === oldTheme;
     document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
+    } catch (error) {
+      document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({
+        browserScriptError: String(error), stack: String(error?.stack || '').slice(0, 800)
+      }));
+    }
   }
   setTimeout(verify, 100);
 }());
