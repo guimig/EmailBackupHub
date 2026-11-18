@@ -361,6 +361,22 @@ let indexData = null;
         metricValue('saldos-de-empenhos-do-exercicio-conta-contabil', 'pago', ['Valor 10']),
         metricValue('despesas-empenhadas-liquidadas-e-pagas-mes-lancamento', 'pago', ['Valor 9'])
       ]);
+      // Rates are only derived from one audited extraction of the expenditure report.
+      // Independent KPIs above may use other explicitly identified fallback sources.
+      const stagesDoc = financialReports['despesas-empenhadas-liquidadas-e-pagas-mes-lancamento'];
+      const stageKeys = ['empenhado', 'liquidado', 'pago'];
+      const stageAudited = Boolean(stagesDoc && stagesDoc.quality?.ok !== false
+        && stageKeys.every(key => Number.isFinite(stagesDoc.metrics?.[key])
+          && stagesDoc.metrics_meta?.[key]?.status === 'ok'
+          && !stagesDoc.metrics_meta?.[key]?.fallback));
+      const stageModel = window.EmailBackupHubFinancialCharts?.buildExpenseStages(
+        stageAudited ? {
+          committed: stagesDoc.metrics.empenhado,
+          liquidated: stagesDoc.metrics.liquidado,
+          paid: stagesDoc.metrics.pago
+        } : null,
+        { audited: stageAudited, quality: stagesDoc?.quality?.ok !== false, date: stagesDoc?.date_iso }
+      ) || { ok: false, reason: 'Modelo de execução indisponível.' };
       const rapPaid = metricValue('restos-a-pagar-rap', 'rap_pago', ['Valor 11']);
       const rapPayable = metricValue('restos-a-pagar-rap', 'rap_a_pagar', ['Valor 12']);
       const gru = metricValue('recolhimento-proprio-gru', 'gru_arrecadada', ['last']);
@@ -368,9 +384,10 @@ let indexData = null;
       const credit = metricValue('credito-disponivel-mes-lancamento', 'credito_disponivel', ['last']);
       const rapTotal = sumAudit('Restos a pagar total', [rapPaid, rapPayable]);
       const budget = provisioned;
-      const committedRatio = ratio(committed, provisioned);
-      const liquidatedRatio = ratio(liquidated, committed);
-      const paidRatio = ratio(paid, liquidated);
+      // Do not compute stage ratios from different reports, filters or periods.
+      const committedRatio = auditValue(null, 'Provisionamentos não equivalem necessariamente à dotação disponível para empenho.');
+      const liquidatedRatio = auditValue(stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null, stageModel.reason);
+      const paidRatio = auditValue(stageModel.ok ? stageModel.rates.paidOfLiquidated : null, stageModel.reason);
       const rapPaidRatio = ratio(rapPaid, rapTotal);
       const provisionOpen = subtractAudit('Saldo estimado a empenhar', provisioned, committed);
 
@@ -389,21 +406,40 @@ let indexData = null;
         ? 'do total de RAP acompanhado já foi pago'
         : 'percentual indisponível: total nulo, negativo ou não auditável');
       setText('gruValue', formatMoney(gru));
-      setText('committedGaugeValue', formatPercent(committed, provisioned));
-      setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
-      setText('paidGaugeValue', formatPercent(paid, liquidated));
+      setText('committedGaugeValue', stageModel.ok
+        ? formatMoney(stageModel.unliquidated) : '-');
+      setText('liquidatedGaugeValue', stageModel.ok
+        ? formatMoney(stageModel.unpaidLiquidated) : '-');
+      setText('paidGaugeValue', stageModel.ok
+        ? formatPercent(stageModel.paid, stageModel.committed) : '-');
 
       renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit });
+      renderStageInterpretation(stageModel);
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
       renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
-      renderGauge('committedGauge', committedRatio);
-      renderGauge('liquidatedGauge', liquidatedRatio);
-      renderGauge('paidGauge', paidRatio);
+      renderGauge('committedGauge', auditValue(stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null, stageModel.reason));
+      renderGauge('liquidatedGauge', paidRatio);
+      renderGauge('paidGauge', auditValue(stageModel.ok ? stageModel.rates.paidOfCommitted : null, stageModel.reason));
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+    }
+
+    function renderStageInterpretation(model) {
+      const banner = byId('stagesInterpretation');
+      if (!banner) return;
+      if (!model?.ok) {
+        banner.textContent = 'Comparação entre etapas indisponível: '
+          + (model?.reason || 'dados não auditáveis na mesma posição.');
+        banner.dataset.state = 'unavailable';
+        return;
+      }
+      banner.textContent = 'Valores acumulados do mesmo relatório ('
+        + model.date.split('-').reverse().join('/') + '). '
+        + 'A diferença entre as etapas não comprova atraso nem constitui saldo financeiro livre.';
+      banner.dataset.state = 'available';
     }
 
     // Interpret only auditable relationships; avoid status thresholds without
@@ -832,16 +868,18 @@ let indexData = null;
 
     function renderCreditComparison(id, currentValues) {
       const renderer = window.EmailBackupHubFinancialCharts;
-      if (!renderer?.renderComparison) return unavailableChart(id);
-      const creditDate = financialReports['credito-disponivel-mes-lancamento']?.date || '-';
-      const provisionDate = financialReports['provisionamentos']?.date || '-';
-      renderer.renderComparison(byId(id), [
-        { label: 'Crédito disponível', value: valueOf(currentValues.credit) },
-        { label: 'Provisionamentos', value: valueOf(currentValues.provisioned) }
+      if (!renderer?.renderIndependentBalances) return unavailableChart(id);
+      const creditDate = financialReports['credito-disponivel-mes-lancamento']?.date;
+      const provisionDate = financialReports['provisionamentos']?.date;
+      renderer.renderIndependentBalances(byId(id), [
+        { label: 'Crédito disponível', value: valueOf(currentValues.credit), date: creditDate },
+        { label: 'Provisionamentos', value: valueOf(currentValues.provisioned), date: provisionDate }
       ], {
-        note: 'Saldos de relatórios diferentes, com referência em ' + creditDate
-          + ' e ' + provisionDate + ', respectivamente. Não representam parcelas complementares.',
-        url: chartSourceUrl('credito-disponivel-mes-lancamento')
+        note: 'Crédito disponível e provisionamentos são saldos de relatórios independentes. Não são fatias de um mesmo total nem se deve calcular um percentual entre eles sem validar escopo e filtros.',
+        links: [
+          { label: 'Consultar crédito disponível', url: chartSourceUrl('credito-disponivel-mes-lancamento') },
+          { label: 'Consultar provisionamentos', url: chartSourceUrl('provisionamentos') }
+        ]
       });
     }
 
