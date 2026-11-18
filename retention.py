@@ -9,6 +9,8 @@ from config import (
     RETENTION_KEEP_LATEST,
     RETENTION_KEEP_MONTHLY_CLOSE,
     RETENTION_MAX_REMOVAL_SAMPLE,
+    RETENTION_RECENT_DAYS,
+    RETENTION_WEEKLY_UNTIL_DAYS,
 )
 
 
@@ -23,8 +25,8 @@ def retention_policy():
         "keep_latest": RETENTION_KEEP_LATEST,
         "keep_monthly_close": RETENTION_KEEP_MONTHLY_CLOSE,
         "monthly_close_source": "first_available_in_first_seven_days_of_month",
-        "keep_recent_days": 60,
-        "keep_weekly_until_days": 180,
+        "keep_recent_days": RETENTION_RECENT_DAYS,
+        "keep_weekly_until_days": RETENTION_WEEKLY_UNTIL_DAYS,
         "keep_year_end": True,
         "holiday_list_env": "RETENTION_HOLIDAYS",
         "closing_date_rule": "report_date_minus_one_day",
@@ -40,12 +42,15 @@ def first_business_day(year, month):
 
 
 def closing_date_for_report(report_date):
+    # Date inferred from filename; actual financial reference period must be checked.
     return report_date - datetime.timedelta(days=1)
 
 
 def monthly_close_key(report_date):
-    closing_date = closing_date_for_report(report_date)
-    return f"{closing_date.year:04d}-{closing_date.month:02d}"
+    # First business-day report is a candidate for the previous month close.
+    month_start = report_date.replace(day=1)
+    previous_month = month_start - datetime.timedelta(days=1)
+    return f"{previous_month.year:04d}-{previous_month.month:02d}"
 
 
 def is_monthly_close_report(report_date):
@@ -90,20 +95,21 @@ def retention_selection(paths, parse_date_from_name):
 
     by_week = {}
     by_month = {}
+    by_first_business_day = {}
     for item in dated_files:
         date = item["date"]
         age = (today - date).days
         if age < 0:
             keep(item, "future_dated_review")
-        elif age <= 60:
+        elif age <= RETENTION_RECENT_DAYS:
             keep(item, "recent_daily")
-        elif 60 < age <= 180:
+        elif RETENTION_RECENT_DAYS < age <= RETENTION_WEEKLY_UNTIL_DAYS:
             iso = date.isocalendar()
             by_week[(iso.year, iso.week)] = item
-        if RETENTION_KEEP_MONTHLY_CLOSE and date.day <= 7:
-            # Protect the earliest available source of the month. The precise
-            # month closing must still be validated against report metadata.
+        if RETENTION_KEEP_MONTHLY_CLOSE:
             by_month.setdefault((date.year, date.month), item)
+            if is_monthly_close_report(date):
+                by_first_business_day[(date.year, date.month)] = item
         if date.month == 12 and date.day >= 28:
             keep(item, "year_end_provisional")
         if date.month == 1 and date.day <= 7:
@@ -112,11 +118,8 @@ def retention_selection(paths, parse_date_from_name):
     for item in by_week.values():
         keep(item, "weekly")
     if RETENTION_KEEP_MONTHLY_CLOSE:
-        for item in by_month.values():
-            keep(item, "monthly_close")
-        for item in dated_files:
-            if is_monthly_close_report(item["date"]):
-                keep(item, "monthly_close")
+        for key, item in by_month.items():
+            keep(by_first_business_day.get(key, item), "monthly_close")
 
     retained = []
     ignored = []
