@@ -1,21 +1,21 @@
 """Audit historical JSON snapshots without touching the production dataset.
 
-Safe default: report only. Deletion requires explicit --apply and --confirm.
-Only unreferenced snapshots outside the recent protection window are eligible.
+Read-only by design: no deletion option is exposed.
+Old unreferenced snapshots are review candidates, not proven disposable.
 """
 from __future__ import annotations
 
 import argparse
 import datetime as dt
-import hashlib
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SNAPSHOTS = ROOT / "data" / "snapshots"
 DEFAULT_AUDIT = ROOT / "data" / "snapshot-retention-audit.json"
-DAY_PATTERN = __import__("re").compile(r"^(\d{4}-\d{2}-\d{2})-[0-9a-f]{12}\.json$")
+DAY_PATTERN = re.compile(r"^(\d{4}-\d{2}-\d{2})-[0-9a-f]{12}\.json$")
 
 
 def read_json(path: Path, default):
@@ -66,8 +66,8 @@ def inspect(now: dt.date, keep_days: int = 180, sample_limit: int = 40) -> tuple
     protected = protected_snapshot_paths()
     paths = sorted(SNAPSHOTS.glob("*/*.json"))
     missing = sorted(p for p in protected if not (ROOT / p).is_file())
-    if missing:
-        raise RuntimeError(f"Referenced snapshots missing ({len(missing)}); refusing cleanup")
+    # Legacy cache entries may refer to missing files. Report rather than hide
+    # these inconsistencies; the audit itself never removes any files.
     counters = Counter()
     report_stats = {}
     candidates = []
@@ -118,6 +118,8 @@ def inspect(now: dt.date, keep_days: int = 180, sample_limit: int = 40) -> tuple
         "candidates_sample": examples,
         "unrecognized_sample": invalid,
         "referenced_snapshot_count": len(protected),
+        "missing_referenced_count": len(missing),
+        "missing_referenced_sample": missing[:sample_limit],
     }
     return result, candidates
 
@@ -127,30 +129,11 @@ def main() -> int:
     parser.add_argument("--keep-days", type=int, default=180)
     parser.add_argument("--output", default=str(DEFAULT_AUDIT))
     parser.add_argument("--no-write", action="store_true")
-    parser.add_argument("--apply", action="store_true", help="Delete eligible unreferenced snapshots")
-    parser.add_argument("--confirm", default="", help="Required exact phrase: DELETE_UNREFERENCED_SNAPSHOTS")
     args = parser.parse_args()
     if args.keep_days < 180:
         parser.error("--keep-days must be at least 180")
-    if args.apply and args.confirm != "DELETE_UNREFERENCED_SNAPSHOTS":
-        parser.error("--apply requires --confirm DELETE_UNREFERENCED_SNAPSHOTS")
-    audit, candidates = inspect(dt.date.today(), args.keep_days)
-    if args.apply:
-        # Revalidate the entire reference set immediately before the first deletion.
-        protected = protected_snapshot_paths()
-        for path in candidates:
-            if relative(path) in protected:
-                raise RuntimeError(f"Snapshot became referenced: {path}")
-        deleted = 0
-        deleted_bytes = 0
-        for path in candidates:
-            size = path.stat().st_size
-            path.unlink()
-            deleted += 1
-            deleted_bytes += size
-        audit["execution"] = {"deleted_files": deleted, "deleted_bytes": deleted_bytes}
-    else:
-        audit["execution"] = {"deleted_files": 0, "deleted_bytes": 0}
+    audit, _candidates = inspect(dt.date.today(), args.keep_days)
+    audit["execution"] = {"deleted_files": 0, "deleted_bytes": 0}
     print(json.dumps({"summary": audit["summary"], "execution": audit["execution"]}, ensure_ascii=False))
     if not args.no_write:
         output = Path(args.output)
