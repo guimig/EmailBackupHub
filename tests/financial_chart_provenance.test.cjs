@@ -129,7 +129,7 @@ test('monthly GRU executive summary highlights the biggest absolute movement and
   });
   assert.match(container.innerHTML, /Meses com registros/);
   assert.match(container.innerHTML, /2 de 3/);
-  assert.match(container.innerHTML, /FEV\/2026 · R\$\s*-50,00/);
+  assert.match(container.innerHTML, /FEV\/2026 · -R\$\s*50,00/);
   assert.match(container.innerHTML, /financial-month-row is-negative/);
   assert.match(container.innerHTML, /barra não representa participação percentual/);
   const empty = { innerHTML: '' };
