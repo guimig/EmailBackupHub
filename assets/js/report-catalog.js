@@ -39,9 +39,10 @@
       const added = current.filter(slug => !seen.includes(slug));
       const active = new Set(current);
       const unread = safeSlugs([...input.unread.filter(slug => active.has(slug)), ...added]);
+      const missing = seen.filter(slug => !active.has(slug));
       const state = { version: VERSION, seen: safeSlugs([...seen, ...current]), unread, favorites };
       storage.setItem(KEY, JSON.stringify(state));
-      return { state, available: true, message: '' };
+      return { state, available: true, message: '', missing };
     } catch {
       return { state: emptyState(current), available: false, message: 'Não foi possível acessar as preferências deste navegador.' };
     }
