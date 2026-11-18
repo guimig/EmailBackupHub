@@ -954,3 +954,45 @@ td { font-weight: 400; }
 @media (max-width: 360px) {
   .dashboard-panel .kpi-secondary .dashboard-kpis { grid-template-columns: 1fr; }
 }
+
+/* GRU: summarize the reconciled series before detailed month comparisons. */
+.dashboard-charts--overview .gru-month-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 12px;
+}
+.dashboard-charts--overview .gru-month-summary > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 12px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+}
+.dashboard-charts--overview .gru-month-summary span {
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.4;
+}
+.dashboard-charts--overview .gru-month-summary strong {
+  color: var(--text);
+  font-size: var(--font-label);
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.dashboard-charts--overview .gru-scale-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.45;
+}
+.dashboard-charts--overview .financial-month-row.is-negative .financial-bar-fill {
+  background: var(--warn);
+}
+@media (max-width: 650px) {
+  .dashboard-charts--overview .gru-month-summary { grid-template-columns: 1fr; }
+}
