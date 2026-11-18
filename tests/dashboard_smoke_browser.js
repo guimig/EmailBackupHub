@@ -16,8 +16,10 @@
     }
     const qa = {};
     qa.loaded = el('totalReports').textContent === '7';
-    qa.auditedKpis = /50\.000/.test(el('committedTotal').textContent) &&
-      /100\.000/.test(el('budgetBase').textContent);
+    qa.auditedKpis = /100\.000/.test(el('budgetBase').textContent) &&
+      /40\.000/.test(el('creditAvailable').textContent) &&
+      /12\.000/.test(el('rapTotal').textContent) &&
+      /2\.500/.test(el('gruCollected').textContent);
     qa.expenseShowsCurrentBalances = expense.querySelectorAll('.financial-bar-row').length === 3 &&
       !expense.querySelector('circle.history-point');
     qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-independent-item').length === 2 &&
@@ -50,8 +52,10 @@
     qa.gruTreemapProportional = [...el('gruCodesChart').querySelectorAll('.gru-treemap-tile')]
       .reduce((total, tile) => total + parseFloat(tile.style.width) * parseFloat(tile.style.height), 0) > 9999;
     qa.gruViewRestored = el('gruViewCodesButton').getAttribute('aria-pressed') === 'true';
-    qa.provenanceInfoVisible = document.querySelector('.dashboard-provenance')
-      ?.textContent.includes('não a data de cada lançamento');
+    qa.noRedundantIntro = !document.querySelector('.dashboard-panel .panel-note') &&
+      !document.querySelector('.dashboard-panel > .panel-actions .chart-help') &&
+      !document.querySelector('.source-context') &&
+      !el('otherFinancialIndicators');
     qa.noFalseHistorySelector = el('historyRange') === null;
     qa.noSnapshotLinePoints = document.querySelectorAll('circle.history-point').length === 0;
     qa.expenseSourceLink = Boolean(expense.querySelector('a.financial-chart-link[href*="report-viewer.html"]'));
@@ -61,6 +65,12 @@
       expense.querySelectorAll('.financial-bar-row').length === 3 &&
       gru.querySelectorAll('.gru-month-button').length === 11;
     qa.chartHelpAccessible = getComputedStyle(document.querySelector('.chart-help')).display !== 'none';
+    qa.singleChartHeadings = cardsSafeTitles();
+    function cardsSafeTitles() {
+      return [...document.querySelectorAll('.dashboard-charts--overview > .chart-card')]
+        .every(card => card.querySelectorAll('h3').length === 1 &&
+          card.querySelectorAll('.chart-kicker').length === 0);
+    }
     const rap = el('rapStackChart');
     qa.rapPercentClearlyNamed = el('rapShareValue').textContent.includes('83,3')
       && el('rapShareMeaning').textContent.includes('do total de RAP acompanhado');
@@ -133,9 +143,9 @@
     })();
     // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
-      (rect(expenseCard).height < 600 &&
-       rect(stages).height < 620 &&
-       rect(gruCard).height < 900);
+      (rect(expenseCard).height < 510 &&
+       rect(stages).height < 460 &&
+       rect(gruCard).height < 650);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
     qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
       const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
@@ -168,7 +178,7 @@
     qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
       >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
-      '.chart-kicker', '.gru-selection-detail', '.stage-gauge-caption',
+      '.gru-selection-detail', '.chart-interaction-detail',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
@@ -197,16 +207,8 @@
       return Math.abs(heading.getBoundingClientRect().top - help.getBoundingClientRect().top) < 5;
     })();
     const secondary = el('otherFinancialIndicators');
-    qa.progressiveKpis = !secondary.open &&
-      document.querySelectorAll('.dashboard-panel > .dashboard-kpis > .kpi-card').length === 4 &&
-      secondary.querySelectorAll('.kpi-card').length === 3 &&
-      secondary.getBoundingClientRect().top >= chartGrid.getBoundingClientRect().bottom - 5;
-    secondary.open = true;
-    qa.secondaryKpisRetainAuditedValues = secondary.open &&
-      el('committedTotal').textContent.includes('50.000') &&
-      el('liquidatedTotal').textContent.includes('30.000') &&
-      el('paidTotal').textContent.includes('20.000');
-    secondary.open = false;
+    qa.noRedundantFinancialIndicators = !secondary &&
+      document.querySelectorAll('.dashboard-panel > .dashboard-kpis > .kpi-card').length === 4;
     const glossary = document.querySelector('.glossary-panel');
     qa.glossaryAvailableOnDemand = !glossary.open &&
       glossary.querySelectorAll('.term-help').length === 6;
@@ -214,11 +216,30 @@
     qa.glossaryExpands = glossary.open &&
       getComputedStyle(glossary.querySelector('.term-strip')).display !== 'none';
     glossary.open = false;
-    const provenance = document.querySelector('.source-context');
-    qa.methodologyStillAccessible = !provenance.open &&
-      provenance.querySelector('.dashboard-provenance').textContent.includes('não a data de cada lançamento');
+    qa.methodologyStillAccessible = [...document.querySelectorAll('.chart-card .chart-help')].length === 5 &&
+      !document.querySelector('.source-context');
     qa.expenseTakeawayRemoved = !el('expenseTakeaway') && !el('expenseTakeawayTitle') && !el('expenseTakeawayText');
-    qa.rapTakeawayShowsRemainingAmount = /R\$\s+2\.000,00/.test(el('rapTakeaway').textContent);
+    qa.noDuplicateRapTakeaway = !el('rapTakeaway');
+    qa.financialChartsInteractive = (() => {
+      const expenseRow = expense.querySelector('.financial-bar-row[role="button"]');
+      const rapItem = rap.querySelector('.rap-composition-item[role="button"]');
+      const creditItem = credit.querySelector('.financial-independent-item[role="button"]');
+      const stageItem = stages.querySelector('.stage-gauge-card[role="button"]');
+      if (![expenseRow,rapItem,creditItem,stageItem].every(Boolean)) return false;
+      for (const node of [expenseRow,rapItem,creditItem,stageItem]) {
+        node.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      }
+      return ['expenseChartDetail','rapChartDetail','creditChartDetail','stagesChartDetail']
+        .every(id => !el(id).hidden && el(id).textContent.length > 4) &&
+        [expenseRow,rapItem,creditItem,stageItem]
+          .every(node => node.getAttribute('aria-pressed') === 'true');
+    })();
+    qa.keyboardChartSelection = (() => {
+      const next = [...expense.querySelectorAll('.financial-bar-row[role="button"]')][1];
+      next.dispatchEvent(new KeyboardEvent('keydown', { bubbles:true, key:'Enter' }));
+      return next.getAttribute('aria-pressed') === 'true'
+        && el('expenseChartDetail').textContent.includes('Liquidado');
+    })();
     qa.creditAvoidsInvalidAccountingIdentity =
       creditCard.querySelector('.chart-help p').textContent.includes('saldos de relatórios independentes');
     qa.methodologyUsesQuestionMark = cards.every(card =>
@@ -235,18 +256,16 @@
     const referenceCards = [...reference.querySelectorAll(':scope > .aux-panel')];
     const gridGap = parseFloat(getComputedStyle(chartGrid).columnGap);
     const cardPadding = cards.map(card => parseFloat(getComputedStyle(card).paddingLeft));
-    qa.dashboardHasReferenceSection = referenceCards.length === 2 &&
-      referenceCards.some(card => card.classList.contains('glossary-panel')) &&
-      referenceCards.some(card => card.classList.contains('source-context'));
+    qa.dashboardHasReferenceSection = referenceCards.length === 1 &&
+      referenceCards[0].classList.contains('glossary-panel');
     qa.dashboardReadingOrder = rect(document.querySelector('.dashboard-panel > .dashboard-kpis')).top <
       rect(chartGrid).top && rect(chartGrid).top < rect(reference).top &&
       rect(reference).top < rect(managementPanel).top;
     qa.dashboardCardPaddingConsistent = cardPadding.every(value => value >= 12 &&
       Math.abs(value - cardPadding[0]) < .5);
     qa.dashboardGridSpacingConsistent = gridGap >= 12 && gridGap <= 24;
-    qa.dashboardReferenceIsResponsive = window.innerWidth > 800
-      ? Math.abs(rect(referenceCards[0]).top - rect(referenceCards[1]).top) < 5
-      : rect(referenceCards[1]).top >= rect(referenceCards[0]).bottom - 5;
+    qa.dashboardReferenceIsResponsive = referenceCards.length === 1 &&
+      rect(referenceCards[0]).width <= rect(reference).width + 1;
     qa.dashboardPanelFitsScreen = rect(dashboardPanel).right <= window.innerWidth + 3;
     qa.dashboardTypographyUsesTokens = getComputedStyle(document.body).fontFamily ===
       getComputedStyle(expenseCard).fontFamily;
