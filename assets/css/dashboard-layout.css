@@ -342,3 +342,167 @@ th, td { padding: var(--dash-space-3); }
     animation-duration: .01ms !important;
   }
 }
+
+
+/* Financial semantics: relative bars for expenditure stages; standalone totals for
+   balances that are not shares of a single accounting base. */
+.dashboard-charts--overview .financial-independent {
+  display: grid;
+  gap: var(--dash-space-3);
+  width: 100%;
+}
+.dashboard-charts--overview .financial-independent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--dash-space-3);
+}
+.dashboard-charts--overview .financial-independent-item {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+  gap: var(--dash-space-2);
+  padding: var(--dash-space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  background: var(--soft);
+}
+.dashboard-charts--overview .financial-independent-item .financial-bar-label {
+  font-size: var(--font-label);
+  line-height: 1.4;
+}
+.dashboard-charts--overview .financial-independent-item .financial-bar-value {
+  font-size: clamp(1rem, 1.5vw, var(--font-figure));
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.dashboard-charts--overview .financial-independent-item small {
+  font-size: var(--font-caption);
+  color: var(--muted);
+  line-height: 1.4;
+}
+.dashboard-charts--overview .financial-independent-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dash-space-2) var(--dash-space-4);
+}
+.dashboard-charts--overview .financial-independent-links .financial-chart-link {
+  margin-top: 0;
+}
+.dashboard-charts--overview .stage-interpretation {
+  margin: 0 0 var(--dash-space-2);
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.5;
+}
+.dashboard-charts--overview .stage-interpretation[data-state="unavailable"] {
+  color: var(--warn);
+  border-inline-start: 3px solid var(--warn);
+  padding-inline-start: var(--dash-space-3);
+}
+/* The monthly timeline follows calendar order and shares a zero reference. */
+.dashboard-charts--overview .gru-timeline-viewport {
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  padding: var(--dash-space-2) 0;
+}
+.dashboard-charts--overview .gru-timeline {
+  --gru-negative-height: 0px;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(30px, 1fr));
+  min-width: 460px;
+  gap: var(--dash-space-2);
+  align-items: end;
+  border-bottom: 0;
+}
+.dashboard-charts--overview .gru-timeline.has-negative {
+  --gru-negative-height: 24px;
+}
+.dashboard-charts--overview .gru-timeline-month {
+  display: grid;
+  grid-template-rows: 116px var(--gru-negative-height) auto;
+  min-width: 0;
+  color: var(--muted);
+  border-radius: 5px;
+}
+.dashboard-charts--overview .gru-timeline-positive {
+  height: 116px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 2px solid var(--line);
+  min-width: 0;
+}
+.dashboard-charts--overview .gru-timeline-positive .gru-timeline-fill {
+  display: block;
+  width: min(70%, 37px);
+  margin-inline: auto;
+  background: var(--accent);
+  border-radius: 5px 5px 0 0;
+  min-height: 1px;
+}
+.dashboard-charts--overview .gru-timeline-negative {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+}
+.dashboard-charts--overview .gru-timeline-negative .gru-timeline-fill {
+  display: block;
+  width: min(70%, 37px);
+  margin-inline: auto;
+  background: var(--warn);
+  border-radius: 0 0 5px 5px;
+  min-height: 1px;
+}
+.dashboard-charts--overview .gru-timeline-label {
+  font-size: var(--font-caption);
+  text-align: center;
+  padding-top: var(--dash-space-2);
+  line-height: 1.2;
+}
+.dashboard-charts--overview .gru-timeline-month:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+.dashboard-charts--overview .gru-timeline-month.is-missing .gru-timeline-label { opacity: .6; }
+.dashboard-charts--overview .gru-timeline-caption {
+  margin: var(--dash-space-2) 0 0;
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.4;
+}
+.dashboard-charts--overview .gru-months-details {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  padding-top: var(--dash-space-3);
+}
+.dashboard-charts--overview .gru-months-details > summary {
+  cursor: pointer;
+  color: var(--brand);
+  font-size: var(--font-label);
+  font-weight: 650;
+  line-height: 1.5;
+  padding-block: var(--dash-space-1);
+}
+.dashboard-charts--overview .gru-months-details .gru-month-grid {
+  margin-top: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-card--credit .financial-bar-label {
+  white-space: normal;
+}
+.dashboard-charts--overview .chart-card--gru .financial-monthly { gap: var(--dash-space-3); }
+.dashboard-panel > .kpi-secondary {
+  margin-top: var(--dash-space-4);
+}
+.dashboard-panel > .kpi-secondary .dashboard-kpis {
+  gap: var(--dash-space-3);
+}
+@media (max-width: 570px) {
+  .dashboard-charts--overview .financial-independent-grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-charts--overview .gru-timeline { min-width: 380px; }
+}
