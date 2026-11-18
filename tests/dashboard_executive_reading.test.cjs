@@ -49,7 +49,7 @@ function data(overrides = {}) {
 test('RAP takeaway remains concise without redundant expense banner', () => {
   const { render, el } = harness();
   render(data());
-  assert.match(el('rapTakeaway').textContent, /R\\$\\s+2\\.000,00 ainda constam a pagar/);
+  assert.match(el('rapTakeaway').textContent, /R\$\s+2\.000,00 ainda constam a pagar/);
   const html = fs.readFileSync(path.resolve(__dirname, '../dashboard.html'), 'utf8');
   assert.doesNotMatch(html, /id="expenseTakeaway"/);
 });
@@ -71,5 +71,5 @@ test('explanatory copy preserves independent credit and provisioned balances', (
   assert.match(html, /Não representam parcelas de um mesmo total/);
   assert.match(html, /id="otherFinancialIndicators"/);
   assert.match(html, /id="managementAlertsPanel"/);
-  assert.match(html, /Base: RAP pago \+ RAP a pagar/);
+  assert.match(html, /RAP pago dividido pela soma de RAP pago e RAP a pagar/);
 });
