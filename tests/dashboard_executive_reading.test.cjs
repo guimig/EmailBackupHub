@@ -52,7 +52,7 @@ test('clear summary uses paid divided by committed and shows unpaid RAP without 
   assert.match(el('expenseTakeawayTitle').textContent, /40,0% do valor empenhado/);
   assert.match(el('expenseTakeawayText').textContent, /não indica pagamentos realizados no dia/);
   assert.equal(el('expenseTakeaway').dataset.availability, 'available');
-  assert.match(el('rapTakeaway').textContent, /R\$ 2\.000,00 ainda constam a pagar/);
+  assert.match(el('rapTakeaway').textContent, /R\$\s+2\.000,00 ainda constam a pagar/);
   assert.doesNotMatch(el('expenseTakeawayTitle').textContent, /ótimo|ruim|adequado/i);
 });
 
