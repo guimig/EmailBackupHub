@@ -185,6 +185,27 @@
       Boolean(credit.querySelector('a.financial-chart-link')) &&
       Boolean(gru.querySelector('a.financial-chart-link')) &&
       Boolean(rap.querySelector('a.rap-composition-link'));
+    // Visual design contract: consistent padding, cards, typography and reading order.
+    const dashboardPanel = document.querySelector('.dashboard-panel');
+    const reference = document.querySelector('.dashboard-reference');
+    const referenceCards = [...reference.querySelectorAll(':scope > .aux-panel')];
+    const gridGap = parseFloat(getComputedStyle(chartGrid).columnGap);
+    const cardPadding = cards.map(card => parseFloat(getComputedStyle(card).paddingLeft));
+    qa.dashboardHasReferenceSection = referenceCards.length === 2 &&
+      referenceCards.some(card => card.classList.contains('glossary-panel')) &&
+      referenceCards.some(card => card.classList.contains('source-context'));
+    qa.dashboardReadingOrder = rect(document.querySelector('.dashboard-panel > .dashboard-kpis')).top <
+      rect(chartGrid).top && rect(chartGrid).top < rect(reference).top &&
+      rect(reference).top < rect(managementPanel).top;
+    qa.dashboardCardPaddingConsistent = cardPadding.every(value => value >= 12 &&
+      Math.abs(value - cardPadding[0]) < .5);
+    qa.dashboardGridSpacingConsistent = gridGap >= 12 && gridGap <= 24;
+    qa.dashboardReferenceIsResponsive = window.innerWidth > 800
+      ? Math.abs(rect(referenceCards[0]).top - rect(referenceCards[1]).top) < 5
+      : rect(referenceCards[1]).top >= rect(referenceCards[0]).bottom - 5;
+    qa.dashboardPanelFitsScreen = rect(dashboardPanel).right <= window.innerWidth + 3;
+    qa.dashboardTypographyUsesTokens = getComputedStyle(document.body).fontFamily ===
+      getComputedStyle(expenseCard).fontFamily;
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
