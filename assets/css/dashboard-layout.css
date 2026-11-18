@@ -1109,8 +1109,8 @@ th, td { padding: var(--dash-space-3); }
     padding: var(--dash-space-2) var(--dash-space-1);
   }
   .dashboard-charts--overview .stage-gauge-title {
-    font-size: var(--font-caption);
-    min-height: 3.15em;
+    font-size: var(--font-label);
+    min-height: 3.25em;
     line-height: 1.3;
   }
   .dashboard-charts--overview .stage-half-gauge {
