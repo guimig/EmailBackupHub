@@ -27,9 +27,42 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*snapshot*.py'
       - name: Validate cleanup manifest without deletion
         run: python verified_snapshot_cleanup.py --limit 50 --manifest verified-empty-snapshot-manifest.json
+      - name: Reversible isolated deletion pilot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python verified_snapshot_cleanup.py --limit 5 --manifest pilot-snapshot-manifest.json --apply --confirm DELETE_VERIFIED_EMPTY_SNAPSHOTS
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path("pilot-snapshot-manifest.json").read_text(encoding="utf-8"))
+          assert len(manifest["selected"]) == 5, "Pilot must have exactly 5 eligible files"
+          for item in manifest["selected"]:
+              assert not Path(item["path"]).exists(), f"Deletion failed: {item['path']}"
+          print("Pilot: all five files temporarily removed in isolated runner")
+          PY
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+          manifest = json.loads(Path("pilot-snapshot-manifest.json").read_text(encoding="utf-8"))
+          paths = [item["path"] for item in manifest["selected"]]
+          subprocess.run(["git", "restore", "--source=HEAD", "--", *paths], check=True)
+          import hashlib
+          for item in manifest["selected"]:
+              path = Path(item["path"])
+              assert path.is_file(), f"Restoration failed: {path}"
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == item["sha256"], f"Hash changed: {path}"
+          result = subprocess.run(["git", "status", "--porcelain", "--", *paths], check=True, capture_output=True, text=True)
+          assert not result.stdout.strip(), "Restored files differ from checkout"
+          print("Pilot: all five files restored, SHA-256 and git status verified")
+          PY
       - name: Publish manifest for human review
         uses: actions/upload-artifact@v4
         with:
           name: verified-empty-snapshot-manifest
-          path: verified-empty-snapshot-manifest.json
+          path: |
+            verified-empty-snapshot-manifest.json
+            pilot-snapshot-manifest.json
           retention-days: 14
