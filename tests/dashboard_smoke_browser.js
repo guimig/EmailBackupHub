@@ -178,7 +178,7 @@
     qa.consistentMetricSizes = fontPx('.chart-card--stages .stage-gauge-value') >= chartValues[0]
       && fontPx('.chart-card--rap .rap-share-summary strong') >= chartValues[0];
     qa.captionTextReadable = [
-      '.gru-selection-detail', '.chart-interaction-detail',
+      '.gru-selection-detail', '.gru-visual-note',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
