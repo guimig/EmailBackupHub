@@ -117,7 +117,7 @@ test('monthly chart is one compact interactive series without redundant disclosu
   assert.match(container.innerHTML, /gru-month-button is-negative/);
   assert.match(container.innerHTML, /aria-pressed="false"/);
   assert.match(container.innerHTML, /Sem registros/);
-  assert.match(container.innerHTML, /-R\\$\\s*50,00/);
+  assert.match(container.innerHTML, /-R\$\s*50,00/);
   assert.doesNotMatch(container.innerHTML, /<details/);
   assert.match(container.innerHTML, /report-viewer.html/);
   const mismatch={innerHTML:''};
