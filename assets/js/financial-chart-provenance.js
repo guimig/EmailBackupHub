@@ -172,12 +172,21 @@
       const available = Number.isFinite(item.value);
       const width = available ? Math.max(0, Math.min(100, Math.abs(item.value) / scale * 100)) : 0;
       const title = available ? currency.format(item.value) + ' · ' + item.records + ' documento(s)' : 'Sem registros válidos';
-      return '<div class="financial-bar-row financial-month-row">'
+      return '<div class="financial-bar-row financial-month-row' + (available && item.value < 0 ? ' is-negative' : '') + '">'
         + '<span class="financial-bar-label">' + escapeHtml(item.label) + '</span>'
         + '<span class="financial-bar-track" role="img" aria-label="' + escapeHtml(item.label + ': ' + title) + '">'
         + (available ? '<span class="financial-bar-fill" style="width:' + width.toFixed(1) + '%"></span>' : '')
         + '</span><strong class="financial-bar-value">' + (available ? escapeHtml(currency.format(item.value)) : 'Sem registros') + '</strong></div>';
     });
+    const populated = result.months.filter(item => Number.isFinite(item.value));
+    const peak = populated.reduce((best, item) =>
+      !best || Math.abs(item.value) > Math.abs(best.value) ? item : best, null);
+    const overview = '<div class="gru-month-summary" aria-label="Resumo dos meses de emissão">'
+      + '<div><span>Meses com registros</span><strong>' + populated.length + ' de ' + result.months.length + '</strong></div>'
+      + '<div><span>Maior movimentação líquida em módulo</span><strong>'
+      + (peak ? escapeHtml(peak.label) + ' · ' + escapeHtml(currency.format(peak.value)) : 'Sem dado')
+      + '</strong></div></div>'
+      + '<p class="gru-scale-note">Comprimento relativo ao maior valor mensal em módulo. Valores negativos são movimentações líquidas negativas; a barra não representa participação percentual do total.</p>';
     const midpoint = Math.ceil(monthRows.length / 2);
     const bars = '<div class="gru-month-grid">'
       + '<div class="gru-month-column">' + monthRows.slice(0, midpoint).join('') + '</div>'
@@ -187,7 +196,7 @@
       + '). Mês de emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
       + result.sourceDate.split('-').reverse().join('/') + '.';
     container.innerHTML = '<div class="financial-monthly" role="group" aria-label="GRU por mês de emissão">'
-      + bars + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
+      + overview + bars + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
         '<p class="financial-chart-note">' + escapeHtml(note) + '</p></details>'
       + (options.url ? '<a class="financial-chart-link" href="' + escapeHtml(options.url)
         + '">Consultar documentos de GRU</a>' : '') + '</div>';
