@@ -105,9 +105,11 @@
     el('catalogScope').value = 'all';
     el('catalogScope').dispatchEvent(new Event('change', { bubbles: true }));
     qa.allReportsRestored = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
+    // Restore the initial theme before taking viewport screenshots. Headless
+    // Chromium can capture a blank frame if the page is scrolled mid-render.
+    if (document.documentElement.dataset.theme !== oldTheme) el('themeToggle').click();
+    qa.themeRestoredForScreenshots = document.documentElement.dataset.theme === oldTheme;
     document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
-    // Capture the actual chart composition in CI screenshots, not only the page header.
-    chartGrid.scrollIntoView({ block: 'start' });
   }
   setTimeout(verify, 100);
 }());
