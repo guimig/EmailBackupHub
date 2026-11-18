@@ -77,7 +77,7 @@ test('GRU has valid month data without depending on snapshots; code never equate
   assert.doesNotMatch(dashboard,/renderHistoricalLineChart\s*\(/);
   assert.doesNotMatch(dashboard,/renderExpenseHistory\s*\(/);
   assert.doesNotMatch(html,/id="historyRange"/);
-  assert.match(html,/financeiro.*não a data de cada lançamento|não a data de cada lançamento/i);
+  assert.match(html, /Mês de emissão não é necessariamente mês de recolhimento/);
 });
 
 test('Brazilian numeric interpretation is strict, zero is different from absent', () => {
