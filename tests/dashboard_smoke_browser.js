@@ -102,6 +102,45 @@
       const links = [...document.querySelectorAll('.header-actions .header-link')];
       return links.length === 2 && Math.abs(rect(links[0]).top - rect(links[1]).top) < 4;
     })();
+
+    // Typography checks are evaluated from rendered CSS in real desktop/mobile Chromium.
+    const styled = selector => getComputedStyle(document.querySelector(selector));
+    const fontPx = selector => parseFloat(styled(selector).fontSize);
+    const chartLabels = [
+      '.chart-card--expense .financial-bar-label',
+      '.chart-card--credit .financial-bar-label',
+      '.chart-card--gru .financial-bar-label',
+      '.chart-card--rap .rap-composition-item dt',
+      '.chart-card--stages .flow-metric-top span'
+    ].map(fontPx);
+    const chartValues = [
+      '.chart-card--expense .financial-bar-value',
+      '.chart-card--credit .financial-bar-value',
+      '.chart-card--gru .financial-bar-value',
+      '.chart-card--rap .rap-composition-item dd strong'
+    ].map(fontPx);
+    const equalScale = values => values.every(v => v >= 13 && Math.abs(v - values[0]) < .3);
+    qa.chartLabelsOneScale = equalScale(chartLabels);
+    qa.chartValuesOneScale = equalScale(chartValues);
+    qa.captionTextReadable = [
+      '.chart-kicker', '.financial-chart-note', '.chart-bottom-note',
+      '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
+    ].every(selector => fontPx(selector) >= 12.5);
+    qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
+      fontPx('.dashboard-panel h2') > fontPx('.chart-card--expense h3') &&
+      fontPx('.chart-card--expense h3') > chartLabels[0];
+    qa.sameFontFamilyAcrossPage = [
+      'body', 'h1', '.chart-card--expense h3', '.dashboard-kpis .kpi-card strong',
+      '.chart-card--gru .financial-bar-label', '.toolbar input', '.toolbar select',
+      '.toolbar button', '.table-wrap td', '.site-footer'
+    ].every(selector => styled(selector).fontFamily === styled('body').fontFamily);
+    qa.uniformControlText = [
+      '.toolbar input', '.toolbar select', '.toolbar button',
+      '.header-actions .header-link', '.header-actions #themeToggle'
+    ].every(selector => Math.abs(fontPx(selector) - fontPx('.toolbar input')) < .3);
+    qa.unifiedCardCorners = [
+      '.dashboard-kpis .kpi-card', '.chart-card--expense', '.summary .metric'
+    ].every(selector => styled(selector).borderTopLeftRadius === '11px');
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
