@@ -1929,6 +1929,9 @@ let report = null;
       const row = event.target.closest('tbody tr[data-row-index]');
       if (row) openRowDetails(Number(row.dataset.rowIndex));
     });
+    byId('schemaBannerLink').addEventListener('click', () => {
+      byId('sourceDetails').open = true;
+    });
     byId('schemaAccept').addEventListener('click', acceptReportStructure);
     byId('saveView').addEventListener('click', saveCurrentView);
     byId('loadView').addEventListener('click', applySavedView);
