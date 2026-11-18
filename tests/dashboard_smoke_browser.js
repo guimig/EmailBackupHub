@@ -22,7 +22,7 @@
     qa.expenseShowsCurrentBalances = expense.querySelectorAll('.financial-bar-row').length === 3 &&
       !expense.querySelector('circle.history-point');
     qa.noDuplicateBalancesChart = !document.querySelector('.chart-card--credit')
-      && !el('creditDonut') && el('budgetBase') && el('creditAvailable');
+      && !el('creditDonut') && !!el('budgetBase') && !!el('creditAvailable');
     qa.monthlyGruReconciled = gru.querySelectorAll('.gru-month-button').length === 11 &&
       el('gruCollected').textContent.includes('2.500');
     qa.gruCodesReconciled = el('gruCodesChart').querySelectorAll('.gru-treemap-tile').length === 3 &&
@@ -44,6 +44,8 @@
     qa.gruCodeInteractive = !el('gruCodesChart').hidden && gru.hidden
       && el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode)
       && firstCode.getAttribute('aria-pressed') === 'true';
+    qa.gruDetailsAppearOnClickOnly = !el('gruSelectionDetail').hidden &&
+      el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode);
     qa.gruTreemapProportional = [...el('gruCodesChart').querySelectorAll('.gru-treemap-tile')]
       .reduce((total, tile) => total + parseFloat(tile.style.width) * parseFloat(tile.style.height), 0) > 9999;
     qa.gruViewRestored = el('gruViewCodesButton').getAttribute('aria-pressed') === 'true';
@@ -219,8 +221,6 @@
     qa.noRedundantChartClicks = !chartGrid.querySelector('.financial-bar-row[role="button"], '
       + '.rap-composition-item[role="button"], .stage-gauge-card[role="button"]')
       && !el('expenseChartDetail') && !el('rapChartDetail') && !el('stagesChartDetail');
-    qa.gruDetailsAppearOnClickOnly = !el('gruSelectionDetail').hidden &&
-      el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode);
     qa.methodologyUsesQuestionMark = cards.every(card =>
       card.querySelectorAll(':scope > .chart-card-head details.chart-help > summary').length === 1 &&
       card.querySelector(':scope > .chart-card-head details.chart-help > summary').textContent.trim() === '?') &&
