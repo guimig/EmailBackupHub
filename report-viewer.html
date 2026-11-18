@@ -79,6 +79,10 @@
         </div>
       </section>
 
+      <div id="schemaBanner" class="schema-banner" role="status" aria-live="polite" hidden>
+        <span id="schemaBannerText"></span>
+        <a href="#sourceDetails" id="schemaBannerLink">Conferir estrutura</a>
+      </div>
       <div class="results-row">
         <span id="quickStatus" aria-live="polite">Preparando tabela...</span>
         <div id="filterChips" class="filter-chips" aria-label="Filtros aplicados"></div>
@@ -214,6 +218,18 @@
       <div class="disclosure-body">
         <p><a id="jsonLink" href="#">Consultar JSON original</a> · <a href="https://github.com/guimig/EmailBackupHub">Código-fonte e documentação</a></p>
         <div id="quality" class="quality"></div>
+        <section class="schema-audit" aria-labelledby="schemaAuditTitle">
+          <div class="schema-audit-head">
+            <div>
+              <h3 id="schemaAuditTitle">Validação da estrutura recebida</h3>
+              <p id="schemaAuditSummary">Aguardando análise dos cabeçalhos...</p>
+            </div>
+            <button id="schemaAccept" class="secondary-button small-button" type="button" hidden>Confirmar estrutura atual</button>
+          </div>
+          <div id="schemaAuditMessages" class="schema-audit-messages" role="status"></div>
+          <div id="schemaAuditColumns" class="schema-audit-columns"></div>
+          <p class="schema-audit-footnote">A comparação usa somente cabeçalhos e tipos guardados neste navegador. Não valida a correção contábil de valores ou somas. Confirmar uma nova estrutura não altera arquivos ou métricas da origem.</p>
+        </section>
         <div id="metricAudit" class="metric-audit is-hidden"></div>
       </div>
     </details>
@@ -233,6 +249,7 @@
   </footer>
   <script src="assets/js/common.js"></script>
   <script src="assets/js/report-viewer-filters.js"></script>
+  <script src="assets/js/report-schema-guard.js"></script>
   <script src="assets/js/report-viewer-presets.js"></script>
   <script src="assets/js/interactive-charts.js"></script>
   <script src="assets/js/report-chart-explorer.js"></script>
