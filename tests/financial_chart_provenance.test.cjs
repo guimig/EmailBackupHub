@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const {
-  buildGruMonthly, parseAmount, locateGruColumns, renderComparison, renderGruMonthly
+  buildGruMonthly, buildExpenseStages, parseAmount, locateGruColumns, renderComparison, renderIndependentBalances, renderGruMonthly
 } = require('../assets/js/financial-chart-provenance.js');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -135,4 +135,41 @@ test('monthly GRU executive summary highlights the biggest absolute movement and
   const empty = { innerHTML: '' };
   renderGruMonthly(empty, { ok: true, year: 2026, sourceDate: '2026-11-17', records: 0, total: 0, months: [] });
   assert.match(empty.innerHTML, /0 de 0/);
+});
+
+
+test('public expenditure stages use auditable same-snapshot comparison without clamping', () => {
+  const good = buildExpenseStages({committed:50000,liquidated:30000,paid:20000},
+    {audited:true,quality:true,date:'2026-11-17'});
+  assert.equal(good.ok,true);
+  assert.equal(good.unliquidated,20000);
+  assert.equal(good.unpaidLiquidated,10000);
+  assert.equal(good.rates.liquidatedOfCommitted,0.6);
+  assert.equal(good.rates.paidOfCommitted,0.4);
+  assert.ok(Math.abs(good.rates.paidOfLiquidated-2/3) < 1e-12);
+  for (const [values,options] of [
+    [{committed:100,liquidated:110,paid:50},{}],
+    [{committed:100,liquidated:50,paid:80},{}],
+    [{committed:0,liquidated:0,paid:0},{}],
+    [{committed:null,liquidated:10,paid:0},{}],
+    [{committed:100,liquidated:30,paid:20},{audited:false}],
+    [{committed:100,liquidated:30,paid:20},{quality:false}],
+    [{committed:100,liquidated:30,paid:20},{date:'invalid'}]
+  ]) {
+    const invalid = buildExpenseStages(values,options);
+    assert.equal(invalid.ok,false,JSON.stringify(values));
+    assert.equal(invalid.rates,null);
+  }
+});
+
+test('independent balances never use misleading percentage bars', () => {
+  const container = {innerHTML:''};
+  renderIndependentBalances(container,[
+    {label:'Crédito disponível',value:40000,date:'17/11/2026'},
+    {label:'Provisionamentos',value:null,date:'16/11/2026'}
+  ],{note:'Saldos distintos',links:[{label:'Consultar',url:'report-viewer.html'}]});
+  assert.equal((container.innerHTML.match(/financial-independent-item/g)||[]).length,2);
+  assert.doesNotMatch(container.innerHTML,/financial-bar-track|width:/);
+  assert.match(container.innerHTML,/Indisponível/);
+  assert.match(container.innerHTML,/Saldos distintos/);
 });
