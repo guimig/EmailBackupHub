@@ -12,7 +12,7 @@
     <div class="header-top">
       <div class="header-copy">
         <h1>DAP - Dashboard de Relatórios</h1>
-        <p class="sub">Indicadores auditáveis dos relatórios do Tesouro Gerencial, com acesso às fontes disponíveis.</p>
+        <p class="sub">Consulta gerencial da execução orçamentária e financeira, com indicadores rastreáveis aos relatórios de origem.</p>
       </div>
       <div class="header-actions"><a class="theme-toggle header-link" href="#catalogo">Catálogo</a><a class="theme-toggle header-link" href="relatorios.html">Relatórios</a><button id="themeToggle" class="theme-toggle" type="button">Tema escuro</button></div>
     </div>
@@ -20,7 +20,7 @@
       <div class="dashboard-panel-head">
         <div>
           <h2>Resumo Orçamentário e Financeiro</h2>
-          <div class="panel-note">Indicadores da última posição disponível. Leia os resumos e consulte as fontes para aprofundar.</div>
+          <div class="panel-note">Posição consolidada dos relatórios disponíveis. As datas e os filtros de origem podem variar entre indicadores.</div>
         </div>
         <div class="panel-actions">
           <span class="panel-badge" id="financePanelDate">Atualizando</span>
@@ -32,27 +32,19 @@
         <p id="insightText">Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador e sua utilidade para acompanhar a execução orçamentária e financeira.</p>
       </div>
       <div class="dashboard-kpis">
-        <div class="kpi-card"><span>Provisionamentos (R$)</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
-        <div class="kpi-card"><span>Crédito disponível (R$)</span><strong id="creditAvailable">-</strong><small>Saldo na posição atual do relatório</small></div>
-        <div class="kpi-card"><span>Restos a Pagar (R$)</span><strong id="rapTotal">-</strong><small>Pagos + a pagar</small></div>
-        <div class="kpi-card"><span>Arrecadação própria (R$)</span><strong id="gruCollected">-</strong><small>GRU arrecadadas</small></div>
+        <div class="kpi-card"><span>Provisionamentos</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
+        <div class="kpi-card"><span>Crédito disponível</span><strong id="creditAvailable">-</strong><small>Saldo na posição atual do relatório</small></div>
+        <div class="kpi-card"><span>Restos a pagar</span><strong id="rapTotal">-</strong><small>Total acompanhado: pagos e a pagar</small></div>
+        <div class="kpi-card"><span>Arrecadação própria (GRU)</span><strong id="gruCollected">-</strong><small>Movimentação líquida auditada</small></div>
       </div>
-      <details class="aux-panel kpi-secondary" id="otherFinancialIndicators">
-        <summary>Outros indicadores de despesa <span>Empenhado, liquidado e pago</span></summary>
-        <div class="dashboard-kpis dashboard-kpis--secondary">
-          <div class="kpi-card"><span>Despesas empenhadas (R$)</span><strong id="committedTotal">-</strong><small>Total empenhado</small></div>
-          <div class="kpi-card"><span>Despesas liquidadas (R$)</span><strong id="liquidatedTotal">-</strong><small>Total liquidado</small></div>
-          <div class="kpi-card"><span>Despesas pagas (R$)</span><strong id="paidTotal">-</strong><small>Total pago</small></div>
-        </div>
-      </details>
       <div class="dashboard-charts dashboard-charts--overview">
         <article class="chart-card chart-card--expense">
           <div class="chart-card-head">
             <div class="chart-card-heading">
-              <span class="chart-kicker">Despesas • posição atual</span>
-              <h3>Empenhado, liquidado e pago</h3>
+              <span class="chart-kicker">Despesa do exercício · posição atual</span>
+              <h3>Etapas da execução da despesa</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Compara os valores auditados na extração mais recente, sem atribuir datas de lançamentos individuais.</p></details>
+            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Mostra valores acumulados da posição mais recente. A interpretação de proporções exige métricas compatíveis do mesmo relatório.</p></details>
           </div>
           <div class="chart-takeaway" id="expenseTakeaway">
             <span class="chart-takeaway-label">Leitura rápida</span>
@@ -65,38 +57,39 @@
         <article class="chart-card chart-card--stages">
           <div class="chart-card-head">
             <div class="chart-card-heading">
-              <span class="chart-kicker">Indicadores de execução</span>
-              <h3>Avanço da execução</h3>
+              <span class="chart-kicker">Relações entre etapas</span>
+              <h3>Conversão entre etapas</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Explicar os percentuais da execução">?</summary><p>Empenhado dividido pelo provisionado; liquidado dividido pelo empenhado; pago dividido pelo liquidado. Cada indicador tem sua própria base, sem somar percentuais.</p></details>
+            <details class="chart-help"><summary aria-label="Explicar os percentuais da execução">?</summary><p>Liquidação / empenho, pagamento / liquidação e pagamento / empenho. Percentuais apenas quando as três métricas são auditáveis na mesma posição, sem inconsistência na ordem das etapas.</p></details>
           </div>
-          <p class="chart-lead">Três etapas, cada uma com sua própria base de comparação.</p>
+          <p class="chart-lead">Cada percentual utiliza uma base específica do mesmo relatório auditado; não representa uma meta de desempenho.</p>
+          <p class="stage-interpretation" id="stagesInterpretation" role="status">Conferindo a comparabilidade das etapas…</p>
           <div class="flow-metric-list">
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do provisionado, já empenhado</span><strong id="committedGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do empenhado, já liquidado</span><strong id="committedGaugeValue">-</strong></div>
               <div class="chart-slot" id="committedGauge"></div>
             </div>
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do empenhado, já liquidado</span><strong id="liquidatedGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do liquidado, já pago</span><strong id="liquidatedGaugeValue">-</strong></div>
               <div class="chart-slot" id="liquidatedGauge"></div>
             </div>
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do liquidado, já pago</span><strong id="paidGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do empenhado, já pago</span><strong id="paidGaugeValue">-</strong></div>
               <div class="chart-slot" id="paidGauge"></div>
             </div>
           </div>
-          <p class="chart-bottom-note">Leia de cima para baixo. As porcentagens não devem ser somadas.</p>
+          <p class="chart-bottom-note">Percentuais com denominadores diferentes não devem ser somados. Diferenças entre etapas não demonstram, por si, atrasos de pagamento.</p>
         </article>
 
         <article class="chart-card chart-card--credit">
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <span class="chart-kicker">Orçamento</span>
-              <h3>Crédito e provisionamento</h3>
+              <h3>Saldos orçamentários distintos</h3>
             </div>
             <details class="chart-help"><summary aria-label="Explicar crédito e provisionamento">?</summary><p>Compara saldos auditados de fontes distintas. As barras são uma comparação de magnitudes, não parcelas de um mesmo total.</p></details>
           </div>
-          <p class="chart-lead"><strong>São saldos distintos.</strong> A diferença entre eles não representa, necessariamente, crédito utilizado ou a utilizar.</p>
+          <p class="chart-lead"><strong>São saldos distintos.</strong> Não representam parcelas do mesmo total. Consulte datas e filtros antes de qualquer comparação.</p>
           <div class="chart-slot" id="creditDonut"></div>
         </article>
 
@@ -104,7 +97,7 @@
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <span class="chart-kicker">Obrigações de exercícios anteriores</span>
-              <h3>Restos a pagar</h3>
+              <h3>Restos a pagar — pagos e pendentes</h3>
             </div>
             <details class="chart-help"><summary aria-label="Explicar composição dos restos a pagar">?</summary><p>O percentual é RAP pago dividido pela soma de RAP pago e RAP a pagar. A base não é o total originalmente inscrito.</p></details>
           </div>
@@ -124,7 +117,7 @@
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <span class="chart-kicker">Arrecadação própria</span>
-              <h3>GRU por mês de emissão</h3>
+              <h3>Arrecadação própria por mês de emissão</h3>
             </div>
             <div class="chart-card-head-aside">
               <span class="chart-total" id="gruValue">-</span>
@@ -136,6 +129,14 @@
           <div class="sr-only" id="gruLegend"></div>
         </article>
       </div>
+      <details class="aux-panel kpi-secondary" id="otherFinancialIndicators">
+        <summary>Valores consolidados das etapas da despesa <span>Empenhado, liquidado e pago</span></summary>
+        <div class="dashboard-kpis dashboard-kpis--secondary">
+          <div class="kpi-card"><span>Despesas empenhadas (R$)</span><strong id="committedTotal">-</strong><small>Total empenhado</small></div>
+          <div class="kpi-card"><span>Despesas liquidadas (R$)</span><strong id="liquidatedTotal">-</strong><small>Total liquidado</small></div>
+          <div class="kpi-card"><span>Despesas pagas (R$)</span><strong id="paidTotal">-</strong><small>Total pago</small></div>
+        </div>
+      </details>
       <div class="dashboard-reference" aria-label="Informações complementares dos indicadores">
       <details class="aux-panel glossary-panel">
         <summary>Glossário dos conceitos <span>Entenda os termos financeiros</span></summary>
