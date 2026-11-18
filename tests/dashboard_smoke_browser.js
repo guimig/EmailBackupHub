@@ -21,7 +21,8 @@
       !expense.querySelector('circle.history-point');
     qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-bar-row').length === 2 &&
       !credit.querySelector('circle.history-point');
-    qa.creditFigureIsNotTemporalPercent = el('creditShareValue').textContent.includes('40.000');
+    qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
+      !credit.textContent.includes('40.000%');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
@@ -105,6 +106,8 @@
     el('catalogScope').dispatchEvent(new Event('change', { bubbles: true }));
     qa.allReportsRestored = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
+    // Capture the actual chart composition in CI screenshots, not only the page header.
+    chartGrid.scrollIntoView({ block: 'start' });
   }
   setTimeout(verify, 100);
 }());
