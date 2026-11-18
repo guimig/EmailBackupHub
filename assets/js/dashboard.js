@@ -397,9 +397,6 @@ let indexData = null;
       setText('creditAvailable', formatMoney(credit));
       setText('rapTotal', formatMoney(rapTotal));
       setText('gruCollected', formatMoney(gru));
-      setText('committedTotal', formatMoney(committed));
-      setText('liquidatedTotal', formatMoney(liquidated));
-      setText('paidTotal', formatMoney(paid));
       setText('financePanelDate', latestFinancialDate());
       const rapCompositionValid = isAvailable(rapPaid) && isAvailable(rapPayable)
         && valueOf(rapPaid) >= 0 && valueOf(rapPayable) >= 0 && valueOf(rapTotal) > 0;
@@ -433,6 +430,14 @@ let indexData = null;
       renderHalfGauge('openGauge', stageModel.ok && stageModel.liquidated > 0
         ? stageModel.unpaidLiquidated / stageModel.liquidated : null);
       renderHalfGauge('provisionGauge', provisionGaugeModel.ok ? provisionGaugeModel.value : null);
+      for (const tile of document.querySelectorAll('.stage-gauge-card')) {
+        tile.setAttribute('role', 'button');
+        tile.setAttribute('tabindex', '0');
+        tile.setAttribute('aria-pressed', 'false');
+        const label = tile.querySelector('.stage-gauge-title')?.textContent || 'Indicador';
+        const value = tile.querySelector('.stage-gauge-value')?.textContent || '-';
+        tile.setAttribute('title', label + ': ' + value);
+      }
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
@@ -836,10 +841,6 @@ let indexData = null;
       setInsight('creditAvailable', 'Credito disponivel', valueInsight(values.credit, 'Saldo disponível conforme relatório de crédito; não é movimento do mês.'));
       setInsight('rapTotal', 'Restos a pagar', valueInsight(values.rapTotal, `Total calculado a partir de RAP pago (${formatMoney(values.rapPaid)}) e RAP a pagar (${formatMoney(values.rapPayable)}).`));
       setInsight('gruCollected', 'GRU arrecadadas', valueInsight(values.gru, 'Arrecadacao propria identificada nos dados.'));
-      setInsight('committedTotal', 'Despesas empenhadas', valueInsight(values.committed, 'Valor formalmente comprometido.'));
-      setInsight('liquidatedTotal', 'Despesas liquidadas', valueInsight(values.liquidated, 'Despesa com entrega reconhecida.'));
-      setInsight('paidTotal', 'Despesas pagas', valueInsight(values.paid, 'Valor efetivamente pago.'));
-      setInsight('expenseTakeawayTitle', 'Situacao da despesa', `Fotografia dos valores auditados na extração mais recente, sem reconstituir datas de lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setInsight('creditDonut', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setInsight('rapShareValue', 'Proporção de RAP pagos', percentInsight(values.rapPaid, values.rapTotal, 'de RAP pago + RAP a pagar corresponde ao valor pago, sem usar o total originalmente inscrito.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
@@ -1045,11 +1046,11 @@ let indexData = null;
             '<span class="rap-composition-fill open" style="width:' + payablePercent.toFixed(3) + '%"></span>' +
           '</div>' +
           '<dl class="rap-composition-details">' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" role="button" tabindex="0" aria-pressed="false" title="Detalhar RAP pagos">' +
               '<dt><i class="legend-dot legend-accent" aria-hidden="true"></i>RAP pagos</dt>' +
               '<dd><strong>' + formatValue(paidValue) + '</strong><span>' + escapeHtml(percentLabel(paidValue)) + '</span></dd>' +
             '</div>' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" role="button" tabindex="0" aria-pressed="false" title="Detalhar RAP a pagar">' +
               '<dt><i class="legend-dot legend-accent-2" aria-hidden="true"></i>RAP a pagar</dt>' +
               '<dd><strong>' + formatValue(payableValue) + '</strong><span>' + escapeHtml(percentLabel(payableValue)) + '</span></dd>' +
             '</div>' +
@@ -1237,6 +1238,43 @@ let indexData = null;
     function escapeHtml(value) {
       return String(value ?? '').replace(/[&<>"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[char]));
     }
+
+    function selectFinancialGraphic(target) {
+      const card = target.closest('.chart-card');
+      if (!card) return;
+      const selector = '.financial-bar-row[role="button"], .financial-independent-item[role="button"], '
+        + '.rap-composition-item[role="button"], .stage-gauge-card[role="button"]';
+      const selectable = target.closest(selector);
+      if (!selectable || !card.contains(selectable)) return;
+      const detailId = card.classList.contains('chart-card--expense') ? 'expenseChartDetail'
+        : card.classList.contains('chart-card--rap') ? 'rapChartDetail'
+        : card.classList.contains('chart-card--credit') ? 'creditChartDetail'
+        : card.classList.contains('chart-card--stages') ? 'stagesChartDetail' : '';
+      const detail = byId(detailId);
+      if (!detail) return;
+      for (const node of card.querySelectorAll(selector)) {
+        node.setAttribute('aria-pressed', String(node === selectable));
+      }
+      const label = selectable.querySelector('.financial-bar-label, dt, .stage-gauge-title');
+      const value = selectable.querySelector('.financial-bar-value, dd, .stage-gauge-value');
+      const caption = selectable.querySelector('.stage-gauge-caption');
+      detail.textContent = [label?.textContent, value?.textContent, caption?.textContent]
+        .filter(Boolean).map(part => part.trim()).join(' — ');
+      detail.hidden = false;
+    }
+
+    document.querySelector('.dashboard-charts--overview').addEventListener('click', event => {
+      selectFinancialGraphic(event.target);
+    });
+    document.querySelector('.dashboard-charts--overview').addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const clickable = event.target.closest('.financial-bar-row[role="button"], '
+        + '.financial-independent-item[role="button"], .rap-composition-item[role="button"], '
+        + '.stage-gauge-card[role="button"]');
+      if (!clickable) return;
+      event.preventDefault();
+      selectFinancialGraphic(clickable);
+    });
 
     byId('search').addEventListener('input', handleSearchInput);
     byId('periodicity').addEventListener('change', renderReportCatalog);
