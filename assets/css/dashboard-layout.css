@@ -1148,10 +1148,14 @@ th, td { padding: var(--dash-space-3); }
     grid-column: span 1;
     grid-row: auto;
   }
+  .dashboard-charts--overview > .chart-card--expense { grid-column: 1; grid-row: 1; }
+  .dashboard-charts--overview > .chart-card--rap { grid-column: 2; grid-row: 1; }
   .dashboard-charts--overview > .chart-card--stages {
     grid-column: 1 / -1;
-    grid-row: auto;
+    grid-row: 2;
   }
+  .dashboard-charts--overview > .chart-card--credit { grid-column: 1; grid-row: 3; }
+  .dashboard-charts--overview > .chart-card--gru { grid-column: 2; grid-row: 3; }
   .dashboard-charts--overview .stage-gauge-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
