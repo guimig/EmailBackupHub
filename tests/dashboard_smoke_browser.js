@@ -152,6 +152,39 @@
       const help = rapCard.querySelector('.chart-help');
       return Math.abs(heading.getBoundingClientRect().top - help.getBoundingClientRect().top) < 5;
     })();
+    const secondary = el('otherFinancialIndicators');
+    qa.progressiveKpis = !secondary.open &&
+      document.querySelectorAll('.dashboard-panel > .dashboard-kpis > .kpi-card').length === 4 &&
+      secondary.querySelectorAll('.kpi-card').length === 3;
+    secondary.open = true;
+    qa.secondaryKpisRetainAuditedValues = secondary.open &&
+      el('committedTotal').textContent.includes('50.000') &&
+      el('liquidatedTotal').textContent.includes('30.000') &&
+      el('paidTotal').textContent.includes('20.000');
+    secondary.open = false;
+    const glossary = document.querySelector('.glossary-panel');
+    qa.glossaryAvailableOnDemand = !glossary.open &&
+      glossary.querySelectorAll('.term-help').length === 6;
+    glossary.open = true;
+    qa.glossaryExpands = glossary.open &&
+      getComputedStyle(glossary.querySelector('.term-strip')).display !== 'none';
+    glossary.open = false;
+    const provenance = document.querySelector('.source-context');
+    qa.methodologyStillAccessible = !provenance.open &&
+      provenance.querySelector('.dashboard-provenance').textContent.includes('não a data de cada lançamento');
+    qa.expenseTakeawayExplainsAuditedRatio =
+      el('expenseTakeawayTitle').textContent.includes('40,0% do valor empenhado') &&
+      el('expenseTakeawayText').textContent.includes('não indica pagamentos realizados no dia');
+    qa.rapTakeawayShowsRemainingAmount = el('rapTakeaway').textContent.includes('R$ 2.000,00');
+    qa.creditAvoidsInvalidAccountingIdentity =
+      creditCard.querySelector('.chart-lead').textContent.includes('saldos distintos') &&
+      creditCard.querySelector('.chart-lead').textContent.includes('não representa');
+    qa.methodologyUsesDisclosure = [expense, credit, gru, rap].every(container =>
+      Boolean(container.closest('.chart-card')?.querySelector('details.chart-methodology:not([open])')));
+    qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
+      Boolean(credit.querySelector('a.financial-chart-link')) &&
+      Boolean(gru.querySelector('a.financial-chart-link')) &&
+      Boolean(rap.querySelector('a.rap-composition-link'));
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
