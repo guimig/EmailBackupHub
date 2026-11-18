@@ -410,6 +410,8 @@ let indexData = null;
         ? formatPercent(stageModel.paid, stageModel.liquidated) : '-');
       setText('paidGaugeValue', stageModel.ok
         ? formatPercent(stageModel.paid, stageModel.committed) : '-');
+      setText('openGaugeValue', stageModel.ok && stageModel.liquidated > 0
+        ? formatPercent(stageModel.unpaidLiquidated, stageModel.liquidated) : '-');
 
       renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
@@ -417,9 +419,11 @@ let indexData = null;
       renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
-      renderGauge('committedGauge', auditValue(stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null, stageModel.reason));
-      renderGauge('liquidatedGauge', paidRatio);
-      renderGauge('paidGauge', auditValue(stageModel.ok ? stageModel.rates.paidOfCommitted : null, stageModel.reason));
+      renderHalfGauge('committedGauge', stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null);
+      renderHalfGauge('liquidatedGauge', stageModel.ok ? stageModel.rates.paidOfLiquidated : null);
+      renderHalfGauge('paidGauge', stageModel.ok ? stageModel.rates.paidOfCommitted : null);
+      renderHalfGauge('openGauge', stageModel.ok && stageModel.liquidated > 0
+        ? stageModel.unpaidLiquidated / stageModel.liquidated : null);
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
@@ -434,9 +438,9 @@ let indexData = null;
         banner.dataset.state = 'unavailable';
         return;
       }
-      banner.textContent = 'Valores acumulados do mesmo relatório ('
-        + (model.date ? model.date.split('-').reverse().join('/') : 'data não informada') + '). '
-        + 'A diferença entre as etapas não comprova atraso nem constitui saldo financeiro livre.';
+      banner.textContent = 'Posição auditada de '
+        + (model.date ? model.date.split('-').reverse().join('/') : 'data não informada') + '.';
+
       banner.dataset.state = 'available';
     }
 
@@ -458,7 +462,7 @@ let indexData = null;
               + ' do valor empenhado consta como pago'
           : 'Comparação percentual indisponível');
         setText('expenseTakeawayText', comparable
-          ? 'Proporção entre valores consolidados da última posição disponível; não indica pagamentos realizados no dia da extração.'
+          ? 'Valores acumulados da posição auditada; não indica pagamentos realizados no dia da extração.'
           : 'Confira a comparabilidade e a auditoria das três etapas no mesmo relatório; não calculamos percentuais entre fontes divergentes.');
         if (expensePanel) expensePanel.dataset.availability = comparable ? 'available' : 'missing';
       }
@@ -770,6 +774,29 @@ let indexData = null;
         </div>`;
     }
 
+    function renderHalfGauge(id, value) {
+      const element = byId(id);
+      if (!element) return;
+      // The stage model rejects invalid or incomparable metrics upstream.
+      // Do not display a capped 100% arc for an impossible percentage.
+      if (!Number.isFinite(value) || value < 0 || value > 1) {
+        element.innerHTML = '<span class="stage-gauge-unavailable" role="status">Sem base</span>';
+        element.setAttribute('aria-label', 'Percentual indisponível');
+        return;
+      }
+      const percent = (value * 100).toLocaleString('pt-BR', {
+        minimumFractionDigits: 1, maximumFractionDigits: 1
+      }) + '%';
+      const fraction = (value * 100).toFixed(3);
+      // SVG paths share the same geometry and never require a chart dependency.
+      element.innerHTML =
+        '<svg viewBox="0 0 144 84" role="img" aria-label="' + percent + '" focusable="false">'
+        + '<path class="stage-gauge-track" d="M 13 73 A 59 59 0 0 1 131 73" pathLength="100"></path>'
+        + '<path class="stage-gauge-progress" d="M 13 73 A 59 59 0 0 1 131 73" pathLength="100"'
+        + ' stroke-dasharray="' + fraction + ' 100"></path></svg>';
+      element.removeAttribute('aria-label');
+    }
+
     function renderGauge(id, value) {
       if (!isAvailable(value)) return unavailableChart(id);
       const percentage = valueOf(value) * 100;
@@ -841,6 +868,8 @@ let indexData = null;
         ? formatPercent(st.paid, st.liquidated) + '. ' + stageDetail : stageDetail);
       setInsight('paidGaugeValue', 'Pago / empenhado', st?.ok
         ? formatPercent(st.paid, st.committed) + '. ' + stageDetail : stageDetail);
+      setInsight('openGaugeValue', 'Liquidado ainda não pago', st?.ok && st.liquidated > 0
+        ? formatPercent(st.unpaidLiquidated, st.liquidated) + '. ' + stageDetail : stageDetail);
     }
 
     function updateGraphInsights(values) {
@@ -857,6 +886,10 @@ let indexData = null;
         ? formatPercent(stage.paid, stage.liquidated) + '. ' + stageNote : stageNote);
       setElementInsight('paidGauge', 'Pago / empenhado', stage?.ok
         ? formatPercent(stage.paid, stage.committed) + '. ' + stageNote : stageNote);
+      setElementInsight('openGauge', 'Liquidado ainda não pago',
+        stage?.ok && stage.liquidated > 0
+          ? formatPercent(stage.unpaidLiquidated, stage.liquidated) + '. ' + stageNote
+          : stageNote);
     }
 
 
