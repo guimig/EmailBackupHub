@@ -216,7 +216,7 @@ test('GRU code composition reconciles by code and description, including reversa
   const container={innerHTML:''};
   renderGruCodes(container,grouped);
   assert.match(container.innerHTML,/SERVICOS EDUCACIONAIS/);
-  assert.match(container.innerHTML,/R\\$\\s*100,00/);
+  assert.match(container.innerHTML,/R\$\s*100,00/);
   assert.equal(buildGruByCode(report,179).ok,false);
   assert.equal(buildGruByCode({...report,columns:report.columns.filter(c=>c!=='Cód. Recolhimento GRU (2)')},180).ok,false);
 });
