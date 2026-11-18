@@ -765,3 +765,187 @@ th, td { padding: var(--dash-space-3); }
 @media (max-width: 480px) {
   .dashboard-charts--overview .gru-code-top { flex-wrap: wrap; gap: 2px; }
 }
+
+
+/* GRU: one visual workspace, two accessible representations. */
+.dashboard-charts--overview .chart-card--gru { overflow: visible; }
+.dashboard-charts--overview .gru-view-switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  margin: 0 0 var(--dash-space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  background: var(--soft);
+}
+.dashboard-charts--overview .gru-view-button {
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius-ui) - 3px);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: var(--font-label);
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 38px;
+  padding: var(--dash-space-2) var(--dash-space-3);
+}
+.dashboard-charts--overview .gru-view-button.is-active {
+  color: var(--text);
+  border-color: var(--line);
+  background: var(--card);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.dashboard-charts--overview .gru-view-button:focus-visible,
+.dashboard-charts--overview .gru-treemap-tile:focus-visible,
+.dashboard-charts--overview .gru-month-button:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  z-index: 2;
+}
+.dashboard-charts--overview .gru-view-panel[hidden] { display: none !important; }
+.dashboard-charts--overview .gru-treemap {
+  position: relative;
+  height: clamp(240px, 24vw, 320px);
+  width: 100%;
+  isolation: isolate;
+  background: var(--soft);
+  border-radius: var(--radius-ui);
+  overflow: hidden;
+}
+.dashboard-charts--overview .gru-treemap-tile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  gap: 3px;
+  padding: clamp(5px, 1vw, 12px);
+  border: 2px solid var(--card);
+  border-radius: 8px;
+  color: #12251d;
+  font: inherit;
+  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
+  transition: filter .15s, box-shadow .15s;
+}
+.dashboard-charts--overview .gru-treemap-tile:hover,
+.dashboard-charts--overview .gru-treemap-tile[aria-pressed="true"] {
+  filter: brightness(.94);
+  box-shadow: inset 0 0 0 2px rgba(17,45,35,.48);
+  z-index: 1;
+}
+.dashboard-charts--overview .gru-tile-color-0 { background: #8fc9ad; }
+.dashboard-charts--overview .gru-tile-color-1 { background: #abd4eb; }
+.dashboard-charts--overview .gru-tile-color-2 { background: #f2d18c; }
+.dashboard-charts--overview .gru-tile-color-3 { background: #c8b8ee; }
+.dashboard-charts--overview .gru-tile-color-4 { background: #a5d7c9; }
+.dashboard-charts--overview .gru-tile-color-5 { background: #f4b9af; }
+.dashboard-charts--overview .gru-tile-color-6 { background: #c9d694; }
+.dashboard-charts--overview .gru-tile-color-7 { background: #dbcae8; }
+.dashboard-charts--overview .gru-tile-code {
+  font-size: var(--font-caption);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.dashboard-charts--overview .gru-tile-name {
+  font-size: var(--font-label);
+  font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dashboard-charts--overview .gru-tile-amount {
+  font-size: clamp(.75rem, 1.2vw, 1rem);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.dashboard-charts--overview .gru-treemap-tile.is-compact .gru-tile-name,
+.dashboard-charts--overview .gru-treemap-tile.is-compact .gru-tile-amount { display: none; }
+.dashboard-charts--overview .gru-visual-note,
+.dashboard-charts--overview .gru-selection-detail {
+  font-size: var(--font-caption);
+  line-height: 1.5;
+  color: var(--muted);
+}
+.dashboard-charts--overview .gru-visual-note { margin: var(--dash-space-2) 0 0; }
+.dashboard-charts--overview .gru-selection-detail {
+  min-height: 44px;
+  margin-top: var(--dash-space-3);
+  border-top: 1px solid var(--line);
+  padding: var(--dash-space-3) 0 0;
+  overflow-wrap: anywhere;
+}
+.dashboard-charts--overview .gru-report-link {
+  margin-top: var(--dash-space-2);
+}
+.dashboard-charts--overview .gru-adjustments {
+  margin-top: var(--dash-space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--muted);
+  font-size: var(--font-caption);
+}
+.dashboard-charts--overview .gru-adjustments strong { color: var(--text); }
+.dashboard-charts--overview .gru-month-chart {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(27px, 1fr));
+  gap: var(--dash-space-1);
+  width: 100%;
+  min-width: 350px;
+  align-items: end;
+  height: 252px;
+}
+.dashboard-charts--overview .gru-month-panel { overflow-x: auto; }
+.dashboard-charts--overview .gru-month-button {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dash-space-2);
+  cursor: pointer;
+  padding: 0;
+  height: 100%;
+  align-items: stretch;
+  justify-content: flex-end;
+  font-size: var(--font-caption);
+}
+.dashboard-charts--overview .gru-month-plot {
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3px;
+  border-bottom: 2px solid var(--line);
+}
+.dashboard-charts--overview .gru-month-column-fill {
+  display: block;
+  background: var(--accent);
+  border-radius: 4px 4px 0 0;
+  min-height: 1px;
+  width: 100%;
+}
+.dashboard-charts--overview .gru-month-button.is-negative .gru-month-column-fill { background: var(--warn); }
+.dashboard-charts--overview .gru-month-button.is-missing .gru-month-column-fill { background: transparent; }
+.dashboard-charts--overview .gru-month-button:hover .gru-month-column-fill,
+.dashboard-charts--overview .gru-month-button[aria-pressed="true"] .gru-month-column-fill {
+  filter: brightness(.77);
+  box-shadow: inset 0 0 0 2px var(--brand);
+}
+.dashboard-charts--overview .gru-month-short { text-align: center; }
+@media (max-width: 730px) {
+  .dashboard-charts--overview .gru-treemap { height: 270px; }
+  .dashboard-charts--overview .gru-view-switch { width: 100%; display: flex; }
+  .dashboard-charts--overview .gru-view-button { flex: 1; }
+}
