@@ -57,7 +57,9 @@
       item.normal.includes('arrecadacao liquida por cod de recolhimento')
       && item.normal.includes('movim') && item.normal.includes('liquido')
     );
-    return { day: day?.name, month: month?.name, value: net?.name };
+    const code = names.find(item => item.normal === 'cod. recolhimento gru');
+    const description = names.find(item => item.normal === 'cod. recolhimento gru (2)');
+    return { day: day?.name, month: month?.name, value: net?.name, code: code?.name, description: description?.name };
   }
 
   function invalid(reason) {
@@ -131,6 +133,105 @@
     };
   }
 
+
+  function buildGruByCode(report, auditedTotal) {
+    const monthly = buildGruMonthly(report, auditedTotal);
+    if (!monthly.ok) return { ok: false, reason: monthly.reason, items: [] };
+    const columns = locateGruColumns(report.columns);
+    if (!columns.code || !columns.description) {
+      return { ok: false, reason: 'Códigos e descrições de recolhimento não identificados.', items: [] };
+    }
+    const groups = new Map();
+    let grandCents = 0;
+    for (const row of report.rows) {
+      const code = String(row?.[columns.code] ?? '').trim();
+      const description = String(row?.[columns.description] ?? '').trim();
+      const cents = amountCents(row?.[columns.value]);
+      if (!/^[0-9]{4,8}$/.test(code) || !description || cents === null) {
+        return { ok: false, reason: 'Há códigos, descrições ou valores inválidos na GRU.', items: [] };
+      }
+      const key = code + ':' + description;
+      const entry = groups.get(key) || { code, description, cents: 0, records: 0 };
+      entry.cents += cents;
+      entry.records++;
+      if (!Number.isSafeInteger(entry.cents)) {
+        return { ok: false, reason: 'Valor por código acima da precisão segura.', items: [] };
+      }
+      groups.set(key, entry);
+      grandCents += cents;
+      if (!Number.isSafeInteger(grandCents)) {
+        return { ok: false, reason: 'Soma por código acima da precisão segura.', items: [] };
+      }
+    }
+    if (Math.abs(grandCents - amountCents(auditedTotal)) > 1) {
+      return { ok: false, reason: 'A soma por código não reconcilia com o total auditado.', items: [] };
+    }
+    return { ok: true, year: monthly.year, sourceDate: monthly.sourceDate,
+      total: grandCents / 100,
+      items: [...groups.values()].map(item => ({
+        code: item.code, description: item.description,
+        value: item.cents / 100, records: item.records
+      })).sort((a, b) => Math.abs(b.value) - Math.abs(a.value) || a.code.localeCompare(b.code))
+    };
+  }
+
+  // A cross-report relation for orientation only; not formal budget utilization.
+  function buildCommitmentProvisionRatio(provisions, expenditure) {
+    const unavailable = reason => ({ ok: false, value: null, reason });
+    const trustworthy = (doc, key) => doc && doc.quality?.ok !== false
+      && Number.isFinite(doc.metrics?.[key])
+      && doc.metrics_meta?.[key]?.status === 'ok'
+      && doc.metrics_meta?.[key]?.fallback !== true;
+    if (!trustworthy(provisions, 'provisionado') || !trustworthy(expenditure, 'empenhado')) {
+      return unavailable('Valores auditáveis de provisionamento ou empenho indisponíveis.');
+    }
+    const date = String(provisions.date_iso || '');
+    const year = Number(provisions.metadata?.exercicio);
+    if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(date)
+        || date !== expenditure.date_iso
+        || !Number.isInteger(year) || year !== Number(expenditure.metadata?.exercicio)
+        || year !== Number(date.slice(0,4))) {
+      return unavailable('Relatórios de exercícios ou datas de referência diferentes.');
+    }
+    const provisioned = provisions.metrics.provisionado;
+    const committed = expenditure.metrics.empenhado;
+    if (provisioned <= 0 || committed < 0 || committed > provisioned + 0.01) {
+      return unavailable('Valores nulos, negativos ou acima de 100%: escopo não comparável.');
+    }
+    return { ok: true, value: committed / provisioned, date, provisioned, committed,
+      reason: 'Relação indicativa de relatórios distintos, não taxa formal de utilização da dotação.' };
+  }
+
+  function renderGruCodes(container, result) {
+    if (!container) return;
+    if (!result?.ok) {
+      container.innerHTML = '<p class="chart-empty" role="status">Códigos indisponíveis: '
+        + escapeHtml(result?.reason || 'Não foi possível reconciliar os códigos.') + '</p>';
+      return;
+    }
+    const scale = Math.max(1, ...result.items.map(item => Math.abs(item.value)));
+    const rows = result.items.map(item => {
+      const width = Math.min(100, Math.abs(item.value) / scale * 100);
+      const label = item.code + ' · ' + item.description;
+      return '<div class="gru-code-row"><div class="gru-code-top">'
+        + '<span class="gru-code-label" title="' + escapeHtml(label) + '"><b>'
+        + escapeHtml(item.code) + '</b> ' + escapeHtml(item.description) + '</span>'
+        + '<strong class="gru-code-value">' + escapeHtml(currency.format(item.value))
+        + '</strong></div><div class="gru-code-track" role="img" aria-label="'
+        + escapeHtml(label + ': ' + currency.format(item.value)) + '"><span class="gru-code-fill'
+        + (item.value < 0 ? ' is-negative' : '') + '" style="width:'
+        + width.toFixed(1) + '%"></span></div></div>';
+    });
+    const more = rows.length > 4
+      ? '<details class="gru-code-more"><summary>Ver todos os ' + result.items.length
+        + ' códigos</summary>' + rows.slice(4).join('') + '</details>' : '';
+    container.innerHTML = '<div class="gru-codes" aria-label="Composição por código de recolhimento">'
+      + '<h4>Por código de recolhimento</h4>'
+      + '<div class="gru-code-list">' + rows.slice(0,4).join('') + '</div>' + more
+      + '<p class="gru-code-period">Acumulado de ' + escapeHtml(String(result.year))
+      + ' · movimentação líquida reconciliada, incluindo estornos.</p></div>';
+  }
+
   const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
   /*
@@ -182,14 +283,13 @@
         + '<strong class="financial-bar-value">' + escapeHtml(value) + '</strong>'
         + source + '</div>';
     }).join('');
-    const note = options.note ? '<details class="chart-methodology"><summary>Por que não são comparáveis como partes do mesmo total?</summary>'
-      + '<p class="financial-chart-note">' + escapeHtml(options.note) + '</p></details>' : '';
+
     const links = (options.links || []).filter(item => item?.url).map(item =>
       '<a class="financial-chart-link" href="' + escapeHtml(item.url) + '">'
       + escapeHtml(item.label) + '</a>').join('');
     container.innerHTML = '<div class="financial-independent" role="group" aria-label="Saldos orçamentários independentes">'
       + '<div class="financial-independent-grid">' + balances + '</div>'
-      + note + '<div class="financial-independent-links">' + links + '</div></div>';
+      + '<div class="financial-independent-links">' + links + '</div></div>';
   }
 
 
@@ -209,13 +309,11 @@
         + '<span class="financial-bar-fill" style="width:' + relative.toFixed(1) + '%"></span></span>'
         + '<strong class="financial-bar-value">' + escapeHtml(currency.format(entry.value)) + '</strong></div>';
     }).join('');
-    const foot = options.note
-      ? '<details class="chart-methodology"><summary>Como interpretar a comparação</summary>' +
-        '<p class="financial-chart-note">' + escapeHtml(options.note) + '</p></details>' : '';
+
     const link = options.url
       ? '<a class="financial-chart-link" href="' + escapeHtml(options.url) + '">Consultar relatório de origem</a>' : '';
     container.innerHTML = '<div class="financial-comparison" role="group" aria-label="Comparação de valores atuais">'
-      + items + foot + link + '</div>';
+      + items + link + '</div>';
   }
 
   function renderGruMonthly(container, result, options = {}) {
@@ -281,13 +379,12 @@
     container.innerHTML = '<div class="financial-monthly" role="group" aria-label="GRU por mês de emissão">'
       + overview + timeline
       + '<details class="gru-months-details"><summary>Consultar valores exatos de cada mês</summary>' + bars + '</details>'
-      + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
-        '<p class="financial-chart-note">' + escapeHtml(note) + '</p></details>'
+
       + (options.url ? '<a class="financial-chart-link" href="' + escapeHtml(options.url)
         + '">Consultar documentos de GRU</a>' : '') + '</div>';
   }
 
-  const api = { buildGruMonthly, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly };
+  const api = { buildGruMonthly, buildGruByCode, buildCommitmentProvisionRatio, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly, renderGruCodes };
   root.EmailBackupHubFinancialCharts = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 }(typeof window !== 'undefined' ? window : globalThis));
