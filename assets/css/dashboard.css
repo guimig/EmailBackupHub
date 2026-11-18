@@ -182,8 +182,8 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
 
 /* Stage 4: readable and accessible historical charts; no new dependencies. */
 .dashboard-charts { grid-template-columns: repeat(2,minmax(0,1fr)); }
-.chart-card { min-height: 330px; }
-.chart-slot { min-height: 235px; width:100%; }
+.chart-card { min-height: 0; }
+.chart-slot { min-height: 0; width:100%; }
 .chart-help { display: block; position: relative; }
 .chart-help p { text-align:left; }
 .history-controls { margin-top: 14px; display:flex; gap: 8px 12px; align-items:center; flex-wrap:wrap; background: var(--soft); border-radius: 9px; padding: 10px 12px; }
@@ -203,7 +203,7 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
 .history-meta { margin-top:6px; text-align:left; font-size:.75rem; }
 @media (max-width: 950px) {
   .dashboard-charts { grid-template-columns: 1fr; }
-  .chart-card { min-height: 290px; }
+  .chart-card { min-height: 0; }
 }
 @media (max-width: 580px) {
   .history-controls { align-items:stretch; }
@@ -258,4 +258,53 @@ h1 { margin: 0 0 8px; font-size: 1.8rem; }
   .financial-bar-track { grid-column:1/-1; grid-row:2; }
   .financial-month-row { grid-template-columns:minmax(0,1fr) auto; }
   .financial-month-row .financial-bar-track { height:10px; }
+}
+
+/* Compact, independent dashboard columns.  Monthly GRU must not stretch gauges. */
+.dashboard-panel { max-width: 1320px; margin-inline: auto; }
+.dashboard-charts { align-items: start; gap: 12px; }
+.dashboard-chart-column {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+}
+.dashboard-chart-column > .chart-card { min-width: 0; min-height: 0; }
+.chart-card { padding: 14px; }
+.chart-slot { min-width: 0; align-items: flex-start; justify-content: flex-start; }
+.chart-card-head { margin-bottom: 8px; }
+.chart-value { font-variant-numeric: tabular-nums; }
+.financial-comparison { gap: 11px; }
+.financial-monthly { gap: 5px; }
+.rap-composition { gap: 10px; }
+.rap-composition-track { height: 24px; }
+#provisionDonut { justify-content: center; }
+#provisionDonut svg { width: 110px; height: 110px; max-width: 100%; }
+.chart-card--metric { padding-block: 12px; }
+.chart-card--metric .chart-value { font-weight: 600; margin-bottom: 10px; }
+.chart-card--metric .chart-slot { margin-bottom: 2px; }
+.ratio-meter {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+}
+.ratio-meter-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+@media (max-width: 950px) {
+  .dashboard-charts { grid-template-columns: 1fr; }
+}
+@media (max-width: 650px) {
+  .dashboard-panel { padding: 14px; }
+  .chart-card { padding: 12px; }
+  .dashboard-chart-column { gap: 10px; }
+  .financial-bar-value { white-space: normal; overflow-wrap: anywhere; }
 }

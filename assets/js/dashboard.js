@@ -707,14 +707,17 @@ let indexData = null;
 
     function renderGauge(id, value) {
       if (!isAvailable(value)) return unavailableChart(id);
-      const pct = Math.round(valueOf(value) * 100);
-      const dash = Math.max(0, Math.min(100, pct));
-      byId(id).innerHTML = `
-        <svg viewBox="0 0 160 94" width="100%" height="128" role="img" aria-label="Medidor ${pct}%">
-          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="var(--accent-soft)" stroke-width="18" pathLength="100"/>
-          <path d="M24 78 A56 56 0 0 1 136 78" fill="none" stroke="var(--accent)" stroke-width="18" pathLength="100" stroke-dasharray="${dash} ${100 - dash}"/>
-          <text x="80" y="72" text-anchor="middle" font-size="20" fill="var(--text)">${pct}%</text>
-        </svg>`;
+      const percentage = valueOf(value) * 100;
+      if (!Number.isFinite(percentage)) return unavailableChart(id);
+      const fill = Math.max(0, Math.min(100, percentage));
+      const label = percentage.toLocaleString('pt-BR', {
+        minimumFractionDigits: 1, maximumFractionDigits: 1
+      });
+      // The exact percentage is already shown above; avoid a second, rounded label.
+      byId(id).innerHTML =
+        '<div class="ratio-meter" role="img" aria-label="Proporção: ' + label + '%">' +
+        '<span class="ratio-meter-fill" style="width:' + fill.toFixed(1) + '%"></span>' +
+        '</div>';
     }
 
     function formatMoney(value) {
