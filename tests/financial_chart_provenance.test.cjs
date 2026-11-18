@@ -171,7 +171,7 @@ test('independent balances never use misleading percentage bars', () => {
   assert.equal((container.innerHTML.match(/financial-independent-item/g)||[]).length,2);
   assert.doesNotMatch(container.innerHTML,/financial-bar-track|width:/);
   assert.match(container.innerHTML,/Indisponível/);
-  assert.match(container.innerHTML,/Saldos distintos/);
+  assert.doesNotMatch(container.innerHTML,/chart-methodology/);
 });
 
 
@@ -192,4 +192,45 @@ test('GRU chronological timeline preserves monthly values in accessible detailed
   assert.match(container.innerHTML,/role="listitem"/);
   assert.match(container.innerHTML,/Consultar valores exatos de cada mês/);
   assert.match(container.innerHTML,/report-viewer.html/);
+});
+
+test('GRU code composition reconciles by code and description, including reversals', () => {
+  const { buildGruByCode, renderGruCodes } = charts;
+  const valueColumn = '724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)';
+  const report = {
+    date_iso:'2026-11-17', metadata:{exercicio:2026}, quality:{ok:true},
+    metrics:{gru_arrecadada:180},
+    metrics_meta:{gru_arrecadada:{status:'ok'}},
+    columns:['Emissão - Dia','Emissão - Mês','Cód. Recolhimento GRU','Cód. Recolhimento GRU (2)',valueColumn],
+    rows:[
+      {'Emissão - Dia':'02/01/2026','Emissão - Mês':'JAN/2026','Cód. Recolhimento GRU':'28832','Cód. Recolhimento GRU (2)':'SERVICOS EDUCACIONAIS',[valueColumn]:'100,00'},
+      {'Emissão - Dia':'04/02/2026','Emissão - Mês':'FEV/2026','Cód. Recolhimento GRU':'28832','Cód. Recolhimento GRU (2)':'SERVICOS EDUCACIONAIS',[valueColumn]:'-20,00'},
+      {'Emissão - Dia':'06/02/2026','Emissão - Mês':'FEV/2026','Cód. Recolhimento GRU':'28812','Cód. Recolhimento GRU (2)':'PRODUCAO ANIMAL',[valueColumn]:'100,00'}
+    ]
+  };
+  const grouped = buildGruByCode(report, 180);
+  assert.equal(grouped.ok,true,grouped.reason);
+  assert.equal(grouped.items.length,2);
+  assert.equal(grouped.items.find(x=>x.code==='28832').value,80);
+  assert.equal(grouped.items.find(x=>x.code==='28812').value,100);
+  const container={innerHTML:''};
+  renderGruCodes(container,grouped);
+  assert.match(container.innerHTML,/SERVICOS EDUCACIONAIS/);
+  assert.match(container.innerHTML,/R\\$\\s*100,00/);
+  assert.equal(buildGruByCode(report,179).ok,false);
+  assert.equal(buildGruByCode({...report,columns:report.columns.filter(c=>c!=='Cód. Recolhimento GRU (2)')},180).ok,false);
+});
+
+test('indicative committed/provisioned ratio requires audited same date and exercise', () => {
+  const { buildCommitmentProvisionRatio } = charts;
+  const doc=(key,value,date='2026-11-17')=>({
+    date_iso:date,metadata:{exercicio:2026},quality:{ok:true},
+    metrics:{[key]:value},metrics_meta:{[key]:{status:'ok',fallback:false}}
+  });
+  const provision=doc('provisionado',100000);
+  const expense=doc('empenhado',50000);
+  assert.equal(buildCommitmentProvisionRatio(provision,expense).value,.5);
+  assert.equal(buildCommitmentProvisionRatio(provision,doc('empenhado',100001)).ok,false);
+  assert.equal(buildCommitmentProvisionRatio(provision,doc('empenhado',50000,'2026-11-16')).ok,false);
+  assert.equal(buildCommitmentProvisionRatio({...provision,metrics_meta:{provisionado:{status:'missing'}}},expense).ok,false);
 });
