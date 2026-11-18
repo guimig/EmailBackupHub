@@ -41,14 +41,17 @@ test('0% and 100% are represented without false empty state', () => {
   assert.match(element.innerHTML, /stroke-dasharray="100\.000 100"/);
 });
 
-test('missing or inconsistent percentages never become a fabricated arc', () => {
+test('missing or invalid percentages never become a fabricated arc', () => {
   const { render, element, attributes } = harness();
-  for (const value of [null, NaN, -0.01, 1.01, Infinity]) {
+  for (const value of [null, NaN, -0.01, Infinity]) {
     render('gauge', value);
     assert.doesNotMatch(element.innerHTML, /<svg/);
     assert.match(element.innerHTML, /Sem base/);
     assert.equal(attributes.get('aria-label'), 'Percentual indisponível');
   }
+  render('gauge', 1.01);
+  assert.match(element.innerHTML, /aria-label="101,0%"/);
+  assert.match(element.innerHTML, /stroke-dasharray="100.000 100"/);
   render('gauge', .5);
   assert.match(element.innerHTML, /<svg/);
   assert.equal(attributes.has('aria-label'), false);

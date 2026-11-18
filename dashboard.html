@@ -27,10 +27,6 @@
           <details class="chart-help"><summary aria-label="Como ler o painel">?</summary><p>Os indicadores refletem métricas auditáveis dos relatórios recebidos do Tesouro Gerencial. Pontos ausentes ou inválidos não são substituídos por zero.</p></details>
         </div>
       </div>
-      <div class="dashboard-insight" aria-live="polite">
-        <strong id="insightTitle">Explore o painel</strong>
-        <p id="insightText">Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador e sua utilidade para acompanhar a execução orçamentária e financeira.</p>
-      </div>
       <div class="dashboard-kpis">
         <div class="kpi-card"><span>Provisionamentos</span><strong id="budgetBase">-</strong><small>Orçamento provisionado acompanhado</small></div>
         <div class="kpi-card"><span>Crédito disponível</span><strong id="creditAvailable">-</strong><small>Saldo na posição atual do relatório</small></div>
@@ -124,16 +120,21 @@
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <span class="chart-kicker">Arrecadação própria</span>
-              <h3>Arrecadação própria por mês de emissão</h3>
+              <h3>Composição da arrecadação</h3>
             </div>
             <div class="chart-card-head-aside">
               <span class="chart-total" id="gruValue">-</span>
-              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>Valores de movimentação líquida da GRU por mês de emissão e por código de recolhimento (descrição da coluna Cód. Recolhimento GRU (2)). Os dois agrupamentos reconciliam com o total auditado, incluindo movimentos negativos. A data de emissão não comprova a data efetiva de arrecadação. Barras dimensionadas pelo maior valor absoluto, não por percentual do total.</p></details>
+              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>A GRU apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
             </div>
           </div>
-          
-          <div class="chart-slot" id="gruTreeChart"></div>
-          <div id="gruCodesChart" aria-label="Arrecadação acumulada por código de recolhimento"></div>
+          <div class="gru-view-switch" role="group" aria-label="Visualização da arrecadação">
+            <button type="button" class="gru-view-button is-active" id="gruViewCodesButton" data-gru-view="codes" aria-controls="gruCodesChart" aria-pressed="true">Por recolhimento</button>
+            <button type="button" class="gru-view-button" id="gruViewMonthsButton" data-gru-view="months" aria-controls="gruTreeChart" aria-pressed="false">Por mês</button>
+          </div>
+          <div class="gru-view-panel" id="gruCodesChart" aria-label="Distribuição por descrição de recolhimento"></div>
+          <div class="gru-view-panel" id="gruTreeChart" aria-label="Distribuição mensal por emissão" hidden></div>
+          <div class="gru-selection-detail" id="gruSelectionDetail" role="status" aria-live="polite">Selecione uma área para consultar os detalhes.</div>
+          <div class="gru-report-link" id="gruReportLink"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
       </div>
