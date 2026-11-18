@@ -214,7 +214,7 @@
     return params;
   }
 
-  const api={VERSION,canonical,resolveColumn,describeColumns,snapshot,inspect,read,accept,observe,
+  const api={VERSION,keyFor,canonical,resolveColumn,describeColumns,snapshot,inspect,read,accept,observe,
     restoreNamed,writeNamed,FILTER_PARAMS};
   root.EmailBackupHubSchemaGuard=api;
   if(typeof module!=='undefined' && module.exports)module.exports=api;
