@@ -46,40 +46,29 @@ function data(overrides = {}) {
   };
 }
 
-test('clear summary uses paid divided by committed and shows unpaid RAP without unsupported thresholds', () => {
+test('RAP takeaway remains concise without redundant expense banner', () => {
   const { render, el } = harness();
   render(data());
-  assert.match(el('expenseTakeawayTitle').textContent, /40,0% do valor empenhado/);
-  assert.match(el('expenseTakeawayText').textContent, /não indica pagamentos realizados no dia/);
-  assert.equal(el('expenseTakeaway').dataset.availability, 'available');
-  assert.match(el('rapTakeaway').textContent, /R\$\s+2\.000,00 ainda constam a pagar/);
-  assert.doesNotMatch(el('expenseTakeawayTitle').textContent, /ótimo|ruim|adequado/i);
+  assert.match(el('rapTakeaway').textContent, /R\\$\\s+2\\.000,00 ainda constam a pagar/);
+  const html = fs.readFileSync(path.resolve(__dirname, '../dashboard.html'), 'utf8');
+  assert.doesNotMatch(html, /id="expenseTakeaway"/);
 });
 
-test('missing financial values produce an explicit unavailable interpretation', () => {
+test('missing and invalid RAP balances never imply normal execution', () => {
   const { render, el } = harness();
   render(data({ paid: null, rapPayable: null }));
-  assert.match(el('expenseTakeawayTitle').textContent, /indisponível/);
-  assert.equal(el('expenseTakeaway').dataset.availability, 'missing');
   assert.match(el('rapTakeaway').textContent, /indisponível/);
-  assert.doesNotMatch(el('rapTakeaway').textContent, /R\$/);
-});
-
-test('zero denominator and overpaid comparison never imply normal execution', () => {
-  const { render, el } = harness();
   render(data({ committed: 0, rapPaid: 0, rapPayable: 0, rapTotal: 0 }));
-  assert.match(el('expenseTakeawayTitle').textContent, /indisponível/);
   assert.match(el('rapTakeaway').textContent, /sem base positiva/);
   render(data({ committed: 100, paid: 200, rapPayable: -5 }));
-  assert.match(el('expenseTakeawayTitle').textContent, /indisponível/);
   assert.match(el('rapTakeaway').textContent, /indisponível/);
-  assert.doesNotMatch(el('expenseTakeawayTitle').textContent, /NaN|Infinity/);
+  assert.doesNotMatch(el('rapTakeaway').textContent, /NaN|Infinity/);
 });
 
 test('explanatory copy preserves independent credit and provisioned balances', () => {
   const html = fs.readFileSync(path.resolve(__dirname, '../dashboard.html'), 'utf8');
-  assert.match(html, /São saldos distintos/);
-  assert.match(html, /Não representam parcelas do mesmo total/);
+  assert.match(html, /saldos de relatórios independentes/);
+  assert.match(html, /Não representam parcelas de um mesmo total/);
   assert.match(html, /id="otherFinancialIndicators"/);
   assert.match(html, /id="managementAlertsPanel"/);
   assert.match(html, /Base: RAP pago \+ RAP a pagar/);

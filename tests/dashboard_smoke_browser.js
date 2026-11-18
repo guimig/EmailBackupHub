@@ -25,9 +25,11 @@
       !credit.querySelector('circle.history-point');
     qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
       !credit.textContent.includes('40.000%') &&
-      credit.textContent.toLocaleLowerCase('pt-BR').includes('não são fatias');
+      document.querySelector('.chart-card--credit .chart-help p').textContent.includes('saldos de relatórios independentes');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
+    qa.gruCodesReconciled = document.querySelectorAll('#gruCodesChart .gru-code-row').length === 3 &&
+      document.querySelector('#gruCodesChart').textContent.includes('SERVICOS EDUCACIONAIS');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
       gru.textContent.includes('NOV/2026') &&
       gru.textContent.toLocaleLowerCase('pt-BR').includes('mês de emissão');
@@ -76,18 +78,19 @@
     qa.fivePurposefulPanels = cards.length === 5 &&
       ['expense', 'stages', 'credit', 'rap', 'gru'].every(type =>
         cards.some(card => card.classList.contains('chart-card--' + type)));
-    qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 4 &&
+    qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 5 &&
       el('committedGaugeValue').textContent.includes('60,0%') &&
       el('liquidatedGaugeValue').textContent.includes('66,7%') &&
       el('paidGaugeValue').textContent.includes('40,0%') &&
       el('openGaugeValue').textContent.includes('33,3%') &&
+      el('provisionGaugeValue').textContent.includes('50,0%') &&
       el('stagesInterpretation').dataset.state === 'available' &&
-      ['committedGauge', 'liquidatedGauge', 'paidGauge', 'openGauge'].every(id =>
+      ['committedGauge', 'liquidatedGauge', 'paidGauge', 'openGauge', 'provisionGauge'].every(id =>
         stages.contains(el(id)) &&
         el(id).querySelectorAll('.stage-gauge-track').length === 1 &&
         el(id).querySelectorAll('.stage-gauge-progress').length === 1) &&
       !el('provisionDonut') && !el('provisionShareValue');
-    qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 4 &&
+    qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 5 &&
       [...stages.querySelectorAll('.stage-half-gauge svg')].every(svg =>
         svg.getAttribute('role') === 'img' &&
         svg.getAttribute('aria-label')?.includes('%'));
@@ -110,14 +113,14 @@
       return window.innerWidth > 990
         ? top.every(value => Math.abs(value - top[0]) < 5)
         : window.innerWidth > 360
-          ? Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0]
-          : Math.abs(top[0] - top[1]) < 5;
+          ? Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0] && top[4] > top[2]
+          : Math.abs(top[0] - top[1]) < 5 && top[4] > top[2];
     })();
     // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
       (rect(expenseCard).height < 600 &&
        rect(stages).height < 620 &&
-       rect(gruCard).height < 700);
+       rect(gruCard).height < 900);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
     qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
       const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
@@ -150,7 +153,7 @@
     qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
       >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
-      '.chart-kicker', '.financial-chart-note', '.stage-gauge-caption',
+      '.chart-kicker', '.gru-code-period', '.stage-gauge-caption',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
@@ -199,15 +202,14 @@
     const provenance = document.querySelector('.source-context');
     qa.methodologyStillAccessible = !provenance.open &&
       provenance.querySelector('.dashboard-provenance').textContent.includes('não a data de cada lançamento');
-    qa.expenseTakeawayExplainsAuditedRatio =
-      el('expenseTakeawayTitle').textContent.includes('40,0% do valor empenhado') &&
-      el('expenseTakeawayText').textContent.includes('não indica pagamentos realizados no dia');
+    qa.expenseTakeawayRemoved = !el('expenseTakeaway') && !el('expenseTakeawayTitle') && !el('expenseTakeawayText');
     qa.rapTakeawayShowsRemainingAmount = /R\$\s+2\.000,00/.test(el('rapTakeaway').textContent);
     qa.creditAvoidsInvalidAccountingIdentity =
-      creditCard.querySelector('.chart-lead').textContent.includes('saldos distintos') &&
-      creditCard.querySelector('.chart-lead').textContent.includes('Não representam parcelas');
-    qa.methodologyUsesDisclosure = [expense, credit, gru, rap].every(container =>
-      Boolean(container.closest('.chart-card')?.querySelector('details.chart-methodology:not([open])')));
+      creditCard.querySelector('.chart-help p').textContent.includes('saldos de relatórios independentes');
+    qa.methodologyUsesQuestionMark = cards.every(card =>
+      card.querySelectorAll(':scope > .chart-card-head details.chart-help > summary').length === 1 &&
+      card.querySelector(':scope > .chart-card-head details.chart-help > summary').textContent.trim() === '?') &&
+      cards.every(card => card.querySelectorAll('details.chart-methodology').length === 0);
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
       Boolean(credit.querySelector('a.financial-chart-link')) &&
       Boolean(gru.querySelector('a.financial-chart-link')) &&

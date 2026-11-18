@@ -46,11 +46,6 @@
             </div>
             <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Mostra valores acumulados da posição mais recente. A interpretação de proporções exige métricas compatíveis do mesmo relatório.</p></details>
           </div>
-          <div class="chart-takeaway chart-takeaway--compact" id="expenseTakeaway">
-            <span class="chart-takeaway-label">Leitura rápida</span>
-            <strong id="expenseTakeawayTitle">Consultando os valores auditados…</strong>
-            <p id="expenseTakeawayText">Comparação com a última posição disponível.</p>
-          </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
         </article>
 
@@ -68,10 +63,6 @@
           </div>
           <div class="chart-slot" id="rapStackChart"></div>
           <p class="chart-takeaway-inline" id="rapTakeaway">Consultando o valor ainda pendente…</p>
-          <details class="chart-methodology chart-methodology--rap">
-            <summary>Como este percentual foi calculado</summary>
-            <p class="chart-note">Base: RAP pago + RAP a pagar, e não o total originalmente inscrito.</p>
-          </details>
         </article>
 
         <article class="chart-card chart-card--stages">
@@ -80,7 +71,7 @@
               <span class="chart-kicker">Execução da despesa</span>
               <h3>Conversão entre etapas</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Como interpretar as conversões">?</summary><p>Os indicadores utilizam as mesmas métricas auditadas. Liquidado / empenhado, pago / liquidado, pago / empenhado e parcela do liquidado ainda não paga. As bases são diferentes e os percentuais não devem ser somados.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios dos indicadores de execução">?</summary><p>Os quatro indicadores de despesa usam valores auditados da mesma posição: liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; e (liquidado − pago) ÷ liquidado. O quinto é apenas indicativo: empenhado ÷ provisionado, com fontes distintas e validação de exercício e data. Os denominadores diferem; não some percentuais nem interprete o quinto como taxa formal de utilização da dotação.</p></details>
           </div>
           <p class="stage-interpretation" id="stagesInterpretation" role="status">Conferindo a posição auditada…</p>
           <div class="stage-gauge-grid" aria-label="Percentuais da execução da despesa">
@@ -108,11 +99,13 @@
               <strong class="stage-gauge-value" id="openGaugeValue">-</strong>
               <span class="stage-gauge-caption">Parcela da liquidação pendente</span>
             </div>
+            <div class="stage-gauge-card stage-gauge-card--indicative">
+              <span class="stage-gauge-title">Empenhado / provisionado</span>
+              <div class="stage-half-gauge" id="provisionGauge"></div>
+              <strong class="stage-gauge-value" id="provisionGaugeValue">-</strong>
+              <span class="stage-gauge-caption">Relação indicativa entre relatórios</span>
+            </div>
           </div>
-          <details class="chart-methodology stage-methodology">
-            <summary>Critérios dos percentuais</summary>
-            <p>Base: métricas do mesmo relatório e data auditada. Liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; (liquidado − pago) ÷ liquidado. Valores diferentes de bases, por si, não indicam atraso ou disponibilidade financeira.</p>
-          </details>
         </article>
 
         <article class="chart-card chart-card--credit">
@@ -121,9 +114,9 @@
               <span class="chart-kicker">Orçamento</span>
               <h3>Saldos orçamentários distintos</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Explicar crédito e provisionamento">?</summary><p>Compara saldos auditados de fontes distintas. As barras são uma comparação de magnitudes, não parcelas de um mesmo total.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios dos saldos orçamentários">?</summary><p>Crédito disponível e provisionamentos são saldos de relatórios independentes, com datas e filtros que podem variar. Não representam parcelas de um mesmo total; não calcule diferenças ou percentuais sem verificar escopo e critérios.</p></details>
           </div>
-          <p class="chart-lead"><strong>São saldos distintos.</strong> Não representam parcelas do mesmo total.</p>
+          
           <div class="chart-slot" id="creditDonut"></div>
         </article>
 
@@ -135,11 +128,12 @@
             </div>
             <div class="chart-card-head-aside">
               <span class="chart-total" id="gruValue">-</span>
-              <details class="chart-help"><summary aria-label="Explicar GRU por mês de emissão">?</summary><p>As movimentações líquidas são agrupadas pelo mês de emissão dos documentos; o total mensal é exibido somente se reconciliar com o total auditado. Emissão não significa data de arrecadação efetiva.</p></details>
+              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>Valores de movimentação líquida da GRU por mês de emissão e por código de recolhimento (descrição da coluna Cód. Recolhimento GRU (2)). Os dois agrupamentos reconciliam com o total auditado, incluindo movimentos negativos. A data de emissão não comprova a data efetiva de arrecadação. Barras dimensionadas pelo maior valor absoluto, não por percentual do total.</p></details>
             </div>
           </div>
-          <p class="chart-lead chart-lead--gru">Movimentação líquida por mês de emissão; não necessariamente do recolhimento.</p>
+          
           <div class="chart-slot" id="gruTreeChart"></div>
+          <div id="gruCodesChart" aria-label="Arrecadação acumulada por código de recolhimento"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
       </div>

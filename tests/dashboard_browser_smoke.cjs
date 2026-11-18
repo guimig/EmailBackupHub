@@ -34,7 +34,7 @@ const summaryDocs=Object.fromEntries(slugs.map(slug=>{
  return [slug,{
   slug, title:slug, date:'17/11/2026',date_iso:'2026-11-17',
   metrics, metrics_meta:meta(metrics),
-  metadata:{hash_conteudo:'test-hash'},
+  metadata:{hash_conteudo:'test-hash',exercicio:2026},
   quality:{ok:true,issues:[],warnings:[]},totals:[],row_types:[],columns:[],
   series_data:{series:dates.map((date,index)=>{
    const seriesMetrics=Object.fromEntries(Object.entries(metrics).map(([metric,value])=>[
@@ -63,8 +63,10 @@ const gruDocument={
  quality:{ok:true,issues:[],warnings:[]},
  metrics:{gru_arrecadada:2500},
  metrics_meta:{gru_arrecadada:{status:'ok',source:'totals'}},
- columns:['Emissão - Mês','Emissão - Dia','Conta Contábil / Doc - Valor',GRU_NET_COLUMN],
+ columns:['Cód. Recolhimento GRU','Cód. Recolhimento GRU (2)','Emissão - Mês','Emissão - Dia','Conta Contábil / Doc - Valor',GRU_NET_COLUMN],
  rows:GRU_MONTHS.map((month,index)=>({
+  'Cód. Recolhimento GRU':index<4?'28832':index<8?'28812':'28808',
+  'Cód. Recolhimento GRU (2)':index<4?'SERVICOS EDUCACIONAIS':index<8?'RECEITA DA PRODUCAO ANIMAL E DERIVADOS':'REC DE CONCES DIREITO REAL USO AREA PUBLICA',
   'Emissão - Mês':month+'/2026',
   'Emissão - Dia':'05/'+String(index+1).padStart(2,'0')+'/2026',
   'Conta Contábil / Doc - Valor':String(GRU_AMOUNTS[index]).replace('.',','),
