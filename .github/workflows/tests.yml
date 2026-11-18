@@ -79,6 +79,7 @@ jobs:
       - name: Validate report viewer JavaScript and UI regression tests
         run: |
           node --check assets/js/report-viewer-filters.js
+          node --check assets/js/report-schema-guard.js
           node --check assets/js/report-viewer.js
           node --check assets/js/report-chart-explorer.js
           node --check assets/js/report-viewer-presets.js
@@ -87,7 +88,7 @@ jobs:
           node --check tests/dashboard_rap_management.test.cjs
           node --check assets/js/financial-chart-provenance.js
           node --check assets/js/report-catalog.js
-          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs tests/financial_chart_provenance.test.cjs tests/report_chart_explorer.test.cjs tests/dashboard_rap_management.test.cjs
+          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs tests/financial_chart_provenance.test.cjs tests/report_chart_explorer.test.cjs tests/dashboard_rap_management.test.cjs tests/report_schema_guard.test.cjs
 
       - name: Browser UX smoke test (desktop and mobile)
         run: |
