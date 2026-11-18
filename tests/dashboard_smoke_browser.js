@@ -25,7 +25,7 @@
       !credit.querySelector('circle.history-point');
     qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
       !credit.textContent.includes('40.000%') &&
-      credit.textContent.toLocaleLowerCase('pt-BR').includes('não são fatias');
+      document.querySelector('.chart-card--credit .chart-help p').textContent.includes('saldos de relatórios independentes');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
     qa.gruCodesReconciled = document.querySelectorAll('#gruCodesChart .gru-code-row').length === 3 &&
@@ -153,7 +153,7 @@
     qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
       >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
-      '.chart-kicker', '.financial-chart-note', '.stage-gauge-caption',
+      '.chart-kicker', '.gru-code-period', '.stage-gauge-caption',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
