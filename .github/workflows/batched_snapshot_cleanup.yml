@@ -55,7 +55,7 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: |
           set -euo pipefail
-          test "$(git branch --show-current)" = "main" || { echo "Refusing non-main checkout"; exit 1; }
+          test "$GITHUB_REF" = "refs/heads/main" || { echo "Refusing non-main workflow dispatch"; exit 1; }
           python - <<'PY'
           import json
           from pathlib import Path
