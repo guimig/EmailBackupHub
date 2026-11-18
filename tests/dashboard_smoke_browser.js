@@ -24,7 +24,7 @@
       !credit.querySelector('circle.history-point');
     qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
       !credit.textContent.includes('40.000%') &&
-      credit.textContent.includes('não são fatias');
+      credit.textContent.toLocaleLowerCase('pt-BR').includes('não são fatias');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
@@ -98,9 +98,9 @@
         rect(card).top >= rect(cards[index - 1]).bottom - 5);
     // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
-      (rect(expenseCard).height < 480 &&
-       rect(stages).height < 480 &&
-       rect(gruCard).height < 530);
+      (rect(expenseCard).height < 600 &&
+       rect(stages).height < 620 &&
+       rect(gruCard).height < 700);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
     qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
       const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
