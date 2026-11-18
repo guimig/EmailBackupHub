@@ -506,3 +506,195 @@ th, td { padding: var(--dash-space-3); }
   }
   .dashboard-charts--overview .gru-timeline { min-width: 380px; }
 }
+
+
+/* Executive dashboard: balanced comparisons and concise reading (Nov 2026). */
+.dashboard-charts.dashboard-charts--overview {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--dash-space-4);
+}
+.dashboard-charts--overview > .chart-card--expense,
+.dashboard-charts--overview > .chart-card--rap,
+.dashboard-charts--overview > .chart-card--credit,
+.dashboard-charts--overview > .chart-card--gru {
+  grid-column: span 6;
+}
+.dashboard-charts--overview > .chart-card--stages {
+  grid-column: 1 / -1;
+}
+.dashboard-charts--overview > .chart-card {
+  padding: var(--dash-space-4);
+  height: auto;
+}
+.dashboard-charts--overview .chart-card-head {
+  margin-bottom: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-lead {
+  margin-bottom: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-takeaway--compact {
+  padding: var(--dash-space-2) var(--dash-space-3);
+  margin-bottom: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-takeaway--compact .chart-takeaway-label {
+  display: none;
+}
+.dashboard-charts--overview .chart-takeaway--compact p {
+  font-size: var(--font-caption);
+  margin-top: var(--dash-space-1);
+}
+.dashboard-charts--overview .chart-card--expense .financial-comparison {
+  gap: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-card--expense .financial-bar-row {
+  grid-template-columns: minmax(88px, .8fr) minmax(72px, 1.7fr) minmax(108px, auto);
+  gap: var(--dash-space-2);
+}
+.dashboard-charts--overview .chart-card--expense .financial-bar-track { height: 10px; }
+.dashboard-charts--overview .chart-card--credit .financial-independent-grid {
+  gap: var(--dash-space-2);
+}
+.dashboard-charts--overview .chart-card--credit .financial-independent-item {
+  padding: var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-card--credit .financial-independent-item strong {
+  font-size: var(--font-body);
+  line-height: 1.35;
+}
+.dashboard-charts--overview .chart-card--rap .rap-composition-details {
+  gap: var(--dash-space-2);
+}
+.dashboard-charts--overview .chart-card--rap .rap-composition-item {
+  padding: var(--dash-space-2) var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-card--rap .rap-composition-track { height: 16px; }
+.dashboard-charts--overview .chart-card--gru .gru-month-summary > div {
+  padding: var(--dash-space-2) var(--dash-space-3);
+}
+.dashboard-charts--overview .chart-card--gru .gru-timeline {
+  min-width: 0;
+  gap: var(--dash-space-1);
+}
+.dashboard-charts--overview .chart-card--gru .gru-timeline-month {
+  grid-template-rows: 92px var(--gru-negative-height) auto;
+}
+.dashboard-charts--overview .chart-card--gru .gru-timeline-positive { height: 92px; }
+.dashboard-charts--overview .chart-card--gru .gru-timeline-positive .gru-timeline-fill,
+.dashboard-charts--overview .chart-card--gru .gru-timeline-negative .gru-timeline-fill {
+  width: min(65%, 26px);
+}
+.dashboard-charts--overview .chart-card--gru .gru-scale-note {
+  font-size: var(--font-caption);
+}
+.dashboard-charts--overview .chart-card--stages .stage-interpretation {
+  margin: 0 0 var(--dash-space-3);
+  font-size: var(--font-caption);
+}
+.dashboard-charts--overview .stage-gauge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--dash-space-3);
+}
+.dashboard-charts--overview .stage-gauge-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--dash-space-1);
+  padding: var(--dash-space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  background: var(--soft);
+  text-align: center;
+}
+.dashboard-charts--overview .stage-gauge-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.8em;
+  color: var(--text);
+  font-size: var(--font-label);
+  font-weight: 650;
+  line-height: 1.4;
+}
+.dashboard-charts--overview .stage-half-gauge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 150px;
+  height: 76px;
+}
+.dashboard-charts--overview .stage-half-gauge svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke-width: 13px;
+  stroke-linecap: round;
+}
+.dashboard-charts--overview .stage-gauge-track {
+  stroke: var(--line);
+}
+.dashboard-charts--overview .stage-gauge-progress {
+  stroke: var(--accent);
+}
+.dashboard-charts--overview .stage-gauge-card--pending .stage-gauge-progress {
+  stroke: var(--accent-2);
+}
+.dashboard-charts--overview .stage-gauge-value {
+  display: block;
+  margin-top: -12px;
+  font-size: clamp(1.05rem, 1.55vw, 1.45rem);
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.dashboard-charts--overview .stage-gauge-caption {
+  min-height: 2.65em;
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.35;
+}
+.dashboard-charts--overview .stage-gauge-unavailable {
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.4;
+}
+.dashboard-charts--overview .stage-methodology {
+  margin-top: var(--dash-space-3);
+}
+.dashboard-charts--overview .stage-methodology > summary {
+  font-size: var(--font-caption);
+  color: var(--brand);
+  cursor: pointer;
+}
+@media (min-width: 991px) and (max-width: 1170px) {
+  .dashboard-charts--overview > .chart-card--stages { grid-column: 1 / -1; }
+  .dashboard-charts--overview > .chart-card--expense,
+  .dashboard-charts--overview > .chart-card--rap,
+  .dashboard-charts--overview > .chart-card--credit,
+  .dashboard-charts--overview > .chart-card--gru { grid-column: span 6; }
+}
+@media (max-width: 990px) {
+  .dashboard-charts.dashboard-charts--overview { grid-template-columns: 1fr; }
+  .dashboard-charts--overview > .chart-card { grid-column: 1 / -1; }
+}
+@media (max-width: 730px) {
+  .dashboard-charts--overview .stage-gauge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dashboard-charts--overview .chart-card--expense .financial-bar-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .dashboard-charts--overview .chart-card--expense .financial-bar-label { grid-column: 1; grid-row: 1; }
+  .dashboard-charts--overview .chart-card--expense .financial-bar-value { grid-column: 2; grid-row: 1; }
+  .dashboard-charts--overview .chart-card--expense .financial-bar-track { grid-column: 1 / -1; grid-row: 2; }
+  .dashboard-charts--overview .chart-card--gru .gru-timeline { min-width: 380px; }
+}
+@media (max-width: 360px) {
+  .dashboard-charts--overview .stage-gauge-grid { gap: var(--dash-space-2); }
+  .dashboard-charts--overview .stage-gauge-card { padding: var(--dash-space-2); }
+  .dashboard-charts--overview .stage-gauge-value { font-size: 1.05rem; }
+}
