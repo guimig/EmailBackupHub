@@ -60,6 +60,25 @@
       && managementList.querySelectorAll('.alert-item').length === managementCount;
     managementPanel.open = false;
     qa.managementClosesAgain = !managementPanel.open;
+    const chartColumns = [...document.querySelectorAll('.dashboard-chart-column')];
+    const gaugeCards = ['committedGauge', 'liquidatedGauge', 'paidGauge']
+      .map(id => el(id).closest('.chart-card'));
+    qa.chartColumnsAreIndependent = chartColumns.length === 2 &&
+      chartColumns.every(column => column.children.length >= 3);
+    qa.compactRatiosWithoutDuplicateLabels = gaugeCards.every(card =>
+      card && card.querySelectorAll('.ratio-meter').length === 1 &&
+      !card.querySelector('svg') && card.getBoundingClientRect().height < 180);
+    qa.monthlyGruDoesNotStretchGauges =
+      el('gruTreeChart').closest('.chart-card').getBoundingClientRect().height >
+      Math.max(...gaugeCards.map(card => card.getBoundingClientRect().height));
+    qa.chartWidthAndResponsiveFlow = (() => {
+      const first = chartColumns[0].getBoundingClientRect();
+      const second = chartColumns[1].getBoundingClientRect();
+      const panel = document.querySelector('.dashboard-panel').getBoundingClientRect();
+      return panel.width <= 1322 && (window.innerWidth > 950
+        ? second.left >= first.right - 2 && Math.abs(first.top - second.top) < 4
+        : second.top >= first.bottom - 2);
+    })();
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
