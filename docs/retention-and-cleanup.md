@@ -8,7 +8,7 @@ A nova política em `retention.py` preserva:
 - a última versão de cada relatório;
 - relatórios diários dos últimos 60 dias;
 - uma amostra semanal de 61 a 180 dias;
-- o primeiro relatório disponível nos primeiros 7 dias de cada mês e o primeiro dia útil, como **candidatos provisórios de fechamento**;
+- o primeiro relatório disponível de cada mês ou o primeiro dia útil quando existente, como **candidatos provisórios de fechamento**;
 - relatórios do fim de dezembro e início de janeiro (proteção de encerramento/abertura de exercício);
 - datas futuras, por segurança.
 
@@ -31,7 +31,7 @@ A auditoria de snapshots:
 2. verifica referências existentes no `data/cache-index.json`, no `data/retention-plan.json` e no `data/index.json`;
 3. protege arquivos recentes, de virada de ano, com nome não reconhecido ou referenciados;
 4. soma arquivos e bytes por relatório e produz amostra dos candidatos;
-5. recusa execução se uma referência a snapshot já estiver quebrada.
+5. informa referências a snapshots ausentes, sem alterar arquivos.
 
 O formato e a data do arquivo **não garantem** equivalência de conteúdo. A seleção automática não elimina, por si, toda a necessidade de preservação administrativa e arquivística.
 
@@ -39,13 +39,7 @@ O formato e a data do arquivo **não garantem** equivalência de conteúdo. A se
 
 A exclusão de HTMLs segue desativada em `config.py`: `RETENTION_DRY_RUN=true` e `RETENTION_APPLY_HTML_CLEANUP=false`.
 
-A auditoria de snapshots não remove arquivos, a menos que o administrador execute *fora do workflow de auditoria*:
-
-```bash
-python snapshot_retention_audit.py --apply --confirm DELETE_UNREFERENCED_SNAPSHOTS
-```
-
-Esse comando **não é recomendado antes de backup integral, avaliação do relatório da auditoria, conferência de versões por data e teste de reconstrução**. Ele remove somente snapshots elegíveis no checkout, sem fazer commit ou push. A publicação exige uma operação Git separada e explícita.
+A auditoria de snapshots é exclusivamente de leitura e **não oferece** opção de exclusão. Nenhuma remoção pode ser inferida automaticamente de uma lista de candidatos. Qualquer descarte requer processo separado com backup, validação e manifesto de reversão.
 
 ## Checklist para uma limpeza aprovada
 
