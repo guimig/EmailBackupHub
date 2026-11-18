@@ -407,13 +407,13 @@ let indexData = null;
         : 'percentual indisponível: total nulo, negativo ou não auditável');
       setText('gruValue', formatMoney(gru));
       setText('committedGaugeValue', stageModel.ok
-        ? formatMoney(stageModel.unliquidated) : '-');
+        ? formatPercent(stageModel.liquidated, stageModel.committed) : '-');
       setText('liquidatedGaugeValue', stageModel.ok
-        ? formatMoney(stageModel.unpaidLiquidated) : '-');
+        ? formatPercent(stageModel.paid, stageModel.liquidated) : '-');
       setText('paidGaugeValue', stageModel.ok
         ? formatPercent(stageModel.paid, stageModel.committed) : '-');
 
-      renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit });
+      renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
       renderCreditComparison('creditDonut', { credit, provisioned });
@@ -437,7 +437,7 @@ let indexData = null;
         return;
       }
       banner.textContent = 'Valores acumulados do mesmo relatório ('
-        + model.date.split('-').reverse().join('/') + '). '
+        + (model.date ? model.date.split('-').reverse().join('/') : 'data não informada') + '). '
         + 'A diferença entre as etapas não comprova atraso nem constitui saldo financeiro livre.';
       banner.dataset.state = 'available';
     }
@@ -450,15 +450,18 @@ let indexData = null;
       const expenseTitle = byId('expenseTakeawayTitle');
       const expenseText = byId('expenseTakeawayText');
       const expensePanel = byId('expenseTakeaway');
-      const comparable = Number.isFinite(committed) && committed > 0 &&
-        Number.isFinite(paid) && paid >= 0 && paid <= committed;
+      const comparable = values.stageModel
+        ? values.stageModel.ok
+        : Number.isFinite(committed) && committed > 0 &&
+          Number.isFinite(paid) && paid >= 0 && paid <= committed;
       if (expenseTitle && expenseText) {
         setText('expenseTakeawayTitle', comparable
-          ? formatPercent(values.paid, values.committed) + ' do valor empenhado consta como pago'
+          ? formatPercent(values.stageModel?.paid ?? values.paid, values.stageModel?.committed ?? values.committed)
+              + ' do valor empenhado consta como pago'
           : 'Comparação percentual indisponível');
         setText('expenseTakeawayText', comparable
           ? 'Proporção entre valores consolidados da última posição disponível; não indica pagamentos realizados no dia da extração.'
-          : 'Confira as bases de empenho e pagamento nos relatórios de origem antes de interpretar o percentual.');
+          : 'Confira a comparabilidade e a auditoria das três etapas no mesmo relatório; não calculamos percentuais entre fontes divergentes.');
         if (expensePanel) expensePanel.dataset.availability = comparable ? 'available' : 'missing';
       }
 
