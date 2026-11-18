@@ -48,6 +48,29 @@ class RetentionPolicyTests(unittest.TestCase):
             self.assertIn("latest", retained_by_name["relatorio_03-07-2026.html"]["reasons"])
             self.assertEqual(ignored_names, {"relatorio_02-07-2026.html"})
 
+    def test_monthly_close_key_handles_weekend_and_holiday(self):
+        from unittest.mock import patch
+        with patch.dict(os.environ, {"RETENTION_HOLIDAYS": "2026-08-03"}):
+            self.assertEqual(retention.first_business_day(2026, 8), datetime.date(2026, 8, 4))
+            self.assertEqual(retention.monthly_close_key(datetime.date(2026, 8, 4)), "2026-07")
+
+    def test_retention_preserves_recent_daily_and_year_end(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir)
+            today = datetime.date.today()
+            recent = [today - datetime.timedelta(days=days) for days in (0, 1, 30)]
+            year_end = datetime.date(today.year - 1, 12, 31)
+            paths = []
+            for day in recent + [year_end]:
+                path = base / ("relatorio_" + day.strftime("%d-%m-%Y") + ".html")
+                path.write_text("<html></html>", encoding="utf-8")
+                paths.append(str(path))
+            retained, _ignored = retention.retention_selection(paths, parse_date_from_test_name)
+            names = {Path(item["path"]).name: item["reasons"] for item in retained}
+            for day in recent:
+                self.assertIn("recent_daily", names["relatorio_" + day.strftime("%d-%m-%Y") + ".html"])
+            self.assertIn("year_end_provisional", names["relatorio_" + year_end.strftime("%d-%m-%Y") + ".html"])
+
     def test_retention_plan_exposes_closing_dates_and_reasons(self):
         retained = [
             {
