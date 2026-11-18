@@ -173,3 +173,23 @@ test('independent balances never use misleading percentage bars', () => {
   assert.match(container.innerHTML,/Indisponível/);
   assert.match(container.innerHTML,/Saldos distintos/);
 });
+
+
+test('GRU chronological timeline preserves monthly values in accessible detailed rows', () => {
+  const container = {innerHTML:''};
+  renderGruMonthly(container,{
+    ok:true,year:2026,sourceDate:'2026-11-17',records:3,total:30,
+    months:[
+      {label:'JAN/2026',value:50,records:1},
+      {label:'FEV/2026',value:-20,records:2},
+      {label:'MAR/2026',value:null,records:0}
+    ]
+  },{url:'report-viewer.html?report=gru.json'});
+  assert.equal((container.innerHTML.match(/class="gru-timeline-month/g)||[]).length,3);
+  assert.equal((container.innerHTML.match(/class="financial-bar-row financial-month-row/g)||[]).length,3);
+  assert.match(container.innerHTML,/gru-timeline has-negative/);
+  assert.match(container.innerHTML,/gru-months-details/);
+  assert.match(container.innerHTML,/role="listitem"/);
+  assert.match(container.innerHTML,/Consultar valores exatos de cada mês/);
+  assert.match(container.innerHTML,/report-viewer.html/);
+});
