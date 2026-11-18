@@ -8,7 +8,7 @@
     const expense = el('expenseTrendChart');
     const credit = el('creditDonut');
     const gru = el('gruTreeChart');
-    if (!expense.querySelector('.financial-comparison') || !gru.querySelector('.financial-monthly')) {
+    if (!expense.querySelector('.financial-comparison') || !el('gruCodesChart').querySelector('.gru-treemap')) {
       if (attempts++ < 50) return setTimeout(verify, 100);
       document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({ loaded: false,
         expense: expense.textContent.slice(0,100), gru: gru.textContent.slice(0,100) }));
@@ -26,14 +26,30 @@
     qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
       !credit.textContent.includes('40.000%') &&
       document.querySelector('.chart-card--credit .chart-help p').textContent.includes('saldos de relatórios independentes');
-    qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
-      el('gruValue').textContent.includes('2.500') &&
-      document.querySelector('#gruCodesChart .gru-code-row') !== null;
-    qa.gruCodesReconciled = document.querySelectorAll('#gruCodesChart .gru-code-row').length === 3 &&
-      document.querySelector('#gruCodesChart').textContent.includes('SERVICOS EDUCACIONAIS');
-    qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
-      gru.textContent.includes('NOV/2026') &&
+    qa.monthlyGruReconciled = gru.querySelectorAll('.gru-month-button').length === 11 &&
+      el('gruValue').textContent.includes('2.500');
+    qa.gruCodesReconciled = el('gruCodesChart').querySelectorAll('.gru-treemap-tile').length === 3 &&
+      el('gruCodesChart').textContent.includes('SERVICOS EDUCACIONAIS');
+    qa.monthlySourceLabels = !!gru.querySelector('[data-gru-month="JAN/2026"]') &&
+      !!gru.querySelector('[data-gru-month="NOV/2026"]') &&
       gru.closest('.chart-card').querySelector('.chart-help p').textContent.includes('mês de emissão');
+    qa.gruDefaultView = !el('gruCodesChart').hidden && gru.hidden
+      && el('gruViewCodesButton').getAttribute('aria-pressed') === 'true';
+    el('gruViewMonthsButton').click();
+    const firstMonth = gru.querySelector('.gru-month-button');
+    firstMonth.click();
+    qa.gruMonthInteractive = !gru.hidden && el('gruCodesChart').hidden
+      && el('gruSelectionDetail').textContent.includes('JAN/2026')
+      && firstMonth.getAttribute('aria-pressed') === 'true';
+    el('gruViewCodesButton').click();
+    const firstCode = el('gruCodesChart').querySelector('.gru-treemap-tile');
+    firstCode.click();
+    qa.gruCodeInteractive = !el('gruCodesChart').hidden && gru.hidden
+      && el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode)
+      && firstCode.getAttribute('aria-pressed') === 'true';
+    qa.gruTreemapProportional = [...el('gruCodesChart').querySelectorAll('.gru-treemap-tile')]
+      .reduce((total, tile) => total + parseFloat(tile.style.width) * parseFloat(tile.style.height), 0) > 9999;
+    qa.gruViewRestored = el('gruViewCodesButton').getAttribute('aria-pressed') === 'true';
     qa.provenanceInfoVisible = document.querySelector('.dashboard-provenance')
       ?.textContent.includes('não a data de cada lançamento');
     qa.noFalseHistorySelector = el('historyRange') === null;
@@ -43,7 +59,7 @@
     el('themeToggle').click();
     qa.themeKeepsAccurateCharts = document.documentElement.dataset.theme !== oldTheme &&
       expense.querySelectorAll('.financial-bar-row').length === 3 &&
-      gru.querySelectorAll('.financial-month-row').length === 11;
+      gru.querySelectorAll('.gru-month-button').length === 11;
     qa.chartHelpAccessible = getComputedStyle(document.querySelector('.chart-help')).display !== 'none';
     const rap = el('rapStackChart');
     qa.rapPercentClearlyNamed = el('rapShareValue').textContent.includes('83,3')
@@ -71,7 +87,7 @@
     const cards = [...chartGrid.querySelectorAll(':scope > .chart-card')];
     const stages = chartGrid.querySelector('.chart-card--stages');
     const gruCard = chartGrid.querySelector('.chart-card--gru');
-    const monthColumns = [...gruCard.querySelectorAll('.gru-month-column')];
+
     const expenseCard = chartGrid.querySelector('.chart-card--expense');
     const creditCard = chartGrid.querySelector('.chart-card--credit');
     const rapCard = chartGrid.querySelector('.chart-card--rap');
@@ -95,11 +111,9 @@
       [...stages.querySelectorAll('.stage-half-gauge svg')].every(svg =>
         svg.getAttribute('role') === 'img' &&
         svg.getAttribute('aria-label')?.includes('%'));
-    qa.gruMonthlyColumnsPreserveData = gru.querySelectorAll('.gru-timeline-month').length === 11 &&
-      gru.querySelector('.gru-months-details:not([open])') !== null &&
-      monthColumns.length === 2 &&
-      monthColumns[0].querySelectorAll('.financial-month-row').length === 6 &&
-      monthColumns[1].querySelectorAll('.financial-month-row').length === 5;
+    qa.gruViewsDoNotStack = gru.hidden && !el('gruCodesChart').hidden
+      && gruCard.querySelectorAll('.gru-view-switch button').length === 2
+      && !gruCard.querySelector('.gru-months-details');
     qa.dashboardResponsiveHierarchy = window.innerWidth > 990
       ? Math.abs(rect(expenseCard).top - rect(rapCard).top) < 5 &&
         rect(rapCard).left >= rect(expenseCard).right - 5 &&
@@ -139,13 +153,13 @@
     const chartLabels = [
       '.chart-card--expense .financial-bar-label',
       '.chart-card--credit .financial-bar-label',
-      '.chart-card--gru .financial-bar-label',
+      '.chart-card--gru .gru-view-button',
       '.chart-card--rap .rap-composition-item dt',
       '.chart-card--stages .stage-gauge-title'
     ].map(fontPx);
     const chartValues = [
       '.chart-card--expense .financial-bar-value',
-      '.chart-card--gru .financial-bar-value',
+
       '.chart-card--rap .rap-composition-item dd strong'
     ].map(fontPx);
     const equalScale = values => values.every(v => v >= 13 && Math.abs(v - values[0]) < .3);
@@ -154,7 +168,7 @@
     qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
       >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
-      '.chart-kicker', '.gru-code-period', '.stage-gauge-caption',
+      '.chart-kicker', '.gru-selection-detail', '.stage-gauge-caption',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
@@ -162,7 +176,7 @@
       fontPx('.chart-card--expense h3') > chartLabels[0];
     qa.sameFontFamilyAcrossPage = [
       'body', 'h1', '.chart-card--expense h3', '.dashboard-kpis .kpi-card strong',
-      '.chart-card--gru .financial-bar-label', '.toolbar input', '.toolbar select',
+      '.chart-card--gru .gru-view-button', '.toolbar input', '.toolbar select',
       '.toolbar button', '.table-wrap td', '.site-footer'
     ].every(selector => styled(selector).fontFamily === styled('body').fontFamily);
     qa.uniformControlText = [
@@ -213,7 +227,7 @@
       cards.every(card => card.querySelectorAll('details.chart-methodology').length === 0);
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
       Boolean(credit.querySelector('a.financial-chart-link')) &&
-      Boolean(gru.querySelector('a.financial-chart-link')) &&
+      Boolean(el('gruReportLink').querySelector('a.financial-chart-link')) &&
       Boolean(rap.querySelector('a.rap-composition-link'));
     // Visual design contract: consistent padding, cards, typography and reading order.
     const dashboardPanel = document.querySelector('.dashboard-panel');
