@@ -65,9 +65,9 @@ test('GRU has valid month data without depending on snapshots; code never equate
   assert.ok(Array.isArray(series.series));
   assert.ok(series.series.length > 0, 'Historical series must not be empty');
   const minimumDate = series.series_min_date;
-  assert.match(minimumDate, /^\\d{4}-\\d{2}-\\d{2}$/);
+  assert.match(minimumDate, /^\d{4}-\d{2}-\d{2}$/);
   const dates = series.series.map(item => item.date_iso);
-  assert.ok(dates.every(date => /^\\d{4}-\\d{2}-\\d{2}$/.test(date) &&
+  assert.ok(dates.every(date => /^\d{4}-\d{2}-\d{2}$/.test(date) &&
     !Number.isNaN(Date.parse(date)) && date >= minimumDate),
     'Historical entries must have valid dates within the configured range');
   assert.equal(new Set(dates).size, dates.length, 'Historical dates must be unique');
