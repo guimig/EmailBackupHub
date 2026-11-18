@@ -40,7 +40,6 @@
             <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Mostra valores acumulados da posição mais recente. A interpretação de proporções exige métricas compatíveis do mesmo relatório.</p></details>
           </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
-          <p class="chart-interaction-detail" id="expenseChartDetail" role="status" aria-live="polite" hidden></p>
         </article>
 
         <article class="chart-card chart-card--stages">
@@ -78,7 +77,6 @@
               <strong class="stage-gauge-value" id="provisionGaugeValue">-</strong>
             </div>
           </div>
-          <p class="chart-interaction-detail" id="stagesChartDetail" role="status" aria-live="polite" hidden></p>
         </article>
 
         <article class="chart-card chart-card--rap">
@@ -93,19 +91,6 @@
             <span id="rapShareMeaning">do total acompanhado já foi pago</span>
           </div>
           <div class="chart-slot" id="rapStackChart"></div>
-          <p class="chart-interaction-detail" id="rapChartDetail" role="status" aria-live="polite" hidden></p>
-        </article>
-
-        <article class="chart-card chart-card--credit">
-          <div class="chart-card-head">
-            <div class="chart-card-heading">
-              <h3>Saldos orçamentários</h3>
-            </div>
-            <details class="chart-help"><summary aria-label="Critérios dos saldos orçamentários">?</summary><p>Crédito disponível e provisionamentos são saldos de relatórios independentes, com datas e filtros que podem variar. Não representam parcelas de um mesmo total; não calcule diferenças ou percentuais sem verificar escopo e critérios.</p></details>
-          </div>
-          
-          <div class="chart-slot" id="creditDonut"></div>
-          <p class="chart-interaction-detail" id="creditChartDetail" role="status" aria-live="polite" hidden></p>
         </article>
 
         <article class="chart-card chart-card--gru">
@@ -114,7 +99,6 @@
               <h3>Arrecadação própria</h3>
             </div>
             <div class="chart-card-head-aside">
-              <span class="chart-total" id="gruValue">-</span>
               <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>A GRU apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
             </div>
           </div>
@@ -124,7 +108,7 @@
           </div>
           <div class="gru-view-panel" id="gruCodesChart" aria-label="Distribuição por descrição de recolhimento"></div>
           <div class="gru-view-panel" id="gruTreeChart" aria-label="Distribuição mensal por emissão" hidden></div>
-          <div class="gru-selection-detail" id="gruSelectionDetail" role="status" aria-live="polite">Selecione uma área para consultar os detalhes.</div>
+          <div class="gru-selection-detail" id="gruSelectionDetail" role="status" aria-live="polite" hidden></div>
           <div class="gru-report-link" id="gruReportLink"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
