@@ -1,7 +1,6 @@
 import datetime
 import os
 import time
-from collections import defaultdict
 from pathlib import Path
 
 from config import (
@@ -94,7 +93,9 @@ def retention_selection(paths, parse_date_from_name):
     for item in dated_files:
         date = item["date"]
         age = (today - date).days
-        if 0 <= age <= 60:
+        if age < 0:
+            keep(item, "future_dated_review")
+        elif age <= 60:
             keep(item, "recent_daily")
         elif 60 < age <= 180:
             iso = date.isocalendar()
