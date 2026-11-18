@@ -9,6 +9,7 @@ let indexData = null;
     let catalogState = { version: 1, seen: [], unread: [], favorites: [] };
     let catalogPersistence = false;
     let catalogWarning = '';
+    let catalogMissing = [];
     let searchIndexState = 'idle';
     let searchIndexPromise = null;
     // Cache only the current GRU document for accurate emission-month reconciliation.
@@ -134,6 +135,7 @@ let indexData = null;
       catalogState = result.state;
       catalogPersistence = result.available;
       catalogWarning = result.message;
+      catalogMissing = result.missing || [];
       renderCatalogNotice();
     }
 
@@ -145,6 +147,9 @@ let indexData = null;
       if (count) parts.push(count + (count === 1
         ? ' novo relatório identificado neste navegador desde o último acesso.'
         : ' novos relatórios identificados neste navegador desde o último acesso.'));
+      if (catalogMissing.length) {
+        parts.push(catalogMissing.length + ' relatório(s) anteriormente conhecidos não constam no índice atual. A exclusão na origem não é presumida; confira a publicação dos dados.');
+      }
       if (catalogWarning) parts.push(catalogWarning);
       panel.hidden = parts.length === 0;
       byId('catalogNoticeText').textContent = parts.join(' ');

@@ -9,6 +9,9 @@ let report = null;
     let reportDefinitions = {};
     const Filters = window.EmailBackupHubFilters;
     const SavedViews = window.EmailBackupHubSavedViews;
+    const SchemaGuard = window.EmailBackupHubSchemaGuard || null;
+    let schemaDiagnostic = null;
+    let urlStateWarnings = [];
     const Charts = window.EmailBackupHubCharts;
     const ChartExplorer = window.EmailBackupHubChartExplorer;
     let chartSettings = null;
@@ -161,7 +164,11 @@ let report = null;
         EmailBackupHub.loadReportDefinitions()
       ]);
       reportDefinitions = definitions;
+      if (!response.ok) throw new Error('Fonte indisponível (HTTP ' + response.status + ').');
       report = await response.json();
+      if (!report || !Array.isArray(report.columns) || !report.columns.length || !Array.isArray(report.rows)) {
+        throw new Error('Estrutura de relatório inválida. Verifique a geração do JSON da fonte.');
+      }
       byId('title').textContent = friendlyReportTitle();
       byId('htmlLink').href = report.html_path || '#';
       byId('jsonLink').href = url;
@@ -178,6 +185,7 @@ let report = null;
       byId('quality').className = quality.ok ? 'quality' : 'quality bad';
       renderMetricAudit();
       columnFilters = {};
+      urlStateWarnings = [];
       columnSort = { column: null, direction: '' };
       filteredCache = null;
       columnMetaCache = new Map();
@@ -190,6 +198,7 @@ let report = null;
       byId('showTotals').checked = false;
       restoreStateFromUrl();
       ensureDefaultVisibleColumns();
+      inspectReportStructure();
       renderTableShell();
       renderColumnVisibilityControls();
       renderGroupingControls();
@@ -201,6 +210,79 @@ let report = null;
       renderRows();
       prepareReportChartControls();
       refreshSavedViews();
+    }
+
+
+    function schemaStorage() {
+      try { return window.localStorage; } catch { return null; }
+    }
+
+    function inspectReportStructure() {
+      if (!SchemaGuard || !report) return;
+      schemaDiagnostic = SchemaGuard.observe(schemaStorage(), report, Filters);
+      renderReportStructure();
+    }
+
+    function renderReportStructure() {
+      if (!schemaDiagnostic) return;
+      const result = schemaDiagnostic;
+      const changes = result.changes;
+      const messages = [
+        ...result.issues.map(item => item.message),
+        ...urlStateWarnings
+      ];
+      if (result.storageMessage) messages.push(result.storageMessage);
+      const marker = byId('schemaBanner');
+      if (marker) {
+        marker.hidden = !messages.length;
+        const label = result.severity === 'invalid' ? 'Estrutura inválida' :
+          messages.length ? 'Estrutura a conferir' : 'Estrutura reconhecida';
+        byId('schemaBannerText').textContent = label + ' · ' + messages.length +
+          ' ocorrência(s). Cabeçalhos e regras estão disponíveis para conferência.';
+      }
+      const summary=byId('schemaAuditSummary');
+      if (summary) {
+        summary.textContent = result.columnCount + ' colunas · ' + result.count +
+          ' registros · amostra de até 160 registros por coluna. ' +
+          (result.baselineInitialized ? 'Referência inicial registrada neste navegador.' :
+            result.hasBaseline ? 'Comparação com a referência local anterior.' :
+            'Sem referência anterior neste navegador.');
+      }
+      const field=byId('schemaAuditMessages');
+      if (field) {
+        const extra = [];
+        if (changes.added.length) extra.push('Novas: '+changes.added.join(', '));
+        if (changes.removed.length) extra.push('Ausentes ou renomeadas: '+changes.removed.join(', '));
+        if (changes.types.length) extra.push('Tipos alterados: '+
+          changes.types.map(item => item.name+': '+item.before+' → '+item.after).join(', '));
+        if (changes.reordered) extra.push('As colunas foram reordenadas.');
+        field.innerHTML = [...messages, ...extra].length
+          ? '<ul>' + [...messages, ...extra].map(item=>'<li>'+escapeHtml(item)+'</li>').join('')+'</ul>'
+          : '<p>Estrutura regular na amostra disponível. Isso não comprova correção contábil.</p>';
+      }
+      const columns=byId('schemaAuditColumns');
+      if (columns) {
+        columns.innerHTML = '<div class="schema-column-table-wrap"><table><thead><tr>'+
+          '<th>Coluna</th><th>Tipo detectado</th><th>Preenchidos (amostra)</th><th>Incompatíveis</th></tr></thead><tbody>'+
+          result.details.map(item=>'<tr><td>'+escapeHtml(item.name)+'</td><td>'+escapeHtml(item.type)+
+            '</td><td>'+item.filled+' / '+item.sample+'</td><td>'+item.invalid+'</td></tr>').join('')+
+          '</tbody></table></div>';
+      }
+      const button=byId('schemaAccept');
+      if (button) {
+        button.hidden = !result.storageAvailable || result.severity==='invalid' ||
+          !(changes.added.length || changes.removed.length || changes.types.length ||
+            changes.reordered || changes.normalized.length);
+      }
+    }
+
+    function acceptReportStructure() {
+      if (!report || !SchemaGuard || !schemaDiagnostic || schemaDiagnostic.severity==='invalid') return;
+      if (typeof window.confirm==='function' &&
+          !window.confirm('Confirmar os cabeçalhos e tipos atuais como nova referência neste navegador? Isso não altera o relatório original nem valida suas métricas.'))return;
+      if (!SchemaGuard.accept(schemaStorage(),report,Filters))return;
+      schemaDiagnostic=SchemaGuard.observe(schemaStorage(),report,Filters);
+      renderReportStructure();
     }
 
     function columnMetaFor(column) {
@@ -271,7 +353,7 @@ let report = null;
     function ensureDefaultVisibleColumns() {
       const columns = report?.columns || [];
       const params = new URLSearchParams(location.search);
-      if (!params.has('cols') || !visibleColumns.size) {
+      if ((!params.has('cols') && params.get('sv') !== '2') || !visibleColumns.size) {
         visibleColumns = suggestedVisibleColumns();
       }
     }
@@ -1515,23 +1597,39 @@ let report = null;
       const requestedPage = Number(params.get('p'));
       currentPage = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
       columnFilters = {};
-      columns.forEach((column, index) => {
-        const typed = params.get(`tf${index}`);
-        if (typed && typed.length <= 4000) {
-          try {
-            const parsed = JSON.parse(typed);
-            if (Filters.validFilter(parsed, columnMetaFor(column))) {
-              columnFilters[column] = parsed;
-              return;
-            }
-          } catch (error) {
-            console.warn('Filtro compartilhado inválido ignorado:', index, error);
-          }
+      if (params.get('sv') === '2' && SchemaGuard) {
+        const named = SchemaGuard.restoreNamed(report, params, Filters, columnMetaFor);
+        if (named) {
+          visibleColumns = new Set(named.visible.length ? named.visible : suggestedVisibleColumns());
+          groupColumn = named.group;
+          groupSumColumns = new Set(named.groupSums.filter(eligibleSumColumn));
+          columnSort = { column:named.sort, direction:named.sort ? columnSort.direction : '' };
+          columnFilters = Object.fromEntries(Object.entries(named.columnFilters));
+          urlStateWarnings = named.warnings;
         }
-        // Legacy URLs from prior releases use text substring filters f0, f1...
-        const legacy = params.get(`f${index}`);
-        if (legacy && legacy.length <= 500) columnFilters[column] = legacy;
-      });
+      } else {
+        columns.forEach((column, index) => {
+          const typed = params.get(`tf${index}`);
+          if (typed && typed.length <= 4000) {
+            try {
+              const parsed = JSON.parse(typed);
+              if (Filters.validFilter(parsed, columnMetaFor(column))) {
+                columnFilters[column] = parsed;
+                return;
+              }
+            } catch (error) {
+              console.warn('Filtro compartilhado inválido ignorado:', index, error);
+            }
+          }
+          // Legacy URLs from prior releases use text substring filters f0, f1...
+          const legacy = params.get(`f${index}`);
+          if (legacy && legacy.length <= 500) columnFilters[column] = legacy;
+        });
+        if (params.has('cols') || params.has('sort') ||
+          [...params.keys()].some(key=>/^t?f\d+$/.test(key))) {
+          urlStateWarnings.push('Link de versão antiga: seus campos usam posições de colunas. Confira os filtros se a origem mudou; novos links usam nomes.');
+        }
+      }
       restoringState = false;
     }
 
@@ -1554,6 +1652,11 @@ let report = null;
         const spec = columnFilters[column];
         setOrDelete(params, `f${index}`, typeof spec === 'string' ? spec : '');
         setOrDelete(params, `tf${index}`, spec && typeof spec === 'object' ? JSON.stringify(spec) : '');
+      });
+      if (SchemaGuard) SchemaGuard.writeNamed(params,report,{
+        visibleColumns:visibleReportColumns(),
+        groupColumn,groupSums:[...groupSumColumns],
+        sortColumn:columnSort.column,columnFilters
       });
       history.replaceState(null, '', `${location.pathname}?${params.toString()}`);
     }
@@ -1701,9 +1804,12 @@ let report = null;
       prepareReportChartControls();
       if (byId('reportChart')?.open) renderReportChart();
       const removed = result.removedColumns.length;
+      const renamed = result.renamedColumns?.length || 0;
       setSavedViewStatus(removed
-        ? 'Consulta aplicada. ' + removed + ' coluna(s) já não existem neste relatório e foram ignoradas.'
-        : 'Consulta "' + name + '" aplicada. A URL foi atualizada para compartilhar a seleção.');
+        ? 'Consulta aplicada com ressalvas: ' + removed + ' campo(s) ausente(s) foram ignorados. Confira a estrutura da origem.'
+        : renamed
+          ? 'Consulta aplicada; ' + renamed + ' nome(s) de campo foram normalizados. Confira a correspondência.'
+          : 'Consulta "' + name + '" aplicada. A URL foi atualizada para compartilhar a seleção.');
     }
 
     function deleteSavedView() {
@@ -1823,6 +1929,10 @@ let report = null;
       const row = event.target.closest('tbody tr[data-row-index]');
       if (row) openRowDetails(Number(row.dataset.rowIndex));
     });
+    byId('schemaBannerLink').addEventListener('click', () => {
+      byId('sourceDetails').open = true;
+    });
+    byId('schemaAccept').addEventListener('click', acceptReportStructure);
     byId('saveView').addEventListener('click', saveCurrentView);
     byId('loadView').addEventListener('click', applySavedView);
     byId('deleteView').addEventListener('click', deleteSavedView);

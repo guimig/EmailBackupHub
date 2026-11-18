@@ -7,6 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const ROOT = path.resolve(__dirname, '..');
 const Filters = require('../assets/js/report-viewer-filters.js');
+const Guard = require('../assets/js/report-schema-guard.js');
 
 test('BRL, vazio e zero sao valores distintos', () => {
   assert.equal(Filters.parseNumber('R$ 1.234,56'), 1234.56);
@@ -82,7 +83,7 @@ function fixture(params = '?report=data/reports/novo.json', options = {}) {
   } };
   const context = vm.createContext({
     ...(options.animation ? { requestAnimationFrame: callback => frameQueue.push(callback) } : {}),
-    window: { EmailBackupHubFilters: Filters },
+    window: { EmailBackupHubFilters: Filters, EmailBackupHubSchemaGuard: Guard },
     document: { getElementById },
     location, history, URLSearchParams, console,
     EmailBackupHub: { reportDefinition: () => ({}) },
@@ -106,7 +107,10 @@ function fixture(params = '?report=data/reports/novo.json', options = {}) {
     '  exportAll: () => { exportCsv(); return csvOutput; },',
     '  restore: () => restoreStateFromUrl(),',
     '  getPage: () => currentPage, getPageSize: () => pageSize,',
-    '  getFilters: () => columnFilters',
+    '  getFilters: () => columnFilters,',
+    '  getSort: () => columnSort,',
+    '  getGroup: () => groupColumn,',
+    '  getVisible: () => [...visibleColumns]',
     '};'
   ].join('\n');
   vm.runInContext(source.slice(0, cutoff) + driver, context, { filename: 'report-viewer.js' });
@@ -303,4 +307,45 @@ test('todas as linhas de relatorio vazio mantem controles e estado consistentes'
   assert.equal(el('pageInfo').textContent, 'Nenhum registro encontrado.');
   assert.equal(el('pageNumber').textContent, 'Página 1 de 1');
   assert.equal(el('nextPage').disabled, true);
+});
+
+test('link compartilhado com nomes conserva filtros e controles após troca de ordem', () => {
+  const first = fixture();
+  const initial=makeReport(135);
+  first.api.set(initial);
+  first.api.filter('Saldo', {op:'is_zero'});
+  first.api.group('Grupo');
+  first.api.sum('Saldo');
+  first.api.render();
+  assert.match(first.location.search,/sv=2/);
+  const moved=makeReport(135);
+  moved.columns=['Competência','Grupo','Saldo','Identificador','Nova coluna'];
+  moved.column_schema=[...initial.column_schema,{name:'Nova coluna',type:'text'}];
+  const second=fixture(first.location.search);
+  second.api.set(moved);
+  second.api.restore();
+  second.api.render();
+  assert.equal(second.api.getFilters().Saldo.op,'is_zero');
+  assert.equal(second.api.getGroup(),'Grupo');
+  assert.equal(second.api.filtered().length,27);
+  assert.equal(second.api.getFilters().Competência,undefined);
+  assert.match(second.location.search,/sv=2/);
+  assert.ok(second.api.getVisible().includes('Saldo'));
+});
+
+test('filtro em coluna removida é descartado e não migra para a coluna seguinte', () => {
+  const first=fixture();
+  first.api.set(makeReport());
+  first.api.filter('Saldo', {op:'is_zero'});
+  first.api.render();
+  const updated=makeReport();
+  updated.columns=['Identificador','Competência','Grupo'];
+  updated.column_schema=updated.column_schema.filter(item=>item.name!=='Saldo');
+  const second=fixture(first.location.search);
+  second.api.set(updated);
+  second.api.restore();
+  second.api.render();
+  assert.equal(second.api.getFilters().Saldo,undefined);
+  assert.equal(second.api.getFilters().Competência,undefined);
+  assert.equal(second.api.filtered().length,135);
 });

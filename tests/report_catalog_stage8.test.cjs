@@ -71,3 +71,17 @@ test('corrupted storage is preserved and private browsing produces usable in-mem
   assert.equal(temporary.available, false);
   assert.deepEqual(temporary.state.seen, ['novo-relatorio']);
 });
+
+test('absence in current index is flagged without deleting favorites or claiming source deletion', () => {
+  const storage=localStorageFixture();
+  Catalog.read(storage,['relatorio-a','relatorio-b']);
+  const before=Catalog.read(storage,['relatorio-a','relatorio-b']).state;
+  Catalog.persist(storage,Catalog.toggleFavorite(before,'relatorio-b'));
+  const missing=Catalog.read(storage,['relatorio-a']);
+  assert.deepEqual(missing.missing,['relatorio-b']);
+  assert.ok(missing.state.favorites.includes('relatorio-b'));
+  assert.equal(missing.state.unread.length,0);
+  const recovered=Catalog.read(storage,['relatorio-a','relatorio-b']);
+  assert.deepEqual(recovered.missing,[]);
+  assert.ok(recovered.state.favorites.includes('relatorio-b'));
+});

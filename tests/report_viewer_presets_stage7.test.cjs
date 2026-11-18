@@ -177,3 +177,29 @@ test('consultas salvas preservam paginas maiores e a opcao todas sem alterar reg
   }
   assert.equal(Views.reconcile(report,{...state(),pageSize:999999},Filters).state.pageSize,50);
 });
+
+test('consulta salva recupera grafia equivalente sem deslocar filtros apos insercao de colunas', () => {
+  const r=fixture();
+  const old=Views.capture(r,state(),Filters);
+  const updated={...r,
+    columns:['Campo Novo','Saldo - R$','Ne CCor','competencia','Descrição'],
+    column_schema:[{name:'Campo Novo',type:'text'},...r.column_schema.map(item=>({
+      ...item,name:item.name==='NE CCor'?'Ne CCor':item.name==='Competência'?'competencia':item.name
+    }))]};
+  const result=Views.reconcile(updated,old,Filters);
+  assert.equal(result.state.sort.column,'competencia');
+  assert.equal(result.state.columnFilters['Ne CCor'].value,'NE0001');
+  assert.ok(result.state.visibleColumns.includes('competencia'));
+  assert.equal(result.removedColumns.length,0);
+  assert.ok(result.renamedColumns.length>=2);
+});
+
+test('consulta salva nao transfere filtro financeiro para codigo com novo significado', () => {
+  const r=fixture();
+  const old=Views.capture(r,state(),Filters);
+  const changed={...r,column_schema:r.column_schema.map(item=>item.name==='Saldo - R$'
+    ? {...item,type:'identifier'}:item)};
+  const result=Views.reconcile(changed,old,Filters);
+  assert.equal(result.state.columnFilters['Saldo - R$'],undefined);
+  assert.ok(!result.state.groupSumColumns.includes('Saldo - R$'));
+});

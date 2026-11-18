@@ -26,7 +26,13 @@
       automaticSelection: dataHeaders.length >= 6 && dataHeaders.length < 11,
       internalHorizontalScroll: $('tableWrap').scrollWidth > $('tableWrap').clientWidth,
       fullWidthMain: $('readerWorkspace').getBoundingClientRect().width >= Math.min(window.innerWidth - 30, 900),
-      bodyWithoutHorizontalOverflow: document.documentElement.scrollWidth <= window.innerWidth + 4
+      bodyWithoutHorizontalOverflow: document.documentElement.scrollWidth <= window.innerWidth + 4,
+      schemaOverviewPresent: $('schemaAuditColumns').querySelectorAll('tbody tr').length === 11 &&
+        $('schemaAuditSummary').textContent.includes('11 colunas'),
+      schemaReferenceCreated: Boolean(localStorage.getItem('emailbackuphub:structure:v1:credito-disponivel-mes-lancamento')),
+      newLinksIdentifyColumnNames: new URLSearchParams(location.search).get('sv') === '2' &&
+        new URLSearchParams(location.search).get('cv')?.includes('Grupo Despesa'),
+      schemaDiagnosticsCollapsed: !$('sourceDetails').open && $('schemaAccept').hidden
     };
 
     $('openFilterPanel').click();
