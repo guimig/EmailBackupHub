@@ -124,13 +124,14 @@
     ].map(fontPx);
     const chartValues = [
       '.chart-card--expense .financial-bar-value',
-      '.chart-card--credit .financial-bar-value',
       '.chart-card--gru .financial-bar-value',
       '.chart-card--rap .rap-composition-item dd strong'
     ].map(fontPx);
     const equalScale = values => values.every(v => v >= 13 && Math.abs(v - values[0]) < .3);
     qa.chartLabelsOneScale = equalScale(chartLabels);
     qa.chartValuesOneScale = equalScale(chartValues);
+    qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
+      >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
       '.chart-kicker', '.financial-chart-note', '.chart-bottom-note',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
