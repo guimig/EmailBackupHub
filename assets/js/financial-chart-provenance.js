@@ -150,7 +150,8 @@
         + '<strong class="financial-bar-value">' + escapeHtml(currency.format(entry.value)) + '</strong></div>';
     }).join('');
     const foot = options.note
-      ? '<p class="financial-chart-note">' + escapeHtml(options.note) + '</p>' : '';
+      ? '<details class="chart-methodology"><summary>Como interpretar a comparação</summary>' +
+        '<p class="financial-chart-note">' + escapeHtml(options.note) + '</p></details>' : '';
     const link = options.url
       ? '<a class="financial-chart-link" href="' + escapeHtml(options.url) + '">Consultar relatório de origem</a>' : '';
     container.innerHTML = '<div class="financial-comparison" role="group" aria-label="Comparação de valores atuais">'
@@ -186,7 +187,8 @@
       + '). Mês de emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
       + result.sourceDate.split('-').reverse().join('/') + '.';
     container.innerHTML = '<div class="financial-monthly" role="group" aria-label="GRU por mês de emissão">'
-      + bars + '<p class="financial-chart-note">' + escapeHtml(note) + '</p>'
+      + bars + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
+        '<p class="financial-chart-note">' + escapeHtml(note) + '</p></details>'
       + (options.url ? '<a class="financial-chart-link" href="' + escapeHtml(options.url)
         + '">Consultar documentos de GRU</a>' : '') + '</div>';
   }
