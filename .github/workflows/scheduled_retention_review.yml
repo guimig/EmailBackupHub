@@ -1,6 +1,12 @@
 name: Scheduled HTML and JSON Retention Review
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'verified_html_cleanup.py'
+      - 'tests/test_verified_html_cleanup.py'
+      - '.github/workflows/scheduled_retention_review.yml'
   schedule:
     - cron: '23 4 * * 0'
   workflow_dispatch:
@@ -41,6 +47,7 @@ jobs:
             html-retention-manifest.json
           retention-days: 30
       - name: Delete selected files on isolated branch only
+        if: github.event_name != 'pull_request'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
