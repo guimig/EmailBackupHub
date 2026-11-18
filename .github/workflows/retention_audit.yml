@@ -1,0 +1,43 @@
+name: Audit Report Retention
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'retention.py'
+      - 'snapshot_retention_audit.py'
+      - 'retention_audit.py'
+      - 'tests/test_retention.py'
+      - 'tests/test_snapshot_retention_audit.py'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout historical dataset
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install runtime dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify retention tests
+        run: python -m unittest discover -s tests -p "test_*retention*.py"
+      - name: Audit HTML retention (no deletion)
+        run: python retention_audit.py --output retention-html-audit.json
+      - name: Audit JSON snapshot references and storage (no deletion)
+        run: python snapshot_retention_audit.py --output retention-snapshot-audit.json
+      - name: Publish audit manifests
+        uses: actions/upload-artifact@v4
+        with:
+          name: retention-audit
+          path: |
+            retention-html-audit.json
+            retention-snapshot-audit.json
+          retention-days: 14

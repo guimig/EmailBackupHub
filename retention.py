@@ -9,6 +9,8 @@ from config import (
     RETENTION_KEEP_LATEST,
     RETENTION_KEEP_MONTHLY_CLOSE,
     RETENTION_MAX_REMOVAL_SAMPLE,
+    RETENTION_RECENT_DAYS,
+    RETENTION_WEEKLY_UNTIL_DAYS,
 )
 
 
@@ -22,25 +24,33 @@ def retention_policy():
         "apply_html_cleanup": RETENTION_APPLY_HTML_CLEANUP,
         "keep_latest": RETENTION_KEEP_LATEST,
         "keep_monthly_close": RETENTION_KEEP_MONTHLY_CLOSE,
-        "monthly_close_source": "first_business_day_of_month",
+        "monthly_close_source": "first_available_in_first_seven_days_of_month",
+        "keep_recent_days": RETENTION_RECENT_DAYS,
+        "keep_weekly_until_days": RETENTION_WEEKLY_UNTIL_DAYS,
+        "keep_year_end": True,
+        "holiday_list_env": "RETENTION_HOLIDAYS",
         "closing_date_rule": "report_date_minus_one_day",
     }
 
 
 def first_business_day(year, month):
     day = datetime.date(year, month, 1)
-    while day.weekday() >= 5:
+    holidays = set(filter(None, os.getenv('RETENTION_HOLIDAYS', '').split(',')))
+    while day.weekday() >= 5 or day.isoformat() in holidays:
         day += datetime.timedelta(days=1)
     return day
 
 
 def closing_date_for_report(report_date):
+    # Date inferred from filename; actual financial reference period must be checked.
     return report_date - datetime.timedelta(days=1)
 
 
 def monthly_close_key(report_date):
-    closing_date = closing_date_for_report(report_date)
-    return f"{closing_date.year:04d}-{closing_date.month:02d}"
+    # First business-day report is a candidate for the previous month close.
+    month_start = report_date.replace(day=1)
+    previous_month = month_start - datetime.timedelta(days=1)
+    return f"{previous_month.year:04d}-{previous_month.month:02d}"
 
 
 def is_monthly_close_report(report_date):
@@ -59,6 +69,11 @@ def dated_file_info(file_path, parse_date_from_name):
 
 
 def retention_selection(paths, parse_date_from_name):
+    """Protect latest, recent daily, intermediate weekly and monthly/yearly closes.
+
+    Closing-day candidates remain provisional: filenames cannot prove the
+    accounting reference period or the holiday calendar used by Tesouro.
+    """
     dated_files = sorted(
         (dated_file_info(path, parse_date_from_name) for path in paths),
         key=lambda item: (item["date"].isoformat(), os.path.getmtime(item["path"])),
@@ -66,6 +81,7 @@ def retention_selection(paths, parse_date_from_name):
     if not dated_files:
         return [], []
 
+    today = datetime.date.today()
     latest = dated_files[-1]
     selected = {}
     reasons = {}
@@ -76,10 +92,34 @@ def retention_selection(paths, parse_date_from_name):
 
     if RETENTION_KEEP_LATEST:
         keep(latest, "latest")
+
+    by_week = {}
+    by_month = {}
+    by_first_business_day = {}
     for item in dated_files:
         date = item["date"]
-        if RETENTION_KEEP_MONTHLY_CLOSE and is_monthly_close_report(date):
-            keep(item, "monthly_close")
+        age = (today - date).days
+        if age < 0:
+            keep(item, "future_dated_review")
+        elif age <= RETENTION_RECENT_DAYS:
+            keep(item, "recent_daily")
+        elif RETENTION_RECENT_DAYS < age <= RETENTION_WEEKLY_UNTIL_DAYS:
+            iso = date.isocalendar()
+            by_week[(iso.year, iso.week)] = item
+        if RETENTION_KEEP_MONTHLY_CLOSE:
+            by_month.setdefault((date.year, date.month), item)
+            if is_monthly_close_report(date):
+                by_first_business_day[(date.year, date.month)] = item
+        if date.month == 12 and date.day >= 28:
+            keep(item, "year_end_provisional")
+        if date.month == 1 and date.day <= 7:
+            keep(item, "year_open_provisional")
+
+    for item in by_week.values():
+        keep(item, "weekly")
+    if RETENTION_KEEP_MONTHLY_CLOSE:
+        for key, item in by_month.items():
+            keep(by_first_business_day.get(key, item), "monthly_close")
 
     retained = []
     ignored = []
