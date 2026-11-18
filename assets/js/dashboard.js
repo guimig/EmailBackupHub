@@ -2,6 +2,7 @@ let indexData = null;
     let searchData = null;
     let reports = [];
     let financialReports = {};
+    let gruActiveView = 'codes';
     let reportDefinitions = {};
     let sortKey = 'title';
     let sortDir = 1;
@@ -418,6 +419,7 @@ let indexData = null;
       setText('provisionGaugeValue', provisionGaugeModel.ok
         ? (provisionGaugeModel.value * 100).toLocaleString('pt-BR', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + '%' : '-');
       byId('provisionGaugeValue').title = provisionGaugeModel.reason;
+      byId('provisionGauge').title = provisionGaugeModel.reason;
 
       renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
@@ -474,10 +476,6 @@ let indexData = null;
       card.title = text;
     }
 
-    function showInsight(card) {
-      setText('insightTitle', card.dataset.insightTitle || 'Explore o painel');
-      setText('insightText', card.dataset.insightText || 'Passe o mouse sobre cartões e gráficos para ver uma leitura objetiva do indicador.');
-    }
     function setElementInsight(id, title, text) {
       const element = byId(id);
       if (!element) return;
@@ -766,7 +764,7 @@ let indexData = null;
       if (!element) return;
       // The stage model rejects invalid or incomparable metrics upstream.
       // Do not display a capped 100% arc for an impossible percentage.
-      if (!Number.isFinite(value) || value < 0 || value > 1) {
+      if (!Number.isFinite(value) || value < 0) {
         element.innerHTML = '<span class="stage-gauge-unavailable" role="status">Sem base</span>';
         element.setAttribute('aria-label', 'Percentual indisponível');
         return;
@@ -774,7 +772,7 @@ let indexData = null;
       const percent = (value * 100).toLocaleString('pt-BR', {
         minimumFractionDigits: 1, maximumFractionDigits: 1
       }) + '%';
-      const fraction = (value * 100).toFixed(3);
+      const fraction = (Math.min(value, 1) * 100).toFixed(3);
       // SVG paths share the same geometry and never require a chart dependency.
       element.innerHTML =
         '<svg viewBox="0 0 144 84" role="img" aria-label="' + percent + '" focusable="false">'
@@ -923,20 +921,40 @@ let indexData = null;
       });
     }
 
+    function setGruView(view) {
+      if (view !== 'codes' && view !== 'months') return;
+      gruActiveView = view;
+      const codes = byId('gruCodesChart');
+      const months = byId('gruTreeChart');
+      if (!codes || !months) return;
+      codes.hidden = view !== 'codes';
+      months.hidden = view !== 'months';
+      for (const button of document.querySelectorAll('[data-gru-view]')) {
+        const selected = button.dataset.gruView === view;
+        button.classList.toggle('is-active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      }
+      setText('gruSelectionDetail', view === 'codes'
+        ? 'Selecione uma área colorida para consultar código, valor e participação.'
+        : 'Selecione uma coluna para consultar o mês e o valor líquido.');
+    }
+
     function renderGruMonthlyView(id, legendId, currentValue) {
       const renderer = window.EmailBackupHubFinancialCharts;
-      if (!renderer?.renderGruMonthly) return unavailableChart(id);
+      if (!renderer?.renderGruMonthly || !renderer?.renderGruCodes) return unavailableChart(id);
       const container = byId(id);
       const codesContainer = byId('gruCodesChart');
-      const showCodesUnavailable = reason => renderer.renderGruCodes(codesContainer, { ok: false, reason });
       const slug = 'recolhimento-proprio-gru';
       const report = reports.find(item => item.slug === slug);
       const compact = financialReports[slug];
       const legend = byId(legendId);
-      if (legend) legend.textContent = 'Distribuição da movimentação líquida conforme mês de emissão, sujeita à reconciliação.';
+      if (legend) legend.textContent = 'GRU com vistas por código e por mês de emissão, ambas reconciliadas.';
+      const showError = reason => {
+        renderer.renderGruMonthly(container, { ok: false, reason });
+        renderer.renderGruCodes(codesContainer, { ok: false, reason });
+      };
       if (!isAvailable(currentValue) || !report?.json_path) {
-        renderer.renderGruMonthly(container, { ok: false, reason: 'Total auditado ou fonte GRU indisponível.' });
-        showCodesUnavailable('Total auditado ou fonte GRU indisponível.');
+        showError('Total auditado ou relatório detalhado indisponível.');
         return;
       }
       const key = String(indexData?.generated_at || '') + '|' + report.json_path;
@@ -959,29 +977,33 @@ let indexData = null;
           });
       }
       if (gruDetailState.status === 'loading') {
-        container.innerHTML = '<p class="chart-empty" role="status">Conferindo datas de emissão e reconciliando a GRU com o total auditado...</p>';
-        if (codesContainer) codesContainer.innerHTML = '';
+        container.innerHTML = '<p class="chart-empty" role="status">Conferindo valores mensais…</p>';
+        codesContainer.innerHTML = '<p class="chart-empty" role="status">Carregando códigos de recolhimento…</p>';
         return;
       }
       if (gruDetailState.status === 'error') {
-        renderer.renderGruMonthly(container, {
-          ok: false, reason: 'Falha ao carregar os registros detalhados (' + gruDetailState.error + ').'
-        });
-        showCodesUnavailable('Falha ao carregar o relatório detalhado.');
+        showError('Não foi possível carregar os registros: ' + gruDetailState.error);
         return;
       }
       const doc = gruDetailState.document;
       const expectedHash = compact?.metadata?.hash_conteudo;
       if (expectedHash && doc?.metadata?.hash_conteudo !== expectedHash) {
-        renderer.renderGruMonthly(container, {
-          ok: false, reason: 'O detalhe da GRU não corresponde à mesma versão do resumo auditado.'
-        });
-        showCodesUnavailable('Versão do relatório divergente.');
+        showError('O detalhamento não corresponde à mesma versão do resumo auditado.');
         return;
       }
-      const result = renderer.buildGruMonthly(doc, valueOf(currentValue));
-      renderer.renderGruMonthly(container, result, { url: chartSourceUrl(slug) });
-      renderer.renderGruCodes(codesContainer, renderer.buildGruByCode(doc, valueOf(currentValue)));
+      const total = valueOf(currentValue);
+      const monthly = renderer.buildGruMonthly(doc, total);
+      const codes = renderer.buildGruByCode(doc, total);
+      renderer.renderGruMonthly(container, monthly);
+      renderer.renderGruCodes(codesContainer, codes);
+      const source = chartSourceUrl(slug);
+      const link = byId('gruReportLink');
+      if (link) {
+        link.innerHTML = source
+          ? '<a class="financial-chart-link" href="' + escapeHtml(source) + '">Consultar relatório de origem</a>'
+          : '';
+      }
+      setGruView(gruActiveView);
     }
 
     function renderRapHistory(id, currentValues) {
@@ -1228,13 +1250,26 @@ let indexData = null;
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
-    document.querySelector('.dashboard-panel').addEventListener('mouseover', event => {
-      const card = event.target.closest('[data-insight-title]');
-      if (card) showInsight(card);
+    document.querySelector('.gru-view-switch').addEventListener('click', event => {
+      const button = event.target.closest('[data-gru-view]');
+      if (button) setGruView(button.dataset.gruView);
     });
-    document.querySelector('.dashboard-panel').addEventListener('focusin', event => {
-      const card = event.target.closest('[data-insight-title]');
-      if (card) showInsight(card);
+    document.querySelector('.chart-card--gru').addEventListener('click', event => {
+      const selected = event.target.closest('[data-gru-code], [data-gru-month]');
+      if (!selected) return;
+      const group = selected.closest('.gru-view-panel');
+      for (const node of group.querySelectorAll('[aria-pressed]')) {
+        node.setAttribute('aria-pressed', String(node === selected));
+      }
+      if (selected.dataset.gruCode) {
+        setText('gruSelectionDetail', selected.dataset.gruCode + ' · '
+          + selected.dataset.gruDescription + ' — ' + selected.dataset.gruValue
+          + ' · ' + String(selected.dataset.gruShare).replace('.', ',')
+          + '% dos valores positivos por código · ' + selected.dataset.gruRecords + ' registro(s).');
+      } else {
+        setText('gruSelectionDetail', selected.dataset.gruMonth + ' — '
+          + selected.dataset.gruValue + ' · ' + selected.dataset.gruRecords + ' registro(s).');
+      }
     });
     document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
       const nextKey = th.dataset.sort;
