@@ -133,6 +133,66 @@
 
   const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
+  /*
+   * A rate between expenditure stages is meaningful only for the same accounting
+   * perimeter and reference. The caller passes metrics from ONE report snapshot.
+   * Do not silently clamp impossible stage values to 100%.
+   */
+  function buildExpenseStages(metrics, options = {}) {
+    const raw = ['committed', 'liquidated', 'paid'].map(key => metrics?.[key]);
+    const reason = message => ({
+      ok: false, reason: message, rates: null,
+      unliquidated: null, unpaidLiquidated: null
+    });
+    if (options.audited === false) return reason('Uma ou mais métricas não têm origem auditável na mesma posição.');
+    if (options.quality === false) return reason('O relatório de origem apresenta problemas de qualidade.');
+    if (options.date !== undefined && !/^\\d{4}-\\d{2}-\\d{2}$/.test(String(options.date))) {
+      return reason('Data de referência do relatório indisponível ou inválida.');
+    }
+    if (raw.some(value => !Number.isFinite(value) || value < 0)) {
+      return reason('Há valores ausentes, negativos ou não numéricos nas etapas da despesa.');
+    }
+    const [committed, liquidated, paid] = raw;
+    if (liquidated > committed + 0.01 || paid > liquidated + 0.01) {
+      return reason('As etapas não formam uma sequência comparável (empenhado ≥ liquidado ≥ pago).');
+    }
+    if (committed <= 0) {
+      return reason('O valor empenhado não possui base positiva para os percentuais.');
+    }
+    return {
+      ok: true, reason: '', committed, liquidated, paid,
+      date: options.date || null,
+      rates: {
+        liquidatedOfCommitted: liquidated / committed,
+        paidOfLiquidated: liquidated > 0 ? paid / liquidated : null,
+        paidOfCommitted: paid / committed
+      },
+      unliquidated: Math.max(0, committed - liquidated),
+      unpaidLiquidated: Math.max(0, liquidated - paid)
+    };
+  }
+
+  function renderIndependentBalances(container, entries, options = {}) {
+    if (!container) return;
+    const balances = (entries || []).map(item => {
+      const value = Number.isFinite(item.value) ? currency.format(item.value) : 'Indisponível';
+      const source = item.date ? '<small>Posição ' + escapeHtml(item.date) + '</small>' : '';
+      return '<div class="financial-independent-item">'
+        + '<span class="financial-bar-label">' + escapeHtml(item.label) + '</span>'
+        + '<strong class="financial-bar-value">' + escapeHtml(value) + '</strong>'
+        + source + '</div>';
+    }).join('');
+    const note = options.note ? '<details class="chart-methodology"><summary>Por que não são comparáveis como partes do mesmo total?</summary>'
+      + '<p class="financial-chart-note">' + escapeHtml(options.note) + '</p></details>' : '';
+    const links = (options.links || []).filter(item => item?.url).map(item =>
+      '<a class="financial-chart-link" href="' + escapeHtml(item.url) + '">'
+      + escapeHtml(item.label) + '</a>').join('');
+    container.innerHTML = '<div class="financial-independent" role="group" aria-label="Saldos orçamentários independentes">'
+      + '<div class="financial-independent-grid">' + balances + '</div>'
+      + note + '<div class="financial-independent-links">' + links + '</div></div>';
+  }
+
+
   function renderComparison(container, entries, options = {}) {
     if (!container) return;
     const valid = (entries || []).filter(entry => Number.isFinite(entry.value));
@@ -187,6 +247,29 @@
       + (peak ? escapeHtml(peak.label) + ' · ' + escapeHtml(currency.format(peak.value)) : 'Sem dado')
       + '</strong></div></div>'
       + '<p class="gru-scale-note">Comprimento relativo ao maior valor mensal em módulo. Valores negativos são movimentações líquidas negativas; a barra não representa participação percentual do total.</p>';
+
+    const hasNegative = populated.some(item => item.value < 0);
+    const year = Number.isInteger(result.year) ? String(result.year) : '';
+    const timeline = '<div class="gru-timeline-viewport" tabindex="0" aria-label="Gráfico mensal da GRU; role horizontalmente para consultar todos os meses">'
+      + '<div class="gru-timeline' + (hasNegative ? ' has-negative' : '') + '" role="list" aria-label="Movimentação líquida por mês de emissão">'
+      + result.months.map(item => {
+        const available = Number.isFinite(item.value);
+        const negative = available && item.value < 0;
+        const height = available ? Math.min(100, Math.abs(item.value) / scale * 100) : 0;
+        const label = available ? currency.format(item.value) : 'Sem registros';
+        const month = String(item.label || '').split('/')[0];
+        return '<div class="gru-timeline-month' + (!available ? ' is-missing' : '') + '" role="listitem"'
+          + ' tabindex="0" title="' + escapeHtml(item.label + ': ' + label) + '"'
+          + ' aria-label="' + escapeHtml(item.label + ', ' + label + ', ' + item.records + ' documento(s)') + '">'
+          + '<div class="gru-timeline-positive">'
+          + (!negative && available ? '<span class="gru-timeline-fill" style="height:' + height.toFixed(1) + '%"></span>' : '')
+          + '</div><div class="gru-timeline-negative">'
+          + (negative ? '<span class="gru-timeline-fill" style="height:' + height.toFixed(1) + '%"></span>' : '')
+          + '</div><span class="gru-timeline-label">' + escapeHtml(month) + '</span>'
+          + '</div>';
+      }).join('') + '</div>'
+      + '<p class="gru-timeline-caption">Meses de emissão ' + escapeHtml(year)
+      + ' · a linha separa movimentos positivos e negativos.</p></div>';
     const midpoint = Math.ceil(monthRows.length / 2);
     const bars = '<div class="gru-month-grid">'
       + '<div class="gru-month-column">' + monthRows.slice(0, midpoint).join('') + '</div>'
@@ -196,13 +279,15 @@
       + '). Mês de emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
       + result.sourceDate.split('-').reverse().join('/') + '.';
     container.innerHTML = '<div class="financial-monthly" role="group" aria-label="GRU por mês de emissão">'
-      + overview + bars + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
+      + overview + timeline
+      + '<details class="gru-months-details"><summary>Consultar valores exatos de cada mês</summary>' + bars + '</details>'
+      + '<details class="chart-methodology"><summary>Critérios e conciliação dos meses</summary>' +
         '<p class="financial-chart-note">' + escapeHtml(note) + '</p></details>'
       + (options.url ? '<a class="financial-chart-link" href="' + escapeHtml(options.url)
         + '">Consultar documentos de GRU</a>' : '') + '</div>';
   }
 
-  const api = { buildGruMonthly, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderGruMonthly };
+  const api = { buildGruMonthly, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly };
   root.EmailBackupHubFinancialCharts = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 }(typeof window !== 'undefined' ? window : globalThis));
