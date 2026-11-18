@@ -1248,19 +1248,6 @@ let indexData = null;
       detail.hidden = false;
     }
 
-    byId('dashboardCharts').addEventListener('click', event => {
-      selectFinancialGraphic(event.target);
-    });
-    byId('dashboardCharts').addEventListener('keydown', event => {
-      if (event.key !== 'Enter' && event.key !== ' ') return;
-      const clickable = event.target.closest('.financial-bar-row[role="button"], '
-        + '.financial-independent-item[role="button"], .rap-composition-item[role="button"], '
-        + '.stage-gauge-card[role="button"]');
-      if (!clickable) return;
-      event.preventDefault();
-      selectFinancialGraphic(clickable);
-    });
-
     byId('search').addEventListener('input', handleSearchInput);
     byId('periodicity').addEventListener('change', renderReportCatalog);
     byId('catalogScope').addEventListener('change', renderReportCatalog);
@@ -1300,4 +1287,17 @@ let indexData = null;
       sortKey = nextKey;
       renderReportCatalog();
     }));
+    byId('dashboardCharts').addEventListener('click', event => {
+      selectFinancialGraphic(event.target);
+    });
+    byId('dashboardCharts').addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const clickable = event.target.closest('.financial-bar-row[role="button"], '
+        + '.financial-independent-item[role="button"], .rap-composition-item[role="button"], '
+        + '.stage-gauge-card[role="button"]');
+      if (!clickable) return;
+      event.preventDefault();
+      selectFinancialGraphic(clickable);
+    });
+
     loadData().catch(error => { byId('rows').innerHTML = `<tr><td colspan="7">Erro ao carregar dados: ${escapeHtml(error.message)}</td></tr>`; });
