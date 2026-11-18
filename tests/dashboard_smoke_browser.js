@@ -21,7 +21,8 @@
       !expense.querySelector('circle.history-point');
     qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-bar-row').length === 2 &&
       !credit.querySelector('circle.history-point');
-    qa.creditFigureIsNotTemporalPercent = el('creditShareValue').textContent.includes('40.000');
+    qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
+      !credit.textContent.includes('40.000%');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
@@ -60,24 +61,46 @@
       && managementList.querySelectorAll('.alert-item').length === managementCount;
     managementPanel.open = false;
     qa.managementClosesAgain = !managementPanel.open;
-    const chartColumns = [...document.querySelectorAll('.dashboard-chart-column')];
-    const gaugeCards = ['committedGauge', 'liquidatedGauge', 'paidGauge']
-      .map(id => el(id).closest('.chart-card'));
-    qa.chartColumnsAreIndependent = chartColumns.length === 2 &&
-      chartColumns.every(column => column.children.length >= 3);
-    qa.compactRatiosWithoutDuplicateLabels = gaugeCards.every(card =>
-      card && card.querySelectorAll('.ratio-meter').length === 1 &&
-      !card.querySelector('svg') && card.getBoundingClientRect().height < 180);
-    qa.monthlyGruDoesNotStretchGauges =
-      el('gruTreeChart').closest('.chart-card').getBoundingClientRect().height >
-      Math.max(...gaugeCards.map(card => card.getBoundingClientRect().height));
-    qa.chartWidthAndResponsiveFlow = (() => {
-      const first = chartColumns[0].getBoundingClientRect();
-      const second = chartColumns[1].getBoundingClientRect();
-      const panel = document.querySelector('.dashboard-panel').getBoundingClientRect();
-      return panel.width <= 1322 && (window.innerWidth > 950
-        ? second.left >= first.right - 2 && Math.abs(first.top - second.top) < 4
-        : second.top >= first.bottom - 2);
+    const chartGrid = document.querySelector('.dashboard-charts--overview');
+    const cards = [...chartGrid.querySelectorAll(':scope > .chart-card')];
+    const stages = chartGrid.querySelector('.chart-card--stages');
+    const gruCard = chartGrid.querySelector('.chart-card--gru');
+    const monthColumns = [...gruCard.querySelectorAll('.gru-month-column')];
+    const expenseCard = chartGrid.querySelector('.chart-card--expense');
+    const creditCard = chartGrid.querySelector('.chart-card--credit');
+    const rapCard = chartGrid.querySelector('.chart-card--rap');
+    const rect = node => node.getBoundingClientRect();
+    qa.fivePurposefulPanels = cards.length === 5 &&
+      ['expense', 'stages', 'credit', 'rap', 'gru'].every(type =>
+        cards.some(card => card.classList.contains('chart-card--' + type)));
+    qa.executionRatiosGrouped = stages.querySelectorAll('.flow-metric').length === 3 &&
+      ['committedGauge', 'liquidatedGauge', 'paidGauge'].every(id =>
+        stages.contains(el(id)) && el(id).querySelectorAll('.ratio-meter').length === 1) &&
+      !el('provisionDonut') && !el('provisionShareValue');
+    qa.gruMonthlyColumnsPreserveData = monthColumns.length === 2 &&
+      monthColumns[0].querySelectorAll('.financial-month-row').length === 6 &&
+      monthColumns[1].querySelectorAll('.financial-month-row').length === 5;
+    qa.dashboardResponsiveHierarchy = window.innerWidth > 990
+      ? Math.abs(rect(expenseCard).top - rect(stages).top) < 5 &&
+        rect(stages).left >= rect(expenseCard).right - 5 &&
+        Math.abs(rect(creditCard).top - rect(rapCard).top) < 5 &&
+        rect(gruCard).top > rect(creditCard).top &&
+        rect(gruCard).width > rect(expenseCard).width
+      : cards.every((card, index) => index === 0 ||
+        rect(card).top >= rect(cards[index - 1]).bottom - 5);
+    qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
+      (rect(expenseCard).height < 410 &&
+       rect(stages).height < 410 &&
+       rect(gruCard).height < 420);
+    qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
+    qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
+      const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
+      return items.length >= 2 && Math.abs(rect(items[0]).top - rect(items[1]).top) < 4 &&
+        rect(items[1]).left >= rect(items[0]).right - 4;
+    })();
+    qa.mobileNavigationIsCondensed = window.innerWidth > 730 || (() => {
+      const links = [...document.querySelectorAll('.header-actions .header-link')];
+      return links.length === 2 && Math.abs(rect(links[0]).top - rect(links[1]).top) < 4;
     })();
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
@@ -91,6 +114,10 @@
     el('catalogScope').value = 'all';
     el('catalogScope').dispatchEvent(new Event('change', { bubbles: true }));
     qa.allReportsRestored = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
+    // Restore the initial theme before taking viewport screenshots. Headless
+    // Chromium can capture a blank frame if the page is scrolled mid-render.
+    if (document.documentElement.dataset.theme !== oldTheme) el('themeToggle').click();
+    qa.themeRestoredForScreenshots = document.documentElement.dataset.theme === oldTheme;
     document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
   }
   setTimeout(verify, 100);

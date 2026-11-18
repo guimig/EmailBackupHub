@@ -135,8 +135,8 @@ async function main(){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const url='http://127.0.0.1:'+server.address().port+'/dashboard.html';
  try{
-  await launch(chrome,url,'desktop','1440,900');
-  await launch(chrome,url,'mobile','440,900');
+  await launch(chrome,url,'desktop','1440,1500');
+  await launch(chrome,url,'mobile','440,2300');
  }finally{await new Promise(resolve=>server.close(resolve));}
 }
 main().catch(e=>{console.error(e);process.exitCode=1});
