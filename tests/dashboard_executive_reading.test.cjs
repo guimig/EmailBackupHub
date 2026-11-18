@@ -79,7 +79,7 @@ test('zero denominator and overpaid comparison never imply normal execution', ()
 test('explanatory copy preserves independent credit and provisioned balances', () => {
   const html = fs.readFileSync(path.resolve(__dirname, '../dashboard.html'), 'utf8');
   assert.match(html, /São saldos distintos/);
-  assert.match(html, /não representa, necessariamente, crédito utilizado ou a utilizar/);
+  assert.match(html, /Não representam parcelas do mesmo total/);
   assert.match(html, /id="otherFinancialIndicators"/);
   assert.match(html, /id="managementAlertsPanel"/);
   assert.match(html, /Base: RAP pago \+ RAP a pagar/);
