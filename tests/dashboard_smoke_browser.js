@@ -93,6 +93,15 @@
        rect(stages).height < 410 &&
        rect(gruCard).height < 420);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
+    qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
+      const items = [...document.querySelectorAll('.dashboard-kpis .kpi-card')];
+      return items.length >= 2 && Math.abs(rect(items[0]).top - rect(items[1]).top) < 4 &&
+        rect(items[1]).left >= rect(items[0]).right - 4;
+    })();
+    qa.mobileNavigationIsCondensed = window.innerWidth > 730 || (() => {
+      const links = [...document.querySelectorAll('.header-actions .header-link')];
+      return links.length === 2 && Math.abs(rect(links[0]).top - rect(links[1]).top) < 4;
+    })();
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
