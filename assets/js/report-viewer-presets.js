@@ -8,6 +8,8 @@
   const MAX_SEARCH = 500;
   const MAX_FILTER = 4000;
   const KEY_PREFIX = 'emailbackuphub:views:v1:';
+  const SchemaGuard = root.EmailBackupHubSchemaGuard ||
+    (typeof module !== 'undefined' && module.exports ? require('./report-schema-guard.js') : null);
 
   function keyFor(report) {
     const slug = String(report?.slug || '').trim();
@@ -38,15 +40,21 @@
     const allowed = new Set(columns);
     const input = snapshot && typeof snapshot === 'object' && !Array.isArray(snapshot) ? snapshot : {};
     const invalidColumns = new Set();
-    const checkColumn = column => {
-      if (!allowed.has(column)) {
-        if (column) invalidColumns.add(String(column));
-        return false;
+    const renamedColumns = new Set();
+    const mappedColumn = column => {
+      if (!column || typeof column !== 'string') return null;
+      if (allowed.has(column)) return column;
+      const match = SchemaGuard?.resolveColumn(columns, column);
+      if (match?.name) {
+        renamedColumns.add(column + ' → ' + match.name);
+        return match.name;
       }
-      return true;
+      invalidColumns.add(column);
+      return null;
     };
+    const checkColumn = column => Boolean(mappedColumn(column));
     const unique = (value, accept) => Array.isArray(value)
-      ? [...new Set(value.filter(item => typeof item === 'string' && checkColumn(item) && (!accept || accept(item))))]
+      ? [...new Set(value.map(mappedColumn).filter(item => item && (!accept || accept(item))))]
       : [];
     const visible = unique(input.visibleColumns);
     const sums = unique(input.groupSumColumns, column =>
@@ -55,23 +63,26 @@
     const filtered = Object.create(null);
     if (input.columnFilters && typeof input.columnFilters === 'object' && !Array.isArray(input.columnFilters)) {
       for (const [column, spec] of Object.entries(input.columnFilters)) {
-        if (!checkColumn(column)) continue;
-        const valid = safeFilter(spec, column, report, filters, metaFor);
-        if (valid !== null) filtered[column] = valid;
+        const mapped = mappedColumn(column);
+        if (!mapped) continue;
+        const valid = safeFilter(spec, mapped, report, filters, metaFor);
+        if (valid !== null) filtered[mapped] = valid;
       }
     }
     const widths = Object.create(null);
     if (input.columnWidths && typeof input.columnWidths === 'object' && !Array.isArray(input.columnWidths)) {
       for (const [column, width] of Object.entries(input.columnWidths)) {
-        if (!checkColumn(column)) continue;
-        if (Number.isInteger(width) && width >= 150 && width <= 720) widths[column] = width;
+        const mapped = mappedColumn(column);
+        if (!mapped) continue;
+        if (Number.isInteger(width) && width >= 150 && width <= 720) widths[mapped] = width;
       }
     }
     const sort = input.sort && typeof input.sort === 'object' && !Array.isArray(input.sort) ? input.sort : {};
-    const chosenSort = checkColumn(sort.column) && ['az', 'za'].includes(sort.direction)
-      ? { column: sort.column, direction: sort.direction }
+    const sortName = mappedColumn(sort.column);
+    const chosenSort = sortName && ['az', 'za'].includes(sort.direction)
+      ? { column: sortName, direction: sort.direction }
       : { column: null, direction: '' };
-    const groupColumn = checkColumn(input.groupColumn) ? input.groupColumn : '';
+    const groupColumn = mappedColumn(input.groupColumn) || '';
     const baseColumnWidth = Number.isInteger(input.baseColumnWidth) && input.baseColumnWidth >= 150 && input.baseColumnWidth <= 440
       ? input.baseColumnWidth : 250;
     const proposedChart = input.chart && typeof input.chart === 'object' && !Array.isArray(input.chart) ? input.chart : null;
@@ -79,8 +90,8 @@
       ? {
         mode: proposedChart.mode,
         type: ['bar','pie','line'].includes(proposedChart.type) ? proposedChart.type : 'bar',
-        dimension: proposedChart.dimension && checkColumn(proposedChart.dimension) ? proposedChart.dimension : '',
-        measure: proposedChart.measure && checkColumn(proposedChart.measure) ? proposedChart.measure : '',
+        dimension: mappedColumn(proposedChart.dimension) || '',
+        measure: mappedColumn(proposedChart.measure) || '',
         limit: [10,15,30,60].includes(proposedChart.limit) ? proposedChart.limit : 15
       } : null;
     return {
@@ -99,7 +110,8 @@
         columnWidths: widths,
         chart
       },
-      removedColumns: [...invalidColumns]
+      removedColumns: [...invalidColumns],
+      renamedColumns: [...renamedColumns]
     };
   }
 
