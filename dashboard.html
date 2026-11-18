@@ -46,51 +46,12 @@
             </div>
             <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Mostra valores acumulados da posição mais recente. A interpretação de proporções exige métricas compatíveis do mesmo relatório.</p></details>
           </div>
-          <div class="chart-takeaway" id="expenseTakeaway">
+          <div class="chart-takeaway chart-takeaway--compact" id="expenseTakeaway">
             <span class="chart-takeaway-label">Leitura rápida</span>
             <strong id="expenseTakeawayTitle">Consultando os valores auditados…</strong>
             <p id="expenseTakeawayText">Comparação com a última posição disponível.</p>
           </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
-        </article>
-
-        <article class="chart-card chart-card--stages">
-          <div class="chart-card-head">
-            <div class="chart-card-heading">
-              <span class="chart-kicker">Relações entre etapas</span>
-              <h3>Conversão entre etapas</h3>
-            </div>
-            <details class="chart-help"><summary aria-label="Explicar os percentuais da execução">?</summary><p>Liquidação / empenho, pagamento / liquidação e pagamento / empenho. Percentuais apenas quando as três métricas são auditáveis na mesma posição, sem inconsistência na ordem das etapas.</p></details>
-          </div>
-          <p class="chart-lead">Cada percentual utiliza uma base específica do mesmo relatório auditado; não representa uma meta de desempenho.</p>
-          <p class="stage-interpretation" id="stagesInterpretation" role="status">Conferindo a comparabilidade das etapas…</p>
-          <div class="flow-metric-list">
-            <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do empenhado, já liquidado</span><strong id="committedGaugeValue">-</strong></div>
-              <div class="chart-slot" id="committedGauge"></div>
-            </div>
-            <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do liquidado, já pago</span><strong id="liquidatedGaugeValue">-</strong></div>
-              <div class="chart-slot" id="liquidatedGauge"></div>
-            </div>
-            <div class="flow-metric">
-              <div class="flow-metric-top"><span>Do empenhado, já pago</span><strong id="paidGaugeValue">-</strong></div>
-              <div class="chart-slot" id="paidGauge"></div>
-            </div>
-          </div>
-          <p class="chart-bottom-note">Percentuais com denominadores diferentes não devem ser somados. Diferenças entre etapas não demonstram, por si, atrasos de pagamento.</p>
-        </article>
-
-        <article class="chart-card chart-card--credit">
-          <div class="chart-card-head">
-            <div class="chart-card-heading">
-              <span class="chart-kicker">Orçamento</span>
-              <h3>Saldos orçamentários distintos</h3>
-            </div>
-            <details class="chart-help"><summary aria-label="Explicar crédito e provisionamento">?</summary><p>Compara saldos auditados de fontes distintas. As barras são uma comparação de magnitudes, não parcelas de um mesmo total.</p></details>
-          </div>
-          <p class="chart-lead"><strong>São saldos distintos.</strong> Não representam parcelas do mesmo total. Consulte datas e filtros antes de qualquer comparação.</p>
-          <div class="chart-slot" id="creditDonut"></div>
         </article>
 
         <article class="chart-card chart-card--rap">
@@ -113,6 +74,59 @@
           </details>
         </article>
 
+        <article class="chart-card chart-card--stages">
+          <div class="chart-card-head">
+            <div class="chart-card-heading">
+              <span class="chart-kicker">Execução da despesa</span>
+              <h3>Conversão entre etapas</h3>
+            </div>
+            <details class="chart-help"><summary aria-label="Como interpretar as conversões">?</summary><p>Os indicadores utilizam as mesmas métricas auditadas. Liquidado / empenhado, pago / liquidado, pago / empenhado e parcela do liquidado ainda não paga. As bases são diferentes e os percentuais não devem ser somados.</p></details>
+          </div>
+          <p class="stage-interpretation" id="stagesInterpretation" role="status">Conferindo a posição auditada…</p>
+          <div class="stage-gauge-grid" aria-label="Percentuais da execução da despesa">
+            <div class="stage-gauge-card">
+              <span class="stage-gauge-title">Liquidado / empenhado</span>
+              <div class="stage-half-gauge" id="committedGauge"></div>
+              <strong class="stage-gauge-value" id="committedGaugeValue">-</strong>
+              <span class="stage-gauge-caption">Do empenhado já liquidado</span>
+            </div>
+            <div class="stage-gauge-card">
+              <span class="stage-gauge-title">Pago / liquidado</span>
+              <div class="stage-half-gauge" id="liquidatedGauge"></div>
+              <strong class="stage-gauge-value" id="liquidatedGaugeValue">-</strong>
+              <span class="stage-gauge-caption">Do liquidado já pago</span>
+            </div>
+            <div class="stage-gauge-card">
+              <span class="stage-gauge-title">Pago / empenhado</span>
+              <div class="stage-half-gauge" id="paidGauge"></div>
+              <strong class="stage-gauge-value" id="paidGaugeValue">-</strong>
+              <span class="stage-gauge-caption">Do empenhado já pago</span>
+            </div>
+            <div class="stage-gauge-card stage-gauge-card--pending">
+              <span class="stage-gauge-title">Liquidado ainda não pago</span>
+              <div class="stage-half-gauge" id="openGauge"></div>
+              <strong class="stage-gauge-value" id="openGaugeValue">-</strong>
+              <span class="stage-gauge-caption">Parcela da liquidação pendente</span>
+            </div>
+          </div>
+          <details class="chart-methodology stage-methodology">
+            <summary>Critérios dos percentuais</summary>
+            <p>Base: métricas do mesmo relatório e data auditada. Liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; (liquidado − pago) ÷ liquidado. Valores diferentes de bases, por si, não indicam atraso ou disponibilidade financeira.</p>
+          </details>
+        </article>
+
+        <article class="chart-card chart-card--credit">
+          <div class="chart-card-head">
+            <div class="chart-card-heading">
+              <span class="chart-kicker">Orçamento</span>
+              <h3>Saldos orçamentários distintos</h3>
+            </div>
+            <details class="chart-help"><summary aria-label="Explicar crédito e provisionamento">?</summary><p>Compara saldos auditados de fontes distintas. As barras são uma comparação de magnitudes, não parcelas de um mesmo total.</p></details>
+          </div>
+          <p class="chart-lead"><strong>São saldos distintos.</strong> Não representam parcelas do mesmo total.</p>
+          <div class="chart-slot" id="creditDonut"></div>
+        </article>
+
         <article class="chart-card chart-card--gru">
           <div class="chart-card-head">
             <div class="chart-card-heading">
@@ -124,7 +138,7 @@
               <details class="chart-help"><summary aria-label="Explicar GRU por mês de emissão">?</summary><p>As movimentações líquidas são agrupadas pelo mês de emissão dos documentos; o total mensal é exibido somente se reconciliar com o total auditado. Emissão não significa data de arrecadação efetiva.</p></details>
             </div>
           </div>
-          <p class="chart-lead chart-lead--gru">Cada barra representa um mês de <strong>emissão dos documentos</strong>, não necessariamente o mês do recolhimento efetivo.</p>
+          <p class="chart-lead chart-lead--gru">Movimentação líquida por mês de emissão; não necessariamente do recolhimento.</p>
           <div class="chart-slot" id="gruTreeChart"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
