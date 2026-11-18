@@ -34,7 +34,7 @@ class SnapshotRetentionAuditTests(unittest.TestCase):
                 self.assertEqual(result["summary"]["protected_year_end"], 1)
                 self.assertTrue(all(p.exists() for p in (old, referenced, recent, year_end)))
 
-    def test_missing_referenced_file_refuses_audit(self):
+    def test_missing_referenced_file_is_reported_without_deletion(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             (root / "data" / "snapshots").mkdir(parents=True)
@@ -42,8 +42,9 @@ class SnapshotRetentionAuditTests(unittest.TestCase):
                 "source": {"snapshot_path": "data/snapshots/missing.json"}
             }), encoding="utf-8")
             with patch.object(audit, "ROOT", root), patch.object(audit, "SNAPSHOTS", root / "data" / "snapshots"):
-                with self.assertRaises(RuntimeError):
-                    audit.inspect(dt.date(2026, 11, 17))
+                result, candidates = audit.inspect(dt.date(2026, 11, 17))
+                self.assertEqual(candidates, [])
+                self.assertEqual(result["missing_referenced_count"], 1)
 
 
 if __name__ == "__main__":
