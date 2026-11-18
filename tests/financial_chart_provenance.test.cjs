@@ -97,7 +97,7 @@ test('comparative charts use snapshot values without inventing times or subtract
   ],{note:'Posição atual, não lançamentos por data.'});
   assert.equal((container.innerHTML.match(/class="financial-bar-row"/g)||[]).length,3);
   assert.ok(!container.innerHTML.includes('<svg'));
-  assert.match(container.innerHTML,/não lançamentos por data/);
+  assert.doesNotMatch(container.innerHTML,/chart-methodology/);
   const missing={innerHTML:''};
   renderComparison(missing,[{label:'Inexistente',value:null}],{});
   assert.match(missing.innerHTML,/Não há valores auditáveis/);
