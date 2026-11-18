@@ -27,12 +27,13 @@
       !credit.textContent.includes('40.000%') &&
       document.querySelector('.chart-card--credit .chart-help p').textContent.includes('saldos de relatórios independentes');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
-      gru.textContent.includes('2.500');
+      el('gruValue').textContent.includes('2.500') &&
+      document.querySelector('#gruCodesChart .gru-code-row') !== null;
     qa.gruCodesReconciled = document.querySelectorAll('#gruCodesChart .gru-code-row').length === 3 &&
       document.querySelector('#gruCodesChart').textContent.includes('SERVICOS EDUCACIONAIS');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
       gru.textContent.includes('NOV/2026') &&
-      gru.textContent.toLocaleLowerCase('pt-BR').includes('mês de emissão');
+      gru.closest('.chart-card').querySelector('.chart-help p').textContent.includes('mês de emissão');
     qa.provenanceInfoVisible = document.querySelector('.dashboard-provenance')
       ?.textContent.includes('não a data de cada lançamento');
     qa.noFalseHistorySelector = el('historyRange') === null;
