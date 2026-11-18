@@ -1248,10 +1248,10 @@ let indexData = null;
       detail.hidden = false;
     }
 
-    document.querySelector('.dashboard-charts--overview').addEventListener('click', event => {
+    byId('dashboardCharts').addEventListener('click', event => {
       selectFinancialGraphic(event.target);
     });
-    document.querySelector('.dashboard-charts--overview').addEventListener('keydown', event => {
+    byId('dashboardCharts').addEventListener('keydown', event => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
       const clickable = event.target.closest('.financial-bar-row[role="button"], '
         + '.financial-independent-item[role="button"], .rap-composition-item[role="button"], '
