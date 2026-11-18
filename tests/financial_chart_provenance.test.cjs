@@ -116,3 +116,23 @@ test('monthly chart represents missing separately from explicit zero and does no
   renderGruMonthly(mismatch,{ok:false,reason:'Reconciliacao falhou'});
   assert.match(mismatch.innerHTML,/Série mensal não disponível/);
 });
+
+test('monthly GRU executive summary highlights the biggest absolute movement and negative months', () => {
+  const container = { innerHTML: '' };
+  renderGruMonthly(container, {
+    ok: true, year: 2026, sourceDate: '2026-11-17', records: 3, total: -30,
+    months: [
+      { label: 'JAN/2026', value: 20, records: 1 },
+      { label: 'FEV/2026', value: -50, records: 1 },
+      { label: 'MAR/2026', value: null, records: 0 }
+    ]
+  });
+  assert.match(container.innerHTML, /Meses com registros/);
+  assert.match(container.innerHTML, /2 de 3/);
+  assert.match(container.innerHTML, /FEV\/2026 · R\$\s*-50,00/);
+  assert.match(container.innerHTML, /financial-month-row is-negative/);
+  assert.match(container.innerHTML, /barra não representa participação percentual/);
+  const empty = { innerHTML: '' };
+  renderGruMonthly(empty, { ok: true, year: 2026, sourceDate: '2026-11-17', records: 0, total: 0, months: [] });
+  assert.match(empty.innerHTML, /0 de 0/);
+});
