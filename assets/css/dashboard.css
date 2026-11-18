@@ -754,6 +754,24 @@ th, td { padding: 11px 10px; }
 th { font-size: var(--font-label); font-weight: 700; }
 td { font-weight: 400; }
 .quality-code { font-size: var(--font-caption); font-weight: 700; }
+/* Keep longer category names intact and align help actions predictably. */
+.dashboard-charts--overview > .chart-card--expense .chart-card-head,
+.dashboard-charts--overview > .chart-card--stages .chart-card-head,
+.dashboard-charts--overview > .chart-card--credit .chart-card-head,
+.dashboard-charts--overview > .chart-card--rap .chart-card-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+@media (min-width: 651px) {
+  .dashboard-charts--overview .chart-card--credit .financial-bar-row {
+    grid-template-columns: minmax(145px, 1fr) minmax(70px, 2fr) minmax(95px, auto);
+  }
+  .dashboard-charts--overview .chart-card--credit .financial-bar-label {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+}
 @media (max-width: 730px) {
   h1 { font-size: clamp(1.43rem, 5vw, 1.65rem); }
   .sub { font-size: var(--font-label); }
