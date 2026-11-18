@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
   "date": "07/10/2026",
@@ -248,15 +249,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-08T03:49:21.521039-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 42,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7018",
     "hash_conteudo": "4b296f743900feb57d96a4fff5ed224c02a3928f4cbd4cd4f427581fddad2d77",
     "row_count": 9,
     "column_count": 9,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -267,5 +268,125 @@
     ]
   },
   "metrics": {},
-  "metrics_meta": {}
+  "metrics_meta": {},
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "UG Executora Nome",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "UG Executora Código",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada Código",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 7,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada Nome",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Vinculação Pagamento Código",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Vinculação Pagamento Nome",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / Conta Contábil Número / Conta Contábil Nome",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 9,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 9,
+      "nonempty_samples": 7,
+      "missing_samples": 2,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

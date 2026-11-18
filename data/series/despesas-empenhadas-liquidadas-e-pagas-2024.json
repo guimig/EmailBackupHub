@@ -5,6 +5,2280 @@
   "omitted_before_min_date": 0,
   "series": [
     {
+      "date": "07/02/2026",
+      "date_iso": "2026-02-07",
+      "hash_conteudo": "23dc6a0ef74670dded42a4fc36ea6466b8b38119530d13b211d21ea6277c6c99",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 647113.92,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 466398.22,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 449610.28
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "647.113,92",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "466.398,22",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "449.610,28"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 6538816.57,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 5063776.53,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 4725724.53
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "6.538.816,57",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "5.063.776,53",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.725.724,53"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 5576663.43,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3475062.96,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3379977.97
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "5.576.663,43",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.475.062,96",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.379.977,97"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1013748.0,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 133284.2,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 133284.2
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.013.748,00",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "133.284,20",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "133.284,20"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 446820.78,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 397955.85,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 375664.5
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "446.820,78",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "397.955,85",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "375.664,50"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 5200697.84,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 2674707.71,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 2256081.63
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "5.200.697,84",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.674.707,71",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.256.081,63"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 8780.0,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3440.0,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 3440.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "8.780,00",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.440,00",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "3.440,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 24613267.81,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 17862495.15,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 15621193.94
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "24.613.267,81",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "17.862.495,15",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "15.621.193,94"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 17757505.88,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 9065477.83,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 8143169.81
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "17.757.505,88",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "9.065.477,83",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "8.143.169,81"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 677404.7,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 428448.57,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 401320.37
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "677.404,70",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "428.448,57",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "401.320,37"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 401860.46,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 272691.38,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 264193.96
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "401.860,46",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "272.691,38",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "264.193,96"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 2532.81,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 2532.81,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 2532.81
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.532,81",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.532,81",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.532,81"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 549689.37
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "549.689,37",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 63434901.57,
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 39846271.21,
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 35756194.0
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "Item Informação / NE CCor - Favorecido": "",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "63.434.901,57",
+            "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "39.846.271,21",
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "35.756.194,00"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "07/03/2026",
+      "date_iso": "2026-03-07",
+      "hash_conteudo": "f5be1825a11241f7fbc37f2e2fbb3de2294eded14df769dfe6fbf4c36b22ef87",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "09/04/2026",
+      "date_iso": "2026-04-09",
+      "hash_conteudo": "f5be1825a11241f7fbc37f2e2fbb3de2294eded14df769dfe6fbf4c36b22ef87",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "09/05/2026",
+      "date_iso": "2026-05-09",
+      "hash_conteudo": "f5be1825a11241f7fbc37f2e2fbb3de2294eded14df769dfe6fbf4c36b22ef87",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "09/06/2026",
+      "date_iso": "2026-06-09",
+      "hash_conteudo": "f5be1825a11241f7fbc37f2e2fbb3de2294eded14df769dfe6fbf4c36b22ef87",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "08/07/2026",
+      "date_iso": "2026-07-08",
+      "hash_conteudo": "5e3134f1e89b97d60a3b0bf34d0a58145c95eed2b69c6c2afd536e199da297e1",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "08/08/2026",
+      "date_iso": "2026-08-08",
+      "hash_conteudo": "5e3134f1e89b97d60a3b0bf34d0a58145c95eed2b69c6c2afd536e199da297e1",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "09/09/2026",
+      "date_iso": "2026-09-09",
+      "hash_conteudo": "5e3134f1e89b97d60a3b0bf34d0a58145c95eed2b69c6c2afd536e199da297e1",
+      "totals": [
+        {
+          "label": "DIARIAS - PESSOAL CIVIL",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 75910.9
+          },
+          "raw": {
+            "Natureza Despesa": "DIARIAS - PESSOAL CIVIL",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "75.910,90"
+          }
+        },
+        {
+          "label": "AUXILIO FINANCEIRO A ESTUDANTES",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 853930.19
+          },
+          "raw": {
+            "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "853.930,19"
+          }
+        },
+        {
+          "label": "MATERIAL DE CONSUMO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 447668.11
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL DE CONSUMO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "447.668,11"
+          }
+        },
+        {
+          "label": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 33015.7
+          },
+          "raw": {
+            "Natureza Despesa": "MATERIAL, BEM OU SERVICO P/ DISTRIB. GRATUITA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "33.015,70"
+          }
+        },
+        {
+          "label": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 64634.08
+          },
+          "raw": {
+            "Natureza Despesa": "PASSAGENS E DESPESAS COM LOCOMOCAO",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "64.634,08"
+          }
+        },
+        {
+          "label": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 401835.31
+          },
+          "raw": {
+            "Natureza Despesa": "OUTRAS DESP.PESSOAL DEC. CONTRATOS TERCEIRIZ.",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "401.835,31"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 860.0
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA FISICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "860,00"
+          }
+        },
+        {
+          "label": "LOCACAO DE MAO-DE-OBRA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 2068268.01
+          },
+          "raw": {
+            "Natureza Despesa": "LOCACAO DE MAO-DE-OBRA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "2.068.268,01"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 1158404.53
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "1.158.404,53"
+          }
+        },
+        {
+          "label": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 50789.79
+          },
+          "raw": {
+            "Natureza Despesa": "SERVICOS DE TECNOLOGIA DA INFORMACAO E COMUNICACAO - PJ",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "50.789,79"
+          }
+        },
+        {
+          "label": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 38864.3
+          },
+          "raw": {
+            "Natureza Despesa": "OBRIGACOES TRIBUTARIAS E CONTRIBUTIVAS",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "38.864,30"
+          }
+        },
+        {
+          "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 361.83
+          },
+          "raw": {
+            "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA (INTRA)",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "361,83"
+          }
+        },
+        {
+          "label": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0
+          },
+          "raw": {
+            "Natureza Despesa": "EQUIPAMENTOS E MATERIAL PERMANENTE",
+            "Natureza Despesa Detalhada": "Total",
+            "Natureza Despesa Detalhada (2)": "Total",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": ""
+          }
+        },
+        {
+          "label": "Total",
+          "values": {
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": 0.0,
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": 5194542.75
+          },
+          "raw": {
+            "Natureza Despesa": "Total",
+            "Natureza Despesa Detalhada": "",
+            "Natureza Despesa Detalhada (2)": "",
+            "NE CCor": "",
+            "NE CCor - Descrição": "",
+            "NE CCor - Favorecido": "",
+            "Conta Contábil / NE CCor - Valor": "",
+            "622920101 / = EMPENHOS A LIQUIDAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Movim. Líquido - R$ (Conta Contábil)": "0,00",
+            "622920104 / = EMPENHOS PAGOS / Movim. Líquido - R$ (Conta Contábil)": "5.194.542,75"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "date": "08/10/2026",
       "date_iso": "2026-10-08",
       "hash_conteudo": "5e3134f1e89b97d60a3b0bf34d0a58145c95eed2b69c6c2afd536e199da297e1",

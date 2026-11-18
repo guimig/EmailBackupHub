@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "provisionamentos",
   "title": "Provisionamentos",
   "date": "03/02/2026",
@@ -111,8 +112,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T20:54:23.607838-03:00",
-    "idade_dias": 149,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 288,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
@@ -129,5 +130,135 @@
       "date_from_filename",
       "totals_separated"
     ]
-  }
+  },
+  "metrics": {
+    "provisionado": 490286.08
+  },
+  "metrics_meta": {
+    "provisionado": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Ação Governo",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NC",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Doc - Observação",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Transação - Mês",
+      "type": "period",
+      "filter_kind": "period",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 1,
+      "nonempty_samples": 1,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

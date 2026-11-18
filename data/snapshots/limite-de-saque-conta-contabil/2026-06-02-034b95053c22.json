@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
   "date": "02/06/2026",
@@ -223,8 +224,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T20:54:23.607838-03:00",
-    "idade_dias": 30,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 169,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
@@ -240,5 +241,127 @@
     "warnings": [
       "date_from_filename"
     ]
-  }
+  },
+  "metrics": {},
+  "metrics_meta": {},
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "UG Executora Nome",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "UG Executora Código",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada Código",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 7,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada Nome",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Vinculação Pagamento Código",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Vinculação Pagamento Nome",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / Conta Contábil Número / Conta Contábil Nome",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 5,
+      "missing_samples": 3,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

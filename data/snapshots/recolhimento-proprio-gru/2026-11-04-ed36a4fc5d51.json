@@ -6532,15 +6532,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-04T21:39:00.615464-03:00",
-    "idade_dias": 0,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 14,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7333",
     "hash_conteudo": "ed36a4fc5d5115e322a5cd319d86ff08c63335e6cb7948e2d768515aa5b219bb",
     "row_count": 230,
     "column_count": 7,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -6560,5 +6560,99 @@
       "source": "totals",
       "fallback": false
     }
-  }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Cód. Recolhimento GRU",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 8,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Cód. Recolhimento GRU (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 8,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Emissão - Mês",
+      "type": "period",
+      "filter_kind": "period",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 10,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Emissão - Dia",
+      "type": "date",
+      "filter_kind": "date_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 149,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Recolhedor Doc.",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Conta Contábil / Doc - Valor",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 122,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 230,
+      "nonempty_samples": 230,
+      "missing_samples": 0,
+      "distinct_samples": 123,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

@@ -2,11 +2,293 @@
   "schema_version": "1.6",
   "slug": "saldos-de-contas-de-contratos",
   "series_min_date": "2026-01-01",
-  "omitted_before_min_date": 3,
+  "omitted_before_min_date": 9,
   "series": [
     {
       "date": "01/01/2026",
       "date_iso": "2026-01-01",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "02/01/2026",
+      "date_iso": "2026-01-02",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "03/01/2026",
+      "date_iso": "2026-01-03",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "06/01/2026",
+      "date_iso": "2026-01-06",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "07/01/2026",
+      "date_iso": "2026-01-07",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "03/02/2026",
+      "date_iso": "2026-02-03",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "03/03/2026",
+      "date_iso": "2026-03-03",
       "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
       "totals": [
         {
@@ -146,6 +428,335 @@
       "metrics": {}
     },
     {
+      "date": "23/05/2026",
+      "date_iso": "2026-05-23",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "29/05/2026",
+      "date_iso": "2026-05-29",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "02/06/2026",
+      "date_iso": "2026-06-02",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "06/06/2026",
+      "date_iso": "2026-06-06",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "13/06/2026",
+      "date_iso": "2026-06-13",
+      "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": 4731473.39,
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": 4804920.08,
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": 5423631.84,
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": 6957156.87,
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": 8361557.15,
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": 7805769.93,
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": 7231938.53,
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": 6782813.91,
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": 6144649.35,
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": 12992329.87,
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": 14280567.74,
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": 13954638.35,
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.731.473,39",
+            "JAN/2025 / Saldo - Moeda Origem (Conta Contábil)": "4.804.920,08",
+            "FEV/2025 / Saldo - Moeda Origem (Conta Contábil)": "5.423.631,84",
+            "MAR/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.957.156,87",
+            "ABR/2025 / Saldo - Moeda Origem (Conta Contábil)": "8.361.557,15",
+            "MAI/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.805.769,93",
+            "JUN/2025 / Saldo - Moeda Origem (Conta Contábil)": "7.231.938,53",
+            "JUL/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.782.813,91",
+            "AGO/2025 / Saldo - Moeda Origem (Conta Contábil)": "6.144.649,35",
+            "SET/2025 / Saldo - Moeda Origem (Conta Contábil)": "12.992.329,87",
+            "OUT/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.280.567,74",
+            "NOV/2025 / Saldo - Moeda Origem (Conta Contábil)": "13.954.638,35",
+            "DEZ/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "013/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "014/2025 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "20/06/2026",
+      "date_iso": "2026-06-20",
+      "hash_conteudo": "04481ed196b60ded27ba56c0924e023814113b76fc80c61d753b324bab211182",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 11272102.53
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.272.102,53"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "27/06/2026",
+      "date_iso": "2026-06-27",
+      "hash_conteudo": "ca521f90c40f04b50ad53be1128a15d99ac8e9d46121b8aa0118af98b439d77b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 11151352.18
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "date": "01/07/2026",
       "date_iso": "2026-07-01",
       "hash_conteudo": "ca521f90c40f04b50ad53be1128a15d99ac8e9d46121b8aa0118af98b439d77b",
@@ -187,6 +798,429 @@
             "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
             "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18",
             "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.151.352,18"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "04/07/2026",
+      "date_iso": "2026-07-04",
+      "hash_conteudo": "68203b375fee39f05849306bff3fe3ecb27a6601a5a2c7d8a8acdc7601173d2e",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 11064392.97
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.064.392,97"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "11/07/2026",
+      "date_iso": "2026-07-11",
+      "hash_conteudo": "3002f7c3fe67e5aed5a80f497f61e12f70497bb9f26631d797f1ae88693bbd8e",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "18/07/2026",
+      "date_iso": "2026-07-18",
+      "hash_conteudo": "3002f7c3fe67e5aed5a80f497f61e12f70497bb9f26631d797f1ae88693bbd8e",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10817441.08
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.817.441,08"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "25/07/2026",
+      "date_iso": "2026-07-25",
+      "hash_conteudo": "8710e2c05f675856c58742e2c0309a1f6c23ff2e9ebd26dbacc5c3b6dc58367b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10807244.61
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.807.244,61"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "01/08/2026",
+      "date_iso": "2026-08-01",
+      "hash_conteudo": "883099d8cda1225411b93bc1b2f76e75bf15b82dbfc4c7454d86dfb8991b505b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684791.17
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.791,17"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "08/08/2026",
+      "date_iso": "2026-08-08",
+      "hash_conteudo": "0eb10259c4c82a52a56af49d9d7a28f04c81ea6ee2113ade5ac27a451b30c7dc",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "15/08/2026",
+      "date_iso": "2026-08-15",
+      "hash_conteudo": "5a9bf35032b4641b6adcacf14feb25de2e87e01835be62d412b2fab40d5a66db",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10339040.2
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.339.040,20"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "22/08/2026",
+      "date_iso": "2026-08-22",
+      "hash_conteudo": "6308c887c40d8b7b0d58523c3cca73f027e1ae3d16f5522d35cd2de5eabc0c6f",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10330850.93
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.330.850,93"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "29/08/2026",
+      "date_iso": "2026-08-29",
+      "hash_conteudo": "a217c9b627082a23bfd969c6642a7d16a899727b998c62622c4fd86676e76d6e",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 11152924.56
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.152.924,56"
           }
         }
       ],
@@ -240,6 +1274,523 @@
       "metrics": {}
     },
     {
+      "date": "05/09/2026",
+      "date_iso": "2026-09-05",
+      "hash_conteudo": "87a01671e9e15ba3c206e1ae3de78f59ca6c7d4651e0999f345c7d09fa7534d9",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10986434.28,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10985701.28
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.986.434,28",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.985.701,28"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "12/09/2026",
+      "date_iso": "2026-09-12",
+      "hash_conteudo": "ce262f2fd25f850e62b07107e83636bd36fdbb65e4651802d51a144de4c9c5cc",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "18/09/2026",
+      "date_iso": "2026-09-18",
+      "hash_conteudo": "ce262f2fd25f850e62b07107e83636bd36fdbb65e4651802d51a144de4c9c5cc",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10909687.17
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.909.687,17"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "19/09/2026",
+      "date_iso": "2026-09-19",
+      "hash_conteudo": "2dd9a449c506a5b76bdfe5e8f4d5831962934a7382dde2c8d013798842611499",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10880968.91
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.880.968,91"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "22/09/2026",
+      "date_iso": "2026-09-22",
+      "hash_conteudo": "2c06c174721a6642d8b82484b36da30c68cd3957e07bca7354cded57d7f234b3",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "23/09/2026",
+      "date_iso": "2026-09-23",
+      "hash_conteudo": "2c06c174721a6642d8b82484b36da30c68cd3957e07bca7354cded57d7f234b3",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10872184.05
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.872.184,05"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "24/09/2026",
+      "date_iso": "2026-09-24",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "25/09/2026",
+      "date_iso": "2026-09-25",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "26/09/2026",
+      "date_iso": "2026-09-26",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "29/09/2026",
+      "date_iso": "2026-09-29",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "30/09/2026",
+      "date_iso": "2026-09-30",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
       "date": "01/10/2026",
       "date_iso": "2026-10-01",
       "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
@@ -281,6 +1832,1416 @@
             "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
             "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
             "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "02/10/2026",
+      "date_iso": "2026-10-02",
+      "hash_conteudo": "c3b192819226d50ac65c08cc6a1a2b3a0433f6f5ff279c0ef785be89d7b58d98",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10775226.43
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.775.226,43"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "03/10/2026",
+      "date_iso": "2026-10-03",
+      "hash_conteudo": "8ec90a592c7cd8e6e7fc908a78a106534106c1d2c79a080a2b72ff3c20722edb",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10684986.69
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.684.986,69"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "06/10/2026",
+      "date_iso": "2026-10-06",
+      "hash_conteudo": "b6e3c48f56b20e7cf22b12df66531add264c057e099176f06a56193a5cccc559",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10630906.22
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.630.906,22"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "07/10/2026",
+      "date_iso": "2026-10-07",
+      "hash_conteudo": "1859a8eee99f778fe55464779339f6598fc8d770b9688ced037580cd892788ab",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "08/10/2026",
+      "date_iso": "2026-10-08",
+      "hash_conteudo": "1859a8eee99f778fe55464779339f6598fc8d770b9688ced037580cd892788ab",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "09/10/2026",
+      "date_iso": "2026-10-09",
+      "hash_conteudo": "e31454148225ed6774fc7eb2d4443a0c95e325f8e1e1c10304c7c110d23b3ef1",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10515214.49,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10515214.49,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10515214.49,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10515214.49,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10515214.49
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.515.214,49",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.515.214,49",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.515.214,49",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.515.214,49",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.515.214,49"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "10/10/2026",
+      "date_iso": "2026-10-10",
+      "hash_conteudo": "44e51cdf8bfe7369b3cb84ae62d334cd45dcd598a9d5e670877723292b128ef5",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10417745.94,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10417745.94,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10417745.94,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10417745.94,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10417745.94
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.417.745,94",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.417.745,94",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.417.745,94",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.417.745,94",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.417.745,94"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "14/10/2026",
+      "date_iso": "2026-10-14",
+      "hash_conteudo": "cbcba30b868dabddc77eec1a508d9456fade7cdd0b924289eeb637e1394c6a7b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10378622.49,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10378622.49,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10378622.49,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10378622.49,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10378622.49
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.378.622,49",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.378.622,49",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.378.622,49",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.378.622,49",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.378.622,49"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "15/10/2026",
+      "date_iso": "2026-10-15",
+      "hash_conteudo": "41f28395381e25feeae0b1db17a06ed17a47984070e2946f3a3354c4dd3c851c",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "16/10/2026",
+      "date_iso": "2026-10-16",
+      "hash_conteudo": "41f28395381e25feeae0b1db17a06ed17a47984070e2946f3a3354c4dd3c851c",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "17/10/2026",
+      "date_iso": "2026-10-17",
+      "hash_conteudo": "41f28395381e25feeae0b1db17a06ed17a47984070e2946f3a3354c4dd3c851c",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "20/10/2026",
+      "date_iso": "2026-10-20",
+      "hash_conteudo": "41f28395381e25feeae0b1db17a06ed17a47984070e2946f3a3354c4dd3c851c",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10369734.94
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.369.734,94"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "21/10/2026",
+      "date_iso": "2026-10-21",
+      "hash_conteudo": "928991dac46e74e3cf32275f4fad1922dad6eb8f4d270acc11d1153e046c03cb",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361945.76,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361945.76,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361945.76,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361945.76,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361945.76
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.945,76",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.945,76",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.945,76",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.945,76",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.945,76"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "22/10/2026",
+      "date_iso": "2026-10-22",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "23/10/2026",
+      "date_iso": "2026-10-23",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "24/10/2026",
+      "date_iso": "2026-10-24",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "27/10/2026",
+      "date_iso": "2026-10-27",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "28/10/2026",
+      "date_iso": "2026-10-28",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "29/10/2026",
+      "date_iso": "2026-10-29",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "30/10/2026",
+      "date_iso": "2026-10-30",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "31/10/2026",
+      "date_iso": "2026-10-31",
+      "hash_conteudo": "fcb6fd5bd21b47d0fa51b8c88a6e284a5871d73603aff9fabaa69b3fecfc9f14",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10361888.21
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.361.888,21"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "04/11/2026",
+      "date_iso": "2026-11-04",
+      "hash_conteudo": "49f92dc470962e4fad89361421eebcb8e6215fa47682e39a459c0d0cfff69c6c",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10253915.03,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10253915.03,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10253915.03,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10253915.03,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10253915.03
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.253.915,03",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.253.915,03",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.253.915,03",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.253.915,03",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.253.915,03"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "05/11/2026",
+      "date_iso": "2026-11-05",
+      "hash_conteudo": "6b3ff38500b7035782f22a5ddad9ea1c5685c8d267a5d99a9765c633073f73ed",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10159620.34,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10159620.34,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10159620.34,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10159620.34,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10159620.34
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.159.620,34",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.159.620,34",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.159.620,34",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.159.620,34",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.159.620,34"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "06/11/2026",
+      "date_iso": "2026-11-06",
+      "hash_conteudo": "df17ac52e00174ecb5ddfb7eeccd46f2d353ffe442ec8ae21caf8bf0af8c3079",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10145314.74,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10145314.74,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10145314.74,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10145314.74,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10145314.74
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.145.314,74",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.145.314,74",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.145.314,74",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.145.314,74",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.145.314,74"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "07/11/2026",
+      "date_iso": "2026-11-07",
+      "hash_conteudo": "7ea5e5052b9283eccb29ffd21ff39993cd9cd156f8930b11514e1e2721194b70",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10119490.71,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10119490.71,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10119490.71,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10119490.71,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10119490.71
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.119.490,71",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.119.490,71",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.119.490,71",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.119.490,71",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.119.490,71"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "10/11/2026",
+      "date_iso": "2026-11-10",
+      "hash_conteudo": "e31ffecf9241b8ba482df8e7315dd26ff0715647349f2f90093ff1d624cc0484",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014086.79,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014086.79,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014086.79,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014086.79
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.086,79",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.086,79",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.086,79",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.086,79"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "11/11/2026",
+      "date_iso": "2026-11-11",
+      "hash_conteudo": "1410c5472d38b7280163994b165820d645dcb2a7f7eb452b95a16b6d93ef3995",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10013896.79,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10013896.79,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10013896.79,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10013896.79
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.013.896,79",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.013.896,79",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.013.896,79",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.013.896,79"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "12/11/2026",
+      "date_iso": "2026-11-12",
+      "hash_conteudo": "53c83189f6e8752a49488d07d9b2303818032445f67ff4d90e8fb78d18d2e80b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 10004765.07,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 10004765.07,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 10004765.07,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 10004765.07
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.004.765,07",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.004.765,07",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.004.765,07",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.004.765,07"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "13/11/2026",
+      "date_iso": "2026-11-13",
+      "hash_conteudo": "e53501d09543fdf2fa64049de5f7bff57342821c08b1faed3608d21c2e54b63b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06"
+          }
+        }
+      ],
+      "metrics": {}
+    },
+    {
+      "date": "14/11/2026",
+      "date_iso": "2026-11-14",
+      "hash_conteudo": "e53501d09543fdf2fa64049de5f7bff57342821c08b1faed3608d21c2e54b63b",
+      "totals": [
+        {
+          "label": "Total",
+          "values": {
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": 14064289.62,
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": 16891530.12,
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": 11019121.62,
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": 11394169.67,
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": 10601590.26,
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": 10908326.22,
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": 10830758.41,
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": 10448750.31,
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 9995602.06
+          },
+          "raw": {
+            "Mês Lançamento / Entidade CCor": "Total",
+            "Mês Lançamento / Entidade CCor (2)": "Total",
+            "000/2026 / Saldo - Moeda Origem (Conta Contábil)": "14.064.289,62",
+            "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)": "16.891.530,12",
+            "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.019.121,62",
+            "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)": "11.394.169,67",
+            "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.601.590,26",
+            "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.908.326,22",
+            "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.830.758,41",
+            "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.448.750,31",
+            "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
+            "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
+            "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.995.602,06"
           }
         }
       ],

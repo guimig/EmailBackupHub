@@ -1404,15 +1404,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-17T03:43:39.594380-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 33,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7125",
     "hash_conteudo": "a249cac692730f21a4249fe62b5d61e13385757b98ef7d843c652199cb66a3c9",
     "row_count": 44,
     "column_count": 9,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -1432,5 +1432,132 @@
       "source": "totals",
       "fallback": false
     }
-  }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 7,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa / 3",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa / OUTRAS DESPESAS CORRENTES",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI / CFF53M9601N / DFF53B9601E / JFF53B9601J",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 7,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI / PNAE - ALIMENTACAO ESCOLAR - ENSINO MEDIO / PNAE - ALIMENTACAO ESCOLAR - AEE / PNAE - ALIMENTACAO ESCOLAR - EJA",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 7,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NC / 158125264222026NC000134 / 158125264222026NC000175",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 44,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Doc - Observação / PROVISAO - PNAE, NO MONTANTE DE 50% DO VALOR RELATIVO A 2025 PARA O MEDIO INTEGRADO, CONSIDERANDO QUE O FNDE AINDA NAO INDICOU O VALOR POR CAMPUS PARA 2026. / PROVISAO FUNCIONAMENTO - APOIO ALIMENTACAO ESCOLAR PARA ATENDER DESPESAS COM O PNAE CONFORME MONTANTES DISPONIBILIZADOS PELO FNDE.",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 43,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Transação - Mês / MAR/2026 / ABR/2026",
+      "type": "period",
+      "filter_kind": "period",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 10,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "MAR/2026",
+        "year": 2026,
+        "number": 3,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "Saldo - Moeda Origem (Item Informação) / 89.872,00 / 136.856,00 / 3.432,00 / 6.954,00",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 44,
+      "nonempty_samples": 44,
+      "missing_samples": 0,
+      "distinct_samples": 38,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

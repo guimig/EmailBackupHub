@@ -484,15 +484,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-15T03:42:20.173160-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 35,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7091",
     "hash_conteudo": "60eb9d09f98e932ad87950e79e619c7fa79a5ce9395114d42668bea1c16256f2",
     "row_count": 8,
     "column_count": 11,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -512,5 +512,158 @@
       "source": "totals",
       "fallback": false
     }
-  }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Grupo Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Unidade Orçamentária",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Unidade Orçamentária (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 4,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Fonte Recursos Detalhada (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PTRES",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / PI",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / PI (2)",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - R$ (Conta Contábil) / OUT/2026",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 8,
+      "nonempty_samples": 8,
+      "missing_samples": 0,
+      "distinct_samples": 8,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "OUT/2026",
+        "year": 2026,
+        "number": 10,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    }
+  ]
 }

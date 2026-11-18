@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "provisionamentos",
   "title": "Provisionamentos",
   "date": "15/08/2025",
@@ -54,7 +55,6 @@
     {
       "label": "20RG",
       "values": {
-        "Ação Governo": 20.0,
         "Saldo - Moeda Origem (Item Informação)": 100000.0
       },
       "raw": {
@@ -68,7 +68,6 @@
     {
       "label": "20RL",
       "values": {
-        "Ação Governo": 20.0,
         "Saldo - Moeda Origem (Item Informação)": 4151724.74
       },
       "raw": {
@@ -224,8 +223,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T20:54:23.607838-03:00",
-    "idade_dias": 321,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 460,
     "periodicidade": "diaria",
     "exercicio": 2025,
     "fonte_email_uid": null,
@@ -242,5 +241,83 @@
       "date_from_filename",
       "totals_separated"
     ]
-  }
+  },
+  "metrics": {
+    "provisionado": 5124488.6
+  },
+  "metrics_meta": {
+    "provisionado": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Ação Governo",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 5,
+      "nonempty_samples": 5,
+      "missing_samples": 0,
+      "distinct_samples": 4,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Ação Governo (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 5,
+      "nonempty_samples": 5,
+      "missing_samples": 0,
+      "distinct_samples": 4,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 5,
+      "nonempty_samples": 5,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 5,
+      "nonempty_samples": 5,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 5,
+      "nonempty_samples": 5,
+      "missing_samples": 0,
+      "distinct_samples": 5,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

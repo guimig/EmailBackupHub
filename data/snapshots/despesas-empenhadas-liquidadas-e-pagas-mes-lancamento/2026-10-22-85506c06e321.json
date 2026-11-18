@@ -8401,15 +8401,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-23T02:36:14.492008-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 27,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7193",
     "hash_conteudo": "85506c06e32198fc15b8da4d20a5f69a76bfc9da2265f541309e6cfc83631081",
     "row_count": 314,
     "column_count": 9,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -8441,5 +8441,125 @@
       "source": "totals",
       "fallback": false
     }
-  }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Natureza Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 15,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 60,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 60,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 228,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Descrição",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 141,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Item Informação / NE CCor - Favorecido",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 139,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 256,
+      "missing_samples": 0,
+      "distinct_samples": 230,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 229,
+      "missing_samples": 27,
+      "distinct_samples": 211,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 256,
+      "nonempty_samples": 227,
+      "missing_samples": 29,
+      "distinct_samples": 209,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

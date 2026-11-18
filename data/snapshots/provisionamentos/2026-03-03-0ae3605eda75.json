@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "provisionamentos",
   "title": "Provisionamentos",
   "date": "03/03/2026",
@@ -28,6 +29,17 @@
       "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS CONSIDERANDO 1/12 AVOS DA PLOA 2026 COM BASE NA DIVISAO ORCAMENTARIA DA LOA 2025. SEM RETENCOES.",
       "Transação - Mês": "JAN/2026",
       "Saldo - Moeda Origem (Item Informação)": "490.286,08"
+    },
+    {
+      "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "PI": "-8",
+      "PI (2)": "SEM INFORMACAO",
+      "NC": "158125264222026NC000076",
+      "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
+      "Transação - Mês": "FEV/2026",
+      "Saldo - Moeda Origem (Item Informação)": "484.548,78"
     },
     {
       "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
@@ -75,28 +87,6 @@
     }
   ],
   "totals": [
-    {
-      "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-      "values": {
-        "Grupo Despesa": 3.0,
-        "PI": -8.0,
-        "NC": 1.58125264222026e+20,
-        "Doc - Observação": -2122026.0,
-        "Transação - Mês": 2026.0,
-        "Saldo - Moeda Origem (Item Informação)": 484548.78
-      },
-      "raw": {
-        "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
-        "Grupo Despesa": "3",
-        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
-        "PI": "-8",
-        "PI (2)": "SEM INFORMACAO",
-        "NC": "158125264222026NC000076",
-        "Doc - Observação": "PROVISAO FUNCIONAMENTO - CUSTEIO PARA ATENDER DESPESAS DISCRICIONARIAS NO MONTANTE TOTAL DE 2/12 AVOS DA LOA 2026 SEM RETENCOES.",
-        "Transação - Mês": "FEV/2026",
-        "Saldo - Moeda Origem (Item Informação)": "484.548,78"
-      }
-    },
     {
       "label": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
       "values": {
@@ -199,7 +189,7 @@
       }
     },
     {
-      "type": "total",
+      "type": "data",
       "raw": {
         "Ação Governo": "FUNCIONAMENTO DAS INSTITUICOES DA REDE FEDERAL DE EDUCACAO P",
         "Grupo Despesa": "3",
@@ -340,13 +330,13 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T20:54:23.607838-03:00",
-    "idade_dias": 121,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 260,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
     "hash_conteudo": "0ae3605eda75e328ba5acd6f30582376bab44fcfd30fe1138c448d99db07c07e",
-    "row_count": 5,
+    "row_count": 6,
     "column_count": 9,
     "status": "desatualizado",
     "limite_dias": 1
@@ -358,5 +348,135 @@
       "date_from_filename",
       "totals_separated"
     ]
-  }
+  },
+  "metrics": {
+    "provisionado": 1130734.86
+  },
+  "metrics_meta": {
+    "provisionado": {
+      "status": "ok",
+      "source": "totals",
+      "fallback": false
+    }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Ação Governo",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 4,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa",
+      "type": "number",
+      "filter_kind": "numeric_range",
+      "confidence": "medium",
+      "inferred_from": "values",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Grupo Despesa (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 1,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "PI (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NC",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Doc - Observação",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Transação - Mês",
+      "type": "period",
+      "filter_kind": "period",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Saldo - Moeda Origem (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 6,
+      "nonempty_samples": 6,
+      "missing_samples": 0,
+      "distinct_samples": 6,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

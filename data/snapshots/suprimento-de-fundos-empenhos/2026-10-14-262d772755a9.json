@@ -3278,15 +3278,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-10-15T03:42:20.173160-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 35,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7099",
     "hash_conteudo": "262d772755a917e6ad453d0e78f45adf098f1450b46265aa15c24653516d9e4e",
     "row_count": 79,
     "column_count": 11,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -3298,5 +3298,151 @@
     ]
   },
   "metrics": {},
-  "metrics_meta": {}
+  "metrics_meta": {},
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "NE CCor",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 25,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Núm. Processo",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 13,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Favorecido",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 3,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Descrição",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 19,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 2,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 26,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 26,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Métrica / NE CCor - Valor",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 22,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Movim. Líquido - R$ (Item Informação) / 29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 79,
+      "missing_samples": 0,
+      "distinct_samples": 54,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Movim. Líquido - R$ (Item Informação) / 31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 78,
+      "missing_samples": 1,
+      "distinct_samples": 54,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Movim. Líquido - R$ (Item Informação) / 34 / DESPESAS PAGAS (CONTROLE EMPENHO)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 79,
+      "nonempty_samples": 78,
+      "missing_samples": 1,
+      "distinct_samples": 54,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

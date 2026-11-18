@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
+  "parser_version": "2026-10-08.1",
   "slug": "restos-a-pagar-rap",
   "title": "Restos a Pagar - RAP",
   "date": "07/01/2026",
@@ -3985,8 +3986,8 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-07-02T20:54:23.607838-03:00",
-    "idade_dias": 176,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 315,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": null,
@@ -3997,11 +3998,168 @@
     "limite_dias": 1
   },
   "quality": {
-    "ok": true,
-    "issues": [],
+    "ok": false,
+    "issues": [
+      "rap_metric_unavailable"
+    ],
     "warnings": [
       "date_from_filename",
       "totals_separated"
     ]
-  }
+  },
+  "metrics": {
+    "rap_a_pagar": 507459.34
+  },
+  "metrics_meta": {
+    "rap_pago": {
+      "status": "unavailable",
+      "reason": "Candidato confiavel para rap_pago nao encontrado.",
+      "source": "totals",
+      "fallback": false
+    },
+    "rap_a_pagar": {
+      "status": "ok",
+      "source": "totals",
+      "line": "Total",
+      "column": "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)",
+      "total_index": 50,
+      "score": 6,
+      "quality": "candidato",
+      "method": "rap_total_candidate",
+      "fallback": false
+    }
+  },
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Natureza Despesa",
+      "type": "category",
+      "filter_kind": "multi_select",
+      "confidence": "medium",
+      "inferred_from": "values_cardinality",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 11,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 39,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Natureza Despesa Detalhada (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 38,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 79,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Descrição",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 64,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Favorecido",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 57,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "NE CCor - Núm. Processo",
+      "type": "identifier",
+      "filter_kind": "text",
+      "confidence": "medium",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 50,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Item Informação / NE CCor - Valor",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 77,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 79,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 81,
+      "nonempty_samples": 81,
+      "missing_samples": 0,
+      "distinct_samples": 79,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    }
+  ]
 }

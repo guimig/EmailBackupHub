@@ -1283,15 +1283,15 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-06T22:28:16.595514-03:00",
-    "idade_dias": 0,
+    "ultima_atualizacao": "2026-11-18T00:21:08.660673-03:00",
+    "idade_dias": 12,
     "periodicidade": "diaria",
     "exercicio": 2026,
     "fonte_email_uid": "7350",
     "hash_conteudo": "df17ac52e00174ecb5ddfb7eeccd46f2d353ffe442ec8ae21caf8bf0af8c3079",
     "row_count": 29,
     "column_count": 17,
-    "status": "atualizado",
+    "status": "desatualizado",
     "limite_dias": 1
   },
   "quality": {
@@ -1303,5 +1303,327 @@
     ]
   },
   "metrics": {},
-  "metrics_meta": {}
+  "metrics_meta": {},
+  "column_schema_version": "1",
+  "column_schema": [
+    {
+      "name": "Mês Lançamento / Entidade CCor",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 29,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "Mês Lançamento / Entidade CCor (2)",
+      "type": "text",
+      "filter_kind": "text",
+      "confidence": "low",
+      "inferred_from": "conservative_fallback",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 29,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "000/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 24,
+      "missing_samples": 5,
+      "distinct_samples": 24,
+      "valid_ratio": 1.0,
+      "aggregation": "none"
+    },
+    {
+      "name": "JAN/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 25,
+      "missing_samples": 4,
+      "distinct_samples": 25,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JAN/2026",
+        "year": 2026,
+        "number": 1,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "FEV/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 25,
+      "missing_samples": 4,
+      "distinct_samples": 24,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "FEV/2026",
+        "year": 2026,
+        "number": 2,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "MAR/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 25,
+      "missing_samples": 4,
+      "distinct_samples": 24,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "MAR/2026",
+        "year": 2026,
+        "number": 3,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "ABR/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 26,
+      "missing_samples": 3,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "ABR/2026",
+        "year": 2026,
+        "number": 4,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "MAI/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 27,
+      "missing_samples": 2,
+      "distinct_samples": 24,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "MAI/2026",
+        "year": 2026,
+        "number": 5,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "JUN/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 27,
+      "missing_samples": 2,
+      "distinct_samples": 24,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JUN/2026",
+        "year": 2026,
+        "number": 6,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "JUL/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 27,
+      "missing_samples": 2,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "JUL/2026",
+        "year": 2026,
+        "number": 7,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "AGO/2026",
+        "year": 2026,
+        "number": 8,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "SET/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "SET/2026",
+        "year": 2026,
+        "number": 9,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "OUT/2026",
+        "year": 2026,
+        "number": 10,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "NOV/2026",
+        "year": 2026,
+        "number": 11,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "DEZ/2026",
+        "year": 2026,
+        "number": 12,
+        "kind": "calendar_month",
+        "calendar_month": true
+      }
+    },
+    {
+      "name": "013/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "013/2026",
+        "year": 2026,
+        "number": 13,
+        "kind": "accounting_period",
+        "calendar_month": false
+      }
+    },
+    {
+      "name": "014/2026 / Saldo - Moeda Origem (Conta Contábil)",
+      "type": "money",
+      "filter_kind": "numeric_range",
+      "confidence": "high",
+      "inferred_from": "header_and_values",
+      "sampled_rows": 29,
+      "nonempty_samples": 29,
+      "missing_samples": 0,
+      "distinct_samples": 23,
+      "valid_ratio": 1.0,
+      "aggregation": "none",
+      "period": {
+        "label": "014/2026",
+        "year": 2026,
+        "number": 14,
+        "kind": "accounting_period",
+        "calendar_month": false
+      }
+    }
+  ]
 }
