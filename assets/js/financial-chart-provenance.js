@@ -276,10 +276,7 @@
       ? '<div class="gru-adjustments"><strong>Ajustes e códigos sem saldo positivo</strong>'
         + negative.map(item => '<span>' + escapeHtml(item.code + ' · ' + item.description)
           + ': ' + escapeHtml(currency.format(item.value)) + '</span>').join('') + '</div>' : '';
-    const note = positiveTotal > 0
-      ? '<p class="gru-visual-note">A área representa a participação nos valores líquidos positivos por código.'
-        + (negative.length ? ' Movimentações negativas são mostradas separadamente.' : '')
-        + '</p>' : '';
+    const note = '';
     container.innerHTML = '<div class="gru-treemap-panel" aria-label="Mapa de áreas da GRU por descrição">'
       + (layout.length ? '<div class="gru-treemap" role="group" aria-label="Selecione uma área para detalhes">'
         + blocks + '</div>' : '<p class="chart-empty">Nenhum código com saldo positivo.</p>')
@@ -332,7 +329,8 @@
     const balances = (entries || []).map(item => {
       const value = Number.isFinite(item.value) ? currency.format(item.value) : 'Indisponível';
       const source = item.date ? '<small>Posição ' + escapeHtml(item.date) + '</small>' : '';
-      return '<div class="financial-independent-item">'
+      return '<div class="financial-independent-item" role="button" tabindex="0" aria-pressed="false"'
+        + ' title="' + escapeHtml(item.label + ': ' + value) + '">'
         + '<span class="financial-bar-label">' + escapeHtml(item.label) + '</span>'
         + '<strong class="financial-bar-value">' + escapeHtml(value) + '</strong>'
         + source + '</div>';
@@ -357,7 +355,8 @@
     const scale = Math.max(1, ...valid.map(entry => Math.abs(entry.value)));
     const items = valid.map(entry => {
       const relative = Math.max(0, Math.min(100, Math.abs(entry.value) / scale * 100));
-      return '<div class="financial-bar-row">'
+      return '<div class="financial-bar-row" role="button" tabindex="0" aria-pressed="false"'
+        + ' title="' + escapeHtml(entry.label + ': ' + currency.format(entry.value)) + '">'
         + '<span class="financial-bar-label">' + escapeHtml(entry.label) + '</span>'
         + '<span class="financial-bar-track" role="img" aria-label="' + escapeHtml(entry.label + ': ' + currency.format(entry.value)) + '">'
         + '<span class="financial-bar-fill" style="width:' + relative.toFixed(1) + '%"></span></span>'
