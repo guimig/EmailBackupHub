@@ -167,7 +167,7 @@
     }
     const scale = Math.max(1, ...result.months.filter(item => Number.isFinite(item.value))
       .map(item => Math.abs(item.value)));
-    const bars = result.months.map(item => {
+    const monthRows = result.months.map(item => {
       const available = Number.isFinite(item.value);
       const width = available ? Math.max(0, Math.min(100, Math.abs(item.value) / scale * 100)) : 0;
       const title = available ? currency.format(item.value) + ' · ' + item.records + ' documento(s)' : 'Sem registros válidos';
@@ -176,7 +176,12 @@
         + '<span class="financial-bar-track" role="img" aria-label="' + escapeHtml(item.label + ': ' + title) + '">'
         + (available ? '<span class="financial-bar-fill" style="width:' + width.toFixed(1) + '%"></span>' : '')
         + '</span><strong class="financial-bar-value">' + (available ? escapeHtml(currency.format(item.value)) : 'Sem registros') + '</strong></div>';
-    }).join('');
+    });
+    const midpoint = Math.ceil(monthRows.length / 2);
+    const bars = '<div class="gru-month-grid">'
+      + '<div class="gru-month-column">' + monthRows.slice(0, midpoint).join('') + '</div>'
+      + '<div class="gru-month-column">' + monthRows.slice(midpoint).join('') + '</div>'
+      + '</div>';
     const note = result.records + ' registros reconciliados com o total auditado (' + currency.format(result.total)
       + '). Mês de emissão do documento, não necessariamente da arrecadação efetiva. Fonte: relatório de '
       + result.sourceDate.split('-').reverse().join('/') + '.';
