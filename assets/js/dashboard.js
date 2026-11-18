@@ -382,9 +382,6 @@ let indexData = null;
       setText('liquidatedTotal', formatMoney(liquidated));
       setText('paidTotal', formatMoney(paid));
       setText('financePanelDate', latestFinancialDate());
-      setText('trendValue', isAvailable(committed) ? `${formatMoney(committed)} empenhados` : 'indisponivel');
-      setText('provisionShareValue', formatPercent(committed, provisioned));
-      setText('creditShareValue', formatMoney(credit));
       const rapCompositionValid = isAvailable(rapPaid) && isAvailable(rapPayable)
         && valueOf(rapPaid) >= 0 && valueOf(rapPayable) >= 0 && valueOf(rapTotal) > 0;
       setText('rapShareValue', rapCompositionValid ? formatPercent(rapPaid, rapTotal) : '-');
@@ -397,7 +394,6 @@ let indexData = null;
       setText('paidGaugeValue', formatPercent(paid, liquidated));
 
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
-      renderDonut('provisionDonut', [committed, provisionOpen], ['var(--accent)', 'var(--accent-2)']);
       renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
