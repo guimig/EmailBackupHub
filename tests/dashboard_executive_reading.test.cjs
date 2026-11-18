@@ -13,13 +13,15 @@ test('executive summary removes duplicate monetary sections and long introductor
   assert.doesNotMatch(html, /chart-kicker|Posição consolidada dos relatórios disponíveis/);
   assert.doesNotMatch(html, /Orçamento provisionado acompanhado|Saldo na posição atual do relatório|Movimentação líquida auditada/);
   assert.doesNotMatch(html, /Os indicadores refletem métricas auditáveis dos relatórios recebidos/);
-  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 5);
-  assert.equal((html.match(/<h3>/g) || []).length, 5);
+  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 4);
+  assert.equal((html.match(/<h3>/g) || []).length, 4);
+  assert.doesNotMatch(html, /chart-card--credit|id="creditDonut"|id="gruValue"/);
 });
 
 test('meaningful accounting explanations and links remain available', () => {
   assert.match(html, /Total acompanhado: pagos e a pagar/);
-  assert.match(html, /saldos de relatórios independentes/);
+  assert.match(html, /id="creditAvailable"/);
+  assert.match(html, /id="budgetBase"/);
   assert.match(html, /RAP pago dividido pela soma de RAP pago e RAP a pagar/);
   assert.match(html, /id="managementAlertsPanel"/);
   assert.match(html, /class="aux-panel glossary-panel"/);
@@ -27,11 +29,10 @@ test('meaningful accounting explanations and links remain available', () => {
   assert.match(html, /id="gruViewCodesButton"/);
 });
 
-test('interactive charts retain one dedicated selection detail region', () => {
-  for (const id of ['expenseChartDetail', 'rapChartDetail', 'stagesChartDetail', 'creditChartDetail']) {
-    assert.match(html, new RegExp('id="' + id + '"'));
-  }
-  assert.match(js, /function selectFinancialGraphic\(target\)/);
-  assert.match(js, /event\.key !== 'Enter' && event\.key !== ' '/);
-  assert.doesNotMatch(js, /function renderExecutiveInsights/);
+test('only GRU drilldown remains clickable; redundant readback is absent', () => {
+  assert.doesNotMatch(html, /id="expenseChartDetail"|id="rapChartDetail"|id="stagesChartDetail"|id="creditChartDetail"/);
+  assert.doesNotMatch(js, /function selectFinancialGraphic\(target\)/);
+  assert.match(html, /id="gruViewCodesButton"/);
+  assert.match(html, /id="gruSelectionDetail"/);
+  assert.match(js, /selected\.dataset\.gruRecords/);
 });

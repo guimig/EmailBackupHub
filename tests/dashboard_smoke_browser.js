@@ -6,7 +6,6 @@
     const el = id => document.getElementById(id);
 
     const expense = el('expenseTrendChart');
-    const credit = el('creditDonut');
     const gru = el('gruTreeChart');
     if (!expense.querySelector('.financial-comparison') || !el('gruCodesChart').querySelector('.gru-treemap')) {
       if (attempts++ < 50) return setTimeout(verify, 100);
@@ -22,14 +21,10 @@
       /2\.500/.test(el('gruCollected').textContent);
     qa.expenseShowsCurrentBalances = expense.querySelectorAll('.financial-bar-row').length === 3 &&
       !expense.querySelector('circle.history-point');
-    qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-independent-item').length === 2 &&
-      credit.querySelectorAll('.financial-bar-track').length === 0 &&
-      !credit.querySelector('circle.history-point');
-    qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
-      !credit.textContent.includes('40.000%') &&
-      document.querySelector('.chart-card--credit .chart-help p').textContent.includes('saldos de relatórios independentes');
+    qa.noDuplicateBalancesChart = !document.querySelector('.chart-card--credit')
+      && !el('creditDonut') && !!el('budgetBase') && !!el('creditAvailable');
     qa.monthlyGruReconciled = gru.querySelectorAll('.gru-month-button').length === 11 &&
-      el('gruValue').textContent.includes('2.500');
+      el('gruCollected').textContent.includes('2.500');
     qa.gruCodesReconciled = el('gruCodesChart').querySelectorAll('.gru-treemap-tile').length === 3 &&
       el('gruCodesChart').textContent.includes('SERVICOS EDUCACIONAIS');
     qa.monthlySourceLabels = !!gru.querySelector('[data-gru-month="JAN/2026"]') &&
@@ -49,6 +44,8 @@
     qa.gruCodeInteractive = !el('gruCodesChart').hidden && gru.hidden
       && el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode)
       && firstCode.getAttribute('aria-pressed') === 'true';
+    qa.gruDetailsAppearOnClickOnly = !el('gruSelectionDetail').hidden &&
+      el('gruSelectionDetail').textContent.includes(firstCode.dataset.gruCode);
     qa.gruTreemapProportional = [...el('gruCodesChart').querySelectorAll('.gru-treemap-tile')]
       .reduce((total, tile) => total + parseFloat(tile.style.width) * parseFloat(tile.style.height), 0) > 9999;
     qa.gruViewRestored = el('gruViewCodesButton').getAttribute('aria-pressed') === 'true';
@@ -99,11 +96,10 @@
     const gruCard = chartGrid.querySelector('.chart-card--gru');
 
     const expenseCard = chartGrid.querySelector('.chart-card--expense');
-    const creditCard = chartGrid.querySelector('.chart-card--credit');
     const rapCard = chartGrid.querySelector('.chart-card--rap');
     const rect = node => node.getBoundingClientRect();
-    qa.fivePurposefulPanels = cards.length === 5 &&
-      ['expense', 'stages', 'credit', 'rap', 'gru'].every(type =>
+    qa.fourPurposefulPanels = cards.length === 4 &&
+      ['expense', 'stages', 'rap', 'gru'].every(type =>
         cards.some(card => card.classList.contains('chart-card--' + type)));
     qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 5 &&
       el('committedGaugeValue').textContent.includes('60,0%') &&
@@ -128,21 +124,17 @@
       ? Math.abs(rect(expenseCard).top - rect(stages).top) < 5 &&
         rect(stages).left >= rect(expenseCard).right - 5 &&
         Math.abs(rect(rapCard).top - rect(gruCard).top) < 5 &&
-        rect(rapCard).top >= rect(expenseCard).bottom - 5 &&
-        rect(creditCard).top >= rect(rapCard).bottom - 5 &&
-        Math.abs(rect(creditCard).bottom - rect(gruCard).bottom) < 8
+        rect(rapCard).top >= rect(expenseCard).bottom - 5
       : window.innerWidth >= 761
         ? Math.abs(rect(expenseCard).top - rect(rapCard).top) < 5 &&
           rect(stages).top >= rect(expenseCard).bottom - 5 &&
-          Math.abs(rect(creditCard).top - rect(gruCard).top) < 5 &&
-          rect(creditCard).top >= rect(stages).bottom - 5
-        : cards.every((card, index) => index === 0 ||
+          rect(gruCard).top >= rect(stages).bottom - 5
+        : cards.every((card,index) => index === 0 ||
           rect(card).top >= rect(cards[index - 1]).bottom - 5);
     qa.compactMosaicUsesScreen = window.innerWidth < 1180 ||
       (rect(gruCard).right <= rect(chartGrid).right + 3 &&
        rect(expenseCard).width < rect(stages).width &&
-       rect(rapCard).width < rect(gruCard).width &&
-       rect(creditCard).bottom <= rect(gruCard).bottom + 8);
+       rect(rapCard).width < rect(gruCard).width);
     qa.stageGaugeGridResponsive = (() => {
       const gaugeCards = [...stages.querySelectorAll('.stage-gauge-card')];
       const top = gaugeCards.map(rect).map(r => r.top);
@@ -173,7 +165,6 @@
     const fontPx = selector => parseFloat(styled(selector).fontSize);
     const chartLabels = [
       '.chart-card--expense .financial-bar-label',
-      '.chart-card--credit .financial-bar-label',
       '.chart-card--gru .gru-view-button',
       '.chart-card--rap .rap-composition-item dt',
       '.chart-card--stages .stage-gauge-title'
@@ -186,10 +177,10 @@
     const equalScale = values => values.every(v => v >= 13 && Math.abs(v - values[0]) < .3);
     qa.chartLabelsOneScale = equalScale(chartLabels);
     qa.chartValuesOneScale = equalScale(chartValues);
-    qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
-      >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
+    qa.consistentMetricSizes = fontPx('.chart-card--stages .stage-gauge-value') >= chartValues[0]
+      && fontPx('.chart-card--rap .rap-share-summary strong') >= chartValues[0];
     qa.captionTextReadable = [
-      '.gru-selection-detail', '.chart-interaction-detail',
+      '.gru-selection-detail', '.gru-visual-note',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
@@ -208,10 +199,6 @@
       '.dashboard-kpis .kpi-card', '.chart-card--expense', '.summary .metric'
     ].every(selector => styled(selector).borderTopLeftRadius === '11px');
 
-    qa.creditLabelsStayWholeOnDesktop = window.innerWidth <= 650 || (() => {
-      const labels = [...credit.querySelectorAll('.financial-independent-item .financial-bar-label')];
-      return labels.length === 2 && labels.every(label => label.scrollWidth <= label.clientWidth + 2);
-    })();
     qa.rapHelpAlignsWithHeading = (() => {
       const heading = rapCard.querySelector('.chart-card-heading');
       const help = rapCard.querySelector('.chart-help');
@@ -227,38 +214,18 @@
     qa.glossaryExpands = glossary.open &&
       getComputedStyle(glossary.querySelector('.term-strip')).display !== 'none';
     glossary.open = false;
-    qa.methodologyStillAccessible = [...document.querySelectorAll('.chart-card .chart-help')].length === 5 &&
+    qa.methodologyStillAccessible = [...document.querySelectorAll('.chart-card .chart-help')].length === 4 &&
       !document.querySelector('.source-context');
     qa.expenseTakeawayRemoved = !el('expenseTakeaway') && !el('expenseTakeawayTitle') && !el('expenseTakeawayText');
     qa.noDuplicateRapTakeaway = !el('rapTakeaway');
-    qa.financialChartsInteractive = (() => {
-      const expenseRow = expense.querySelector('.financial-bar-row[role="button"]');
-      const rapItem = rap.querySelector('.rap-composition-item[role="button"]');
-      const creditItem = credit.querySelector('.financial-independent-item[role="button"]');
-      const stageItem = stages.querySelector('.stage-gauge-card[role="button"]');
-      if (![expenseRow,rapItem,creditItem,stageItem].every(Boolean)) return false;
-      for (const node of [expenseRow,rapItem,creditItem,stageItem]) {
-        node.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      }
-      return ['expenseChartDetail','rapChartDetail','creditChartDetail','stagesChartDetail']
-        .every(id => !el(id).hidden && el(id).textContent.length > 4) &&
-        [expenseRow,rapItem,creditItem,stageItem]
-          .every(node => node.getAttribute('aria-pressed') === 'true');
-    })();
-    qa.keyboardChartSelection = (() => {
-      const next = [...expense.querySelectorAll('.financial-bar-row[role="button"]')][1];
-      next.dispatchEvent(new KeyboardEvent('keydown', { bubbles:true, key:'Enter' }));
-      return next.getAttribute('aria-pressed') === 'true'
-        && el('expenseChartDetail').textContent.includes('Liquidado');
-    })();
-    qa.creditAvoidsInvalidAccountingIdentity =
-      creditCard.querySelector('.chart-help p').textContent.includes('saldos de relatórios independentes');
+    qa.noRedundantChartClicks = !chartGrid.querySelector('.financial-bar-row[role="button"], '
+      + '.rap-composition-item[role="button"], .stage-gauge-card[role="button"]')
+      && !el('expenseChartDetail') && !el('rapChartDetail') && !el('stagesChartDetail');
     qa.methodologyUsesQuestionMark = cards.every(card =>
       card.querySelectorAll(':scope > .chart-card-head details.chart-help > summary').length === 1 &&
       card.querySelector(':scope > .chart-card-head details.chart-help > summary').textContent.trim() === '?') &&
       cards.every(card => card.querySelectorAll('details.chart-methodology').length === 0);
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
-      Boolean(credit.querySelector('a.financial-chart-link')) &&
       Boolean(el('gruReportLink').querySelector('a.financial-chart-link')) &&
       Boolean(rap.querySelector('a.rap-composition-link'));
     // Visual design contract: consistent padding, cards, typography and reading order.

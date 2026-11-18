@@ -355,8 +355,7 @@
     const scale = Math.max(1, ...valid.map(entry => Math.abs(entry.value)));
     const items = valid.map(entry => {
       const relative = Math.max(0, Math.min(100, Math.abs(entry.value) / scale * 100));
-      return '<div class="financial-bar-row" role="button" tabindex="0" aria-pressed="false"'
-        + ' title="' + escapeHtml(entry.label + ': ' + currency.format(entry.value)) + '">'
+      return '<div class="financial-bar-row">'
         + '<span class="financial-bar-label">' + escapeHtml(entry.label) + '</span>'
         + '<span class="financial-bar-track" role="img" aria-label="' + escapeHtml(entry.label + ': ' + currency.format(entry.value)) + '">'
         + '<span class="financial-bar-fill" style="width:' + relative.toFixed(1) + '%"></span></span>'
