@@ -103,40 +103,30 @@ test('comparative charts use snapshot values without inventing times or subtract
   assert.match(missing.innerHTML,/Não há valores auditáveis/);
 });
 
-test('monthly chart represents missing separately from explicit zero and does not interpolate',()=>{
-  const container={innerHTML:''};
-  renderGruMonthly(container,{ok:true,year:2026,sourceDate:'2026-11-17',records:2,total:0,
-    months:[{label:'JAN/2026',value:0,records:1},{label:'FEV/2026',value:null,records:0}]
-  });
-  assert.match(container.innerHTML,/R\$\s*0,00/);
-  assert.match(container.innerHTML,/Sem registros/);
-  assert.equal((container.innerHTML.match(/class="financial-bar-row financial-month-row"/g)||[]).length,2);
-  assert.ok(!container.innerHTML.includes('history-point'));
+test('monthly chart is one compact interactive series without redundant disclosures', () => {
+  const container = {innerHTML:''};
+  renderGruMonthly(container,{
+    ok:true,year:2026,sourceDate:'2026-11-17',records:3,total:-30,
+    months:[
+      {label:'JAN/2026',value:20,records:1},
+      {label:'FEV/2026',value:-50,records:1},
+      {label:'MAR/2026',value:null,records:0}
+    ]
+  }, {url:'report-viewer.html?report=gru.json'});
+  assert.equal((container.innerHTML.match(/class="gru-month-button/g) || []).length,3);
+  assert.match(container.innerHTML, /gru-month-button is-negative/);
+  assert.match(container.innerHTML, /aria-pressed="false"/);
+  assert.match(container.innerHTML, /Sem registros/);
+  assert.match(container.innerHTML, /-R\\$\\s*50,00/);
+  assert.doesNotMatch(container.innerHTML, /<details/);
+  assert.match(container.innerHTML, /report-viewer.html/);
   const mismatch={innerHTML:''};
   renderGruMonthly(mismatch,{ok:false,reason:'Reconciliacao falhou'});
-  assert.match(mismatch.innerHTML,/Série mensal não disponível/);
+  assert.match(mismatch.innerHTML,/Série mensal indisponível/);
+  const empty={innerHTML:''};
+  renderGruMonthly(empty,{ok:true,months:[],year:2026,total:0,sourceDate:'2026-11-17'});
+  assert.match(empty.innerHTML,/gru-month-chart/);
 });
-
-test('monthly GRU executive summary highlights the biggest absolute movement and negative months', () => {
-  const container = { innerHTML: '' };
-  renderGruMonthly(container, {
-    ok: true, year: 2026, sourceDate: '2026-11-17', records: 3, total: -30,
-    months: [
-      { label: 'JAN/2026', value: 20, records: 1 },
-      { label: 'FEV/2026', value: -50, records: 1 },
-      { label: 'MAR/2026', value: null, records: 0 }
-    ]
-  });
-  assert.match(container.innerHTML, /Meses com registros/);
-  assert.match(container.innerHTML, /2 de 3/);
-  assert.match(container.innerHTML, /FEV\/2026 · -R\$\s*50,00/);
-  assert.match(container.innerHTML, /financial-month-row is-negative/);
-  assert.match(container.innerHTML, /barra não representa participação percentual/);
-  const empty = { innerHTML: '' };
-  renderGruMonthly(empty, { ok: true, year: 2026, sourceDate: '2026-11-17', records: 0, total: 0, months: [] });
-  assert.match(empty.innerHTML, /0 de 0/);
-});
-
 
 test('public expenditure stages use auditable same-snapshot comparison without clamping', () => {
   const good = buildExpenseStages({committed:50000,liquidated:30000,paid:20000},
@@ -175,23 +165,26 @@ test('independent balances never use misleading percentage bars', () => {
 });
 
 
-test('GRU chronological timeline preserves monthly values in accessible detailed rows', () => {
-  const container = {innerHTML:''};
-  renderGruMonthly(container,{
-    ok:true,year:2026,sourceDate:'2026-11-17',records:3,total:30,
-    months:[
-      {label:'JAN/2026',value:50,records:1},
-      {label:'FEV/2026',value:-20,records:2},
-      {label:'MAR/2026',value:null,records:0}
-    ]
-  },{url:'report-viewer.html?report=gru.json'});
-  assert.equal((container.innerHTML.match(/class="gru-timeline-month/g)||[]).length,3);
-  assert.equal((container.innerHTML.match(/class="financial-bar-row financial-month-row/g)||[]).length,3);
-  assert.match(container.innerHTML,/gru-timeline has-negative/);
-  assert.match(container.innerHTML,/gru-months-details/);
-  assert.match(container.innerHTML,/role="listitem"/);
-  assert.match(container.innerHTML,/Consultar valores exatos de cada mês/);
-  assert.match(container.innerHTML,/report-viewer.html/);
+test('treemap partitions all positive areas proportionally and preserves negative adjustments', () => {
+  const { treemapLayout, renderGruCodes } = require('../assets/js/financial-chart-provenance.js');
+  const items=[
+    {code:'1',description:'A',value:100,records:1},
+    {code:'2',description:'B',value:50,records:1},
+    {code:'3',description:'C',value:25,records:1},
+    {code:'4',description:'Estorno',value:-5,records:1}
+  ];
+  const layout=treemapLayout(items);
+  assert.equal(layout.length,3);
+  const area=layout.reduce((sum,item)=>sum+item.w*item.h,0);
+  assert.ok(Math.abs(area-10000)<0.01);
+  assert.equal(layout.find(item=>item.code==='1').w*layout.find(item=>item.code==='1').h >
+    layout.find(item=>item.code==='2').w*layout.find(item=>item.code==='2').h,true);
+  const container={innerHTML:''};
+  renderGruCodes(container,{ok:true,year:2026,total:170,items});
+  assert.equal((container.innerHTML.match(/class="gru-treemap-tile/g)||[]).length,3);
+  assert.match(container.innerHTML,/Estorno/);
+  assert.match(container.innerHTML,/aria-pressed="false"/);
+  assert.doesNotMatch(container.innerHTML,/gru-code-more|<details/);
 });
 
 test('GRU code composition reconciles by code and description, including reversals', () => {
@@ -216,6 +209,7 @@ test('GRU code composition reconciles by code and description, including reversa
   const container={innerHTML:''};
   renderGruCodes(container,grouped);
   assert.match(container.innerHTML,/SERVICOS EDUCACIONAIS/);
+  assert.equal((container.innerHTML.match(/gru-treemap-tile/g)||[]).length,2);
   assert.match(container.innerHTML,/R\$\s*100,00/);
   assert.equal(buildGruByCode(report,179).ok,false);
   assert.equal(buildGruByCode({...report,columns:report.columns.filter(c=>c!=='Cód. Recolhimento GRU (2)')},180).ok,false);
