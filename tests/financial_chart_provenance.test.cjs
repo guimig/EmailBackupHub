@@ -224,7 +224,16 @@ test('indicative committed/provisioned ratio requires audited same date and exer
   const provision=doc('provisionado',100000);
   const expense=doc('empenhado',50000);
   assert.equal(buildCommitmentProvisionRatio(provision,expense).value,.5);
-  assert.equal(buildCommitmentProvisionRatio(provision,doc('empenhado',100001)).ok,false);
-  assert.equal(buildCommitmentProvisionRatio(provision,doc('empenhado',50000,'2026-11-16')).ok,false);
+  const above = buildCommitmentProvisionRatio(provision,doc('empenhado',100001));
+  assert.equal(above.ok,true);
+  assert.equal(above.aboveScale,true);
+  assert.ok(above.value > 1);
+  const dateDiff = buildCommitmentProvisionRatio(provision,doc('empenhado',50000,'2026-11-16'));
+  assert.equal(dateDiff.ok,true);
+  assert.equal(dateDiff.provisional,true);
+  const noExercise = buildCommitmentProvisionRatio({
+    ...provision,metadata:{}
+  },{...expense,metadata:{}});
+  assert.equal(noExercise.ok,true);
   assert.equal(buildCommitmentProvisionRatio({...provision,metrics_meta:{provisionado:{status:'missing'}}},expense).ok,false);
 });
