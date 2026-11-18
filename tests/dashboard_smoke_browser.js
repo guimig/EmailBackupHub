@@ -150,7 +150,7 @@
     qa.independentBalancesUseSummaryNumbers = fontPx('.chart-card--credit .financial-independent-item strong')
       >= chartValues[0] && credit.querySelectorAll('.financial-independent-item strong').length === 2;
     qa.captionTextReadable = [
-      '.chart-kicker', '.financial-chart-note', '.chart-bottom-note',
+      '.chart-kicker', '.financial-chart-note', '.stage-gauge-caption',
       '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
