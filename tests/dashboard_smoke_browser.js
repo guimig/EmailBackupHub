@@ -124,27 +124,38 @@
     qa.gruViewsDoNotStack = gru.hidden && !el('gruCodesChart').hidden
       && gruCard.querySelectorAll('.gru-view-switch button').length === 2
       && !gruCard.querySelector('.gru-months-details');
-    qa.dashboardResponsiveHierarchy = window.innerWidth > 990
-      ? Math.abs(rect(expenseCard).top - rect(rapCard).top) < 5 &&
-        rect(rapCard).left >= rect(expenseCard).right - 5 &&
-        rect(stages).top >= rect(expenseCard).bottom - 5 &&
-        Math.abs(rect(creditCard).top - rect(gruCard).top) < 5 &&
-        rect(creditCard).top >= rect(stages).bottom - 5
-      : cards.every((card, index) => index === 0 ||
-        rect(card).top >= rect(cards[index - 1]).bottom - 5);
+    qa.dashboardResponsiveHierarchy = window.innerWidth >= 1180
+      ? Math.abs(rect(expenseCard).top - rect(stages).top) < 5 &&
+        rect(stages).left >= rect(expenseCard).right - 5 &&
+        Math.abs(rect(rapCard).top - rect(gruCard).top) < 5 &&
+        rect(rapCard).top >= rect(expenseCard).bottom - 5 &&
+        rect(creditCard).top >= rect(rapCard).bottom - 5 &&
+        Math.abs(rect(creditCard).bottom - rect(gruCard).bottom) < 8
+      : window.innerWidth >= 761
+        ? Math.abs(rect(expenseCard).top - rect(rapCard).top) < 5 &&
+          rect(stages).top >= rect(expenseCard).bottom - 5 &&
+          Math.abs(rect(creditCard).top - rect(gruCard).top) < 5 &&
+          rect(creditCard).top >= rect(stages).bottom - 5
+        : cards.every((card, index) => index === 0 ||
+          rect(card).top >= rect(cards[index - 1]).bottom - 5);
+    qa.compactMosaicUsesScreen = window.innerWidth < 1180 ||
+      (rect(gruCard).right <= rect(chartGrid).right + 3 &&
+       rect(expenseCard).width < rect(stages).width &&
+       rect(rapCard).width < rect(gruCard).width &&
+       rect(creditCard).bottom <= rect(gruCard).bottom + 8);
     qa.stageGaugeGridResponsive = (() => {
       const gaugeCards = [...stages.querySelectorAll('.stage-gauge-card')];
       const top = gaugeCards.map(rect).map(r => r.top);
-      return window.innerWidth > 990
+      return window.innerWidth >= 761
         ? top.every(value => Math.abs(value - top[0]) < 5)
         : window.innerWidth > 360
           ? Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0] && top[4] > top[2]
           : Math.abs(top[0] - top[1]) < 5 && top[4] > top[2];
     })();
     // Allow concise explanatory summaries while keeping charts screen-sized.
-    qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
-      (rect(expenseCard).height < 510 &&
-       rect(stages).height < 460 &&
+    qa.dashboardCompactOnDesktop = window.innerWidth < 1180 ||
+      (rect(expenseCard).height < 370 &&
+       rect(stages).height < 370 &&
        rect(gruCard).height < 650);
     qa.dashboardFitsViewport = rect(chartGrid).width <= Math.min(1242, window.innerWidth) + 5;
     qa.mobileKpisUseTwoColumns = window.innerWidth > 730 || window.innerWidth <= 360 || (() => {
