@@ -1,0 +1,84 @@
+name: Scheduled HTML and JSON Retention Review
+
+on:
+  schedule:
+    - cron: '23 4 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: historical-retention-review
+  cancel-in-progress: false
+
+jobs:
+  retention:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements.txt
+      - name: Validate snapshot tests
+        run: python -m unittest discover -s tests -p 'test_*snapshot*.py'
+      - name: Prepare read-only manifests
+        run: |
+          python verified_snapshot_cleanup.py --limit 100 --manifest json-retention-manifest.json
+          python verified_html_cleanup.py --limit 100 --manifest html-retention-manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: historical-retention-${{ github.run_id }}
+          path: |
+            json-retention-manifest.json
+            html-retention-manifest.json
+          retention-days: 30
+      - name: Delete selected files on isolated branch only
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          count="$(python - <<'PY'
+          import json
+          print(sum(len(json.load(open(f))['selected']) for f in ('json-retention-manifest.json','html-retention-manifest.json')))
+          PY
+          )"
+          if [ "$count" -eq 0 ]; then
+            echo "No verified candidates; nothing to do"
+            exit 0
+          fi
+          branch="maintenance/retention-review-${RUN_ID}"
+          git switch -c "$branch"
+          python verified_snapshot_cleanup.py --limit 100 --manifest json-applied-manifest.json --apply --confirm DELETE_VERIFIED_EMPTY_SNAPSHOTS
+          python verified_html_cleanup.py --limit 100 --manifest html-applied-manifest.json --apply --confirm DELETE_VERIFIED_HTML
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          expected=set()
+          for stem in ('json', 'html'):
+              before=json.loads(Path(f'{stem}-retention-manifest.json').read_text())['selected']
+              after=json.loads(Path(f'{stem}-applied-manifest.json').read_text())['selected']
+              assert before==after, f'{stem} manifest changed'
+              expected.update(x['path'] for x in before)
+          assert expected
+          assert all(not Path(p).exists() for p in expected)
+          Path('expected-deletions.txt').write_text('\n'.join(sorted(expected))+'\n')
+          PY
+          git diff --name-only --diff-filter=D | sort > actual-deletions.txt
+          diff -u expected-deletions.txt actual-deletions.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/snapshots emails
+          test -z "$(git diff --cached --name-only --diff-filter=ACMR)"
+          git commit -m "Prune verified historical HTML and empty JSON run ${RUN_ID}"
+          git push origin "$branch"
+          if ! gh pr create --base main --head "$branch" --title "Review automated HTML/JSON retention cleanup ${RUN_ID}" --body "Automated candidate selection, SHA-256 manifest and isolated deletions. Requires manual review and merge. See workflow run ${RUN_ID}."; then
+            echo "::warning::GitHub Actions cannot create PR. Branch $branch is available; open PR manually or enable Actions pull request creation in repository settings."
+          fi
