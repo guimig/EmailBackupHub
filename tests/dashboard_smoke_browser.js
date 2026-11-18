@@ -175,7 +175,7 @@
     qa.expenseTakeawayExplainsAuditedRatio =
       el('expenseTakeawayTitle').textContent.includes('40,0% do valor empenhado') &&
       el('expenseTakeawayText').textContent.includes('não indica pagamentos realizados no dia');
-    qa.rapTakeawayShowsRemainingAmount = el('rapTakeaway').textContent.includes('R$ 2.000,00');
+    qa.rapTakeawayShowsRemainingAmount = /R\$\s+2\.000,00/.test(el('rapTakeaway').textContent);
     qa.creditAvoidsInvalidAccountingIdentity =
       creditCard.querySelector('.chart-lead').textContent.includes('saldos distintos') &&
       creditCard.querySelector('.chart-lead').textContent.includes('não representa');
