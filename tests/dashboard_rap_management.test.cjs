@@ -105,5 +105,5 @@ test('management details are collapsed by default and RAP heading explains the p
   assert.match(html,/id="managementAlertCount"/);
   assert.match(html,/id="rapShareMeaning"/);
   assert.match(html,/RAP pago dividido pela soma de RAP pago e RAP a pagar/);
-  assert.match(html,/não o total originalmente inscrito/);
+  assert.match(html,/não é o total originalmente inscrito/);
 });
