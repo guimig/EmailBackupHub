@@ -18,9 +18,12 @@ import snapshot_retention_audit as snapshots
 ROOT = snapshots.ROOT
 
 
-def plan(limit: int = 100) -> dict:
-    if not 1 <= limit <= 100:
-        raise ValueError("limit must be 1..100")
+MAX_BATCH = 500
+
+
+def plan(limit: int = MAX_BATCH) -> dict:
+    if not 1 <= limit <= MAX_BATCH:
+        raise ValueError(f"limit must be 1..{MAX_BATCH}")
     protected_snapshots = snapshots.protected_snapshot_paths()
     missing = [p for p in protected_snapshots if not (ROOT / p).is_file()]
     if missing:
@@ -54,7 +57,9 @@ def plan(limit: int = 100) -> dict:
 
 def execute(manifest: dict) -> int:
     # Recompute eligibility and hashes before deleting anything.
-    current = {x["path"]: x["sha256"] for x in plan(100)["selected"]}
+    if len(manifest.get("selected", [])) > MAX_BATCH:
+        raise ValueError("Manifest exceeds safe batch limit")
+    current = {x["path"]: x["sha256"] for x in plan(MAX_BATCH)["selected"]}
     for item in manifest["selected"]:
         if current.get(item["path"]) != item["sha256"]:
             raise RuntimeError(f"HTML candidate changed or is now protected: {item['path']}")
@@ -65,7 +70,7 @@ def execute(manifest: dict) -> int:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=100)
+    parser.add_argument("--limit", type=int, default=MAX_BATCH)
     parser.add_argument("--manifest", default="html-cleanup-manifest.json")
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--confirm", default="")
