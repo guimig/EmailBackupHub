@@ -393,6 +393,7 @@ let indexData = null;
       setText('liquidatedGaugeValue', formatPercent(liquidated, committed));
       setText('paidGaugeValue', formatPercent(paid, liquidated));
 
+      renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit });
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
       renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
@@ -403,6 +404,37 @@ let indexData = null;
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+    }
+
+    // Interpret only auditable relationships; avoid status thresholds without
+    // institutionally defined targets or conflating different budget balances.
+    function renderExecutiveInsights(values) {
+      const committed = valueOf(values.committed);
+      const paid = valueOf(values.paid);
+      const expenseTitle = byId('expenseTakeawayTitle');
+      const expenseText = byId('expenseTakeawayText');
+      const expensePanel = byId('expenseTakeaway');
+      const comparable = Number.isFinite(committed) && committed > 0 &&
+        Number.isFinite(paid) && paid >= 0 && paid <= committed;
+      if (expenseTitle && expenseText) {
+        setText('expenseTakeawayTitle', comparable
+          ? formatPercent(values.paid, values.committed) + ' do valor empenhado consta como pago'
+          : 'Comparação percentual indisponível');
+        setText('expenseTakeawayText', comparable
+          ? 'Proporção entre valores consolidados da última posição disponível; não indica pagamentos realizados no dia da extração.'
+          : 'Confira as bases de empenho e pagamento nos relatórios de origem antes de interpretar o percentual.');
+        if (expensePanel) expensePanel.dataset.availability = comparable ? 'available' : 'missing';
+      }
+
+      const payable = valueOf(values.rapPayable);
+      const rapPaid = valueOf(values.rapPaid);
+      const rapTotal = valueOf(values.rapTotal);
+      const rapValid = Number.isFinite(payable) && payable >= 0 &&
+        Number.isFinite(rapPaid) && rapPaid >= 0 &&
+        Number.isFinite(rapTotal) && rapTotal > 0;
+      setText('rapTakeaway', rapValid
+        ? formatMoney(values.rapPayable) + ' ainda constam a pagar no RAP acompanhado.'
+        : 'Saldo pendente indisponível ou sem base positiva para comparação.');
     }
 
     function setInsight(anchorId, title, text) {
@@ -758,9 +790,8 @@ let indexData = null;
       setInsight('committedTotal', 'Despesas empenhadas', valueInsight(values.committed, 'Valor formalmente comprometido.'));
       setInsight('liquidatedTotal', 'Despesas liquidadas', valueInsight(values.liquidated, 'Despesa com entrega reconhecida.'));
       setInsight('paidTotal', 'Despesas pagas', valueInsight(values.paid, 'Valor efetivamente pago.'));
-      setInsight('trendValue', 'Situacao da despesa', `Fotografia dos valores auditados na extração mais recente, sem reconstituir datas de lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
-      setInsight('provisionShareValue', 'Uso do provisionado', percentInsight(values.committed, values.provisioned, 'do provisionamento ja esta empenhado.'));
-      setInsight('creditShareValue', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
+      setInsight('expenseTakeawayTitle', 'Situacao da despesa', `Fotografia dos valores auditados na extração mais recente, sem reconstituir datas de lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
+      setInsight('creditDonut', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setInsight('rapShareValue', 'Proporção de RAP pagos', percentInsight(values.rapPaid, values.rapTotal, 'de RAP pago + RAP a pagar corresponde ao valor pago, sem usar o total originalmente inscrito.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
       setInsight('committedGaugeValue', '% empenhado do provisionado', percentInsight(values.committed, values.provisioned, 'do orcamento provisionado ja foi empenhado.'));
@@ -770,7 +801,6 @@ let indexData = null;
 
     function updateGraphInsights(values) {
       setElementInsight('expenseTrendChart', 'Execução da despesa na última extração', `Comparação entre indicadores atuais, não evolução por lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
-      setElementInsight('provisionDonut', 'Uso do provisionado', `Parte empenhada: ${formatMoney(values.committed)}. Saldo estimado a empenhar: ${formatMoney(values.provisionOpen)}. ${auditSources([values.committed, values.provisionOpen])}`);
       setElementInsight('creditDonut', 'Crédito disponível e provisionado', `Comparação de dois saldos auditados, sem subtração ou hipótese de composição. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setElementInsight('rapStackChart', 'Composição de Restos a Pagar', `RAP pagos: ${formatMoney(values.rapPaid)}. RAP a pagar: ${formatMoney(values.rapPayable)}. Base do percentual: a soma dessas duas parcelas, ${formatMoney(values.rapTotal)}. Não é o total originalmente inscrito. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
       setElementInsight('gruTreeChart', 'GRU por mês de emissão', `O total de ${formatMoney(values.gru)} é auditado. As barras mensais são recompostas pelos documentos e só aparecem se sua soma reconciliar; o mês da emissão não é necessariamente a data da arrecadação efetiva. ${auditSource(values.gru)}`);
