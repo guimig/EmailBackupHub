@@ -5,10 +5,11 @@ on:
     branches: [main]
     paths:
       - 'verified_html_cleanup.py'
+      - 'verified_snapshot_cleanup.py'
       - 'tests/test_verified_html_cleanup.py'
       - '.github/workflows/scheduled_retention_review.yml'
   schedule:
-    - cron: '23 4 * * 0'
+    - cron: '23 4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,7 +23,7 @@ concurrency:
 jobs:
   retention:
     runs-on: ubuntu-22.04
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,8 +38,8 @@ jobs:
           python -m unittest discover -s tests -p 'test_*html_cleanup.py'
       - name: Prepare read-only manifests
         run: |
-          python verified_snapshot_cleanup.py --limit 100 --manifest json-retention-manifest.json
-          python verified_html_cleanup.py --limit 100 --manifest html-retention-manifest.json
+          python verified_snapshot_cleanup.py --limit 5000 --manifest json-retention-manifest.json
+          python verified_html_cleanup.py --limit 500 --manifest html-retention-manifest.json
       - uses: actions/upload-artifact@v4
         with:
           name: historical-retention-${{ github.run_id }}
@@ -65,8 +66,8 @@ jobs:
           fi
           branch="maintenance/retention-review-${RUN_ID}"
           git switch -c "$branch"
-          python verified_snapshot_cleanup.py --limit 100 --manifest json-applied-manifest.json --apply --confirm DELETE_VERIFIED_EMPTY_SNAPSHOTS
-          python verified_html_cleanup.py --limit 100 --manifest html-applied-manifest.json --apply --confirm DELETE_VERIFIED_HTML
+          python verified_snapshot_cleanup.py --limit 5000 --manifest json-applied-manifest.json --apply --confirm DELETE_VERIFIED_EMPTY_SNAPSHOTS
+          python verified_html_cleanup.py --limit 500 --manifest html-applied-manifest.json --apply --confirm DELETE_VERIFIED_HTML
           python - <<'PY'
           import json
           from pathlib import Path
