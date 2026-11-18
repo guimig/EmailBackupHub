@@ -385,8 +385,6 @@ let indexData = null;
       const rapTotal = sumAudit('Restos a pagar total', [rapPaid, rapPayable]);
       const budget = provisioned;
       // Do not compute stage ratios from different reports, filters or periods.
-      const committedRatio = auditValue(null, 'Provisionamentos não equivalem necessariamente à dotação disponível para empenho.');
-      const liquidatedRatio = auditValue(stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null, stageModel.reason);
       const paidRatio = auditValue(stageModel.ok ? stageModel.rates.paidOfLiquidated : null, stageModel.reason);
       const rapPaidRatio = ratio(rapPaid, rapTotal);
       const provisionOpen = subtractAudit('Saldo estimado a empenhar', provisioned, committed);
@@ -415,15 +413,15 @@ let indexData = null;
 
       renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
-      renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid });
+      renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid }, stageModel);
       renderCreditComparison('creditDonut', { credit, provisioned });
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
       renderGauge('committedGauge', auditValue(stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null, stageModel.reason));
       renderGauge('liquidatedGauge', paidRatio);
       renderGauge('paidGauge', auditValue(stageModel.ok ? stageModel.rates.paidOfCommitted : null, stageModel.reason));
-      updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio });
-      updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen });
+      updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
+      updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
     }
 
@@ -833,9 +831,16 @@ let indexData = null;
       setInsight('creditDonut', 'Credito disponivel e provisionamentos', `Saldos independentes apresentados para comparação, sem considerar que um seja parte ou complemento contábil do outro. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setInsight('rapShareValue', 'Proporção de RAP pagos', percentInsight(values.rapPaid, values.rapTotal, 'de RAP pago + RAP a pagar corresponde ao valor pago, sem usar o total originalmente inscrito.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
-      setInsight('committedGaugeValue', '% empenhado do provisionado', percentInsight(values.committed, values.provisioned, 'do orcamento provisionado ja foi empenhado.'));
-      setInsight('liquidatedGaugeValue', '% liquidado do empenhado', percentInsight(values.liquidated, values.committed, 'do empenhado ja foi liquidado.'));
-      setInsight('paidGaugeValue', '% pago do liquidado', percentInsight(values.paid, values.liquidated, 'do liquidado ja foi pago.'));
+      const st = values.stageModel;
+      const stageDetail = st?.ok
+        ? 'Mesma posição auditada. Diferenças não implicam atraso.'
+        : 'Comparação indisponível: ' + (st?.reason || 'origens divergentes.');
+      setInsight('committedGaugeValue', 'Liquidado / empenhado', st?.ok
+        ? formatPercent(st.liquidated, st.committed) + '. ' + stageDetail : stageDetail);
+      setInsight('liquidatedGaugeValue', 'Pago / liquidado', st?.ok
+        ? formatPercent(st.paid, st.liquidated) + '. ' + stageDetail : stageDetail);
+      setInsight('paidGaugeValue', 'Pago / empenhado', st?.ok
+        ? formatPercent(st.paid, st.committed) + '. ' + stageDetail : stageDetail);
     }
 
     function updateGraphInsights(values) {
@@ -843,9 +848,15 @@ let indexData = null;
       setElementInsight('creditDonut', 'Crédito disponível e provisionado', `Comparação de dois saldos auditados, sem subtração ou hipótese de composição. Crédito disponível: ${formatMoney(values.credit)}. Provisionado: ${formatMoney(values.budget)}. ${auditSources([values.credit, values.budget])}`);
       setElementInsight('rapStackChart', 'Composição de Restos a Pagar', `RAP pagos: ${formatMoney(values.rapPaid)}. RAP a pagar: ${formatMoney(values.rapPayable)}. Base do percentual: a soma dessas duas parcelas, ${formatMoney(values.rapTotal)}. Não é o total originalmente inscrito. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
       setElementInsight('gruTreeChart', 'GRU por mês de emissão', `O total de ${formatMoney(values.gru)} é auditado. As barras mensais são recompostas pelos documentos e só aparecem se sua soma reconciliar; o mês da emissão não é necessariamente a data da arrecadação efetiva. ${auditSource(values.gru)}`);
-      setElementInsight('committedGauge', 'Percentual empenhado', percentInsight(values.committed, values.provisioned, 'do provisionado ja virou empenho.'));
-      setElementInsight('liquidatedGauge', 'Percentual liquidado', percentInsight(values.liquidated, values.committed, 'do empenhado ja teve entrega reconhecida.'));
-      setElementInsight('paidGauge', 'Percentual pago', percentInsight(values.paid, values.liquidated, 'do liquidado ja foi efetivamente pago.'));
+      const stage = values.stageModel;
+      const stageNote = stage?.ok ? 'Percentual da posição auditada em ' + stage.date
+        : 'Etapas indisponíveis para comparação: ' + (stage?.reason || 'falta de base comum.');
+      setElementInsight('committedGauge', 'Liquidado / empenhado', stage?.ok
+        ? formatPercent(stage.liquidated, stage.committed) + '. ' + stageNote : stageNote);
+      setElementInsight('liquidatedGauge', 'Pago / liquidado', stage?.ok
+        ? formatPercent(stage.paid, stage.liquidated) + '. ' + stageNote : stageNote);
+      setElementInsight('paidGauge', 'Pago / empenhado', stage?.ok
+        ? formatPercent(stage.paid, stage.committed) + '. ' + stageNote : stageNote);
     }
 
 
@@ -854,14 +865,20 @@ let indexData = null;
       return path ? 'report-viewer.html?report=' + encodeURIComponent(path) : '';
     }
 
-    function renderExpenseComparison(id, currentValues) {
+    function renderExpenseComparison(id, currentValues, stageModel) {
       const renderer = window.EmailBackupHubFinancialCharts;
       if (!renderer?.renderComparison) return unavailableChart(id);
+      if (!stageModel?.ok) {
+        byId(id).innerHTML = '<p class="chart-empty" role="status">Comparação entre etapas indisponível: '
+          + escapeHtml(stageModel?.reason || 'não há três valores auditáveis na mesma posição.')
+          + '. Consulte os valores individuais e os relatórios de origem.</p>';
+        return;
+      }
       const date = financialReports['despesas-empenhadas-liquidadas-e-pagas-mes-lancamento']?.date || 'não informada';
       renderer.renderComparison(byId(id), [
-        { label: 'Empenhado', value: valueOf(currentValues.committed) },
-        { label: 'Liquidado', value: valueOf(currentValues.liquidated) },
-        { label: 'Pago', value: valueOf(currentValues.paid) }
+        { label: 'Empenhado', value: stageModel.committed },
+        { label: 'Liquidado', value: stageModel.liquidated },
+        { label: 'Pago', value: stageModel.paid }
       ], {
         note: 'Posição consultada em ' + date
           + '. Valores acumulados/auditados na extração, não lançamentos por data.',
