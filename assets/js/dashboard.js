@@ -418,7 +418,6 @@ let indexData = null;
       byId('provisionGaugeValue').title = provisionGaugeModel.reason;
       byId('provisionGauge').title = provisionGaugeModel.reason;
 
-      renderExecutiveInsights({ committed, liquidated, paid, rapPaid, rapPayable, rapTotal, provisioned, credit, stageModel });
       renderStageInterpretation(stageModel);
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid }, stageModel);
       renderCreditComparison('creditDonut', { credit, provisioned });
@@ -456,20 +455,6 @@ let indexData = null;
         + (model.date ? model.date.split('-').reverse().join('/') : 'data não informada') + '.';
 
       banner.dataset.state = 'available';
-    }
-
-    // Interpret only auditable relationships; avoid status thresholds without
-    // institutionally defined targets or conflating different budget balances.
-    function renderExecutiveInsights(values) {
-      const payable = valueOf(values.rapPayable);
-      const rapPaid = valueOf(values.rapPaid);
-      const rapTotal = valueOf(values.rapTotal);
-      const rapValid = Number.isFinite(payable) && payable >= 0 &&
-        Number.isFinite(rapPaid) && rapPaid >= 0 &&
-        Number.isFinite(rapTotal) && rapTotal > 0;
-      setText('rapTakeaway', rapValid
-        ? formatMoney(values.rapPayable) + ' ainda constam a pagar no RAP acompanhado.'
-        : 'Saldo pendente indisponível ou sem base positiva para comparação.');
     }
 
     function setInsight(anchorId, title, text) {
