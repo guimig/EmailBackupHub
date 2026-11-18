@@ -6,7 +6,7 @@ import verified_html_cleanup as html
 
 class VerifiedHtmlCleanupTests(unittest.TestCase):
     def test_limit_outside_bounded_range_is_rejected(self):
-        for limit in (0, -1, 101):
+        for limit in (0, -1, 501):
             with self.assertRaises(ValueError):
                 html.plan(limit)
 

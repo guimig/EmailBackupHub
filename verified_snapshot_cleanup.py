@@ -16,7 +16,7 @@ import snapshot_retention_audit as audit
 
 NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})-([0-9a-f]{12})\.json$")
 DEFAULT_BATCH = 50
-MAX_BATCH = 100
+MAX_BATCH = 5000
 MIN_AGE_DAYS = 365
 
 
@@ -48,7 +48,8 @@ def eligible(path: Path, now: dt.date, protected: set[str], root: Path) -> tuple
             return False, "hash_mismatch"
         if doc.get("columns") != [] or doc.get("rows") != [] or doc.get("totals") != [] or doc.get("row_types") != []:
             return False, "contains_data"
-        if "light_snapshot" not in (doc.get("quality") or {}).get("issues", []):
+        quality = doc.get("quality")
+        if not isinstance(quality, dict) or "light_snapshot" not in quality.get("issues", []):
             return False, "not_light_snapshot"
         html_path = doc.get("html_path")
         if not isinstance(html_path, str) or not html_path.startswith("emails/"):
@@ -59,6 +60,8 @@ def eligible(path: Path, now: dt.date, protected: set[str], root: Path) -> tuple
 
 
 def plan(now: dt.date, limit: int = DEFAULT_BATCH, root: Path | None = None) -> dict:
+    if not 1 <= limit <= MAX_BATCH:
+        raise ValueError(f"limit must be 1..{MAX_BATCH}")
     root = root or audit.ROOT
     with_reference_root = root == audit.ROOT
     if not with_reference_root:
@@ -83,6 +86,8 @@ def plan(now: dt.date, limit: int = DEFAULT_BATCH, root: Path | None = None) -> 
 
 
 def execute(manifest: dict, root: Path) -> int:
+    if len(manifest.get("selected", [])) > MAX_BATCH:
+        raise ValueError("Manifest exceeds safe batch limit")
     protected = audit.protected_snapshot_paths()
     if any(not (root / p).is_file() for p in protected):
         raise RuntimeError("Referenced snapshot missing; cleanup refused")
