@@ -75,27 +75,43 @@
     qa.fivePurposefulPanels = cards.length === 5 &&
       ['expense', 'stages', 'credit', 'rap', 'gru'].every(type =>
         cards.some(card => card.classList.contains('chart-card--' + type)));
-    qa.executionRatiosGrouped = stages.querySelectorAll('.flow-metric').length === 3 &&
+    qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 4 &&
       el('committedGaugeValue').textContent.includes('60,0%') &&
       el('liquidatedGaugeValue').textContent.includes('66,7%') &&
       el('paidGaugeValue').textContent.includes('40,0%') &&
+      el('openGaugeValue').textContent.includes('33,3%') &&
       el('stagesInterpretation').dataset.state === 'available' &&
-      ['committedGauge', 'liquidatedGauge', 'paidGauge'].every(id =>
-        stages.contains(el(id)) && el(id).querySelectorAll('.ratio-meter').length === 1) &&
+      ['committedGauge', 'liquidatedGauge', 'paidGauge', 'openGauge'].every(id =>
+        stages.contains(el(id)) &&
+        el(id).querySelectorAll('.stage-gauge-track').length === 1 &&
+        el(id).querySelectorAll('.stage-gauge-progress').length === 1) &&
       !el('provisionDonut') && !el('provisionShareValue');
+    qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 4 &&
+      [...stages.querySelectorAll('.stage-half-gauge svg')].every(svg =>
+        svg.getAttribute('role') === 'img' &&
+        svg.getAttribute('aria-label')?.includes('%'));
     qa.gruMonthlyColumnsPreserveData = gru.querySelectorAll('.gru-timeline-month').length === 11 &&
       gru.querySelector('.gru-months-details:not([open])') !== null &&
       monthColumns.length === 2 &&
       monthColumns[0].querySelectorAll('.financial-month-row').length === 6 &&
       monthColumns[1].querySelectorAll('.financial-month-row').length === 5;
     qa.dashboardResponsiveHierarchy = window.innerWidth > 990
-      ? Math.abs(rect(expenseCard).top - rect(stages).top) < 5 &&
-        rect(stages).left >= rect(expenseCard).right - 5 &&
-        Math.abs(rect(creditCard).top - rect(rapCard).top) < 5 &&
-        rect(gruCard).top > rect(creditCard).top &&
-        rect(gruCard).width > rect(expenseCard).width
+      ? Math.abs(rect(expenseCard).top - rect(rapCard).top) < 5 &&
+        rect(rapCard).left >= rect(expenseCard).right - 5 &&
+        rect(stages).top >= rect(expenseCard).bottom - 5 &&
+        Math.abs(rect(creditCard).top - rect(gruCard).top) < 5 &&
+        rect(creditCard).top >= rect(stages).bottom - 5
       : cards.every((card, index) => index === 0 ||
         rect(card).top >= rect(cards[index - 1]).bottom - 5);
+    qa.stageGaugeGridResponsive = (() => {
+      const gaugeCards = [...stages.querySelectorAll('.stage-gauge-card')];
+      const top = gaugeCards.map(rect).map(r => r.top);
+      return window.innerWidth > 990
+        ? top.every(value => Math.abs(value - top[0]) < 5)
+        : window.innerWidth > 360
+          ? Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0]
+          : Math.abs(top[0] - top[1]) < 5;
+    })();
     // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth <= 990 ||
       (rect(expenseCard).height < 600 &&
@@ -120,7 +136,7 @@
       '.chart-card--credit .financial-bar-label',
       '.chart-card--gru .financial-bar-label',
       '.chart-card--rap .rap-composition-item dt',
-      '.chart-card--stages .flow-metric-top span'
+      '.chart-card--stages .stage-gauge-title'
     ].map(fontPx);
     const chartValues = [
       '.chart-card--expense .financial-bar-value',
