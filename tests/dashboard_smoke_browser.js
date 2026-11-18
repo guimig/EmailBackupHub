@@ -141,6 +141,17 @@
     qa.unifiedCardCorners = [
       '.dashboard-kpis .kpi-card', '.chart-card--expense', '.summary .metric'
     ].every(selector => styled(selector).borderTopLeftRadius === '11px');
+
+    qa.creditLabelsStayWholeOnDesktop = window.innerWidth <= 650 || (() => {
+      const labels = [...credit.querySelectorAll('.financial-bar-label')];
+      return labels.every(label => styled('.chart-card--credit .financial-bar-label').whiteSpace === 'nowrap' &&
+        label.getBoundingClientRect().height <= parseFloat(getComputedStyle(label).lineHeight) + 2);
+    })();
+    qa.rapHelpAlignsWithHeading = (() => {
+      const heading = rapCard.querySelector('.chart-card-heading');
+      const help = rapCard.querySelector('.chart-help');
+      return Math.abs(heading.getBoundingClientRect().top - help.getBoundingClientRect().top) < 5;
+    })();
     qa.noHorizontalPageOverflow = document.documentElement.scrollWidth <= window.innerWidth+4;
     qa.catalogTracksAllReports = document.querySelectorAll('#rows [data-favorite-report]').length === 7;
     const firstFavorite = document.querySelector('#rows [data-favorite-report]');
