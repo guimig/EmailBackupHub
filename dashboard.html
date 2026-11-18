@@ -75,6 +75,11 @@
             </div>
             <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Compara os valores auditados na extração mais recente, sem atribuir datas de lançamentos individuais.</p></details>
           </div>
+          <div class="chart-takeaway" id="expenseTakeaway">
+            <span class="chart-takeaway-label">Leitura rápida</span>
+            <strong id="expenseTakeawayTitle">Consultando os valores auditados…</strong>
+            <p id="expenseTakeawayText">Comparação com a última posição disponível.</p>
+          </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
         </article>
 
@@ -82,25 +87,26 @@
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <span class="chart-kicker">Indicadores de execução</span>
-              <h3>Etapas da despesa</h3>
+              <h3>Avanço da execução</h3>
             </div>
             <details class="chart-help"><summary aria-label="Explicar os percentuais da execução">?</summary><p>Empenhado dividido pelo provisionado; liquidado dividido pelo empenhado; pago dividido pelo liquidado. Cada indicador tem sua própria base, sem somar percentuais.</p></details>
           </div>
+          <p class="chart-lead">Três etapas, cada uma com sua própria base de comparação.</p>
           <div class="flow-metric-list">
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Empenhado / provisionado</span><strong id="committedGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do provisionado, já empenhado</span><strong id="committedGaugeValue">-</strong></div>
               <div class="chart-slot" id="committedGauge"></div>
             </div>
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Liquidado / empenhado</span><strong id="liquidatedGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do empenhado, já liquidado</span><strong id="liquidatedGaugeValue">-</strong></div>
               <div class="chart-slot" id="liquidatedGauge"></div>
             </div>
             <div class="flow-metric">
-              <div class="flow-metric-top"><span>Pago / liquidado</span><strong id="paidGaugeValue">-</strong></div>
+              <div class="flow-metric-top"><span>Do liquidado, já pago</span><strong id="paidGaugeValue">-</strong></div>
               <div class="chart-slot" id="paidGauge"></div>
             </div>
           </div>
-          <p class="chart-bottom-note">Percentuais calculados a partir dos totais auditados de cada etapa.</p>
+          <p class="chart-bottom-note">Leia de cima para baixo. As porcentagens não devem ser somadas.</p>
         </article>
 
         <article class="chart-card chart-card--credit">
@@ -111,6 +117,7 @@
             </div>
             <details class="chart-help"><summary aria-label="Explicar crédito e provisionamento">?</summary><p>Compara saldos auditados de fontes distintas. As barras são uma comparação de magnitudes, não parcelas de um mesmo total.</p></details>
           </div>
+          <p class="chart-lead"><strong>São saldos distintos.</strong> A diferença entre eles não representa, necessariamente, crédito utilizado ou a utilizar.</p>
           <div class="chart-slot" id="creditDonut"></div>
         </article>
 
@@ -127,7 +134,11 @@
             <span id="rapShareMeaning">do total acompanhado já foi pago</span>
           </div>
           <div class="chart-slot" id="rapStackChart"></div>
-          <p class="chart-note">Base: RAP pago + RAP a pagar, e não o total originalmente inscrito.</p>
+          <p class="chart-takeaway-inline" id="rapTakeaway">Consultando o valor ainda pendente…</p>
+          <details class="chart-methodology chart-methodology--rap">
+            <summary>Como este percentual foi calculado</summary>
+            <p class="chart-note">Base: RAP pago + RAP a pagar, e não o total originalmente inscrito.</p>
+          </details>
         </article>
 
         <article class="chart-card chart-card--gru">
@@ -141,6 +152,7 @@
               <details class="chart-help"><summary aria-label="Explicar GRU por mês de emissão">?</summary><p>As movimentações líquidas são agrupadas pelo mês de emissão dos documentos; o total mensal é exibido somente se reconciliar com o total auditado. Emissão não significa data de arrecadação efetiva.</p></details>
             </div>
           </div>
+          <p class="chart-lead chart-lead--gru">Cada barra representa um mês de <strong>emissão dos documentos</strong>, não necessariamente o mês do recolhimento efetivo.</p>
           <div class="chart-slot" id="gruTreeChart"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
