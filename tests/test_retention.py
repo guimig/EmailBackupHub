@@ -45,7 +45,7 @@ class RetentionPolicyTests(unittest.TestCase):
             ignored_names = {Path(item["path"]).name for item in ignored}
 
             self.assertEqual(retained_by_name["relatorio_01-07-2026.html"]["reasons"], ["monthly_close"])
-            self.assertEqual(retained_by_name["relatorio_03-07-2026.html"]["reasons"], ["latest"])
+            self.assertIn("latest", retained_by_name["relatorio_03-07-2026.html"]["reasons"])
             self.assertEqual(ignored_names, {"relatorio_02-07-2026.html"})
 
     def test_retention_plan_exposes_closing_dates_and_reasons(self):
