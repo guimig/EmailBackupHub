@@ -19,10 +19,12 @@
       /100\.000/.test(el('budgetBase').textContent);
     qa.expenseShowsCurrentBalances = expense.querySelectorAll('.financial-bar-row').length === 3 &&
       !expense.querySelector('circle.history-point');
-    qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-bar-row').length === 2 &&
+    qa.creditShowsDistinctBalances = credit.querySelectorAll('.financial-independent-item').length === 2 &&
+      credit.querySelectorAll('.financial-bar-track').length === 0 &&
       !credit.querySelector('circle.history-point');
     qa.creditFigureIsNotTemporalPercent = credit.textContent.includes('40.000') &&
-      !credit.textContent.includes('40.000%');
+      !credit.textContent.includes('40.000%') &&
+      credit.textContent.includes('não são fatias');
     qa.monthlyGruReconciled = gru.querySelectorAll('.financial-month-row').length === 11 &&
       gru.textContent.includes('2.500');
     qa.monthlySourceLabels = gru.textContent.includes('JAN/2026') &&
@@ -74,10 +76,16 @@
       ['expense', 'stages', 'credit', 'rap', 'gru'].every(type =>
         cards.some(card => card.classList.contains('chart-card--' + type)));
     qa.executionRatiosGrouped = stages.querySelectorAll('.flow-metric').length === 3 &&
+      el('committedGaugeValue').textContent.includes('60,0%') &&
+      el('liquidatedGaugeValue').textContent.includes('66,7%') &&
+      el('paidGaugeValue').textContent.includes('40,0%') &&
+      el('stagesInterpretation').dataset.state === 'available' &&
       ['committedGauge', 'liquidatedGauge', 'paidGauge'].every(id =>
         stages.contains(el(id)) && el(id).querySelectorAll('.ratio-meter').length === 1) &&
       !el('provisionDonut') && !el('provisionShareValue');
-    qa.gruMonthlyColumnsPreserveData = monthColumns.length === 2 &&
+    qa.gruMonthlyColumnsPreserveData = gru.querySelectorAll('.gru-timeline-month').length === 11 &&
+      gru.querySelector('.gru-months-details:not([open])') !== null &&
+      monthColumns.length === 2 &&
       monthColumns[0].querySelectorAll('.financial-month-row').length === 6 &&
       monthColumns[1].querySelectorAll('.financial-month-row').length === 5;
     qa.dashboardResponsiveHierarchy = window.innerWidth > 990
@@ -144,9 +152,8 @@
     ].every(selector => styled(selector).borderTopLeftRadius === '11px');
 
     qa.creditLabelsStayWholeOnDesktop = window.innerWidth <= 650 || (() => {
-      const labels = [...credit.querySelectorAll('.financial-bar-label')];
-      return labels.every(label => styled('.chart-card--credit .financial-bar-label').whiteSpace === 'nowrap' &&
-        label.getBoundingClientRect().height <= parseFloat(getComputedStyle(label).lineHeight) + 2);
+      const labels = [...credit.querySelectorAll('.financial-independent-item .financial-bar-label')];
+      return labels.length === 2 && labels.every(label => label.scrollWidth <= label.clientWidth + 2);
     })();
     qa.rapHelpAlignsWithHeading = (() => {
       const heading = rapCard.querySelector('.chart-card-heading');
@@ -156,7 +163,8 @@
     const secondary = el('otherFinancialIndicators');
     qa.progressiveKpis = !secondary.open &&
       document.querySelectorAll('.dashboard-panel > .dashboard-kpis > .kpi-card').length === 4 &&
-      secondary.querySelectorAll('.kpi-card').length === 3;
+      secondary.querySelectorAll('.kpi-card').length === 3 &&
+      secondary.getBoundingClientRect().top >= chartGrid.getBoundingClientRect().bottom - 5;
     secondary.open = true;
     qa.secondaryKpisRetainAuditedValues = secondary.open &&
       el('committedTotal').textContent.includes('50.000') &&
@@ -179,7 +187,7 @@
     qa.rapTakeawayShowsRemainingAmount = /R\$\s+2\.000,00/.test(el('rapTakeaway').textContent);
     qa.creditAvoidsInvalidAccountingIdentity =
       creditCard.querySelector('.chart-lead').textContent.includes('saldos distintos') &&
-      creditCard.querySelector('.chart-lead').textContent.includes('não representa');
+      creditCard.querySelector('.chart-lead').textContent.includes('Não representam parcelas');
     qa.methodologyUsesDisclosure = [expense, credit, gru, rap].every(container =>
       Boolean(container.closest('.chart-card')?.querySelector('details.chart-methodology:not([open])')));
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
