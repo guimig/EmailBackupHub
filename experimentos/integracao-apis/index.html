@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>IFC Araquari · Integração CGU</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:light;--bg:#f3f6f9;--card:#fff;--ink:#223242;--muted:#586e7a;--line:#d9e2e8;--accent:#176d85}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#111d28;--card:#20313e;--ink:#e6f1f5;--muted:#bacbd3;--line:#45606e;--accent:#9bd8e7}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55}
+header,main,footer{max-width:1100px;margin:auto;padding:22px}a{color:var(--accent)}
+h1{font-size:clamp(1.55rem,3vw,2.3rem);letter-spacing:-.03em;line-height:1.2}
+h2{font-size:1.1rem;margin-top:0}.muted{color:var(--muted)}.small{font-size:.83rem}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{border:1px solid var(--line);background:var(--card);padding:20px;border-radius:13px;min-width:0;margin-bottom:13px}
+.value{font-size:clamp(1.15rem,2.5vw,1.8rem);font-weight:750;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}
+th,td{padding:10px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--muted);font-size:.75rem}td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+select{border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);padding:7px}
+.track{flex:1;height:11px;background:var(--bg);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.bar{background:var(--accent);height:100%;border-radius:11px}
+.chartline{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:.83rem}
+.chartline .caption{width:90px}.chartline .total{min-width:148px;text-align:right}
+.status{color:var(--accent);font-weight:700}footer{font-size:.8rem;color:var(--muted)}
+@media(max-width:700px){.cards{grid-template-columns:1fr}.card{padding:15px}.chartline{flex-wrap:wrap}.chartline .total{min-width:0}}
+</style>
+</head>
+<body>
+<header>
+<p class="small"><a href="../../dashboard.html">← Dashboard principal</a> · Laboratório independente</p>
+<h1>Documentos da despesa · IFC Araquari</h1>
+<p class="muted">Consulta experimental de documentos públicos da CGU para a <strong>UG 158459</strong>. Empenhos, liquidações e pagamentos são organizados por data de emissão, não por saldo contábil. Os dados atuais do Tesouro Gerencial permanecem inalterados.</p>
+<p id="status" class="status" role="status" aria-live="polite">Consultando dados publicados...</p>
+</header>
+<main>
+<section class="cards" aria-label="Indicadores das fases">
+<article class="card"><div class="muted small">Empenhos emitidos</div><div id="emp" class="value">—</div><div id="empCount" class="small muted">Aguardando coleta</div></article>
+<article class="card"><div class="muted small">Documentos de liquidação</div><div id="liq" class="value">—</div><div id="liqCount" class="small muted">Aguardando coleta</div></article>
+<article class="card"><div class="muted small">Documentos de pagamento</div><div id="pag" class="value">—</div><div id="pagCount" class="small muted">Aguardando coleta</div></article>
+</section>
+<section class="card"><h2>Valores documentais na janela consultada</h2><p class="small muted" id="period">Sem coleta publicada.</p><div id="bars"></div>
+<p class="small muted">Valores de documentos de fases distintas não devem ser subtraídos para estimar saldos. Essas consultas não equivalem a dotação, provisão, limite de saque, restos a pagar ou execução acumulada.</p>
+</section>
+<section class="card">
+<div class="toolbar"><h2>Movimentação por data</h2><label for="filter">Fase <select id="filter"><option value="all">Todas</option><option value="1">Empenho</option><option value="2">Liquidação</option><option value="3">Pagamento</option></select></label></div>
+<div class="scroll"><table><thead><tr><th>Data</th><th>Fase</th><th class="num">Documentos</th><th class="num">Valor</th><th>Completude</th></tr></thead><tbody id="days"><tr><td colspan="5">Aguardando dados.</td></tr></tbody></table></div>
+</section>
+<section class="card"><h2>Identificadores para rastreabilidade</h2><p class="muted small">Amostra sem dados pessoais: apenas emissão, fase, identificador e valor.</p>
+<div class="scroll"><table><thead><tr><th>Data</th><th>Documento</th><th>Fase</th><th class="num">Valor</th></tr></thead><tbody id="samples"><tr><td colspan="4">Aguardando dados.</td></tr></tbody></table></div>
+</section>
+<section class="card"><h2>Fonte e metodologia</h2><p class="small muted" id="generated">Coleta ainda não realizada.</p><p class="small muted" id="quality">Não inferir zero a partir de informação ausente.</p>
+<p class="small muted">Os valores da UO 26422, consultados no SIOP, não são equivalentes à execução da UG 158459. <a href="../ifc-empenhos/">Consultar SIOP/SIDRA</a> · <a href="https://api.portaldatransparencia.gov.br/swagger-ui/index.html" target="_blank" rel="noopener noreferrer">API oficial da CGU</a>.</p>
+</section>
+</main><footer>Nenhuma credencial é transmitida ao navegador. O experimento não interfere na coleta por e-mail nem nos relatórios de produção.</footer>
+<script type="module">
+const $=id=>document.getElementById(id);
+const currency=value=>typeof value==='number'&&Number.isFinite(value)?new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value):'Indisponível';
+const cell=(row,value,cls)=>{const td=document.createElement('td');td.textContent=String(value??'—');if(cls)td.className=cls;row.appendChild(td)};
+let days=[];
+function fillTable(id,rows,columns){const target=$(id);target.replaceChildren();if(!rows.length){const tr=document.createElement('tr');cell(tr,'Nenhum registro disponível');tr.firstChild.colSpan=columns.length;target.appendChild(tr);return;}
+for(const item of rows){const tr=document.createElement('tr');columns.forEach(fn=>cell(tr,fn(item)));target.appendChild(tr);}}
+function showDays(){fillTable('days',days.filter(d=>$('filter').value==='all'||String(d.fase)===$('filter').value),[
+x=>x.data,x=>x.etapa,x=>x.quantidade,x=>currency(x.total),x=>x.completo?'Completa':'Incompleta']);}
+$('filter').addEventListener('change',showDays);
+function render(data){
+if(data.schema_version!==1||data.unidade_gestora!=='158459'||!Array.isArray(data.fases)||!Array.isArray(data.dias))throw Error('Esquema inesperado');
+days=data.dias;const ids=[['emp','empCount'],['liq','liqCount'],['pag','pagCount']];
+const all=data.fases;
+for(let i=0;i<3;i++){const f=all.find(x=>x.fase===i+1);if(!f)throw Error('Fase ausente');
+$(ids[i][0]).textContent=currency(f.total);$(ids[i][1]).textContent=f.quantidade+' documento(s) · '+(f.completo?'completo':'incompleto');}
+$('period').textContent=data.data_inicial+' a '+data.data_final;
+$('generated').textContent='Consulta CGU emitida em '+new Date(data.gerado_em).toLocaleString('pt-BR');
+$('quality').textContent=data.qualidade?.completo?'Paginação encerrada em todas as consultas. Totais não reconciliados com SIAFI.':'Consultas incompletas: não interpretar valores como totais.';
+const max=Math.max(1,...all.filter(x=>x.completo&&typeof x.total==='number').map(x=>Math.abs(x.total)));
+$('bars').replaceChildren();
+for(const p of all){const div=document.createElement('div');div.className='chartline';const label=document.createElement('span');label.className='caption';label.textContent=p.etapa;const track=document.createElement('div');track.className='track';track.setAttribute('role','img');track.setAttribute('aria-label',p.etapa+': '+currency(p.total));const bar=document.createElement('div');bar.className='bar';bar.style.width=p.completo?Math.min(100,Math.abs(p.total)/max*100)+'%':'0';track.appendChild(bar);const total=document.createElement('span');total.className='total';total.textContent=currency(p.total);div.append(label,track,total);$('bars').appendChild(div);}
+showDays();fillTable('samples',days.flatMap(d=>(d.amostra||[]).map(x=>({...x,etapa:d.etapa}))).slice(0,48),[x=>x.data,x=>x.documento,x=>x.etapa,x=>currency(x.valor)]);
+$('status').textContent=data.qualidade?.completo?'Consulta publicada · dados experimentais':'Consulta parcial · dados não conciliados';
+}
+try{const response=await fetch('./dados/cgu-ug-158459.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP');const data=await response.json();if(data.status==='aguardando_primeira_coleta'){$('status').textContent='Aguardando primeira coleta CGU validada';}else render(data);}
+catch{$('status').textContent='Dados públicos experimentais indisponíveis. A produção permanece operacional.';}
+</script>
+</body></html>

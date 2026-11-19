@@ -1,0 +1,86 @@
+name: EXPERIMENTO - CGU documentos UG 158459
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/cgu_araquari_experimental.yml'
+      - 'experimentos/integracao-apis/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/cgu_araquari_experimental.yml'
+      - 'experimentos/integracao-apis/coletar-cgu.mjs'
+      - 'experimentos/integracao-apis/test_cgu.mjs'
+  workflow_dispatch:
+  schedule:
+    - cron: '37 9 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            experimentos/integracao-apis/
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check experimentos/integracao-apis/coletar-cgu.mjs
+      - run: node --test experimentos/integracao-apis/test_cgu.mjs
+
+  coletar:
+    if: github.event_name != 'pull_request'
+    needs: validar
+    runs-on: ubuntu-22.04
+    timeout-minutes: 18
+    permissions:
+      contents: write
+    concurrency:
+      group: financial-data-main
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            experimentos/integracao-apis/
+          sparse-checkout-cone-mode: false
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Consultar documentos CGU sem exibir credencial
+        run: node experimentos/integracao-apis/coletar-cgu.mjs
+        env:
+          CGU_API_KEY: ${{ secrets.CGU_API_KEY }}
+          CGU_LOOKBACK_DAYS: '7'
+          CGU_MAX_PAGES: '5'
+      - name: Validar esquema, completude, UG e ausencia de dados pessoais
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync } from 'node:fs';
+          const p = 'experimentos/integracao-apis/dados/cgu-ug-158459.json';
+          const raw = readFileSync(p, 'utf8');
+          const data = JSON.parse(raw);
+          if (data.schema_version !== 1 || data.unidade_gestora !== '158459' || !data.qualidade?.completo || data.dias.length !== 21 || data.fases.length !== 3) throw Error('CGU: esquema ou completude invalidos');
+          if (/"(?:nomeFavorecido|codigoFavorecido|observacao|cpf|cnpj)"/i.test(raw)) throw Error('CGU: campo pessoal presente');
+          for (const fase of data.fases) if (fase.total === null || !fase.completo) throw Error('CGU: agregacao incompleta');
+          console.log('CGU: dados experimentais validados; sem campos pessoais');
+          JS
+      - name: Publicar somente o JSON experimental
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -- experimentos/integracao-apis/dados/cgu-ug-158459.json
+          if git diff --cached --quiet; then
+            echo 'Nenhum dado experimental mudou.'
+            exit 0
+          fi
+          git commit -m 'data: atualizar consulta CGU experimental da UG 158459'
+          git push origin HEAD:main
