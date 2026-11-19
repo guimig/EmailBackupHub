@@ -398,6 +398,24 @@ let indexData = null;
       setText('rapTotal', formatMoney(rapTotal));
       setText('gruCollected', formatMoney(gru));
       setText('financePanelDate', latestFinancialDate());
+      [
+        ['budgetReportLink', 'provisionamentos'],
+        ['creditReportLink', 'credito-disponivel-mes-lancamento'],
+        ['rapReportLink', 'restos-a-pagar-rap'],
+        ['gruReportKpiLink', 'recolhimento-proprio-gru']
+      ].forEach(([elementId, slug]) => {
+        const link = byId(elementId);
+        if (!link) return;
+        const url = chartSourceUrl(slug);
+        if (url) {
+          link.href = url;
+          link.hidden = false;
+        } else {
+          link.removeAttribute('href');
+          link.hidden = true;
+        }
+      });
+
       const rapCompositionValid = isAvailable(rapPaid) && isAvailable(rapPayable)
         && valueOf(rapPaid) >= 0 && valueOf(rapPayable) >= 0 && valueOf(rapTotal) > 0;
       setText('rapShareValue', rapCompositionValid ? formatPercent(rapPaid, rapTotal) : '-');
@@ -436,16 +454,16 @@ let indexData = null;
     function renderStageInterpretation(model) {
       const banner = byId('stagesInterpretation');
       if (!banner) return;
-      if (!model?.ok) {
+      if (model?.ok) {
+        banner.hidden = true;
+        banner.textContent = '';
+        banner.dataset.state = 'available';
+      } else {
+        banner.hidden = false;
         banner.textContent = 'Comparação entre etapas indisponível: '
           + (model?.reason || 'dados não auditáveis na mesma posição.');
         banner.dataset.state = 'unavailable';
-        return;
       }
-      banner.textContent = 'Posição auditada de '
-        + (model.date ? model.date.split('-').reverse().join('/') : 'data não informada') + '.';
-
-      banner.dataset.state = 'available';
     }
 
     function setInsight(anchorId, title, text) {

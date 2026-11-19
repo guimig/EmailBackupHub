@@ -26,10 +26,22 @@
         </div>
       </div>
       <div class="dashboard-kpis">
-        <div class="kpi-card"><span>Provisionamentos</span><strong id="budgetBase">-</strong></div>
-        <div class="kpi-card"><span>Crédito disponível</span><strong id="creditAvailable">-</strong></div>
-        <div class="kpi-card"><span>Restos a pagar</span><strong id="rapTotal">-</strong><small>Total acompanhado: pagos e a pagar</small></div>
-        <div class="kpi-card"><span>Arrecadação própria (GRU)</span><strong id="gruCollected">-</strong></div>
+        <div class="kpi-card">
+          <span>Provisionamentos</span><strong id="budgetBase">-</strong>
+          <a class="kpi-report-link" id="budgetReportLink" aria-label="Abrir relatório de provisionamentos" hidden>Ver relatório ↗</a>
+        </div>
+        <div class="kpi-card">
+          <span>Crédito disponível</span><strong id="creditAvailable">-</strong>
+          <a class="kpi-report-link" id="creditReportLink" aria-label="Abrir relatório de crédito disponível" hidden>Ver relatório ↗</a>
+        </div>
+        <div class="kpi-card">
+          <span>Restos a pagar</span><strong id="rapTotal">-</strong>
+          <a class="kpi-report-link" id="rapReportLink" aria-label="Abrir relatório de restos a pagar" hidden>Ver relatório ↗</a>
+        </div>
+        <div class="kpi-card">
+          <span>Arrecadação própria (GRU)</span><strong id="gruCollected">-</strong>
+          <a class="kpi-report-link" id="gruReportKpiLink" aria-label="Abrir relatório de arrecadação própria GRU" hidden>Ver relatório ↗</a>
+        </div>
       </div>
       <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts">
         <article class="chart-card chart-card--expense">
@@ -47,10 +59,15 @@
             <div class="chart-card-heading">
               <h3>Conversão entre etapas</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Critérios dos indicadores de execução">?</summary><p>Os quatro indicadores de despesa usam valores auditados da mesma posição: liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; e (liquidado − pago) ÷ liquidado. O quinto é apenas indicativo: empenhado ÷ provisionado, com fontes distintas e validação de exercício e data. Os denominadores diferem; não some percentuais nem interprete o quinto como taxa formal de utilização da dotação.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios dos indicadores de execução">?</summary><p>Empenhado / provisionado é uma relação indicativa entre totais auditados de relatórios distintos, não uma taxa formal de utilização da dotação. Os demais indicadores usam a mesma posição auditada de despesa: liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; e (liquidado − pago) ÷ liquidado. Os denominadores diferem; os percentuais não devem ser somados.</p></details>
           </div>
-          <p class="stage-interpretation" id="stagesInterpretation" role="status">Conferindo a posição auditada…</p>
+          <p class="stage-interpretation" id="stagesInterpretation" role="status" hidden></p>
           <div class="stage-gauge-grid" aria-label="Percentuais da execução da despesa">
+            <div class="stage-gauge-card stage-gauge-card--indicative">
+              <span class="stage-gauge-title">Empenhado / provisionado</span>
+              <div class="stage-half-gauge" id="provisionGauge"></div>
+              <strong class="stage-gauge-value" id="provisionGaugeValue">-</strong>
+            </div>
             <div class="stage-gauge-card">
               <span class="stage-gauge-title">Liquidado / empenhado</span>
               <div class="stage-half-gauge" id="committedGauge"></div>
@@ -70,11 +87,6 @@
               <span class="stage-gauge-title">Liquidado ainda não pago</span>
               <div class="stage-half-gauge" id="openGauge"></div>
               <strong class="stage-gauge-value" id="openGaugeValue">-</strong>
-            </div>
-            <div class="stage-gauge-card stage-gauge-card--indicative">
-              <span class="stage-gauge-title">Empenhado / provisionado</span>
-              <div class="stage-half-gauge" id="provisionGauge"></div>
-              <strong class="stage-gauge-value" id="provisionGaugeValue">-</strong>
             </div>
           </div>
         </article>

@@ -113,6 +113,23 @@
         el(id).querySelectorAll('.stage-gauge-track').length === 1 &&
         el(id).querySelectorAll('.stage-gauge-progress').length === 1) &&
       !el('provisionDonut') && !el('provisionShareValue');
+    qa.provisionGaugeFirst = stages.querySelector('.stage-gauge-card .stage-gauge-title')
+      ?.textContent.trim() === 'Empenhado / provisionado';
+    qa.auditedDateNotDuplicated = el('stagesInterpretation').hidden &&
+      el('stagesInterpretation').dataset.state === 'available';
+    qa.kpiReportLinks = [
+      ['budgetReportLink', 'provisionamentos'],
+      ['creditReportLink', 'credito-disponivel-mes-lancamento'],
+      ['rapReportLink', 'restos-a-pagar-rap'],
+      ['gruReportKpiLink', 'recolhimento-proprio-gru']
+    ].every(([id, slug]) => {
+      const link = el(id);
+      return link && !link.hidden &&
+        link.getAttribute('href')?.includes('report-viewer.html?report=') &&
+        decodeURIComponent(link.getAttribute('href')).includes(slug) &&
+        !!link.getAttribute('aria-label');
+    });
+    qa.noRapSubtitle = !document.querySelector('#rapTotal + small');
     qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 5 &&
       [...stages.querySelectorAll('.stage-half-gauge svg')].every(svg =>
         svg.getAttribute('role') === 'img' &&
@@ -181,7 +198,7 @@
       && fontPx('.chart-card--rap .rap-share-summary strong') >= chartValues[0];
     qa.captionTextReadable = [
       '.gru-selection-detail', '.gru-visual-note',
-      '.dashboard-kpis .kpi-card small', '.management-alerts-heading small'
+      '.dashboard-kpis .kpi-card .kpi-report-link', '.management-alerts-heading small'
     ].every(selector => fontPx(selector) >= 12.5);
     qa.pageHeadingHierarchy = fontPx('h1') > fontPx('.dashboard-panel h2') &&
       fontPx('.dashboard-panel h2') > fontPx('.chart-card--expense h3') &&
@@ -244,6 +261,8 @@
     qa.dashboardGridSpacingConsistent = gridGap >= 12 && gridGap <= 24;
     qa.dashboardReferenceIsResponsive = referenceCards.length === 1 &&
       rect(referenceCards[0]).width <= rect(reference).width + 1;
+    qa.glossaryUsesAvailableWidth = rect(referenceCards[0]).width >= rect(reference).width - 5 &&
+      rect(reference).width >= rect(chartGrid).width - 5;
     qa.dashboardPanelFitsScreen = rect(dashboardPanel).right <= window.innerWidth + 3;
     qa.dashboardTypographyUsesTokens = getComputedStyle(document.body).fontFamily ===
       getComputedStyle(expenseCard).fontFamily;

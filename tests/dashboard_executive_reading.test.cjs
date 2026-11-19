@@ -19,7 +19,7 @@ test('executive summary removes duplicate monetary sections and long introductor
 });
 
 test('meaningful accounting explanations and links remain available', () => {
-  assert.match(html, /Total acompanhado: pagos e a pagar/);
+  assert.doesNotMatch(html, /Total acompanhado: pagos e a pagar/);
   assert.match(html, /id="creditAvailable"/);
   assert.match(html, /id="budgetBase"/);
   assert.match(html, /RAP pago dividido pela soma de RAP pago e RAP a pagar/);
@@ -35,4 +35,28 @@ test('only GRU drilldown remains clickable; redundant readback is absent', () =>
   assert.match(html, /id="gruViewCodesButton"/);
   assert.match(html, /id="gruSelectionDetail"/);
   assert.match(js, /selected\.dataset\.gruRecords/);
+});
+
+test('KPIs expose four distinct accessible report actions while balances remain unique', () => {
+  const expected = [
+    'budgetReportLink', 'creditReportLink', 'rapReportLink', 'gruReportKpiLink'
+  ];
+  for (const id of expected) {
+    assert.match(html, new RegExp('id="' + id + '"'));
+  }
+  assert.equal((html.match(/class="kpi-report-link"/g) || []).length, 4);
+  assert.match(js, /chartSourceUrl\(slug\)/);
+  assert.match(js, /link\.hidden = true/);
+  assert.doesNotMatch(html, /chart-card--credit/);
+});
+
+test('execution prioritizes budget commitment ratio and hides valid-state notice', () => {
+  const gaugeTitles = [...html.matchAll(/class="stage-gauge-title">([^<]+)/g)].map(match => match[1]);
+  assert.deepEqual(gaugeTitles, [
+    'Empenhado / provisionado', 'Liquidado / empenhado',
+    'Pago / liquidado', 'Pago / empenhado', 'Liquidado ainda não pago'
+  ]);
+  assert.match(html, /id="stagesInterpretation"[^>]*hidden/);
+  assert.match(js, /banner\.hidden = true/);
+  assert.match(js, /banner\.hidden = false/);
 });
