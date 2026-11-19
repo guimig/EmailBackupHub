@@ -241,6 +241,41 @@
     return result;
   }
 
+  // Remove labels that cannot fit entirely rather than showing clipped text.
+  // Re-check when panels become visible or their width changes.
+  function fitTreemapLabels(container) {
+    if (!container?.querySelectorAll) return;
+    for (const tile of container.querySelectorAll('.gru-treemap-tile')) {
+      if (!tile.clientWidth || !tile.clientHeight) continue;
+      tile.classList.remove('is-compact');
+      const labels = [...tile.querySelectorAll('.gru-tile-code, .gru-tile-name, .gru-tile-amount')];
+      labels.forEach(label => {
+        label.hidden = false;
+        label.style.display = 'block';
+        label.style.overflow = 'visible';
+        label.style.webkitLineClamp = 'unset';
+        label.style.maxHeight = 'none';
+      });
+      const style = getComputedStyle(tile);
+      const innerW = tile.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight) - 3;
+      const innerH = tile.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - 3;
+      const gap = parseFloat(style.rowGap) || 0;
+      const fits = () => {
+        const visible = labels.filter(label => !label.hidden);
+        if (visible.some(label => label.scrollWidth > innerW + 1)) return false;
+        return visible.reduce((sum, label) => sum + label.scrollHeight, 0)
+          + Math.max(0, visible.length - 1) * gap <= innerH;
+      };
+      // Keep a complete label, or no label. Full details are always accessible
+      // through aria-label/title, and appear on activation.
+      for (const kind of ['.gru-tile-name', '.gru-tile-amount', '.gru-tile-code']) {
+        if (fits()) break;
+        const element = tile.querySelector(kind);
+        if (element) element.hidden = true;
+      }
+    }
+  }
+
   function renderGruCodes(container, result) {
     if (!container) return;
     if (!result?.ok) {
@@ -552,7 +587,7 @@
       + adjustments;
   }
 
-  const api = { buildGruMonthly, buildGruByCode, buildNdCommitments, renderNdCommitments, treemapLayout, buildCommitmentProvisionRatio, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly, renderGruCodes };
+  const api = { buildGruMonthly, buildGruByCode, buildNdCommitments, renderNdCommitments, treemapLayout, fitTreemapLabels, buildCommitmentProvisionRatio, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly, renderGruCodes };
   root.EmailBackupHubFinancialCharts = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 }(typeof window !== 'undefined' ? window : globalThis));
