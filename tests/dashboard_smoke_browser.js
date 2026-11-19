@@ -163,7 +163,9 @@
       qa.gruMonthlyAlternative = el('gruTreeChart').querySelectorAll('.gru-month-button').length === 11
         && !el('gruTreeChart').hidden && gru.hidden;
       qa.gruMonthScaleInReais = el('gruTreeChart').querySelectorAll('.gru-month-axis-tick').length === 5
-        && el('gruTreeChart').querySelector('.gru-month-axis').textContent.includes('R
+        && el('gruTreeChart').querySelector('.gru-month-axis').textContent.includes('R')
+        && el('gruTreeChart').querySelector('.gru-month-positive') !== null
+        && el('gruTreeChart').querySelector('.gru-month-negative') !== null;
       el('gruViewCodesButton').click();
       qa.gruBackToCodeView = !gru.hidden && el('gruTreeChart').hidden;
 
