@@ -129,9 +129,18 @@
             <div class="chart-card-heading">
               <h3>Empenhos por natureza de despesa</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Critérios do gráfico de empenhos por natureza">?</summary><p>Valores por Natureza Despesa Detalhada (2), obtidos pela soma das contas 622920101 (a liquidar), 622920103 (liquidados a pagar) e 622920104 (pagos). A coluna de valor total da NE não é somada porque se repete em diferentes linhas. As maiores naturezas aparecem individualmente; as demais ficam agrupadas. O tamanho das áreas representa a participação no total positivo. O total é conciliado com os saldos auditados do relatório e, quando a posição é compatível, com o total empenhado do exercício. Em caso de divergência, o gráfico não apresenta valores.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios do gráfico de empenhos por natureza">?</summary><p>Valores por Natureza Despesa Detalhada (2), obtidos pela soma das contas 622920101 (a liquidar), 622920103 (liquidados a pagar) e 622920104 (pagos). A coluna de valor total da NE não é somada porque se repete em diferentes linhas. Alterne entre as naturezas gerais e as NDs detalhadas. Clique em uma natureza geral para aprofundar; as demais categorias podem ser exibidas pelo botão correspondente. O tamanho das áreas representa a participação no total positivo. O total é conciliado com os saldos auditados do relatório e, quando a posição é compatível, com o total empenhado do exercício. Em caso de divergência, o gráfico não apresenta valores.</p></details>
           </div>
-          <div id="ndCommitmentsChart" aria-label="Empenhos agrupados por descrição de natureza de despesa"><p class="chart-empty">Carregando naturezas de despesa…</p></div>
+          <div class="nd-view-toolbar">
+            <div class="gru-view-switch nd-view-switch" id="ndViewSwitch" role="group" aria-label="Agrupamento de empenhos">
+              <button type="button" id="ndViewGeneralButton" class="is-active" aria-pressed="true" data-nd-view="general">Por natureza de despesa</button>
+              <button type="button" id="ndViewDetailedButton" aria-pressed="false" data-nd-view="detailed">Por ND detalhada</button>
+            </div>
+            <button type="button" class="nd-back-button" id="ndBackButton" hidden>← Todas as naturezas</button>
+          </div>
+          <p class="nd-map-scope" id="ndMapScope" role="status" aria-live="polite"></p>
+          <div id="ndCommitmentsChart" aria-label="Distribuição dos empenhos por natureza de despesa"><p class="chart-empty">Carregando naturezas de despesa…</p></div>
+          <button type="button" id="ndShowAllButton" class="nd-show-all-button" hidden>Mostrar todas as naturezas</button>
           <p id="ndChartDetail" class="nd-chart-detail" role="status" aria-live="polite" hidden></p>
           <div class="nd-chart-footer">
             <span id="ndChartTotal" class="nd-chart-total"></span>
