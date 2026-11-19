@@ -1809,3 +1809,114 @@ th, td { padding: var(--dash-space-3); }
   }
   .dashboard-charts--overview .gru-month-axis { min-width: 64px; }
 }
+
+
+/* Composição dos provisionamentos: dois grupos com o mesmo peso de apresentação
+ * dos medidores; desenho adaptável, sem dependências de gráficos externas. */
+.dashboard-charts--overview > .chart-card--provisions { grid-column: span 5; }
+.dashboard-charts--overview > .chart-card--stages { grid-column: span 7; }
+.dashboard-charts--overview > .chart-card--provisions,
+.dashboard-charts--overview > .chart-card--stages { min-width: 0; }
+.provision-composition-body {
+  display: grid;
+  grid-template-columns: minmax(145px, .9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: var(--dash-space-4);
+}
+.provision-donut-frame {
+  position: relative;
+  width: 100%;
+  max-width: 232px;
+  margin-inline: auto;
+  aspect-ratio: 1;
+}
+.provision-donut { display: block; width: 100%; height: 100%; overflow: visible; }
+.provision-donut-track { stroke: var(--soft); }
+.provision-donut-arc {
+  cursor: pointer;
+  transition: stroke-width .15s ease, opacity .15s ease;
+  outline: none;
+}
+.provision-donut-arc--current { stroke: var(--accent); }
+.provision-donut-arc--investment { stroke: var(--accent-2); }
+.provision-donut-arc:hover,
+.provision-donut-arc.is-selected { stroke-width: 33px; }
+.provision-donut-arc:focus-visible { stroke-width: 34px; filter: drop-shadow(0 0 2px var(--text)); }
+.provision-donut-center {
+  position: absolute;
+  inset: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--dash-space-1);
+  text-align: center;
+  pointer-events: none;
+}
+.provision-donut-center span {
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.25;
+}
+.provision-donut-center strong {
+  color: var(--text);
+  font-size: clamp(.75rem, 1.18vw, 1rem);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.provision-legend { display: grid; gap: var(--dash-space-2); min-width: 0; }
+.provision-legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--dash-space-2);
+  min-width: 0;
+  padding: var(--dash-space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  background: var(--soft);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.provision-legend-item:hover,
+.provision-legend-item.is-selected { border-color: var(--brand); background: var(--card); }
+.provision-legend-item:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.provision-legend-swatch { flex: 0 0 11px; width: 11px; height: 11px; border-radius: 3px; margin-top: 5px; }
+.provision-legend-swatch--current { background: var(--accent); }
+.provision-legend-swatch--investment { background: var(--accent-2); }
+.provision-legend-copy { display: grid; gap: 3px; min-width: 0; }
+.provision-legend-label { color: var(--muted); font-size: var(--font-label); line-height: 1.4; }
+.provision-legend-copy strong { font-size: var(--font-body); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.provision-legend-share { color: var(--muted); font-size: var(--font-caption); }
+.provision-composition-note {
+  margin: var(--dash-space-3) 0 0;
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.5;
+}
+.provision-composition-detail {
+  margin: var(--dash-space-3) 0;
+  padding: var(--dash-space-3);
+  color: var(--text);
+  font-size: var(--font-label);
+  line-height: 1.5;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  border-radius: var(--radius-ui);
+}
+.provision-composition-detail[hidden] { display: none; }
+@media (max-width: 1250px) {
+  .dashboard-charts--overview > .chart-card--provisions,
+  .dashboard-charts--overview > .chart-card--stages { grid-column: 1 / -1; }
+  .provision-composition-body { grid-template-columns: minmax(170px, 220px) minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .provision-composition-body { grid-template-columns: minmax(0, 1fr); }
+  .provision-donut-frame { max-width: 210px; }
+  .provision-donut-center strong { font-size: .92rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .provision-donut-arc { transition: none; }
+}
