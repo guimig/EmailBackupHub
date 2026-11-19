@@ -242,11 +242,21 @@
       card.querySelectorAll(':scope > .chart-card-head details.chart-help > summary').length === 1 &&
       card.querySelector(':scope > .chart-card-head details.chart-help > summary').textContent.trim() === '?') &&
       cards.every(card => card.querySelectorAll('details.chart-methodology').length === 0);
-    qa.ndCompositionFromMonetaryColumn = el('ndCommitmentsChart').querySelectorAll('.nd-treemap-tile').length === 3
-      && el('ndChartTotal').textContent.includes('2.700,50')
-      && el('ndChartTotal').textContent.includes('3 naturezas')
-      && new URL(el('ndReportLink').href).searchParams.get('vg') === 'Natureza Despesa Detalhada (2)'
-      && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs') || '[]')[0] === 'Conta Contábil / NE CCor - Valor';
+    qa.ndCompositionReconciled = (() => {
+      const chart = el('ndCommitmentsChart');
+      const query = new URL(el('ndReportLink').href).searchParams;
+      const stageFields = [
+        '622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)',
+        '622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)',
+        '622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)'
+      ];
+      return chart.querySelectorAll('.nd-treemap-tile').length === 3
+        && el('ndChartTotal').textContent.includes('2.700,50')
+        && el('ndChartTotal').textContent.includes('3 naturezas')
+        && el('ndChartTotal').textContent.includes('4 NEs')
+        && query.get('vg') === 'Natureza Despesa Detalhada (2)'
+        && JSON.stringify(JSON.parse(query.get('vgs') || '[]')) === JSON.stringify(stageFields);
+    })();
     qa.ndTreemapCompact = el('ndCommitmentsChart').querySelector('.nd-treemap')?.getBoundingClientRect().height <= 240;
     qa.uniformReportLinkText = [...document.querySelectorAll('.dashboard-charts--overview .financial-chart-link, .dashboard-charts--overview .rap-composition-link')].every(link => link.textContent.trim() === 'Ver relatório ↗');
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
