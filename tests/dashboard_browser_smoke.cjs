@@ -115,6 +115,29 @@ ndDocument.rows.forEach((row,index)=>{
  row['Natureza Despesa Detalhada']=['33901801','33901899','33901414','33903978'][index];
 });
 
+const provisionValueCol='Saldo - Moeda Origem (Item Informação)';
+const provisionDocument={
+  slug:'provisionamentos', date:'17/11/2026',date_iso:'2026-11-17',
+  metadata:{exercicio:2026,hash_conteudo:'test-hash'},
+  quality:{ok:true,issues:[],warnings:[]},
+  metrics:{provisionado:100000},
+  metrics_meta:{provisionado:{status:'ok',source:'totals',fallback:false}},
+  columns:['Ação Governo','Grupo Despesa / 3','Grupo Despesa / OUTRAS DESPESAS CORRENTES',provisionValueCol],
+  rows:[
+    {'Ação Governo':'FUNCIONAMENTO','Grupo Despesa / 3':'3',
+     'Grupo Despesa / OUTRAS DESPESAS CORRENTES':'OUTRAS DESPESAS CORRENTES',
+     [provisionValueCol]:'90.000,00'},
+    {'Ação Governo':'INVESTIMENTOS','Grupo Despesa / 3':'4',
+     'Grupo Despesa / OUTRAS DESPESAS CORRENTES':'INVESTIMENTOS',
+     [provisionValueCol]:'10.000,00'}
+  ],
+  totals:[
+    {label:'FUNCIONAMENTO', values:{[provisionValueCol]:90000}},
+    {label:'INVESTIMENTOS', values:{[provisionValueCol]:10000}},
+    {label:'Total', values:{[provisionValueCol]:100000}}
+  ]
+};
+
 const server=http.createServer((req,res)=>{
  let pathname;
  try{pathname=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname);}
@@ -125,6 +148,7 @@ const server=http.createServer((req,res)=>{
   '/data/report-definitions.json':{reports:{}},
   '/data/search-index.json':{documents:[]},
   '/data/reports/recolhimento-proprio-gru.json':gruDocument,
+  '/data/reports/provisionamentos.json':provisionDocument,
   '/data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json':ndDocument
  };
  if(Object.hasOwn(json,pathname)){

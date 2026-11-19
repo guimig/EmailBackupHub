@@ -176,16 +176,24 @@
         + ' identificado no totalizador de ' + escapeHtml(model.recovered.label)
         + ' (grupo confirmado no cabeçalho do relatório original).</p>'
       : '';
+    const totalShort = model.total >= 1000000
+      ? 'R$ ' + (model.total / 1000000).toLocaleString('pt-BR',
+        { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + ' mi'
+      : model.total >= 10000
+        ? 'R$ ' + (model.total / 1000).toLocaleString('pt-BR',
+          { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' mil'
+        : currency.format(model.total);
     container.innerHTML = '<div class="provision-composition-body">'
       + '<div class="provision-donut-frame"><svg class="provision-donut" viewBox="0 0 200 200"'
       + ' role="group" aria-label="Rosca de composição por grupo da despesa">'
       + '<circle class="provision-donut-track" cx="100" cy="100" r="' + radius
       + '" fill="none" stroke-width="25"></circle>' + arcs + '</svg>'
       + '<div class="provision-donut-center" aria-hidden="true"><span>Total provisionado</span>'
-      + '<strong>' + escapeHtml(currency.format(model.total)) + '</strong></div></div>'
+      + '<strong>' + escapeHtml(totalShort) + '</strong></div></div>'
       + '<div class="provision-legend" role="group" aria-label="Selecionar grupo da despesa">'
       + legend + '</div></div>'
-      + '<p class="provision-composition-note">Posição de ' + escapeHtml(model.date)
+      + '<p class="provision-composition-note">Total: <strong>'
+      + escapeHtml(currency.format(model.total)) + '</strong> · Posição de ' + escapeHtml(model.date)
       + ' · valores líquidos recebidos por provisão, não valores empenhados.</p>' + note;
     syncSelection(container, model, detail);
 
