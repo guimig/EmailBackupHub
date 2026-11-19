@@ -1,16 +1,17 @@
 {
   "schema_version": 1,
   "origem": "CGU - Portal da Transparência",
-  "gerado_em": "2026-11-19T14:22:12.522Z",
+  "gerado_em": "2026-11-19T14:49:07.404Z",
   "unidade_gestora": "158459",
   "unidade_orcamentaria_referencia": "26422",
   "criterio": "Documentos por data de emissão da UG 158459; não são saldos contábeis do Tesouro.",
   "data_inicial": "12/11/2026",
   "data_final": "18/11/2026",
   "qualidade": {
-    "completo": false,
-    "valores_invalidos": 41,
-    "observacao": "Consultas incompletas ou valores inválidos não produzem totais; zero somente quando todos os registros da fase são numéricos e a paginação completa."
+    "completo": true,
+    "valores_invalidos": 0,
+    "valores_recuperados_impactos": 41,
+    "observacao": "Valores das NS recuperados de empenhos impactados quando disponíveis. Sem paginação completa e cobertura monetária total, não divulgar somas. Não equivale aos saldos contábeis do SIAFI."
   },
   "fases": [
     {
@@ -19,23 +20,26 @@
       "quantidade": 31,
       "total": 3742418.25,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
       "completo": true
     },
     {
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 41,
-      "total": null,
-      "valores_invalidos": 41,
+      "total": 82863.53,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 41,
       "completo": true
     },
     {
       "fase": 3,
       "etapa": "Pagamento",
-      "quantidade": 143,
-      "total": null,
+      "quantidade": 276,
+      "total": 230586.73,
       "valores_invalidos": 0,
-      "completo": false
+      "valores_recuperados_impactos": 0,
+      "completo": true
     }
   ],
   "dias": [
@@ -47,6 +51,9 @@
       "total": 11519.83,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 2,
       "amostra": [
         {
@@ -62,22 +69,25 @@
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 2,
-      "total": null,
+      "total": 219.24,
       "completo": true,
-      "valores_invalidos": 2,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 2,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 4,
       "paginas_consultadas": 2,
       "amostra": [
         {
           "data": "12/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006667",
-          "valor": null
+          "valor": 105.56
         },
         {
           "data": "12/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006668",
-          "valor": null
+          "valor": 113.68
         }
       ]
     },
@@ -89,6 +99,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -100,6 +113,9 @@
       "total": 3102627.4,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 3,
       "amostra": [
         {
@@ -157,58 +173,61 @@
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 9,
-      "total": null,
+      "total": 26901.41,
       "completo": true,
-      "valores_invalidos": 9,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 9,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 18,
       "paginas_consultadas": 2,
       "amostra": [
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006669",
-          "valor": null
+          "valor": 7206.5
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006670",
-          "valor": null
+          "valor": 4041
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006671",
-          "valor": null
+          "valor": 169.89
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006672",
-          "valor": null
+          "valor": 1739.96
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006673",
-          "valor": null
+          "valor": 674.96
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006674",
-          "valor": null
+          "valor": 394.14
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006675",
-          "valor": null
+          "valor": 674.96
         },
         {
           "data": "13/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006678",
-          "valor": null
+          "valor": 6000
         }
       ]
     },
@@ -220,6 +239,9 @@
       "total": 1349.92,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 2,
       "amostra": [
         {
@@ -244,6 +266,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -255,6 +280,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -266,6 +294,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -277,6 +308,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -288,6 +322,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -299,6 +336,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -310,6 +350,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -318,58 +361,61 @@
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 28,
-      "total": null,
+      "total": 55367.28,
       "completo": true,
-      "valores_invalidos": 28,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 28,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 56,
       "paginas_consultadas": 3,
       "amostra": [
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006680",
-          "valor": null
+          "valor": 126.08
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006681",
-          "valor": null
+          "valor": 4937.72
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006682",
-          "valor": null
+          "valor": 6000
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006683",
-          "valor": null
+          "valor": 6000
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006684",
-          "valor": null
+          "valor": 6000
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006685",
-          "valor": null
+          "valor": 6000
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006686",
-          "valor": null
+          "valor": 3000
         },
         {
           "data": "16/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006687",
-          "valor": null
+          "valor": 6000
         }
       ]
     },
@@ -378,10 +424,13 @@
       "fase": 3,
       "etapa": "Pagamento",
       "quantidade": 66,
-      "total": null,
-      "completo": false,
+      "total": 89851.12,
+      "completo": true,
       "valores_invalidos": 0,
-      "paginas_consultadas": 5,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
+      "paginas_consultadas": 6,
       "amostra": [
         {
           "data": "16/11/2026",
@@ -441,6 +490,9 @@
       "total": 628271.02,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 2,
       "amostra": [
         {
@@ -486,22 +538,25 @@
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 2,
-      "total": null,
+      "total": 375.6,
       "completo": true,
-      "valores_invalidos": 2,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 2,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 4,
       "paginas_consultadas": 2,
       "amostra": [
         {
           "data": "17/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006728",
-          "valor": null
+          "valor": 375.6
         },
         {
           "data": "17/11/2026",
           "fase": 2,
           "documento": "158459264222026NS006921",
-          "valor": null
+          "valor": 0
         }
       ]
     },
@@ -509,16 +564,31 @@
       "data": "17/11/2026",
       "fase": 3,
       "etapa": "Pagamento",
-      "quantidade": 75,
-      "total": null,
-      "completo": false,
+      "quantidade": 208,
+      "total": 139385.69,
+      "completo": true,
       "valores_invalidos": 0,
-      "paginas_consultadas": 5,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
+      "paginas_consultadas": 15,
       "amostra": [
         {
           "data": "17/11/2026",
           "fase": 3,
+          "documento": "158459264222026OB002685",
+          "valor": 1100
+        },
+        {
+          "data": "17/11/2026",
+          "fase": 3,
           "documento": "158459264222026OB002686",
+          "valor": 1100
+        },
+        {
+          "data": "17/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002687",
           "valor": 1100
         },
         {
@@ -536,32 +606,20 @@
         {
           "data": "17/11/2026",
           "fase": 3,
+          "documento": "158459264222026OB002690",
+          "valor": 1100
+        },
+        {
+          "data": "17/11/2026",
+          "fase": 3,
           "documento": "158459264222026OB002691",
           "valor": 394.14
         },
         {
           "data": "17/11/2026",
           "fase": 3,
-          "documento": "158459264222026OB002694",
-          "valor": 92.41
-        },
-        {
-          "data": "17/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002698",
-          "valor": 4450
-        },
-        {
-          "data": "17/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002700",
-          "valor": 4450
-        },
-        {
-          "data": "17/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002703",
-          "valor": 4450
+          "documento": "158459264222026OB002692",
+          "valor": 113.32
         }
       ]
     },
@@ -573,6 +631,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -584,6 +645,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     },
@@ -595,6 +659,9 @@
       "total": 0,
       "completo": true,
       "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
       "paginas_consultadas": 1,
       "amostra": []
     }
