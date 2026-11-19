@@ -56,9 +56,9 @@
         ['gruCardLink','recolhimento-proprio-gru']
       ].every(([id,slug]) => !!el(id)?.href && el(id).href.includes(slug)
         && !!el(id).getAttribute('aria-label') && !!el(id).getAttribute('title'));
-      qa.rapKpiShowsPayableNotPaidTotal = /2\\.000/.test(el('rapTotal').textContent)
+      qa.rapKpiShowsPayableNotPaidTotal = /2\.000/.test(el('rapTotal').textContent)
         && el('rapCardLink').textContent.includes('Restos a pagar a pagar')
-        && !/12\\.000/.test(el('rapTotal').textContent);
+        && !/12\.000/.test(el('rapTotal').textContent);
       qa.fiveDistinctCharts = cards.length === 5 &&
         ['expense','rap','stages','nd','gru'].every(name => !!card(name));
       qa.threeAccessibleTabs = [...document.querySelectorAll('[data-dashboard-view]')].length === 3
