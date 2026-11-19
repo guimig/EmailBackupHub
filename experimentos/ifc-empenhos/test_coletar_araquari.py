@@ -50,6 +50,16 @@ class TestCollector(unittest.TestCase):
   with patch.object(m,'_download_month_once',side_effect=simulated),patch.object(m.time,'sleep') as sleeper:
    self.assertEqual(m.download_month('202501')['valor'],123)
   self.assertEqual(len(calls),2);self.assertEqual(sleeper.call_count,1)
+ def test_http_405_ends_batch_before_repeating(self):
+  from unittest.mock import patch
+  from urllib.error import HTTPError
+  from tempfile import TemporaryDirectory
+  from pathlib import Path
+  import sys
+  with TemporaryDirectory() as folder:
+   with patch.object(m,'DEST',Path(folder)/'dados.json'),patch.object(m,'download_month',side_effect=HTTPError('https://example.invalid',405,'limite',{},None)) as download,patch.object(m,'get_sidra',return_value={'201412':Decimal('100'),'202610':Decimal('120')}),patch.object(sys,'argv',['coletar_araquari.py','--max-months','10']):
+    with self.assertRaises(RuntimeError): m.main()
+    self.assertEqual(download.call_count,1)
  def test_http_404_not_retried(self):
   from unittest.mock import patch
   from urllib.error import HTTPError
