@@ -1527,3 +1527,81 @@ th, td { padding: var(--dash-space-3); }
 .dashboard-charts--overview .gru-tile-code,
 .dashboard-charts--overview .gru-tile-name,
 .dashboard-charts--overview .gru-tile-amount { max-width: 100%; }
+
+
+/* Execution workspace: ratios as a compact strip; ND map always full width. */
+.dashboard-panel .dashboard-charts--overview > .chart-card--stages,
+.dashboard-panel .dashboard-charts--overview > .chart-card--nd {
+  grid-column: 1 / -1;
+  grid-row: auto;
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: var(--dash-space-2);
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-card {
+  min-width: 0;
+  padding: var(--dash-space-2);
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-title {
+  min-height: 2.5em;
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--nd .nd-treemap {
+  height: clamp(270px,29vw,390px);
+}
+.dashboard-panel .nd-view-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dash-space-2);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--dash-space-2);
+}
+.dashboard-panel .nd-view-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dash-space-1);
+  min-width: 0;
+  margin: 0;
+}
+.dashboard-panel .nd-view-switch > button { min-height: 36px; }
+.dashboard-panel .nd-back-button,
+.dashboard-panel .nd-show-all-button {
+  appearance: none;
+  background: transparent;
+  color: var(--brand);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  font: inherit;
+  font-size: var(--font-caption);
+  font-weight: 600;
+  padding: var(--dash-space-2) var(--dash-space-3);
+  cursor: pointer;
+}
+.dashboard-panel .nd-back-button:hover,
+.dashboard-panel .nd-show-all-button:hover { background: var(--soft); }
+.dashboard-panel .nd-back-button:focus-visible,
+.dashboard-panel .nd-show-all-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.dashboard-panel .nd-back-button[hidden],
+.dashboard-panel .nd-show-all-button[hidden] { display: none !important; }
+.dashboard-panel .nd-map-scope {
+  font-size: var(--font-caption);
+  color: var(--muted);
+  margin: 0 0 var(--dash-space-2);
+}
+.dashboard-panel .nd-show-all-button {
+  margin-top: var(--dash-space-2);
+}
+@media (max-width: 760px) {
+  .dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .dashboard-panel .dashboard-charts--overview .chart-card--nd .nd-treemap {
+    height: clamp(285px,75vw,380px);
+  }
+  .dashboard-panel .nd-view-switch { width: 100%; }
+  .dashboard-panel .nd-view-switch > button { flex: 1 1 auto; }
+}
