@@ -26,7 +26,7 @@ test('meaningful accounting explanations and links remain available', () => {
   assert.match(html, /id="managementAlertsPanel"/);
   assert.doesNotMatch(html, /class="aux-panel glossary-panel"|Glossário dos conceitos/);
   assert.match(html, /id="ndCommitmentsChart"/);
-  assert.match(html, /Conta Contábil \/ NE CCor - Valor/);
+  assert.match(html, /622920101 \(a liquidar\)/);
   assert.match(html, /class="chart-help"/);
   assert.match(html, /id="gruViewCodesButton"/);
 });
@@ -71,5 +71,5 @@ test('ND value composition is linked to a named grouping and no duplicate stage 
     assert.match(js, new RegExp(account + ' \\/ = EMPENHOS'));
     assert.match(html, new RegExp(account));
   }
-  assert.doesNotMatch(js, /query\\.set\\('vgs', JSON\\.stringify\\(\\['Conta Contábil \\/ NE CCor - Valor'\\]\\)\\)/);
+  assert.doesNotMatch(js, /query\.set\('vgs', JSON\.stringify\(\['Conta Contábil \/ NE CCor - Valor'\]\)\)/);
 });
