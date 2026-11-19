@@ -68,9 +68,13 @@ jobs:
           const p = 'experimentos/integracao-apis/dados/cgu-ug-158459.json';
           const raw = readFileSync(p, 'utf8');
           const data = JSON.parse(raw);
-          if (data.schema_version !== 1 || data.unidade_gestora !== '158459' || !data.qualidade?.completo || data.dias.length !== 21 || data.fases.length !== 3) throw Error('CGU: esquema ou completude invalidos');
+          if (data.schema_version !== 1 || data.unidade_gestora !== '158459' || typeof data.qualidade?.completo !== 'boolean' || data.dias.length !== 21 || data.fases.length !== 3) throw Error('CGU: esquema invalido');
           if (/"(?:nomeFavorecido|codigoFavorecido|observacao|cpf|cnpj)"/i.test(raw)) throw Error('CGU: campo pessoal presente');
-          for (const fase of data.fases) if (!fase.completo || (fase.total === null && fase.valores_invalidos < 1)) throw Error('CGU: agregacao inconsistente');
+          for (const fase of data.fases) {
+            if (!Number.isInteger(fase.quantidade) || fase.quantidade < 0) throw Error('CGU: contagem invalida');
+            if (!fase.completo && fase.total !== null) throw Error('CGU: total parcial apresentado como completo');
+            if (fase.completo && fase.total === null && fase.valores_invalidos < 1) throw Error('CGU: valor ausente sem justificativa');
+          }
           console.log('CGU: dados experimentais validados; sem campos pessoais');
           JS
       - name: Publicar somente o JSON experimental

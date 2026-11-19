@@ -62,17 +62,17 @@ let days=[];
 function fillTable(id,rows,columns){const target=$(id);target.replaceChildren();if(!rows.length){const tr=document.createElement('tr');cell(tr,'Nenhum registro disponível');tr.firstChild.colSpan=columns.length;target.appendChild(tr);return;}
 for(const item of rows){const tr=document.createElement('tr');columns.forEach(fn=>cell(tr,fn(item)));target.appendChild(tr);}}
 function showDays(){fillTable('days',days.filter(d=>$('filter').value==='all'||String(d.fase)===$('filter').value),[
-x=>x.data,x=>x.etapa,x=>x.quantidade,x=>currency(x.total),x=>x.completo?'Completa':'Incompleta']);}
+x=>x.data,x=>x.etapa,x=>(x.completo?'':'≥ ')+x.quantidade,x=>currency(x.total),x=>x.completo?'Completa':'Parcial']);}
 $('filter').addEventListener('change',showDays);
 function render(data){
 if(data.schema_version!==1||data.unidade_gestora!=='158459'||!Array.isArray(data.fases)||!Array.isArray(data.dias))throw Error('Esquema inesperado');
 days=data.dias;const ids=[['emp','empCount'],['liq','liqCount'],['pag','pagCount']];
 const all=data.fases;
 for(let i=0;i<3;i++){const f=all.find(x=>x.fase===i+1);if(!f)throw Error('Fase ausente');
-$(ids[i][0]).textContent=currency(f.total);$(ids[i][1]).textContent=f.quantidade+' documento(s) · '+(f.completo?'completo':'incompleto');}
+$(ids[i][0]).textContent=currency(f.total);$(ids[i][1]).textContent=(f.completo?'':'Pelo menos ')+f.quantidade+' documento(s) · '+(f.completo?'consulta completa':'consulta parcial');}
 $('period').textContent=data.data_inicial+' a '+data.data_final;
 $('generated').textContent='Consulta CGU emitida em '+new Date(data.gerado_em).toLocaleString('pt-BR');
-$('quality').textContent=data.qualidade?.completo?'Paginação encerrada em todas as consultas. Totais não reconciliados com SIAFI.':'Consultas incompletas: não interpretar valores como totais.';
+$('quality').textContent=data.qualidade?.completo?'Paginação encerrada em todas as consultas. Totais não reconciliados com SIAFI.':'Consultas parciais: contagens mínimas, totais incompletos indisponíveis.';
 const max=Math.max(1,...all.filter(x=>x.completo&&typeof x.total==='number').map(x=>Math.abs(x.total)));
 $('bars').replaceChildren();
 for(const p of all){const div=document.createElement('div');div.className='chartline';const label=document.createElement('span');label.className='caption';label.textContent=p.etapa;const track=document.createElement('div');track.className='track';track.setAttribute('role','img');track.setAttribute('aria-label',p.etapa+': '+currency(p.total));const bar=document.createElement('div');bar.className='bar';bar.style.width=p.completo?Math.min(100,Math.abs(p.total)/max*100)+'%':'0';track.appendChild(bar);const total=document.createElement('span');total.className='total';total.textContent=currency(p.total);div.append(label,track,total);$('bars').appendChild(div);}

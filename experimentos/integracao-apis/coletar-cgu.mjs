@@ -126,9 +126,10 @@ export async function collectSnapshot({now=new Date(),token,lookback=7,maxPages=
 async function main(){
   const model=await collectSnapshot({token:process.env.CGU_API_KEY,
     lookback:process.env.CGU_LOOKBACK_DAYS||7,maxPages:process.env.CGU_MAX_PAGES||5});
-  if(!model.qualidade.completo) throw Error('CGU com paginação incompleta; publicação bloqueada');
+  // Uma janela com mais documentos que o limite de páginas é publicável apenas como parcial.
+  // Totais incompletos permanecem nulos e as quantidades são limites inferiores.
   await writeFile(OUTPUT,JSON.stringify(model,null,2)+'\n','utf8');
-  console.log('CGU UG 158459: '+model.dias.length+' consultas completas; valores monetários ausentes/ilegíveis: '+model.qualidade.valores_invalidos+'; sem dados pessoais');
+  console.log('CGU UG 158459: '+model.dias.length+' consultas; paginação completa: '+model.qualidade.completo+'; valores monetários ausentes/ilegíveis: '+model.qualidade.valores_invalidos+'; sem dados pessoais');
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===process.argv[1]){
   main().catch(error=>{console.error(error.message.startsWith('CGU HTTP ')||error.message.startsWith('CGU_API_KEY')?error.message:'Coleta CGU não concluída: '+String(error.message).slice(0,100));process.exitCode=1;});

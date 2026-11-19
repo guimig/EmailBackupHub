@@ -72,3 +72,11 @@ test('valor monetário ilegível não gera zero nem soma parcial, mas mantém co
  assert.equal(result.valores_invalidos,1);
  assert.equal(result.total,null);
 });
+
+test('snapshot parcial mantém contagens mínimas e não divulga total incompleto',async()=>{
+ const model=await collectSnapshot({now:new Date('2026-11-19T14:00:00Z'),token:'fake',lookback:1,maxPages:1,request:pages({'18/11/2026-1-1':[item('A','10,00')]})});
+ assert.equal(model.qualidade.completo,false);
+ assert.equal(model.fases[0].quantidade,1);
+ assert.equal(model.fases[0].total,null);
+ assert.equal(model.dias[0].completo,false);
+});
