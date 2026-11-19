@@ -38,7 +38,7 @@
     <div class="chart-scroll" id="chartScroll" aria-label="Gráfico de linhas com rolagem horizontal em telas pequenas"><div class="empty" id="chartEmpty">Carregando série oficial...</div><svg id="historySvg" class="chart" role="img" aria-label="Despesas empenhadas do IFC em valores nominais e corrigidos" viewBox="0 0 960 345" hidden></svg></div>
     <div class="legend"><span><i class="dot nominal"></i> Empenhado nominal</span><span><i class="dot real"></i> Corrigido para a mesma data-base</span><span>◌ 2026: exercício parcial</span></div>
     <div id="pointDetail" role="status" aria-live="polite">Selecione um ponto ou um ano na tabela para consultar seu valor e sua procedência.</div>
-    <div class="method"><strong>Critério experimental:</strong> os empenhos correspondem aos lançamentos mensais atribuídos à <em>unidade gestora</em> IFC Campus Araquari (158459) nos arquivos CGU. Cada mês é corrigido pelo número-índice IPCA ou INPC da própria competência. Séries anuais incompletas não são totalizadas. Acervo histórico anterior a 2013 requer fonte adicional validada.</div>
+    <div class="method"><strong>Critério experimental:</strong> os empenhos correspondem aos lançamentos mensais atribuídos à <em>unidade gestora</em> IFC Campus Araquari (158459) nos arquivos CGU. Cada mês é corrigido pelo número-índice IPCA ou INPC da própria competência. Séries anuais incompletas não são totalizadas. Acervo da UG anterior a 2014 requer fonte adicional validada.</div>
   </section>
   <section class="card" style="margin-top:16px" aria-labelledby="tableTitle">
     <div class="section-title"><div><h2 id="tableTitle">Valores e rastreabilidade</h2><p class="sub">Valores vazios ou consultas sem resposta são exibidos como indisponíveis, nunca como zero.</p></div></div>
@@ -103,7 +103,7 @@
     svgDraw(display);
     const lines=[];lines.push(`CGU: ${model?.cgu?.anos_ok||0} exercícios consolidados para a UG 158459; ${model?.cgu?.meses_coletados||0} meses de empenhos agregados.`);
     lines.push(`IBGE: IPCA ${model?.sidra?.status?.IPCA?.status||'não consultado'}${model?.sidra?.status?.IPCA?.info?' ('+model.sidra.status.IPCA.info+')':''}; INPC ${model?.sidra?.status?.INPC?.status||'não consultado'}${model?.sidra?.status?.INPC?.info?' ('+model.sidra.status.INPC.info+')':''}. Referência: ${period(model?.sidra?.referencia)}.`);
-    lines.push(`CGU: arquivo publico mensal de despesas, com filtro pelo codigo da UG. Ano fechado só aparece com 12 competências. Os anos 2009–2012 não têm equivalência validada por UG no acervo histórico público.`);
+    lines.push(`CGU: arquivo publico mensal de despesas, com filtro pelo codigo da UG. Ano fechado só aparece com 12 competências. Os anos 2009–2013 não têm série mensal de empenhos da UG validada no acervo público.`);
     lines.push('Este conjunto mede a UG 158459. Não confundir com a UO 26422. SIDRA fornece exclusivamente os números-índices de correção.');
     $('sourceStatus').replaceChildren();for(const line of lines)txt($('sourceStatus'),'p',line);
   }
