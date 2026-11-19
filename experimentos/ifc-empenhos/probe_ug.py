@@ -16,7 +16,7 @@ from urllib.request import Request, urlopen
 from zipfile import ZipFile
 
 BASE = "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao"
-PERIODS = ("202512", "202510", "202601", "201512")
+PERIODS = ("201301", "201312", "201401", "201412", "201501", "201512", "201601", "201912", "202001", "202101", "202201", "202301", "202312", "202401", "202512", "202601", "202603", "202610")
 UG = "158459"
 LIMIT = 310 * 1024 * 1024
 
@@ -67,7 +67,7 @@ def main():
                 if not target and resp.status == 200 and (not size or size < LIMIT):
                     target = (period, url)
         except Exception as exc:
-            print("PROBE", period, "FAIL", type(exc).__name__, str(exc)[:200], flush=True)
+            print("PROBE", period, "FAIL", type(exc).__name__, "HTTP", getattr(exc, "code", "n/a"), str(exc)[:120], flush=True)
     if not target:
         print("No public source under size threshold");return 0
     period,url = target
