@@ -438,8 +438,12 @@
     let total = 0;
     for (const row of report.rows) {
       const description = String(row?.[nd] ?? '').trim();
-      const cents = stages.map(name => amountCents(row?.[name]));
+      // Tesouro Gerencial can leave an unused stage cell empty, meaning zero.
+      // Never convert malformed non-empty data or entirely empty rows to zero.
+      const rawStages = stages.map(name => String(row?.[name] ?? '').trim());
+      const cents = rawStages.map(value => value === '' ? 0 : amountCents(value));
       if (!description || /^total(?:\s+geral)?$/i.test(description)
+        || rawStages.every(value => value === '')
         || cents.some(value => value === null)) {
         return unavailable('Descrição da ND ou saldo contábil inválido; conferir relatório de origem.');
       }
