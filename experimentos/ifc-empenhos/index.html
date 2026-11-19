@@ -105,10 +105,59 @@
     lines.push('Os três conjuntos são distintos: SIOP mede a UO 26422; CGU por órgão precisa de conciliação; SIDRA fornece apenas o índice de correção.');
     $('sourceStatus').replaceChildren();for(const line of lines)txt($('sourceStatus'),'p',line);
   }
+  // O JSON pode estar atualizado na branch main antes de o Pages concluir o deploy.
+  // Esta fonte alternativa utiliza somente dados publicos do mesmo repositorio.
+  const rawDataUrl = 'https://raw.githubusercontent.com/guimig/EmailBackupHub/main/experimentos/ifc-empenhos/dados.json';
+  let loadSerial = 0;
+  async function fetchDocument(url) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), {cache:'no-store',signal:controller.signal});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const doc = await response.json();
+      if (doc?.schema_version !== 1 || !Array.isArray(doc.anos) || doc.unidade_orcamentaria !== '26422') {
+        throw new Error('Esquema de dados inesperado');
+      }
+      return doc;
+    } finally { clearTimeout(timer); }
+  }
+  function preferDocument(pages, github) {
+    if (!pages) return {doc:github,source:'github'};
+    if (!github) return {doc:pages,source:'pages'};
+    const pagesDate = Date.parse(pages.gerado_em || '') || 0;
+    const githubDate = Date.parse(github.gerado_em || '') || 0;
+    if (githubDate > pagesDate) return {doc:github,source:'github'};
+    // Se ambas tiverem a mesma data, priorize a copia de origem do proprio site.
+    return {doc:pages,source:'pages'};
+  }
   async function load(){
-    $('loadingStatus').classList.remove('ok');$('loadingStatus').lastElementChild.textContent='Carregando dados experimentais...';
-    try {const response=await fetch('./dados.json?'+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error('HTTP '+response.status);const doc=await response.json();if(doc.schema_version!==1||!Array.isArray(doc.anos)||doc.unidade_orcamentaria!=='26422')throw new Error('Esquema de dados inesperado');model=doc;render();$('loadingStatus').lastElementChild.textContent=doc.siop?.anos_ok?`Dados SIOP recuperados: ${doc.siop.anos_ok} exercício(s) · coleta isolada`:'Ainda não há resultados SIOP validados; execute a coleta experimental';if(doc.siop?.anos_ok)$('loadingStatus').classList.add('ok');}
-    catch(error){model=null;render();$('loadingStatus').lastElementChild.textContent=`Dados experimentais indisponíveis (${error.message}). A aplicação principal não é afetada.`;}
+    const serial = ++loadSerial;
+    $('loadingStatus').classList.remove('ok');
+    $('loadingStatus').lastElementChild.textContent='Consultando as versões dos dados no GitHub Pages e no repositório...';
+    // Duas leituras publicas independentes: erros de CORS/rede nao derrubam a pagina.
+    const results = await Promise.allSettled([
+      fetchDocument('./dados.json'),
+      fetchDocument(rawDataUrl),
+    ]);
+    if (serial !== loadSerial) return;
+    const pages = results[0].status === 'fulfilled' ? results[0].value : null;
+    const github = results[1].status === 'fulfilled' ? results[1].value : null;
+    if (!pages && !github) {
+      model = null;
+      render();
+      $('loadingStatus').lastElementChild.textContent='Dados indisponíveis no Pages e no repositório GitHub. Verifique a conexão e tente recarregar.';
+      return;
+    }
+    const selected = preferDocument(pages,github);
+    model = selected.doc;
+    render();
+    const n = Number(model.siop?.anos_ok) || 0;
+    const origin = selected.source === 'github' ? 'repositório GitHub (publicação do Pages ainda desatualizada)' : 'GitHub Pages';
+    $('loadingStatus').lastElementChild.textContent = n
+      ? `Dados SIOP recuperados: ${n} exercício(s) · origem: ${origin}`
+      : 'Ainda não há resultados SIOP validados nas fontes acessíveis. Execute a coleta experimental.';
+    if (n) $('loadingStatus').classList.add('ok');
   }
   $('toggleNominal').addEventListener('change',e=>{opts.nominal=e.target.checked;render();});
   $('toggleCorrected').addEventListener('change',e=>{opts.corrected=e.target.checked;render();});
