@@ -14,7 +14,9 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import time
 import unicodedata
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 from zipfile import BadZipFile, ZipFile
 
@@ -24,7 +26,8 @@ SIDRA = {
     "INPC": "https://apisidra.ibge.gov.br/values/t/1736/n1/all/v/2289/p/all",
 }
 UG = "158459"
-START_YEAR = 2013  # Acervo atual CGU. 2009-2012 necessitam uma fonte alternativa validada.
+START_YEAR = 2013  # Dicionario do acervo PTP 2009-2012 nao discrimina UG/empenho.
+MAX_WORK_SECONDS = 21 * 60
 MAX_ZIP_BYTES = 128 * 1024 * 1024
 HERE = Path(__file__).resolve().parent
 DEST = HERE / "dados-araquari.json"
@@ -71,7 +74,7 @@ def sum_monthly_csv(stream, month: str) -> tuple[Decimal, int]:
     return total, matched
 
 
-def download_month(month: str) -> dict:
+def _download_month_once(month: str) -> dict:
     url = f"{BASE}/{month}_Despesas.zip"
     request = Request(url, headers={"User-Agent": "IFC-Araquari-Aggregated-Expense/1.0", "Accept": "application/zip"})
     with tempfile.TemporaryDirectory() as folder:
@@ -93,6 +96,39 @@ def download_month(month: str) -> dict:
             with archive.open(members[0]) as csv_file:
                 total, rows = sum_monthly_csv(csv_file, month)
     return {"valor": float(total.quantize(CENTS, rounding=ROUND_HALF_UP)), "registros": rows, "fonte": url}
+
+
+def download_month(month: str) -> dict:
+    # O servico publica arquivos grandes e pode limitar downloads consecutivos.
+    # Nao confundir limite temporario com ausencia de empenhos.
+    for attempt in range(3):
+        try:
+            return _download_month_once(month)
+        except HTTPError as exc:
+            if exc.code not in {429, 500, 502, 503, 504} or attempt == 2:
+                raise
+            retry_after = (exc.headers or {}).get('Retry-After', '')
+            try:
+                delay = min(35.0, max(3.0, float(retry_after)))
+            except ValueError:
+                delay = 5.0 * (attempt + 1)
+            print('CGU', month, 'HTTP', exc.code, 'tentativa', attempt + 1, 'pausa', round(delay), 's', flush=True)
+            time.sleep(delay)
+    raise RuntimeError('download CGU sem resultado apos tentativas')
+
+
+def materially_changed(old: dict, current: dict) -> bool:
+    """Evita commit e rebuild do Pages quando a coleta nao mudou."""
+    if not old:
+        return True
+    def comparable(payload):
+        copy = dict(payload)
+        copy.pop('gerado_em', None)
+        cgu = dict(copy.get('cgu') or {})
+        cgu.pop('falhas_consulta', None)  # diagnosticos de rede sao transitorios
+        copy['cgu'] = cgu
+        return copy
+    return comparable(old) != comparable(current)
 
 
 def get_sidra(url: str) -> dict[str, Decimal]:
@@ -161,28 +197,37 @@ def prepare_result(months: dict, indices: dict, previous: dict, now: datetime) -
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max-months",type=int,default=24)
+    parser.add_argument("--max-months",type=int,default=180)
     parser.add_argument("--dry-run",action="store_true")
     args=parser.parse_args()
     if not 1 <= args.max_months <= 200:
         parser.error("max-months entre 1 e 200")
+    started = time.monotonic()
     now=datetime.now(timezone.utc)
     old=json.loads(DEST.read_text(encoding="utf-8")) if DEST.exists() else {}
     cache=dict(old.get("meses") or {})
     # Priorizar anos fechados mais recentes, completando 2025, 2024, etc.
     # O ano corrente entra depois dos anos anteriores, sem apresentar soma incompleta como anual.
-    years_order = [now.year - 1, now.year - 2, now.year] + list(range(now.year - 3, START_YEAR - 1, -1))
+    years_order = [now.year, now.year - 1, now.year - 2] + list(range(START_YEAR, now.year - 2))
     available = [f"{year}{month:02d}" for year in years_order for month in range(1, (now.month if year == now.year else 13))]
     pending=[x for x in available if x not in cache][:args.max_months]
     print("CGU UG",UG,"meses ja armazenados",len(cache),"consultas desta execucao",len(pending),flush=True)
     failures=[]
     for i,month in enumerate(pending,1):
+        if time.monotonic() - started >= MAX_WORK_SECONDS:
+            print('LIMITE DE TEMPO: salvando progresso ja verificado; proximo lote retoma a coleta', flush=True)
+            break
         try:
             cache[month]=download_month(month)
             print(f"CGU {month}: OK, registros UG={cache[month]['registros']}, valor={cache[month]['valor']}",flush=True)
+            time.sleep(1.3)  # Menor pressao na fonte; processamento do Tesouro e independente.
         except Exception as exc:
-            failures.append({"mes":month,"tipo":type(exc).__name__})
-            print("CGU",month,"FALHA",type(exc).__name__,"HTTP",getattr(exc,"code","n/a"),flush=True)
+            code = getattr(exc, 'code', None)
+            failures.append({"mes": month, "tipo": type(exc).__name__, "http": code})
+            print('CGU', month, 'FALHA', type(exc).__name__, 'HTTP', code or 'n/a', flush=True)
+            if code in {403, 429, 503}:
+                print('LIMITE DO SERVICO: lote encerrado, preservando meses verificados', flush=True)
+                break
     indices={}
     for name,url in SIDRA.items():
         try:
@@ -197,6 +242,9 @@ def main() -> int:
         raise RuntimeError("Falha em ambos os indices SIDRA; nao atualizar arquivo")
     if not cache:
         raise RuntimeError("Nenhum mes CGU disponivel; nao substituir dados")
+    if not materially_changed(old, doc):
+        print('SEM ALTERACOES: cache e indice equivalentes; evitando commit no Pages', flush=True)
+        return 0
     if not args.dry_run:
         temp=DEST.with_suffix(".tmp")
         temp.write_text(json.dumps(doc,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

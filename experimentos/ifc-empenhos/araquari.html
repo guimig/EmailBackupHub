@@ -73,7 +73,7 @@
     const W=960,H=345,L=78,R=18,T=22,B=53;
     const allYears=rows.map(r=>r.year);
     const minYear=Math.min(2009,...allYears),maxYear=Math.max(2026,...allYears);
-    const yMax=Math.max(1e7, Math.ceil(Math.max(...avail)*1.12/1e8)*1e8);
+    const yMax=Math.max(1e6, Math.ceil(Math.max(...avail)*1.12/1e6)*1e6);
     const x=y=>L+(y-minYear)/(maxYear-minYear)*(W-L-R);
     const y=v=>H-B-v/yMax*(H-T-B);
     for(let i=0;i<=4;i++){const v=i*yMax/4,cy=y(v);el(svg,'line',{x1:L,y1:cy,x2:W-R,y2:cy,stroke:'var(--grid)','stroke-width':1});el(svg,'text',{x:L-10,y:cy+4,'text-anchor':'end',fill:'var(--muted)','font-size':11},new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}).format(v/1e6));}
@@ -99,11 +99,11 @@
     $('dataQuality').className='pill'+(validRows.length?'':' warn');
     $('annualRows').replaceChildren();
     const display=rows.length?rows:Array.from({length:18},(_,i)=>({year:2009+i,status:'ausente',nominal:null}));
-    for(const row of display){const tr=document.createElement('tr');txt(tr,'td',String(row.year));const tdN=txt(tr,'td',valid(row)?money(row.nominal):'—','num');const tdR=txt(tr,'td',valid(row)?money(corrected(row)):'—','num');const label=row.status==='parcial'?'Parcial':row.status==='ok'?'CGU consultada':row.status==='falha'?'Falha de coleta':row.status==='nao_consultado'?'Não consultado':'Sem registro validado';const tdS=document.createElement('td');txt(tdS,'span',label,'tag'+(row.status==='falha'||row.status==='ausente'?' bad':''));if(row.info)tdS.title=row.info;tr.appendChild(tdS);$('annualRows').appendChild(tr);if(valid(row)){tdN.style.cursor='pointer';tdN.tabIndex=0;tdN.addEventListener('click',()=>selected(row,'nominal'));tdR.style.cursor='pointer';tdR.tabIndex=0;tdR.addEventListener('click',()=>selected(row,'corrigido'));}}
+    for(const row of display){const tr=document.createElement('tr');txt(tr,'td',String(row.year));const tdN=txt(tr,'td',valid(row)?money(row.nominal):'—','num');const tdR=txt(tr,'td',valid(row)?money(corrected(row)):'—','num');const label=row.status==='parcial'?'Parcial':row.status==='ok'?'CGU consultada':row.status==='sem_fonte'?'Fonte por UG indisponível':row.status==='incompleto'?`Em coleta: ${row.meses||0}/${row.esperados||12} meses`:row.status==='falha'?'Falha de coleta':'Sem registro validado';const tdS=document.createElement('td');txt(tdS,'span',label,'tag'+(row.status==='falha'||row.status==='ausente'?' bad':''));if(row.info)tdS.title=row.info;tr.appendChild(tdS);$('annualRows').appendChild(tr);if(valid(row)){tdN.style.cursor='pointer';tdN.tabIndex=0;tdN.addEventListener('click',()=>selected(row,'nominal'));tdR.style.cursor='pointer';tdR.tabIndex=0;tdR.addEventListener('click',()=>selected(row,'corrigido'));}}
     svgDraw(display);
     const lines=[];lines.push(`CGU: ${model?.cgu?.anos_ok||0} exercícios consolidados para a UG 158459; ${model?.cgu?.meses_coletados||0} meses de empenhos agregados.`);
     lines.push(`IBGE: IPCA ${model?.sidra?.status?.IPCA?.status||'não consultado'}${model?.sidra?.status?.IPCA?.info?' ('+model.sidra.status.IPCA.info+')':''}; INPC ${model?.sidra?.status?.INPC?.status||'não consultado'}${model?.sidra?.status?.INPC?.info?' ('+model.sidra.status.INPC.info+')':''}. Referência: ${period(model?.sidra?.referencia)}.`);
-    lines.push(`CGU: arquivo publico mensal de despesas, com filtro por codigo da UG. Meses ainda não recuperados permanecem sem total anual.`);
+    lines.push(`CGU: arquivo publico mensal de despesas, com filtro pelo codigo da UG. Ano fechado só aparece com 12 competências. Os anos 2009–2012 não têm equivalência validada por UG no acervo histórico público.`);
     lines.push('Este conjunto mede a UG 158459. Não confundir com a UO 26422. SIDRA fornece exclusivamente os números-índices de correção.');
     $('sourceStatus').replaceChildren();for(const line of lines)txt($('sourceStatus'),'p',line);
   }
