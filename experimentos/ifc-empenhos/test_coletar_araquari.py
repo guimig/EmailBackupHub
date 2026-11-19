@@ -32,7 +32,30 @@ class TestCollector(unittest.TestCase):
   doc=m.prepare_result(months, {'IPCA':index,'INPC':index}, {}, now)
   row=next(r for r in doc['anos'] if r['year']==2025)
   self.assertEqual(row['status'],'ok');self.assertEqual(row['nominal'],1200);self.assertEqual(row['ipca'],1440)
-  self.assertIn('"nominal": 1200.0',json.dumps(doc))
+  self.assertIn('\"nominal\": 1200.0',json.dumps(doc,indent=2))
+ def test_no_new_data_does_not_force_deploy(self):
+  old={'schema_version':1, 'gerado_em':'2026-11-19T00:00:00Z', 'cgu':{'falhas_consulta':[{'mes':'202311'}], 'meses_coletados':2}, 'meses':{'202501':{'valor':2}}, 'anos':[]}
+  new={**old,'gerado_em':'2026-11-19T12:00:00Z','cgu':{**old['cgu'],'falhas_consulta':[]}}
+  self.assertFalse(m.materially_changed(old,new))
+  new['meses']={'202501':{'valor':3}}
+  self.assertTrue(m.materially_changed(old,new))
+ def test_http_retry_429_then_succeeds(self):
+  from unittest.mock import patch
+  from urllib.error import HTTPError
+  calls=[]
+  def simulated(_month):
+   calls.append(1)
+   if len(calls)==1: raise HTTPError('https://example.invalid',429,'limite',{},None)
+   return {'valor':123,'registros':1}
+  with patch.object(m,'_download_month_once',side_effect=simulated),patch.object(m.time,'sleep') as sleeper:
+   self.assertEqual(m.download_month('202501')['valor'],123)
+  self.assertEqual(len(calls),2);self.assertEqual(sleeper.call_count,1)
+ def test_http_404_not_retried(self):
+  from unittest.mock import patch
+  from urllib.error import HTTPError
+  with patch.object(m,'_download_month_once',side_effect=HTTPError('https://example.invalid',404,'nao existe',{},None)) as method:
+   with self.assertRaises(HTTPError): m.download_month('201301')
+   self.assertEqual(method.call_count,1)
  def test_older_year_without_source_not_zero(self):
   now=datetime(2026,11,19,tzinfo=timezone.utc)
   doc=m.prepare_result({}, {'IPCA':{},'INPC':{}},{},now)
