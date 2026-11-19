@@ -70,7 +70,7 @@ jobs:
           const data = JSON.parse(raw);
           if (data.schema_version !== 1 || data.unidade_gestora !== '158459' || !data.qualidade?.completo || data.dias.length !== 21 || data.fases.length !== 3) throw Error('CGU: esquema ou completude invalidos');
           if (/"(?:nomeFavorecido|codigoFavorecido|observacao|cpf|cnpj)"/i.test(raw)) throw Error('CGU: campo pessoal presente');
-          for (const fase of data.fases) if (fase.total === null || !fase.completo) throw Error('CGU: agregacao incompleta');
+          for (const fase of data.fases) if (!fase.completo || (fase.total === null && fase.valores_invalidos < 1)) throw Error('CGU: agregacao inconsistente');
           console.log('CGU: dados experimentais validados; sem campos pessoais');
           JS
       - name: Publicar somente o JSON experimental

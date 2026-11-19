@@ -25,7 +25,7 @@ test('normaliza apenas campos públicos estritamente selecionados',()=>{
  assert.deepEqual(Object.keys(result),['data','fase','documento','valor']);
  assert.equal(JSON.stringify(result).includes('PRIVADO'),false);
  assert.throws(()=>sanitizeDocument({...item('X'),codigoUg:'158125'},'18/11/2026',1));
- assert.throws(()=>sanitizeDocument({...item('X'),valor:'NaN'},'18/11/2026',1));
+ assert.equal(sanitizeDocument({...item('X'),valor:'NaN'},'18/11/2026',1).valor,null);
 });
 test('pagina, deduplica e soma valores sem confundir limite com fim',async()=>{
  const result=await collectPhase('18/11/2026',1,{token:'fake',request:pages({
@@ -63,4 +63,12 @@ test('usa cabeçalho secreto, nunca URL; retorna erro sanitizado',async()=>{
  }});
  assert.deepEqual(docs,[]);
  await assert.rejects(requestPage('18/11/2026',1,1,{token:'fake',fetcher:async()=>({ok:false,status:401})}),/CGU HTTP 401/);
+});
+
+test('valor monetário ilegível não gera zero nem soma parcial, mas mantém contagem documental',async()=>{
+ const result=await collectPhase('18/11/2026',1,{token:'fake',request:pages({'18/11/2026-1-1':[item('A','10,00'),item('B','indisponível')]})});
+ assert.equal(result.completo,true);
+ assert.equal(result.quantidade,2);
+ assert.equal(result.valores_invalidos,1);
+ assert.equal(result.total,null);
 });

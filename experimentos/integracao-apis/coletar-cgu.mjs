@@ -73,9 +73,10 @@ export function sanitizeDocument(row,date,phase){
   const amount=parseBRL(row.valor);
   if(!document) throw Error('CGU: identificador documental ausente');
   if(document.length>96) throw Error('CGU: identificador documental extenso');
-  if(amount===null) throw Error('CGU: valor monetário ausente ou inválido (tipo '+(typeof row.valor)+')');
+  // Valor público ausente/ilegível: preservar contagem, jamais atribuir zero ou soma parcial.
+  // A validação da cobertura numérica é independente da paginação documental.
   // Lista fechada de campos: não publicar CPF, CNPJ, nome, observação ou texto livre.
-  return {data:date,fase:phase,documento:document,valor:Math.round(amount*100)/100};
+  return {data:date,fase:phase,documento:document,valor:amount===null?null:Math.round(amount*100)/100};
 }
 export async function collectPhase(date,phase,{token,maxPages=5,request=requestPage}={}){
   const limit=integer(maxPages,5,20), seen=new Map();
@@ -91,9 +92,10 @@ export async function collectPhase(date,phase,{token,maxPages=5,request=requestP
     }
   }
   const documents=[...seen.values()].sort((a,b)=>a.documento.localeCompare(b.documento));
-  const sum=documents.reduce((n,x)=>n+Math.round(x.valor*100),0)/100;
+  const invalid=documents.filter(x=>x.valor===null).length;
+  const sum=invalid?null:documents.reduce((n,x)=>n+Math.round(x.valor*100),0)/100;
   return {data:date,fase:phase,etapa:PHASES[phase],quantidade:documents.length,
-    total:complete?sum:null,completo:complete,paginas_consultadas:pages,amostra:documents.slice(0,8)};
+    total:complete?sum:null,completo:complete,valores_invalidos:invalid,paginas_consultadas:pages,amostra:documents.slice(0,8)};
 }
 export async function collectSnapshot({now=new Date(),token,lookback=7,maxPages=5,request=requestPage}={}){
   if(!token||!token.trim()) throw Error('CGU_API_KEY não configurada');
@@ -109,14 +111,16 @@ export async function collectSnapshot({now=new Date(),token,lookback=7,maxPages=
   const phases=[1,2,3].map(fase=>{
     const selected=rows.filter(r=>r.fase===fase),complete=selected.every(r=>r.completo);
     return {fase,etapa:PHASES[fase],quantidade:selected.reduce((n,r)=>n+r.quantidade,0),
-      total:complete?Math.round(selected.reduce((n,r)=>n+r.total,0)*100)/100:null,completo:complete};
+      total:complete&&selected.every(r=>r.total!==null)?Math.round(selected.reduce((n,r)=>n+r.total,0)*100)/100:null,
+      valores_invalidos:selected.reduce((n,r)=>n+r.valores_invalidos,0),completo:complete};
   });
   return {schema_version:1,origem:'CGU - Portal da Transparência',gerado_em:now.toISOString(),
     unidade_gestora:UG,unidade_orcamentaria_referencia:'26422',
     criterio:'Documentos por data de emissão da UG 158459; não são saldos contábeis do Tesouro.',
     data_inicial:dates[0],data_final:dates.at(-1),
     qualidade:{completo:rows.every(r=>r.completo),
-      observacao:'Consultas incompletas não produzem totais; zero somente após paginação completa.'},
+      valores_invalidos:rows.reduce((n,r)=>n+r.valores_invalidos,0),
+      observacao:'Consultas incompletas ou valores inválidos não produzem totais; zero somente quando todos os registros da fase são numéricos e a paginação completa.'},
     fases:phases,dias:rows};
 }
 async function main(){
@@ -124,7 +128,7 @@ async function main(){
     lookback:process.env.CGU_LOOKBACK_DAYS||7,maxPages:process.env.CGU_MAX_PAGES||5});
   if(!model.qualidade.completo) throw Error('CGU com paginação incompleta; publicação bloqueada');
   await writeFile(OUTPUT,JSON.stringify(model,null,2)+'\n','utf8');
-  console.log('CGU UG 158459: '+model.dias.length+' consultas completas; sem dados pessoais');
+  console.log('CGU UG 158459: '+model.dias.length+' consultas completas; valores monetários ausentes/ilegíveis: '+model.qualidade.valores_invalidos+'; sem dados pessoais');
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===process.argv[1]){
   main().catch(error=>{console.error(error.message.startsWith('CGU HTTP ')||error.message.startsWith('CGU_API_KEY')?error.message:'Coleta CGU não concluída: '+String(error.message).slice(0,100));process.exitCode=1;});
