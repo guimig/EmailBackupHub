@@ -106,6 +106,15 @@ const ndDocument={
  ]
 };
 
+// The mock includes two detailed codes under a single general nature.
+ndDocument.columns.unshift('Natureza Despesa','Natureza Despesa Detalhada');
+ndDocument.rows.forEach((row,index)=>{
+ const isGrant=index<2;
+ row['Natureza Despesa']=isGrant ? 'AUXILIO FINANCEIRO A ESTUDANTES'
+   : index===2 ? 'DIARIAS - PESSOAL CIVIL' : 'OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA';
+ row['Natureza Despesa Detalhada']=['33901801','33901899','33901414','33903978'][index];
+});
+
 const server=http.createServer((req,res)=>{
  let pathname;
  try{pathname=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname);}
