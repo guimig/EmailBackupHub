@@ -26,7 +26,7 @@ SIDRA = {
     "INPC": "https://apisidra.ibge.gov.br/values/t/1736/n1/all/v/2289/p/all",
 }
 UG = "158459"
-START_YEAR = 2013  # Dicionario do acervo PTP 2009-2012 nao discrimina UG/empenho.
+START_YEAR = 2014  # Arquivos CGU 201301 e 201312: HTTP 403; arquivo 201401: HTTP 200.
 MAX_WORK_SECONDS = 21 * 60
 MAX_ZIP_BYTES = 128 * 1024 * 1024
 HERE = Path(__file__).resolve().parent
@@ -189,7 +189,7 @@ def prepare_result(months: dict, indices: dict, previous: dict, now: datetime) -
             "criterio":"Movimentos mensais de Valor Empenhado da UG 158459, arquivos CGU de execucao da despesa",
             "cgu":{"fonte":BASE,"anos_ok":sum(x["status"] in {"ok","parcial"} for x in rows),
                    "meses_coletados":len(months),"primeiro_exercicio_coberto":START_YEAR,
-                   "nota":"2009-2012: consultar acervo historico de formato distinto; sem zeros inventados"},
+                   "nota":"2009-2013: sem arquivo mensal de empenhos da UG equivalente, sem zeros inventados"},
             "sidra":{"referencia":reference,"ultima_competencia":last,
                      "status":{k:{"status":"ok" if indices[k] else "aguardando"} for k in SIDRA}},
             "meses":months,"anos":rows}
