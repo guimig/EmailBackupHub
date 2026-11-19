@@ -363,7 +363,7 @@
     }).join('');
 
     const link = options.url
-      ? '<a class="financial-chart-link" href="' + escapeHtml(options.url) + '">Consultar relatório de origem</a>' : '';
+      ? '<a class="financial-chart-link" href="' + escapeHtml(options.url) + '">Ver relatório ↗</a>' : '';
     container.innerHTML = '<div class="financial-comparison" role="group" aria-label="Comparação de valores atuais">'
       + items + link + '</div>';
   }
@@ -403,7 +403,94 @@
       + '</div>';
   }
 
-  const api = { buildGruMonthly, buildGruByCode, treemapLayout, buildCommitmentProvisionRatio, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly, renderGruCodes };
+
+  // This is the NE CCor value dimension, NOT the sum of accounting-balance columns.
+  // Detail rows only: the parser keeps report subtotals separately in report.totals.
+  function buildNdCommitments(report) {
+    const unavailable = reason => ({ ok: false, reason, items: [] });
+    if (!report || report.quality?.ok === false || !Array.isArray(report.rows) || !report.rows.length) {
+      return unavailable('Não há lançamentos detalhados válidos no relatório de empenhos.');
+    }
+    const fields = (report.columns || []).map(name => ({ name, normalized: normalize(name) }));
+    const nd = fields.find(f => f.normalized === 'natureza despesa detalhada (2)')?.name;
+    const amount = fields.find(f => f.normalized === 'conta contabil / ne ccor - valor')?.name;
+    if (!nd || !amount) {
+      return unavailable('As colunas de descrição da ND ou valor da NE CCor não foram identificadas.');
+    }
+    const entries = new Map();
+    let total = 0;
+    for (const row of report.rows) {
+      const description = String(row?.[nd] ?? '').trim();
+      const cents = amountCents(row?.[amount]);
+      if (!description || /^total(?:\s+geral)?$/i.test(description) || cents === null) {
+        return unavailable('Há natureza de despesa ou valor monetário inválido; conferir relatório de origem.');
+      }
+      const entry = entries.get(description) || { description, cents: 0, records: 0 };
+      entry.cents += cents;
+      entry.records++;
+      total += cents;
+      if (!Number.isSafeInteger(entry.cents) || !Number.isSafeInteger(total)) {
+        return unavailable('O agrupamento excede a precisão de centavos.');
+      }
+      entries.set(description, entry);
+    }
+    const items = [...entries.values()].map(item => ({
+      description: item.description, value: item.cents / 100, records: item.records
+    })).sort((a, b) => b.value - a.value || a.description.localeCompare(b.description, 'pt-BR'));
+    return {
+      ok: true, items, records: report.rows.length, groups: entries.size,
+      total: total / 100, groupColumn: nd, valueColumn: amount,
+      date: report.date || '',
+      positiveTotal: items.filter(x => x.value > 0).reduce((sum, x) => sum + x.value, 0)
+    };
+  }
+
+  function renderNdCommitments(container, result, limit = 8) {
+    if (!container) return;
+    if (!result?.ok) {
+      container.innerHTML = '<p class="chart-empty" role="status">'
+        + escapeHtml(result?.reason || 'Relatório de empenhos indisponível.') + '</p>';
+      return;
+    }
+    const positives = result.items.filter(item => item.value > 0);
+    const remaining = positives.slice(limit);
+    const shown = positives.slice(0, limit);
+    if (remaining.length) shown.push({
+      description: 'Outras naturezas (' + remaining.length + ')',
+      value: remaining.reduce((sum, item) => sum + item.value, 0),
+      records: remaining.reduce((sum, item) => sum + item.records, 0),
+      aggregate: true
+    });
+    const tiles = treemapLayout(shown).map((item, index) => {
+      const percentage = result.positiveTotal > 0 ? item.value / result.positiveTotal * 100 : 0;
+      const compact = item.w < 21 || item.h < 25;
+      const style = 'left:' + item.x.toFixed(4) + '%;top:' + item.y.toFixed(4)
+        + '%;width:' + item.w.toFixed(4) + '%;height:' + item.h.toFixed(4) + '%';
+      const text = item.description + ' · ' + currency.format(item.value)
+        + ' · ' + percentage.toFixed(1).replace('.', ',') + '%';
+      return '<button type="button" class="gru-treemap-tile nd-treemap-tile gru-tile-color-'
+        + (index % 8) + (compact ? ' is-compact' : '') + '" style="' + style
+        + '" data-nd-description="' + escapeHtml(item.description)
+        + '" data-nd-value="' + escapeHtml(currency.format(item.value))
+        + '" data-nd-share="' + percentage.toFixed(1)
+        + '" data-nd-records="' + item.records
+        + '" aria-pressed="false" title="' + escapeHtml(text)
+        + '" aria-label="' + escapeHtml(text)
+        + '"><span class="gru-tile-name">' + escapeHtml(item.description)
+        + '</span><strong class="gru-tile-amount">' + escapeHtml(currency.format(item.value))
+        + '</strong></button>';
+    }).join('');
+    const negative = result.items.filter(item => item.value < 0);
+    const adjustments = negative.length
+      ? '<p class="nd-chart-adjustments">' + negative.length
+        + ' natureza(s) com saldo negativo, fora do mapa; consultar relatório completo.</p>' : '';
+    container.innerHTML = '<div class="gru-treemap nd-treemap" role="group"'
+      + ' aria-label="Naturezas de despesa agrupadas por valores de NE CCor">'
+      + (tiles || '<p class="chart-empty">Nenhum valor positivo.</p>') + '</div>'
+      + adjustments;
+  }
+
+  const api = { buildGruMonthly, buildGruByCode, buildNdCommitments, renderNdCommitments, treemapLayout, buildCommitmentProvisionRatio, buildExpenseStages, locateGruColumns, parseAmount, amountCents, civilDate, renderComparison, renderIndependentBalances, renderGruMonthly, renderGruCodes };
   root.EmailBackupHubFinancialCharts = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 }(typeof window !== 'undefined' ? window : globalThis));
