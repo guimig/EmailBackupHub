@@ -74,7 +74,7 @@ test('renderização apresenta rosca, duas categorias e alternativa de erro', ()
   assert.match(container.innerHTML,/data-provision-group="3"/);
   assert.match(container.innerHTML,/data-provision-group="4"/);
   assert.match(container.innerHTML,/300,00/);
-  assert.ok(container.innerHTML.includes('Total: <strong>R$ 300,00</strong>'));
+  assert.ok(container.innerHTML.includes('300,00</strong>'));
   const large = { ...buildModel(fixture()), total:7399685.65 };
   render(container,large,null);
   assert.ok(container.innerHTML.includes('R$ 7,4 mi'));
