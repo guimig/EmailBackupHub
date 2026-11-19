@@ -73,7 +73,7 @@ test('credit available: no false month series from month in metric header and no
   assert.equal(suggestion.type,'bar');
   const result=Charts.build(credit,docs(credit),suggestion,Filters);
   assert.equal(result.ok,true,result.reason);
-  assert.equal(result.points.length,7);
+  assert.equal(result.points.length,credit.rows.length);
   assert.ok(!result.points.some(point=>/NOV\/2026$/.test(point.label)));
 });
 

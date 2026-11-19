@@ -53,6 +53,7 @@ jobs:
             provisionamentos.html
             recolhimento-proprio-gru.html
             data/reports/recolhimento-proprio-gru.json
+            data/reports/provisionamentos.json
             data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json
             data/reports/credito-disponivel-mes-lancamento.json
             data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json
@@ -87,9 +88,10 @@ jobs:
           node --check assets/js/dashboard.js
           node --check tests/dashboard_rap_management.test.cjs
           node --check assets/js/financial-chart-provenance.js
+          node --check assets/js/provision-composition.js
           node --check tests/financial_chart_provenance.test.cjs
           node --check assets/js/report-catalog.js
-          node --test tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs tests/financial_chart_provenance.test.cjs tests/report_chart_explorer.test.cjs tests/dashboard_rap_management.test.cjs tests/dashboard_executive_reading.test.cjs tests/dashboard_half_gauge.test.cjs tests/dashboard_stage_nominal_detail.test.cjs tests/report_schema_guard.test.cjs
+          node --test tests/provision_composition.test.cjs tests/dashboard_stage1.test.cjs tests/dashboard_stage2.test.cjs tests/report_viewer_stage3.test.cjs tests/interactive_charts_stage4.test.cjs tests/interactive_charts_stage5.test.cjs tests/chart_security_stage6.test.cjs tests/report_viewer_presets_stage7.test.cjs tests/report_catalog_stage8.test.cjs tests/financial_chart_provenance.test.cjs tests/report_chart_explorer.test.cjs tests/dashboard_rap_management.test.cjs tests/dashboard_executive_reading.test.cjs tests/dashboard_half_gauge.test.cjs tests/dashboard_stage_nominal_detail.test.cjs tests/report_schema_guard.test.cjs
 
       - name: Browser UX smoke test (desktop and mobile)
         run: |

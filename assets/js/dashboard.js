@@ -447,6 +447,7 @@ let indexData = null;
 
       renderStageInterpretation(stageModel);
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid }, stageModel);
+      renderProvisionComposition();
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
       renderNdCommitmentsView();
@@ -466,6 +467,54 @@ let indexData = null;
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+    }
+
+    // O resumo compacto não inclui linhas detalhadas; carregar a origem para conferir os GNDs.
+    let provisionDetailState = { key: '', status: 'idle', document: null };
+    async function renderProvisionComposition() {
+      const chart = byId('provisionCompositionChart');
+      const detail = byId('provisionCompositionDetail');
+      const link = byId('provisionCompositionLink');
+      const source = financialReports['provisionamentos'];
+      const url = chartSourceUrl('provisionamentos');
+      if (link) {
+        if (url) link.href = url;
+        else link.removeAttribute('href');
+        link.hidden = !url;
+      }
+      if (!chart || !window.EmailBackupHubProvisions) return;
+      const id = String(source?.metadata?.hash_conteudo || '') + ':'
+        + String(source?.date_iso || '') + ':' + String(source?.metrics?.provisionado ?? '');
+      if (!source || id === '::') {
+        window.EmailBackupHubProvisions.render(chart, {ok:false,reason:'Relatório de provisões não disponível.'}, detail);
+        return;
+      }
+      if (provisionDetailState.key !== id) {
+        provisionDetailState = { key: id, status: 'loading', document: null };
+        chart.innerHTML = '<p class="chart-empty">Conferindo grupos de despesa…</p>';
+        const loadingKey = id;
+        try {
+          const report = reports.find(item => item.slug === 'provisionamentos');
+          if (!report?.json_path) throw Error('Relatório de origem não encontrado no catálogo.');
+          const response = await fetch(report.json_path);
+          if (!response.ok) throw Error('HTTP ' + response.status);
+          const document = await response.json();
+          if (provisionDetailState.key !== loadingKey) return;
+          provisionDetailState = { key: id, status: 'ready', document };
+        } catch (error) {
+          if (provisionDetailState.key !== loadingKey) return;
+          provisionDetailState = { key: id, status: 'error', document: null };
+          console.warn('Não foi possível conferir os provisionamentos:', error);
+        }
+      }
+      if (provisionDetailState.status !== 'ready') {
+        window.EmailBackupHubProvisions.render(chart, {
+          ok:false, reason:'Falha ao carregar o relatório detalhado para conciliação.'
+        }, detail);
+        return;
+      }
+      const model = window.EmailBackupHubProvisions.buildModel(provisionDetailState.document, source);
+      window.EmailBackupHubProvisions.render(chart, model, detail);
     }
 
     function configureStageGaugeDetails(provisionModel, stageModel) {

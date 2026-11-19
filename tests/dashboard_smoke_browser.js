@@ -59,8 +59,8 @@
       qa.rapKpiShowsPayableNotPaidTotal = /2\.000/.test(el('rapTotal').textContent)
         && el('rapCardLink').textContent.includes('Restos a pagar a pagar')
         && !/12\.000/.test(el('rapTotal').textContent);
-      qa.fiveDistinctCharts = cards.length === 5 &&
-        ['expense','rap','stages','nd','gru'].every(name => !!card(name));
+      qa.sixDistinctCharts = cards.length === 6 &&
+        ['expense','rap','provisions','stages','nd','gru'].every(name => !!card(name));
       qa.threeAccessibleTabs = [...document.querySelectorAll('[data-dashboard-view]')].length === 3
         && el('dashboardViewTabs').getAttribute('role') === 'tablist'
         && chartGrid.getAttribute('role') === 'tabpanel'
@@ -92,7 +92,7 @@
       qa.noGlossaryOrDuplicateBalances = !document.querySelector('.glossary-panel,.chart-card--credit');
 
       click('Execution'); fit();
-      qa.executionOnly = visible().join(',') === 'stages,nd'
+      qa.executionOnly = visible().join(',') === 'provisions,stages,nd'
         && el('dashboardTabExecution').getAttribute('aria-selected') === 'true'
         && chartGrid.getAttribute('aria-labelledby') === 'dashboardTabExecution';
       const gauges = card('stages').querySelectorAll('.stage-gauge-card');
@@ -118,7 +118,9 @@
         && el('ndChartTotal').textContent.includes('4 NEs')
         && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs')).length === 3;
       qa.ndLabelsComplete = labelsFit(nd);
-      qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6
+      qa.provisionChartLoaded = !!el('provisionCompositionChart')
+         && !!el('provisionCompositionLink')?.href;
+       qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6
         && (window.innerWidth <= 760
           ? rect(card('nd')).top >= rect(card('stages')).bottom - 6
           : rect(card('nd')).top >= rect(card('stages')).bottom - 6);
