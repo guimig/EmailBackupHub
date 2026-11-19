@@ -1,0 +1,35 @@
+name: EXPERIMENTO - Testes de escala dos empenhos IFC
+
+on:
+  pull_request:
+    paths:
+      - 'experimentos/ifc-empenhos/chart-scale.js'
+      - 'experimentos/ifc-empenhos/test_chart_scale.cjs'
+      - 'experimentos/ifc-empenhos/index.html'
+      - 'experimentos/ifc-empenhos/araquari.html'
+      - '.github/workflows/ifc_chart_scale_tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  chart-scales:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            experimentos/ifc-empenhos/chart-scale.js
+            experimentos/ifc-empenhos/test_chart_scale.cjs
+            experimentos/ifc-empenhos/index.html
+            experimentos/ifc-empenhos/araquari.html
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar sintaxe e eixos de ambas as abas
+        run: |
+          node --check experimentos/ifc-empenhos/chart-scale.js
+          node --check experimentos/ifc-empenhos/test_chart_scale.cjs
+          node --test experimentos/ifc-empenhos/test_chart_scale.cjs
