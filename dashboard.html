@@ -53,7 +53,7 @@
       </div>
       <div class="dashboard-view-tabs" id="dashboardViewTabs" role="tablist" aria-label="Visualização do resumo financeiro">
         <button class="dashboard-view-tab is-active" type="button" role="tab" title="Comparar despesas do exercício e restos a pagar" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
-        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar conversão entre etapas e empenhos por natureza" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
+        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar composição dos provisionamentos, conversão entre etapas e empenhos por natureza" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
         <button class="dashboard-view-tab" type="button" role="tab" title="Consultar arrecadação por código de recolhimento ou mês de emissão" id="dashboardTabRevenue" data-dashboard-view="revenue" aria-selected="false" aria-controls="dashboardCharts">Arrecadação própria</button>
       </div>
       <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts" role="tabpanel" tabindex="0" aria-labelledby="dashboardTabOverview">
@@ -65,6 +65,16 @@
             <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Empenho é o compromisso formal da despesa; liquidação confirma a entrega ou prestação; pagamento é o desembolso. As barras mostram valores acumulados da posição mais recente, não uma sequência cronológica.</p></details>
           </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
+        </article>
+
+        <article class="chart-card chart-card--provisions" data-dashboard-panel="execution" hidden>
+          <div class="chart-card-head">
+            <div class="chart-card-heading"><h3>Composição dos provisionamentos</h3></div>
+            <details class="chart-help"><summary aria-label="Critérios da composição dos provisionamentos">?</summary><p>Distribuição dos valores líquidos provisionados entre os grupos de natureza da despesa 3 (outras despesas correntes) e 4 (investimentos), conferida contra o total auditado do relatório Provisionamentos. Não equivale a empenhos, dotação inicial ou crédito disponível. Selecione uma cor ou categoria para consultar valores e percentuais.</p></details>
+          </div>
+          <div id="provisionCompositionChart" aria-label="Composição dos provisionamentos por grupo de natureza da despesa"><p class="chart-empty">Carregando composição de provisionamentos…</p></div>
+          <p class="provision-composition-detail" id="provisionCompositionDetail" role="status" aria-live="polite" hidden></p>
+          <a id="provisionCompositionLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
         </article>
 
         <article class="chart-card chart-card--stages" data-dashboard-panel="execution" hidden>
@@ -223,6 +233,7 @@
   <script src="assets/js/common.js"></script>
   <script src="assets/js/interactive-charts.js"></script>
   <script src="assets/js/financial-chart-provenance.js"></script>
+  <script src="assets/js/provision-composition.js"></script>
   <script src="assets/js/report-catalog.js"></script>
   <script src="assets/js/dashboard.js"></script>
 </body>
