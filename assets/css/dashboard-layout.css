@@ -1298,3 +1298,52 @@ th, td { padding: var(--dash-space-3); }
   }
   .dashboard-charts--overview .chart-card--gru .gru-treemap { height: 205px; }
 }
+
+
+/* Executive summary: four report actions and full-width, low-profile glossary. */
+.dashboard-panel > .dashboard-kpis .kpi-card {
+  min-height: 0;
+  padding-bottom: var(--dash-space-3);
+}
+.dashboard-panel .kpi-card .kpi-report-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end;
+  margin-top: auto;
+  padding: var(--dash-space-1) 0 0;
+  color: var(--brand);
+  font-size: var(--font-caption);
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.35;
+}
+.dashboard-panel .kpi-card .kpi-report-link[hidden] { display: none !important; }
+.dashboard-panel .kpi-card .kpi-report-link:hover { text-decoration: underline; }
+.dashboard-panel .kpi-card .kpi-report-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.dashboard-charts--overview .stage-interpretation[hidden] { display: none; }
+.dashboard-panel > .dashboard-reference {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+  margin-top: var(--dash-space-3);
+}
+.dashboard-panel > .dashboard-reference > .glossary-panel {
+  width: 100%;
+  min-width: 0;
+}
+.dashboard-panel > .dashboard-reference .glossary-panel > summary {
+  min-height: 40px;
+  padding: var(--dash-space-2) var(--dash-space-3);
+}
+.dashboard-panel > .dashboard-reference .glossary-panel .term-strip {
+  padding: var(--dash-space-2) var(--dash-space-3) var(--dash-space-3);
+}
+@media (max-width: 730px) {
+  .dashboard-panel > .dashboard-kpis .kpi-card {
+    min-height: 96px;
+  }
+}
