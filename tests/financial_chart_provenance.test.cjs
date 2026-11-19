@@ -124,7 +124,7 @@ test('monthly chart is one compact interactive series without redundant disclosu
   assert.match(container.innerHTML, /--gru-upper-height:105px;--gru-lower-height:105px/);
   assert.match(container.innerHTML, /class="gru-month-negative"><span class="gru-month-column-fill"/);
   assert.match(container.innerHTML, /class="gru-month-axis-tick" style="top:50%"/);
-  assert.match(container.innerHTML, /Movimentação líquida \\(R\\$\\)/);
+  assert.match(container.innerHTML, /Movimentação líquida \(R\$\)/);
   const positiveOnly={innerHTML:''};
   renderGruMonthly(positiveOnly,{ok:true,months:[
     {label:'JAN/2026',value:100,records:2},
