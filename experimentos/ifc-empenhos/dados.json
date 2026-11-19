@@ -1,10 +1,214 @@
 {
   "schema_version": 1,
-  "gerado_em": null,
+  "gerado_em": "2026-11-19T13:11:28.067Z",
   "unidade_orcamentaria": "26422",
-  "criterio": "Empenhos anuais da UO 26422 no SIOP. Aguardando consulta programatica oficial.",
-  "siop": { "endpoint": "https://www1.siop.planejamento.gov.br/sparql/", "codigo": "26422", "anos_ok": 0 },
-  "sidra": { "referencia": null, "status": { "IPCA": { "status": "aguardando" }, "INPC": { "status": "aguardando" } } },
-  "cgu": { "status": "sem_credencial", "info": "Nao consultado. Chave de API nao configurada." },
-  "anos": []
+  "criterio": "Empenho executado da unidade orcamentaria (UO) 26422, nao total por UG",
+  "siop": {
+    "endpoint": "https://www1.siop.planejamento.gov.br/sparql/",
+    "codigo": "26422",
+    "anos_ok": 18
+  },
+  "sidra": {
+    "referencia": "202610",
+    "ultima_competencia": {
+      "IPCA": "202610",
+      "INPC": "202610"
+    },
+    "status": {
+      "IPCA": {
+        "status": "ok",
+        "info": ""
+      },
+      "INPC": {
+        "status": "ok",
+        "info": ""
+      }
+    }
+  },
+  "cgu": {
+    "status": "sem_credencial",
+    "info": "Opcional. Nenhuma chave foi configurada; nao houve consulta CGU."
+  },
+  "anos": [
+    {
+      "year": 2009,
+      "nominal": 0,
+      "itens": 2,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 0,
+      "inpc": 0,
+      "referencia": "200912"
+    },
+    {
+      "year": 2010,
+      "nominal": 89124215,
+      "itens": 499,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 214914713.61,
+      "inpc": 213271822.83,
+      "referencia": "201012"
+    },
+    {
+      "year": 2011,
+      "nominal": 111584094,
+      "itens": 520,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 252644264.67,
+      "inpc": 251713074.92,
+      "referencia": "201112"
+    },
+    {
+      "year": 2012,
+      "nominal": 137744209,
+      "itens": 678,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 294670348.49,
+      "inpc": 292592478.23,
+      "referencia": "201212"
+    },
+    {
+      "year": 2013,
+      "nominal": 182823432,
+      "itens": 912,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 369279479.38,
+      "inpc": 367883126.48,
+      "referencia": "201312"
+    },
+    {
+      "year": 2014,
+      "nominal": 229599352,
+      "itens": 825,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 435834750.49,
+      "inpc": 434919864.51,
+      "referencia": "201412"
+    },
+    {
+      "year": 2015,
+      "nominal": 260065103,
+      "itens": 755,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 446058155.41,
+      "inpc": 442709541.51,
+      "referencia": "201512"
+    },
+    {
+      "year": 2016,
+      "nominal": 292015887,
+      "itens": 893,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 471228660.64,
+      "inpc": 466409913.31,
+      "referencia": "201612"
+    },
+    {
+      "year": 2017,
+      "nominal": 350174785,
+      "itens": 964,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 548901749.7,
+      "inpc": 547973556.41,
+      "referencia": "201712"
+    },
+    {
+      "year": 2018,
+      "nominal": 367403800,
+      "itens": 979,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 555116045.15,
+      "inpc": 555848207.37,
+      "referencia": "201812"
+    },
+    {
+      "year": 2019,
+      "nominal": 397998682,
+      "itens": 953,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 576516641.65,
+      "inpc": 576308056.58,
+      "referencia": "201912"
+    },
+    {
+      "year": 2020,
+      "nominal": 402771032,
+      "itens": 1204,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 558212565.12,
+      "inpc": 553089935.02,
+      "referencia": "202012"
+    },
+    {
+      "year": 2021,
+      "nominal": 407493192,
+      "itens": 798,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 513131116.55,
+      "inpc": 507964052.33,
+      "referencia": "202112"
+    },
+    {
+      "year": 2022,
+      "nominal": 422255734,
+      "itens": 849,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 502642350.83,
+      "inpc": 496888678.61,
+      "referencia": "202212"
+    },
+    {
+      "year": 2023,
+      "nominal": 463056266,
+      "itens": 1058,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 526862916.88,
+      "inpc": 525423721.13,
+      "referencia": "202312"
+    },
+    {
+      "year": 2024,
+      "nominal": 497236859,
+      "itens": 1081,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 539680389.44,
+      "inpc": 538530239.55,
+      "referencia": "202412"
+    },
+    {
+      "year": 2025,
+      "nominal": 576990472,
+      "itens": 1005,
+      "status": "ok",
+      "carregadoEm": "2026-11-17T02:03:22.488-03:00",
+      "ipca": 600628774.72,
+      "inpc": 601463003.12,
+      "referencia": "202512"
+    },
+    {
+      "year": 2026,
+      "nominal": 597525741,
+      "itens": 995,
+      "status": "parcial",
+      "carregadoEm": "2026-11-19T01:34:22.173-03:00",
+      "ipca": 597525741,
+      "inpc": 597525741,
+      "referencia": "202610"
+    }
+  ]
 }
