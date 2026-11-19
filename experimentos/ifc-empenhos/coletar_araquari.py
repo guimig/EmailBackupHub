@@ -225,8 +225,10 @@ def main() -> int:
             code = getattr(exc, 'code', None)
             failures.append({"mes": month, "tipo": type(exc).__name__, "http": code})
             print('CGU', month, 'FALHA', type(exc).__name__, 'HTTP', code or 'n/a', flush=True)
-            if code in {403, 429, 503}:
-                print('LIMITE DO SERVICO: lote encerrado, preservando meses verificados', flush=True)
+            if code in {403, 405, 429, 503}:
+                # Na CGU, sequencias de HTTP 405 foram observadas depois de ~26 downloads validos.
+                # Interromper o lote evita novas tentativas improdutivas.
+                print('LIMITE OU BLOQUEIO DO SERVICO: lote encerrado, preservando meses verificados', flush=True)
                 break
     indices={}
     for name,url in SIDRA.items():
