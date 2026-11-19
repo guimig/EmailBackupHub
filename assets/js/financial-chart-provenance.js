@@ -299,9 +299,12 @@
         + '" data-gru-value="' + escapeHtml(currency.format(item.value))
         + '" data-gru-share="' + share.toFixed(1)
         + '" data-gru-records="' + item.records + '" aria-pressed="false" title="'
-        + escapeHtml(item.code + ' · ' + name + ': ' + currency.format(item.value))
+        + escapeHtml(item.code + ' · ' + name + ': ' + currency.format(item.value)
+          + ' (' + share.toFixed(1).replace('.', ',') + '% do valor positivo). '
+          + item.records + ' registro(s). Selecione para ver detalhes; mês de emissão não representa data de pagamento.')
         + '" aria-label="' + escapeHtml(item.code + ': ' + name + ', ' + currency.format(item.value)
-        + ', ' + share.toFixed(1).replace('.', ',') + '% do valor positivo por código')
+        + ', ' + share.toFixed(1).replace('.', ',') + '% do valor positivo por código, '
+        + item.records + ' registro(s). Selecione para ver detalhes.')
         + '"><span class="gru-tile-code">' + escapeHtml(item.code)
         + '</span><span class="gru-tile-name">' + escapeHtml(name)
         + '</span><strong class="gru-tile-amount">' + escapeHtml(currency.format(item.value))
@@ -403,6 +406,23 @@
       + items + link + '</div>';
   }
 
+  // Keep a readable shared currency scale for all bars. Negative net
+  // adjustments occupy an equally scaled area below the real zero baseline.
+  function monthlyAxisMaximum(months) {
+    const highest = Math.max(0, ...(months || []).map(item =>
+      Number.isFinite(item.value) ? Math.abs(item.value) : 0));
+    if (highest <= 0) return 1;
+    const stepSize = highest / 4;
+    const power = Math.pow(10, Math.floor(Math.log10(stepSize)));
+    const candidate = [1, 1.5, 2, 2.5, 3, 4, 5, 7.5, 10].find(unit => unit * power >= stepSize);
+    return 4 * (candidate || 10) * power;
+  }
+
+  const axisCurrency = new Intl.NumberFormat('pt-BR', {
+    style: 'currency', currency: 'BRL', notation: 'compact',
+    maximumFractionDigits: 1
+  });
+
   function renderGruMonthly(container, result, options = {}) {
     if (!container) return;
     if (!result?.ok) {
@@ -410,29 +430,52 @@
         + escapeHtml(result?.reason || 'Sem dados auditáveis.') + '</p>';
       return;
     }
-    const max = Math.max(1, ...result.months.map(item => Number.isFinite(item.value) ? Math.abs(item.value) : 0));
-    const bars = result.months.map(item => {
+    const months = result.months || [];
+    const maximum = monthlyAxisMaximum(months);
+    const hasNegative = months.some(item => Number.isFinite(item.value) && item.value < 0);
+    const ticks = hasNegative
+      ? [maximum, maximum / 2, 0, -maximum / 2, -maximum]
+      : [maximum, maximum * .75, maximum / 2, maximum * .25, 0];
+    const axis = ticks.map((value, index) =>
+      '<span class="gru-month-axis-tick" style="top:' + (index * 25) + '%"'
+      + ' title="' + escapeHtml(currency.format(value)) + '">'
+      + escapeHtml(axisCurrency.format(value)) + '</span>'
+    ).join('');
+    const bars = months.map(item => {
       const valid = Number.isFinite(item.value);
-      const percent = valid ? Math.abs(item.value) / max * 100 : 0;
+      const percent = valid ? Math.min(100, Math.abs(item.value) / maximum * 100) : 0;
       const negative = valid && item.value < 0;
+      const valueLabel = valid ? currency.format(item.value) : 'Sem registros';
+      const description = item.label + ': ' + valueLabel + '. ' + item.records
+        + ' documento(s). Mês de emissão, não necessariamente do efetivo recolhimento. '
+        + 'Selecione para conferir os detalhes.';
+      const fill = '<span class="gru-month-column-fill" style="height:'
+        + percent.toFixed(1) + '%"></span>';
       return '<button type="button" class="gru-month-button'
         + (negative ? ' is-negative' : '') + (!valid ? ' is-missing' : '')
         + '" data-gru-month="' + escapeHtml(item.label) + '" data-gru-value="'
-        + escapeHtml(valid ? currency.format(item.value) : 'Sem registros')
+        + escapeHtml(valueLabel)
         + '" data-gru-records="' + item.records + '" title="'
-        + escapeHtml(item.label + ': ' + (valid ? currency.format(item.value) : 'Sem registros'))
-        + '" aria-pressed="false" aria-label="' + escapeHtml(item.label + ', '
-          + (valid ? currency.format(item.value) : 'sem registros') + ', '
-          + item.records + ' documento(s)') + '">'
-        + '<span class="gru-month-plot"><span class="gru-month-column-fill" style="height:'
-        + percent.toFixed(1) + '%"></span></span>'
-        + '<span class="gru-month-short">' + escapeHtml(item.label.split('/')[0]) + '</span>'
+        + escapeHtml(description)
+        + '" aria-pressed="false" aria-label="' + escapeHtml(description) + '">'
+        + '<span class="gru-month-plot">'
+        + '<span class="gru-month-positive">' + (!negative && valid ? fill : '') + '</span>'
+        + '<span class="gru-month-negative">' + (negative ? fill : '') + '</span>'
+        + '</span><span class="gru-month-short">' + escapeHtml(item.label.split('/')[0]) + '</span>'
         + '</button>';
     }).join('');
     container.innerHTML = '<div class="gru-month-panel">'
-      + '<div class="gru-month-chart" role="group" aria-label="Movimentação líquida por mês de emissão">'
-      + bars + '</div>'
-      + '<p class="gru-visual-note">Valores líquidos por mês de emissão; selecione uma coluna para consultar o valor.</p>'
+      + '<p class="gru-axis-heading">Movimentação líquida (R$) · escala comum</p>'
+      + '<div class="gru-month-chart-layout" style="--gru-upper-height:'
+      + (hasNegative ? '105px' : '210px') + ';--gru-lower-height:'
+      + (hasNegative ? '105px' : '0px') + '">'
+      + '<div class="gru-month-axis" aria-label="Eixo vertical em reais">' + axis + '</div>'
+      + '<div class="gru-month-chart-scroll"><div class="gru-month-chart" role="group"'
+      + ' aria-label="Valores líquidos por mês de emissão, com referência de zero">'
+      + bars + '</div></div></div>'
+      + '<p class="gru-visual-note">Eixo vertical em reais. Colunas acima do zero representam valores positivos;'
+      + ' valores abaixo do zero representam estornos líquidos. Selecione um mês para ver o valor exato.'
+      + ' Mês de emissão não equivale necessariamente ao mês do recolhimento.</p>'
       + (options.url ? '<a class="financial-chart-link" href="' + escapeHtml(options.url)
         + '">Consultar relatório de origem</a>' : '')
       + '</div>';
@@ -609,7 +652,11 @@
         + '%;width:' + item.w.toFixed(4) + '%;height:' + item.h.toFixed(4) + '%';
       const text = (item.code && !item.aggregate ? item.code + ' · ' : '') + item.description
         + ' · ' + currency.format(item.value)
-        + ' · ' + percentage.toFixed(1).replace('.', ',') + '%';
+        + ' · ' + percentage.toFixed(1).replace('.', ',') + '% do total positivo'
+        + ' · ' + item.records + ' registro(s). '
+        + (item.aggregate ? 'Selecione para mostrar outras naturezas.'
+          : view.mode === 'general' ? 'Selecione para aprofundar as NDs deste grupo.'
+          : 'Selecione para conferir o detalhamento.');
       const drill = view.mode === 'general' && !item.aggregate ? ' data-nd-drill="general"' : '';
       return '<button type="button" class="gru-treemap-tile nd-treemap-tile gru-tile-color-'
         + (index % 8) + (compact ? ' is-compact' : '') + '" style="' + style
