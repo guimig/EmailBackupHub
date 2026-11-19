@@ -399,24 +399,31 @@ let indexData = null;
 
       setText('budgetBase', formatMoney(budget));
       setText('creditAvailable', formatMoney(credit));
-      setText('rapTotal', formatMoney(rapTotal));
+      setText('rapTotal', formatMoney(rapPayable));
       setText('gruCollected', formatMoney(gru));
       setText('financePanelDate', latestFinancialDate());
       [
-        ['budgetReportLink', 'provisionamentos'],
-        ['creditReportLink', 'credito-disponivel-mes-lancamento'],
-        ['rapReportLink', 'restos-a-pagar-rap'],
-        ['gruReportKpiLink', 'recolhimento-proprio-gru']
-      ].forEach(([elementId, slug]) => {
+        ['budgetReportLink', 'budgetCardLink', 'provisionamentos'],
+        ['creditReportLink', 'creditCardLink', 'credito-disponivel-mes-lancamento'],
+        ['rapReportLink', 'rapCardLink', 'restos-a-pagar-rap'],
+        ['gruReportKpiLink', 'gruCardLink', 'recolhimento-proprio-gru']
+      ].forEach(([elementId, cardLinkId, slug]) => {
         const link = byId(elementId);
-        if (!link) return;
+        const cardLink = byId(cardLinkId);
         const url = chartSourceUrl(slug);
-        if (url) {
-          link.href = url;
-          link.hidden = false;
-        } else {
-          link.removeAttribute('href');
-          link.hidden = true;
+        if (link) {
+          if (url) link.href = url;
+          else link.removeAttribute('href');
+          link.hidden = !url;
+        }
+        if (cardLink) {
+          if (url) {
+            cardLink.href = url;
+            cardLink.removeAttribute('aria-disabled');
+          } else {
+            cardLink.removeAttribute('href');
+            cardLink.setAttribute('aria-disabled', 'true');
+          }
         }
       });
 
@@ -448,13 +455,8 @@ let indexData = null;
       renderHalfGauge('openGauge', stageModel.ok && stageModel.liquidated > 0
         ? stageModel.unpaidLiquidated / stageModel.liquidated : null);
       renderHalfGauge('provisionGauge', provisionGaugeModel.ok ? provisionGaugeModel.value : null);
-      // Stage and RAP controls respond visually without duplicating already visible values.
-      for (const tile of document.querySelectorAll('.stage-gauge-card')) {
-        tile.setAttribute('role', 'button');
-        tile.setAttribute('tabindex', '0');
-        tile.setAttribute('aria-pressed', 'false');
-        tile.dataset.chartSelectable = '1';
-      }
+      configureStageGaugeDetails(provisionGaugeModel, stageModel);
+      // RAP controls retain their own selected visual state.
       for (const item of document.querySelectorAll('.rap-composition-item')) {
         item.setAttribute('role', 'button');
         item.setAttribute('tabindex', '0');
@@ -464,6 +466,62 @@ let indexData = null;
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
+    }
+
+    function configureStageGaugeDetails(provisionModel, stageModel) {
+      const specs = [
+        {
+          id: 'provisionGauge', label: 'Empenhado / provisionado',
+          valid: provisionModel?.ok,
+          numerator: provisionModel?.committed, denominator: provisionModel?.provisioned,
+          explanation: 'Relação indicativa entre dois relatórios; não constitui taxa formal de utilização orçamentária. '
+            + (provisionModel?.reason || '')
+        },
+        {
+          id: 'committedGauge', label: 'Liquidado / empenhado',
+          valid: stageModel?.ok, numerator: stageModel?.liquidated,
+          denominator: stageModel?.committed,
+          explanation: 'Parcela dos empenhos já liquidada, na mesma posição auditada. Não mede prazo de pagamento.'
+        },
+        {
+          id: 'liquidatedGauge', label: 'Pago / liquidado',
+          valid: stageModel?.ok && stageModel.liquidated > 0,
+          numerator: stageModel?.paid, denominator: stageModel?.liquidated,
+          explanation: 'Parcela das despesas liquidadas já paga, na mesma posição auditada.'
+        },
+        {
+          id: 'openGauge', label: 'Liquidado ainda não pago',
+          valid: stageModel?.ok && stageModel.liquidated > 0,
+          numerator: stageModel?.unpaidLiquidated, denominator: stageModel?.liquidated,
+          explanation: 'Diferença entre liquidado e pago no exercício, sobre o total liquidado; não é RAP.'
+        }
+      ];
+      const detail = byId('stageGaugeDetail');
+      if (detail) {
+        detail.hidden = true;
+        detail.textContent = '';
+      }
+      for (const spec of specs) {
+        const card = byId(spec.id)?.closest('.stage-gauge-card');
+        if (!card) continue;
+        const reason = spec.id === 'provisionGauge' ? provisionModel?.reason : stageModel?.reason;
+        const money = spec.valid
+          ? formatMoney(spec.numerator) + ' de ' + formatMoney(spec.denominator)
+          : 'Valores nominais indisponíveis: ' + (reason || 'denominador nulo ou base não auditável');
+        const percentage = byId(spec.id + 'Value')?.textContent || '-';
+        const description = spec.label + ': ' + percentage + '. ' + money + '. '
+          + (spec.valid ? spec.explanation : 'Consulte o relatório de origem.');
+        card.dataset.stageDetail = description;
+        card.title = description + ' Selecione para consultar o detalhamento.';
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-pressed', 'false');
+        card.setAttribute('aria-label', description + ' Pressione Enter ou Espaço para expandir.');
+        card.setAttribute('aria-controls', 'stageGaugeDetail');
+        card.dataset.chartSelectable = '1';
+        const gauge = byId(spec.id);
+        if (gauge) gauge.title = description;
+      }
     }
 
     function renderStageInterpretation(model) {
@@ -484,10 +542,19 @@ let indexData = null;
     function setInsight(anchorId, title, text) {
       const card = byId(anchorId)?.closest('.kpi-card, .chart-card');
       if (!card) return;
-      card.tabIndex = 0;
       card.dataset.insightTitle = title;
       card.dataset.insightText = text;
-      card.title = text;
+      card.title = title + '. ' + text;
+      const cardLink = card.querySelector('.kpi-card-main');
+      if (cardLink) {
+        const instruction = cardLink.hasAttribute('href')
+          ? 'Clique para consultar o relatório de origem. '
+          : 'Relatório de origem indisponível no catálogo. ';
+        cardLink.title = instruction + text;
+        cardLink.setAttribute('aria-label', title + ': ' + text + ' ' + instruction);
+      } else {
+        card.tabIndex = 0;
+      }
     }
 
     function setElementInsight(id, title, text) {
@@ -846,10 +913,10 @@ let indexData = null;
     }
 
     function updateDashboardInsights(values) {
-      setInsight('budgetBase', 'Provisionamentos', valueInsight(values.budget, 'Orcamento provisionado acompanhado.'));
-      setInsight('creditAvailable', 'Credito disponivel', valueInsight(values.credit, 'Saldo disponível conforme relatório de crédito; não é movimento do mês.'));
-      setInsight('rapTotal', 'Restos a pagar', valueInsight(values.rapTotal, `Total calculado a partir de RAP pago (${formatMoney(values.rapPaid)}) e RAP a pagar (${formatMoney(values.rapPayable)}).`));
-      setInsight('gruCollected', 'GRU arrecadadas', valueInsight(values.gru, 'Arrecadacao propria identificada nos dados.'));
+      setInsight('budgetBase', 'Provisionamentos', valueInsight(values.budget, 'Valor provisionado na posição do relatório de origem, não dotação inicial nem saldo disponível.'));
+      setInsight('creditAvailable', 'Crédito disponível', valueInsight(values.credit, 'Saldo disponível na posição do relatório; não é nova liberação ou movimentação do mês.'));
+      setInsight('rapTotal', 'Restos a pagar a pagar', valueInsight(values.rapPayable, `Saldo pendente de pagamento de exercícios anteriores. RAP pagos: ${formatMoney(values.rapPaid)}; total acompanhado: ${formatMoney(values.rapTotal)}. Não confundir com o total originalmente inscrito.`));
+      setInsight('gruCollected', 'Arrecadação própria (GRU)', valueInsight(values.gru, 'Movimentação líquida auditada de recolhimentos; o mês de emissão do documento não é necessariamente o mês da entrada financeira.'));
       setInsight('rapShareValue', 'Proporção de RAP pagos', percentInsight(values.rapPaid, values.rapTotal, 'de RAP pago + RAP a pagar corresponde ao valor pago, sem usar o total originalmente inscrito.'));
       setInsight('gruValue', 'Arrecadacao propria', valueInsight(values.gru, 'Total de GRU arrecadadas.'));
       const st = values.stageModel;
@@ -867,7 +934,7 @@ let indexData = null;
     function updateGraphInsights(values) {
       setElementInsight('expenseTrendChart', 'Execução da despesa na última extração', `Comparação entre indicadores atuais, não evolução por lançamento. Empenhado: ${formatMoney(values.committed)}. Liquidado: ${formatMoney(values.liquidated)}. Pago: ${formatMoney(values.paid)}. ${auditSources([values.committed, values.liquidated, values.paid])}`);
       setElementInsight('rapStackChart', 'Composição de Restos a Pagar', `RAP pagos: ${formatMoney(values.rapPaid)}. RAP a pagar: ${formatMoney(values.rapPayable)}. Base do percentual: a soma dessas duas parcelas, ${formatMoney(values.rapTotal)}. Não é o total originalmente inscrito. ${auditSources([values.rapPaid, values.rapPayable, values.rapTotal])}`);
-      setElementInsight('gruTreeChart', 'GRU por mês de emissão', `O total de ${formatMoney(values.gru)} é auditado. As barras mensais são recompostas pelos documentos e só aparecem se sua soma reconciliar; o mês da emissão não é necessariamente a data da arrecadação efetiva. ${auditSource(values.gru)}`);
+      setElementInsight('gruTreeChart', 'GRU por mês de emissão', `Valores líquidos em reais por mês de emissão, com escala vertical comum e referência em zero; estornos aparecem abaixo de zero. Selecione uma barra para valor e número de documentos. Total reconciliado: ${formatMoney(values.gru)}. Emissão não equivale à data da arrecadação efetiva. ${auditSource(values.gru)}`);
       const stage = values.stageModel;
       const stageNote = stage?.ok ? 'Percentual da posição auditada em ' + stage.date
         : 'Etapas indisponíveis para comparação: ' + (stage?.reason || 'falta de base comum.');
@@ -1175,11 +1242,13 @@ let indexData = null;
             '<span class="rap-composition-fill open" style="width:' + payablePercent.toFixed(3) + '%"></span>' +
           '</div>' +
           '<dl class="rap-composition-details">' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" title="RAP pagos: ' + formatValue(paidValue)
+              + ' (' + escapeHtml(percentLabel(paidValue)) + ' do total acompanhado). Valores já pagos de despesas de exercícios anteriores.">' +
               '<dt><i class="legend-dot legend-accent" aria-hidden="true"></i>RAP pagos</dt>' +
               '<dd><strong>' + formatValue(paidValue) + '</strong><span>' + escapeHtml(percentLabel(paidValue)) + '</span></dd>' +
             '</div>' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" title="RAP a pagar: ' + formatValue(payableValue)
+              + ' (' + escapeHtml(percentLabel(payableValue)) + ' do total acompanhado). Saldo ainda pendente de pagamento.">' +
               '<dt><i class="legend-dot legend-accent-2" aria-hidden="true"></i>RAP a pagar</dt>' +
               '<dd><strong>' + formatValue(payableValue) + '</strong><span>' + escapeHtml(percentLabel(payableValue)) + '</span></dd>' +
             '</div>' +
@@ -1425,6 +1494,11 @@ let indexData = null;
       if (!group) return;
       for (const other of group.querySelectorAll('[data-chart-selectable]')) {
         other.setAttribute('aria-pressed', String(other === item));
+      }
+      const stageDetail = byId('stageGaugeDetail');
+      if (stageDetail && item.matches('.stage-gauge-card')) {
+        stageDetail.textContent = item.dataset.stageDetail || 'Detalhamento indisponível.';
+        stageDetail.hidden = false;
       }
     };
     const overview = byId('dashboardCharts');

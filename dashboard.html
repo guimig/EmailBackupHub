@@ -27,26 +27,34 @@
       </div>
       <div class="dashboard-kpis">
         <div class="kpi-card">
-          <span>Provisionamentos</span><strong id="budgetBase">-</strong>
+          <a class="kpi-card-main" id="budgetCardLink">
+            <span>Provisionamentos</span><strong id="budgetBase">-</strong>
+          </a>
           <a class="kpi-report-link" id="budgetReportLink" aria-label="Abrir relatório de provisionamentos" hidden>Ver relatório ↗</a>
         </div>
         <div class="kpi-card">
-          <span>Crédito disponível</span><strong id="creditAvailable">-</strong>
+          <a class="kpi-card-main" id="creditCardLink">
+            <span>Crédito disponível</span><strong id="creditAvailable">-</strong>
+          </a>
           <a class="kpi-report-link" id="creditReportLink" aria-label="Abrir relatório de crédito disponível" hidden>Ver relatório ↗</a>
         </div>
         <div class="kpi-card">
-          <span>Restos a pagar</span><strong id="rapTotal">-</strong>
+          <a class="kpi-card-main" id="rapCardLink">
+            <span>Restos a pagar a pagar</span><strong id="rapTotal">-</strong>
+          </a>
           <a class="kpi-report-link" id="rapReportLink" aria-label="Abrir relatório de restos a pagar" hidden>Ver relatório ↗</a>
         </div>
         <div class="kpi-card">
-          <span>Arrecadação própria (GRU)</span><strong id="gruCollected">-</strong>
+          <a class="kpi-card-main" id="gruCardLink">
+            <span>Arrecadação própria (GRU)</span><strong id="gruCollected">-</strong>
+          </a>
           <a class="kpi-report-link" id="gruReportKpiLink" aria-label="Abrir relatório de arrecadação própria GRU" hidden>Ver relatório ↗</a>
         </div>
       </div>
       <div class="dashboard-view-tabs" id="dashboardViewTabs" role="tablist" aria-label="Visualização do resumo financeiro">
-        <button class="dashboard-view-tab is-active" type="button" role="tab" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
-        <button class="dashboard-view-tab" type="button" role="tab" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
-        <button class="dashboard-view-tab" type="button" role="tab" id="dashboardTabRevenue" data-dashboard-view="revenue" aria-selected="false" aria-controls="dashboardCharts">Arrecadação própria</button>
+        <button class="dashboard-view-tab is-active" type="button" role="tab" title="Comparar despesas do exercício e restos a pagar" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
+        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar conversão entre etapas e empenhos por natureza" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
+        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar arrecadação por código de recolhimento ou mês de emissão" id="dashboardTabRevenue" data-dashboard-view="revenue" aria-selected="false" aria-controls="dashboardCharts">Arrecadação própria</button>
       </div>
       <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts" role="tabpanel" tabindex="0" aria-labelledby="dashboardTabOverview">
         <article class="chart-card chart-card--expense" data-dashboard-panel="overview">
@@ -89,6 +97,7 @@
               <strong class="stage-gauge-value" id="openGaugeValue">-</strong>
             </div>
           </div>
+          <p class="stage-gauge-detail" id="stageGaugeDetail" role="status" aria-live="polite" hidden></p>
         </article>
 
         <article class="chart-card chart-card--rap" data-dashboard-panel="overview">
@@ -115,8 +124,8 @@
             </div>
           </div>
           <div class="gru-view-switch" role="group" aria-label="Visualização da arrecadação">
-            <button type="button" class="gru-view-button is-active" id="gruViewCodesButton" data-gru-view="codes" aria-controls="gruCodesChart" aria-pressed="true">Por recolhimento</button>
-            <button type="button" class="gru-view-button" id="gruViewMonthsButton" data-gru-view="months" aria-controls="gruTreeChart" aria-pressed="false">Por mês</button>
+            <button type="button" class="gru-view-button is-active" id="gruViewCodesButton" data-gru-view="codes" aria-controls="gruCodesChart" aria-pressed="true" title="Distribuição por código de recolhimento; selecione uma área para ver valor e participação">Por recolhimento</button>
+            <button type="button" class="gru-view-button" id="gruViewMonthsButton" data-gru-view="months" aria-controls="gruTreeChart" aria-pressed="false" title="Valores mensais em reais, escala vertical e detalhes ao selecionar uma coluna">Por mês</button>
           </div>
           <div class="gru-view-panel" id="gruCodesChart" aria-label="Distribuição por descrição de recolhimento"></div>
           <div class="gru-view-panel" id="gruTreeChart" aria-label="Distribuição mensal por emissão" hidden></div>
@@ -133,8 +142,8 @@
           </div>
           <div class="nd-view-toolbar">
             <div class="gru-view-switch nd-view-switch" id="ndViewSwitch" role="group" aria-label="Agrupamento de empenhos">
-              <button type="button" id="ndViewGeneralButton" class="is-active" aria-pressed="true" data-nd-view="general">Por natureza de despesa</button>
-              <button type="button" id="ndViewDetailedButton" aria-pressed="false" data-nd-view="detailed">Por ND detalhada</button>
+              <button type="button" id="ndViewGeneralButton" class="gru-view-button is-active" aria-pressed="true" aria-controls="ndCommitmentsChart" data-nd-view="general" title="Agrupar empenhos por natureza geral; selecione uma área para consultar as NDs detalhadas">Por natureza de despesa</button>
+              <button type="button" id="ndViewDetailedButton" class="gru-view-button" aria-pressed="false" aria-controls="ndCommitmentsChart" data-nd-view="detailed" title="Ver as naturezas de despesa detalhadas">Por ND detalhada</button>
             </div>
             <button type="button" class="nd-back-button" id="ndBackButton" hidden>← Todas as naturezas</button>
           </div>

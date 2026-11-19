@@ -120,6 +120,18 @@ test('monthly chart is one compact interactive series without redundant disclosu
   assert.match(container.innerHTML, /-R\$\s*50,00/);
   assert.doesNotMatch(container.innerHTML, /<details/);
   assert.match(container.innerHTML, /report-viewer.html/);
+  assert.equal((container.innerHTML.match(/class="gru-month-axis-tick"/g)||[]).length,5);
+  assert.match(container.innerHTML, /--gru-upper-height:105px;--gru-lower-height:105px/);
+  assert.match(container.innerHTML, /class="gru-month-negative"><span class="gru-month-column-fill"/);
+  assert.match(container.innerHTML, /class="gru-month-axis-tick" style="top:50%"/);
+  assert.match(container.innerHTML, /Movimentação líquida \(R\$\)/);
+  const positiveOnly={innerHTML:''};
+  renderGruMonthly(positiveOnly,{ok:true,months:[
+    {label:'JAN/2026',value:100,records:2},
+    {label:'FEV/2026',value:50,records:1}
+  ]});
+  assert.match(positiveOnly.innerHTML, /--gru-upper-height:210px;--gru-lower-height:0px/);
+  assert.match(positiveOnly.innerHTML, /aria-label="Eixo vertical em reais"/);
   const mismatch={innerHTML:''};
   renderGruMonthly(mismatch,{ok:false,reason:'Reconciliacao falhou'});
   assert.match(mismatch.innerHTML,/Série mensal indisponível/);

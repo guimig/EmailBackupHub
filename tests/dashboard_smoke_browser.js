@@ -47,8 +47,18 @@
       qa.loaded = el('totalReports').textContent === '7';
       qa.auditedKpis = /100\.000/.test(el('budgetBase').textContent)
         && /40\.000/.test(el('creditAvailable').textContent)
-        && /12\.000/.test(el('rapTotal').textContent)
+        && /2\.000/.test(el('rapTotal').textContent)
         && /2\.500/.test(el('gruCollected').textContent);
+      qa.kpisArePrimaryLinks = [
+        ['budgetCardLink','provisionamentos'],
+        ['creditCardLink','credito-disponivel-mes-lancamento'],
+        ['rapCardLink','restos-a-pagar-rap'],
+        ['gruCardLink','recolhimento-proprio-gru']
+      ].every(([id,slug]) => !!el(id)?.href && el(id).href.includes(slug)
+        && !!el(id).getAttribute('aria-label') && !!el(id).getAttribute('title'));
+      qa.rapKpiShowsPayableNotPaidTotal = /2\.000/.test(el('rapTotal').textContent)
+        && el('rapCardLink').textContent.includes('Restos a pagar a pagar')
+        && !/12\.000/.test(el('rapTotal').textContent);
       qa.fiveDistinctCharts = cards.length === 5 &&
         ['expense','rap','stages','nd','gru'].every(name => !!card(name));
       qa.threeAccessibleTabs = [...document.querySelectorAll('[data-dashboard-view]')].length === 3
@@ -91,6 +101,18 @@
         && el('committedGaugeValue').textContent.includes('60,0')
         && el('liquidatedGaugeValue').textContent.includes('66,7')
         && el('openGaugeValue').textContent.includes('33,3');
+      const brl = number => number.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
+      gauges[0].click();
+      qa.stageNominalOnClick = !el('stageGaugeDetail').hidden
+        && el('stageGaugeDetail').textContent.includes(brl(50000) + ' de ' + brl(100000))
+        && gauges[0].getAttribute('aria-pressed') === 'true'
+        && gauges[0].getAttribute('aria-controls') === 'stageGaugeDetail';
+      gauges[1].click();
+      qa.stageDetailSwitchesWithSelection = el('stageGaugeDetail').textContent.includes(brl(30000) + ' de ' + brl(50000))
+        && gauges[1].getAttribute('aria-pressed') === 'true'
+        && gauges[0].getAttribute('aria-pressed') === 'false';
+      qa.ndButtonsMatchGru = el('ndViewGeneralButton').classList.contains('gru-view-button')
+        && el('ndViewDetailedButton').classList.contains('gru-view-button');
       qa.ndStageBalancesReconciled = nd.querySelectorAll('.nd-treemap-tile').length === 3
         && el('ndChartTotal').textContent.includes('2.700,50')
         && el('ndChartTotal').textContent.includes('4 NEs')
@@ -141,6 +163,10 @@
       el('gruViewMonthsButton').click();
       qa.gruMonthlyAlternative = el('gruTreeChart').querySelectorAll('.gru-month-button').length === 11
         && !el('gruTreeChart').hidden && gru.hidden;
+      qa.gruMonthScaleInReais = el('gruTreeChart').querySelectorAll('.gru-month-axis-tick').length === 5
+        && el('gruTreeChart').querySelector('.gru-month-axis').textContent.includes('R')
+        && el('gruTreeChart').querySelector('.gru-month-positive') !== null
+        && el('gruTreeChart').querySelector('.gru-month-negative') !== null;
       el('gruViewCodesButton').click();
       qa.gruBackToCodeView = !gru.hidden && el('gruTreeChart').hidden;
 
