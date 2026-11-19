@@ -99,16 +99,16 @@
     $('dataQuality').className='pill'+(validRows.length?'':' warn');
     $('annualRows').replaceChildren();
     const display=rows.length?rows:Array.from({length:18},(_,i)=>({year:2009+i,status:'ausente',nominal:null}));
-    for(const row of display){const tr=document.createElement('tr');txt(tr,'td',String(row.year));const tdN=txt(tr,'td',valid(row)?money(row.nominal):'—','num');const tdR=txt(tr,'td',valid(row)?money(corrected(row)):'—','num');const label=row.status==='parcial'?'Parcial':row.status==='ok'?'SIOP consultado':row.status==='falha'?'Falha de coleta':row.status==='nao_consultado'?'Não consultado':'Sem registro validado';const tdS=document.createElement('td');txt(tdS,'span',label,'tag'+(row.status==='falha'||row.status==='ausente'?' bad':''));if(row.info)tdS.title=row.info;tr.appendChild(tdS);$('annualRows').appendChild(tr);if(valid(row)){tdN.style.cursor='pointer';tdN.tabIndex=0;tdN.addEventListener('click',()=>selected(row,'nominal'));tdR.style.cursor='pointer';tdR.tabIndex=0;tdR.addEventListener('click',()=>selected(row,'corrigido'));}}
+    for(const row of display){const tr=document.createElement('tr');txt(tr,'td',String(row.year));const tdN=txt(tr,'td',valid(row)?money(row.nominal):'—','num');const tdR=txt(tr,'td',valid(row)?money(corrected(row)):'—','num');const label=row.status==='parcial'?'Parcial':row.status==='ok'?'SIOP consultado':row.status==='falha'?'Falha de coleta':'Sem registro validado';const tdS=document.createElement('td');txt(tdS,'span',label,'tag'+(row.status==='falha'||row.status==='ausente'?' bad':''));if(row.info)tdS.title=row.info;tr.appendChild(tdS);$('annualRows').appendChild(tr);if(valid(row)){tdN.style.cursor='pointer';tdN.tabIndex=0;tdN.addEventListener('click',()=>selected(row,'nominal'));tdR.style.cursor='pointer';tdR.tabIndex=0;tdR.addEventListener('click',()=>selected(row,'corrigido'));}}
     svgDraw(display);
-    const lines=[];lines.push(`SIOP: ${model?.siop?.anos_ok||0} exercícios recuperados por SPARQL para a UO 26422.${model?.siop?.info ? " Diagnóstico: " + model.siop.info : ""}`);
-    lines.push(`IBGE: IPCA ${model?.sidra?.status?.IPCA?.status||'não consultado'}${model?.sidra?.status?.IPCA?.info?' ('+model.sidra.status.IPCA.info+')':''}; INPC ${model?.sidra?.status?.INPC?.status||'não consultado'}${model?.sidra?.status?.INPC?.info?' ('+model.sidra.status.INPC.info+')':''}. Referência: ${period(model?.sidra?.referencia)}.`);
+    const lines=[];lines.push(`SIOP: ${model?.siop?.anos_ok||0} exercícios recuperados por SPARQL para a UO 26422.`);
+    lines.push(`IBGE: IPCA ${model?.sidra?.status?.IPCA?.status||'não consultado'}; INPC ${model?.sidra?.status?.INPC?.status||'não consultado'}. Referência comum: ${period(model?.sidra?.referencia)}.`);
     const cgu=model?.cgu;lines.push(`CGU: ${cgu?.info||'não consultada; autenticação com chave de API não configurada para o experimento.'}`);
     lines.push('Os três conjuntos são distintos: SIOP mede a UO 26422; CGU por órgão precisa de conciliação; SIDRA fornece apenas o índice de correção.');
     $('sourceStatus').replaceChildren();for(const line of lines)txt($('sourceStatus'),'p',line);
   }
-  // Fonte alternativa: o GitHub publica o JSON na branch main antes de o Pages
-  // concluir a publicacao de uma nova versao do site. Dados publicos, sem token.
+  // O JSON pode estar atualizado na branch main antes de o Pages concluir o deploy.
+  // Esta fonte alternativa utiliza somente dados publicos do mesmo repositorio.
   const rawDataUrl = 'https://raw.githubusercontent.com/guimig/EmailBackupHub/main/experimentos/ifc-empenhos/dados.json';
   let loadSerial = 0;
   async function fetchDocument(url) {
