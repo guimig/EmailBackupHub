@@ -9,7 +9,8 @@
       const nd = el('ndCommitmentsChart');
       if (!expense?.querySelector('.financial-comparison') ||
           !gru?.querySelector('.gru-treemap') ||
-          !nd?.querySelector('.nd-treemap')) {
+          !nd?.querySelector('.nd-treemap') ||
+          !el('provisionCompositionChart')?.querySelector('.provision-donut-center strong')) {
         if (attempts++ < 70) return setTimeout(verify, 100);
         document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({
           loaded: false, expense: expense?.textContent.slice(0, 80),
