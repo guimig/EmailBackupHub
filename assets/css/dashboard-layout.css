@@ -1605,3 +1605,207 @@ th, td { padding: var(--dash-space-3); }
   .dashboard-panel .nd-view-switch { width: 100%; }
   .dashboard-panel .nd-view-switch > button { flex: 1 1 auto; }
 }
+
+
+/* Dashboard UX: primary KPI surface is a real accessible link, not a simulated button. */
+.dashboard-panel > .dashboard-kpis .kpi-card {
+  position: relative;
+  transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+.dashboard-panel .kpi-card-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  min-width: 0;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+.dashboard-panel .kpi-card-main[href] {
+  cursor: pointer;
+}
+.dashboard-panel .kpi-card-main[href]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.dashboard-panel .kpi-card-main[href]:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: var(--radius-ui);
+}
+.dashboard-panel > .dashboard-kpis .kpi-card:has(.kpi-card-main[href]):hover,
+.dashboard-panel > .dashboard-kpis .kpi-card:has(.kpi-card-main[href]:focus-visible) {
+  border-color: var(--accent);
+  background: var(--soft);
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.dashboard-panel .kpi-card .kpi-report-link {
+  position: relative;
+  z-index: 1; /* Keep the secondary link independently usable above the card overlay. */
+}
+
+/* Gauge selections disclose exact audited values below the grid, not inside tiny arcs. */
+.dashboard-panel .stage-gauge-detail:not([hidden]) {
+  display: block;
+  margin: var(--dash-space-3) 0 0;
+  padding: var(--dash-space-3) var(--dash-space-4);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  color: var(--text);
+  font-size: var(--font-label);
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.dashboard-panel .stage-gauge-detail[hidden] { display: none !important; }
+.dashboard-panel .stage-gauge-card[data-chart-selectable] { cursor: pointer; }
+.dashboard-panel .stage-gauge-card[data-chart-selectable]:hover,
+.dashboard-panel .stage-gauge-card[data-chart-selectable][aria-pressed="true"] {
+  background: var(--soft);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+/* ND grouping adopts precisely the GRU segmented-control visual vocabulary. */
+.dashboard-panel .nd-view-switch.gru-view-switch {
+  display: inline-flex;
+  width: auto;
+  flex: 0 1 auto;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  border-radius: var(--radius-ui);
+}
+.dashboard-panel .nd-view-switch.gru-view-switch > .gru-view-button {
+  flex: 0 1 auto;
+  min-height: 38px;
+  padding: var(--dash-space-2) var(--dash-space-3);
+  font-size: var(--font-label);
+}
+.dashboard-panel .nd-view-switch.gru-view-switch > .gru-view-button:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Monthly GRU: visible BRL Y-axis, shared zero line, negative values below zero. */
+.dashboard-charts--overview .gru-month-panel {
+  overflow: visible;
+  min-width: 0;
+}
+.dashboard-charts--overview .gru-axis-heading {
+  margin: 0 0 var(--dash-space-2);
+  font-size: var(--font-caption);
+  color: var(--muted);
+  font-weight: 600;
+}
+.dashboard-charts--overview .gru-month-chart-layout {
+  display: grid;
+  grid-template-columns: minmax(72px, auto) minmax(0, 1fr);
+  gap: var(--dash-space-2);
+  width: 100%;
+  min-width: 0;
+}
+.dashboard-charts--overview .gru-month-axis {
+  position: relative;
+  height: 210px;
+  min-width: 72px;
+  margin-top: 0;
+  color: var(--muted);
+  font-size: var(--font-caption);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.dashboard-charts--overview .gru-month-axis-tick {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: inherit;
+  line-height: 1.25;
+}
+.dashboard-charts--overview .gru-month-axis-tick:first-child { transform: none; }
+.dashboard-charts--overview .gru-month-axis-tick:last-child { transform: translateY(-100%); }
+.dashboard-charts--overview .gru-month-chart-scroll {
+  overflow-x: auto;
+  min-width: 0;
+  scrollbar-width: thin;
+}
+.dashboard-charts--overview .gru-month-chart {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(27px,1fr));
+  align-items: end;
+  min-width: 350px;
+  width: 100%;
+  height: 252px;
+  isolation: isolate;
+}
+.dashboard-charts--overview .gru-month-chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 210px;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(to bottom,
+    var(--line) 0, var(--line) 1px,
+    transparent 1px, transparent calc(25% - 1px),
+    var(--line) 25%);
+}
+.dashboard-charts--overview .gru-month-button {
+  position: relative;
+  z-index: 1;
+}
+.dashboard-charts--overview .gru-month-plot {
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 3px;
+  border-bottom: 0;
+  background: transparent;
+}
+.dashboard-charts--overview .gru-month-positive {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: var(--gru-upper-height);
+  min-height: 0;
+  border-bottom: 2px solid var(--line);
+}
+.dashboard-charts--overview .gru-month-negative {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: var(--gru-lower-height);
+  min-height: 0;
+}
+.dashboard-charts--overview .gru-month-negative .gru-month-column-fill {
+  border-radius: 0 0 4px 4px;
+}
+.dashboard-charts--overview .gru-visual-note {
+  margin-top: var(--dash-space-2);
+  color: var(--muted);
+  font-size: var(--font-caption);
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .dashboard-panel .nd-view-switch.gru-view-switch {
+    display: flex;
+    width: 100%;
+  }
+  .dashboard-panel .nd-view-switch.gru-view-switch > .gru-view-button {
+    flex: 1 1 0;
+    white-space: normal;
+  }
+  .dashboard-charts--overview .gru-month-chart-layout {
+    grid-template-columns: minmax(64px, auto) minmax(0,1fr);
+    gap: var(--dash-space-1);
+  }
+  .dashboard-charts--overview .gru-month-axis { min-width: 64px; }
+}
