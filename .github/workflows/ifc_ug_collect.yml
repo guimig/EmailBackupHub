@@ -6,12 +6,14 @@ on:
     paths:
       - '.github/workflows/ifc_ug_collect.yml'
       - 'experimentos/ifc-empenhos/coletar_araquari.py'
+  schedule:
+    - cron: '17 */3 * * *'
   workflow_dispatch:
     inputs:
       max_months:
-        description: "Maximo de meses CGU a recuperar por execucao (1 a 120)"
+        description: "Maximo de meses CGU por execucao (1 a 200)"
         required: false
-        default: "24"
+        default: "180"
 
 permissions:
   contents: write
@@ -24,10 +26,11 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-22.04
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           sparse-checkout: |
             experimentos/ifc-empenhos/coletar_araquari.py
             experimentos/ifc-empenhos/test_coletar_araquari.py
@@ -41,7 +44,7 @@ jobs:
       - name: Testes da logica de classificacao e correcao
         run: python -m unittest discover -s experimentos/ifc-empenhos -p 'test_coletar_araquari.py' -v
       - name: Recuperar agregados mensais da CGU e indices SIDRA
-        run: python experimentos/ifc-empenhos/coletar_araquari.py --max-months "${{ inputs.max_months || '24' }}"
+        run: python experimentos/ifc-empenhos/coletar_araquari.py --max-months "${{ inputs.max_months || '180' }}"
       - name: Conferir consistencia da saida
         run: |
           python - <<'PY'
@@ -62,4 +65,6 @@ jobs:
           git add -- experimentos/ifc-empenhos/dados-araquari.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "test(ifc): atualizar agregados oficiais de empenhos UG 158459"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
