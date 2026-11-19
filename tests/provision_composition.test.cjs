@@ -18,7 +18,7 @@ function fixture() {
     metadata: {hash_conteudo: 'same'},
     quality: {ok:true}, metrics:{provisionado:300},
     metrics_meta:{provisionado:{status:'ok',source:'totals',fallback:false}},
-    columns,
+    columns:[...columns],
     rows:[
       {[columns[0]]:'OBRAS', [columns[1]]:'4',
        [columns[2]]:'INVESTIMENTOS',[columns[3]]:'100,00'},
@@ -61,10 +61,10 @@ test('totais completos e estornos contábeis são aceitos sem recuperação', ()
   assert.equal(model.recovered,null);
   const negative=fixture();
   negative.rows[1][columns[3]]='(20,00)';
-  negative.metrics.provisionado=130;
+  negative.metrics.provisionado=80;
   negative.totals[1].values[columns[3]]=-20;
   negative.totals.splice(2,1);
-  negative.totals[2].values[columns[3]]=130;
+  negative.totals[2].values[columns[3]]=80;
   assert.equal(buildModel(negative).ok,true);
 });
 test('renderização apresenta rosca, duas categorias e alternativa de erro', () => {
