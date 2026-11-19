@@ -1,6 +1,11 @@
 name: EXPERIMENTO - Coletar empenhos IFC Campus Araquari
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ifc_ug_collect.yml'
+      - 'experimentos/ifc-empenhos/coletar_araquari.py'
   workflow_dispatch:
     inputs:
       max_months:
