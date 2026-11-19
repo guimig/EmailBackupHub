@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Campus Araquari · Empenhos históricos — laboratório</title>
+  <style>
+    :root{color-scheme:light;--page:#f5f7fa;--card:#fff;--text:#1d2939;--muted:#657488;--line:#dde4eb;--blue:#1f6feb;--orange:#b35c12;--accent:#e9f2fe;--warn:#a15b12;--ok:#167149;--bg-warning:#fff4e4;--grid:#e5ebf1;--shadow:0 12px 36px rgba(16,42,66,.045)}
+    @media(prefers-color-scheme:dark){:root{color-scheme:dark;--page:#121922;--card:#1b2733;--text:#ebf1f7;--muted:#a7b8ca;--line:#384758;--blue:#8eb9ff;--orange:#f7b06c;--accent:#213750;--warn:#ffd08d;--ok:#8ae0af;--bg-warning:#3b3027;--grid:#344455;--shadow:none}}
+    *,*:before,*:after{box-sizing:border-box}html{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}body{margin:0;background:var(--page);color:var(--text);line-height:1.5}a{color:var(--blue)}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible,.mark:focus-visible{outline:3px solid var(--blue);outline-offset:3px}header,main,footer{max-width:1160px;margin:auto;padding-inline:24px}header{padding-top:31px;padding-bottom:22px}header .meta{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.eyebrow{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--blue)}h1{font-size:clamp(1.55rem,3.2vw,2.35rem);margin:13px 0 8px;letter-spacing:-.035em;line-height:1.16}header p{color:var(--muted);max-width:790px;margin:0}.back{white-space:nowrap;text-decoration:none;font-size:.86rem;border:1px solid var(--line);border-radius:9px;padding:9px 14px}.pill{display:inline-block;font-size:.77rem;border-radius:999px;padding:4px 10px;background:var(--accent);color:var(--blue);font-weight:700}.pill.warn{background:var(--bg-warning);color:var(--warn)}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:20px}.kpi-label{font-size:.84rem;color:var(--muted)}.kpi-value{font-size:clamp(1.15rem,2.4vw,1.8rem);font-weight:800;letter-spacing:-.025em;margin-top:8px}.kpi-note{font-size:.79rem;color:var(--muted);margin-top:5px}.section-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}.section-title h2{font-size:1.15rem;letter-spacing:-.01em;margin:0}.sub{color:var(--muted);font-size:.85rem;margin:5px 0 0}.options{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin:20px 0 12px}.options label{display:inline-flex;align-items:center;gap:7px;font-size:.84rem}.options input{accent-color:var(--blue)}.options select,.reload{border:1px solid var(--line);background:var(--card);color:var(--text);padding:7px 10px;border-radius:8px}.reload{margin-left:auto}.chart-scroll{overflow-x:auto;width:100%;border-radius:10px;border:1px solid var(--line);background:var(--card)}svg.chart{display:block;width:100%;min-width:760px;height:auto}svg text{font-family:inherit}.mark{cursor:pointer;outline:none}.mark:hover,.mark:focus-visible{stroke:var(--text);stroke-width:3}.legend{display:flex;flex-wrap:wrap;gap:15px;font-size:.78rem;color:var(--muted);margin:13px 0 0}.legend span{display:inline-flex;align-items:center;gap:6px}.dot{display:inline-block;width:11px;height:11px;border-radius:50%}.dot.nominal{background:var(--blue)}.dot.real{background:var(--orange)}#pointDetail{min-height:61px;background:var(--page);border:1px solid var(--line);border-radius:9px;padding:11px 13px;font-size:.88rem;margin-top:12px}.method{background:var(--bg-warning);border-radius:10px;padding:13px 15px;margin-top:15px;font-size:.83rem;color:var(--text)}.method strong{color:var(--warn)}.notice{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);font-size:.85rem}.notice strong{display:block;margin-bottom:4px}table{border-collapse:collapse;width:100%;font-size:.84rem}th,td{padding:10px 12px;border-bottom:1px solid var(--line)}th{background:var(--page);color:var(--muted);font-size:.74rem;letter-spacing:.025em;text-align:left;white-space:nowrap}td.num{text-align:right;font-variant-numeric:tabular-nums}th.num{text-align:right}td:first-child{font-weight:750}tr:last-child td{border-bottom:0}.table-scroll{overflow:auto;margin-top:15px}.tag{font-size:.7rem;white-space:nowrap;border-radius:5px;padding:3px 6px;background:var(--accent);color:var(--blue)}.tag.bad{background:var(--bg-warning);color:var(--warn)}.footlinks{display:flex;flex-wrap:wrap;gap:13px 22px;margin-top:14px;font-size:.81rem}footer{padding-block:26px 45px;color:var(--muted);font-size:.78rem}.live-status{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--muted);font-size:.8rem}.live-status .signal{width:9px;height:9px;border-radius:50%;background:var(--warn)}.live-status.ok .signal{background:var(--ok)}.empty{padding:25px 16px;text-align:center;color:var(--muted);font-size:.93rem;line-height:1.65}
+    @media(max-width:690px){header,main,footer{padding-inline:15px}header{padding-top:20px}header .meta{gap:12px}.summary{grid-template-columns:1fr;gap:10px}.card{padding:16px}.kpi-value{margin-top:3px}.options{gap:10px 12px}.reload{margin-left:0}.table-scroll{margin-inline:-8px}.section-title h2{font-size:1.05rem}.chart-scroll{scrollbar-width:thin}}
+    .lab-tabs{display:flex;gap:8px;margin:14px 0 20px;flex-wrap:wrap}.lab-tabs a{padding:10px 15px;border:1px solid var(--line);border-radius:10px;color:var(--text);text-decoration:none;font-size:.85rem;font-weight:700}.lab-tabs a[aria-current="page"]{background:var(--accent);border-color:var(--blue);color:var(--blue)}.lab-tabs a:hover{border-color:var(--blue)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta"><span class="eyebrow">IFC · Laboratório de séries históricas</span><a class="back" href="../../dashboard.html">Voltar ao dashboard</a></div>
+  <nav class="lab-tabs" aria-label="Recorte institucional"><a href="./" >IFC · UO 26422</a><a href="araquari.html" aria-current="page">Campus Araquari · UG 158459</a></nav>
+  <h1>Despesas empenhadas no IFC Campus Araquari: valor nominal e poder de compra</h1>
+  <p>Experimento com <strong>despesas empenhadas da UG 158459</strong> obtidas dos arquivos de execução da <strong>CGU</strong> e corrigidas pelo <strong>SIDRA/IBGE</strong>. Não se trata de uma parcela da UO 26422 nem utiliza relatórios do Tesouro Gerencial.</p>
+  <div class="live-status" id="loadingStatus" role="status"><span class="signal"></span><span>Consultando o arquivo experimental de dados...</span></div>
+</header>
+<main>
+  <section class="summary" aria-label="Informações principais">
+    <div class="card"><div class="kpi-label">Exercícios com dados CGU</div><div class="kpi-value" id="kpiCount">—</div><div class="kpi-note">De 2009 até o ano corrente; lacunas não são zeros</div></div>
+    <div class="card"><div class="kpi-label">Último empenho anual disponível</div><div class="kpi-value" id="kpiLast">—</div><div class="kpi-note" id="kpiLastYear">Série não carregada</div></div>
+    <div class="card"><div class="kpi-label">Poder de compra referenciado a</div><div class="kpi-value" id="kpiBase">—</div><div class="kpi-note" id="kpiGenerated">Aguardando SIDRA/IBGE</div></div>
+  </section>
+  <section class="card" aria-labelledby="chartTitle">
+    <div class="section-title"><div><h2 id="chartTitle">Evolução anual dos empenhos da UG 158459</h2><p class="sub">Valores em milhões de reais · ano de empenho no eixo horizontal</p></div><span class="pill warn" id="dataQuality">Experimental · aguardando validação</span></div>
+    <div class="options" role="group" aria-label="Opções do gráfico">
+      <label><input id="toggleNominal" type="checkbox" checked> <span style="color:var(--blue)">●</span> Empenhado nominal</label>
+      <label><input id="toggleCorrected" type="checkbox" checked> <span style="color:var(--orange)">●</span> Valor corrigido</label>
+      <label for="indexChoice">Índice <select id="indexChoice"><option value="ipca">IPCA</option><option value="inpc">INPC</option></select></label>
+      <button class="reload" type="button" id="reload">Recarregar</button>
+    </div>
+    <div class="chart-scroll" id="chartScroll" aria-label="Gráfico de linhas com rolagem horizontal em telas pequenas"><div class="empty" id="chartEmpty">Carregando série oficial...</div><svg id="historySvg" class="chart" role="img" aria-label="Despesas empenhadas do IFC em valores nominais e corrigidos" viewBox="0 0 960 345" hidden></svg></div>
+    <div class="legend"><span><i class="dot nominal"></i> Empenhado nominal</span><span><i class="dot real"></i> Corrigido para a mesma data-base</span><span>◌ 2026: exercício parcial</span></div>
+    <div id="pointDetail" role="status" aria-live="polite">Selecione um ponto ou um ano na tabela para consultar seu valor e sua procedência.</div>
+    <div class="method"><strong>Critério experimental:</strong> os empenhos correspondem aos lançamentos mensais atribuídos à <em>unidade gestora</em> IFC Campus Araquari (158459) nos arquivos CGU. Cada mês é corrigido pelo número-índice IPCA ou INPC da própria competência. Séries anuais incompletas não são totalizadas. Acervo histórico anterior a 2013 requer fonte adicional validada.</div>
+  </section>
+  <section class="card" style="margin-top:16px" aria-labelledby="tableTitle">
+    <div class="section-title"><div><h2 id="tableTitle">Valores e rastreabilidade</h2><p class="sub">Valores vazios ou consultas sem resposta são exibidos como indisponíveis, nunca como zero.</p></div></div>
+    <div class="table-scroll"><table><thead><tr><th>Ano</th><th class="num">Empenhado nominal</th><th class="num" id="colReal">Corrigido pelo IPCA</th><th>Qualidade</th></tr></thead><tbody id="annualRows"><tr><td colspan="4">Aguardando a primeira consulta oficial.</td></tr></tbody></table></div>
+  </section>
+  <section class="notice" aria-labelledby="auditTitle"><strong id="auditTitle">Origem e estado da coleta</strong><div id="sourceStatus">O arquivo experimental ainda não foi lido.</div><div class="footlinks"><a href="https://portaldatransparencia.gov.br/download-de-dados/despesas-execucao" target="_blank" rel="noopener noreferrer">CGU · arquivos de execução</a><a href="https://portaldatransparencia.gov.br/dicionario-de-dados/execucao-despesa" target="_blank" rel="noopener noreferrer">CGU · dicionário de dados</a><a href="https://sidra.ibge.gov.br/tabela/1737" target="_blank" rel="noopener noreferrer">SIDRA · IPCA</a><a href="https://sidra.ibge.gov.br/tabela/1736" target="_blank" rel="noopener noreferrer">SIDRA · INPC</a><a href="https://api.portaldatransparencia.gov.br/swagger-ui/index.html" target="_blank" rel="noopener noreferrer">CGU · documentação API</a></div></section>
+</main>
+<footer>Experimento isolado no repositório EmailBackupHub. Sem ligação com a coleta de e-mails. Dados agregados da UG 158459, sujeitos à cobertura documental e à conferência de séries mensais.</footer>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const ns = 'http://www.w3.org/2000/svg';
+  const opts = {nominal:true,corrected:true,index:'ipca'};
+  let model = null;
+  const money = v => Number.isFinite(v) ? new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:2}).format(v) : 'Indisponível';
+  const short = v => Number.isFinite(v) ? new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1}).format(v/1e6)+' mi' : '—';
+  const period = s => /^20\d{4}$/.test(String(s || '')) ? s.slice(4,6)+'/'+s.slice(0,4) : 'Não informada';
+  function el(parent,tag,attrs={},value){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(value!==undefined)n.textContent=value;parent.appendChild(n);return n;}
+  function txt(parent,tag,content,cls=''){const n=document.createElement(tag);n.textContent=content;if(cls)n.className=cls;parent.appendChild(n);return n;}
+  function valid(row){return row&&Number.isInteger(row.year)&&row.year>=2009&&row.year<=2100&&['ok','parcial'].includes(row.status)&&Number.isFinite(row.nominal)&&row.nominal>=0;}
+  function corrected(row){const v=row&&row[opts.index];return Number.isFinite(v)&&v>=0?v:null;}
+  function selected(row,kind){let description=`${row.year} · ${kind==='nominal'?'Empenhado nominal':opts.index.toUpperCase()+' corrigido'}: ${money(kind==='nominal'?row.nominal:corrected(row))}.`;description+=row.status==='parcial'?' Exercício em andamento.':' Exercício encerrado.';description+=` Origem: CGU, UG 158459; registros agregados: ${row.itens||'—'}.`;if(kind!=='nominal')description+=` Base IBGE ${period(model?.sidra?.referencia)}, correção individual aplicada aos lançamentos mensais.`;$('pointDetail').textContent=description;}
+  function svgDraw(rows){
+    const svg=$('historySvg');svg.replaceChildren();
+    const points=rows.filter(valid); const lines=[];
+    if(opts.nominal)lines.push({key:'nominal',color:'var(--blue)'});
+    if(opts.corrected)lines.push({key:opts.index,color:'var(--orange)'});
+    const avail=lines.flatMap(line=>points.map(r=>line.key==='nominal'?r.nominal:corrected(r)).filter(Number.isFinite));
+    if(!avail.length){svg.hidden=true;$('chartEmpty').hidden=false;$('chartEmpty').textContent='Nenhum exercício anual completo da UG 158459 foi recuperado ainda. Os anos incompletos permanecem sem total consolidado.';return;}
+    $('chartEmpty').hidden=true;svg.hidden=false;
+    const W=960,H=345,L=78,R=18,T=22,B=53;
+    const allYears=rows.map(r=>r.year);
+    const minYear=Math.min(2009,...allYears),maxYear=Math.max(2026,...allYears);
+    const yMax=Math.max(1e7, Math.ceil(Math.max(...avail)*1.12/1e8)*1e8);
+    const x=y=>L+(y-minYear)/(maxYear-minYear)*(W-L-R);
+    const y=v=>H-B-v/yMax*(H-T-B);
+    for(let i=0;i<=4;i++){const v=i*yMax/4,cy=y(v);el(svg,'line',{x1:L,y1:cy,x2:W-R,y2:cy,stroke:'var(--grid)','stroke-width':1});el(svg,'text',{x:L-10,y:cy+4,'text-anchor':'end',fill:'var(--muted)','font-size':11},new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}).format(v/1e6));}
+    el(svg,'text',{x:15,y:14,fill:'var(--muted)','font-size':11},'R$ milhões');
+    for(let year=minYear;year<=maxYear;year++){if(year%2===0||year===minYear||year===maxYear)el(svg,'text',{x:x(year),y:H-16,'text-anchor':'middle','font-size':12,fill:'var(--muted)'},String(year));}
+    for(const line of lines){let d='',previous=null;for(const r of points){const amount=line.key==='nominal'?r.nominal:corrected(r);if(amount===null){previous=null;continue;}const cmd=previous!==null&&r.year-previous===1?'L':'M';d+=cmd+x(r.year).toFixed(1)+' '+y(amount).toFixed(1)+' ';previous=r.year;}
+      el(svg,'path',{d,stroke:line.color,'stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round',fill:'none'});
+      for(const r of points){const amount=line.key==='nominal'?r.nominal:corrected(r);if(amount===null)continue;const n=el(svg,'circle',{cx:x(r.year),cy:y(amount),r:5.1,fill:r.status==='parcial'?'var(--card)':line.color,stroke:line.color,'stroke-width':r.status==='parcial'?2.5:1,tabindex:0,role:'button',class:'mark','aria-label':`${r.year}, ${line.key==='nominal'?'nominal':opts.index}, ${money(amount)}`});el(n,'title',{},`${r.year} · ${money(amount)}`);const show=()=>selected(r,line.key==='nominal'?'nominal':'corrigido');n.addEventListener('mouseenter',show);n.addEventListener('focus',show);n.addEventListener('click',show);n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});}
+    }
+    if(window.matchMedia('(max-width:690px)').matches){const scroll=$('chartScroll');scroll.scrollLeft=0;}
+  }
+  function render(){
+    const rows=Array.isArray(model?.anos)?model.anos:[];
+    const validRows=rows.filter(valid);
+    $('kpiCount').textContent=`${validRows.length} de ${rows.length||18}`;
+    const last=validRows.filter(r=>r.status==='ok').at(-1);
+    $('kpiLast').textContent=last?short(last.nominal):'—';
+    $('kpiLastYear').textContent=last?`Exercício ${last.year} · UG 158459`:'Aguardando empenho anual oficial';
+    $('kpiBase').textContent=period(model?.sidra?.referencia);
+    $('kpiGenerated').textContent=model?.gerado_em?`Arquivo gerado em ${new Date(model.gerado_em).toLocaleString('pt-BR')}`:'Nenhuma consulta concluída';
+    $('colReal').textContent='Corrigido pelo '+opts.index.toUpperCase();
+    $('dataQuality').textContent=validRows.length?'Experimento · fonte CGU':'Experimento · aguardando arquivo mensal';
+    $('dataQuality').className='pill'+(validRows.length?'':' warn');
+    $('annualRows').replaceChildren();
+    const display=rows.length?rows:Array.from({length:18},(_,i)=>({year:2009+i,status:'ausente',nominal:null}));
+    for(const row of display){const tr=document.createElement('tr');txt(tr,'td',String(row.year));const tdN=txt(tr,'td',valid(row)?money(row.nominal):'—','num');const tdR=txt(tr,'td',valid(row)?money(corrected(row)):'—','num');const label=row.status==='parcial'?'Parcial':row.status==='ok'?'CGU consultada':row.status==='falha'?'Falha de coleta':row.status==='nao_consultado'?'Não consultado':'Sem registro validado';const tdS=document.createElement('td');txt(tdS,'span',label,'tag'+(row.status==='falha'||row.status==='ausente'?' bad':''));if(row.info)tdS.title=row.info;tr.appendChild(tdS);$('annualRows').appendChild(tr);if(valid(row)){tdN.style.cursor='pointer';tdN.tabIndex=0;tdN.addEventListener('click',()=>selected(row,'nominal'));tdR.style.cursor='pointer';tdR.tabIndex=0;tdR.addEventListener('click',()=>selected(row,'corrigido'));}}
+    svgDraw(display);
+    const lines=[];lines.push(`CGU: ${model?.cgu?.anos_ok||0} exercícios consolidados para a UG 158459; ${model?.cgu?.meses_coletados||0} meses de empenhos agregados.`);
+    lines.push(`IBGE: IPCA ${model?.sidra?.status?.IPCA?.status||'não consultado'}${model?.sidra?.status?.IPCA?.info?' ('+model.sidra.status.IPCA.info+')':''}; INPC ${model?.sidra?.status?.INPC?.status||'não consultado'}${model?.sidra?.status?.INPC?.info?' ('+model.sidra.status.INPC.info+')':''}. Referência: ${period(model?.sidra?.referencia)}.`);
+    lines.push(`CGU: arquivo publico mensal de despesas, com filtro por codigo da UG. Meses ainda não recuperados permanecem sem total anual.`);
+    lines.push('Este conjunto mede a UG 158459. Não confundir com a UO 26422. SIDRA fornece exclusivamente os números-índices de correção.');
+    $('sourceStatus').replaceChildren();for(const line of lines)txt($('sourceStatus'),'p',line);
+  }
+  // Fonte alternativa: o GitHub publica o JSON na branch main antes de o Pages
+  // concluir a publicacao de uma nova versao do site. Dados publicos, sem token.
+  const rawDataUrl = 'https://raw.githubusercontent.com/guimig/EmailBackupHub/main/experimentos/ifc-empenhos/dados-araquari.json';
+  let loadSerial = 0;
+  async function fetchDocument(url) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), {cache:'no-store',signal:controller.signal});
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const doc = await response.json();
+      if (doc?.schema_version !== 1 || !Array.isArray(doc.anos) || doc.unidade_gestora !== '158459') {
+        throw new Error('Esquema de dados inesperado');
+      }
+      return doc;
+    } finally { clearTimeout(timer); }
+  }
+  function preferDocument(pages, github) {
+    if (!pages) return {doc:github,source:'github'};
+    if (!github) return {doc:pages,source:'pages'};
+    const pagesDate = Date.parse(pages.gerado_em || '') || 0;
+    const githubDate = Date.parse(github.gerado_em || '') || 0;
+    if (githubDate > pagesDate) return {doc:github,source:'github'};
+    // Se ambas tiverem a mesma data, priorize a copia de origem do proprio site.
+    return {doc:pages,source:'pages'};
+  }
+  async function load(){
+    const serial = ++loadSerial;
+    $('loadingStatus').classList.remove('ok');
+    $('loadingStatus').lastElementChild.textContent='Consultando as versões dos dados no GitHub Pages e no repositório...';
+    // Duas leituras publicas independentes: erros de CORS/rede nao derrubam a pagina.
+    const results = await Promise.allSettled([
+      fetchDocument('./dados-araquari.json'),
+      fetchDocument(rawDataUrl),
+    ]);
+    if (serial !== loadSerial) return;
+    const pages = results[0].status === 'fulfilled' ? results[0].value : null;
+    const github = results[1].status === 'fulfilled' ? results[1].value : null;
+    if (!pages && !github) {
+      model = null;
+      render();
+      $('loadingStatus').lastElementChild.textContent='Dados indisponíveis no Pages e no repositório GitHub. Verifique a conexão e tente recarregar.';
+      return;
+    }
+    const selected = preferDocument(pages,github);
+    model = selected.doc;
+    render();
+    const n = Number(model.cgu?.anos_ok) || 0;
+    const origin = selected.source === 'github' ? 'repositório GitHub (publicação do Pages ainda desatualizada)' : 'GitHub Pages';
+    $('loadingStatus').lastElementChild.textContent = n
+      ? `Dados CGU consolidados: ${n} exercício(s) · origem: ${origin}`
+      : 'Ainda não há resultados CGU validados nas fontes acessíveis. Execute a coleta experimental.';
+    if (n) $('loadingStatus').classList.add('ok');
+  }
+  $('toggleNominal').addEventListener('change',e=>{opts.nominal=e.target.checked;render();});
+  $('toggleCorrected').addEventListener('change',e=>{opts.corrected=e.target.checked;render();});
+  $('indexChoice').addEventListener('change',e=>{opts.index=e.target.value==='inpc'?'inpc':'ipca';render();});
+  $('reload').addEventListener('click',load);load();
+})();
+</script>
+</body>
+</html>
