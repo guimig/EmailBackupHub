@@ -128,6 +128,8 @@
         : rect(stagesCard).top >= rect(provisionsCard).bottom - 6
           && Math.abs(rect(provisionsCard).width - rect(chartGrid).width) < 6;
       const totalValue = provisionsCard.querySelector('.provision-donut-center strong');
+      qa.provisionChartDiagnostic = totalValue
+        ? true : (el('provisionCompositionChart')?.textContent || 'sem gráfico').slice(0, 250);
       qa.provisionTotalFitsRing = !!totalValue
         && totalValue.scrollWidth <= totalValue.clientWidth + 2
         && totalValue.scrollHeight <= totalValue.clientHeight + 2;
