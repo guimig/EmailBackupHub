@@ -1008,7 +1008,11 @@ let indexData = null;
           const query = new URLSearchParams(url.slice(url.indexOf('?') + 1));
           query.set('sv', '2');
           query.set('vg', 'Natureza Despesa Detalhada (2)');
-          query.set('vgs', JSON.stringify(['Conta Contábil / NE CCor - Valor']));
+          query.set('vgs', JSON.stringify([
+            '622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)',
+            '622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)',
+            '622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)'
+          ]));
           query.set('ps', 'all');
           query.set('totals', '0');
           link.href = 'report-viewer.html?' + query.toString();
@@ -1052,11 +1056,21 @@ let indexData = null;
         target.innerHTML = '<p class="chart-empty" role="status">A versão detalhada não coincide com o resumo auditado.</p>';
         return;
       }
-      const model = renderer.buildNdCommitments(doc);
+      const stageReport = financialReports['despesas-empenhadas-liquidadas-e-pagas-mes-lancamento'];
+      const samePosition = stageReport?.date_iso && doc?.date_iso
+        && stageReport.date_iso === doc.date_iso
+        && (!stageReport.metadata?.exercicio || !doc.metadata?.exercicio
+          || stageReport.metadata.exercicio === doc.metadata.exercicio);
+      const committedMeta = stageReport?.metrics_meta?.empenhado;
+      const auditedCommitment = samePosition && stageReport.quality?.ok !== false
+        && committedMeta?.status === 'ok' && committedMeta?.fallback !== true
+        && Number.isFinite(stageReport.metrics?.empenhado)
+        ? stageReport.metrics.empenhado : null;
+      const model = renderer.buildNdCommitments(doc, auditedCommitment);
       renderer.renderNdCommitments(target, model);
       const total = byId('ndChartTotal');
       if (total) total.textContent = model.ok
-        ? model.groups + ' naturezas · ' + model.records + ' empenhos · '
+        ? model.groups + ' naturezas · ' + model.uniqueCommitments + ' NEs · '
           + formatMoney(model.total)
         : '';
       const detail = byId('ndChartDetail');
