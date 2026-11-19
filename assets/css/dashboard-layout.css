@@ -1813,10 +1813,17 @@ th, td { padding: var(--dash-space-3); }
 
 /* Composição dos provisionamentos: dois grupos com o mesmo peso de apresentação
  * dos medidores; desenho adaptável, sem dependências de gráficos externas. */
-.dashboard-charts--overview > .chart-card--provisions { grid-column: span 5; }
-.dashboard-charts--overview > .chart-card--stages { grid-column: span 7; }
-.dashboard-charts--overview > .chart-card--provisions,
-.dashboard-charts--overview > .chart-card--stages { min-width: 0; }
+/* Rules scoped to the actual dashboard panel must outrank the older
+ * full-width execution rule defined above (same selector specificity). */
+.dashboard-panel .dashboard-charts--overview > .chart-card--provisions,
+.dashboard-panel .dashboard-charts--overview > .chart-card--stages { min-width: 0; }
+@media (min-width: 1251px) {
+  .dashboard-panel .dashboard-charts--overview > .chart-card--provisions { grid-column: 1 / span 5; }
+  .dashboard-panel .dashboard-charts--overview > .chart-card--stages { grid-column: 6 / -1; }
+  .dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .provision-composition-body {
   display: grid;
   grid-template-columns: minmax(145px, .9fr) minmax(0, 1.1fr);
@@ -1860,10 +1867,11 @@ th, td { padding: var(--dash-space-3); }
 }
 .provision-donut-center strong {
   color: var(--text);
-  font-size: clamp(.75rem, 1.18vw, 1rem);
+  font-size: clamp(.65rem, .8vw, .76rem);
   line-height: 1.25;
+  letter-spacing: -.02em;
   font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 .provision-legend { display: grid; gap: var(--dash-space-2); min-width: 0; }
 .provision-legend-item {
@@ -1908,14 +1916,14 @@ th, td { padding: var(--dash-space-3); }
 }
 .provision-composition-detail[hidden] { display: none; }
 @media (max-width: 1250px) {
-  .dashboard-charts--overview > .chart-card--provisions,
-  .dashboard-charts--overview > .chart-card--stages { grid-column: 1 / -1; }
+  .dashboard-panel .dashboard-charts--overview > .chart-card--provisions,
+  .dashboard-panel .dashboard-charts--overview > .chart-card--stages { grid-column: 1 / -1; }
   .provision-composition-body { grid-template-columns: minmax(170px, 220px) minmax(0, 1fr); }
 }
 @media (max-width: 620px) {
   .provision-composition-body { grid-template-columns: minmax(0, 1fr); }
   .provision-donut-frame { max-width: 210px; }
-  .provision-donut-center strong { font-size: .92rem; }
+  .provision-donut-center strong { font-size: .67rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .provision-donut-arc { transition: none; }
