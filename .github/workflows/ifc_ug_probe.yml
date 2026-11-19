@@ -1,0 +1,32 @@
+name: EXPERIMENTO - Diagnostico dados CGU UG 158459
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ifc_ug_probe.yml'
+      - 'experimentos/ifc-empenhos/probe_ug.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ifc-ug-probe-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            experimentos/ifc-empenhos/probe_ug.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probar acesso a fonte CGU e conferir layout, sem salvar no repositorio
+        run: python experimentos/ifc-empenhos/probe_ug.py
