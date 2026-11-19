@@ -49,7 +49,7 @@
             <div class="chart-card-heading">
               <h3>Despesa do exercício</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Mostra valores acumulados da posição mais recente. A interpretação de proporções exige métricas compatíveis do mesmo relatório.</p></details>
+            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Empenho é o compromisso formal da despesa; liquidação confirma a entrega ou prestação; pagamento é o desembolso. As barras mostram valores acumulados da posição mais recente, não uma sequência cronológica.</p></details>
           </div>
           <div class="chart-slot" id="expenseTrendChart"></div>
         </article>
@@ -59,7 +59,7 @@
             <div class="chart-card-heading">
               <h3>Conversão entre etapas</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Critérios dos indicadores de execução">?</summary><p>Empenhado / provisionado é uma relação indicativa entre totais auditados de relatórios distintos, não uma taxa formal de utilização da dotação. Os demais indicadores usam a mesma posição auditada de despesa: liquidado ÷ empenhado; pago ÷ liquidado; pago ÷ empenhado; e (liquidado − pago) ÷ liquidado. Os denominadores diferem; os percentuais não devem ser somados.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios dos indicadores de execução">?</summary><p>Provisionamento é a disponibilização orçamentária acompanhada. Empenhado / provisionado é uma relação indicativa entre totais de relatórios distintos, não uma taxa formal de utilização da dotação. Os três demais indicadores usam a mesma posição auditada de despesa: liquidado ÷ empenhado; pago ÷ liquidado; e (liquidado − pago) ÷ liquidado. Os denominadores diferem; os percentuais não devem ser somados.</p></details>
           </div>
           <p class="stage-interpretation" id="stagesInterpretation" role="status" hidden></p>
           <div class="stage-gauge-grid" aria-label="Percentuais da execução da despesa">
@@ -78,11 +78,6 @@
               <div class="stage-half-gauge" id="liquidatedGauge"></div>
               <strong class="stage-gauge-value" id="liquidatedGaugeValue">-</strong>
             </div>
-            <div class="stage-gauge-card">
-              <span class="stage-gauge-title">Pago / empenhado</span>
-              <div class="stage-half-gauge" id="paidGauge"></div>
-              <strong class="stage-gauge-value" id="paidGaugeValue">-</strong>
-            </div>
             <div class="stage-gauge-card stage-gauge-card--pending">
               <span class="stage-gauge-title">Liquidado ainda não pago</span>
               <div class="stage-half-gauge" id="openGauge"></div>
@@ -96,7 +91,7 @@
             <div class="chart-card-heading">
               <h3>Restos a pagar</h3>
             </div>
-            <details class="chart-help"><summary aria-label="Explicar composição dos restos a pagar">?</summary><p>O percentual é RAP pago dividido pela soma de RAP pago e RAP a pagar. A base não é o total originalmente inscrito.</p></details>
+            <details class="chart-help"><summary aria-label="Explicar composição dos restos a pagar">?</summary><p>Restos a pagar são despesas empenhadas em exercícios anteriores. O percentual é RAP pago dividido pela soma de RAP pago e RAP a pagar; não utiliza o total originalmente inscrito.</p></details>
           </div>
           <div class="rap-share-summary">
             <strong id="rapShareValue">-</strong>
@@ -111,7 +106,7 @@
               <h3>Arrecadação própria</h3>
             </div>
             <div class="chart-card-head-aside">
-              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>A GRU apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
+              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>GRU: Guia de Recolhimento da União. Apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
             </div>
           </div>
           <div class="gru-view-switch" role="group" aria-label="Visualização da arrecadação">
@@ -124,19 +119,20 @@
           <div class="gru-report-link" id="gruReportLink"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
-      </div>
-      <div class="dashboard-reference" aria-label="Glossário de consulta opcional">
-      <details class="aux-panel glossary-panel">
-        <summary>Glossário dos conceitos <span>Entenda os termos financeiros</span></summary>
-        <div class="term-strip" aria-label="Glossário rápido">
-        <details class="term-help"><summary>Provisionamento</summary><p>Orçamento reservado ou distribuído para execução. É a base acompanhada no painel.</p></details>
-        <details class="term-help"><summary>Crédito disponível</summary><p>Parcela do orçamento que ainda está livre para ser utilizada.</p></details>
-        <details class="term-help"><summary>Empenho</summary><p>Compromisso formal de gasto assumido pela administração.</p></details>
-        <details class="term-help"><summary>Liquidado</summary><p>Despesa reconhecida após confirmação da entrega do bem ou serviço.</p></details>
-        <details class="term-help"><summary>Restos a pagar</summary><p>Despesas empenhadas em exercícios anteriores que ainda podem estar pagas ou a pagar.</p></details>
-        <details class="term-help"><summary>GRU</summary><p>Guia de Recolhimento da União usada para registrar arrecadação própria.</p></details>
-        </div>
-      </details>
+        <article class="chart-card chart-card--nd">
+          <div class="chart-card-head">
+            <div class="chart-card-heading">
+              <h3>Empenhos por natureza de despesa</h3>
+            </div>
+            <details class="chart-help"><summary aria-label="Critérios do gráfico de empenhos por natureza">?</summary><p>Valores em reais da coluna Conta Contábil / NE CCor - Valor, somados por Natureza Despesa Detalhada (2), somente nas linhas detalhadas de empenho. As maiores naturezas aparecem individualmente; as demais ficam agrupadas. O tamanho das áreas representa a participação no total positivo. Os valores podem não coincidir com outros indicadores de empenho devido ao escopo e aos critérios de cada relatório.</p></details>
+          </div>
+          <div id="ndCommitmentsChart" aria-label="Empenhos agrupados por descrição de natureza de despesa"><p class="chart-empty">Carregando naturezas de despesa…</p></div>
+          <p id="ndChartDetail" class="nd-chart-detail" role="status" aria-live="polite" hidden></p>
+          <div class="nd-chart-footer">
+            <span id="ndChartTotal" class="nd-chart-total"></span>
+            <a id="ndReportLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
+          </div>
+        </article>
       </div>
       <details id="managementAlertsPanel" class="management-alerts">
         <summary class="management-alerts-summary">

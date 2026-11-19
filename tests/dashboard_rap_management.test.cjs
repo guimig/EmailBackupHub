@@ -53,7 +53,7 @@ test('RAP panel shows exact basis: paid 10000, payable 2000, total 12000 and bot
     assert.ok(content.includes(amount), 'Missing value or rate: '+amount);
   }
   assert.match(content, /base dos percentuais/);
-  assert.match(content, /Consultar relatório de Restos a Pagar/);
+  assert.match(content, /Ver relatório ↗/);
 });
 
 test('RAP preserves valid zero percent, but does not divide by zero', () => {
@@ -105,5 +105,5 @@ test('management details are collapsed by default and RAP heading explains the p
   assert.match(html,/id="managementAlertCount"/);
   assert.match(html,/id="rapShareMeaning"/);
   assert.match(html,/RAP pago dividido pela soma de RAP pago e RAP a pagar/);
-  assert.match(html,/não é o total originalmente inscrito/);
+  assert.match(html,/não utiliza o total originalmente inscrito/);
 });

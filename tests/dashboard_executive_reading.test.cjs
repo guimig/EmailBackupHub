@@ -13,8 +13,8 @@ test('executive summary removes duplicate monetary sections and long introductor
   assert.doesNotMatch(html, /chart-kicker|Posição consolidada dos relatórios disponíveis/);
   assert.doesNotMatch(html, /Orçamento provisionado acompanhado|Saldo na posição atual do relatório|Movimentação líquida auditada/);
   assert.doesNotMatch(html, /Os indicadores refletem métricas auditáveis dos relatórios recebidos/);
-  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 4);
-  assert.equal((html.match(/<h3>/g) || []).length, 4);
+  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 5);
+  assert.equal((html.match(/<h3>/g) || []).length, 5);
   assert.doesNotMatch(html, /chart-card--credit|id="creditDonut"|id="gruValue"/);
 });
 
@@ -24,7 +24,9 @@ test('meaningful accounting explanations and links remain available', () => {
   assert.match(html, /id="budgetBase"/);
   assert.match(html, /RAP pago dividido pela soma de RAP pago e RAP a pagar/);
   assert.match(html, /id="managementAlertsPanel"/);
-  assert.match(html, /class="aux-panel glossary-panel"/);
+  assert.doesNotMatch(html, /class="aux-panel glossary-panel"|Glossário dos conceitos/);
+  assert.match(html, /id="ndCommitmentsChart"/);
+  assert.match(html, /Conta Contábil \/ NE CCor - Valor/);
   assert.match(html, /class="chart-help"/);
   assert.match(html, /id="gruViewCodesButton"/);
 });
@@ -54,9 +56,16 @@ test('execution prioritizes budget commitment ratio and hides valid-state notice
   const gaugeTitles = [...html.matchAll(/class="stage-gauge-title">([^<]+)/g)].map(match => match[1]);
   assert.deepEqual(gaugeTitles, [
     'Empenhado / provisionado', 'Liquidado / empenhado',
-    'Pago / liquidado', 'Pago / empenhado', 'Liquidado ainda não pago'
+    'Pago / liquidado', 'Liquidado ainda não pago'
   ]);
   assert.match(html, /id="stagesInterpretation"[^>]*hidden/);
   assert.match(js, /banner\.hidden = true/);
   assert.match(js, /banner\.hidden = false/);
+});
+
+test('ND value composition is linked to a named grouping and no duplicate stage exists', () => {
+  assert.doesNotMatch(html, /id="paidGauge"|id="paidGaugeValue"/);
+  assert.doesNotMatch(js, /renderHalfGauge\('paidGauge'/);
+  assert.match(js, /query\.set\('vg', 'Natureza Despesa Detalhada \(2\)'\)/);
+  assert.match(js, /query\.set\('vgs', JSON\.stringify\(\['Conta Contábil \/ NE CCor - Valor'\]\)\)/);
 });

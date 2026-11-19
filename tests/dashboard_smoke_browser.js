@@ -98,21 +98,20 @@
     const expenseCard = chartGrid.querySelector('.chart-card--expense');
     const rapCard = chartGrid.querySelector('.chart-card--rap');
     const rect = node => node.getBoundingClientRect();
-    qa.fourPurposefulPanels = cards.length === 4 &&
-      ['expense', 'stages', 'rap', 'gru'].every(type =>
+    qa.fivePurposefulPanels = cards.length === 5 &&
+      ['expense', 'stages', 'rap', 'gru', 'nd'].every(type =>
         cards.some(card => card.classList.contains('chart-card--' + type)));
-    qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 5 &&
+    qa.executionRatiosGrouped = stages.querySelectorAll('.stage-gauge-card').length === 4 &&
       el('committedGaugeValue').textContent.includes('60,0%') &&
       el('liquidatedGaugeValue').textContent.includes('66,7%') &&
-      el('paidGaugeValue').textContent.includes('40,0%') &&
       el('openGaugeValue').textContent.includes('33,3%') &&
       el('provisionGaugeValue').textContent.includes('50,0%') &&
       el('stagesInterpretation').dataset.state === 'available' &&
-      ['committedGauge', 'liquidatedGauge', 'paidGauge', 'openGauge', 'provisionGauge'].every(id =>
+      ['committedGauge', 'liquidatedGauge', 'openGauge', 'provisionGauge'].every(id =>
         stages.contains(el(id)) &&
         el(id).querySelectorAll('.stage-gauge-track').length === 1 &&
         el(id).querySelectorAll('.stage-gauge-progress').length === 1) &&
-      !el('provisionDonut') && !el('provisionShareValue');
+      !el('paidGauge') && !el('paidGaugeValue') && !el('provisionDonut') && !el('provisionShareValue');
     qa.provisionGaugeFirst = stages.querySelector('.stage-gauge-card .stage-gauge-title')
       ?.textContent.trim() === 'Empenhado / provisionado';
     qa.auditedDateNotDuplicated = el('stagesInterpretation').hidden &&
@@ -130,7 +129,7 @@
         !!link.getAttribute('aria-label');
     });
     qa.noRapSubtitle = !document.querySelector('#rapTotal + small');
-    qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 5 &&
+    qa.halfGaugesUseAccessibleSvg = [...stages.querySelectorAll('.stage-half-gauge svg')].length === 4 &&
       [...stages.querySelectorAll('.stage-half-gauge svg')].every(svg =>
         svg.getAttribute('role') === 'img' &&
         svg.getAttribute('aria-label')?.includes('%'));
@@ -157,9 +156,7 @@
       const top = gaugeCards.map(rect).map(r => r.top);
       return window.innerWidth >= 761
         ? top.every(value => Math.abs(value - top[0]) < 5)
-        : window.innerWidth > 360
-          ? Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0] && top[4] > top[2]
-          : Math.abs(top[0] - top[1]) < 5 && top[4] > top[2];
+        : Math.abs(top[0] - top[1]) < 5 && Math.abs(top[2] - top[3]) < 5 && top[2] > top[0];
     })();
     // Allow concise explanatory summaries while keeping charts screen-sized.
     qa.dashboardCompactOnDesktop = window.innerWidth < 1180 ||
@@ -224,45 +221,46 @@
     const secondary = el('otherFinancialIndicators');
     qa.noRedundantFinancialIndicators = !secondary &&
       document.querySelectorAll('.dashboard-panel > .dashboard-kpis > .kpi-card').length === 4;
-    const glossary = document.querySelector('.glossary-panel');
-    qa.glossaryAvailableOnDemand = !glossary.open &&
-      glossary.querySelectorAll('.term-help').length === 6;
-    glossary.open = true;
-    qa.glossaryExpands = glossary.open &&
-      getComputedStyle(glossary.querySelector('.term-strip')).display !== 'none';
-    glossary.open = false;
-    qa.methodologyStillAccessible = [...document.querySelectorAll('.chart-card .chart-help')].length === 4 &&
+    qa.glossaryRemoved = !document.querySelector('.glossary-panel, .dashboard-reference');
+    qa.methodologyStillAccessible = [...document.querySelectorAll('.chart-card .chart-help')].length === 5 &&
       !document.querySelector('.source-context');
     qa.expenseTakeawayRemoved = !el('expenseTakeaway') && !el('expenseTakeawayTitle') && !el('expenseTakeawayText');
     qa.noDuplicateRapTakeaway = !el('rapTakeaway');
-    qa.noRedundantChartClicks = !chartGrid.querySelector('.financial-bar-row[role="button"], '
-      + '.rap-composition-item[role="button"], .stage-gauge-card[role="button"]')
-      && !el('expenseChartDetail') && !el('rapChartDetail') && !el('stagesChartDetail');
+    qa.chartsReactToClick = (() => {
+      const expenseItem = expense.querySelector('.financial-bar-row[data-chart-selectable]');
+      const rapItem = rap.querySelector('.rap-composition-item[data-chart-selectable]');
+      const stageItem = stages.querySelector('.stage-gauge-card[data-chart-selectable]');
+      const ndItem = el('ndCommitmentsChart').querySelector('[data-nd-description]');
+      if (![expenseItem,rapItem,stageItem,ndItem].every(Boolean)) return false;
+      expenseItem.click(); rapItem.click(); stageItem.click(); ndItem.click();
+      const detail = el('ndChartDetail');
+      return [expenseItem,rapItem,stageItem,ndItem].every(item =>
+        item.getAttribute('aria-pressed') === 'true')
+        && !detail.hidden && detail.textContent.includes(ndItem.dataset.ndDescription);
+    })();
     qa.methodologyUsesQuestionMark = cards.every(card =>
       card.querySelectorAll(':scope > .chart-card-head details.chart-help > summary').length === 1 &&
       card.querySelector(':scope > .chart-card-head details.chart-help > summary').textContent.trim() === '?') &&
       cards.every(card => card.querySelectorAll('details.chart-methodology').length === 0);
+    qa.ndCompositionFromMonetaryColumn = el('ndCommitmentsChart').querySelectorAll('.nd-treemap-tile').length === 3
+      && el('ndChartTotal').textContent.includes('2.700,50')
+      && el('ndChartTotal').textContent.includes('3 naturezas')
+      && new URL(el('ndReportLink').href).searchParams.get('vg') === 'Natureza Despesa Detalhada (2)'
+      && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs') || '[]')[0] === 'Conta Contábil / NE CCor - Valor';
+    qa.ndTreemapCompact = el('ndCommitmentsChart').querySelector('.nd-treemap')?.getBoundingClientRect().height <= 240;
+    qa.uniformReportLinkText = [...document.querySelectorAll('.dashboard-charts--overview .financial-chart-link, .dashboard-charts--overview .rap-composition-link')].every(link => link.textContent.trim() === 'Ver relatório ↗');
     qa.originLinksRemainVisible = Boolean(expense.querySelector('a.financial-chart-link')) &&
       Boolean(el('gruReportLink').querySelector('a.financial-chart-link')) &&
       Boolean(rap.querySelector('a.rap-composition-link'));
     // Visual design contract: consistent padding, cards, typography and reading order.
     const dashboardPanel = document.querySelector('.dashboard-panel');
-    const reference = document.querySelector('.dashboard-reference');
-    const referenceCards = [...reference.querySelectorAll(':scope > .aux-panel')];
     const gridGap = parseFloat(getComputedStyle(chartGrid).columnGap);
     const cardPadding = cards.map(card => parseFloat(getComputedStyle(card).paddingLeft));
-    qa.dashboardHasReferenceSection = referenceCards.length === 1 &&
-      referenceCards[0].classList.contains('glossary-panel');
     qa.dashboardReadingOrder = rect(document.querySelector('.dashboard-panel > .dashboard-kpis')).top <
-      rect(chartGrid).top && rect(chartGrid).top < rect(reference).top &&
-      rect(reference).top < rect(managementPanel).top;
+      rect(chartGrid).top && rect(chartGrid).bottom < rect(managementPanel).top;
     qa.dashboardCardPaddingConsistent = cardPadding.every(value => value >= 12 &&
       Math.abs(value - cardPadding[0]) < .5);
     qa.dashboardGridSpacingConsistent = gridGap >= 12 && gridGap <= 24;
-    qa.dashboardReferenceIsResponsive = referenceCards.length === 1 &&
-      rect(referenceCards[0]).width <= rect(reference).width + 1;
-    qa.glossaryUsesAvailableWidth = rect(referenceCards[0]).width >= rect(reference).width - 5 &&
-      rect(reference).width >= rect(chartGrid).width - 5;
     qa.dashboardPanelFitsScreen = rect(dashboardPanel).right <= window.innerWidth + 3;
     qa.dashboardTypographyUsesTokens = getComputedStyle(document.body).fontFamily ===
       getComputedStyle(expenseCard).fontFamily;

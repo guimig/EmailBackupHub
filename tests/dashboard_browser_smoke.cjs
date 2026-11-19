@@ -75,6 +75,20 @@ const gruDocument={
 };
 
 
+const ndDocument={
+ slug:'saldos-de-empenhos-do-exercicio-conta-contabil',
+ date:'17/11/2026',date_iso:'2026-11-17',
+ metadata:{exercicio:2026,hash_conteudo:'test-hash'},
+ quality:{ok:true,issues:[],warnings:[]},
+ columns:['Natureza Despesa Detalhada (2)','Conta Contábil / NE CCor - Valor'],
+ rows:[
+  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS', 'Conta Contábil / NE CCor - Valor':'1.200,00' },
+  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS', 'Conta Contábil / NE CCor - Valor':'300,50' },
+  { 'Natureza Despesa Detalhada (2)':'DIARIAS NO PAIS', 'Conta Contábil / NE CCor - Valor':'800,00' },
+  { 'Natureza Despesa Detalhada (2)':'SERVICOS DE LIMPEZA', 'Conta Contábil / NE CCor - Valor':'400,00' }
+ ]
+};
+
 const server=http.createServer((req,res)=>{
  let pathname;
  try{pathname=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname);}
@@ -84,7 +98,8 @@ const server=http.createServer((req,res)=>{
   '/data/dashboard-summary.json':summary,
   '/data/report-definitions.json':{reports:{}},
   '/data/search-index.json':{documents:[]},
-  '/data/reports/recolhimento-proprio-gru.json':gruDocument
+  '/data/reports/recolhimento-proprio-gru.json':gruDocument,
+  '/data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json':ndDocument
  };
  if(Object.hasOwn(json,pathname)){
   res.writeHead(200,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});

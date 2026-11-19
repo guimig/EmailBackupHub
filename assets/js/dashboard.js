@@ -16,6 +16,7 @@ let indexData = null;
     // Cache only the current GRU document for accurate emission-month reconciliation.
     // Historical extraction snapshots are never treated as transaction movements.
     let gruDetailState = { key: '', status: 'idle', document: null, error: '' };
+    let ndDetailState = { key: '', status: 'idle', document: null, error: '' };
 
     const byId = id => document.getElementById(id);
 
@@ -427,8 +428,6 @@ let indexData = null;
         ? formatPercent(stageModel.liquidated, stageModel.committed) : '-');
       setText('liquidatedGaugeValue', stageModel.ok
         ? formatPercent(stageModel.paid, stageModel.liquidated) : '-');
-      setText('paidGaugeValue', stageModel.ok
-        ? formatPercent(stageModel.paid, stageModel.committed) : '-');
       setText('openGaugeValue', stageModel.ok && stageModel.liquidated > 0
         ? formatPercent(stageModel.unpaidLiquidated, stageModel.liquidated) : '-');
       setText('provisionGaugeValue', provisionGaugeModel.ok
@@ -440,12 +439,25 @@ let indexData = null;
       renderExpenseComparison('expenseTrendChart', { committed, liquidated, paid }, stageModel);
       renderRapHistory('rapStackChart', { rapPaid, rapPayable });
       renderGruMonthlyView('gruTreeChart', 'gruLegend', gru);
+      renderNdCommitmentsView();
       renderHalfGauge('committedGauge', stageModel.ok ? stageModel.rates.liquidatedOfCommitted : null);
       renderHalfGauge('liquidatedGauge', stageModel.ok ? stageModel.rates.paidOfLiquidated : null);
-      renderHalfGauge('paidGauge', stageModel.ok ? stageModel.rates.paidOfCommitted : null);
       renderHalfGauge('openGauge', stageModel.ok && stageModel.liquidated > 0
         ? stageModel.unpaidLiquidated / stageModel.liquidated : null);
       renderHalfGauge('provisionGauge', provisionGaugeModel.ok ? provisionGaugeModel.value : null);
+      // Stage and RAP controls respond visually without duplicating already visible values.
+      for (const tile of document.querySelectorAll('.stage-gauge-card')) {
+        tile.setAttribute('role', 'button');
+        tile.setAttribute('tabindex', '0');
+        tile.setAttribute('aria-pressed', 'false');
+        tile.dataset.chartSelectable = '1';
+      }
+      for (const item of document.querySelectorAll('.rap-composition-item')) {
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-pressed', 'false');
+        item.dataset.chartSelectable = '1';
+      }
       updateDashboardInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, rapPaidRatio, stageModel });
       updateGraphInsights({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned, provisionOpen, stageModel });
       renderManagementAlerts({ budget, credit, rapTotal, rapPaid, rapPayable, gru, committed, liquidated, paid, provisioned });
@@ -845,8 +857,6 @@ let indexData = null;
         ? formatPercent(st.liquidated, st.committed) + '. ' + stageDetail : stageDetail);
       setInsight('liquidatedGaugeValue', 'Pago / liquidado', st?.ok
         ? formatPercent(st.paid, st.liquidated) + '. ' + stageDetail : stageDetail);
-      setInsight('paidGaugeValue', 'Pago / empenhado', st?.ok
-        ? formatPercent(st.paid, st.committed) + '. ' + stageDetail : stageDetail);
       setInsight('openGaugeValue', 'Liquidado ainda não pago', st?.ok && st.liquidated > 0
         ? formatPercent(st.unpaidLiquidated, st.liquidated) + '. ' + stageDetail : stageDetail);
     }
@@ -862,8 +872,6 @@ let indexData = null;
         ? formatPercent(stage.liquidated, stage.committed) + '. ' + stageNote : stageNote);
       setElementInsight('liquidatedGauge', 'Pago / liquidado', stage?.ok
         ? formatPercent(stage.paid, stage.liquidated) + '. ' + stageNote : stageNote);
-      setElementInsight('paidGauge', 'Pago / empenhado', stage?.ok
-        ? formatPercent(stage.paid, stage.committed) + '. ' + stageNote : stageNote);
       setElementInsight('openGauge', 'Liquidado ainda não pago',
         stage?.ok && stage.liquidated > 0
           ? formatPercent(stage.unpaidLiquidated, stage.liquidated) + '. ' + stageNote
@@ -978,10 +986,84 @@ let indexData = null;
       const link = byId('gruReportLink');
       if (link) {
         link.innerHTML = source
-          ? '<a class="financial-chart-link" href="' + escapeHtml(source) + '">Consultar relatório de origem</a>'
+          ? '<a class="financial-chart-link" href="' + escapeHtml(source) + '">Ver relatório ↗</a>'
           : '';
       }
       setGruView(gruActiveView);
+    }
+
+    function renderNdCommitmentsView() {
+      const slug = 'saldos-de-empenhos-do-exercicio-conta-contabil';
+      const target = byId('ndCommitmentsChart');
+      const renderer = window.EmailBackupHubFinancialCharts;
+      if (!target || !renderer?.buildNdCommitments || !renderer?.renderNdCommitments) return;
+      const report = reports.find(item => item.slug === slug);
+      const compact = financialReports[slug];
+      const url = chartSourceUrl(slug);
+      const link = byId('ndReportLink');
+      if (link) {
+        link.hidden = !url;
+        if (url) {
+          // Named parameters survive column reordering in the report viewer.
+          const query = new URLSearchParams(url.slice(url.indexOf('?') + 1));
+          query.set('sv', '2');
+          query.set('vg', 'Natureza Despesa Detalhada (2)');
+          query.set('vgs', JSON.stringify(['Conta Contábil / NE CCor - Valor']));
+          query.set('ps', 'all');
+          query.set('totals', '0');
+          link.href = 'report-viewer.html?' + query.toString();
+        } else link.removeAttribute('href');
+      }
+      if (!report?.json_path) {
+        target.innerHTML = '<p class="chart-empty" role="status">Relatório de empenhos não encontrado no índice.</p>';
+        return;
+      }
+      const key = String(indexData?.generated_at || '') + '|' + report.json_path;
+      if (ndDetailState.key !== key) {
+        ndDetailState = { key, status: 'loading', document: null, error: '' };
+        fetch(report.json_path)
+          .then(response => {
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            return response.json();
+          })
+          .then(doc => {
+            if (ndDetailState.key !== key) return;
+            ndDetailState = { key, status: 'ready', document: doc, error: '' };
+            renderNdCommitmentsView();
+          })
+          .catch(error => {
+            if (ndDetailState.key !== key) return;
+            ndDetailState = { key, status: 'error', document: null, error: String(error.message || error) };
+            renderNdCommitmentsView();
+          });
+      }
+      if (ndDetailState.status === 'loading') {
+        target.innerHTML = '<p class="chart-empty" role="status">Agrupando naturezas de despesa…</p>';
+        return;
+      }
+      if (ndDetailState.status === 'error') {
+        target.innerHTML = '<p class="chart-empty" role="status">Falha ao carregar a composição: '
+          + escapeHtml(ndDetailState.error) + '</p>';
+        return;
+      }
+      const doc = ndDetailState.document;
+      const expectedHash = compact?.metadata?.hash_conteudo;
+      if (expectedHash && doc?.metadata?.hash_conteudo !== expectedHash) {
+        target.innerHTML = '<p class="chart-empty" role="status">A versão detalhada não coincide com o resumo auditado.</p>';
+        return;
+      }
+      const model = renderer.buildNdCommitments(doc);
+      renderer.renderNdCommitments(target, model);
+      const total = byId('ndChartTotal');
+      if (total) total.textContent = model.ok
+        ? model.groups + ' naturezas · ' + model.records + ' empenhos · '
+          + formatMoney(model.total)
+        : '';
+      const detail = byId('ndChartDetail');
+      if (detail) {
+        detail.hidden = true;
+        detail.textContent = '';
+      }
     }
 
     function renderRapHistory(id, currentValues) {
@@ -1013,7 +1095,7 @@ let indexData = null;
       const formatValue = value => escapeHtml(formatMoney(value));
       const url = chartSourceUrl('restos-a-pagar-rap');
       const detailsLink = url
-        ? '<a class="rap-composition-link" href="' + escapeHtml(url) + '">Consultar relatório de Restos a Pagar</a>'
+        ? '<a class="rap-composition-link" href="' + escapeHtml(url) + '">Ver relatório ↗</a>'
         : '';
       byId(id).innerHTML =
         '<div class="rap-composition" role="group" aria-label="Composição de RAP pagos e a pagar, relativa ao total acompanhado">' +
@@ -1250,6 +1332,39 @@ let indexData = null;
         setText('gruSelectionDetail', selected.dataset.gruMonth + ' — '
           + selected.dataset.gruValue + ' · ' + selected.dataset.gruRecords + ' registro(s).');
       }
+    });
+    // Selection provides visible focus/feedback; no redundant readout for ordinary charts.
+    const selectChartItem = item => {
+      const group = item.closest('.chart-card');
+      if (!group) return;
+      for (const other of group.querySelectorAll('[data-chart-selectable]')) {
+        other.setAttribute('aria-pressed', String(other === item));
+      }
+    };
+    const overview = byId('dashboardCharts');
+    overview.addEventListener('click', event => {
+      const item = event.target.closest('[data-chart-selectable]');
+      if (item && overview.contains(item)) selectChartItem(item);
+    });
+    overview.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const item = event.target.closest('[data-chart-selectable]');
+      if (!item || !overview.contains(item)) return;
+      event.preventDefault();
+      selectChartItem(item);
+    });
+    const ndCard = document.querySelector('.chart-card--nd');
+    ndCard.addEventListener('click', event => {
+      const item = event.target.closest('[data-nd-description]');
+      if (!item) return;
+      for (const tile of ndCard.querySelectorAll('[data-nd-description]')) {
+        tile.setAttribute('aria-pressed', String(tile === item));
+      }
+      const detail = byId('ndChartDetail');
+      detail.hidden = false;
+      detail.textContent = item.dataset.ndDescription + ' — ' + item.dataset.ndValue
+        + ' · ' + item.dataset.ndShare.replace('.', ',') + '% dos valores positivos'
+        + ' · ' + item.dataset.ndRecords + ' empenho(s).';
     });
     document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
       const nextKey = th.dataset.sort;
