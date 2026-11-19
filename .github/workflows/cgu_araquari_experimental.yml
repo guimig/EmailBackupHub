@@ -60,7 +60,8 @@ jobs:
         env:
           CGU_API_KEY: ${{ secrets.CGU_API_KEY }}
           CGU_LOOKBACK_DAYS: '7'
-          CGU_MAX_PAGES: '5'
+          CGU_MAX_PAGES: '30'
+          CGU_MAX_IMPACT_PAGES: '8'
       - name: Validar esquema, completude, UG e ausencia de dados pessoais
         run: |
           node --input-type=module <<'JS'
@@ -79,7 +80,9 @@ jobs:
           }
           for (const fase of data.fases) {
             if (!Number.isInteger(fase.quantidade) || fase.quantidade < 0) throw Error('CGU: contagem invalida');
+            if (!Number.isInteger(fase.valores_recuperados_impactos) || fase.valores_recuperados_impactos < 0 || fase.valores_recuperados_impactos > fase.quantidade) throw Error('CGU: recuperacao monetaria inconsistente');
             if (!fase.completo && fase.total !== null) throw Error('CGU: total parcial apresentado como completo');
+            if (fase.valores_invalidos > 0 && fase.total !== null) throw Error('CGU: total monetario com dados invalidos');
             if (fase.completo && fase.total === null && fase.valores_invalidos < 1) throw Error('CGU: valor ausente sem justificativa');
           }
           console.log('CGU: dados experimentais validados; sem campos pessoais');

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {parseBRL,daysToQuery,buildUrl,sanitizeDocument,requestPage,collectPhase,collectSnapshot} from './coletar-cgu.mjs';
+import {parseBRL,daysToQuery,buildUrl,buildImpactedUrl,sanitizeDocument,requestPage,requestImpactedPage,resolveLiquidation,collectPhase,collectSnapshot} from './coletar-cgu.mjs';
 const item=(id,value='1.234,56')=>({codigoUg:'158459',documento:id,valor:value,nomeFavorecido:'PRIVADO',codigoFavorecido:'12345678900'});
 const pages=items=>async(date,phase,page)=>items[date+'-'+phase+'-'+page]||[];
 test('converte valores e rejeita valores inválidos',()=>{
@@ -79,4 +79,114 @@ test('snapshot parcial mantém contagens mínimas e não divulga total incomplet
  assert.equal(model.fases[0].quantidade,1);
  assert.equal(model.fases[0].total,null);
  assert.equal(model.dias[0].completo,false);
+});
+
+
+test('identificador NS SIAFI e fase 2 são exigidos para empenhos impactados',()=>{
+  const doc='158459000012026NS000123';
+  const url=new URL(buildImpactedUrl(doc,2));
+  assert.equal(url.pathname,'/api-de-dados/despesas/empenhos-impactados');
+  assert.equal(url.searchParams.get('codigoDocumento'),doc);
+  assert.equal(url.searchParams.get('fase'),'2');
+  assert.equal(url.searchParams.get('pagina'),'2');
+  assert.throws(()=>buildImpactedUrl('2026NS000123',1));
+  assert.throws(()=>buildImpactedUrl(doc,0));
+});
+
+test('consulta dos empenhos impactados usa token só no cabeçalho',async()=>{
+  const doc='158459000012026NS000123';
+  const data=await requestImpactedPage(doc,1,{token:'CHAVE-INTERNA',
+    fetcher:async(url,options)=>{
+      assert.equal(url.includes('CHAVE-INTERNA'),false);
+      assert.equal(options.headers['chave-api-dados'],'CHAVE-INTERNA');
+      return {ok:true,status:200,json:async()=>[]};
+    }});
+  assert.deepEqual(data,[]);
+});
+
+test('liquidação soma valores dos empenhos impactados incluindo estorno',async()=>{
+  const doc='158459000012026NS000123';
+  const impact=async(_,page)=>page===1?[
+    {empenho:'NE1',subitem:'01',valorLiquidado:'R$ 1.234,56',nomeFavorecido:'SIGILOSO'},
+    {empenho:'NE1',subitem:'02',valorLiquidado:'-34,56'}
+  ]:page===2?[{empenho:'NE2',subitem:'01',valorLiquidado:'0,00'}]:[];
+  const result=await resolveLiquidation(doc,{token:'fake',request:impact});
+  assert.equal(result.valor,1200);
+  assert.equal(result.situacao,'recuperado');
+  assert.equal(result.paginas,3);
+  const phase=await collectPhase('18/11/2026',2,{token:'fake',
+    request:pages({'18/11/2026-2-1':[{...item(doc),valor:null}]}),
+    requestImpact:impact});
+  assert.equal(phase.completo,true);
+  assert.equal(phase.total,1200);
+  assert.equal(phase.valores_recuperados_impactos,1);
+  assert.equal(phase.valores_invalidos,0);
+  assert.equal(JSON.stringify(phase).includes('SIGILOSO'),false);
+  assert.deepEqual(Object.keys(phase.amostra[0]),['data','fase','documento','valor']);
+});
+
+test('sem empenhos impactados não implica liquidação monetária zero',async()=>{
+  const result=await resolveLiquidation('158459000012026NS000123',{token:'fake',request:async()=>[]});
+  assert.equal(result.valor,null);
+  assert.equal(result.situacao,'sem_impactos');
+});
+
+test('valores impactados nulos, páginas repetidas e limites são não-conciliáveis',async()=>{
+  const doc='158459000012026NS000123';
+  const missing=await resolveLiquidation(doc,{token:'fake',request:async()=>[
+    {empenho:'NE1',subitem:'01',valorLiquidado:null}]});
+  assert.equal(missing.situacao,'valor_impactado_invalido');
+  assert.equal(missing.valor,null);
+  const repeating=await resolveLiquidation(doc,{token:'fake',request:async()=>[
+    {empenho:'NE1',subitem:'01',valorLiquidado:'10,00'}]});
+  assert.equal(repeating.situacao,'pagina_repetida');
+  assert.equal(repeating.valor,null);
+  const limited=await resolveLiquidation(doc,{token:'fake',maxImpactPages:1,request:async()=>[
+    {empenho:'NE1',subitem:'01',valorLiquidado:'10,00'}]});
+  assert.equal(limited.situacao,'limite_impactos');
+  assert.equal(limited.valor,null);
+});
+
+test('falha na API impactados mantém contagem mas não inventa liquidação',async()=>{
+  const doc='158459000012026NS000123';
+  const result=await collectPhase('18/11/2026',2,{token:'fake',
+    request:pages({'18/11/2026-2-1':[{...item(doc),valor:null}]}),
+    requestImpact:async()=>{throw Error('falha remota');}});
+  assert.equal(result.quantidade,1);
+  assert.equal(result.total,null);
+  assert.equal(result.valores_invalidos,1);
+  assert.equal(result.consultas_impactos_sem_valor,1);
+});
+
+test('pagamentos atravessam mais de cinco páginas, sem corte artificial',async()=>{
+  const data={};
+  for(let page=1;page<=9;page++){
+    data['17/11/2026-3-'+page]=[
+      item('158459000012026OB'+String(page).padStart(6,'0'),String(page)+',00')];
+  }
+  const result=await collectPhase('17/11/2026',3,{token:'fake',maxPages:30,request:pages(data)});
+  assert.equal(result.completo,true);
+  assert.equal(result.paginas_consultadas,10);
+  assert.equal(result.quantidade,9);
+  assert.equal(result.total,45);
+});
+
+test('página repetida jamais encerra uma paginação como completa',async()=>{
+  const result=await collectPhase('17/11/2026',3,{token:'fake',
+    request:async()=>[item('158459000012026OB000001','10,00')]});
+  assert.equal(result.completo,false);
+  assert.equal(result.motivo_parcial,'pagina_repetida');
+  assert.equal(result.total,null);
+});
+
+test('agregado de liquidações recuperadas não mistura UG 158459 e UO 26422',async()=>{
+  const ns='158459000012026NS000123';
+  const snapshot=await collectSnapshot({now:new Date('2026-11-19T14:00:00Z'),
+    token:'fake',lookback:1,request:pages({'18/11/2026-2-1':[{...item(ns),valor:null}]}),
+    requestImpact:async(_,page)=>page===1?[
+      {empenho:'158459000012026NE000123',subitem:'01',valorLiquidado:'45,00'}
+    ]:[]});
+  assert.equal(snapshot.fases.find(f=>f.fase===2).total,45);
+  assert.equal(snapshot.fases.find(f=>f.fase===2).valores_recuperados_impactos,1);
+  assert.equal(snapshot.qualidade.valores_invalidos,0);
 });
