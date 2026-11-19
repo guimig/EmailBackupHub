@@ -148,6 +148,7 @@ const server=http.createServer((req,res)=>{
   '/data/report-definitions.json':{reports:{}},
   '/data/search-index.json':{documents:[]},
   '/data/reports/recolhimento-proprio-gru.json':gruDocument,
+  '/data/reports/provisionamentos.json':provisionDocument,
   '/data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json':ndDocument
  };
  if(Object.hasOwn(json,pathname)){
