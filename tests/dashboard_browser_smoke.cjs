@@ -75,17 +75,34 @@ const gruDocument={
 };
 
 
+const ND_S1='622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)';
+const ND_S2='622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)';
+const ND_S3='622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)';
 const ndDocument={
  slug:'saldos-de-empenhos-do-exercicio-conta-contabil',
  date:'17/11/2026',date_iso:'2026-11-17',
  metadata:{exercicio:2026,hash_conteudo:'test-hash'},
  quality:{ok:true,issues:[],warnings:[]},
- columns:['Natureza Despesa Detalhada (2)','Conta Contábil / NE CCor - Valor'],
+ metrics:{saldo_a_liquidar:1050.50,liquidado_a_pagar:50,pago:1600},
+ metrics_meta:{
+  saldo_a_liquidar:{status:'ok',source:'totals',fallback:false},
+  liquidado_a_pagar:{status:'ok',source:'totals',fallback:false},
+  pago:{status:'ok',source:'totals',fallback:false}
+ },
+ columns:['Natureza Despesa Detalhada (2)','NE CCor','Conta Contábil / NE CCor - Valor',ND_S1,ND_S2,ND_S3],
  rows:[
-  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS', 'Conta Contábil / NE CCor - Valor':'1.200,00' },
-  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS', 'Conta Contábil / NE CCor - Valor':'300,50' },
-  { 'Natureza Despesa Detalhada (2)':'DIARIAS NO PAIS', 'Conta Contábil / NE CCor - Valor':'800,00' },
-  { 'Natureza Despesa Detalhada (2)':'SERVICOS DE LIMPEZA', 'Conta Contábil / NE CCor - Valor':'400,00' }
+  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS','NE CCor':'NE0001',
+    'Conta Contábil / NE CCor - Valor':'1.200,00',
+    [ND_S1]:'600,00',[ND_S2]:'0,00',[ND_S3]:'600,00' },
+  { 'Natureza Despesa Detalhada (2)':'BOLSAS DE ESTUDO NO PAIS','NE CCor':'NE0002',
+    'Conta Contábil / NE CCor - Valor':'300,50',
+    [ND_S1]:'150,50',[ND_S2]:'50,00',[ND_S3]:'100,00' },
+  { 'Natureza Despesa Detalhada (2)':'DIARIAS NO PAIS','NE CCor':'NE0003',
+    'Conta Contábil / NE CCor - Valor':'800,00',
+    [ND_S1]:'300,00',[ND_S2]:'0,00',[ND_S3]:'500,00' },
+  { 'Natureza Despesa Detalhada (2)':'SERVICOS DE LIMPEZA','NE CCor':'NE0004',
+    'Conta Contábil / NE CCor - Valor':'400,00',
+    [ND_S1]:'0,00',[ND_S2]:'0,00',[ND_S3]:'400,00' }
  ]
 };
 
