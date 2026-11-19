@@ -14,7 +14,7 @@ test('executive summary removes duplicate monetary sections and long introductor
   assert.doesNotMatch(html, /Orçamento provisionado acompanhado|Saldo na posição atual do relatório|Movimentação líquida auditada/);
   assert.doesNotMatch(html, /Os indicadores refletem métricas auditáveis dos relatórios recebidos/);
   assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 6);
-  assert.equal((html.match(/<h3>/g) || []).length, 5);
+  assert.equal((html.match(/<h3>/g) || []).length, 6);
   assert.doesNotMatch(html, /chart-card--credit|id="creditDonut"|id="gruValue"/);
 });
 
