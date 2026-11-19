@@ -1,30 +1,153 @@
 {
   "schema_version": 1,
-  "gerado_em": null,
+  "gerado_em": "2026-11-19T14:26:33.211125+00:00",
   "unidade_gestora": "158459",
-  "criterio": "Movimentos mensais da UG 158459 nos arquivos oficiais CGU; aguardando primeira coleta integral.",
+  "criterio": "Movimentos mensais de Valor Empenhado da UG 158459, arquivos CGU de execucao da despesa",
   "cgu": {
     "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao",
-    "anos_ok": 0,
-    "meses_coletados": 0,
-    "nota": "2009-2012: formato de acervo historico necessita investigacao."
+    "anos_ok": 2,
+    "meses_coletados": 24,
+    "primeiro_exercicio_coberto": 2013,
+    "nota": "2009-2012: consultar acervo historico de formato distinto; sem zeros inventados",
+    "falhas_consulta": []
   },
   "sidra": {
-    "referencia": null,
+    "referencia": "202610",
     "ultima_competencia": {
-      "IPCA": null,
-      "INPC": null
+      "IPCA": "202610",
+      "INPC": "202610"
     },
     "status": {
       "IPCA": {
-        "status": "aguardando"
+        "status": "ok"
       },
       "INPC": {
-        "status": "aguardando"
+        "status": "ok"
       }
     }
   },
-  "meses": {},
+  "meses": {
+    "202501": {
+      "valor": 381307.68,
+      "registros": 7,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202501_Despesas.zip"
+    },
+    "202502": {
+      "valor": 493436.69,
+      "registros": 9,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202502_Despesas.zip"
+    },
+    "202503": {
+      "valor": 403094.46,
+      "registros": 9,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202503_Despesas.zip"
+    },
+    "202504": {
+      "valor": 146856.74,
+      "registros": 10,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202504_Despesas.zip"
+    },
+    "202505": {
+      "valor": 616544.13,
+      "registros": 14,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202505_Despesas.zip"
+    },
+    "202506": {
+      "valor": 322518.13,
+      "registros": 13,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202506_Despesas.zip"
+    },
+    "202507": {
+      "valor": 563329.88,
+      "registros": 14,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202507_Despesas.zip"
+    },
+    "202508": {
+      "valor": 311426.67,
+      "registros": 13,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202508_Despesas.zip"
+    },
+    "202509": {
+      "valor": 169176.21,
+      "registros": 12,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202509_Despesas.zip"
+    },
+    "202510": {
+      "valor": 1012447.21,
+      "registros": 20,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202510_Despesas.zip"
+    },
+    "202511": {
+      "valor": 300180.92,
+      "registros": 15,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202511_Despesas.zip"
+    },
+    "202512": {
+      "valor": 538641.36,
+      "registros": 21,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202512_Despesas.zip"
+    },
+    "202401": {
+      "valor": 194874.97,
+      "registros": 10,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202401_Despesas.zip"
+    },
+    "202402": {
+      "valor": 343436.41,
+      "registros": 13,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202402_Despesas.zip"
+    },
+    "202403": {
+      "valor": 314255.61,
+      "registros": 15,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202403_Despesas.zip"
+    },
+    "202404": {
+      "valor": 199059.93,
+      "registros": 11,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202404_Despesas.zip"
+    },
+    "202405": {
+      "valor": 861818.52,
+      "registros": 10,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202405_Despesas.zip"
+    },
+    "202406": {
+      "valor": 80791.77,
+      "registros": 13,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202406_Despesas.zip"
+    },
+    "202407": {
+      "valor": 39070.67,
+      "registros": 11,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202407_Despesas.zip"
+    },
+    "202408": {
+      "valor": 903662.46,
+      "registros": 14,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202408_Despesas.zip"
+    },
+    "202409": {
+      "valor": 295391.48,
+      "registros": 13,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202409_Despesas.zip"
+    },
+    "202410": {
+      "valor": 111759.36,
+      "registros": 14,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202410_Despesas.zip"
+    },
+    "202411": {
+      "valor": 423053.48,
+      "registros": 12,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202411_Despesas.zip"
+    },
+    "202412": {
+      "valor": 1533909.35,
+      "registros": 16,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/202412_Despesas.zip"
+    }
+  },
   "anos": [
     {
       "year": 2009,
@@ -32,8 +155,7 @@
       "nominal": null,
       "ipca": null,
       "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "meses": 0
     },
     {
       "year": 2010,
@@ -41,8 +163,7 @@
       "nominal": null,
       "ipca": null,
       "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "meses": 0
     },
     {
       "year": 2011,
@@ -50,8 +171,7 @@
       "nominal": null,
       "ipca": null,
       "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "meses": 0
     },
     {
       "year": 2012,
@@ -59,8 +179,7 @@
       "nominal": null,
       "ipca": null,
       "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "meses": 0
     },
     {
       "year": 2013,
@@ -69,7 +188,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2014,
@@ -78,7 +199,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2015,
@@ -87,7 +210,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2016,
@@ -96,7 +221,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2017,
@@ -105,7 +232,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2018,
@@ -114,7 +243,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2019,
@@ -123,7 +254,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2020,
@@ -132,7 +265,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2021,
@@ -141,7 +276,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2022,
@@ -150,7 +287,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2023,
@@ -159,25 +298,31 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 12
+      "esperados": 12,
+      "itens": 0,
+      "referencia": "202610"
     },
     {
       "year": 2024,
-      "status": "incompleto",
-      "nominal": null,
-      "ipca": null,
-      "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "status": "ok",
+      "nominal": 5301084.01,
+      "ipca": 5847303.73,
+      "inpc": 5829567.01,
+      "meses": 12,
+      "esperados": 12,
+      "itens": 152,
+      "referencia": "202610"
     },
     {
       "year": 2025,
-      "status": "incompleto",
-      "nominal": null,
-      "ipca": null,
-      "inpc": null,
-      "meses": 0,
-      "esperados": 12
+      "status": "ok",
+      "nominal": 5258960.08,
+      "ipca": 5546938.86,
+      "inpc": 5538571.99,
+      "meses": 12,
+      "esperados": 12,
+      "itens": 157,
+      "referencia": "202610"
     },
     {
       "year": 2026,
@@ -186,7 +331,9 @@
       "ipca": null,
       "inpc": null,
       "meses": 0,
-      "esperados": 10
+      "esperados": 10,
+      "itens": 0,
+      "referencia": "202610"
     }
   ]
 }
