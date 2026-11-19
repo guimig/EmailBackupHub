@@ -1,0 +1,51 @@
+name: EXPERIMENTO - Empenhos IFC (SIOP e SIDRA)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Nunca executar escrita concorrente com as atualizacoes orcamentarias existentes.
+concurrency:
+  group: financial-data-main
+  cancel-in-progress: false
+
+jobs:
+  consultar-fontes-oficiais:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          sparse-checkout: |
+            experimentos/ifc-empenhos/
+          sparse-checkout-cone-mode: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar sintaxe do coletor independente
+        run: node --check experimentos/ifc-empenhos/coletar.mjs
+      - name: Testes unitarios isolados
+        run: node --test experimentos/ifc-empenhos/test_experiment.mjs
+      - name: Consulta publica SIOP e SIDRA
+        run: node experimentos/ifc-empenhos/coletar.mjs
+        env:
+          CGU_API_KEY: ${{ secrets.CGU_API_KEY }}
+      - name: Validar caminho e esquema de saida
+        run: |
+          node --input-type=module -e "import d from './experimentos/ifc-empenhos/dados.json' with { type: 'json' }; if (d.schema_version!==1 || d.unidade_orcamentaria!=='26422' || d.siop.anos_ok<1) process.exit(1); console.log('JSON experimental validado:', d.siop.anos_ok, 'anos')"
+      - name: Publicar somente JSON do experimento
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- experimentos/ifc-empenhos/dados.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteracao do JSON experimental"
+            exit 0
+          fi
+          git commit -m "test: atualizar somente dados oficiais do laboratorio IFC"
+          git push origin HEAD:main
