@@ -61,5 +61,6 @@ class TestCollector(unittest.TestCase):
   doc=m.prepare_result({}, {'IPCA':{},'INPC':{}},{},now)
   row=doc['anos'][0]
   self.assertEqual(row['status'],'sem_fonte');self.assertIsNone(row['nominal'])
+  self.assertEqual(next(x for x in doc['anos'] if x['year']==2013)['status'],'sem_fonte')
 
 if __name__=='__main__': unittest.main()
