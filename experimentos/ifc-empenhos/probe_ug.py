@@ -4,6 +4,10 @@ from __future__ import annotations
 import csv
 from decimal import Decimal, InvalidOperation
 import io
+import os
+import json
+from urllib.parse import urlencode
+from urllib.error import HTTPError, URLError
 from pathlib import Path
 import sys
 import tempfile
@@ -25,7 +29,34 @@ def request(url, method="GET"):
     return Request(url, headers={"User-Agent": "IFC-Araquari-UG-Open-Data-Research/1.0", "Accept": "application/zip,*/*"}, method=method)
 
 
+def probe_api():
+    key = os.environ.get('CGU_API_KEY', '').strip()
+    if not key:
+        print('CGU API: secret CGU_API_KEY nao disponibilizado neste job', flush=True)
+        return
+    print('CGU API: credencial disponivel no ambiente; verificando o endpoint por UG', flush=True)
+    for day in ('01/12/2025', '15/12/2025', '03/11/2026'):
+        query = urlencode({'dataEmissao': day, 'fase': 1, 'unidadeGestora': UG, 'pagina': 1})
+        url = 'https://api.portaldatransparencia.gov.br/api-de-dados/despesas/documentos?' + query
+        req = Request(url, headers={'chave-api-dados': key, 'Accept': 'application/json', 'User-Agent': 'IFC-UG-Araquari-Research/1.0'})
+        try:
+            with urlopen(req, timeout=25) as resp:
+                body = resp.read(1000000)
+                decoded = json.loads(body)
+                if isinstance(decoded, list):
+                    keys = sorted(decoded[0].keys()) if decoded and isinstance(decoded[0], dict) else []
+                    ugs = sorted(set(str(x.get('codigoUg','')) for x in decoded if isinstance(x,dict)))
+                    print('CGU API', day, 'HTTP', resp.status, 'registros', len(decoded), 'ugs', ugs[:4], 'campos', keys[:35], flush=True)
+                else:
+                    print('CGU API', day, 'HTTP', resp.status, 'estrutura',type(decoded).__name__, 'campos',sorted(decoded.keys())[:20] if isinstance(decoded,dict) else '', flush=True)
+        except HTTPError as exc:
+            print('CGU API', day, 'HTTP', exc.code, 'sem divulgar resposta de erro', flush=True)
+        except (URLError, TimeoutError, OSError, ValueError) as exc:
+            print('CGU API', day, 'falha', type(exc).__name__, flush=True)
+
+
 def main():
+    probe_api()
     target = None
     for period in PERIODS:
         url = f"{BASE}/{period}_Despesas.zip"
