@@ -43,8 +43,13 @@
           <a class="kpi-report-link" id="gruReportKpiLink" aria-label="Abrir relatório de arrecadação própria GRU" hidden>Ver relatório ↗</a>
         </div>
       </div>
-      <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts">
-        <article class="chart-card chart-card--expense">
+      <div class="dashboard-view-tabs" id="dashboardViewTabs" role="tablist" aria-label="Visualização do resumo financeiro">
+        <button class="dashboard-view-tab is-active" type="button" role="tab" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
+        <button class="dashboard-view-tab" type="button" role="tab" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
+        <button class="dashboard-view-tab" type="button" role="tab" id="dashboardTabRevenue" data-dashboard-view="revenue" aria-selected="false" aria-controls="dashboardCharts">Arrecadação própria</button>
+      </div>
+      <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts" role="tabpanel" tabindex="0" aria-labelledby="dashboardTabOverview">
+        <article class="chart-card chart-card--expense" data-dashboard-panel="overview">
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Despesa do exercício</h3>
@@ -54,7 +59,7 @@
           <div class="chart-slot" id="expenseTrendChart"></div>
         </article>
 
-        <article class="chart-card chart-card--stages">
+        <article class="chart-card chart-card--stages" data-dashboard-panel="execution" hidden>
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Conversão entre etapas</h3>
@@ -86,7 +91,7 @@
           </div>
         </article>
 
-        <article class="chart-card chart-card--rap">
+        <article class="chart-card chart-card--rap" data-dashboard-panel="overview">
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Restos a pagar</h3>
@@ -100,7 +105,7 @@
           <div class="chart-slot" id="rapStackChart"></div>
         </article>
 
-        <article class="chart-card chart-card--gru">
+        <article class="chart-card chart-card--gru" data-dashboard-panel="revenue" hidden>
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Arrecadação própria</h3>
@@ -119,7 +124,7 @@
           <div class="gru-report-link" id="gruReportLink"></div>
           <div class="sr-only" id="gruLegend"></div>
         </article>
-        <article class="chart-card chart-card--nd">
+        <article class="chart-card chart-card--nd" data-dashboard-panel="execution" hidden>
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Empenhos por natureza de despesa</h3>

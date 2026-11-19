@@ -63,6 +63,25 @@ test('same NE repeated across ND only contributes each stage balance once',()=>{
   assert.equal(model.items.find(x=>x.description==='MATERIAL C').value,50);
 });
 
+test('empty unused stage cells mean zero without suppressing audit checks',()=>{
+  const fixture=doc([
+    record('DESPESA A','2026NE001','100,00',['100,00','','']),
+    record('DESPESA B','2026NE002','50,00',['','20,00','30,00'])
+  ]);
+  const result=buildNdCommitments(fixture,150);
+  assert.equal(result.ok,true,result.reason);
+  assert.equal(result.total,150);
+  assert.equal(result.items.find(item=>item.description==='DESPESA B').value,50);
+  const allBlank=doc([
+    record('DESPESA A','2026NE001','100,00',['','',''])
+  ]);
+  assert.equal(buildNdCommitments(allBlank).ok,false);
+  const malformed=doc([
+    record('DESPESA A','2026NE001','100,00',['70,00','invalid','30,00'])
+  ]);
+  assert.equal(buildNdCommitments(malformed).ok,false);
+});
+
 test('invalid accounting values, missing accounts and conflicting NE totals are rejected',()=>{
   const normal=record('MATERIAL A','2026NE001','100,00',['60,00','0,00','40,00']);
   assert.equal(buildNdCommitments(doc([])).ok,false);

@@ -905,6 +905,36 @@ let indexData = null;
       });
     }
 
+    const DASHBOARD_VIEWS = ['overview', 'execution', 'revenue'];
+    let selectedDashboardView = 'overview';
+    function fitVisibleTreemaps() {
+      const fit = window.EmailBackupHubFinancialCharts?.fitTreemapLabels;
+      if (!fit) return;
+      for (const id of ['gruCodesChart', 'ndCommitmentsChart']) {
+        const root = byId(id);
+        if (root && root.getClientRects().length) fit(root);
+      }
+    }
+    function setDashboardView(view, focus = false) {
+      if (!DASHBOARD_VIEWS.includes(view)) return;
+      selectedDashboardView = view;
+      const panel = byId('dashboardCharts');
+      const tabs = [...document.querySelectorAll('[data-dashboard-view]')];
+      const active = tabs.find(tab => tab.dataset.dashboardView === view);
+      for (const tab of tabs) {
+        const selected = tab === active;
+        tab.classList.toggle('is-active', selected);
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      }
+      for (const card of panel.querySelectorAll('[data-dashboard-panel]')) {
+        card.hidden = card.dataset.dashboardPanel !== view;
+      }
+      if (active) panel.setAttribute('aria-labelledby', active.id);
+      if (focus && active) active.focus();
+      requestAnimationFrame(fitVisibleTreemaps);
+    }
+
     function setGruView(view) {
       if (view !== 'codes' && view !== 'months') return;
       gruActiveView = view;
@@ -982,6 +1012,7 @@ let indexData = null;
       const codes = renderer.buildGruByCode(doc, total);
       renderer.renderGruMonthly(container, monthly);
       renderer.renderGruCodes(codesContainer, codes);
+      requestAnimationFrame(fitVisibleTreemaps);
       const source = chartSourceUrl(slug);
       const link = byId('gruReportLink');
       if (link) {
@@ -1068,6 +1099,7 @@ let indexData = null;
         ? stageReport.metrics.empenhado : null;
       const model = renderer.buildNdCommitments(doc, auditedCommitment);
       renderer.renderNdCommitments(target, model);
+      requestAnimationFrame(fitVisibleTreemaps);
       const total = byId('ndChartTotal');
       if (total) total.textContent = model.ok
         ? model.groups + ' naturezas · ' + model.uniqueCommitments + ' NEs · '
@@ -1324,6 +1356,22 @@ let indexData = null;
     byId('exportCsv').addEventListener('click', exportCsv);
     byId('themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
     initTheme();
+    const dashboardTabs = byId('dashboardViewTabs');
+    dashboardTabs.addEventListener('click', event => {
+      const button = event.target.closest('[data-dashboard-view]');
+      if (button) setDashboardView(button.dataset.dashboardView);
+    });
+    dashboardTabs.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const position = DASHBOARD_VIEWS.indexOf(selectedDashboardView);
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? DASHBOARD_VIEWS.length - 1
+        : (position + (event.key === 'ArrowRight' ? 1 : -1) + DASHBOARD_VIEWS.length) % DASHBOARD_VIEWS.length;
+      setDashboardView(DASHBOARD_VIEWS[next], true);
+    });
+    window.addEventListener('resize', () => requestAnimationFrame(fitVisibleTreemaps));
+    setDashboardView('overview');
+
     document.querySelector('.gru-view-switch').addEventListener('click', event => {
       const button = event.target.closest('[data-gru-view]');
       if (button) setGruView(button.dataset.gruView);
