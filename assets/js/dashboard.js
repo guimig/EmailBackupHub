@@ -1242,11 +1242,13 @@ let indexData = null;
             '<span class="rap-composition-fill open" style="width:' + payablePercent.toFixed(3) + '%"></span>' +
           '</div>' +
           '<dl class="rap-composition-details">' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" title="RAP pagos: ' + formatValue(paidValue)
+              + ' (' + escapeHtml(percentLabel(paidValue)) + ' do total acompanhado). Valores já pagos de despesas de exercícios anteriores.">' +
               '<dt><i class="legend-dot legend-accent" aria-hidden="true"></i>RAP pagos</dt>' +
               '<dd><strong>' + formatValue(paidValue) + '</strong><span>' + escapeHtml(percentLabel(paidValue)) + '</span></dd>' +
             '</div>' +
-            '<div class="rap-composition-item">' +
+            '<div class="rap-composition-item" title="RAP a pagar: ' + formatValue(payableValue)
+              + ' (' + escapeHtml(percentLabel(payableValue)) + ' do total acompanhado). Saldo ainda pendente de pagamento.">' +
               '<dt><i class="legend-dot legend-accent-2" aria-hidden="true"></i>RAP a pagar</dt>' +
               '<dd><strong>' + formatValue(payableValue) + '</strong><span>' + escapeHtml(percentLabel(payableValue)) + '</span></dd>' +
             '</div>' +
