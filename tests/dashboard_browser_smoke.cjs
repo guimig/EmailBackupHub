@@ -80,7 +80,7 @@ const ND_S2='622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Cont√
 const ND_S3='622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Cont√°bil)';
 const ndDocument={
  slug:'saldos-de-empenhos-do-exercicio-conta-contabil',
- date:'17/11/2026',date_iso:'2026-11-17',
+ date:'16/11/2026',date_iso:'2026-11-16',
  metadata:{exercicio:2026,hash_conteudo:'test-hash'},
  quality:{ok:true,issues:[],warnings:[]},
  metrics:{saldo_a_liquidar:1050.50,liquidado_a_pagar:50,pago:1600},
