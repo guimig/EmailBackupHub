@@ -404,44 +404,102 @@
   }
 
 
-  // This is the NE CCor value dimension, NOT the sum of accounting-balance columns.
-  // Detail rows only: the parser keeps report subtotals separately in report.totals.
-  function buildNdCommitments(report) {
+  // The NE CCor amount is repeated for NEs that have multiple ND lines.
+  // The three stage balances are distributed across those lines, so ONLY they
+  // can be summed by ND. Reconcile against audited totals and distinct NEs.
+  const ND_STAGE_CODES = ['622920101', '622920103', '622920104'];
+  const ND_STAGE_METRICS = ['saldo_a_liquidar', 'liquidado_a_pagar', 'pago'];
+
+  function buildNdCommitments(report, expectedAuditedTotal = null) {
     const unavailable = reason => ({ ok: false, reason, items: [] });
     if (!report || report.quality?.ok === false || !Array.isArray(report.rows) || !report.rows.length) {
-      return unavailable('Não há lançamentos detalhados válidos no relatório de empenhos.');
+      return unavailable('Não há registros detalhados válidos no relatório de empenhos.');
     }
     const fields = (report.columns || []).map(name => ({ name, normalized: normalize(name) }));
     const nd = fields.find(f => f.normalized === 'natureza despesa detalhada (2)')?.name;
-    const amount = fields.find(f => f.normalized === 'conta contabil / ne ccor - valor')?.name;
-    if (!nd || !amount) {
-      return unavailable('As colunas de descrição da ND ou valor da NE CCor não foram identificadas.');
+    const stages = ND_STAGE_CODES.map(code => {
+      const matches = fields.filter(f => f.normalized.startsWith(code + ' /')
+        && f.normalized.includes('saldo'));
+      return matches.length === 1 ? matches[0].name : null;
+    });
+    if (!nd || stages.some(name => !name)) {
+      return unavailable('Natureza detalhada ou saldos das contas 622920101, 622920103 e 622920104 indisponíveis.');
     }
+    const ne = fields.find(f => f.normalized === 'ne ccor')?.name;
+    const gross = fields.find(f => f.normalized === 'conta contabil / ne ccor - valor')?.name;
+    // Validate per-NE only if both source dimensions are present.
+    if (Boolean(ne) !== Boolean(gross)) {
+      return unavailable('Chave da nota de empenho e valor total não estão disponíveis para conferência.');
+    }
+
     const entries = new Map();
+    const perNe = new Map();
+    const totals = [0, 0, 0];
     let total = 0;
     for (const row of report.rows) {
       const description = String(row?.[nd] ?? '').trim();
-      const cents = amountCents(row?.[amount]);
-      if (!description || /^total(?:\s+geral)?$/i.test(description) || cents === null) {
-        return unavailable('Há natureza de despesa ou valor monetário inválido; conferir relatório de origem.');
+      const cents = stages.map(name => amountCents(row?.[name]));
+      if (!description || /^total(?:\s+geral)?$/i.test(description)
+        || cents.some(value => value === null)) {
+        return unavailable('Descrição da ND ou saldo contábil inválido; conferir relatório de origem.');
       }
+      const rowTotal = cents.reduce((sum, value) => sum + value, 0);
       const entry = entries.get(description) || { description, cents: 0, records: 0 };
-      entry.cents += cents;
+      entry.cents += rowTotal;
       entry.records++;
-      total += cents;
-      if (!Number.isSafeInteger(entry.cents) || !Number.isSafeInteger(total)) {
-        return unavailable('O agrupamento excede a precisão de centavos.');
+      total += rowTotal;
+      for (let i = 0; i < totals.length; i++) totals[i] += cents[i];
+      if (!Number.isSafeInteger(total) || !Number.isSafeInteger(entry.cents)
+        || !totals.every(Number.isSafeInteger)) {
+        return unavailable('Os valores excedem a precisão monetária de centavos.');
       }
       entries.set(description, entry);
+
+      if (ne && gross) {
+        const key = String(row?.[ne] ?? '').trim();
+        const grossCents = amountCents(row?.[gross]);
+        if (!key || grossCents === null) {
+          return unavailable('Número de empenho ou valor da NE inválido.');
+        }
+        const previously = perNe.get(key);
+        if (previously && previously.gross !== grossCents) {
+          return unavailable('Valor total da mesma NE diverge entre as linhas detalhadas.');
+        }
+        perNe.set(key, { gross: grossCents, sum: (previously?.sum || 0) + rowTotal });
+        if (!Number.isSafeInteger(perNe.get(key).sum)) {
+          return unavailable('O agrupamento por NE excede a precisão de centavos.');
+        }
+      }
     }
+    if ([...perNe.values()].some(value => Math.abs(value.sum - value.gross) > 1)) {
+      return unavailable('Os saldos contábeis não conciliam com o valor único de uma ou mais NEs.');
+    }
+    if (ND_STAGE_METRICS.some(key => key in (report.metrics || {}))) {
+      const auditCents = ND_STAGE_METRICS.map(key => {
+        const meta = report.metrics_meta?.[key];
+        return meta?.status === 'ok' && meta?.fallback !== true
+          ? amountCents(report.metrics?.[key]) : null;
+      });
+      if (auditCents.some(value => value === null)
+        || auditCents.some((value, i) => Math.abs(value - totals[i]) > 1)) {
+        return unavailable('A soma das contas por ND diverge dos três saldos auditados do relatório.');
+      }
+    }
+    if (expectedAuditedTotal !== null) {
+      const expected = amountCents(expectedAuditedTotal);
+      if (expected === null || Math.abs(expected - total) > 1) {
+        return unavailable('Total dos empenhos por ND diverge do relatório auditado de despesas do exercício.');
+      }
+    }
+
     const items = [...entries.values()].map(item => ({
       description: item.description, value: item.cents / 100, records: item.records
     })).sort((a, b) => b.value - a.value || a.description.localeCompare(b.description, 'pt-BR'));
     return {
-      ok: true, items, records: report.rows.length, groups: entries.size,
-      total: total / 100, groupColumn: nd, valueColumn: amount,
-      date: report.date || '',
-      positiveTotal: items.filter(x => x.value > 0).reduce((sum, x) => sum + x.value, 0)
+      ok: true, items, records: report.rows.length, uniqueCommitments: perNe.size,
+      groups: entries.size, total: total / 100,
+      groupColumn: nd, valueColumns: stages, date: report.date || '',
+      positiveTotal: items.filter(item => item.value > 0).reduce((sum, item) => sum + item.value, 0)
     };
   }
 
@@ -485,7 +543,7 @@
       ? '<p class="nd-chart-adjustments">' + negative.length
         + ' natureza(s) com saldo negativo, fora do mapa; consultar relatório completo.</p>' : '';
     container.innerHTML = '<div class="gru-treemap nd-treemap" role="group"'
-      + ' aria-label="Naturezas de despesa agrupadas por valores de NE CCor">'
+      + ' aria-label="Naturezas de despesa agrupadas pelos três saldos contábeis de empenho">'
       + (tiles || '<p class="chart-empty">Nenhum valor positivo.</p>') + '</div>'
       + adjustments;
   }
