@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "gerado_em": null,
+  "unidade_orcamentaria": "26422",
+  "criterio": "Empenhos anuais da UO 26422 no SIOP. Aguardando consulta programatica oficial.",
+  "siop": { "endpoint": "https://www1.siop.planejamento.gov.br/sparql/", "codigo": "26422", "anos_ok": 0 },
+  "sidra": { "referencia": null, "status": { "IPCA": { "status": "aguardando" }, "INPC": { "status": "aguardando" } } },
+  "cgu": { "status": "sem_credencial", "info": "Nao consultado. Chave de API nao configurada." },
+  "anos": []
+}
