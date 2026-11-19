@@ -3,7 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const {buildNdCommitments, renderNdCommitments, amountCents} = require('../assets/js/financial-chart-provenance.js');
+const {buildNdCommitments, buildNdCommitmentView, renderNdCommitments, amountCents} = require('../assets/js/financial-chart-provenance.js');
 
 const source=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json'),'utf8'));
 const ND='Natureza Despesa Detalhada (2)';
@@ -106,7 +106,7 @@ test('treemap renders the eight largest ND groups and other categories only once
   const result=buildNdCommitments(source);
   const node={innerHTML:''};
   renderNdCommitments(node,result);
-  assert.equal((node.innerHTML.match(/class="gru-treemap-tile nd-treemap-tile/g)||[]).length,9);
+  assert.equal((node.innerHTML.match(/class="gru-treemap-tile nd-treemap-tile/g)||[]).length,19);
   assert.match(node.innerHTML,/Outras naturezas/);
   assert.match(node.innerHTML,/aria-pressed="false"/);
   assert.doesNotMatch(node.innerHTML,/<details|data-nd-value="NaN"/);
@@ -126,4 +126,58 @@ test('negative ND is not treated as a positive treemap area',()=>{
   renderNdCommitments(node,result);
   assert.equal((node.innerHTML.match(/class="gru-treemap-tile nd-treemap-tile/g)||[]).length,1);
   assert.match(node.innerHTML,/saldo negativo/);
+});
+
+test('general and detailed ND views preserve the same audited total and keep distinct codes',()=>{
+  const model=buildNdCommitments(source,7300810.29);
+  assert.equal(model.ok,true,model.reason);
+  assert.equal(model.generalItems.length,15);
+  assert.equal(model.detailedItems.length,66);
+  assert.equal(model.total,7300810.29);
+  const allGenerals=buildNdCommitmentView(model,{mode:'general'});
+  assert.equal(allGenerals.mode,'general');
+  assert.equal(allGenerals.allCount,15);
+  assert.equal(allGenerals.remainingCount,0);
+  assert.equal(Math.round(allGenerals.items.reduce((sum,x)=>sum+x.value,0)*100),730081029);
+  const detail=buildNdCommitmentView(model,{mode:'detailed'});
+  assert.equal(detail.allCount,66);
+  assert.equal(detail.items.length,19);
+  assert.equal(detail.remainingCount,48);
+  const expanded=buildNdCommitmentView(model,{mode:'detailed',showAll:true});
+  assert.equal(expanded.items.length,expanded.allCount - expanded.negativeCount);
+  const cleaning=expanded.items.filter(item=>item.description==='LIMPEZA E CONSERVACAO');
+  assert.equal(cleaning.length,2);
+  assert.deepEqual(cleaning.map(x=>x.code).sort(),['33903702','33903978']);
+  const general=allGenerals.items.find(item=>item.description==='MATERIAL DE CONSUMO');
+  assert.ok(general);
+  const filtered=buildNdCommitmentView(model,{mode:'detailed',parent:general.key});
+  assert.equal(filtered.parent,general.key);
+  assert.equal(filtered.filtered,true);
+  assert.equal(filtered.allCount,24);
+  assert.ok(filtered.scopeTotal < model.total);
+  assert.ok(filtered.items.every(item=>item.aggregate || item.generalKey===general.key));
+  const node={innerHTML:''};
+  renderNdCommitments(node,allGenerals);
+  assert.match(node.innerHTML,/data-nd-drill="general"/);
+  assert.equal((node.innerHTML.match(/data-nd-description=/g)||[]).length,15);
+  renderNdCommitments(node,filtered);
+  assert.doesNotMatch(node.innerHTML,/data-nd-drill="general"/);
+  assert.match(node.innerHTML,/data-nd-key=/);
+});
+
+test('switching ND views never changes source commitment totals or hides negative adjustments',()=>{
+  const fixture=doc([
+    record('A','NE1','100,00',['90,00','','10,00']),
+    record('B','NE2','-10,00',['-10,00','',''])
+  ]);
+  const model=buildNdCommitments(fixture,90);
+  assert.equal(model.ok,true,model.reason);
+  for(const mode of ['general','detailed']) {
+    const view=buildNdCommitmentView(model,{mode});
+    assert.equal(view.total,90);
+    assert.equal(view.positiveTotal,100);
+    const node={innerHTML:''};
+    renderNdCommitments(node,view);
+    assert.match(node.innerHTML,/saldo negativo/);
+  }
 });
