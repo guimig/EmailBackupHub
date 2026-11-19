@@ -53,7 +53,7 @@ test('nunca atribui o resíduo a um grupo desconhecido', () => {
   const invalid=fixture();invalid.rows[1][columns[2]]='INVESTIMENTOS';
   assert.equal(buildModel(invalid).ok,false);
 });
-test('totais completos e estornos contábeis são aceitos sem recuperação', () => {
+test('totais completos são aceitos; grupo líquido negativo impede rosca enganosa', () => {
   const doc=fixture();doc.metrics.provisionado=250;
   doc.totals.splice(2,1);doc.totals[2].values[columns[3]]=250;
   const model=buildModel(doc);
@@ -65,10 +65,10 @@ test('totais completos e estornos contábeis são aceitos sem recuperação', ()
   negative.totals[1].values[columns[3]]=-20;
   negative.totals.splice(2,1);
   negative.totals[2].values[columns[3]]=80;
-  assert.equal(buildModel(negative).ok,true);
+  assert.equal(buildModel(negative).ok,false);
 });
 test('renderização apresenta rosca, duas categorias e alternativa de erro', () => {
-  const container={innerHTML:''};
+  const container={innerHTML:'',querySelectorAll:()=>[]};
   render(container,buildModel(fixture()),null);
   assert.match(container.innerHTML,/provision-donut/);
   assert.match(container.innerHTML,/data-provision-group="3"/);
