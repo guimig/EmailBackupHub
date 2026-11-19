@@ -96,11 +96,33 @@
         && el('ndChartTotal').textContent.includes('4 NEs')
         && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs')).length === 3;
       qa.ndLabelsComplete = labelsFit(nd);
-      const tile = nd.querySelector('.nd-treemap-tile');
-      tile.click();
-      qa.ndClickShowsUsefulDetail = tile.getAttribute('aria-pressed') === 'true'
+      qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6
+        && (window.innerWidth <= 760
+          ? rect(card('nd')).top >= rect(card('stages')).bottom - 6
+          : rect(card('nd')).top >= rect(card('stages')).bottom - 6);
+      qa.generalModeHasGroups = el('ndViewGeneralButton').getAttribute('aria-pressed') === 'true'
+        && nd.querySelectorAll('.nd-treemap-tile').length === 3;
+      const generalTile = [...nd.querySelectorAll('.nd-treemap-tile')]
+        .find(node => node.dataset.ndDescription === 'AUXILIO FINANCEIRO A ESTUDANTES');
+      generalTile.click();
+      qa.ndGeneralDrillsDown = el('ndViewDetailedButton').getAttribute('aria-pressed') === 'true'
+        && !el('ndBackButton').hidden
+        && nd.querySelectorAll('.nd-treemap-tile').length === 2
+        && el('ndChartTotal').textContent.includes('2.700,50');
+      const detailTile = nd.querySelector('.nd-treemap-tile');
+      detailTile.click();
+      qa.ndDetailShowsSelectedValue = detailTile.getAttribute('aria-pressed') === 'true'
         && !el('ndChartDetail').hidden
-        && el('ndChartDetail').textContent.includes('empenho(s)');
+        && el('ndChartDetail').textContent.includes('registro(s)');
+      el('ndBackButton').click();
+      qa.ndBackRestoresOverview = el('ndViewGeneralButton').getAttribute('aria-pressed') === 'true'
+        && el('ndBackButton').hidden && nd.querySelectorAll('.nd-treemap-tile').length === 3;
+      el('ndViewDetailedButton').click();
+      qa.ndDetailedAllCodes = nd.querySelectorAll('.nd-treemap-tile').length === 4
+        && el('ndViewDetailedButton').getAttribute('aria-pressed') === 'true'
+        && el('ndChartTotal').textContent.includes('2.700,50');
+      fit();
+      qa.ndLabelsCompleteAfterDrill = labelsFit(nd);
       el('dashboardTabExecution').dispatchEvent(new KeyboardEvent('keydown', {
         bubbles:true, key:'ArrowRight'
       }));
