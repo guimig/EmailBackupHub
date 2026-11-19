@@ -28,7 +28,7 @@
     <div class="card"><div class="kpi-label">Poder de compra referenciado a</div><div class="kpi-value" id="kpiBase">—</div><div class="kpi-note" id="kpiGenerated">Aguardando SIDRA/IBGE</div></div>
   </section>
   <section class="card" aria-labelledby="chartTitle">
-    <div class="section-title"><div><h2 id="chartTitle">Evolução anual dos empenhos da UO 26422</h2><p class="sub">Valores em milhões de reais · ano de empenho no eixo horizontal</p></div><span class="pill warn" id="dataQuality">Experimental · aguardando validação</span></div>
+    <div class="section-title"><div><h2 id="chartTitle">Evolução anual dos empenhos da UO 26422</h2><p class="sub"><span id="chartUnitLabel">Valores em milhões de reais</span> · ano de empenho no eixo horizontal</p></div><span class="pill warn" id="dataQuality">Experimental · aguardando validação</span></div>
     <div class="options" role="group" aria-label="Opções do gráfico">
       <label><input id="toggleNominal" type="checkbox" checked> <span style="color:var(--blue)">●</span> Empenhado nominal</label>
       <label><input id="toggleCorrected" type="checkbox" checked> <span style="color:var(--orange)">●</span> Valor corrigido</label>
@@ -36,7 +36,7 @@
       <button class="reload" type="button" id="reload">Recarregar</button>
     </div>
     <div class="chart-scroll" id="chartScroll" aria-label="Gráfico de linhas com rolagem horizontal em telas pequenas"><div class="empty" id="chartEmpty">Carregando série oficial...</div><svg id="historySvg" class="chart" role="img" aria-label="Despesas empenhadas do IFC em valores nominais e corrigidos" viewBox="0 0 960 345" hidden></svg></div>
-    <div class="legend"><span><i class="dot nominal"></i> Empenhado nominal</span><span><i class="dot real"></i> Corrigido para a mesma data-base</span><span>◌ 2026: exercício parcial</span></div>
+    <div class="legend"><span><i class="dot nominal"></i> Empenhado nominal</span><span><i class="dot real"></i> Corrigido para a mesma data-base</span><span id="partialYearLegend">◌ 2026: exercício parcial</span></div>
     <div id="pointDetail" role="status" aria-live="polite">Selecione um ponto ou um ano na tabela para consultar seu valor e sua procedência.</div>
     <div class="method"><strong>Critério experimental:</strong> os empenhos anuais são da <em>unidade orçamentária</em> IFC (26422), não da soma de todas as UGs executoras. A correção usa dezembro do exercício e o número-índice do mês de referência do IBGE; não é deflação de movimentações mensais. O exercício em curso é parcial e não deve ser comparado diretamente com exercícios encerrados.</div>
   </section>
@@ -47,6 +47,7 @@
   <section class="notice" aria-labelledby="auditTitle"><strong id="auditTitle">Origem e estado da coleta</strong><div id="sourceStatus">O arquivo experimental ainda não foi lido.</div><div class="footlinks"><a href="https://orcamento.dados.gov.br/siopdoc/doku.php/acesso_publico:scripts_sparql" target="_blank" rel="noopener noreferrer">SIOP · documentação SPARQL</a><a href="https://www1.siop.planejamento.gov.br/sparql/" target="_blank" rel="noopener noreferrer">SIOP · consulta pública</a><a href="https://sidra.ibge.gov.br/tabela/1737" target="_blank" rel="noopener noreferrer">SIDRA · IPCA</a><a href="https://sidra.ibge.gov.br/tabela/1736" target="_blank" rel="noopener noreferrer">SIDRA · INPC</a><a href="https://api.portaldatransparencia.gov.br/swagger-ui/index.html" target="_blank" rel="noopener noreferrer">CGU · documentação API</a></div></section>
 </main>
 <footer>Experimento isolado no repositório EmailBackupHub. Nenhuma ligação com a rotina de coleta de e-mails; dados gerados somente pelo coletor experimental. Não utilizar como demonstração contábil definitiva sem reconciliação CGU/SIOP.</footer>
+<script src="./chart-scale.js"></script>
 <script>
 (() => {
   'use strict';
@@ -59,7 +60,7 @@
   const period = s => /^20\d{4}$/.test(String(s || '')) ? s.slice(4,6)+'/'+s.slice(0,4) : 'Não informada';
   function el(parent,tag,attrs={},value){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(value!==undefined)n.textContent=value;parent.appendChild(n);return n;}
   function txt(parent,tag,content,cls=''){const n=document.createElement(tag);n.textContent=content;if(cls)n.className=cls;parent.appendChild(n);return n;}
-  function valid(row){return row&&Number.isInteger(row.year)&&row.year>=2009&&row.year<=2100&&['ok','parcial'].includes(row.status)&&Number.isFinite(row.nominal)&&row.nominal>=0;}
+  function valid(row){return row&&Number.isInteger(row.year)&&['ok','parcial'].includes(row.status)&&Number.isFinite(row.nominal)&&row.nominal>=0;}
   function corrected(row){const v=row&&row[opts.index];return Number.isFinite(v)&&v>=0?v:null;}
   function selected(row,kind){let description=`${row.year} · ${kind==='nominal'?'Empenhado nominal':opts.index.toUpperCase()+' corrigido'}: ${money(kind==='nominal'?row.nominal:corrected(row))}.`;description+=row.status==='parcial'?' Exercício em andamento.':' Exercício encerrado.';description+=` Origem: SIOP, UO 26422; itens agregados: ${row.itens||'—'}.`;if(kind!=='nominal')description+=` Base IBGE ${period(model?.sidra?.referencia)}, referencia do exercicio ${period(row.referencia)}.`;$('pointDetail').textContent=description;}
   function svgDraw(rows){
@@ -67,27 +68,60 @@
     const points=rows.filter(valid); const lines=[];
     if(opts.nominal)lines.push({key:'nominal',color:'var(--blue)'});
     if(opts.corrected)lines.push({key:opts.index,color:'var(--orange)'});
-    const avail=lines.flatMap(line=>points.map(r=>line.key==='nominal'?r.nominal:corrected(r)).filter(Number.isFinite));
-    if(!avail.length){svg.hidden=true;$('chartEmpty').hidden=false;$('chartEmpty').textContent='Nenhum valor oficial validado disponível para as séries selecionadas. Consulte o estado da coleta abaixo.';return;}
-    $('chartEmpty').hidden=true;svg.hidden=false;
-    const W=960,H=345,L=78,R=18,T=22,B=53;
-    const allYears=rows.map(r=>r.year);
-    const minYear=Math.min(2009,...allYears),maxYear=Math.max(2026,...allYears);
-    const yMax=Math.max(1e7, Math.ceil(Math.max(...avail)*1.12/1e8)*1e8);
-    const x=y=>L+(y-minYear)/(maxYear-minYear)*(W-L-R);
-    const y=v=>H-B-v/yMax*(H-T-B);
-    for(let i=0;i<=4;i++){const v=i*yMax/4,cy=y(v);el(svg,'line',{x1:L,y1:cy,x2:W-R,y2:cy,stroke:'var(--grid)','stroke-width':1});el(svg,'text',{x:L-10,y:cy+4,'text-anchor':'end',fill:'var(--muted)','font-size':11},new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}).format(v/1e6));}
-    el(svg,'text',{x:15,y:14,fill:'var(--muted)','font-size':11},'R$ milhões');
-    for(let year=minYear;year<=maxYear;year++){if(year%2===0||year===minYear||year===maxYear)el(svg,'text',{x:x(year),y:H-16,'text-anchor':'middle','font-size':12,fill:'var(--muted)'},String(year));}
-    for(const line of lines){let d='',previous=null;for(const r of points){const amount=line.key==='nominal'?r.nominal:corrected(r);if(amount===null){previous=null;continue;}const cmd=previous!==null&&r.year-previous===1?'L':'M';d+=cmd+x(r.year).toFixed(1)+' '+y(amount).toFixed(1)+' ';previous=r.year;}
-      el(svg,'path',{d,stroke:line.color,'stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round',fill:'none'});
-      for(const r of points){const amount=line.key==='nominal'?r.nominal:corrected(r);if(amount===null)continue;const n=el(svg,'circle',{cx:x(r.year),cy:y(amount),r:5.1,fill:r.status==='parcial'?'var(--card)':line.color,stroke:line.color,'stroke-width':r.status==='parcial'?2.5:1,tabindex:0,role:'button',class:'mark','aria-label':`${r.year}, ${line.key==='nominal'?'nominal':opts.index}, ${money(amount)}`});el(n,'title',{},`${r.year} · ${money(amount)}`);const show=()=>selected(r,line.key==='nominal'?'nominal':'corrigido');n.addEventListener('mouseenter',show);n.addEventListener('focus',show);n.addEventListener('click',show);n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});}
+    const axis=IFCChartScale.compute(points,lines.map(line=>line.key),{mobile:window.matchMedia('(max-width:690px)').matches});
+    if(!axis){
+      svg.hidden=true;
+      $('chartEmpty').hidden=false;
+      $('chartEmpty').textContent='Nenhum valor oficial validado disponível para as séries selecionadas. Consulte o estado da coleta abaixo.';
+      return;
     }
-    if(window.matchMedia('(max-width:690px)').matches){const scroll=$('chartScroll');scroll.scrollLeft=0;}
-  }
-  function render(){
+    $('chartEmpty').hidden=true;svg.hidden=false;
+    $('chartUnitLabel').textContent=axis.unit.description;
+    const W=960,H=345,L=82,R=22,T=24,B=53;
+    const x=year=>axis.x.min===axis.x.max?L+(W-L-R)/2:L+(year-axis.x.min)/(axis.x.max-axis.x.min)*(W-L-R);
+    const y=value=>H-B-(value-axis.y.min)/(axis.y.max-axis.y.min)*(H-T-B);
+    for(const tick of axis.y.ticks){
+      const cy=y(tick);
+      el(svg,'line',{x1:L,y1:cy,x2:W-R,y2:cy,stroke:'var(--grid)','stroke-width':1});
+      el(svg,'text',{x:L-11,y:cy+4,'text-anchor':'end',fill:'var(--muted)','font-size':11},
+        IFCChartScale.formatTick(tick/axis.unit.divisor,axis.y.step/axis.unit.divisor));
+    }
+    el(svg,'text',{x:15,y:14,fill:'var(--muted)','font-size':11},axis.unit.label);
+    for(const year of axis.x.ticks){
+      el(svg,'text',{x:x(year),y:H-16,'text-anchor':'middle','font-size':12,fill:'var(--muted)'},String(year));
+    }
+    for(const line of lines){
+      let d='',previous=null;
+      for(const r of points){
+        const amount=line.key==='nominal'?r.nominal:corrected(r);
+        if(!Number.isFinite(amount)||amount<0){previous=null;continue;}
+        const cmd=previous!==null&&r.year-previous===1?'L':'M';
+        d+=cmd+x(r.year).toFixed(1)+' '+y(amount).toFixed(1)+' ';
+        previous=r.year;
+      }
+      el(svg,'path',{d,stroke:line.color,'stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round',fill:'none'});
+      for(const r of points){
+        const amount=line.key==='nominal'?r.nominal:corrected(r);
+        if(!Number.isFinite(amount)||amount<0)continue;
+        const n=el(svg,'circle',{cx:x(r.year),cy:y(amount),r:5.1,
+          fill:r.status==='parcial'?'var(--card)':line.color,
+          stroke:line.color,'stroke-width':r.status==='parcial'?2.5:1,
+          tabindex:0,role:'button',class:'mark',
+          'aria-label':`${r.year}, ${line.key==='nominal'?'nominal':opts.index}, ${money(amount)}`});
+        el(n,'title',{},`${r.year} · ${money(amount)}`);
+        const show=()=>selected(r,line.key==='nominal'?'nominal':'corrigido');
+        n.addEventListener('mouseenter',show);
+        n.addEventListener('focus',show);
+        n.addEventListener('click',show);
+        n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});
+      }
+    }
+    if(window.matchMedia('(max-width:690px)').matches){$('chartScroll').scrollLeft=0;}
+  }  function render(){
     const rows=Array.isArray(model?.anos)?model.anos:[];
     const validRows=rows.filter(valid);
+    const partial=rows.find(row=>row?.status==='parcial');
+    $('partialYearLegend').textContent=partial?`◌ ${partial.year}: exercício parcial`:'◌ exercício corrente: parcial';
     $('kpiCount').textContent=`${validRows.length} de ${rows.length||18}`;
     const last=validRows.filter(r=>r.status==='ok').at(-1);
     $('kpiLast').textContent=last?short(last.nominal):'—';
@@ -164,7 +198,9 @@
   $('toggleNominal').addEventListener('change',e=>{opts.nominal=e.target.checked;render();});
   $('toggleCorrected').addEventListener('change',e=>{opts.corrected=e.target.checked;render();});
   $('indexChoice').addEventListener('change',e=>{opts.index=e.target.value==='inpc'?'inpc':'ipca';render();});
-  $('reload').addEventListener('click',load);load();
+  $('reload').addEventListener('click',load);
+  window.matchMedia('(max-width:690px)').addEventListener('change',render);
+  load();
 })();
 </script>
 </body>
