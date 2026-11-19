@@ -48,8 +48,14 @@ test('KPIs expose four distinct accessible report actions while balances remain 
   }
   assert.equal((html.match(/class="kpi-report-link"/g) || []).length, 4);
   assert.match(js, /chartSourceUrl\(slug\)/);
-  assert.match(js, /link\.hidden = true/);
+  assert.match(js, /link\.hidden = !url/);
   assert.doesNotMatch(html, /chart-card--credit/);
+  for (const id of ['budgetCardLink', 'creditCardLink', 'rapCardLink', 'gruCardLink']) {
+    assert.match(html, new RegExp('class="kpi-card-main" id="' + id + '"'));
+  }
+  assert.equal((html.match(/class="kpi-card-main"/g) || []).length, 4);
+  assert.match(html, /Restos a pagar a pagar/);
+  assert.match(js, /setText\('rapTotal', formatMoney\(rapPayable\)\)/);
 });
 
 test('execution prioritizes budget commitment ratio and hides valid-state notice', () => {
@@ -59,6 +65,8 @@ test('execution prioritizes budget commitment ratio and hides valid-state notice
     'Pago / liquidado', 'Liquidado ainda não pago'
   ]);
   assert.match(html, /id="stagesInterpretation"[^>]*hidden/);
+  assert.match(html, /id="stageGaugeDetail"[^>]*hidden/);
+  assert.match(js, /configureStageGaugeDetails\(provisionGaugeModel, stageModel\)/);
   assert.match(js, /banner\.hidden = true/);
   assert.match(js, /banner\.hidden = false/);
 });
@@ -76,7 +84,7 @@ test('ND value composition is linked to a named grouping and no duplicate stage 
 
 test('ND chart exposes general/detailed view controls and contextual back action',()=>{
   assert.match(html, /id="ndViewGeneralButton"/);
-  assert.match(html, /id="ndViewDetailedButton"/);
+  assert.match(html, /id="ndViewDetailedButton" class="gru-view-button"/);
   assert.match(html, /id="ndBackButton"/);
   assert.match(html, /id="ndShowAllButton"/);
   assert.match(js, /ndSelectedParent = item\.dataset\.ndKey/);
