@@ -7,7 +7,7 @@ on:
       - '.github/workflows/ifc_ug_collect.yml'
       - 'experimentos/ifc-empenhos/coletar_araquari.py'
   schedule:
-    - cron: '17 */3 * * *'
+    - cron: '17 5 * * *'
   workflow_dispatch:
     inputs:
       max_months:
