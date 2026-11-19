@@ -1,162 +1,17 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-11-19T14:56:39.305777+00:00",
+  "gerado_em": "2026-11-19T15:01:03.910569+00:00",
   "unidade_gestora": "158459",
   "criterio": "Movimentos mensais de Valor Empenhado da UG 158459, arquivos CGU de execucao da despesa",
   "cgu": {
     "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao",
-    "anos_ok": 5,
-    "meses_coletados": 60,
+    "anos_ok": 7,
+    "meses_coletados": 90,
     "primeiro_exercicio_coberto": 2014,
     "nota": "2009-2013: sem arquivo mensal de empenhos da UG equivalente, sem zeros inventados",
     "falhas_consulta": [
       {
-        "mes": "201603",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201604",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201605",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201606",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201607",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201608",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201609",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201610",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201611",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201612",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201701",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201702",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201703",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201704",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201705",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201706",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201707",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201708",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201709",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201710",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201711",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201712",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201801",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201802",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201803",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201804",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201805",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201806",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201807",
-        "tipo": "HTTPError",
-        "http": 405
-      },
-      {
-        "mes": "201808",
+        "mes": "201809",
         "tipo": "HTTPError",
         "http": 405
       }
@@ -477,6 +332,156 @@
       "valor": 325891.49,
       "registros": 22,
       "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201602_Despesas.zip"
+    },
+    "201603": {
+      "valor": 51843.99,
+      "registros": 21,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201603_Despesas.zip"
+    },
+    "201604": {
+      "valor": 1887333.51,
+      "registros": 19,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201604_Despesas.zip"
+    },
+    "201605": {
+      "valor": 448437.92,
+      "registros": 22,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201605_Despesas.zip"
+    },
+    "201606": {
+      "valor": 1072177.04,
+      "registros": 26,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201606_Despesas.zip"
+    },
+    "201607": {
+      "valor": 68258.2,
+      "registros": 25,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201607_Despesas.zip"
+    },
+    "201608": {
+      "valor": 631353.46,
+      "registros": 24,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201608_Despesas.zip"
+    },
+    "201609": {
+      "valor": 555805.95,
+      "registros": 30,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201609_Despesas.zip"
+    },
+    "201610": {
+      "valor": 596398.6,
+      "registros": 26,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201610_Despesas.zip"
+    },
+    "201611": {
+      "valor": 2517616.26,
+      "registros": 26,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201611_Despesas.zip"
+    },
+    "201612": {
+      "valor": -42125.42,
+      "registros": 27,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201612_Despesas.zip"
+    },
+    "201701": {
+      "valor": 171332.6,
+      "registros": 19,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201701_Despesas.zip"
+    },
+    "201702": {
+      "valor": 203763.83,
+      "registros": 17,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201702_Despesas.zip"
+    },
+    "201703": {
+      "valor": 358393.09,
+      "registros": 16,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201703_Despesas.zip"
+    },
+    "201704": {
+      "valor": 209612.83,
+      "registros": 24,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201704_Despesas.zip"
+    },
+    "201705": {
+      "valor": 1618504.92,
+      "registros": 22,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201705_Despesas.zip"
+    },
+    "201706": {
+      "valor": 443369.89,
+      "registros": 20,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201706_Despesas.zip"
+    },
+    "201707": {
+      "valor": 170399.97,
+      "registros": 18,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201707_Despesas.zip"
+    },
+    "201708": {
+      "valor": 927185.23,
+      "registros": 26,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201708_Despesas.zip"
+    },
+    "201709": {
+      "valor": 365004.7,
+      "registros": 15,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201709_Despesas.zip"
+    },
+    "201710": {
+      "valor": 1081608.31,
+      "registros": 17,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201710_Despesas.zip"
+    },
+    "201711": {
+      "valor": 941895.55,
+      "registros": 22,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201711_Despesas.zip"
+    },
+    "201712": {
+      "valor": -38008.75,
+      "registros": 22,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201712_Despesas.zip"
+    },
+    "201801": {
+      "valor": 84655.47,
+      "registros": 15,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201801_Despesas.zip"
+    },
+    "201802": {
+      "valor": 71464.84,
+      "registros": 15,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201802_Despesas.zip"
+    },
+    "201803": {
+      "valor": 269468.18,
+      "registros": 14,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201803_Despesas.zip"
+    },
+    "201804": {
+      "valor": 1340914.5,
+      "registros": 12,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201804_Despesas.zip"
+    },
+    "201805": {
+      "valor": 665582.47,
+      "registros": 16,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201805_Despesas.zip"
+    },
+    "201806": {
+      "valor": 463900.78,
+      "registros": 17,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201806_Despesas.zip"
+    },
+    "201807": {
+      "valor": 690756.38,
+      "registros": 16,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201807_Despesas.zip"
+    },
+    "201808": {
+      "valor": 659007.55,
+      "registros": 20,
+      "fonte": "https://dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/despesas-execucao/201808_Despesas.zip"
     }
   },
   "anos": [
@@ -544,24 +549,24 @@
     },
     {
       "year": 2016,
-      "status": "incompleto",
-      "nominal": null,
-      "ipca": null,
-      "inpc": null,
-      "meses": 2,
+      "status": "ok",
+      "nominal": 8438738.05,
+      "ipca": 13837360.48,
+      "inpc": 13669717.96,
+      "meses": 12,
       "esperados": 12,
-      "itens": 45,
+      "itens": 291,
       "referencia": "202610"
     },
     {
       "year": 2017,
-      "status": "incompleto",
-      "nominal": null,
-      "ipca": null,
-      "inpc": null,
-      "meses": 0,
+      "status": "ok",
+      "nominal": 6453062.17,
+      "ipca": 10244851.93,
+      "inpc": 10168143.15,
+      "meses": 12,
       "esperados": 12,
-      "itens": 0,
+      "itens": 238,
       "referencia": "202610"
     },
     {
@@ -570,9 +575,9 @@
       "nominal": null,
       "ipca": null,
       "inpc": null,
-      "meses": 0,
+      "meses": 8,
       "esperados": 12,
-      "itens": 0,
+      "itens": 125,
       "referencia": "202610"
     },
     {
