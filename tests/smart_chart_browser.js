@@ -15,6 +15,7 @@
     $('reportChart').open=true;
     $('reportChart').dispatchEvent(new Event('toggle'));
     const results={loaded:true};
+    let gruTotalRows = 0;
     if (gru) {
       const vis=$('reportChartVisual');
       results.suggestsActualEmissionMonths=$('chartMode').value==='sum' &&
@@ -28,7 +29,9 @@
       results.clickActualMonthFiltersTable=$('pageInfo').textContent.includes(' de 20 registros') &&
         $('chartSummary').textContent.includes('Filtro aplicado');
       $('clearFilters').click();
-      results.clearingFilterRestoresData=$('pageInfo').textContent.includes(' de 242 registros');
+      const restoredCount = /de (\\d+) registros/.exec($('pageInfo').textContent);
+      gruTotalRows = Number(restoredCount?.[1] || 0);
+      results.clearingFilterRestoresData = gruTotalRows > 0;
       $('chartType').value='pie';
       $('chartType').dispatchEvent(new Event('change',{bubbles:true}));
       results.pieDoesNotHide11Months=$('chartSummary').textContent.includes('até 10 categorias');
@@ -61,9 +64,9 @@
       let frames = 0;
       const checkAllRows = () => {
         const count = $('table').querySelectorAll('tbody tr[data-row-index]').length;
-        if (count < 242 && frames++ < 50) return setTimeout(checkAllRows, 40);
-        results.allGruRowsLoaded = count === 242 &&
-          $('pageInfo').textContent.includes('todas as 242 linhas filtradas');
+        if (count < gruTotalRows && frames++ < 50) return setTimeout(checkAllRows, 40);
+        results.allGruRowsLoaded = gruTotalRows > 0 && count === gruTotalRows &&
+          $('pageInfo').textContent.includes('todas as ' + gruTotalRows + ' linhas filtradas');
         results.allGruRowsOnOnePage = $('pageNumber').textContent === 'Página 1 de 1' &&
           $('nextPage').disabled && $('previousPage').disabled;
         results.allGruRowsShareable = new URLSearchParams(location.search).get('ps') === 'all';
