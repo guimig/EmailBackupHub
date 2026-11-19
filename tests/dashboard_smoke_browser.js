@@ -118,6 +118,19 @@
         && el('ndChartTotal').textContent.includes('4 NEs')
         && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs')).length === 3;
       qa.ndLabelsComplete = labelsFit(nd);
+      const provisionsCard = card('provisions');
+      const stagesCard = card('stages');
+      qa.executionPanelsBalanced = window.innerWidth > 1250
+        ? Math.abs(rect(provisionsCard).top - rect(stagesCard).top) < 6
+          && rect(provisionsCard).right <= rect(stagesCard).left + 6
+          && Math.abs(rect(provisionsCard).width + rect(stagesCard).width
+            + parseFloat(style(chartGrid).columnGap || 0) - rect(chartGrid).width) < 10
+        : rect(stagesCard).top >= rect(provisionsCard).bottom - 6
+          && Math.abs(rect(provisionsCard).width - rect(chartGrid).width) < 6;
+      const totalValue = provisionsCard.querySelector('.provision-donut-center strong');
+      qa.provisionTotalFitsRing = !!totalValue
+        && totalValue.scrollWidth <= totalValue.clientWidth + 2
+        && totalValue.scrollHeight <= totalValue.clientHeight + 2;
       qa.provisionChartLoaded = !!el('provisionCompositionChart')
          && !!el('provisionCompositionLink')?.href;
        qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6
