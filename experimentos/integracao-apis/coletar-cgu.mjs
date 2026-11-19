@@ -71,7 +71,9 @@ export function sanitizeDocument(row,date,phase){
   if(ug!==UG) throw Error('Documento sem UG 158459 comprovada');
   const document=String(row.documento||'').trim();
   const amount=parseBRL(row.valor);
-  if(!document||document.length>96||amount===null) throw Error('Documento ou valor inválido');
+  if(!document) throw Error('CGU: identificador documental ausente');
+  if(document.length>96) throw Error('CGU: identificador documental extenso');
+  if(amount===null) throw Error('CGU: valor monetário ausente ou inválido (tipo '+(typeof row.valor)+')');
   // Lista fechada de campos: não publicar CPF, CNPJ, nome, observação ou texto livre.
   return {data:date,fase:phase,documento:document,valor:Math.round(amount*100)/100};
 }
