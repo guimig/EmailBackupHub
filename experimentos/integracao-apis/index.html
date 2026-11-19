@@ -41,7 +41,7 @@ select{border:1px solid var(--line);border-radius:8px;background:var(--card);col
 <article class="card"><div class="muted small">Documentos de pagamento</div><div id="pag" class="value">—</div><div id="pagCount" class="small muted">Aguardando coleta</div></article>
 </section>
 <section class="card"><h2>Valores documentais na janela consultada</h2><p class="small muted" id="period">Sem coleta publicada.</p><div id="bars"></div>
-<p class="small muted">Valores de documentos de fases distintas não devem ser subtraídos para estimar saldos. Essas consultas não equivalem a dotação, provisão, limite de saque, restos a pagar ou execução acumulada.</p>
+<p class="small muted">Liquidações com valor nulo são consultadas pelos empenhos impactados, com registro das recuperações e lacunas. Valores de documentos de fases distintas não devem ser subtraídos para estimar saldos. Essas consultas não equivalem a dotação, provisão, limite de saque, restos a pagar ou execução acumulada.</p>
 </section>
 <section class="card">
 <div class="toolbar"><h2>Movimentação por data</h2><label for="filter">Fase <select id="filter"><option value="all">Todas</option><option value="1">Empenho</option><option value="2">Liquidação</option><option value="3">Pagamento</option></select></label></div>
@@ -69,15 +69,15 @@ if(data.schema_version!==1||data.unidade_gestora!=='158459'||!Array.isArray(data
 days=data.dias;const ids=[['emp','empCount'],['liq','liqCount'],['pag','pagCount']];
 const all=data.fases;
 for(let i=0;i<3;i++){const f=all.find(x=>x.fase===i+1);if(!f)throw Error('Fase ausente');
-$(ids[i][0]).textContent=currency(f.total);$(ids[i][1]).textContent=(f.completo?'':'Pelo menos ')+f.quantidade+' documento(s) · '+(f.completo?'consulta completa':'consulta parcial');}
+$(ids[i][0]).textContent=currency(f.total);const covered=f.completo?'consulta documental completa':'consulta parcial';const invalid=f.valores_invalidos?(' · '+f.valores_invalidos+' valor(es) indisponível(is)'):'';const recovered=i===1&&f.valores_recuperados_impactos?(' · '+f.valores_recuperados_impactos+' NS recuperada(s) via empenhos impactados'):'';$(ids[i][1]).textContent=(f.completo?'':'Pelo menos ')+f.quantidade+' documento(s) · '+covered+invalid+recovered;}
 $('period').textContent=data.data_inicial+' a '+data.data_final;
 $('generated').textContent='Consulta CGU emitida em '+new Date(data.gerado_em).toLocaleString('pt-BR');
-$('quality').textContent=data.qualidade?.completo?'Paginação encerrada em todas as consultas. Totais não reconciliados com SIAFI.':'Consultas parciais: contagens mínimas, totais incompletos indisponíveis.';
+$('quality').textContent=(data.qualidade?.completo?'Todas as consultas documentais têm paginação encerrada. ':'Há consultas com paginação parcial; quantidades podem ser mínimas. ')+(data.qualidade?.valores_invalidos?data.qualidade.valores_invalidos+' valor(es) permanecem indisponível(is). ':'Cobertura monetária dos documentos consultados sem lacunas conhecidas. ')+(data.qualidade?.valores_recuperados_impactos||0)+' valor(es) de NS recuperado(s) por empenhos impactados. Totais ainda não conciliados com SIAFI.';
 const max=Math.max(1,...all.filter(x=>x.completo&&typeof x.total==='number').map(x=>Math.abs(x.total)));
 $('bars').replaceChildren();
 for(const p of all){const div=document.createElement('div');div.className='chartline';const label=document.createElement('span');label.className='caption';label.textContent=p.etapa;const track=document.createElement('div');track.className='track';track.setAttribute('role','img');track.setAttribute('aria-label',p.etapa+': '+currency(p.total));const bar=document.createElement('div');bar.className='bar';bar.style.width=p.completo?Math.min(100,Math.abs(p.total)/max*100)+'%':'0';track.appendChild(bar);const total=document.createElement('span');total.className='total';total.textContent=currency(p.total);div.append(label,track,total);$('bars').appendChild(div);}
 showDays();fillTable('samples',days.flatMap(d=>(d.amostra||[]).map(x=>({...x,etapa:d.etapa}))).slice(0,48),[x=>x.data,x=>x.documento,x=>x.etapa,x=>currency(x.valor)]);
-$('status').textContent=data.qualidade?.completo?'Consulta publicada · dados experimentais':'Consulta parcial · dados não conciliados';
+$('status').textContent=data.qualidade?.completo&&!data.qualidade?.valores_invalidos?'Consulta documental completa · dados experimentais não conciliados':'Consulta publicada com ressalvas de cobertura · dados não conciliados';
 }
 try{const response=await fetch('./dados/cgu-ug-158459.json',{cache:'no-store'});if(!response.ok)throw Error('HTTP');const data=await response.json();if(data.status==='aguardando_primeira_coleta'){$('status').textContent='Aguardando primeira coleta CGU validada';}else render(data);}
 catch{$('status').textContent='Dados públicos experimentais indisponíveis. A produção permanece operacional.';}
