@@ -1,0 +1,65 @@
+name: EXPERIMENTO - Coletar empenhos IFC Campus Araquari
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ifc_ug_collect.yml'
+      - 'experimentos/ifc-empenhos/coletar_araquari.py'
+  workflow_dispatch:
+    inputs:
+      max_months:
+        description: "Maximo de meses CGU a recuperar por execucao (1 a 120)"
+        required: false
+        default: "36"
+
+permissions:
+  contents: write
+
+# Independente dos processadores de e-mail; falha de push preserva a main.
+concurrency:
+  group: ifc-ug158459-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            experimentos/ifc-empenhos/coletar_araquari.py
+            experimentos/ifc-empenhos/test_coletar_araquari.py
+            experimentos/ifc-empenhos/dados-araquari.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validar sintaxe isolada
+        run: python -m py_compile experimentos/ifc-empenhos/coletar_araquari.py
+      - name: Testes da logica de classificacao e correcao
+        run: python -m unittest discover -s experimentos/ifc-empenhos -p 'test_coletar_araquari.py' -v
+      - name: Recuperar agregados mensais da CGU e indices SIDRA
+        run: python experimentos/ifc-empenhos/coletar_araquari.py --max-months "${{ inputs.max_months || '36' }}"
+      - name: Conferir consistencia da saida
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('experimentos/ifc-empenhos/dados-araquari.json')
+          d = json.loads(path.read_text())
+          assert d.get('unidade_gestora') == '158459'
+          assert int(d['cgu']['meses_coletados']) > 0
+          assert d['sidra']['referencia']
+          assert any(r['status'] in ('ok','parcial') for r in d['anos'])
+          print('CGU:',d['cgu']['meses_coletados'],'meses e',d['cgu']['anos_ok'],'exercicios completos')
+          PY
+      - name: Commit somente do cache experimental de Araquari
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- experimentos/ifc-empenhos/dados-araquari.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "test(ifc): atualizar agregados oficiais de empenhos UG 158459"
+          git push origin HEAD:main
