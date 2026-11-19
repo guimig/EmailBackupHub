@@ -29,7 +29,7 @@
       results.clickActualMonthFiltersTable=$('pageInfo').textContent.includes(' de 20 registros') &&
         $('chartSummary').textContent.includes('Filtro aplicado');
       $('clearFilters').click();
-      const restoredCount = /de (\\d+) registros/.exec($('pageInfo').textContent);
+      const restoredCount = /de (\d+) registros/.exec($('pageInfo').textContent);
       gruTotalRows = Number(restoredCount?.[1] || 0);
       results.clearingFilterRestoresData = gruTotalRows > 0;
       $('chartType').value='pie';
