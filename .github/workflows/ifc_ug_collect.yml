@@ -11,7 +11,7 @@ on:
       max_months:
         description: "Maximo de meses CGU a recuperar por execucao (1 a 120)"
         required: false
-        default: "36"
+        default: "24"
 
 permissions:
   contents: write
@@ -41,7 +41,7 @@ jobs:
       - name: Testes da logica de classificacao e correcao
         run: python -m unittest discover -s experimentos/ifc-empenhos -p 'test_coletar_araquari.py' -v
       - name: Recuperar agregados mensais da CGU e indices SIDRA
-        run: python experimentos/ifc-empenhos/coletar_araquari.py --max-months "${{ inputs.max_months || '36' }}"
+        run: python experimentos/ifc-empenhos/coletar_araquari.py --max-months "${{ inputs.max_months || '24' }}"
       - name: Conferir consistencia da saida
         run: |
           python - <<'PY'

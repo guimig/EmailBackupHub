@@ -1,4 +1,5 @@
 import io
+import json
 import unittest
 from datetime import datetime, timezone
 from decimal import Decimal
@@ -31,6 +32,7 @@ class TestCollector(unittest.TestCase):
   doc=m.prepare_result(months, {'IPCA':index,'INPC':index}, {}, now)
   row=next(r for r in doc['anos'] if r['year']==2025)
   self.assertEqual(row['status'],'ok');self.assertEqual(row['nominal'],1200);self.assertEqual(row['ipca'],1440)
+  self.assertIn('"nominal": 1200.0',json.dumps(doc))
  def test_older_year_without_source_not_zero(self):
   now=datetime(2026,11,19,tzinfo=timezone.utc)
   doc=m.prepare_result({}, {'IPCA':{},'INPC':{}},{},now)
