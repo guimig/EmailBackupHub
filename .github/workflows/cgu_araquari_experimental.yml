@@ -69,7 +69,14 @@ jobs:
           const raw = readFileSync(p, 'utf8');
           const data = JSON.parse(raw);
           if (data.schema_version !== 1 || data.unidade_gestora !== '158459' || typeof data.qualidade?.completo !== 'boolean' || data.dias.length !== 21 || data.fases.length !== 3) throw Error('CGU: esquema invalido');
-          if (/"(?:nomeFavorecido|codigoFavorecido|observacao|cpf|cnpj)"/i.test(raw)) throw Error('CGU: campo pessoal presente');
+          const allowedKeys = new Set(['data', 'fase', 'documento', 'valor']);
+          for (const dia of data.dias) {
+            if (!Array.isArray(dia.amostra)) throw Error('CGU: amostra documental ausente');
+            for (const documento of dia.amostra) {
+              if (Object.keys(documento).some(key => !allowedKeys.has(key))) throw Error('CGU: campo nao autorizado na amostra');
+              if (typeof documento.documento !== 'string' || documento.documento.length > 96) throw Error('CGU: identificador invalido');
+            }
+          }
           for (const fase of data.fases) {
             if (!Number.isInteger(fase.quantidade) || fase.quantidade < 0) throw Error('CGU: contagem invalida');
             if (!fase.completo && fase.total !== null) throw Error('CGU: total parcial apresentado como completo');
