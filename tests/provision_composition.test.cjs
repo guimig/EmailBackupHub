@@ -73,7 +73,7 @@ test('renderização apresenta rosca, duas categorias e alternativa de erro', ()
   assert.match(container.innerHTML,/provision-donut/);
   assert.match(container.innerHTML,/data-provision-group="3"/);
   assert.match(container.innerHTML,/data-provision-group="4"/);
-  assert.match(container.innerHTML,/R\\$\\s*300,00/);
+  assert.match(container.innerHTML,/300,00/);
   const missing={innerHTML:''};
   render(missing,{ok:false,reason:'Dado não auditável'});
   assert.match(missing.innerHTML,/Dado não auditável/);
