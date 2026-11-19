@@ -140,7 +140,7 @@ def prepare_result(months: dict, indices: dict, previous: dict, now: datetime) -
         valid = [dict(months[x], mes=x) for x in expected if x in months]
         complete = len(valid) == len(expected)
         partial_year = year == now.year
-        nominal = round(sum(Decimal(str(x["valor"])) for x in valid), 2) if (complete and valid) else None
+        nominal = float(round(sum(Decimal(str(x["valor"])) for x in valid), 2)) if (complete and valid) else None
         calc = {}
         for name, series in indices.items():
             vals = [corrected(x,series,reference) for x in valid] if reference else []
@@ -161,7 +161,7 @@ def prepare_result(months: dict, indices: dict, previous: dict, now: datetime) -
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--max-months",type=int,default=36)
+    parser.add_argument("--max-months",type=int,default=24)
     parser.add_argument("--dry-run",action="store_true")
     args=parser.parse_args()
     if not 1 <= args.max_months <= 200:
@@ -182,7 +182,7 @@ def main() -> int:
             print(f"CGU {month}: OK, registros UG={cache[month]['registros']}, valor={cache[month]['valor']}",flush=True)
         except Exception as exc:
             failures.append({"mes":month,"tipo":type(exc).__name__})
-            print("CGU",month,"FALHA",type(exc).__name__,flush=True)
+            print("CGU",month,"FALHA",type(exc).__name__,"HTTP",getattr(exc,"code","n/a"),flush=True)
     indices={}
     for name,url in SIDRA.items():
         try:
