@@ -193,33 +193,3 @@
   }
   setTimeout(verify, 200);
 }());
-)
-        && el('gruTreeChart').querySelector('.gru-month-positive') !== null
-        && el('gruTreeChart').querySelector('.gru-month-negative') !== null;
-      el('gruViewCodesButton').click();
-      qa.gruBackToCodeView = !gru.hidden && el('gruTreeChart').hidden;
-
-      click('Overview');
-      qa.switchRestoresOverview = visible().join(',') === 'expense,rap';
-      qa.noHorizontalOverflow = document.documentElement.scrollWidth <= window.innerWidth + 4;
-      qa.kpisAlwaysVisible = rect(el('budgetBase')).width > 0
-        && rect(el('gruCollected')).width > 0;
-      qa.dashboardCardPaddingConsistent = cards.every(node =>
-        Math.abs(parseFloat(style(node).paddingLeft)
-          - parseFloat(style(cards[0]).paddingLeft)) < .5);
-      qa.chartLinksUseSameWording = [...document.querySelectorAll(
-        '.dashboard-charts--overview .financial-chart-link, .dashboard-charts--overview .rap-composition-link'
-      )].every(link => link.textContent.trim() === 'Ver relatório ↗');
-      qa.catalogStillUsable = document.querySelectorAll('#rows [data-favorite-report]').length === 7
-        && !!el('search') && !!el('catalogScope') && !!el('exportCsv');
-
-      document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify(qa));
-    } catch (error) {
-      document.documentElement.dataset.dashboardQa = encodeURIComponent(JSON.stringify({
-        browserScriptError: String(error),
-        stack: String(error?.stack || '').slice(0, 1200)
-      }));
-    }
-  }
-  setTimeout(verify, 200);
-}());
