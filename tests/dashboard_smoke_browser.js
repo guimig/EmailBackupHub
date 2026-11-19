@@ -101,13 +101,14 @@
         && el('committedGaugeValue').textContent.includes('60,0')
         && el('liquidatedGaugeValue').textContent.includes('66,7')
         && el('openGaugeValue').textContent.includes('33,3');
+      const brl = number => number.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
       gauges[0].click();
       qa.stageNominalOnClick = !el('stageGaugeDetail').hidden
-        && el('stageGaugeDetail').textContent.includes('R$ 50.000,00 de R$ 100.000,00')
+        && el('stageGaugeDetail').textContent.includes(brl(50000) + ' de ' + brl(100000))
         && gauges[0].getAttribute('aria-pressed') === 'true'
         && gauges[0].getAttribute('aria-controls') === 'stageGaugeDetail';
       gauges[1].click();
-      qa.stageDetailSwitchesWithSelection = el('stageGaugeDetail').textContent.includes('R$ 30.000,00 de R$ 50.000,00')
+      qa.stageDetailSwitchesWithSelection = el('stageGaugeDetail').textContent.includes(brl(30000) + ' de ' + brl(50000))
         && gauges[1].getAttribute('aria-pressed') === 'true'
         && gauges[0].getAttribute('aria-pressed') === 'false';
       qa.ndButtonsMatchGru = el('ndViewGeneralButton').classList.contains('gru-view-button')
