@@ -66,10 +66,19 @@ test('execution prioritizes budget commitment ratio and hides valid-state notice
 test('ND value composition is linked to a named grouping and no duplicate stage exists', () => {
   assert.doesNotMatch(html, /id="paidGauge"|id="paidGaugeValue"/);
   assert.doesNotMatch(js, /renderHalfGauge\('paidGauge'/);
-  assert.match(js, /query\.set\('vg', 'Natureza Despesa Detalhada \(2\)'\)/);
+  assert.match(js, /query\.set\('vg', ndGroupingMode === 'general'/);
   for (const account of ['622920101', '622920103', '622920104']) {
     assert.match(js, new RegExp(account + ' \\/ = EMPENHOS'));
     assert.match(html, new RegExp(account));
   }
   assert.doesNotMatch(js, /query\.set\('vgs', JSON\.stringify\(\['Conta Contábil \/ NE CCor - Valor'\]\)\)/);
+});
+
+test('ND chart exposes general/detailed view controls and contextual back action',()=>{
+  assert.match(html, /id="ndViewGeneralButton"/);
+  assert.match(html, /id="ndViewDetailedButton"/);
+  assert.match(html, /id="ndBackButton"/);
+  assert.match(html, /id="ndShowAllButton"/);
+  assert.match(js, /ndSelectedParent = item\.dataset\.ndKey/);
+  assert.match(js, /renderer\.buildNdCommitmentView/);
 });
