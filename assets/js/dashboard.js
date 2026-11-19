@@ -17,6 +17,9 @@ let indexData = null;
     // Historical extraction snapshots are never treated as transaction movements.
     let gruDetailState = { key: '', status: 'idle', document: null, error: '' };
     let ndDetailState = { key: '', status: 'idle', document: null, error: '' };
+    let ndGroupingMode = 'general';
+    let ndSelectedParent = '';
+    let ndShowAll = false;
 
     const byId = id => document.getElementById(id);
 
@@ -1038,7 +1041,8 @@ let indexData = null;
           // Named parameters survive column reordering in the report viewer.
           const query = new URLSearchParams(url.slice(url.indexOf('?') + 1));
           query.set('sv', '2');
-          query.set('vg', 'Natureza Despesa Detalhada (2)');
+          query.set('vg', ndGroupingMode === 'general'
+            ? 'Natureza Despesa' : 'Natureza Despesa Detalhada');
           query.set('vgs', JSON.stringify([
             '622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)',
             '622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)',
@@ -1098,11 +1102,31 @@ let indexData = null;
         && Number.isFinite(stageReport.metrics?.empenhado)
         ? stageReport.metrics.empenhado : null;
       const model = renderer.buildNdCommitments(doc, auditedCommitment);
-      renderer.renderNdCommitments(target, model);
+      const view = renderer.buildNdCommitmentView(model, {
+        mode: ndGroupingMode, parent: ndSelectedParent, showAll: ndShowAll
+      });
+      renderer.renderNdCommitments(target, view);
       requestAnimationFrame(fitVisibleTreemaps);
+      for (const button of document.querySelectorAll('[data-nd-view]')) {
+        const active = button.dataset.ndView === ndGroupingMode;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      }
+      const back = byId('ndBackButton');
+      if (back) back.hidden = !ndSelectedParent;
+      const more = byId('ndShowAllButton');
+      if (more) {
+        more.hidden = !view.ok || !view.remainingCount || ndShowAll;
+        if (!more.hidden) more.textContent = 'Mostrar outras ' + view.remainingCount + ' naturezas';
+      }
+      const scope = byId('ndMapScope');
+      if (scope) scope.textContent = view.ok
+        ? (ndGroupingMode === 'general' ? 'Visão por natureza de despesa'
+          : ndSelectedParent ? 'NDs detalhadas de ' + ndSelectedParent : 'Todas as NDs detalhadas')
+          + ' · ' + view.allCount + ' categorias' : '';
       const total = byId('ndChartTotal');
       if (total) total.textContent = model.ok
-        ? model.groups + ' naturezas · ' + model.uniqueCommitments + ' NEs · '
+        ? model.groups + ' descrições detalhadas · ' + model.uniqueCommitments + ' NEs · '
           + formatMoney(model.total)
         : '';
       const detail = byId('ndChartDetail');
@@ -1417,8 +1441,40 @@ let indexData = null;
     });
     const ndCard = document.querySelector('.chart-card--nd');
     ndCard.addEventListener('click', event => {
+      const switchButton = event.target.closest('[data-nd-view]');
+      if (switchButton) {
+        ndGroupingMode = switchButton.dataset.ndView;
+        ndSelectedParent = '';
+        ndShowAll = false;
+        renderNdCommitmentsView();
+        return;
+      }
+      if (event.target.closest('#ndBackButton')) {
+        ndGroupingMode = 'general';
+        ndSelectedParent = '';
+        ndShowAll = false;
+        renderNdCommitmentsView();
+        return;
+      }
+      if (event.target.closest('#ndShowAllButton')) {
+        ndShowAll = true;
+        renderNdCommitmentsView();
+        return;
+      }
       const item = event.target.closest('[data-nd-description]');
       if (!item) return;
+      if (item.dataset.ndOther === 'true') {
+        ndShowAll = true;
+        renderNdCommitmentsView();
+        return;
+      }
+      if (ndGroupingMode === 'general') {
+        ndSelectedParent = item.dataset.ndKey || item.dataset.ndDescription;
+        ndGroupingMode = 'detailed';
+        ndShowAll = false;
+        renderNdCommitmentsView();
+        return;
+      }
       for (const tile of ndCard.querySelectorAll('[data-nd-description]')) {
         tile.setAttribute('aria-pressed', String(tile === item));
       }
@@ -1426,7 +1482,7 @@ let indexData = null;
       detail.hidden = false;
       detail.textContent = item.dataset.ndDescription + ' — ' + item.dataset.ndValue
         + ' · ' + item.dataset.ndShare.replace('.', ',') + '% dos valores positivos'
-        + ' · ' + item.dataset.ndRecords + ' empenho(s).';
+        + ' · ' + item.dataset.ndRecords + ' registro(s).';
     });
     document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
       const nextKey = th.dataset.sort;
