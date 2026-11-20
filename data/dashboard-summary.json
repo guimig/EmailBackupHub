@@ -1,7 +1,7 @@
 {
   "schema_version": "1.6",
   "summary_version": "1",
-  "generated_at": "2026-11-19T22:32:34.451559-03:00",
+  "generated_at": "2026-11-20T06:25:43.877893-03:00",
   "reports": {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
       "slug": "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
@@ -2196,8 +2196,8 @@
     "acompanhamento-das-liquidacoes-e-pagamentos-por-data": {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
       "title": "Liquidações e Pagamentos por Data",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -2263,7 +2263,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 37,
+          "distinct_samples": 38,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2276,7 +2276,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 37,
+          "distinct_samples": 38,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2289,7 +2289,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 3,
+          "distinct_samples": 4,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2302,7 +2302,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 248,
+          "distinct_samples": 251,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2315,7 +2315,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 147,
+          "distinct_samples": 151,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2328,7 +2328,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 97,
+          "distinct_samples": 99,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2341,7 +2341,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 88,
+          "distinct_samples": 94,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2354,7 +2354,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 3,
+          "distinct_samples": 2,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2380,7 +2380,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 160,
+          "distinct_samples": 164,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2393,7 +2393,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 84,
+          "distinct_samples": 82,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2406,7 +2406,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 98,
+          "distinct_samples": 100,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2419,7 +2419,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 73,
+          "distinct_samples": 75,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2432,7 +2432,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 229,
           "missing_samples": 27,
-          "distinct_samples": 79,
+          "distinct_samples": 80,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -2451,7 +2451,7 @@
         }
       ],
       "metadata": {
-        "hash_conteudo": "ebdc384078f908cbad2b283200ee99577f74d77438ce2090ff70470f783b8658"
+        "hash_conteudo": "8baa9572c24a0776928828776389c90df7976db4c6679b3902dc7d2454056f42"
       },
       "row_types": [],
       "series_data": {
@@ -2814,6 +2814,12 @@
             "date": "19/11/2026",
             "date_iso": "2026-11-19",
             "hash_conteudo": "ebdc384078f908cbad2b283200ee99577f74d77438ce2090ff70470f783b8658",
+            "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "8baa9572c24a0776928828776389c90df7976db4c6679b3902dc7d2454056f42",
             "metrics": {}
           }
         ]
@@ -3433,8 +3439,8 @@
     "credito-disponivel-mes-lancamento": {
       "slug": "credito-disponivel-mes-lancamento",
       "title": "Crédito Disponível por Mês de Lançamento",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -3485,7 +3491,7 @@
             "Natureza Despesa": 339000.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1000000000.0,
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 30839.77
+            "Saldo - R$ (Conta Contábil) / NOV/2026": 31463.64
           },
           "raw": {
             "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -3498,7 +3504,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "30.839,77"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "31.463,64"
           }
         },
         {
@@ -3507,7 +3513,7 @@
             "Natureza Despesa": 339000.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1050000191.0,
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 3615.57
+            "Saldo - R$ (Conta Contábil) / NOV/2026": 9687.87
           },
           "raw": {
             "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -3520,7 +3526,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "3.615,57"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "9.687,87"
           }
         },
         {
@@ -3551,7 +3557,7 @@
             "Natureza Despesa": 339030.0,
             "Unidade Orçamentária": 26422.0,
             "Fonte Recursos Detalhada": 1000000000.0,
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 198.23
+            "Saldo - R$ (Conta Contábil) / NOV/2026": 7053.62
           },
           "raw": {
             "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -3564,29 +3570,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "198,23"
-          }
-        },
-        {
-          "label": "OUTRAS DESPESAS CORRENTES",
-          "values": {
-            "Natureza Despesa": 339030.0,
-            "Unidade Orçamentária": 26422.0,
-            "Fonte Recursos Detalhada": 1050000191.0,
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 6339.5
-          },
-          "raw": {
-            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-            "Natureza Despesa": "339030",
-            "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-            "Unidade Orçamentária": "26422",
-            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-            "Fonte Recursos Detalhada": "1050000191",
-            "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
-            "PTRES": "Total",
-            "Métrica / PI": "",
-            "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "6.339,50"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
           }
         },
         {
@@ -3612,31 +3596,9 @@
           }
         },
         {
-          "label": "OUTRAS DESPESAS CORRENTES",
-          "values": {
-            "Natureza Despesa": 339039.0,
-            "Unidade Orçamentária": 26422.0,
-            "Fonte Recursos Detalhada": 1000000000.0,
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 8300.0
-          },
-          "raw": {
-            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-            "Natureza Despesa": "339039",
-            "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Unidade Orçamentária": "26422",
-            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-            "Fonte Recursos Detalhada": "1000000000",
-            "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-            "PTRES": "Total",
-            "Métrica / PI": "",
-            "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "8.300,00"
-          }
-        },
-        {
           "label": "Total",
           "values": {
-            "Saldo - R$ (Conta Contábil) / NOV/2026": 94638.53
+            "Saldo - R$ (Conta Contábil) / NOV/2026": 93550.59
           },
           "raw": {
             "Grupo Despesa": "Total",
@@ -3649,12 +3611,12 @@
             "PTRES": "",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "94.638,53"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "93.550,59"
           }
         }
       ],
       "metrics": {
-        "credito_disponivel": 94638.53
+        "credito_disponivel": 93550.59
       },
       "metrics_meta": {
         "credito_disponivel": {
@@ -3670,8 +3632,8 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
           "distinct_samples": 2,
           "valid_ratio": 1.0,
@@ -3683,10 +3645,10 @@
           "filter_kind": "text",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 5,
+          "distinct_samples": 4,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -3696,10 +3658,10 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 4,
+          "distinct_samples": 3,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -3709,8 +3671,8 @@
           "filter_kind": "text",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
           "distinct_samples": 2,
           "valid_ratio": 1.0,
@@ -3722,8 +3684,8 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
           "distinct_samples": 2,
           "valid_ratio": 1.0,
@@ -3735,8 +3697,8 @@
           "filter_kind": "text",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
           "distinct_samples": 4,
           "valid_ratio": 1.0,
@@ -3748,8 +3710,8 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
           "distinct_samples": 3,
           "valid_ratio": 1.0,
@@ -3761,10 +3723,10 @@
           "filter_kind": "text",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 3,
+          "distinct_samples": 4,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -3774,10 +3736,10 @@
           "filter_kind": "text",
           "confidence": "low",
           "inferred_from": "conservative_fallback",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 6,
+          "distinct_samples": 7,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -3787,10 +3749,10 @@
           "filter_kind": "text",
           "confidence": "low",
           "inferred_from": "conservative_fallback",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 6,
+          "distinct_samples": 7,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -3800,10 +3762,10 @@
           "filter_kind": "numeric_range",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 10,
-          "nonempty_samples": 10,
+          "sampled_rows": 11,
+          "nonempty_samples": 11,
           "missing_samples": 0,
-          "distinct_samples": 10,
+          "distinct_samples": 11,
           "valid_ratio": 1.0,
           "aggregation": "none",
           "period": {
@@ -3816,7 +3778,7 @@
         }
       ],
       "metadata": {
-        "hash_conteudo": "cc598503ffd79cff4665ff3599b3335a6ccdc447e49368a2f586cd9cbfcf46d2"
+        "hash_conteudo": "3e0252e6a17aa373344dd9272f41c3fe66d1077bc779dfb4ae2aa34a61a638c4"
       },
       "row_types": [
         {
@@ -3848,7 +3810,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "30.839,77"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "31.463,64"
           }
         },
         {
@@ -3864,7 +3826,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "3.615,57"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "9.687,87"
           }
         },
         {
@@ -3896,23 +3858,7 @@
             "PTRES": "Total",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "198,23"
-          }
-        },
-        {
-          "type": "total",
-          "raw": {
-            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-            "Natureza Despesa": "339030",
-            "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-            "Unidade Orçamentária": "26422",
-            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-            "Fonte Recursos Detalhada": "1050000191",
-            "Fonte Recursos Detalhada (2)": "REC.PROP.LIV.UO-IF CATARINENSE",
-            "PTRES": "Total",
-            "Métrica / PI": "",
-            "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "6.339,50"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
           }
         },
         {
@@ -3934,22 +3880,6 @@
         {
           "type": "total",
           "raw": {
-            "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-            "Natureza Despesa": "339039",
-            "Natureza Despesa (2)": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
-            "Unidade Orçamentária": "26422",
-            "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-            "Fonte Recursos Detalhada": "1000000000",
-            "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-            "PTRES": "Total",
-            "Métrica / PI": "",
-            "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "8.300,00"
-          }
-        },
-        {
-          "type": "total",
-          "raw": {
             "Grupo Despesa": "Total",
             "Natureza Despesa": "",
             "Natureza Despesa (2)": "",
@@ -3960,7 +3890,7 @@
             "PTRES": "",
             "Métrica / PI": "",
             "Métrica / PI (2)": "",
-            "Saldo - R$ (Conta Contábil) / NOV/2026": "94.638,53"
+            "Saldo - R$ (Conta Contábil) / NOV/2026": "93.550,59"
           }
         }
       ],
@@ -4932,6 +4862,21 @@
             "hash_conteudo": "cc598503ffd79cff4665ff3599b3335a6ccdc447e49368a2f586cd9cbfcf46d2",
             "metrics": {
               "credito_disponivel": 94638.53
+            },
+            "metrics_meta": {
+              "credito_disponivel": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              }
+            }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "3e0252e6a17aa373344dd9272f41c3fe66d1077bc779dfb4ae2aa34a61a638c4",
+            "metrics": {
+              "credito_disponivel": 93550.59
             },
             "metrics_meta": {
               "credito_disponivel": {
@@ -6489,8 +6434,8 @@
     "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento": {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
       "title": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -6533,9 +6478,9 @@
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1014435.39,
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1012112.77,
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 856717.33,
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 846717.33
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 844717.33
           },
           "raw": {
             "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -6544,17 +6489,17 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.014.435,39",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.012.112,77",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "856.717,33",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "846.717,33"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "844.717,33"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 581183.01,
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 584594.81,
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 375736.04,
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 355110.8
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 356325.34
           },
           "raw": {
             "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -6563,9 +6508,9 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "581.183,01",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "584.594,81",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "375.736,04",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "355.110,80"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "356.325,34"
           }
         },
         {
@@ -6666,7 +6611,7 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1743545.65,
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1743544.41,
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1147374.3,
             "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 1107268.81
           },
@@ -6677,7 +6622,7 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.743.545,65",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.743.544,41",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.147.374,30",
             "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.107.268,81"
           }
@@ -6797,9 +6742,9 @@
         {
           "label": "Total",
           "values": {
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 7299972.56,
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 7301060.5,
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 4560575.85,
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 4356496.47
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": 4355711.01
           },
           "raw": {
             "Natureza Despesa": "Total",
@@ -6808,16 +6753,16 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "7.299.972,56",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "7.301.060,50",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.560.575,85",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.356.496,47"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.355.711,01"
           }
         }
       ],
       "metrics": {
-        "empenhado": 7299972.56,
+        "empenhado": 7301060.5,
         "liquidado": 4560575.85,
-        "pago": 4356496.47
+        "pago": 4355711.01
       },
       "metrics_meta": {
         "empenhado": {
@@ -6846,7 +6791,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 14,
+          "distinct_samples": 15,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6859,7 +6804,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 60,
+          "distinct_samples": 59,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6885,7 +6830,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 225,
+          "distinct_samples": 229,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6898,7 +6843,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 143,
+          "distinct_samples": 148,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6911,7 +6856,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 140,
+          "distinct_samples": 137,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6924,7 +6869,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 232,
+          "distinct_samples": 229,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6935,9 +6880,9 @@
           "confidence": "high",
           "inferred_from": "header_and_values",
           "sampled_rows": 256,
-          "nonempty_samples": 221,
-          "missing_samples": 35,
-          "distinct_samples": 207,
+          "nonempty_samples": 216,
+          "missing_samples": 40,
+          "distinct_samples": 201,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -6948,15 +6893,15 @@
           "confidence": "high",
           "inferred_from": "header_and_values",
           "sampled_rows": 256,
-          "nonempty_samples": 219,
-          "missing_samples": 37,
-          "distinct_samples": 205,
+          "nonempty_samples": 214,
+          "missing_samples": 42,
+          "distinct_samples": 199,
           "valid_ratio": 1.0,
           "aggregation": "none"
         }
       ],
       "metadata": {
-        "hash_conteudo": "b14b22a339dcb8ce8b51cd677edf560a5ce912c51e478001c2dd3b4bed77c28f"
+        "hash_conteudo": "bace09a74b1c428c5ba314cdba9f52f35f255971a36cf3f5b2672d75b40c2aee"
       },
       "row_types": [
         {
@@ -6982,9 +6927,9 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.014.435,39",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.012.112,77",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "856.717,33",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "846.717,33"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "844.717,33"
           }
         },
         {
@@ -6996,9 +6941,9 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "581.183,01",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "584.594,81",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "375.736,04",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "355.110,80"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "356.325,34"
           }
         },
         {
@@ -7080,7 +7025,7 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.743.545,65",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.743.544,41",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.147.374,30",
             "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "1.107.268,81"
           }
@@ -7178,9 +7123,9 @@
             "NE CCor": "",
             "NE CCor - Descrição": "",
             "Item Informação / NE CCor - Favorecido": "",
-            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "7.299.972,56",
+            "29 / DESPESAS EMPENHADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "7.301.060,50",
             "31 / DESPESAS LIQUIDADAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.560.575,85",
-            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.356.496,47"
+            "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "4.355.711,01"
           }
         }
       ],
@@ -8940,6 +8885,33 @@
                 "fallback": false
               }
             }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "bace09a74b1c428c5ba314cdba9f52f35f255971a36cf3f5b2672d75b40c2aee",
+            "metrics": {
+              "empenhado": 7301060.5,
+              "liquidado": 4560575.85,
+              "pago": 4355711.01
+            },
+            "metrics_meta": {
+              "empenhado": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              },
+              "liquidado": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              },
+              "pago": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              }
+            }
           }
         ]
       }
@@ -9317,8 +9289,8 @@
     "evolucao-das-despesas-empenhadas": {
       "slug": "evolucao-das-despesas-empenhadas",
       "title": "Evolução das Despesas Empenhadas",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -12503,6 +12475,12 @@
             "date_iso": "2026-11-19",
             "hash_conteudo": "c3d6eb8a13d0db523aae23295ca4f9817287d97f52d87e564f1ec063e62bc69e",
             "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "c3d6eb8a13d0db523aae23295ca4f9817287d97f52d87e564f1ec063e62bc69e",
+            "metrics": {}
           }
         ]
       }
@@ -12652,8 +12630,8 @@
     "limite-de-saque-conta-contabil": {
       "slug": "limite-de-saque-conta-contabil",
       "title": "Limite de Saque por Conta Contábil",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -12795,7 +12773,7 @@
         }
       ],
       "metadata": {
-        "hash_conteudo": "288ef8d224c53317c632f1cc62a673bf568f906b3dee33cbfb660e12823deda2"
+        "hash_conteudo": "247461a141e8ced9e2856953e5ee2e37278ef99eb3036f2f7597bf24f783d342"
       },
       "row_types": [],
       "series_data": {
@@ -13201,6 +13179,12 @@
             "date_iso": "2026-11-19",
             "hash_conteudo": "288ef8d224c53317c632f1cc62a673bf568f906b3dee33cbfb660e12823deda2",
             "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "247461a141e8ced9e2856953e5ee2e37278ef99eb3036f2f7597bf24f783d342",
+            "metrics": {}
           }
         ]
       }
@@ -13208,8 +13192,8 @@
     "provisionamentos": {
       "slug": "provisionamentos",
       "title": "Provisionamentos",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -14687,6 +14671,21 @@
                 "fallback": false
               }
             }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "4a56212b0ebc03a5c237beb3386f5d5a354193a10b5df1ea00538265d52ada8c",
+            "metrics": {
+              "provisionado": 7399685.65
+            },
+            "metrics_meta": {
+              "provisionado": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              }
+            }
           }
         ]
       }
@@ -14694,8 +14693,8 @@
     "recolhimento-proprio-gru": {
       "slug": "recolhimento-proprio-gru",
       "title": "Recolhimento Próprio - GRU",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -15134,7 +15133,7 @@
           "label": "28812",
           "values": {
             "Cód. Recolhimento GRU": 28812.0,
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 7678.12
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 10518.7
           },
           "raw": {
             "Cód. Recolhimento GRU": "28812",
@@ -15143,14 +15142,14 @@
             "Emissão - Dia": "Total",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "7.678,12"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "10.518,70"
           }
         },
         {
           "label": "28812",
           "values": {
             "Cód. Recolhimento GRU": 28812.0,
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 123193.9
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 126034.48
           },
           "raw": {
             "Cód. Recolhimento GRU": "28812",
@@ -15159,7 +15158,7 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "123.193,90"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "126.034,48"
           }
         },
         {
@@ -15326,7 +15325,7 @@
           "label": "28830",
           "values": {
             "Cód. Recolhimento GRU": 28830.0,
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 207.0
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 239.0
           },
           "raw": {
             "Cód. Recolhimento GRU": "28830",
@@ -15335,14 +15334,14 @@
             "Emissão - Dia": "Total",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "207,00"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "239,00"
           }
         },
         {
           "label": "28830",
           "values": {
             "Cód. Recolhimento GRU": 28830.0,
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 1445.0
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 1477.0
           },
           "raw": {
             "Cód. Recolhimento GRU": "28830",
@@ -15351,7 +15350,7 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.445,00"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.477,00"
           }
         },
         {
@@ -15725,7 +15724,7 @@
         {
           "label": "Total",
           "values": {
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 255787.68
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 258660.26
           },
           "raw": {
             "Cód. Recolhimento GRU": "Total",
@@ -15734,12 +15733,12 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "255.787,68"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "258.660,26"
           }
         }
       ],
       "metrics": {
-        "gru_arrecadada": 255787.68
+        "gru_arrecadada": 258660.26
       },
       "metrics_meta": {
         "gru_arrecadada": {
@@ -15755,8 +15754,8 @@
           "filter_kind": "numeric_range",
           "confidence": "medium",
           "inferred_from": "values",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
           "distinct_samples": 8,
           "valid_ratio": 1.0,
@@ -15768,8 +15767,8 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
           "distinct_samples": 8,
           "valid_ratio": 1.0,
@@ -15781,8 +15780,8 @@
           "filter_kind": "period",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
           "distinct_samples": 11,
           "valid_ratio": 1.0,
@@ -15794,10 +15793,10 @@
           "filter_kind": "date_range",
           "confidence": "medium",
           "inferred_from": "values",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
-          "distinct_samples": 158,
+          "distinct_samples": 159,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -15807,8 +15806,8 @@
           "filter_kind": "multi_select",
           "confidence": "medium",
           "inferred_from": "values_cardinality",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
           "distinct_samples": 3,
           "valid_ratio": 1.0,
@@ -15820,10 +15819,10 @@
           "filter_kind": "numeric_range",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
-          "distinct_samples": 130,
+          "distinct_samples": 132,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -15833,16 +15832,16 @@
           "filter_kind": "numeric_range",
           "confidence": "high",
           "inferred_from": "header_and_values",
-          "sampled_rows": 244,
-          "nonempty_samples": 244,
+          "sampled_rows": 247,
+          "nonempty_samples": 247,
           "missing_samples": 0,
-          "distinct_samples": 131,
+          "distinct_samples": 133,
           "valid_ratio": 1.0,
           "aggregation": "none"
         }
       ],
       "metadata": {
-        "hash_conteudo": "d09042617782806946c03fe4358f2fcda350ecd38375aba34ea5bde1a772a13f"
+        "hash_conteudo": "077db511db278e085bc9d829150da4aba189d87957f5b8a9e46ce29bc16e9d15"
       },
       "row_types": [
         {
@@ -16166,7 +16165,7 @@
             "Emissão - Dia": "Total",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "7.678,12"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "10.518,70"
           }
         },
         {
@@ -16178,7 +16177,7 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "123.193,90"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "126.034,48"
           }
         },
         {
@@ -16310,7 +16309,7 @@
             "Emissão - Dia": "Total",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "207,00"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "239,00"
           }
         },
         {
@@ -16322,7 +16321,7 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.445,00"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "1.477,00"
           }
         },
         {
@@ -16610,7 +16609,7 @@
             "Emissão - Dia": "",
             "Recolhedor Doc.": "",
             "Conta Contábil / Doc - Valor": "",
-            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "255.787,68"
+            "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "258.660,26"
           }
         }
       ],
@@ -17635,6 +17634,21 @@
                 "fallback": false
               }
             }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "077db511db278e085bc9d829150da4aba189d87957f5b8a9e46ce29bc16e9d15",
+            "metrics": {
+              "gru_arrecadada": 258660.26
+            },
+            "metrics_meta": {
+              "gru_arrecadada": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              }
+            }
           }
         ]
       }
@@ -17642,8 +17656,8 @@
     "restos-a-pagar-rap": {
       "slug": "restos-a-pagar-rap",
       "title": "Restos a Pagar - RAP",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -18716,8 +18730,8 @@
             "Natureza Despesa Detalhada": 33903947.0,
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 918.77,
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 479.39,
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 120.64,
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 318.74
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 147.82,
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 291.56
           },
           "raw": {
             "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
@@ -18730,8 +18744,8 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "918,77",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "479,39",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "120,64",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "318,74"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "147,82",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "291,56"
           }
         },
         {
@@ -18831,8 +18845,8 @@
           "values": {
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 647392.44,
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 16894.12,
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 628602.42,
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 1895.9
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 628629.6,
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 1868.72
           },
           "raw": {
             "Natureza Despesa": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
@@ -18845,8 +18859,8 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "647.392,44",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "16.894,12",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "628.602,42",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.895,90"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "628.629,60",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.868,72"
           }
         },
         {
@@ -19312,8 +19326,8 @@
           "values": {
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 2833269.99,
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 145338.97,
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 2280366.43,
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 407564.59
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": 2280393.61,
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": 407537.41
           },
           "raw": {
             "Natureza Despesa": "Total",
@@ -19326,14 +19340,14 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.833.269,99",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "145.338,97",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.280.366,43",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "407.564,59"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.280.393,61",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "407.537,41"
           }
         }
       ],
       "metrics": {
-        "rap_pago": 2280366.43,
-        "rap_a_pagar": 407564.59
+        "rap_pago": 2280393.61,
+        "rap_a_pagar": 407537.41
       },
       "metrics_meta": {
         "rap_pago": {
@@ -19518,7 +19532,7 @@
         }
       ],
       "metadata": {
-        "hash_conteudo": "832dd566ea5613dd8fafc5f208281662c568f69168ae2c2ae404eb55166b6ca4"
+        "hash_conteudo": "df3c42426c13a1484d3e47bfe4e08ab4021eec160098a3cfa78046e0d63bf481"
       },
       "row_types": [
         {
@@ -20299,8 +20313,8 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "918,77",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "479,39",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "120,64",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "318,74"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "147,82",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "291,56"
           }
         },
         {
@@ -20384,8 +20398,8 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "647.392,44",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "16.894,12",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "628.602,42",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.895,90"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "628.629,60",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "1.868,72"
           }
         },
         {
@@ -20741,8 +20755,8 @@
             "Item Informação / NE CCor - Valor": "",
             "50 / RESTOS A PAGAR INSCRITOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.833.269,99",
             "51 / RESTOS A PAGAR CANCELADOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "145.338,97",
-            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.280.366,43",
-            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "407.564,59"
+            "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": "2.280.393,61",
+            "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)": "407.537,41"
           }
         }
       ],
@@ -22958,6 +22972,39 @@
                 "fallback": false
               }
             }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "df3c42426c13a1484d3e47bfe4e08ab4021eec160098a3cfa78046e0d63bf481",
+            "metrics": {
+              "rap_pago": 2280393.61,
+              "rap_a_pagar": 407537.41
+            },
+            "metrics_meta": {
+              "rap_pago": {
+                "status": "ok",
+                "source": "totals",
+                "line": "Total",
+                "column": "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)",
+                "total_index": 71,
+                "score": 6,
+                "quality": "candidato",
+                "method": "rap_total_candidate",
+                "fallback": false
+              },
+              "rap_a_pagar": {
+                "status": "ok",
+                "source": "totals",
+                "line": "Total",
+                "column": "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)",
+                "total_index": 71,
+                "score": 6,
+                "quality": "candidato",
+                "method": "rap_total_candidate",
+                "fallback": false
+              }
+            }
           }
         ]
       }
@@ -22965,8 +23012,8 @@
     "saldo-de-empenhos-a-liquidar-mes-a-mes": {
       "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
       "title": "Saldo de Empenhos a Liquidar Mês a Mês",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -24965,6 +25012,12 @@
             "date_iso": "2026-11-19",
             "hash_conteudo": "54d3d5a8b6a1c149c4548da2440e96b24eca33fa25a5c74117be48c833be947c",
             "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "54d3d5a8b6a1c149c4548da2440e96b24eca33fa25a5c74117be48c833be947c",
+            "metrics": {}
           }
         ]
       }
@@ -24972,8 +25025,8 @@
     "saldo-patrimonio-e-almoxarifado-conta-contabil": {
       "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
       "title": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -25755,6 +25808,12 @@
           {
             "date": "19/11/2026",
             "date_iso": "2026-11-19",
+            "hash_conteudo": "08a28d510ea8efd54c8928a66da5e7ad8bbab56397f80cce7ce2b7dcd6dfc53b",
+            "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
             "hash_conteudo": "08a28d510ea8efd54c8928a66da5e7ad8bbab56397f80cce7ce2b7dcd6dfc53b",
             "metrics": {}
           }
@@ -27455,8 +27514,8 @@
     "saldos-de-contas-de-contratos": {
       "slug": "saldos-de-contas-de-contratos",
       "title": "Saldos de Contas de Contratos",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -27499,10 +27558,10 @@
             "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": 10920802.23,
             "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": 10522308.01,
             "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": 10014819.79,
-            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 9988645.66,
-            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 9988645.66,
-            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 9988645.66,
-            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 9988645.66
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": 9978925.19,
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": 9978925.19,
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": 9978925.19,
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": 9978925.19
           },
           "raw": {
             "Mês Lançamento / Entidade CCor": "Total",
@@ -27518,10 +27577,10 @@
             "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
             "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
             "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
-            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66"
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19"
           }
         }
       ],
@@ -27849,7 +27908,7 @@
         }
       ],
       "metadata": {
-        "hash_conteudo": "2050571ec527717a22c28aa33e7ffa2ad22ed42bedc187eb626339f3671652e0"
+        "hash_conteudo": "4221da56cfae862ac71015793a6af23677b32212b7ebc3e938d64ebb2171761f"
       },
       "row_types": [
         {
@@ -27868,10 +27927,10 @@
             "AGO/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.920.802,23",
             "SET/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.522.308,01",
             "OUT/2026 / Saldo - Moeda Origem (Conta Contábil)": "10.014.819,79",
-            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66",
-            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.988.645,66"
+            "NOV/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "DEZ/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "013/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19",
+            "014/2026 / Saldo - Moeda Origem (Conta Contábil)": "9.978.925,19"
           }
         }
       ],
@@ -28290,6 +28349,12 @@
             "date_iso": "2026-11-19",
             "hash_conteudo": "2050571ec527717a22c28aa33e7ffa2ad22ed42bedc187eb626339f3671652e0",
             "metrics": {}
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "4221da56cfae862ac71015793a6af23677b32212b7ebc3e938d64ebb2171761f",
+            "metrics": {}
           }
         ]
       }
@@ -28297,8 +28362,8 @@
     "saldos-de-empenhos-do-exercicio-conta-contabil": {
       "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
       "title": "Saldos de Empenhos do Exercício por Conta Contábil",
-      "date": "19/11/2026",
-      "date_iso": "2026-11-19",
+      "date": "20/11/2026",
+      "date_iso": "2026-11-20",
       "quality": {
         "ok": true,
         "issues": [],
@@ -28343,9 +28408,9 @@
         {
           "label": "AUXILIO FINANCEIRO A ESTUDANTES",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 157718.06,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 10000.0,
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 846717.33
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 155395.44,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 12000.0,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 844717.33
           },
           "raw": {
             "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -28355,17 +28420,17 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "157.718,06",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "10.000,00",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "846.717,33"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "155.395,44",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "12.000,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "844.717,33"
           }
         },
         {
           "label": "MATERIAL DE CONSUMO",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 205446.97,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 20625.24,
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 355110.8
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 208858.77,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 19410.7,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 356325.34
           },
           "raw": {
             "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -28375,9 +28440,9 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "205.446,97",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "20.625,24",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "355.110,80"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "208.858,77",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "19.410,70",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "356.325,34"
           }
         },
         {
@@ -28483,7 +28548,7 @@
         {
           "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 596171.35,
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 596170.11,
             "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 40105.49,
             "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1107268.81
           },
@@ -28495,7 +28560,7 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.171,35",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.170,11",
             "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "40.105,49",
             "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.107.268,81"
           }
@@ -28621,9 +28686,9 @@
         {
           "label": "Total",
           "values": {
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2739396.71,
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 204079.38,
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 4356496.47
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2740484.65,
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 204864.84,
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 4355711.01
           },
           "raw": {
             "Natureza Despesa": "Total",
@@ -28633,16 +28698,16 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.739.396,71",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.079,38",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.356.496,47"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.740.484,65",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.864,84",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.355.711,01"
           }
         }
       ],
       "metrics": {
-        "saldo_a_liquidar": 2739396.71,
-        "liquidado_a_pagar": 204079.38,
-        "pago": 4356496.47
+        "saldo_a_liquidar": 2740484.65,
+        "liquidado_a_pagar": 204864.84,
+        "pago": 4355711.01
       },
       "metrics_meta": {
         "saldo_a_liquidar": {
@@ -28671,7 +28736,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 14,
+          "distinct_samples": 15,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28684,7 +28749,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 60,
+          "distinct_samples": 59,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28710,7 +28775,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 225,
+          "distinct_samples": 229,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28723,7 +28788,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 143,
+          "distinct_samples": 148,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28736,7 +28801,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 140,
+          "distinct_samples": 137,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28749,7 +28814,7 @@
           "sampled_rows": 256,
           "nonempty_samples": 256,
           "missing_samples": 0,
-          "distinct_samples": 211,
+          "distinct_samples": 212,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28760,9 +28825,9 @@
           "confidence": "high",
           "inferred_from": "header_and_values",
           "sampled_rows": 256,
-          "nonempty_samples": 227,
-          "missing_samples": 29,
-          "distinct_samples": 71,
+          "nonempty_samples": 233,
+          "missing_samples": 23,
+          "distinct_samples": 74,
           "valid_ratio": 1.0,
           "aggregation": "none"
         },
@@ -28773,8 +28838,8 @@
           "confidence": "high",
           "inferred_from": "header_and_values",
           "sampled_rows": 256,
-          "nonempty_samples": 192,
-          "missing_samples": 64,
+          "nonempty_samples": 193,
+          "missing_samples": 63,
           "distinct_samples": 21,
           "valid_ratio": 1.0,
           "aggregation": "none"
@@ -28786,15 +28851,15 @@
           "confidence": "high",
           "inferred_from": "header_and_values",
           "sampled_rows": 256,
-          "nonempty_samples": 219,
-          "missing_samples": 37,
-          "distinct_samples": 205,
+          "nonempty_samples": 214,
+          "missing_samples": 42,
+          "distinct_samples": 199,
           "valid_ratio": 1.0,
           "aggregation": "none"
         }
       ],
       "metadata": {
-        "hash_conteudo": "cbf6692ab5534e1efc0a462a046ce517f22cdeddde1eef55698bb51ae36dc9c7"
+        "hash_conteudo": "b3eaf50149d5c5cc9d15439a5ea0db4b313359c666da7619b946ecc20a2b2cc2"
       },
       "row_types": [
         {
@@ -28822,9 +28887,9 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "157.718,06",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "10.000,00",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "846.717,33"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "155.395,44",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "12.000,00",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "844.717,33"
           }
         },
         {
@@ -28837,9 +28902,9 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "205.446,97",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "20.625,24",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "355.110,80"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "208.858,77",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "19.410,70",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "356.325,34"
           }
         },
         {
@@ -28927,7 +28992,7 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.171,35",
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.170,11",
             "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "40.105,49",
             "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.107.268,81"
           }
@@ -29032,9 +29097,9 @@
             "NE CCor - Descrição": "",
             "NE CCor - Favorecido": "",
             "Conta Contábil / NE CCor - Valor": "",
-            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.739.396,71",
-            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.079,38",
-            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.356.496,47"
+            "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.740.484,65",
+            "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.864,84",
+            "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.355.711,01"
           }
         }
       ],
@@ -30776,6 +30841,33 @@
               "saldo_a_liquidar": 2739396.71,
               "liquidado_a_pagar": 204079.38,
               "pago": 4356496.47
+            },
+            "metrics_meta": {
+              "saldo_a_liquidar": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              },
+              "liquidado_a_pagar": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              },
+              "pago": {
+                "status": "ok",
+                "source": "totals",
+                "fallback": false
+              }
+            }
+          },
+          {
+            "date": "20/11/2026",
+            "date_iso": "2026-11-20",
+            "hash_conteudo": "b3eaf50149d5c5cc9d15439a5ea0db4b313359c666da7619b946ecc20a2b2cc2",
+            "metrics": {
+              "saldo_a_liquidar": 2740484.65,
+              "liquidado_a_pagar": 204864.84,
+              "pago": 4355711.01
             },
             "metrics_meta": {
               "saldo_a_liquidar": {

@@ -3,9 +3,9 @@
   "parser_version": "2026-10-08.1",
   "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
   "title": "Saldos de Empenhos do Exercício por Conta Contábil",
-  "date": "19/11/2026",
-  "date_iso": "2026-11-19",
-  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_19-11-2026.html",
+  "date": "20/11/2026",
+  "date_iso": "2026-11-20",
+  "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_20-11-2026.html",
   "category": "Saldos de Empenhos do Exercício por Conta Contábil",
   "columns": [
     "Natureza Despesa",
@@ -135,8 +135,8 @@
       "NE CCor": "158459264222026NE000124",
       "NE CCor - Descrição": "NAO SE APLICA Nº 10/2026 PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA AQUISICAO DE TECNOLOGIA ASSISTIVA - EDITAL Nº 15/2026/ASSEG/GABI NO AMBITO DO IFC ARAQUARI.",
       "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
-      "Conta Contábil / NE CCor - Valor": "35.094,78",
-      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.752,62",
+      "Conta Contábil / NE CCor - Valor": "33.342,16",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "33.342,16"
     },
@@ -195,8 +195,8 @@
       "NE CCor": "158459264222026NE000172",
       "NE CCor - Descrição": "NOTA DE EMPENHO PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA ATENDER AS DESPESAS COM A PARTICIPACAO DE ESTUDANTES NOS JOGOS INTERNOS DO IFC - JIFC 2026, CF. MEMORANDO ELETRONICO Nº 1/2026 - NGA/ARA. PARCELA UNICA DE 190 REAIS PARA 50 ESTUDANTES. NAO SE APLICA Nº 21/2026.",
       "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
-      "Conta Contábil / NE CCor - Valor": "9.500,00",
-      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "570,00",
+      "Conta Contábil / NE CCor - Valor": "8.930,00",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "8.930,00"
     },
@@ -257,8 +257,8 @@
       "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
       "Conta Contábil / NE CCor - Valor": "73.300,00",
       "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "19.100,00",
-      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
-      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "54.200,00"
+      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "2.000,00",
+      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "52.200,00"
     },
     {
       "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -699,8 +699,8 @@
       "NE CCor": "158459264222026NE000152",
       "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE MATERIAIS QUIMICOS PARA ATENDER AS NECESSIDADES DO CAMPUS ARAQUARI DO INSTITUTO FEDERAL CATARINENSE. PREGAO ELETRONICO (SRP) Nº 90022/2025. ADESAO INTERNA Nº 204/2025. REQUISITANTE: LEDVET - PPGPSA, CONFORME MEMORANDO ELETRONICO Nº 18/2026 - CPALM/ARA. FISCAIS: MARCELLA ZAMPOLLI.",
       "NE CCor - Favorecido": "AWKALAB PRODUTOS PARA LABORATORIO LTDA",
-      "Conta Contábil / NE CCor - Valor": "519,80",
-      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,23",
+      "Conta Contábil / NE CCor - Valor": "519,57",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "519,57"
     },
@@ -1434,6 +1434,18 @@
       "Conta Contábil / NE CCor - Valor": "1.739,96",
       "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.739,96",
+      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
+    },
+    {
+      "Natureza Despesa": "MATERIAL DE CONSUMO",
+      "Natureza Despesa Detalhada": "33903022",
+      "Natureza Despesa Detalhada (2)": "MATERIAL DE LIMPEZA E PROD. DE HIGIENIZACAO",
+      "NE CCor": "158459264222026NE000292",
+      "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE MATERIAL DE LIMPEZA PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. ADESAO INTERNA Nº 193/2026 - 23349.004429/2026-88. PREGAO ELETRONICO N° 104/2026. CONFORME MEMORANDO ELETRONICO Nº 24/2026 - GAB/ARA. FISCAIS: ARISTILIANO BRUNO BEBER / JULIA NORONHA.",
+      "NE CCor - Favorecido": "AP OESTE DISTRIBUIDORA LTDA",
+      "Conta Contábil / NE CCor - Valor": "267,20",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "267,20",
+      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
     },
     {
@@ -2261,8 +2273,8 @@
       "NE CCor - Favorecido": "AGRIVET DISTRIBUIDORA LTDA",
       "Conta Contábil / NE CCor - Valor": "2.289,00",
       "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
-      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.290,00",
-      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "999,00"
+      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "75,46",
+      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.213,54"
     },
     {
       "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -2679,8 +2691,8 @@
       "NE CCor": "158459264222026NE000083",
       "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE FERRAMENTAS PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE CAMPUS ARAQUARI. PREGAO ELETRONICO N. 90033/2025. ADESAO INTERNA Nº 28/2026 - PROCESSO Nº 23349.001168/2026-44. SETOR REQUISITANTE: ESCOLA FAZENDA. FISCAIS TITULAR / SUBSTITUTO: ARISTILIANO BRUNO BEBER / TIAGO JONES BACK.",
       "NE CCor - Favorecido": "EMGESA EMPRESA DE GERENCIAMENTO DE SOBRESSALENTES E AU",
-      "Conta Contábil / NE CCor - Valor": "2.056,71",
-      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,01",
+      "Conta Contábil / NE CCor - Valor": "2.056,70",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.056,70"
     },
@@ -2767,6 +2779,18 @@
       "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "200,00"
+    },
+    {
+      "Natureza Despesa": "MATERIAL DE CONSUMO",
+      "Natureza Despesa Detalhada": "33903042",
+      "Natureza Despesa Detalhada (2)": "FERRAMENTAS",
+      "NE CCor": "158459264222026NE000293",
+      "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE FERRAMENTAS - CARRINHO DE MAO - PARA ATENDER AS NECESSIDADES DO CAMPUS ARAQUARI, CONFORME MEMORANDO ELETRONICO Nº 1/2026 - CAPGTA. FISCAIS: FABRICIO MOREIRA SOBREIRA / DANIEL KRAMER SCHWIDERKE / VAGNER ANTONIO FERREIRA. PREGAO ELETRONICO Nº 90113/2026 - ADESAO INTERNA Nº 220/2026.",
+      "NE CCor - Favorecido": "MAX-FER TOOLS COMERCIAL LTDA",
+      "Conta Contábil / NE CCor - Valor": "3.144,84",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "3.144,84",
+      "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+      "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
     },
     {
       "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -3243,8 +3267,8 @@
       "NE CCor": "158459264222026NE000264",
       "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE REFORMA PARA O GINASIO DE ESPORTES DO IFC CAMPUS ARAQUARI. CONTRATO N. 11/2025 - CAMP/ARAQ. CONCORRENCIA 90004/2024. PROCESSO N. 23349.002467/2024-34.",
       "NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
-      "Conta Contábil / NE CCor - Valor": "69.033,17",
-      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1,24",
+      "Conta Contábil / NE CCor - Valor": "69.031,93",
+      "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
       "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "69.031,93"
     },
@@ -4089,9 +4113,9 @@
     {
       "label": "AUXILIO FINANCEIRO A ESTUDANTES",
       "values": {
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 157718.06,
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 10000.0,
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 846717.33
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 155395.44,
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 12000.0,
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 844717.33
       },
       "raw": {
         "Natureza Despesa": "AUXILIO FINANCEIRO A ESTUDANTES",
@@ -4101,17 +4125,17 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "157.718,06",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "10.000,00",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "846.717,33"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "155.395,44",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "12.000,00",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "844.717,33"
       }
     },
     {
       "label": "MATERIAL DE CONSUMO",
       "values": {
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 205446.97,
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 20625.24,
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 355110.8
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 208858.77,
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 19410.7,
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 356325.34
       },
       "raw": {
         "Natureza Despesa": "MATERIAL DE CONSUMO",
@@ -4121,9 +4145,9 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "205.446,97",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "20.625,24",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "355.110,80"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "208.858,77",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "19.410,70",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "356.325,34"
       }
     },
     {
@@ -4229,7 +4253,7 @@
     {
       "label": "OUTROS SERVICOS DE TERCEIROS - PESSOA JURIDICA",
       "values": {
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 596171.35,
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 596170.11,
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 40105.49,
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 1107268.81
       },
@@ -4241,7 +4265,7 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.171,35",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.170,11",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "40.105,49",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.107.268,81"
       }
@@ -4367,9 +4391,9 @@
     {
       "label": "Total",
       "values": {
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2739396.71,
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 204079.38,
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 4356496.47
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": 2740484.65,
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": 204864.84,
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": 4355711.01
       },
       "raw": {
         "Natureza Despesa": "Total",
@@ -4379,9 +4403,9 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.739.396,71",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.079,38",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.356.496,47"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.740.484,65",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.864,84",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.355.711,01"
       }
     }
   ],
@@ -4545,8 +4569,8 @@
         "NE CCor": "158459264222026NE000124",
         "NE CCor - Descrição": "NAO SE APLICA Nº 10/2026 PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA AQUISICAO DE TECNOLOGIA ASSISTIVA - EDITAL Nº 15/2026/ASSEG/GABI NO AMBITO DO IFC ARAQUARI.",
         "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
-        "Conta Contábil / NE CCor - Valor": "35.094,78",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1.752,62",
+        "Conta Contábil / NE CCor - Valor": "33.342,16",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "33.342,16"
       }
@@ -4620,8 +4644,8 @@
         "NE CCor": "158459264222026NE000172",
         "NE CCor - Descrição": "NOTA DE EMPENHO PARA PAGAMENTO DE AUXILIO FINANCEIRO PARA ATENDER AS DESPESAS COM A PARTICIPACAO DE ESTUDANTES NOS JOGOS INTERNOS DO IFC - JIFC 2026, CF. MEMORANDO ELETRONICO Nº 1/2026 - NGA/ARA. PARCELA UNICA DE 190 REAIS PARA 50 ESTUDANTES. NAO SE APLICA Nº 21/2026.",
         "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
-        "Conta Contábil / NE CCor - Valor": "9.500,00",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "570,00",
+        "Conta Contábil / NE CCor - Valor": "8.930,00",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "8.930,00"
       }
@@ -4697,8 +4721,8 @@
         "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
         "Conta Contábil / NE CCor - Valor": "73.300,00",
         "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "19.100,00",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "54.200,00"
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "2.000,00",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "52.200,00"
       }
     },
     {
@@ -4756,9 +4780,9 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "157.718,06",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "10.000,00",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "846.717,33"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "155.395,44",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "12.000,00",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "844.717,33"
       }
     },
     {
@@ -5265,8 +5289,8 @@
         "NE CCor": "158459264222026NE000152",
         "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE MATERIAIS QUIMICOS PARA ATENDER AS NECESSIDADES DO CAMPUS ARAQUARI DO INSTITUTO FEDERAL CATARINENSE. PREGAO ELETRONICO (SRP) Nº 90022/2025. ADESAO INTERNA Nº 204/2025. REQUISITANTE: LEDVET - PPGPSA, CONFORME MEMORANDO ELETRONICO Nº 18/2026 - CPALM/ARA. FISCAIS: MARCELLA ZAMPOLLI.",
         "NE CCor - Favorecido": "AWKALAB PRODUTOS PARA LABORATORIO LTDA",
-        "Conta Contábil / NE CCor - Valor": "519,80",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,23",
+        "Conta Contábil / NE CCor - Valor": "519,57",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "519,57"
       }
@@ -6183,6 +6207,21 @@
         "Conta Contábil / NE CCor - Valor": "1.739,96",
         "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.739,96",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "MATERIAL DE CONSUMO",
+        "Natureza Despesa Detalhada": "33903022",
+        "Natureza Despesa Detalhada (2)": "MATERIAL DE LIMPEZA E PROD. DE HIGIENIZACAO",
+        "NE CCor": "158459264222026NE000292",
+        "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE MATERIAL DE LIMPEZA PARA ATENDER AS NECESSIDADES DO IFC CAMPUS ARAQUARI. ADESAO INTERNA Nº 193/2026 - 23349.004429/2026-88. PREGAO ELETRONICO N° 104/2026. CONFORME MEMORANDO ELETRONICO Nº 24/2026 - GAB/ARA. FISCAIS: ARISTILIANO BRUNO BEBER / JULIA NORONHA.",
+        "NE CCor - Favorecido": "AP OESTE DISTRIBUIDORA LTDA",
+        "Conta Contábil / NE CCor - Valor": "267,20",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "267,20",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
       }
     },
@@ -7217,8 +7256,8 @@
         "NE CCor - Favorecido": "AGRIVET DISTRIBUIDORA LTDA",
         "Conta Contábil / NE CCor - Valor": "2.289,00",
         "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "1.290,00",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "999,00"
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "75,46",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.213,54"
       }
     },
     {
@@ -7740,8 +7779,8 @@
         "NE CCor": "158459264222026NE000083",
         "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE FERRAMENTAS PARA ATENDER AS NECESSIDADES DO INSTITUTO FEDERAL CATARINENSE CAMPUS ARAQUARI. PREGAO ELETRONICO N. 90033/2025. ADESAO INTERNA Nº 28/2026 - PROCESSO Nº 23349.001168/2026-44. SETOR REQUISITANTE: ESCOLA FAZENDA. FISCAIS TITULAR / SUBSTITUTO: ARISTILIANO BRUNO BEBER / TIAGO JONES BACK.",
         "NE CCor - Favorecido": "EMGESA EMPRESA DE GERENCIAMENTO DE SOBRESSALENTES E AU",
-        "Conta Contábil / NE CCor - Valor": "2.056,71",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,01",
+        "Conta Contábil / NE CCor - Valor": "2.056,70",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "2.056,70"
       }
@@ -7849,6 +7888,21 @@
         "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "200,00"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa": "MATERIAL DE CONSUMO",
+        "Natureza Despesa Detalhada": "33903042",
+        "Natureza Despesa Detalhada (2)": "FERRAMENTAS",
+        "NE CCor": "158459264222026NE000293",
+        "NE CCor - Descrição": "EMPENHO PARA AQUISICAO DE FERRAMENTAS - CARRINHO DE MAO - PARA ATENDER AS NECESSIDADES DO CAMPUS ARAQUARI, CONFORME MEMORANDO ELETRONICO Nº 1/2026 - CAPGTA. FISCAIS: FABRICIO MOREIRA SOBREIRA / DANIEL KRAMER SCHWIDERKE / VAGNER ANTONIO FERREIRA. PREGAO ELETRONICO Nº 90113/2026 - ADESAO INTERNA Nº 220/2026.",
+        "NE CCor - Favorecido": "MAX-FER TOOLS COMERCIAL LTDA",
+        "Conta Contábil / NE CCor - Valor": "3.144,84",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "3.144,84",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": ""
       }
     },
     {
@@ -8086,9 +8140,9 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "205.446,97",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "20.625,24",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "355.110,80"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "208.858,77",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "19.410,70",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "356.325,34"
       }
     },
     {
@@ -8535,8 +8589,8 @@
         "NE CCor": "158459264222026NE000264",
         "NE CCor - Descrição": "EMPENHO PARA CONTRATACAO DE REFORMA PARA O GINASIO DE ESPORTES DO IFC CAMPUS ARAQUARI. CONTRATO N. 11/2025 - CAMP/ARAQ. CONCORRENCIA 90004/2024. PROCESSO N. 23349.002467/2024-34.",
         "NE CCor - Favorecido": "VILE CONSTRUCOES E REFORMAS LTDA",
-        "Conta Contábil / NE CCor - Valor": "69.033,17",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "1,24",
+        "Conta Contábil / NE CCor - Valor": "69.031,93",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "0,00",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "69.031,93"
       }
@@ -9136,7 +9190,7 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.171,35",
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "596.170,11",
         "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "40.105,49",
         "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "1.107.268,81"
       }
@@ -9676,20 +9730,20 @@
         "NE CCor - Descrição": "",
         "NE CCor - Favorecido": "",
         "Conta Contábil / NE CCor - Valor": "",
-        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.739.396,71",
-        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.079,38",
-        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.356.496,47"
+        "622920101 / = EMPENHOS A LIQUIDAR / Saldo - R$ (Conta Contábil)": "2.740.484,65",
+        "622920103 / = EMPENHOS LIQUIDADOS A PAGAR / Saldo - R$ (Conta Contábil)": "204.864,84",
+        "622920104 / = EMPENHOS PAGOS / Saldo - R$ (Conta Contábil)": "4.355.711,01"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-19T22:32:34.451559-03:00",
+    "ultima_atualizacao": "2026-11-20T06:25:43.877893-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7456",
-    "hash_conteudo": "cbf6692ab5534e1efc0a462a046ce517f22cdeddde1eef55698bb51ae36dc9c7",
-    "row_count": 337,
+    "fonte_email_uid": "7467",
+    "hash_conteudo": "b3eaf50149d5c5cc9d15439a5ea0db4b313359c666da7619b946ecc20a2b2cc2",
+    "row_count": 339,
     "column_count": 10,
     "status": "atualizado",
     "limite_dias": 1
@@ -9703,9 +9757,9 @@
     ]
   },
   "metrics": {
-    "saldo_a_liquidar": 2739396.71,
-    "liquidado_a_pagar": 204079.38,
-    "pago": 4356496.47
+    "saldo_a_liquidar": 2740484.65,
+    "liquidado_a_pagar": 204864.84,
+    "pago": 4355711.01
   },
   "metrics_meta": {
     "saldo_a_liquidar": {
@@ -9735,7 +9789,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 14,
+      "distinct_samples": 15,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9748,7 +9802,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 60,
+      "distinct_samples": 59,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9774,7 +9828,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 225,
+      "distinct_samples": 229,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9787,7 +9841,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 143,
+      "distinct_samples": 148,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9800,7 +9854,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 140,
+      "distinct_samples": 137,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9813,7 +9867,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 211,
+      "distinct_samples": 212,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9824,9 +9878,9 @@
       "confidence": "high",
       "inferred_from": "header_and_values",
       "sampled_rows": 256,
-      "nonempty_samples": 227,
-      "missing_samples": 29,
-      "distinct_samples": 71,
+      "nonempty_samples": 233,
+      "missing_samples": 23,
+      "distinct_samples": 74,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -9837,8 +9891,8 @@
       "confidence": "high",
       "inferred_from": "header_and_values",
       "sampled_rows": 256,
-      "nonempty_samples": 192,
-      "missing_samples": 64,
+      "nonempty_samples": 193,
+      "missing_samples": 63,
       "distinct_samples": 21,
       "valid_ratio": 1.0,
       "aggregation": "none"
@@ -9850,9 +9904,9 @@
       "confidence": "high",
       "inferred_from": "header_and_values",
       "sampled_rows": 256,
-      "nonempty_samples": 219,
-      "missing_samples": 37,
-      "distinct_samples": 205,
+      "nonempty_samples": 214,
+      "missing_samples": 42,
+      "distinct_samples": 199,
       "valid_ratio": 1.0,
       "aggregation": "none"
     }
