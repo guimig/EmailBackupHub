@@ -1,7 +1,7 @@
 {
   "schema_version": "1.6",
   "summary_version": "1",
-  "generated_at": "2026-11-19T16:17:23.863339-03:00",
+  "generated_at": "2026-11-19T22:32:34.451559-03:00",
   "reports": {
     "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa": {
       "slug": "2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa",
@@ -3164,12 +3164,6 @@
             "metrics": {}
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "0be0008f2803356a8ba3f403ae6dcf2ec6c161742012152cf385528beacc708f",
-            "metrics": {}
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "4b92aa184c3555af669c7c6081d32ece2fdffd34dcb8871baf392467b95bdf11",
@@ -4038,21 +4032,6 @@
             "hash_conteudo": "3428454f403cd19432b9eeab07940f09b0f9a681bfe85a2ebdbe0099e227e483",
             "metrics": {
               "credito_disponivel": 323653.65
-            },
-            "metrics_meta": {
-              "credito_disponivel": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              }
-            }
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "3877ba36918fcf1fb80607160330e166eda7f450a2712e19ba8fd4f493ebdb3e",
-            "metrics": {
-              "credito_disponivel": 297675.24
             },
             "metrics_meta": {
               "credito_disponivel": {
@@ -7323,33 +7302,6 @@
               "empenhado": 2734756.7,
               "liquidado": 637983.43,
               "pago": 603241.25
-            },
-            "metrics_meta": {
-              "empenhado": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              },
-              "liquidado": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              },
-              "pago": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              }
-            }
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "bf3bd9e9ac17e894854830b511e2dcd9beca41dded83e6bc08f15e0f7250ee08",
-            "metrics": {
-              "empenhado": 2839535.11,
-              "liquidado": 1209562.49,
-              "pago": 1131313.65
             },
             "metrics_meta": {
               "empenhado": {
@@ -12193,12 +12145,6 @@
             "metrics": {}
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "42a4452ce471bcff593e424dbadeb60153bf153f2d27c48caa69052dfd6ce651",
-            "metrics": {}
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "ef86447f64ba5d4b1a8637dbf83b1fea6f7ac97feb60861d8995c26188e86fde",
@@ -12894,12 +12840,6 @@
             "date": "01/05/2026",
             "date_iso": "2026-05-01",
             "hash_conteudo": "aaf332b5923b7bfac1d7105db1b4df90949ff763853d00a1b4846cd56711a80a",
-            "metrics": {}
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "5bd6f0cf8c12aac5666ed46359f19b777e91917eedeed0decee41146784a9d56",
             "metrics": {}
           },
           {
@@ -13839,21 +13779,6 @@
             "hash_conteudo": "c48eb90b6e4be63b15f1c129bfa17a5d666fd260d17c1a03d64626befe9d7fb7",
             "metrics": {
               "provisionado": 3058410.35
-            },
-            "metrics_meta": {
-              "provisionado": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              }
-            }
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "25adcd873fe90a7f552dc97c5274fe541351609cd44a909440ec9b8ade09b4c4",
-            "metrics": {
-              "provisionado": 3137210.35
             },
             "metrics_meta": {
               "provisionado": {
@@ -16817,21 +16742,6 @@
             "hash_conteudo": "d29e421817dc8af7552a9cc85083300f9057b84bcca99e6849f0ca553ef2c8b1",
             "metrics": {
               "gru_arrecadada": 90231.41
-            },
-            "metrics_meta": {
-              "gru_arrecadada": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              }
-            }
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "bdb635a244896d3bc7889bb11d0e7a5a636a8ef4224022560ae0f76399c0987a",
-            "metrics": {
-              "gru_arrecadada": 132139.57
             },
             "metrics_meta": {
               "gru_arrecadada": {
@@ -21070,39 +20980,6 @@
             }
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "26b6178291b564b1b6c730ce3446918ad46385f346f4c5cc25f290ecf7264a25",
-            "metrics": {
-              "rap_pago": 1517402.41,
-              "rap_a_pagar": 1315867.58
-            },
-            "metrics_meta": {
-              "rap_pago": {
-                "status": "ok",
-                "source": "totals",
-                "line": "Total",
-                "column": "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)",
-                "total_index": 71,
-                "score": 6,
-                "quality": "candidato",
-                "method": "rap_total_candidate",
-                "fallback": false
-              },
-              "rap_a_pagar": {
-                "status": "ok",
-                "source": "totals",
-                "line": "Total",
-                "column": "53 / RESTOS A PAGAR A PAGAR (PROC E N PROC) / Saldo - R$ (Item Informação)",
-                "total_index": 71,
-                "score": 6,
-                "quality": "candidato",
-                "method": "rap_total_candidate",
-                "fallback": false
-              }
-            }
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "b50e7a146356d2eedaf023392f96a980fdef2c42e445fb16438a617e9c37a5f7",
@@ -24730,12 +24607,6 @@
             "metrics": {}
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "9480bb1531325fdf3037eb85a291c8290d255c0925d82f9f15a14820b1589ae7",
-            "metrics": {}
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "9480bb1531325fdf3037eb85a291c8290d255c0925d82f9f15a14820b1589ae7",
@@ -25525,12 +25396,6 @@
             "date": "01/05/2026",
             "date_iso": "2026-05-01",
             "hash_conteudo": "8aa7bac0906422971ba45b0352ab5c749ba1bc1015547acfb851d71bf1d82b57",
-            "metrics": {}
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "8628268c264cac3cdd3b8ddfe1e8f8facd9ee2d133c0e55ed81a9460dcc2834e",
             "metrics": {}
           },
           {
@@ -27291,12 +27156,6 @@
             "metrics": {}
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "6fac5a6a1d4b7a47c548a70da5bc79892704d298bb8c1b08785c04dd7479eaa6",
-            "metrics": {}
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "391090b21d8125e93abf458ff3dd5f4601af51e1a4a0dd7317bbe51d196f5702",
@@ -28069,12 +27928,6 @@
           {
             "date": "01/05/2026",
             "date_iso": "2026-05-01",
-            "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
-            "metrics": {}
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
             "hash_conteudo": "2ea4d44f43553aa633ebb650958c4783dc1a057ec1a645553991bea025e41447",
             "metrics": {}
           },
@@ -29303,33 +29156,6 @@
               "saldo_a_liquidar": 2096773.27,
               "liquidado_a_pagar": 34742.18,
               "pago": 603241.25
-            },
-            "metrics_meta": {
-              "saldo_a_liquidar": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              },
-              "liquidado_a_pagar": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              },
-              "pago": {
-                "status": "ok",
-                "source": "totals",
-                "fallback": false
-              }
-            }
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "641aceba998989a24defd30ff22cf0228c052d128e8b43fc920ca8a508419025",
-            "metrics": {
-              "saldo_a_liquidar": 1629972.62,
-              "liquidado_a_pagar": 78248.84,
-              "pago": 1131313.65
             },
             "metrics_meta": {
               "saldo_a_liquidar": {
@@ -32169,12 +31995,6 @@
             "metrics": {}
           },
           {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "690f9cda3d6cede46e26d3e05730fd03d0ac9cd16e39c3bde92e097917dbc8d4",
-            "metrics": {}
-          },
-          {
             "date": "29/05/2026",
             "date_iso": "2026-05-29",
             "hash_conteudo": "690f9cda3d6cede46e26d3e05730fd03d0ac9cd16e39c3bde92e097917dbc8d4",
@@ -33437,12 +33257,6 @@
             "date": "01/05/2026",
             "date_iso": "2026-05-01",
             "hash_conteudo": "2e9ef6fb3041aa220d97a43235a398edeabf4c80c1435954b09d34d3e5923033",
-            "metrics": {}
-          },
-          {
-            "date": "23/05/2026",
-            "date_iso": "2026-05-23",
-            "hash_conteudo": "906a86e73ee9dff6f27ee6d0f0f41160b8b09ff3ed6a7bd1708455ac9fd440d0",
             "metrics": {}
           },
           {
