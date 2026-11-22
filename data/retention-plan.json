@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-21T18:20:24.249220-03:00",
+  "generated_at": "2026-11-21T22:48:51.632770-03:00",
   "policy": {
     "dry_run": true,
     "apply_html_cleanup": false,
@@ -28,7 +28,7 @@
     "cache_misses_changed": 0,
     "cache_misses_missing_snapshot": 0,
     "snapshots_written": 1134,
-    "duration_seconds": 52.047
+    "duration_seconds": 52.148
   },
   "reports": [
     {
@@ -59,7 +59,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.354
+        "duration_seconds": 0.361
       }
     },
     {
@@ -90,7 +90,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 1,
-        "duration_seconds": 0.435
+        "duration_seconds": 0.44
       }
     },
     {
@@ -270,7 +270,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -1138,7 +1138,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 61,
-        "duration_seconds": 12.536
+        "duration_seconds": 12.465
       }
     },
     {
@@ -1318,7 +1318,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -2079,7 +2079,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 49,
-        "duration_seconds": 9.247
+        "duration_seconds": 9.309
       }
     },
     {
@@ -2300,7 +2300,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -3303,7 +3303,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 66,
-        "duration_seconds": 0.419
+        "duration_seconds": 0.426
       }
     },
     {
@@ -3408,7 +3408,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.505
+        "duration_seconds": 0.499
       }
     },
     {
@@ -3477,7 +3477,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.289
+        "duration_seconds": 0.292
       }
     },
     {
@@ -3698,7 +3698,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -4701,7 +4701,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 66,
-        "duration_seconds": 3.647
+        "duration_seconds": 3.671
       }
     },
     {
@@ -5289,7 +5289,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 9,
-        "duration_seconds": 0.066
+        "duration_seconds": 0.068
       }
     },
     {
@@ -5510,7 +5510,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -6513,7 +6513,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 66,
-        "duration_seconds": 2.557
+        "duration_seconds": 2.559
       }
     },
     {
@@ -6529,8 +6529,7 @@
           "date_iso": "2026-05-25",
           "closing_date_iso": "2026-05-24",
           "reasons": [
-            "monthly_close",
-            "weekly"
+            "monthly_close"
           ]
         },
         {
@@ -6583,7 +6582,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 5,
-        "duration_seconds": 0.218
+        "duration_seconds": 0.219
       }
     },
     {
@@ -6861,7 +6860,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -8004,7 +8003,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 73,
-        "duration_seconds": 0.156
+        "duration_seconds": 0.159
       }
     },
     {
@@ -8334,7 +8333,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -9672,7 +9671,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 79,
-        "duration_seconds": 0.943
+        "duration_seconds": 0.956
       }
     },
     {
@@ -9976,7 +9975,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -11146,7 +11145,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 75,
-        "duration_seconds": 1.772
+        "duration_seconds": 1.766
       }
     },
     {
@@ -11459,7 +11458,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -12797,7 +12796,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 77,
-        "duration_seconds": 3.536
+        "duration_seconds": 3.547
       }
     },
     {
@@ -13127,7 +13126,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -14465,7 +14464,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 79,
-        "duration_seconds": 6.12
+        "duration_seconds": 6.15
       }
     },
     {
@@ -14760,7 +14759,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -15908,7 +15907,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 75,
-        "duration_seconds": 0.637
+        "duration_seconds": 0.627
       }
     },
     {
@@ -16204,7 +16203,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -17445,7 +17444,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 63,
-        "duration_seconds": 0.841
+        "duration_seconds": 0.844
       }
     },
     {
@@ -17775,7 +17774,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -19113,7 +19112,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 79,
-        "duration_seconds": 0.692
+        "duration_seconds": 0.7
       }
     },
     {
@@ -19409,7 +19408,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -20747,7 +20746,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 75,
-        "duration_seconds": 4.465
+        "duration_seconds": 4.476
       }
     },
     {
@@ -21077,7 +21076,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -22539,7 +22538,7 @@
           "date_iso": "2026-09-22",
           "closing_date_iso": "2026-09-21",
           "reasons": [
-            "recent_daily"
+            "weekly"
           ]
         },
         {
@@ -23455,7 +23454,7 @@
         "cache_misses_missing_snapshot": 0,
         "processed_files": 0,
         "snapshots_written": 54,
-        "duration_seconds": 1.119
+        "duration_seconds": 1.121
       }
     }
   ]
