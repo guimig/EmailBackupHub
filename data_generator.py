@@ -44,7 +44,7 @@ RETENTION_PLAN_PATH = DATA_DIR / "retention-plan.json"
 REPORT_DEFINITIONS_PATH = DATA_DIR / "report-definitions.json"
 DASHBOARD_SUMMARY_PATH = DATA_DIR / "dashboard-summary.json"
 SCHEMA_VERSION = "1.6"
-PARSER_VERSION = "2026-10-08.1"
+PARSER_VERSION = "2026-11-23.1"
 SERIES_MIN_DATE = datetime.date(2026, 1, 1)
 
 INFO_QUALITY_CODES = {
@@ -220,10 +220,49 @@ def build_table_grid(table):
     return grid
 
 
+def header_background(cell):
+    """Extract the color of Excel/Tesouro header cells, independent of text."""
+    match = re.search(r"background-color\s*:\s*([^;]+)", cell.get("style", ""), re.I)
+    return match.group(1).strip().lower() if match else ""
+
+
+def structural_header_depth(table):
+    """Find the leading header rows before inspecting monetary data.
+
+    Tesouro exports use TD cells with coloured headers and sometimes multi-line
+    headers (colspan/rowspan); their first detail lines can have few numbers.
+    Content-only heuristics must not be used to decide where details begin.
+    """
+    table_rows = table.find_all("tr")
+    if not table_rows:
+        return 0
+    first_cells = table_rows[0].find_all(["th", "td"], recursive=False)
+    if len(first_cells) < 2:
+        return 0
+    colors = [header_background(cell) for cell in first_cells]
+    first_color = colors[0]
+    if not first_color or any(color != first_color for color in colors):
+        return 0
+    first_values = [cell.get_text(" ", strip=True) for cell in first_cells]
+    if not (looks_like_header(first_values) or source_header_row(first_values)):
+        return 0
+    depth = 0
+    for tr in table_rows[:8]:
+        cells = tr.find_all(["th", "td"], recursive=False)
+        if not cells or any(header_background(cell) != first_color for cell in cells):
+            break
+        depth += 1
+    # A single colour shared by the entire table is not a reliable header mark.
+    return depth if 0 < depth < len(table_rows) and depth < 8 else 0
+
+
 def pick_table(soup):
-    tables = [build_table_grid(table) for table in soup.find_all("table")]
-    tables = [table for table in tables if table]
-    return max(tables, key=lambda table: sum(len(row) for row in table)) if tables else []
+    tables = [
+        (build_table_grid(table), structural_header_depth(table))
+        for table in soup.find_all("table")
+    ]
+    tables = [(grid, depth) for grid, depth in tables if grid]
+    return max(tables, key=lambda item: sum(len(row) for row in item[0])) if tables else ([], 0)
 
 
 def looks_like_header(row):
@@ -333,29 +372,37 @@ def quality_result(codes):
     return {"ok": not issues, "issues": issues, "warnings": warnings}
 
 
-def normalize_table(grid):
+def normalize_table(grid, header_depth=0):
     if not grid:
         return [], [], [], [], ["no_table"]
     issues = []
-    data_start = next(
-        (idx for idx, row in enumerate(grid) if not source_header_row(row) and looks_like_data(row)),
-        None,
-    )
-    if data_start is None:
+    if header_depth > 0:
+        # Header depth comes from the HTML structure (including merged cells),
+        # never from counting numbers in the first detail row.
+        header_candidates = grid[:header_depth]
+        data_rows = grid[header_depth:]
         width = max(len(row) for row in grid)
-        columns = [f"Coluna {idx + 1}" for idx in range(width)]
-        data_rows = grid
-        issues.append("columns_generated")
+        columns = merge_header_rows(header_candidates, width)
     else:
-        header_candidates = [
-            row for row in grid[:data_start]
-            if len(set(cell for cell in row if cell)) > 1
-            and (source_header_row(row) or looks_like_header(row))
-        ]
-        width = max(len(row) for row in grid[data_start:] + header_candidates)
-        fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
-        columns = merge_header_rows(header_candidates or fallback_headers, width)
-        data_rows = grid[data_start:]
+        data_start = next(
+            (idx for idx, row in enumerate(grid) if not source_header_row(row) and looks_like_data(row)),
+            None,
+        )
+        if data_start is None:
+            width = max(len(row) for row in grid)
+            columns = [f"Coluna {idx + 1}" for idx in range(width)]
+            data_rows = grid
+            issues.append("columns_generated")
+        else:
+            header_candidates = [
+                row for row in grid[:data_start]
+                if len(set(cell for cell in row if cell)) > 1
+                and (source_header_row(row) or looks_like_header(row))
+            ]
+            width = max(len(row) for row in grid[data_start:] + header_candidates)
+            fallback_headers = [grid[data_start - 1]] if data_start > 0 else []
+            columns = merge_header_rows(header_candidates or fallback_headers, width)
+            data_rows = grid[data_start:]
     width = len(columns)
     rows = []
     totals = []
@@ -438,7 +485,8 @@ def full_report_document(file_path, source_map, now):
     title = apply_report_overrides(slug, extract_title(soup, file_path))
     report_date, date_issue = extract_date(content, file_path)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
-    columns, rows, totals, row_types, issues = normalize_table(pick_table(soup))
+    grid, header_depth = pick_table(soup)
+    columns, rows, totals, row_types, issues = normalize_table(grid, header_depth)
     columns, rows, totals, row_types = apply_column_names_to_data(slug, columns, rows, totals, row_types)
     if date_issue:
         issues.append(date_issue)
