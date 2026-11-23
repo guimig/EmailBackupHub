@@ -640,7 +640,7 @@
     {
       "label": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
       "values": {
-        "Saldo - Moeda Origem (Item Informação)": 237114
+        "Saldo - Moeda Origem (Item Informação)": 237114.0
       },
       "raw": {
         "Ação Governo": "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)",
@@ -657,7 +657,7 @@
     {
       "label": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
       "values": {
-        "Saldo - Moeda Origem (Item Informação)": 1000000
+        "Saldo - Moeda Origem (Item Informação)": 1000000.0
       },
       "raw": {
         "Ação Governo": "APOIO A EXPANSAO, CONSOLIDACAO, REESTRUTURACAO DAS INSTITUIC",
@@ -725,7 +725,7 @@
     {
       "label": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
       "values": {
-        "Saldo - Moeda Origem (Item Informação)": 409920
+        "Saldo - Moeda Origem (Item Informação)": 409920.0
       },
       "raw": {
         "Ação Governo": "APOIO A ALIMENTACAO DO ESTUDANTE DA REDE FEDERAL DE EDUCACAO",
@@ -1704,7 +1704,7 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-23T00:23:40.278885-03:00",
+    "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
     "idade_dias": 3,
     "periodicidade": "diaria",
     "exercicio": 2026,
@@ -1745,7 +1745,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 8,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1758,7 +1758,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 2,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1771,7 +1771,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 2,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1784,7 +1784,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 10,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1797,7 +1797,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 10,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1810,7 +1810,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 54,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1823,7 +1823,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 53,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     },
     {
@@ -1836,15 +1836,8 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 11,
-      "valid_ratio": 1,
-      "aggregation": "none",
-      "period": {
-        "label": "MAR/2026",
-        "year": 2026,
-        "number": 3,
-        "kind": "calendar_month",
-        "calendar_month": true
-      }
+      "valid_ratio": 1.0,
+      "aggregation": "none"
     },
     {
       "name": "Saldo - Moeda Origem (Item Informação)",
@@ -1856,7 +1849,7 @@
       "nonempty_samples": 56,
       "missing_samples": 0,
       "distinct_samples": 50,
-      "valid_ratio": 1,
+      "valid_ratio": 1.0,
       "aggregation": "none"
     }
   ]
