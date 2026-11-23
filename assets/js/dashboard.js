@@ -1523,7 +1523,7 @@ let indexData = null;
     window.addEventListener('resize', () => requestAnimationFrame(fitVisibleTreemaps));
     setDashboardView('overview');
 
-    document.querySelector('.gru-view-switch').addEventListener('click', event => {
+    document.querySelector('.chart-card--gru .gru-view-switch').addEventListener('click', event => {
       const button = event.target.closest('[data-gru-view]');
       if (button) setGruView(button.dataset.gruView);
     });
