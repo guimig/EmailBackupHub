@@ -256,13 +256,15 @@ def structural_header_depth(table):
     return depth if 0 < depth < len(table_rows) and depth < 8 else 0
 
 
-def pick_table(soup):
+def pick_table(soup, include_header_depth=False):
+    # Maintain the original list-of-rows API for older callers and diagnostics.
     tables = [
         (build_table_grid(table), structural_header_depth(table))
         for table in soup.find_all("table")
     ]
     tables = [(grid, depth) for grid, depth in tables if grid]
-    return max(tables, key=lambda item: sum(len(row) for row in item[0])) if tables else ([], 0)
+    selected = max(tables, key=lambda item: sum(len(row) for row in item[0])) if tables else ([], 0)
+    return selected if include_header_depth else selected[0]
 
 
 def looks_like_header(row):
@@ -485,7 +487,7 @@ def full_report_document(file_path, source_map, now):
     title = apply_report_overrides(slug, extract_title(soup, file_path))
     report_date, date_issue = extract_date(content, file_path)
     content_hash = hashlib.sha256(content.encode("utf-8", errors="replace")).hexdigest()
-    grid, header_depth = pick_table(soup)
+    grid, header_depth = pick_table(soup, include_header_depth=True)
     columns, rows, totals, row_types, issues = normalize_table(grid, header_depth)
     columns, rows, totals, row_types = apply_column_names_to_data(slug, columns, rows, totals, row_types)
     if date_issue:
