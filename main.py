@@ -39,11 +39,18 @@ if __name__ == "__main__":
         if validation.errors:
             raise RuntimeError("Validacao estatica falhou: " + "; ".join(validation.errors[:5]))
 
-        # 5. Registra a execucao antes do commit para versionar o log junto com os artefatos
-        write_run_log_safely(finish_run(run_state, email_result, generated_artifacts))
+        # 5. Rotinas horarias sem mudancas de conteudo nao devem versionar
+        # logs nem gerar commits; o workflow Actions conserva o registro da execucao.
+        from git_utils import has_generated_changes
+        changed = has_generated_changes()
+        if changed or any(item.get("status") == "failed" for item in email_result["emails"]):
+            write_run_log_safely(finish_run(run_state, email_result, generated_artifacts))
 
-        # 6. Publica os artefatos gerados e so entao marca e-mails como lidos
-        commit_changes()
+        # 6. Publica apenas alteracoes reais e entao marca os e-mails como lidos.
+        if changed:
+            commit_changes()
+        else:
+            print("Nenhuma alteracao nos artefatos; commit e log publico dispensados.")
         mark_emails_as_seen(processed_uids)
 
     except Exception as e:
