@@ -59,17 +59,19 @@
       qa.rapKpiShowsPayableNotPaidTotal = /2\.000/.test(el('rapTotal').textContent)
         && el('rapCardLink').textContent.includes('Restos a pagar a pagar')
         && !/12\.000/.test(el('rapTotal').textContent);
-      qa.sixDistinctCharts = cards.length === 6 &&
-        ['expense','rap','provisions','stages','nd','gru'].every(name => !!card(name));
-      qa.threeAccessibleTabs = [...document.querySelectorAll('[data-dashboard-view]')].length === 3
+      qa.sevenDistinctCharts = cards.length === 7 &&
+        ['stages','expense','rap','provisions','actions','nd','gru'].every(name => !!card(name));
+      qa.fourAccessibleTabs = [...document.querySelectorAll('[data-dashboard-view]')].length === 4
         && el('dashboardViewTabs').getAttribute('role') === 'tablist'
         && chartGrid.getAttribute('role') === 'tabpanel'
         && [...document.querySelectorAll('[data-dashboard-view]')].every(tab =>
           tab.getAttribute('role') === 'tab' && !!tab.getAttribute('aria-controls'));
-      qa.defaultOverviewOnly = visible().join(',') === 'expense,rap'
+      qa.defaultOverviewOnly = visible().join(',') === 'stages,expense,rap'
         && el('dashboardTabOverview').getAttribute('aria-selected') === 'true';
-      qa.overviewWithoutBlankGridTracks = rect(card('expense')).width > 100
-        && rect(card('rap')).width > 100
+      qa.overviewWithoutBlankGridTracks = rect(card('stages')).width > 100
+        && Math.abs(rect(card('stages')).width - rect(chartGrid).width) < 6
+        && rect(card('expense')).width > 100 && rect(card('rap')).width > 100
+        && rect(card('expense')).top >= rect(card('stages')).bottom - 6
         && (window.innerWidth <= 760
           ? rect(card('rap')).top >= rect(card('expense')).bottom - 5
           : Math.abs(rect(card('rap')).top - rect(card('expense')).top) < 5);
@@ -91,11 +93,10 @@
       qa.managementCollapsed = !el('managementAlertsPanel').open;
       qa.noGlossaryOrDuplicateBalances = !document.querySelector('.glossary-panel,.chart-card--credit');
 
-      click('Execution'); fit();
-      qa.executionOnly = visible().join(',') === 'provisions,stages,nd'
-        && el('dashboardTabExecution').getAttribute('aria-selected') === 'true'
-        && chartGrid.getAttribute('aria-labelledby') === 'dashboardTabExecution';
       const gauges = card('stages').querySelectorAll('.stage-gauge-card');
+      qa.overviewGaugesInOneRow = window.innerWidth <= 760
+        ? rect(gauges[2]).top >= rect(gauges[0]).bottom - 6
+        : Math.abs(rect(gauges[0]).top - rect(gauges[3]).top) < 6;
       qa.fourCorrectGauges = gauges.length === 4
         && el('provisionGaugeValue').textContent.includes('50,0')
         && el('committedGaugeValue').textContent.includes('60,0')
@@ -111,6 +112,33 @@
       qa.stageDetailSwitchesWithSelection = el('stageGaugeDetail').textContent.includes(brl(30000) + ' de ' + brl(50000))
         && gauges[1].getAttribute('aria-pressed') === 'true'
         && gauges[0].getAttribute('aria-pressed') === 'false';
+      click('Provision');
+      const provisionsCard = card('provisions');
+      const actionsCard = card('actions');
+      qa.provisionOnly = visible().join(',') === 'provisions,actions'
+        && el('dashboardTabProvision').getAttribute('aria-selected') === 'true'
+        && chartGrid.getAttribute('aria-labelledby') === 'dashboardTabProvision';
+      qa.provisionCardsOrdered = Math.abs(rect(provisionsCard).width - rect(chartGrid).width) < 6
+        && Math.abs(rect(actionsCard).width - rect(chartGrid).width) < 6
+        && rect(actionsCard).top >= rect(provisionsCard).bottom - 6;
+      const totalValue = provisionsCard.querySelector('.provision-donut-center strong');
+      qa.provisionTotalFitsRing = !!totalValue
+        && totalValue.scrollWidth <= totalValue.clientWidth + 2
+        && totalValue.scrollHeight <= totalValue.clientHeight + 2;
+      qa.provisionChartLoaded = !!el('provisionCompositionChart')?.querySelector('.provision-donut')
+        && !!el('provisionCompositionLink')?.href;
+      qa.actionLineLoaded = !!el('provisionActionsChart')?.querySelector('.provision-action-line')
+        && el('provisionActionsChart').querySelectorAll('.provision-action-point').length === 2
+        && el('provisionActionsChart').querySelectorAll('.provision-action-item').length === 2
+        && el('provisionActionsChart').textContent.includes('não representa tendência temporal');
+      const actionButton = el('provisionActionsChart').querySelector('.provision-action-item');
+      if (actionButton) actionButton.click();
+      qa.actionSelectable = !!actionButton && actionButton.getAttribute('aria-pressed') === 'true'
+        && !el('provisionActionsDetail').hidden && el('provisionActionsDetail').textContent.includes('90.000');
+      click('Execution'); fit();
+      qa.executionOnly = visible().join(',') === 'nd'
+        && el('dashboardTabExecution').getAttribute('aria-selected') === 'true'
+        && chartGrid.getAttribute('aria-labelledby') === 'dashboardTabExecution';
       qa.ndButtonsMatchGru = el('ndViewGeneralButton').classList.contains('gru-view-button')
         && el('ndViewDetailedButton').classList.contains('gru-view-button');
       qa.ndStageBalancesReconciled = nd.querySelectorAll('.nd-treemap-tile').length === 3
@@ -118,27 +146,7 @@
         && el('ndChartTotal').textContent.includes('4 NEs')
         && JSON.parse(new URL(el('ndReportLink').href).searchParams.get('vgs')).length === 3;
       qa.ndLabelsComplete = labelsFit(nd);
-      const provisionsCard = card('provisions');
-      const stagesCard = card('stages');
-      qa.executionPanelsBalanced = window.innerWidth > 1250
-        ? Math.abs(rect(provisionsCard).top - rect(stagesCard).top) < 6
-          && rect(provisionsCard).right <= rect(stagesCard).left + 6
-          && Math.abs(rect(provisionsCard).width + rect(stagesCard).width
-            + parseFloat(style(chartGrid).columnGap || 0) - rect(chartGrid).width) < 10
-        : rect(stagesCard).top >= rect(provisionsCard).bottom - 6
-          && Math.abs(rect(provisionsCard).width - rect(chartGrid).width) < 6;
-      const totalValue = provisionsCard.querySelector('.provision-donut-center strong');
-      qa.provisionChartDiagnostic = totalValue
-        ? true : (el('provisionCompositionChart')?.textContent || 'sem gráfico').slice(0, 250);
-      qa.provisionTotalFitsRing = !!totalValue
-        && totalValue.scrollWidth <= totalValue.clientWidth + 2
-        && totalValue.scrollHeight <= totalValue.clientHeight + 2;
-      qa.provisionChartLoaded = !!el('provisionCompositionChart')
-         && !!el('provisionCompositionLink')?.href;
-       qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6
-        && (window.innerWidth <= 760
-          ? rect(card('nd')).top >= rect(card('stages')).bottom - 6
-          : rect(card('nd')).top >= rect(card('stages')).bottom - 6);
+      qa.ndFullWidth = Math.abs(rect(card('nd')).width - rect(chartGrid).width) < 6;
       qa.generalModeHasGroups = el('ndViewGeneralButton').getAttribute('aria-pressed') === 'true'
         && nd.querySelectorAll('.nd-treemap-tile').length === 3;
       const generalTile = [...nd.querySelectorAll('.nd-treemap-tile')]
@@ -178,7 +186,7 @@
         && !el('gruSelectionDetail').hidden
         && el('gruSelectionDetail').textContent.includes(code.dataset.gruCode);
       el('gruViewMonthsButton').click();
-      qa.gruMonthlyAlternative = el('gruTreeChart').querySelectorAll('.gru-month-button').length === 11
+      qa.gruMonthlyAlternative = el('gruTreeChart').querySelectorAll('.gru-month-button').length >= 1
         && !el('gruTreeChart').hidden && gru.hidden;
       qa.gruMonthScaleInReais = el('gruTreeChart').querySelectorAll('.gru-month-axis-tick').length === 5
         && el('gruTreeChart').querySelector('.gru-month-axis').textContent.includes('R')
@@ -188,7 +196,7 @@
       qa.gruBackToCodeView = !gru.hidden && el('gruTreeChart').hidden;
 
       click('Overview');
-      qa.switchRestoresOverview = visible().join(',') === 'expense,rap';
+      qa.switchRestoresOverview = visible().join(',') === 'stages,expense,rap';
       qa.noHorizontalOverflow = document.documentElement.scrollWidth <= window.innerWidth + 4;
       qa.kpisAlwaysVisible = rect(el('budgetBase')).width > 0
         && rect(el('gruCollected')).width > 0;

@@ -475,18 +475,27 @@ let indexData = null;
       const chart = byId('provisionCompositionChart');
       const detail = byId('provisionCompositionDetail');
       const link = byId('provisionCompositionLink');
+      const actionsChart = byId('provisionActionsChart');
+      const actionsDetail = byId('provisionActionsDetail');
+      const actionsLink = byId('provisionActionsLink');
+      const renderer = window.EmailBackupHubProvisions;
       const source = financialReports['provisionamentos'];
       const url = chartSourceUrl('provisionamentos');
-      if (link) {
-        if (url) link.href = url;
-        else link.removeAttribute('href');
-        link.hidden = !url;
+      for (const target of [link, actionsLink]) {
+        if (!target) continue;
+        if (url) target.href = url;
+        else target.removeAttribute('href');
+        target.hidden = !url;
       }
-      if (!chart || !window.EmailBackupHubProvisions) return;
+      if (!chart || !actionsChart || !renderer) return;
+      const showUnavailable = reason => {
+        renderer.render(chart, { ok: false, reason }, detail);
+        renderer.renderActions(actionsChart, { ok: false, reason }, actionsDetail);
+      };
       const id = String(source?.metadata?.hash_conteudo || '') + ':'
         + String(source?.date_iso || '') + ':' + String(source?.metrics?.provisionado ?? '');
       if (!source || id === '::') {
-        window.EmailBackupHubProvisions.render(chart, {ok:false,reason:'Relatório de provisões não disponível.'}, detail);
+        showUnavailable('Relatório de provisões não disponível.');
         return;
       }
       if (provisionDetailState.key !== id) {
@@ -508,13 +517,13 @@ let indexData = null;
         }
       }
       if (provisionDetailState.status !== 'ready') {
-        window.EmailBackupHubProvisions.render(chart, {
-          ok:false, reason:'Falha ao carregar o relatório detalhado para conciliação.'
-        }, detail);
+        showUnavailable('Falha ao carregar o relatório detalhado para conciliação.');
         return;
       }
-      const model = window.EmailBackupHubProvisions.buildModel(provisionDetailState.document, source);
-      window.EmailBackupHubProvisions.render(chart, model, detail);
+      const model = renderer.buildModel(provisionDetailState.document, source);
+      renderer.render(chart, model, detail);
+      const actionModel = renderer.buildActionsModel(provisionDetailState.document, source);
+      renderer.renderActions(actionsChart, actionModel, actionsDetail);
     }
 
     function configureStageGaugeDetails(provisionModel, stageModel) {
@@ -1024,7 +1033,7 @@ let indexData = null;
       });
     }
 
-    const DASHBOARD_VIEWS = ['overview', 'execution', 'revenue'];
+    const DASHBOARD_VIEWS = ['overview', 'provision', 'execution', 'revenue'];
     let selectedDashboardView = 'overview';
     function fitVisibleTreemaps() {
       const fit = window.EmailBackupHubFinancialCharts?.fitTreemapLabels;
@@ -1514,7 +1523,7 @@ let indexData = null;
     window.addEventListener('resize', () => requestAnimationFrame(fitVisibleTreemaps));
     setDashboardView('overview');
 
-    document.querySelector('.gru-view-switch').addEventListener('click', event => {
+    document.querySelector('.chart-card--gru .gru-view-switch').addEventListener('click', event => {
       const button = event.target.closest('[data-gru-view]');
       if (button) setGruView(button.dataset.gruView);
     });

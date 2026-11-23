@@ -1811,18 +1811,27 @@ th, td { padding: var(--dash-space-3); }
 }
 
 
-/* Composição dos provisionamentos: dois grupos com o mesmo peso de apresentação
- * dos medidores; desenho adaptável, sem dependências de gráficos externas. */
-/* Rules scoped to the actual dashboard panel must outrank the older
- * full-width execution rule defined above (same selector specificity). */
+/* Presentation of provision charts after the four-tab reorganization. */
+.dashboard-panel .dashboard-charts--overview > .chart-card--stages,
 .dashboard-panel .dashboard-charts--overview > .chart-card--provisions,
-.dashboard-panel .dashboard-charts--overview > .chart-card--stages { min-width: 0; }
-@media (min-width: 1251px) {
-  .dashboard-panel .dashboard-charts--overview > .chart-card--provisions { grid-column: 1 / span 5; }
-  .dashboard-panel .dashboard-charts--overview > .chart-card--stages { grid-column: 6 / -1; }
-  .dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.dashboard-panel .dashboard-charts--overview > .chart-card--actions,
+.dashboard-panel .dashboard-charts--overview > .chart-card--nd,
+.dashboard-panel .dashboard-charts--overview > .chart-card--gru {
+  grid-column: 1 / -1;
+  grid-row: auto;
+}
+.dashboard-panel .dashboard-charts--overview > .chart-card--expense,
+.dashboard-panel .dashboard-charts--overview > .chart-card--rap {
+  grid-column: span 6;
+  grid-row: auto;
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.dashboard-panel .dashboard-charts--overview .chart-card--provisions .provision-composition-body {
+  grid-template-columns: minmax(170px, 230px) minmax(220px, 400px);
+  justify-content: center;
+  column-gap: clamp(20px, 5vw, 80px);
 }
 .provision-composition-body {
   display: grid;
@@ -1915,16 +1924,140 @@ th, td { padding: var(--dash-space-3); }
   border-radius: var(--radius-ui);
 }
 .provision-composition-detail[hidden] { display: none; }
-@media (max-width: 1250px) {
-  .dashboard-panel .dashboard-charts--overview > .chart-card--provisions,
-  .dashboard-panel .dashboard-charts--overview > .chart-card--stages { grid-column: 1 / -1; }
-  .provision-composition-body { grid-template-columns: minmax(170px, 220px) minmax(0, 1fr); }
+@media (max-width: 760px) {
+  .dashboard-panel .dashboard-view-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .dashboard-panel .dashboard-charts--overview > .chart-card--expense,
+  .dashboard-panel .dashboard-charts--overview > .chart-card--rap {
+    grid-column: 1 / -1;
+  }
+  .dashboard-panel .dashboard-charts--overview .chart-card--stages .stage-gauge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 620px) {
-  .provision-composition-body { grid-template-columns: minmax(0, 1fr); }
+  .dashboard-panel .dashboard-charts--overview .chart-card--provisions .provision-composition-body {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+  .dashboard-panel .dashboard-charts--overview .chart-card--provisions .provision-legend {
+    width: 100%;
+    max-width: 480px;
+  }
   .provision-donut-frame { max-width: 210px; }
   .provision-donut-center strong { font-size: .67rem; }
 }
+@media (max-width: 370px) {
+  .dashboard-panel .dashboard-view-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (prefers-reduced-motion: reduce) {
   .provision-donut-arc { transition: none; }
+}
+
+/* Categorical line plot: value scale in BRL, each action fully named below. */
+.provision-actions-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border-radius: var(--radius-ui);
+}
+.provision-actions-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.provision-actions-plot {
+  position: relative;
+  height: 320px;
+  min-width: 690px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.provision-actions-svg { width: 100%; height: 100%; display: block; }
+.provision-action-grid { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.provision-action-tick { fill: var(--muted); font-size: 14px; }
+.provision-action-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.provision-action-dot {
+  fill: var(--accent);
+  stroke: var(--card);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.provision-action-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.provision-action-point:hover,
+.provision-action-point.is-selected {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.provision-action-point:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.provision-actions-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--dash-space-2);
+  margin-top: var(--dash-space-3);
+}
+.provision-action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--dash-space-2);
+  padding: var(--dash-space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-ui);
+  background: var(--soft);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+.provision-action-item:hover,
+.provision-action-item.is-selected {
+  border-color: var(--brand);
+  background: var(--card);
+}
+.provision-action-item:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+.provision-action-key {
+  flex: 0 0 auto;
+  color: var(--brand);
+  font-size: var(--font-label);
+  font-weight: 750;
+}
+.provision-action-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--dash-space-1);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  font-size: var(--font-label);
+}
+.provision-action-copy strong { font-variant-numeric: tabular-nums; }
+.provision-action-share {
+  color: var(--muted);
+  font-size: var(--font-caption);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .provision-actions-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .provision-action-point, .provision-action-item { transition: none; }
 }

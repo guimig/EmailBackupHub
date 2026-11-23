@@ -3,7 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { buildModel, render } = require('../assets/js/provision-composition');
+const { buildModel, render, buildActionsModel, renderActions } = require('../assets/js/provision-composition');
 
 const columns = [
   'Ação Governo / PROGRAMA PNAE',
@@ -90,4 +90,50 @@ test('provisões da posição publicada são reconciliáveis',()=>{
   const model=buildModel(document);
   assert.equal(model.ok,true,model.reason);
   assert.ok(Math.abs(model.groups.reduce((a,g)=>a+g.value,0)-model.total)<.011);
+});
+
+test('ação governo: totalizadores incluem PNAE omitido no parser, sem duplicação', () => {
+  const model = buildActionsModel(fixture());
+  assert.equal(model.ok, true, model.reason);
+  assert.equal(model.actions.length, 3);
+  assert.equal(model.actions.find(a => a.label === 'PNAE').value, 50);
+  assert.equal(model.actions.find(a => a.label === 'PNAE').recovered, true);
+  assert.equal(model.actions.reduce((sum, a) => sum + a.value, 0), 300);
+});
+
+test('ação governo: rejeita subtotal duplicado ou divergente', () => {
+  const duplicate=fixture();
+  duplicate.totals.splice(2, 0, {...duplicate.totals[2]});
+  assert.equal(buildActionsModel(duplicate).ok, false);
+  const mismatch=fixture();
+  mismatch.totals[1].values[columns[3]]=151;
+  assert.equal(buildActionsModel(mismatch).ok, false);
+  const summary=fixture();
+  summary.metrics.provisionado=310;
+  assert.equal(buildActionsModel(fixture(),summary).ok,false);
+});
+
+test('ação governo: gráfico de linha tem pontos selecionáveis e escala em reais', () => {
+  const container={innerHTML:'',querySelectorAll:()=>[]};
+  const model=buildActionsModel(fixture());
+  renderActions(container, model, null);
+  assert.match(container.innerHTML,/provision-action-line/);
+  assert.equal((container.innerHTML.match(/class="provision-action-point"/g)||[]).length,3);
+  assert.equal((container.innerHTML.match(/class="provision-action-item"/g)||[]).length,3);
+  assert.match(container.innerHTML,/A1–A3/);
+  assert.match(container.innerHTML,/não representa tendência temporal/);
+  assert.match(container.innerHTML,/300,00/);
+  renderActions(container,{ok:false,reason:'posição divergente'},null);
+  assert.match(container.innerHTML,/posição divergente/);
+});
+
+test('ação governo: dados reais são conciliados com o total auditado', () => {
+  const p=path.join(__dirname,'..','data/reports/provisionamentos.json');
+  if (!fs.existsSync(p)) return;
+  const doc=JSON.parse(fs.readFileSync(p,'utf8'));
+  const model=buildActionsModel(doc);
+  assert.equal(model.ok,true,model.reason);
+  assert.ok(model.actions.length >= 2);
+  assert.equal(Math.round(model.actions.reduce((sum,a)=>sum+a.value,0)*100),
+    Math.round(doc.metrics.provisionado*100));
 });

@@ -13,8 +13,8 @@ test('executive summary removes duplicate monetary sections and long introductor
   assert.doesNotMatch(html, /chart-kicker|Posição consolidada dos relatórios disponíveis/);
   assert.doesNotMatch(html, /Orçamento provisionado acompanhado|Saldo na posição atual do relatório|Movimentação líquida auditada/);
   assert.doesNotMatch(html, /Os indicadores refletem métricas auditáveis dos relatórios recebidos/);
-  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 6);
-  assert.equal((html.match(/<h3>/g) || []).length, 6);
+  assert.equal((html.match(/<article class="chart-card chart-card--/g) || []).length, 7);
+  assert.equal((html.match(/<h3>/g) || []).length, 7);
   assert.doesNotMatch(html, /chart-card--credit|id="creditDonut"|id="gruValue"/);
 });
 
@@ -89,4 +89,18 @@ test('ND chart exposes general/detailed view controls and contextual back action
   assert.match(html, /id="ndShowAllButton"/);
   assert.match(js, /ndSelectedParent = item\.dataset\.ndKey/);
   assert.match(js, /renderer\.buildNdCommitmentView/);
+});
+
+test('dashboard separates overview, provision, commitments and revenue into four tabs', () => {
+  const tabs=[...html.matchAll(/data-dashboard-view="([^"]+)"/g)].map(m=>m[1]);
+  assert.deepEqual(tabs,['overview','provision','execution','revenue']);
+  for (const [name,view] of Object.entries({
+    stages:'overview',expense:'overview',rap:'overview',
+    provisions:'provision',actions:'provision',nd:'execution',gru:'revenue'
+  })) {
+    assert.match(html, new RegExp('class="chart-card chart-card--'+name
+      +'" data-dashboard-panel="'+view+'"'));
+  }
+  assert.match(js,/const DASHBOARD_VIEWS = \['overview', 'provision', 'execution', 'revenue'\]/);
+  assert.match(html,/id="provisionActionsChart"/);
 });
