@@ -168,12 +168,36 @@
       try{return JSON.parse(value);}catch{warnings.push('Configuração '+key+' inválida e ignorada.');return fallback;}
     };
     const selected=parse('cv',[]);
-    const visible=Array.isArray(selected)?[...new Set(selected.map(lookup).filter(Boolean))]:[];
-    const group=lookup(params.get('vg')||'')||'';
-    const sort=lookup(params.get('vs')||'')||null;
+    // Historical exports could wrongly absorb first data cells into names
+    // ("Ação Governo / PNAE"). Reconcile only against the same-position
+    // column when the pre-slash header matches exactly; never guess by index
+    // alone for arbitrary schema changes or reordered columns.
+    const legacyPositions = String(params.get('cols') || '').split(',')
+      .map(value => /^\d+$/.test(value) ? Number(value) : -1);
+    const legacyAliases = new Map();
+    const migrateOldHeader = (name, position) => {
+      const candidate = Number.isSafeInteger(position) ? columns[position] : null;
+      if (!candidate || typeof name !== 'string' || !name.includes(' / ')) return null;
+      const prefix = name.split(' / ')[0].trim();
+      const base = candidate.replace(/\s*\(\d+\)$/, '').trim();
+      if (!prefix || canonical(prefix) !== canonical(base)) return null;
+      legacyAliases.set(name, candidate);
+      warnings.push('Cabeçalho corrigido no relatório; seleção recuperada: '+candidate);
+      return candidate;
+    };
+    const visible=Array.isArray(selected)
+      ? [...new Set(selected.map((name, index) => {
+        const resolved = resolveColumn(columns, name);
+        if (resolved) return lookup(name);
+        return migrateOldHeader(name, legacyPositions[index]) || lookup(name);
+      }).filter(Boolean))]
+      : [];
+    const resolveAlias = name => legacyAliases.get(name) || lookup(name);
+    const group=resolveAlias(params.get('vg')||'')||'';
+    const sort=resolveAlias(params.get('vs')||'')||null;
     const grouped=parse('vgs',[]);
     const groupSums=Array.isArray(grouped)
-      ?[...new Set(grouped.map(lookup).filter(Boolean))].filter(name=>{
+      ?[...new Set(grouped.map(resolveAlias).filter(Boolean))].filter(name=>{
         const meta=typeof metaFor==='function'?metaFor(name):Filters.columnMeta(report,name);
         return ['money','number'].includes(meta.type);
       }):[];
@@ -181,7 +205,7 @@
     const columnFilters=Object.create(null);
     if(specs && typeof specs==='object' && !Array.isArray(specs)){
       for(const [name,filter] of Object.entries(specs).slice(0,MAX_COLUMNS)){
-        const column=lookup(name);
+        const column=resolveAlias(name);
         if(!column)continue;
         const meta=typeof metaFor==='function'?metaFor(column):Filters.columnMeta(report,column);
         const safe=typeof filter==='string'&&filter.length<=500&&filter.trim()

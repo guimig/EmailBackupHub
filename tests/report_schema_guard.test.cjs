@@ -169,3 +169,37 @@ test('new URL state limits large or malformed payload without executing script s
   params.set('vf','{not JSON');
   assert.deepEqual(Object.keys(Guard.restoreNamed(r,params,Filters).columnFilters),[]);
 });
+
+test('old Tesouro links retain selected columns after accidental data/header concatenation is repaired',()=>{
+  const clean=['Ação Governo','Grupo Despesa','Grupo Despesa (2)','PI','PI (2)','NC',
+    'Doc - Observação','Transação - Mês','Saldo - Moeda Origem (Item Informação)'];
+  const old=[
+    'Ação Governo / APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)',
+    'Grupo Despesa / 3',
+    'Grupo Despesa / OUTRAS DESPESAS CORRENTES',
+    'Doc - Observação / PROVISAO PNAE',
+    'Transação - Mês / MAR/2026 / ABR/2026',
+    'Saldo - Moeda Origem (Item Informação) / 89.872,00'
+  ];
+  const params=new URLSearchParams();
+  params.set('sv','2');
+  params.set('cols','0,1,2,6,7,8');
+  params.set('cv',JSON.stringify(old));
+  params.set('vg',old[0]);
+  params.set('vf',JSON.stringify({[old[0]]:{op:'contains',value:'PNAE'}}));
+  const result=Guard.restoreNamed({slug:'provisionamentos',columns:clean},params,Filters);
+  assert.deepEqual(result.visible,[clean[0],clean[1],clean[2],clean[6],clean[7],clean[8]]);
+  assert.equal(result.group,clean[0]);
+  assert.equal(result.columnFilters[clean[0]].value,'PNAE');
+  assert.ok(result.warnings.some(msg=>msg.includes('Cabeçalho corrigido')));
+});
+
+test('index fallback never maps unrelated or reordered column names',()=>{
+  const params=new URLSearchParams();
+  params.set('sv','2');
+  params.set('cols','0');
+  params.set('cv',JSON.stringify(['Grupo Despesa / 3']));
+  const result=Guard.restoreNamed({columns:['Ação Governo','Grupo Despesa']},params,Filters);
+  assert.deepEqual(result.visible,[]);
+  assert.ok(result.warnings.some(msg=>msg.includes('Campo indisponível')));
+});
