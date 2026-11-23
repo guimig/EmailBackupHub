@@ -110,9 +110,16 @@ def process_message(msg, source_uid=None, return_detail=False):
 
         file_name = f"{normalized_title}_{date.strftime('%d-%m-%Y')}.html"
         file_path = os.path.join(subject_folder, file_name)
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(body)
-        record_source_uid(file_path, source_uid)
+        # A mesma data pode receber retificacoes (inclusive de centavos).
+        # Comparar o corpo integral, sem tolerancia, antes de sobrescrever.
+        unchanged = False
+        if os.path.isfile(file_path):
+            with open(file_path, "r", encoding="utf-8") as existing:
+                unchanged = existing.read() == body
+        if not unchanged:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(body)
+            record_source_uid(file_path, source_uid)
         detail["html_path"] = os.path.normpath(file_path).replace(os.sep, "/")
         detail["status"] = "processed"
         return detail if return_detail else True
