@@ -128,9 +128,9 @@
         <article class="chart-card chart-card--actions" data-dashboard-panel="provision" hidden>
           <div class="chart-card-head">
             <div class="chart-card-heading"><h3>Provisionamentos por Ação Governo</h3></div>
-            <details class="chart-help"><summary aria-label="Critérios dos provisionamentos por ação">?</summary><p>Valores líquidos provisionados por Ação Governo, conferidos com os subtotais e o total auditado do relatório. As ações são categorias, não datas: a linha apenas conecta os pontos na ordem apresentada no relatório, sem representar evolução temporal. Rótulos longos podem estar abreviados na fonte. Selecione um ponto ou uma ação para consultar o valor nominal e sua participação.</p></details>
+            <details class="chart-help"><summary aria-label="Critérios dos provisionamentos por ação">?</summary><p>Valores líquidos provisionados por Ação Governo, conferidos com os subtotais e o total auditado do relatório. As ações são categorias, não períodos: as barras horizontais estão ordenadas pelo valor líquido provisionado, do maior para o menor, com escala automática em reais. Ações com saldos negativos são destacadas. Rótulos longos podem estar abreviados na fonte. Selecione uma barra para consultar o valor nominal e sua participação.</p></details>
           </div>
-          <div id="provisionActionsChart" aria-label="Gráfico de linha de provisionamentos por Ação Governo">
+          <div id="provisionActionsChart" aria-label="Gráfico de barras horizontais de provisionamentos por Ação Governo">
             <p class="chart-empty">Carregando provisionamentos por ação…</p>
           </div>
           <p id="provisionActionsDetail" class="provision-composition-detail" role="status" aria-live="polite" hidden></p>
