@@ -127,11 +127,11 @@
         && totalValue.scrollHeight <= totalValue.clientHeight + 2;
       qa.provisionChartLoaded = !!el('provisionCompositionChart')?.querySelector('.provision-donut')
         && !!el('provisionCompositionLink')?.href;
-      qa.actionLineLoaded = !!el('provisionActionsChart')?.querySelector('.provision-action-line')
-        && el('provisionActionsChart').querySelectorAll('.provision-action-point').length === 2
-        && el('provisionActionsChart').querySelectorAll('.provision-action-item').length === 2
-        && el('provisionActionsChart').textContent.includes('não representa tendência temporal');
-      const actionButton = el('provisionActionsChart').querySelector('.provision-action-item');
+      qa.actionBarsLoaded = el('provisionActionsChart').querySelectorAll('.provision-action-row').length === 2
+        && el('provisionActionsChart').querySelectorAll('.provision-action-fill').length === 2
+        && !el('provisionActionsChart').querySelector('.provision-action-line')
+        && el('provisionActionsChart').textContent.includes('Escala horizontal em reais');
+      const actionButton = el('provisionActionsChart').querySelector('.provision-action-row');
       if (actionButton) actionButton.click();
       qa.actionSelectable = !!actionButton && actionButton.getAttribute('aria-pressed') === 'true'
         && !el('provisionActionsDetail').hidden && el('provisionActionsDetail').textContent.includes('90.000');

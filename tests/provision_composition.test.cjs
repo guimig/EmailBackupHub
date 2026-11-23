@@ -113,18 +113,37 @@ test('ação governo: rejeita subtotal duplicado ou divergente', () => {
   assert.equal(buildActionsModel(fixture(),summary).ok,false);
 });
 
-test('ação governo: gráfico de linha tem pontos selecionáveis e escala em reais', () => {
+test('ação governo: barras horizontais clicáveis e classificadas em ordem decrescente', () => {
   const container={innerHTML:'',querySelectorAll:()=>[]};
   const model=buildActionsModel(fixture());
   renderActions(container, model, null);
-  assert.match(container.innerHTML,/provision-action-line/);
-  assert.equal((container.innerHTML.match(/class="provision-action-point"/g)||[]).length,3);
-  assert.equal((container.innerHTML.match(/class="provision-action-item"/g)||[]).length,3);
-  assert.match(container.innerHTML,/A1–A3/);
-  assert.match(container.innerHTML,/não representa tendência temporal/);
+  assert.match(container.innerHTML,/provision-actions-bars/);
+  assert.doesNotMatch(container.innerHTML,/provision-action-line|provision-action-point/);
+  assert.equal((container.innerHTML.match(/class="provision-action-row"/g)||[]).length,3);
+  assert.equal((container.innerHTML.match(/class="provision-action-track"/g)||[]).length,3);
+  assert.match(container.innerHTML,/Escala horizontal em reais/);
   assert.match(container.innerHTML,/300,00/);
+  assert.deepEqual(container.provisionActionsModel.actions.map(a => a.label),
+    ['FUNCIONAMENTO','OBRAS','PNAE']);
+  assert.equal(container.provisionActionsModel.actions[0].value,150);
+  assert.match(container.innerHTML,/aria-pressed="false"/);
   renderActions(container,{ok:false,reason:'posição divergente'},null);
   assert.match(container.innerHTML,/posição divergente/);
+});
+
+test('ação governo: escala automática e sinais negativos não geram barras com dimensões inválidas', () => {
+  const container={innerHTML:'',querySelectorAll:()=>[]};
+  const model=buildActionsModel(fixture());
+  const variant={...model,actions:[
+    {...model.actions[0],value:-25,share:-.125},
+    {...model.actions[1],value:200,share:1},
+    {...model.actions[2],value:25,share:.125}
+  ],total:200};
+  renderActions(container,variant,null);
+  assert.match(container.innerHTML,/provision-action-fill--negative/);
+  assert.match(container.innerHTML,/--provision-zero:\d+(?:\.\d+)?%/);
+  assert.match(container.innerHTML,/R\$/);
+  assert.doesNotMatch(container.innerHTML, /NaN|Infinity/);
 });
 
 test('ação governo: dados reais são conciliados com o total auditado', () => {
