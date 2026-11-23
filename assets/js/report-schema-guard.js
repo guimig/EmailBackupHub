@@ -173,13 +173,13 @@
     // column when the pre-slash header matches exactly; never guess by index
     // alone for arbitrary schema changes or reordered columns.
     const legacyPositions = String(params.get('cols') || '').split(',')
-      .map(value => /^\\d+$/.test(value) ? Number(value) : -1);
+      .map(value => /^\d+$/.test(value) ? Number(value) : -1);
     const legacyAliases = new Map();
     const migrateOldHeader = (name, position) => {
       const candidate = Number.isSafeInteger(position) ? columns[position] : null;
       if (!candidate || typeof name !== 'string' || !name.includes(' / ')) return null;
       const prefix = name.split(' / ')[0].trim();
-      const base = candidate.replace(/\\s*\\(\\d+\\)$/, '').trim();
+      const base = candidate.replace(/\s*\(\d+\)$/, '').trim();
       if (!prefix || canonical(prefix) !== canonical(base)) return null;
       legacyAliases.set(name, candidate);
       warnings.push('Cabeçalho corrigido no relatório; seleção recuperada: '+candidate);
