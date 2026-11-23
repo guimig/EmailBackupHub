@@ -52,32 +52,13 @@
         </div>
       </div>
       <div class="dashboard-view-tabs" id="dashboardViewTabs" role="tablist" aria-label="Visualização do resumo financeiro">
-        <button class="dashboard-view-tab is-active" type="button" role="tab" title="Comparar despesas do exercício e restos a pagar" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
-        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar composição dos provisionamentos, conversão entre etapas e empenhos por natureza" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
+        <button class="dashboard-view-tab is-active" type="button" role="tab" title="Consultar conversão entre etapas, despesas do exercício e restos a pagar" id="dashboardTabOverview" data-dashboard-view="overview" aria-selected="true" aria-controls="dashboardCharts">Visão geral</button>
+        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar composição e distribuição dos provisionamentos por Ação Governo" id="dashboardTabProvision" data-dashboard-view="provision" aria-selected="false" aria-controls="dashboardCharts">Provisionamentos</button>
+        <button class="dashboard-view-tab" type="button" role="tab" title="Consultar empenhos por natureza de despesa" id="dashboardTabExecution" data-dashboard-view="execution" aria-selected="false" aria-controls="dashboardCharts">Execução da despesa</button>
         <button class="dashboard-view-tab" type="button" role="tab" title="Consultar arrecadação por código de recolhimento ou mês de emissão" id="dashboardTabRevenue" data-dashboard-view="revenue" aria-selected="false" aria-controls="dashboardCharts">Arrecadação própria</button>
       </div>
       <div class="dashboard-charts dashboard-charts--overview" id="dashboardCharts" role="tabpanel" tabindex="0" aria-labelledby="dashboardTabOverview">
-        <article class="chart-card chart-card--expense" data-dashboard-panel="overview">
-          <div class="chart-card-head">
-            <div class="chart-card-heading">
-              <h3>Despesa do exercício</h3>
-            </div>
-            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Empenho é o compromisso formal da despesa; liquidação confirma a entrega ou prestação; pagamento é o desembolso. As barras mostram valores acumulados da posição mais recente, não uma sequência cronológica.</p></details>
-          </div>
-          <div class="chart-slot" id="expenseTrendChart"></div>
-        </article>
-
-        <article class="chart-card chart-card--provisions" data-dashboard-panel="execution" hidden>
-          <div class="chart-card-head">
-            <div class="chart-card-heading"><h3>Composição dos provisionamentos</h3></div>
-            <details class="chart-help"><summary aria-label="Critérios da composição dos provisionamentos">?</summary><p>Distribuição dos valores líquidos provisionados entre os grupos de natureza da despesa 3 (outras despesas correntes) e 4 (investimentos), conferida contra o total auditado do relatório Provisionamentos. Não equivale a empenhos, dotação inicial ou crédito disponível. Selecione uma cor ou categoria para consultar valores e percentuais.</p></details>
-          </div>
-          <div id="provisionCompositionChart" aria-label="Composição dos provisionamentos por grupo de natureza da despesa"><p class="chart-empty">Carregando composição de provisionamentos…</p></div>
-          <p class="provision-composition-detail" id="provisionCompositionDetail" role="status" aria-live="polite" hidden></p>
-          <a id="provisionCompositionLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
-        </article>
-
-        <article class="chart-card chart-card--stages" data-dashboard-panel="execution" hidden>
+        <article class="chart-card chart-card--stages" data-dashboard-panel="overview">
           <div class="chart-card-head">
             <div class="chart-card-heading">
               <h3>Conversão entre etapas</h3>
@@ -110,6 +91,16 @@
           <p class="stage-gauge-detail" id="stageGaugeDetail" role="status" aria-live="polite" hidden></p>
         </article>
 
+        <article class="chart-card chart-card--expense" data-dashboard-panel="overview">
+          <div class="chart-card-head">
+            <div class="chart-card-heading">
+              <h3>Despesa do exercício</h3>
+            </div>
+            <details class="chart-help"><summary aria-label="Explicar comparativo de despesas">?</summary><p>Empenho é o compromisso formal da despesa; liquidação confirma a entrega ou prestação; pagamento é o desembolso. As barras mostram valores acumulados da posição mais recente, não uma sequência cronológica.</p></details>
+          </div>
+          <div class="chart-slot" id="expenseTrendChart"></div>
+        </article>
+
         <article class="chart-card chart-card--rap" data-dashboard-panel="overview">
           <div class="chart-card-head">
             <div class="chart-card-heading">
@@ -124,25 +115,28 @@
           <div class="chart-slot" id="rapStackChart"></div>
         </article>
 
-        <article class="chart-card chart-card--gru" data-dashboard-panel="revenue" hidden>
+        <article class="chart-card chart-card--provisions" data-dashboard-panel="provision" hidden>
           <div class="chart-card-head">
-            <div class="chart-card-heading">
-              <h3>Arrecadação própria</h3>
-            </div>
-            <div class="chart-card-head-aside">
-              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>GRU: Guia de Recolhimento da União. Apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
-            </div>
+            <div class="chart-card-heading"><h3>Composição dos provisionamentos</h3></div>
+            <details class="chart-help"><summary aria-label="Critérios da composição dos provisionamentos">?</summary><p>Distribuição dos valores líquidos provisionados entre os grupos de natureza da despesa 3 (outras despesas correntes) e 4 (investimentos), conferida contra o total auditado do relatório Provisionamentos. Não equivale a empenhos, dotação inicial ou crédito disponível. Selecione uma cor ou categoria para consultar valores e percentuais.</p></details>
           </div>
-          <div class="gru-view-switch" role="group" aria-label="Visualização da arrecadação">
-            <button type="button" class="gru-view-button is-active" id="gruViewCodesButton" data-gru-view="codes" aria-controls="gruCodesChart" aria-pressed="true" title="Distribuição por código de recolhimento; selecione uma área para ver valor e participação">Por recolhimento</button>
-            <button type="button" class="gru-view-button" id="gruViewMonthsButton" data-gru-view="months" aria-controls="gruTreeChart" aria-pressed="false" title="Valores mensais em reais, escala vertical e detalhes ao selecionar uma coluna">Por mês</button>
-          </div>
-          <div class="gru-view-panel" id="gruCodesChart" aria-label="Distribuição por descrição de recolhimento"></div>
-          <div class="gru-view-panel" id="gruTreeChart" aria-label="Distribuição mensal por emissão" hidden></div>
-          <div class="gru-selection-detail" id="gruSelectionDetail" role="status" aria-live="polite" hidden></div>
-          <div class="gru-report-link" id="gruReportLink"></div>
-          <div class="sr-only" id="gruLegend"></div>
+          <div id="provisionCompositionChart" aria-label="Composição dos provisionamentos por grupo de natureza da despesa"><p class="chart-empty">Carregando composição de provisionamentos…</p></div>
+          <p class="provision-composition-detail" id="provisionCompositionDetail" role="status" aria-live="polite" hidden></p>
+          <a id="provisionCompositionLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
         </article>
+
+        <article class="chart-card chart-card--actions" data-dashboard-panel="provision" hidden>
+          <div class="chart-card-head">
+            <div class="chart-card-heading"><h3>Provisionamentos por Ação Governo</h3></div>
+            <details class="chart-help"><summary aria-label="Critérios dos provisionamentos por ação">?</summary><p>Valores líquidos provisionados por Ação Governo, conferidos com os subtotais e o total auditado do relatório. As ações são categorias, não datas: a linha apenas conecta os pontos na ordem apresentada no relatório, sem representar evolução temporal. Rótulos longos podem estar abreviados na fonte. Selecione um ponto ou uma ação para consultar o valor nominal e sua participação.</p></details>
+          </div>
+          <div id="provisionActionsChart" aria-label="Gráfico de linha de provisionamentos por Ação Governo">
+            <p class="chart-empty">Carregando provisionamentos por ação…</p>
+          </div>
+          <p id="provisionActionsDetail" class="provision-composition-detail" role="status" aria-live="polite" hidden></p>
+          <a id="provisionActionsLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
+        </article>
+
         <article class="chart-card chart-card--nd" data-dashboard-panel="execution" hidden>
           <div class="chart-card-head">
             <div class="chart-card-heading">
@@ -165,6 +159,26 @@
             <span id="ndChartTotal" class="nd-chart-total"></span>
             <a id="ndReportLink" class="financial-chart-link" hidden>Ver relatório ↗</a>
           </div>
+        </article>
+
+        <article class="chart-card chart-card--gru" data-dashboard-panel="revenue" hidden>
+          <div class="chart-card-head">
+            <div class="chart-card-heading">
+              <h3>Arrecadação própria</h3>
+            </div>
+            <div class="chart-card-head-aside">
+              <details class="chart-help"><summary aria-label="Critérios da arrecadação própria">?</summary><p>GRU: Guia de Recolhimento da União. Apresenta valores líquidos por descrição de código de recolhimento ou por mês de emissão. O total de cada visão é conciliado com o relatório auditado. No mapa, as áreas representam apenas valores líquidos positivos, com ajustes negativos indicados separadamente. Mês de emissão não é necessariamente mês de recolhimento.</p></details>
+            </div>
+          </div>
+          <div class="gru-view-switch" role="group" aria-label="Visualização da arrecadação">
+            <button type="button" class="gru-view-button is-active" id="gruViewCodesButton" data-gru-view="codes" aria-controls="gruCodesChart" aria-pressed="true" title="Distribuição por código de recolhimento; selecione uma área para ver valor e participação">Por recolhimento</button>
+            <button type="button" class="gru-view-button" id="gruViewMonthsButton" data-gru-view="months" aria-controls="gruTreeChart" aria-pressed="false" title="Valores mensais em reais, escala vertical e detalhes ao selecionar uma coluna">Por mês</button>
+          </div>
+          <div class="gru-view-panel" id="gruCodesChart" aria-label="Distribuição por descrição de recolhimento"></div>
+          <div class="gru-view-panel" id="gruTreeChart" aria-label="Distribuição mensal por emissão" hidden></div>
+          <div class="gru-selection-detail" id="gruSelectionDetail" role="status" aria-live="polite" hidden></div>
+          <div class="gru-report-link" id="gruReportLink"></div>
+          <div class="sr-only" id="gruLegend"></div>
         </article>
       </div>
       <details id="managementAlertsPanel" class="management-alerts">
