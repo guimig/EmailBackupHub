@@ -74,8 +74,49 @@ def read_json(path, default):
 
 
 def write_json(path, data):
+    """Write only when the exact serialized data changed (including cents and text)."""
+    serialized = json.dumps(data, ensure_ascii=False, indent=2)
+    if path.is_file() and path.read_text(encoding="utf-8") == serialized:
+        return False
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    path.write_text(serialized, encoding="utf-8")
+    return True
+
+
+def preserve_generated_at_if_unchanged(path, payload):
+    """Keep publication timestamps stable for identical structured content."""
+    previous = read_json(path, None)
+    if not isinstance(previous, dict) or not previous.get("generated_at"):
+        return payload
+    old_content = {key: value for key, value in previous.items() if key != "generated_at"}
+    new_content = {key: value for key, value in payload.items() if key != "generated_at"}
+    if old_content == new_content:
+        return {**payload, "generated_at": previous["generated_at"]}
+    return payload
+
+
+def retention_plan_content(payload):
+    """Operational durations/cache counters are workflow diagnostics, not retention policy."""
+    summary_keys = (
+        "dry_run", "total_files", "retained_files", "ignored_by_retention",
+        "removal_candidates", "latest_files", "monthly_close_files",
+    )
+    return {
+        "schema_version": payload.get("schema_version"),
+        "policy": payload.get("policy"),
+        "summary": {key: (payload.get("summary") or {}).get(key) for key in summary_keys},
+        "reports": [
+            {key: value for key, value in item.items() if key != "processing"}
+            for item in payload.get("reports", [])
+        ],
+    }
+
+
+def write_retention_plan(payload):
+    previous = read_json(RETENTION_PLAN_PATH, None)
+    if isinstance(previous, dict) and retention_plan_content(previous) == retention_plan_content(payload):
+        return write_json(RETENTION_PLAN_PATH, previous)
+    return write_json(RETENTION_PLAN_PATH, payload)
 
 
 def write_report_definitions(now):
@@ -84,7 +125,7 @@ def write_report_definitions(now):
         "generated_at": now.isoformat(),
         "reports": REPORT_DEFINITIONS,
     }
-    write_json(REPORT_DEFINITIONS_PATH, payload)
+    write_json(REPORT_DEFINITIONS_PATH, preserve_generated_at_if_unchanged(REPORT_DEFINITIONS_PATH, payload))
     return REPORT_DEFINITIONS_PATH
 
 
@@ -575,7 +616,8 @@ def refresh_document_metadata(doc, source_map, now):
     source_path = doc.get("html_path", "")
     title = doc.get("title") or doc.get("category") or doc.get("slug") or ""
     content_hash = (doc.get("metadata") or {}).get("hash_conteudo") or ""
-    doc["metadata"] = metadata_for(
+    last_source_update = (doc.get("metadata") or {}).get("ultima_atualizacao")
+    metadata = metadata_for(
         doc.get("slug") or normalize_slug(Path(source_path).parent.name),
         title,
         report_date,
@@ -586,6 +628,9 @@ def refresh_document_metadata(doc, source_map, now):
         len(doc.get("rows") or []),
         len(doc.get("columns") or []),
     )
+    if last_source_update:
+        metadata["ultima_atualizacao"] = last_source_update
+    doc["metadata"] = metadata
     return doc
 
 
@@ -599,7 +644,9 @@ def cached_document(file_path, source_map, now, cache_index, stats):
         doc = read_json(snapshot_path, None)
         if doc:
             stats["cache_hits"] += 1
-            return annotate_metrics(refresh_document_metadata(doc, source_map, now)), content_hash
+            # A cached historical snapshot is immutable: its age and run timestamp
+            # must not be rewritten whenever another report is received.
+            return annotate_metrics(doc), content_hash
 
     if entry.get("content_hash") == content_hash and not snapshot_path.exists():
         stats["cache_misses_missing_snapshot"] += 1
@@ -911,10 +958,14 @@ def generate_data_files():
             latest_path = retained_paths[-1]["path"]
         latest_doc, latest_hash = cached_document(latest_path, source_map, now, new_cache_index, retention_summary)
         annotate_column_schema(latest_doc)
+        # Refresh current report freshness separately: never mutate the cached
+        # snapshot, even when it is also the latest source for this slug.
+        latest_report_doc = dict(latest_doc)
+        refresh_document_metadata(latest_report_doc, source_map, now)
         report_json_path = REPORTS_DIR / f"{slug}.json"
-        write_json(report_json_path, latest_doc)
+        write_json(report_json_path, latest_report_doc)
         json_files.append(rel_path(report_json_path))
-        search_documents.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_doc)})
+        search_documents.append({"slug": slug, "title": latest_report_doc["title"], "date": latest_report_doc["date"], "date_iso": latest_report_doc["date_iso"], "html_path": latest_report_doc["html_path"], "json_path": f"data/reports/{slug}.json", "text": build_search_text(latest_report_doc)})
         snapshots = []
         for item in retained_paths:
             path = item["path"]
@@ -927,23 +978,29 @@ def generate_data_files():
             snapshot_name = f"{doc['date_iso']}-{doc['metadata']['hash_conteudo'][:12]}.json"
             snapshot_path = SNAPSHOTS_DIR / slug / snapshot_name
             write_json(snapshot_path, doc)
-            new_cache_index[rel_path(path)] = {
+            source_key = rel_path(path)
+            cache_entry = {
                 "content_hash": content_hash,
                 "parser_version": PARSER_VERSION,
                 "snapshot_path": rel_path(snapshot_path),
                 "date_iso": doc["date_iso"],
                 "slug": slug,
-                "updated_at": now.isoformat(),
             }
+            previous_entry = new_cache_index.get(source_key) or {}
+            if all(previous_entry.get(key) == value for key, value in cache_entry.items()):
+                cache_entry["updated_at"] = previous_entry.get("updated_at") or now.isoformat()
+            else:
+                cache_entry["updated_at"] = now.isoformat()
+            new_cache_index[source_key] = cache_entry
             json_files.append(rel_path(snapshot_path))
             retention_summary["snapshots_written"] += 1
         series_path = SERIES_DIR / f"{slug}.json"
         series_document = build_series(slug, snapshots)
         write_json(series_path, series_document)
-        summary_reports[slug] = compact_report(latest_doc, series_document)
+        summary_reports[slug] = compact_report(latest_report_doc, series_document)
         json_files.append(rel_path(series_path))
         history_count += len(snapshots)
-        reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_doc["metadata"], "quality": latest_doc["quality"]})
+        reports.append({"slug": slug, "title": latest_doc["title"], "date": latest_doc["date"], "date_iso": latest_doc["date_iso"], "html_path": latest_doc["html_path"], "json_path": rel_path(report_json_path), "series_path": rel_path(series_path), "viewer_path": f"report-viewer.html?report={rel_path(report_json_path)}", "metadata": latest_report_doc["metadata"], "quality": latest_report_doc["quality"]})
         retention_item["processing"] = processing_delta(before_report, retention_summary, report_started)
         retention_items.append(retention_item)
     index_path = DATA_DIR / "index.json"
@@ -951,17 +1008,37 @@ def generate_data_files():
     cache_index_path = CACHE_INDEX_PATH
     retention_plan_path = RETENTION_PLAN_PATH
     report_definitions_path = write_report_definitions(now)
-    write_json(index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count})
-    write_json(search_index_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents})
-    write_json(DASHBOARD_SUMMARY_PATH, {
+    index_payload = {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "api": {"reports": "data/reports/<slug>.json", "snapshots": "data/snapshots/<slug>/<date>-<hash>.json", "series": "data/series/<slug>.json", "search": "data/search-index.json", "definitions": "data/report-definitions.json"}, "reports": reports, "history_count": history_count}
+    summary_payload = {
         "schema_version": SCHEMA_VERSION,
         "summary_version": SUMMARY_VERSION,
         "generated_at": now.isoformat(),
         "reports": summary_reports,
-    })
+    }
+    # Dashboard summary must share the exact version with the index. A no-op
+    # rebuild keeps both old timestamps; a real content change advances both.
+    old_index = read_json(index_path, {})
+    old_summary = read_json(DASHBOARD_SUMMARY_PATH, {})
+    stable_index = preserve_generated_at_if_unchanged(index_path, index_payload)
+    stable_summary = preserve_generated_at_if_unchanged(DASHBOARD_SUMMARY_PATH, summary_payload)
+    if (isinstance(old_index, dict) and isinstance(old_summary, dict)
+            and stable_index.get("generated_at") == old_index.get("generated_at")
+            and stable_summary.get("generated_at") == old_summary.get("generated_at")
+            and old_index.get("generated_at") == old_summary.get("generated_at")
+            and stable_index == old_index and stable_summary == old_summary):
+        published_at = old_index["generated_at"]
+    else:
+        published_at = now.isoformat()
+    index_payload["generated_at"] = published_at
+    summary_payload["generated_at"] = published_at
+    write_json(index_path, index_payload)
+    write_json(search_index_path, preserve_generated_at_if_unchanged(search_index_path, {
+        "schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "documents": search_documents,
+    }))
+    write_json(DASHBOARD_SUMMARY_PATH, summary_payload)
     write_json(cache_index_path, new_cache_index)
     retention_summary["duration_seconds"] = elapsed_seconds(generation_started)
-    write_json(retention_plan_path, {"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": retention_policy(), "summary": retention_summary, "reports": retention_items})
+    write_retention_plan({"schema_version": SCHEMA_VERSION, "generated_at": now.isoformat(), "policy": retention_policy(), "summary": retention_summary, "reports": retention_items})
     json_files.extend([rel_path(index_path), rel_path(search_index_path), rel_path(DASHBOARD_SUMMARY_PATH), rel_path(cache_index_path), rel_path(retention_plan_path), rel_path(report_definitions_path)])
     print(f"API estatica atualizada: {len(reports)} relatorios, {history_count} versoes historicas preservadas.")
     print(f"Retencao: {retention_summary['retained_files']} preservados, {retention_summary['ignored_by_retention']} ignorados; cache: {retention_summary['cache_hits']} reaproveitados, {retention_summary['processed_files']} processados.")
