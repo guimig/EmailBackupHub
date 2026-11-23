@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def parsed(filename):
     soup = BeautifulSoup((ROOT / filename).read_text(encoding="utf-8"), "html.parser")
-    grid, depth = pick_table(soup)
+    grid, depth = pick_table(soup, include_header_depth=True)
     columns, rows, totals, types, issues = normalize_table(grid, depth)
     return depth, columns, rows, totals, types, issues
 
@@ -60,7 +60,7 @@ class StructuralHeaderTests(unittest.TestCase):
           <td rowspan="2">OUTRAS DESPESAS CORRENTES</td><td>20,00</td></tr>
         <tr><td>30,00</td></tr><tr><td>Total</td><td colspan="2"></td>
         <td>50,00</td></tr></table>"""
-        grid, depth = pick_table(BeautifulSoup(html, "html.parser"))
+        grid, depth = pick_table(BeautifulSoup(html, "html.parser"), include_header_depth=True)
         columns, rows, totals, _, issues = normalize_table(grid, depth)
         self.assertEqual(depth, 1)
         self.assertEqual(columns, ["Ação Governo", "Grupo Despesa", "Grupo Despesa (2)", "Saldo R$"])
