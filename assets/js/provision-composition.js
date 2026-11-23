@@ -185,82 +185,80 @@
     notation: 'compact', maximumFractionDigits: 1
   });
 
-  // A linha une categorias na ordem da fonte; os pontos não são uma série histórica.
+  // Barras horizontais tornam comparáveis ações categóricas, sem sugerir série temporal.
   function renderActions(container, model, detail) {
     if (!container) return;
     if (!model?.ok) {
       container.innerHTML = '<p class="chart-empty" role="status">Gráfico por ação indisponível: '
         + escapeHtml(model?.reason || 'dados não carregados') + '</p>';
+      container.provisionActionSelected = null;
       if (detail) { detail.hidden = true; detail.textContent = ''; }
       return;
     }
-    const actions = model.actions;
-    const values = actions.map(item => item.value);
-    const rawMin = Math.min(0, ...values);
-    const rawMax = Math.max(0, ...values);
-    const step = niceAxisStep(Math.max((rawMax - rawMin) / 4, 1));
-    let min = Math.floor(rawMin / step) * step;
-    let max = Math.ceil(rawMax / step) * step;
-    if (max <= min) max = min + step;
-    const plot = { x: 92, y: 24, width: 858, height: 234 };
-    const xAt = index => actions.length === 1 ? plot.x + plot.width / 2
-      : plot.x + index * plot.width / (actions.length - 1);
-    const yAt = value => plot.y + (max - value) / (max - min) * plot.height;
-    const ticks = [];
-    for (let v = min, i = 0; v <= max + step / 100 && i < 12; v += step, i++) {
-      const y = yAt(v);
-      ticks.push('<line class="provision-action-grid" x1="' + plot.x
-        + '" x2="' + (plot.x + plot.width) + '" y1="' + y
-        + '" y2="' + y + '"></line><text class="provision-action-tick" x="82" y="'
-        + (y + 5) + '" text-anchor="end">' + escapeHtml(axisMoney(v)) + '</text>');
-    }
-    const points = actions.map((item, i) => ({ ...item, x: xAt(i), y: yAt(item.value), i }));
-    const polyline = points.map(p => p.x.toFixed(2) + ',' + p.y.toFixed(2)).join(' ');
-    const xTicks = points.map(p => '<text class="provision-action-tick" x="' + p.x
-      + '" y="290" text-anchor="middle">A' + (p.i + 1) + '</text>').join('');
-    const pointButtons = points.map(p => {
-      const label = 'A' + (p.i + 1) + ' · ' + p.label + ': ' + currency.format(p.value)
-        + ' (' + percent.format(p.share * 100) + '% do total). Selecione para detalhar.';
-      return '<button type="button" class="provision-action-point" data-provision-action="'
-        + p.i + '" aria-pressed="false" aria-label="' + escapeHtml(label)
-        + '" title="' + escapeHtml(label) + '" style="left:' + (p.x / 1000 * 100).toFixed(4)
-        + '%;top:' + (p.y / 320 * 100).toFixed(4) + '%"></button>';
+    // Ordem decrescente, sem alterar o modelo auditado ou a ordem no relatório original.
+    const actions = model.actions.map((action, originalIndex) => ({ ...action, originalIndex }))
+      .sort((a, b) => b.value - a.value || a.originalIndex - b.originalIndex);
+    const values = actions.map(action => action.value);
+    const minValue = Math.min(0, ...values);
+    const maxValue = Math.max(0, ...values);
+    const step = niceAxisStep(Math.max((maxValue - minValue) / 4, 1));
+    const axisMin = Math.floor(minValue / step) * step;
+    let axisMax = Math.ceil(maxValue / step) * step;
+    if (axisMax <= axisMin) axisMax = axisMin + step;
+    const range = axisMax - axisMin;
+    const percentAt = value => (value - axisMin) / range * 100;
+    const zero = percentAt(0);
+    const tickPositions = [0, 1, 2, 3, 4].map(i => ({
+      position: i * 25, value: axisMin + range * i / 4
+    }));
+    const ticks = tickPositions.map(tick =>
+      '<span class="provision-action-axis-tick" style="left:'
+        + tick.position + '%" title="' + escapeHtml(currency.format(tick.value))
+        + '">' + escapeHtml(axisMoney(tick.value)) + '</span>'
+    ).join('');
+    const rows = actions.map((action, index) => {
+      const end = percentAt(action.value);
+      const start = Math.min(zero, end);
+      const width = Math.abs(end - zero);
+      const selectedText = action.label + ': ' + currency.format(action.value)
+        + ' (' + percent.format(action.share * 100)
+        + '% do total provisionado). Clique para detalhar.';
+      const vars = '--provision-zero:' + zero.toFixed(4) + '%;--provision-bar-start:'
+        + start.toFixed(4) + '%;--provision-bar-width:' + width.toFixed(4) + '%';
+      return '<button type="button" class="provision-action-row" data-provision-action="'
+        + index + '" aria-pressed="false" aria-label="' + escapeHtml(selectedText)
+        + '" title="' + escapeHtml(selectedText) + '">'
+        + '<span class="provision-action-name">' + escapeHtml(action.label) + '</span>'
+        + '<span class="provision-action-track" style="' + vars + '" aria-hidden="true">'
+        + '<span class="provision-action-baseline"></span>'
+        + '<span class="provision-action-fill'
+        + (action.value < 0 ? ' provision-action-fill--negative' : '')
+        + (action.value === 0 ? ' provision-action-fill--zero' : '')
+        + '"></span></span>'
+        + '<span class="provision-action-values"><strong>'
+        + escapeHtml(currency.format(action.value)) + '</strong>'
+        + '<small>' + percent.format(action.share * 100) + '% do total</small></span></button>';
     }).join('');
-    const categories = points.map(p => {
-      const label = 'A' + (p.i + 1) + '. ' + p.label + ': '
-        + currency.format(p.value) + ', ' + percent.format(p.share * 100) + '% do total.';
-      return '<button type="button" class="provision-action-item" data-provision-action="'
-        + p.i + '" aria-pressed="false" aria-label="' + escapeHtml(label)
-        + '" title="' + escapeHtml(label) + '"><span class="provision-action-key">A'
-        + (p.i + 1) + '</span><span class="provision-action-copy">'
-        + '<span>' + escapeHtml(p.label) + '</span><strong>'
-        + escapeHtml(currency.format(p.value)) + '</strong></span><span class="provision-action-share">'
-        + percent.format(p.share * 100) + '%</span></button>';
-    }).join('');
-
-    container.innerHTML = '<div class="provision-actions-scroll" tabindex="0"'
-      + ' aria-label="Gráfico de linha de provisionamentos por ação; role horizontalmente se necessário">'
-      + '<div class="provision-actions-plot"><svg class="provision-actions-svg" viewBox="0 0 1000 320"'
-      + ' preserveAspectRatio="none" aria-hidden="true">'
-      + ticks.join('') + '<polyline class="provision-action-line" points="' + polyline
-      + '"></polyline>' + points.map(p => '<circle class="provision-action-dot" cx="'
-        + p.x + '" cy="' + p.y + '" r="6"></circle>').join('')
-      + xTicks + '</svg>' + pointButtons + '</div></div>'
-      + '<p class="provision-composition-note">Valores em R$ · A1–A'
-      + actions.length + ' identificam ações, não períodos. A linha não representa tendência temporal.'
+    container.innerHTML = '<div class="provision-actions-chart" role="group"'
+      + ' aria-label="Barras horizontais de provisionamentos por Ação Governo">'
+      + '<div class="provision-actions-axis" aria-hidden="true">'
+      + '<span>Ação Governo</span><div class="provision-action-axis-track">'
+      + ticks + '</div><span>Valor provisionado</span></div>'
+      + '<div class="provision-actions-bars">' + rows + '</div></div>'
+      + '<p class="provision-composition-note">Ações em ordem decrescente de valor líquido.'
+      + ' Escala horizontal em reais; os nomes seguem o relatório de origem.'
       + ' Total conciliado: <strong>' + escapeHtml(currency.format(model.total))
-      + '</strong> · ' + escapeHtml(model.date) + '.</p>'
-      + '<div class="provision-actions-list" role="group" aria-label="Detalhar os valores por Ação Governo">'
-      + categories + '</div>';
+      + '</strong> · ' + escapeHtml(model.date) + '.</p>';
 
-    // Mantém a seleção por cartão após redesenhos (ex.: troca de tema).
-    container.provisionActionsModel = model;
+    // O índice acompanha a ordenação visual, sem modificar a lista auditada.
+    container.provisionActionsModel = { ...model, actions };
     container.provisionActionsDetail = detail;
     const sync = () => {
       const current = Number.isInteger(container.provisionActionSelected)
-        ? model.actions[container.provisionActionSelected] : null;
+        ? container.provisionActionsModel.actions[container.provisionActionSelected] : null;
       for (const button of container.querySelectorAll('[data-provision-action]')) {
-        const active = Boolean(current && Number(button.dataset.provisionAction) === container.provisionActionSelected);
+        const active = Boolean(current
+          && Number(button.dataset.provisionAction) === container.provisionActionSelected);
         button.setAttribute('aria-pressed', String(active));
         button.classList.toggle('is-selected', active);
       }
