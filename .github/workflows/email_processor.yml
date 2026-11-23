@@ -4,13 +4,6 @@ on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
-  # Regenerate static JSONs as soon as a reviewed parser fix reaches main,
-  # rather than waiting for the next hourly schedule.
-  push:
-    branches:
-      - main
-    paths:
-      - 'data_generator.py'
 
 permissions:
   contents: write
