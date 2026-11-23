@@ -90,5 +90,6 @@ jobs:
           git commit -m "Prune verified historical HTML and empty JSON run ${RUN_ID}"
           git push origin "$branch"
           if ! gh pr create --base main --head "$branch" --title "Review automated HTML/JSON retention cleanup ${RUN_ID}" --body "Automated candidate selection, SHA-256 manifest and isolated deletions. Requires manual review and merge. See workflow run ${RUN_ID}."; then
-            echo "::warning::GitHub Actions cannot create PR. Branch $branch is available; open PR manually or enable Actions pull request creation in repository settings."
+            echo "::error::Failed to open review PR for $branch. Cleanup was NOT published to main. Check the repository setting 'Allow GitHub Actions to create and approve pull requests'."
+            exit 1
           fi
