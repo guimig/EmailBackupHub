@@ -31,6 +31,16 @@ def get_generated_paths():
     return paths
 
 
+def has_generated_changes():
+    """Stage generated files to compare their exact bytes with the last commit."""
+    repo = check_git_repo()
+    paths = get_generated_paths()
+    if not paths:
+        return False
+    repo.git.add(*paths)
+    return bool(repo.git.diff("--cached", "--name-only").strip())
+
+
 def commit_changes():
     repo = check_git_repo()
     with repo.config_writer() as cfg:
