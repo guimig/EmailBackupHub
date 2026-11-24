@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-23T10:52:26.938572-03:00",
+  "generated_at": "2026-11-23T22:24:06.591915-03:00",
   "api": {
     "reports": "data/reports/<slug>.json",
     "snapshots": "data/snapshots/<slug>/<date>-<hash>.json",
@@ -666,5 +666,5 @@
       }
     }
   ],
-  "history_count": 1118
+  "history_count": 1102
 }
