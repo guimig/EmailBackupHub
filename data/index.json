@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-23T22:24:06.591915-03:00",
+  "generated_at": "2026-11-24T08:52:59.680898-03:00",
   "api": {
     "reports": "data/reports/<slug>.json",
     "snapshots": "data/snapshots/<slug>/<date>-<hash>.json",
@@ -20,7 +20,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 151,
+        "idade_dias": 152,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": null,
@@ -50,7 +50,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 151,
+        "idade_dias": 152,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -72,23 +72,23 @@
     {
       "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
       "title": "Liquidações e Pagamentos por Data",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_24-11-2026.html",
       "json_path": "data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "series_path": "data/series/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7472",
+        "fonte_email_uid": "7485",
         "hash_conteudo": "8baa9572c24a0776928828776389c90df7976db4c6679b3902dc7d2454056f42",
         "row_count": 3213,
         "column_count": 17,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -109,7 +109,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 23,
+        "idade_dias": 24,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7322",
@@ -117,7 +117,7 @@
         "row_count": 2908,
         "column_count": 17,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -131,23 +131,23 @@
     {
       "slug": "credito-disponivel-mes-lancamento",
       "title": "Crédito Disponível por Mês de Lançamento",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_24-11-2026.html",
       "json_path": "data/reports/credito-disponivel-mes-lancamento.json",
       "series_path": "data/series/credito-disponivel-mes-lancamento.json",
       "viewer_path": "report-viewer.html?report=data/reports/credito-disponivel-mes-lancamento.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7464",
+        "fonte_email_uid": "7476",
         "hash_conteudo": "3e0252e6a17aa373344dd9272f41c3fe66d1077bc779dfb4ae2aa34a61a638c4",
         "row_count": 11,
         "column_count": 11,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -169,7 +169,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2024.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 46,
+        "idade_dias": 47,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": "7051",
@@ -199,7 +199,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2025.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 53,
+        "idade_dias": 54,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": "6965",
@@ -221,23 +221,23 @@
     {
       "slug": "despesas-empenhadas-liquidadas-e-pagas-mes-lancamento",
       "title": "Despesas Empenhadas, Liquidadas e Pagas por Mês",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento_24-11-2026.html",
       "json_path": "data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "series_path": "data/series/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7465",
-        "hash_conteudo": "bace09a74b1c428c5ba314cdba9f52f35f255971a36cf3f5b2672d75b40c2aee",
+        "fonte_email_uid": "7478",
+        "hash_conteudo": "8081dc5715324eb64055be215947a6a77c3810885b3104fe119b72c9c7c242b3",
         "row_count": 339,
         "column_count": 9,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -259,7 +259,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 327,
+        "idade_dias": 328,
         "periodicidade": "mensal",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -281,23 +281,23 @@
     {
       "slug": "evolucao-das-despesas-empenhadas",
       "title": "Evolução das Despesas Empenhadas",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/evolucao-das-despesas-empenhadas/evolucao-das-despesas-empenhadas_24-11-2026.html",
       "json_path": "data/reports/evolucao-das-despesas-empenhadas.json",
       "series_path": "data/series/evolucao-das-despesas-empenhadas.json",
       "viewer_path": "report-viewer.html?report=data/reports/evolucao-das-despesas-empenhadas.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7471",
+        "fonte_email_uid": "7484",
         "hash_conteudo": "c3d6eb8a13d0db523aae23295ca4f9817287d97f52d87e564f1ec063e62bc69e",
         "row_count": 159,
         "column_count": 33,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -319,7 +319,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/imoveis-por-ug-conta-contabil-e-rip.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 53,
+        "idade_dias": 54,
         "periodicidade": "mensal",
         "exercicio": 2026,
         "fonte_email_uid": "6964",
@@ -340,23 +340,23 @@
     {
       "slug": "limite-de-saque-conta-contabil",
       "title": "Limite de Saque por Conta Contábil",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_24-11-2026.html",
       "json_path": "data/reports/limite-de-saque-conta-contabil.json",
       "series_path": "data/series/limite-de-saque-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/limite-de-saque-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7463",
-        "hash_conteudo": "247461a141e8ced9e2856953e5ee2e37278ef99eb3036f2f7597bf24f783d342",
+        "fonte_email_uid": "7474",
+        "hash_conteudo": "474c799477e985c17c1f1a64a2765855a33d2a26859ac70edb1bd378b15e8f64",
         "row_count": 9,
         "column_count": 9,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -369,23 +369,23 @@
     {
       "slug": "provisionamentos",
       "title": "Provisionamentos",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/provisionamentos/provisionamentos_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/provisionamentos/provisionamentos_24-11-2026.html",
       "json_path": "data/reports/provisionamentos.json",
       "series_path": "data/series/provisionamentos.json",
       "viewer_path": "report-viewer.html?report=data/reports/provisionamentos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7466",
+        "fonte_email_uid": "7479",
         "hash_conteudo": "4a56212b0ebc03a5c237beb3386f5d5a354193a10b5df1ea00538265d52ada8c",
         "row_count": 56,
         "column_count": 9,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -399,23 +399,23 @@
     {
       "slug": "recolhimento-proprio-gru",
       "title": "Recolhimento Próprio - GRU",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_24-11-2026.html",
       "json_path": "data/reports/recolhimento-proprio-gru.json",
       "series_path": "data/series/recolhimento-proprio-gru.json",
       "viewer_path": "report-viewer.html?report=data/reports/recolhimento-proprio-gru.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7469",
-        "hash_conteudo": "077db511db278e085bc9d829150da4aba189d87957f5b8a9e46ce29bc16e9d15",
-        "row_count": 247,
+        "fonte_email_uid": "7483",
+        "hash_conteudo": "249e6409c1c03bf78826f76f89a63c2624122381c89373fb9fedfff13d482d94",
+        "row_count": 248,
         "column_count": 7,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -429,23 +429,23 @@
     {
       "slug": "restos-a-pagar-rap",
       "title": "Restos a Pagar - RAP",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/restos-a-pagar-rap/restos-a-pagar-rap_24-11-2026.html",
       "json_path": "data/reports/restos-a-pagar-rap.json",
       "series_path": "data/series/restos-a-pagar-rap.json",
       "viewer_path": "report-viewer.html?report=data/reports/restos-a-pagar-rap.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7468",
+        "fonte_email_uid": "7480",
         "hash_conteudo": "df3c42426c13a1484d3e47bfe4e08ab4021eec160098a3cfa78046e0d63bf481",
         "row_count": 185,
         "column_count": 12,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -459,23 +459,23 @@
     {
       "slug": "saldo-de-empenhos-a-liquidar-mes-a-mes",
       "title": "Saldo de Empenhos a Liquidar Mês a Mês",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/saldo-de-empenhos-a-liquidar-mes-a-mes/saldo-de-empenhos-a-liquidar-mes-a-mes_24-11-2026.html",
       "json_path": "data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "series_path": "data/series/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7470",
+        "fonte_email_uid": "7482",
         "hash_conteudo": "54d3d5a8b6a1c149c4548da2440e96b24eca33fa25a5c74117be48c833be947c",
         "row_count": 317,
         "column_count": 21,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -489,23 +489,23 @@
     {
       "slug": "saldo-patrimonio-e-almoxarifado-conta-contabil",
       "title": "Saldo de Patrimônio e Almoxarifado por Conta Contábil",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/saldo-patrimonio-e-almoxarifado-conta-contabil/saldo-patrimonio-e-almoxarifado-conta-contabil_24-11-2026.html",
       "json_path": "data/reports/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "series_path": "data/series/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7462",
-        "hash_conteudo": "08a28d510ea8efd54c8928a66da5e7ad8bbab56397f80cce7ce2b7dcd6dfc53b",
+        "fonte_email_uid": "7475",
+        "hash_conteudo": "e6300272b5650c7ffe0790e77afc258f702ce3d97b028c3ee138fe82f0fa2fb9",
         "row_count": 28,
         "column_count": 18,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -526,7 +526,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldo-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 23,
+        "idade_dias": 24,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7313",
@@ -534,7 +534,7 @@
         "row_count": 77,
         "column_count": 12,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -548,23 +548,23 @@
     {
       "slug": "saldos-de-contas-de-contratos",
       "title": "Saldos de Contas de Contratos",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/saldos-de-contas-de-contratos/saldos-de-contas-de-contratos_24-11-2026.html",
       "json_path": "data/reports/saldos-de-contas-de-contratos.json",
       "series_path": "data/series/saldos-de-contas-de-contratos.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-contas-de-contratos.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7461",
+        "fonte_email_uid": "7477",
         "hash_conteudo": "4221da56cfae862ac71015793a6af23677b32212b7ebc3e938d64ebb2171761f",
         "row_count": 29,
         "column_count": 17,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -578,23 +578,23 @@
     {
       "slug": "saldos-de-empenhos-do-exercicio-conta-contabil",
       "title": "Saldos de Empenhos do Exercício por Conta Contábil",
-      "date": "20/11/2026",
-      "date_iso": "2026-11-20",
-      "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_20-11-2026.html",
+      "date": "24/11/2026",
+      "date_iso": "2026-11-24",
+      "html_path": "emails/saldos-de-empenhos-do-exercicio-conta-contabil/saldos-de-empenhos-do-exercicio-conta-contabil_24-11-2026.html",
       "json_path": "data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "series_path": "data/series/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "metadata": {
-        "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 3,
+        "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+        "idade_dias": 0,
         "periodicidade": "diaria",
         "exercicio": 2026,
-        "fonte_email_uid": "7467",
-        "hash_conteudo": "b3eaf50149d5c5cc9d15439a5ea0db4b313359c666da7619b946ecc20a2b2cc2",
+        "fonte_email_uid": "7481",
+        "hash_conteudo": "c14aca98df318cfe3b3f48325b6fb471b125adc606146e2685630d9bb2b80e75",
         "row_count": 339,
         "column_count": 10,
-        "status": "desatualizado",
-        "limite_dias": 2
+        "status": "atualizado",
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -616,7 +616,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-empenhos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 23,
+        "idade_dias": 24,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7320",
@@ -624,7 +624,7 @@
         "row_count": 79,
         "column_count": 11,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -646,7 +646,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-liquidacoes-e-pagamentos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 23,
+        "idade_dias": 24,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7321",
@@ -654,7 +654,7 @@
         "row_count": 65,
         "column_count": 11,
         "status": "desatualizado",
-        "limite_dias": 2
+        "limite_dias": 1
       },
       "quality": {
         "ok": true,
@@ -666,5 +666,5 @@
       }
     }
   ],
-  "history_count": 1102
+  "history_count": 1114
 }

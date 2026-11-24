@@ -3,9 +3,9 @@
   "parser_version": "2026-11-23.1",
   "slug": "recolhimento-proprio-gru",
   "title": "Recolhimento Próprio - GRU",
-  "date": "20/11/2026",
-  "date_iso": "2026-11-20",
-  "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_20-11-2026.html",
+  "date": "24/11/2026",
+  "date_iso": "2026-11-24",
+  "html_path": "emails/recolhimento-proprio-gru/recolhimento-proprio-gru_24-11-2026.html",
   "category": "Recolhimento Próprio - GRU",
   "columns": [
     "Cód. Recolhimento GRU",
@@ -664,6 +664,15 @@
       "Recolhedor Doc.": "-8",
       "Conta Contábil / Doc - Valor": "2407,52",
       "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "2.407,52"
+    },
+    {
+      "Cód. Recolhimento GRU": "28812",
+      "Cód. Recolhimento GRU (2)": "RECEITA DA PRODUCAO ANIMAL E DERIVADOS",
+      "Emissão - Mês": "NOV/2026",
+      "Emissão - Dia": "19/11/2026",
+      "Recolhedor Doc.": "PF",
+      "Conta Contábil / Doc - Valor": "4830,2",
+      "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "4.830,20"
     },
     {
       "Cód. Recolhimento GRU": "28830",
@@ -2662,7 +2671,7 @@
       "label": "28812",
       "values": {
         "Cód. Recolhimento GRU": 28812.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 10518.7
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 15348.9
       },
       "raw": {
         "Cód. Recolhimento GRU": "28812",
@@ -2671,14 +2680,14 @@
         "Emissão - Dia": "Total",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "10.518,70"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "15.348,90"
       }
     },
     {
       "label": "28812",
       "values": {
         "Cód. Recolhimento GRU": 28812.0,
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 126034.48
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 130864.68
       },
       "raw": {
         "Cód. Recolhimento GRU": "28812",
@@ -2687,7 +2696,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "126.034,48"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "130.864,68"
       }
     },
     {
@@ -3253,7 +3262,7 @@
     {
       "label": "Total",
       "values": {
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 258660.26
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": 263490.46
       },
       "raw": {
         "Cód. Recolhimento GRU": "Total",
@@ -3262,7 +3271,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "258.660,26"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "263.490,46"
       }
     }
   ],
@@ -4444,6 +4453,18 @@
       }
     },
     {
+      "type": "data",
+      "raw": {
+        "Cód. Recolhimento GRU": "28812",
+        "Cód. Recolhimento GRU (2)": "RECEITA DA PRODUCAO ANIMAL E DERIVADOS",
+        "Emissão - Mês": "NOV/2026",
+        "Emissão - Dia": "19/11/2026",
+        "Recolhedor Doc.": "PF",
+        "Conta Contábil / Doc - Valor": "4830,2",
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "4.830,20"
+      }
+    },
+    {
       "type": "total",
       "raw": {
         "Cód. Recolhimento GRU": "28812",
@@ -4452,7 +4473,7 @@
         "Emissão - Dia": "Total",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "10.518,70"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "15.348,90"
       }
     },
     {
@@ -4464,7 +4485,7 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "126.034,48"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "130.864,68"
       }
     },
     {
@@ -6996,21 +7017,21 @@
         "Emissão - Dia": "",
         "Recolhedor Doc.": "",
         "Conta Contábil / Doc - Valor": "",
-        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "258.660,26"
+        "724210100 / = ARRECADACAO LIQUIDA POR COD DE RECOLHIMENTO / Movim. Líquido - R$ (Item Informação)": "263.490,46"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-    "idade_dias": 3,
+    "ultima_atualizacao": "2026-11-24T08:52:59.680898-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7469",
-    "hash_conteudo": "077db511db278e085bc9d829150da4aba189d87957f5b8a9e46ce29bc16e9d15",
-    "row_count": 247,
+    "fonte_email_uid": "7483",
+    "hash_conteudo": "249e6409c1c03bf78826f76f89a63c2624122381c89373fb9fedfff13d482d94",
+    "row_count": 248,
     "column_count": 7,
-    "status": "desatualizado",
-    "limite_dias": 2
+    "status": "atualizado",
+    "limite_dias": 1
   },
   "quality": {
     "ok": true,
@@ -7021,7 +7042,7 @@
     ]
   },
   "metrics": {
-    "gru_arrecadada": 258660.26
+    "gru_arrecadada": 263490.46
   },
   "metrics_meta": {
     "gru_arrecadada": {
@@ -7038,8 +7059,8 @@
       "filter_kind": "numeric_range",
       "confidence": "medium",
       "inferred_from": "values",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
       "distinct_samples": 8,
       "valid_ratio": 1.0,
@@ -7051,8 +7072,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
       "distinct_samples": 8,
       "valid_ratio": 1.0,
@@ -7064,8 +7085,8 @@
       "filter_kind": "period",
       "confidence": "high",
       "inferred_from": "header_and_values",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
       "distinct_samples": 11,
       "valid_ratio": 1.0,
@@ -7077,10 +7098,10 @@
       "filter_kind": "date_range",
       "confidence": "medium",
       "inferred_from": "values",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
-      "distinct_samples": 159,
+      "distinct_samples": 160,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -7090,8 +7111,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
       "distinct_samples": 3,
       "valid_ratio": 1.0,
@@ -7103,10 +7124,10 @@
       "filter_kind": "numeric_range",
       "confidence": "high",
       "inferred_from": "header_and_values",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
-      "distinct_samples": 132,
+      "distinct_samples": 133,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -7116,10 +7137,10 @@
       "filter_kind": "numeric_range",
       "confidence": "high",
       "inferred_from": "header_and_values",
-      "sampled_rows": 247,
-      "nonempty_samples": 247,
+      "sampled_rows": 248,
+      "nonempty_samples": 248,
       "missing_samples": 0,
-      "distinct_samples": 133,
+      "distinct_samples": 134,
       "valid_ratio": 1.0,
       "aggregation": "none"
     }
