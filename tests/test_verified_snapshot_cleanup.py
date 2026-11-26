@@ -44,6 +44,17 @@ class VerifiedSnapshotCleanupTests(unittest.TestCase):
     def test_recent_snapshot_is_protected(self):
         self.assertEqual(cleanup.eligible(self.file, dt.date(2025, 9, 1), set(), self.root)[1], "recent")
 
+    def test_respects_weekly_retention_boundary(self):
+        boundary = self.day + dt.timedelta(days=cleanup.MIN_AGE_DAYS)
+        self.assertEqual(cleanup.eligible(self.file, boundary, set(), self.root)[1], "recent")
+        self.assertTrue(cleanup.eligible(self.file, boundary + dt.timedelta(days=1), set(), self.root)[0])
+
+    def test_empty_table_with_derived_financial_data_is_protected(self):
+        self.doc["metrics"] = {"saldo": 0}
+        self.file.write_text(json.dumps(self.doc), encoding="utf-8")
+        now = self.day + dt.timedelta(days=cleanup.MIN_AGE_DAYS + 1)
+        self.assertEqual(cleanup.eligible(self.file, now, set(), self.root)[1], "contains_derived_data")
+
     def test_modified_snapshot_cannot_be_deleted(self):
         with patch.object(audit, "ROOT", self.root), patch.object(audit, "SNAPSHOTS", self.root / "data" / "snapshots"), patch.object(audit, "protected_snapshot_paths", return_value=set()):
             item = {"path": self.file.relative_to(self.root).as_posix(), "sha256": "0" * 64}

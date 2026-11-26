@@ -39,7 +39,9 @@ O formato e a data do arquivo **não garantem** equivalência de conteúdo. A se
 
 A exclusão de HTMLs segue desativada em `config.py`: `RETENTION_DRY_RUN=true` e `RETENTION_APPLY_HTML_CLEANUP=false`.
 
-A auditoria de snapshots é exclusivamente de leitura e **não oferece** opção de exclusão. Nenhuma remoção pode ser inferida automaticamente de uma lista de candidatos. Qualquer descarte requer processo separado com backup, validação e manifesto de reversão.
+A auditoria de snapshots é somente leitura. A revisão programada usa um manifesto separado para selecionar até 5.000 JSONs legados vazios por lote. A idade mínima corresponde à janela da retenção semanal, de 180 dias na configuração padrão. A seleção exige o marcador `light_snapshot`, a ausência de tabelas e métricas e a conferência da data e do hash. O cache, o índice, as séries publicadas e a virada de exercício protegem os arquivos associados.
+
+A revisão de HTMLs seleciona até 500 arquivos por lote, preservando o índice público e as fontes dos snapshots protegidos. Os workflows guardam os manifestos com SHA-256 e preparam as remoções em uma branch para revisão. A rotina horária de coleta mantém a simulação da limpeza.
 
 ## Checklist para uma limpeza aprovada
 

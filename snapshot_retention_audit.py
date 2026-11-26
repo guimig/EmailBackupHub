@@ -57,6 +57,22 @@ def protected_snapshot_paths() -> set[str]:
             path = report.get(key)
             if isinstance(path, str) and path.startswith("data/snapshots/"):
                 protected.add(path)
+    for path in sorted((ROOT / "data" / "series").glob("*.json")):
+        series = read_json(path, {})
+        if not isinstance(series, dict) or not isinstance(series.get("series"), list):
+            raise ValueError(f"Invalid published series: {path.name}")
+        for point in series["series"]:
+            if not isinstance(point, dict):
+                raise ValueError(f"Invalid point in published series: {path.name}")
+            day = point.get("date_iso")
+            digest = point.get("hash_conteudo")
+            if isinstance(day, str) and isinstance(digest, str):
+                name = f"{day}-{digest[:12]}.json"
+                if DAY_PATTERN.fullmatch(name):
+                    candidate = f"data/snapshots/{path.stem}/{name}"
+                    # Older series can contain points without a stored snapshot.
+                    if (ROOT / candidate).is_file():
+                        protected.add(candidate)
     return protected
 
 

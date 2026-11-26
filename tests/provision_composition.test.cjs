@@ -3,6 +3,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { amountCents } = require('../assets/js/financial-chart-provenance');
 const { buildModel, render, buildActionsModel, renderActions } = require('../assets/js/provision-composition');
 
 const columns = [
@@ -157,7 +158,7 @@ test('ação governo: dados reais são conciliados com o total auditado', () => 
     Math.round(doc.metrics.provisionado*100));
 });
 
-test('relatório publicado mantém os 9 cabeçalhos limpos e as quatro movimentações do PNAE',()=>{
+test('relatório publicado mantém cabeçalhos limpos e concilia o detalhamento do PNAE',()=>{
   const file=path.join(__dirname,'..','data/reports/provisionamentos.json');
   if(!fs.existsSync(file)) return;
   const doc=JSON.parse(fs.readFileSync(file,'utf8'));
@@ -165,9 +166,18 @@ test('relatório publicado mantém os 9 cabeçalhos limpos e as quatro movimenta
     'Ação Governo','Grupo Despesa','Grupo Despesa (2)','PI','PI (2)',
     'NC','Doc - Observação','Transação - Mês','Saldo - Moeda Origem (Item Informação)'
   ]);
-  assert.equal(doc.rows.length,56);
-  assert.deepEqual(doc.rows.slice(0,4).map(r=>r['Saldo - Moeda Origem (Item Informação)']),
-    ['89.872,00','136.856,00','3.432,00','6.954,00']);
+  const [action] = doc.columns;
+  const amount = doc.columns.at(-1);
+  assert.ok(doc.rows.length > 0);
+  for (const subtotal of doc.totals.filter(item => item.label.includes('PNAE'))) {
+    const rows = doc.rows.filter(row => row[action] === subtotal.label);
+    const totalCents = rows.reduce((sum, row) => {
+      const cents = amountCents(row[amount]);
+      assert.notEqual(cents, null);
+      return sum + cents;
+    }, 0);
+    assert.equal(totalCents, amountCents(subtotal.values[amount]));
+  }
   assert.equal(doc.metadata.row_count,doc.rows.length);
   assert.ok(doc.column_schema.every((meta,index)=>meta.name===doc.columns[index]));
   assert.ok(buildModel(doc).ok);

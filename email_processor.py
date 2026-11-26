@@ -45,6 +45,8 @@ def process_emails(commit=True, return_details=False):
     for msg_data in emails:
         uid = msg_data.get("uid")
         try:
+            if msg_data.get("fetch_error"):
+                raise RuntimeError(msg_data["fetch_error"])
             msg = email.message_from_bytes(msg_data["raw"], policy=policy.default)
             detail = process_message(msg, uid, return_detail=True)
         except Exception as error:
@@ -58,7 +60,7 @@ def process_emails(commit=True, return_details=False):
                 "status": "failed",
                 "reason": str(error),
             }
-            print(f"Erro ao decodificar e-mail {uid}: {error}")
+            print(f"Erro ao obter ou decodificar e-mail {uid}: {error}")
 
         email_details.append(detail)
         if uid is not None and detail.get("status") in {"processed", "skipped"}:

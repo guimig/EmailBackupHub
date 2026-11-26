@@ -6,7 +6,6 @@ snapshots or the current public index. Never remove the last HTML of a report.
 from __future__ import annotations
 
 import argparse
-import datetime as dt
 import hashlib
 import json
 from pathlib import Path
@@ -28,7 +27,11 @@ def plan(limit: int = MAX_BATCH) -> dict:
     missing = [p for p in protected_snapshots if not (ROOT / p).is_file()]
     if missing:
         raise RuntimeError(f"Missing {len(missing)} referenced snapshots")
-    protected_html = set()
+    index = snapshots.read_json(ROOT / "data" / "index.json", {})
+    protected_html = {
+        report["html_path"] for report in index.get("reports", [])
+        if isinstance(report.get("html_path"), str)
+    }
     for rel in protected_snapshots:
         doc = json.loads((ROOT / rel).read_text(encoding="utf-8"))
         source = doc.get("html_path") if isinstance(doc, dict) else None

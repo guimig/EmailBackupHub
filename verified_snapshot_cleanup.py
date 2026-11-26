@@ -13,11 +13,16 @@ import re
 from pathlib import Path
 
 import snapshot_retention_audit as audit
+from config import RETENTION_WEEKLY_UNTIL_DAYS, TIMEZONE
 
 NAME = re.compile(r"^(\d{4}-\d{2}-\d{2})-([0-9a-f]{12})\.json$")
 DEFAULT_BATCH = 50
 MAX_BATCH = 5000
-MIN_AGE_DAYS = 365
+MIN_AGE_DAYS = RETENTION_WEEKLY_UNTIL_DAYS
+
+
+def today() -> dt.date:
+    return dt.datetime.now(TIMEZONE).date()
 
 
 def eligible(path: Path, now: dt.date, protected: set[str], root: Path) -> tuple[bool, str]:
@@ -33,7 +38,7 @@ def eligible(path: Path, now: dt.date, protected: set[str], root: Path) -> tuple
         if not match:
             return False, "unrecognized_name"
         day = dt.date.fromisoformat(match.group(1))
-        if (now - day).days < MIN_AGE_DAYS:
+        if (now - day).days <= MIN_AGE_DAYS:
             return False, "recent"
         if day.month == 12 and day.day >= 28 or day.month == 1 and day.day <= 7:
             return False, "year_boundary"
@@ -44,10 +49,15 @@ def eligible(path: Path, now: dt.date, protected: set[str], root: Path) -> tuple
         if doc.get("date_iso") != day.isoformat():
             return False, "date_mismatch"
         metadata = doc.get("metadata")
-        if not isinstance(metadata, dict) or metadata.get("hash_conteudo", "")[:12] != match.group(2):
+        content_hash = metadata.get("hash_conteudo") if isinstance(metadata, dict) else None
+        if not isinstance(content_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", content_hash) or not content_hash.startswith(match.group(2)):
             return False, "hash_mismatch"
         if doc.get("columns") != [] or doc.get("rows") != [] or doc.get("totals") != [] or doc.get("row_types") != []:
             return False, "contains_data"
+        if any(doc.get(key) not in (None, {}, []) for key in ("metrics", "metrics_meta", "column_schema")):
+            return False, "contains_derived_data"
+        if any(metadata.get(key, 0) != 0 for key in ("row_count", "column_count")):
+            return False, "nonzero_counts"
         quality = doc.get("quality")
         if not isinstance(quality, dict) or "light_snapshot" not in quality.get("issues", []):
             return False, "not_light_snapshot"
@@ -91,7 +101,7 @@ def execute(manifest: dict, root: Path) -> int:
     protected = audit.protected_snapshot_paths()
     if any(not (root / p).is_file() for p in protected):
         raise RuntimeError("Referenced snapshot missing; cleanup refused")
-    now = dt.date.today()
+    now = today()
     # Validate the complete batch before removing its first file.
     for item in manifest["selected"]:
         path = root / item["path"]
@@ -114,7 +124,7 @@ def main() -> int:
         parser.error(f"--limit must be 1..{MAX_BATCH}")
     if args.apply and args.confirm != "DELETE_VERIFIED_EMPTY_SNAPSHOTS":
         parser.error("--apply requires --confirm DELETE_VERIFIED_EMPTY_SNAPSHOTS")
-    result = plan(dt.date.today(), args.limit)
+    result = plan(today(), args.limit)
     output = Path(args.manifest)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
