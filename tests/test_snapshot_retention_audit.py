@@ -34,6 +34,21 @@ class SnapshotRetentionAuditTests(unittest.TestCase):
                 self.assertEqual(result["summary"]["protected_year_end"], 1)
                 self.assertTrue(all(p.exists() for p in (old, referenced, recent, year_end)))
 
+    def test_protects_snapshot_used_by_published_series(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            snapdir = root / "data" / "snapshots" / "example"
+            seriesdir = root / "data" / "series"
+            snapdir.mkdir(parents=True)
+            seriesdir.mkdir()
+            snapshot = snapdir / "2026-01-22-aaaaaaaaaaaa.json"
+            snapshot.write_text("{}", encoding="utf-8")
+            (seriesdir / "example.json").write_text(json.dumps({
+                "series": [{"date_iso": "2026-01-22", "hash_conteudo": "a" * 64}],
+            }), encoding="utf-8")
+            with patch.object(audit, "ROOT", root):
+                self.assertEqual(audit.protected_snapshot_paths(), {snapshot.relative_to(root).as_posix()})
+
     def test_missing_referenced_file_is_reported_without_deletion(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

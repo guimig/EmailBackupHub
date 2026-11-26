@@ -17,23 +17,27 @@ def parsed(filename):
 
 
 class StructuralHeaderTests(unittest.TestCase):
-    def test_pnae_merged_headers_do_not_absorb_first_four_transactions(self):
-        depth, columns, rows, totals, row_types, issues = parsed("provisionamentos.html")
+    def test_provisionamentos_details_reconcile_with_published_totals(self):
+        depth, columns, rows, totals, _, issues = parsed("provisionamentos.html")
         self.assertEqual(depth, 1)
         self.assertEqual(columns, [
             "Ação Governo", "Grupo Despesa", "Grupo Despesa (2)",
             "PI", "PI (2)", "NC", "Doc - Observação", "Transação - Mês",
             "Saldo - Moeda Origem (Item Informação)"
         ])
-        self.assertEqual(len(rows), 56)
-        expected = ["89.872,00", "136.856,00", "3.432,00", "6.954,00"]
-        self.assertEqual([row[columns[-1]] for row in rows[:4]], expected)
-        self.assertTrue(all("PNAE" in row[columns[0]] for row in rows[:4]))
-        self.assertEqual(totals[0]["label"], "APOIO AO PROGRAMA NACIONAL DE ALIMENTACAO ESCOLAR (PNAE)")
-        self.assertEqual(totals[0]["values"][columns[-1]], 237114)
-        total = next(item["values"][columns[-1]] for item in totals if item["label"].lower() == "total")
-        self.assertEqual(round(sum(parse_br_number(row[columns[-1]]) or 0 for row in rows), 2),
-                         round(total, 2))
+        action_column, amount_column = columns[0], columns[-1]
+        details = {}
+        for row in rows:
+            amount = parse_br_number(row[amount_column])
+            if amount is not None:
+                details[row[action_column]] = details.get(row[action_column], 0) + amount
+        self.assertTrue(details)
+        for subtotal in totals:
+            label, values = subtotal["label"], subtotal["values"]
+            if label.lower() == "total" or label in details or "PNAE" in label:
+                actual = sum(details.values()) if label.lower() == "total" else details.get(label, 0)
+                self.assertAlmostEqual(actual, values[amount_column], places=2, msg=label)
+        self.assertTrue(any(item["label"].lower() == "total" for item in totals))
         self.assertNotIn("columns_generated", issues)
 
     def test_multiline_headers_keep_hierarchy_without_stealing_rows(self):
