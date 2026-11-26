@@ -3,9 +3,9 @@
   "parser_version": "2026-11-23.1",
   "slug": "provisionamentos",
   "title": "Provisionamentos",
-  "date": "25/11/2026",
-  "date_iso": "2026-11-25",
-  "html_path": "emails/provisionamentos/provisionamentos_25-11-2026.html",
+  "date": "26/11/2026",
+  "date_iso": "2026-11-26",
+  "html_path": "emails/provisionamentos/provisionamentos_26-11-2026.html",
   "category": "Provisionamentos",
   "columns": [
     "Ação Governo",
@@ -634,6 +634,17 @@
       "Doc - Observação": "PROVISAO - CAPACITACAO, CONFORME SOLICITACAO VIA E-MAIL.",
       "Transação - Mês": "AGO/2026",
       "Saldo - Moeda Origem (Item Informação)": "6.487,80"
+    },
+    {
+      "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+      "Grupo Despesa": "3",
+      "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+      "PI": "-8",
+      "PI (2)": "SEM INFORMACAO",
+      "NC": "158125264222026NC000553",
+      "Doc - Observação": "PROVISAO DE ORCAMENTO RESTANTE DE CAPACITACAO, CONFORME SOLICITACAO DO CAMPUS VIA E-MAIL.",
+      "Transação - Mês": "NOV/2026",
+      "Saldo - Moeda Origem (Item Informação)": "2.600,06"
     }
   ],
   "totals": [
@@ -759,7 +770,7 @@
     {
       "label": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
       "values": {
-        "Saldo - Moeda Origem (Item Informação)": 41487.8
+        "Saldo - Moeda Origem (Item Informação)": 44087.86
       },
       "raw": {
         "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
@@ -770,13 +781,13 @@
         "NC": "",
         "Doc - Observação": "",
         "Transação - Mês": "",
-        "Saldo - Moeda Origem (Item Informação)": "41.487,80"
+        "Saldo - Moeda Origem (Item Informação)": "44.087,86"
       }
     },
     {
       "label": "Total",
       "values": {
-        "Saldo - Moeda Origem (Item Informação)": 7399685.65
+        "Saldo - Moeda Origem (Item Informação)": 7402285.71
       },
       "raw": {
         "Ação Governo": "Total",
@@ -787,7 +798,7 @@
         "NC": "",
         "Doc - Observação": "",
         "Transação - Mês": "",
-        "Saldo - Moeda Origem (Item Informação)": "7.399.685,65"
+        "Saldo - Moeda Origem (Item Informação)": "7.402.285,71"
       }
     }
   ],
@@ -1675,6 +1686,20 @@
       }
     },
     {
+      "type": "data",
+      "raw": {
+        "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
+        "Grupo Despesa": "3",
+        "Grupo Despesa (2)": "OUTRAS DESPESAS CORRENTES",
+        "PI": "-8",
+        "PI (2)": "SEM INFORMACAO",
+        "NC": "158125264222026NC000553",
+        "Doc - Observação": "PROVISAO DE ORCAMENTO RESTANTE DE CAPACITACAO, CONFORME SOLICITACAO DO CAMPUS VIA E-MAIL.",
+        "Transação - Mês": "NOV/2026",
+        "Saldo - Moeda Origem (Item Informação)": "2.600,06"
+      }
+    },
+    {
       "type": "total",
       "raw": {
         "Ação Governo": "CAPACITACAO DE SERVIDORES PUBLICOS FEDERAIS EM PROCESSO DE Q",
@@ -1685,7 +1710,7 @@
         "NC": "",
         "Doc - Observação": "",
         "Transação - Mês": "",
-        "Saldo - Moeda Origem (Item Informação)": "41.487,80"
+        "Saldo - Moeda Origem (Item Informação)": "44.087,86"
       }
     },
     {
@@ -1699,18 +1724,18 @@
         "NC": "",
         "Doc - Observação": "",
         "Transação - Mês": "",
-        "Saldo - Moeda Origem (Item Informação)": "7.399.685,65"
+        "Saldo - Moeda Origem (Item Informação)": "7.402.285,71"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-    "idade_dias": 1,
+    "ultima_atualizacao": "2026-11-26T13:03:13.779014-03:00",
+    "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7492",
-    "hash_conteudo": "4a56212b0ebc03a5c237beb3386f5d5a354193a10b5df1ea00538265d52ada8c",
-    "row_count": 56,
+    "fonte_email_uid": "7504",
+    "hash_conteudo": "b23e773e597e9b57bcbdcac2c5e41a5c24ea964f4bc0166c174c774ac2e50db2",
+    "row_count": 57,
     "column_count": 9,
     "status": "atualizado",
     "limite_dias": 1
@@ -1724,7 +1749,7 @@
     ]
   },
   "metrics": {
-    "provisionado": 7399685.65
+    "provisionado": 7402285.71
   },
   "metrics_meta": {
     "provisionado": {
@@ -1741,8 +1766,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 8,
       "valid_ratio": 1.0,
@@ -1754,8 +1779,8 @@
       "filter_kind": "numeric_range",
       "confidence": "medium",
       "inferred_from": "values",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 2,
       "valid_ratio": 1.0,
@@ -1767,8 +1792,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 2,
       "valid_ratio": 1.0,
@@ -1780,8 +1805,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 10,
       "valid_ratio": 1.0,
@@ -1793,8 +1818,8 @@
       "filter_kind": "multi_select",
       "confidence": "medium",
       "inferred_from": "values_cardinality",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 10,
       "valid_ratio": 1.0,
@@ -1806,10 +1831,10 @@
       "filter_kind": "text",
       "confidence": "low",
       "inferred_from": "conservative_fallback",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
-      "distinct_samples": 54,
+      "distinct_samples": 55,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -1819,10 +1844,10 @@
       "filter_kind": "text",
       "confidence": "low",
       "inferred_from": "conservative_fallback",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
-      "distinct_samples": 53,
+      "distinct_samples": 54,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -1832,8 +1857,8 @@
       "filter_kind": "period",
       "confidence": "high",
       "inferred_from": "header_and_values",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
       "distinct_samples": 11,
       "valid_ratio": 1.0,
@@ -1845,10 +1870,10 @@
       "filter_kind": "numeric_range",
       "confidence": "high",
       "inferred_from": "header_and_values",
-      "sampled_rows": 56,
-      "nonempty_samples": 56,
+      "sampled_rows": 57,
+      "nonempty_samples": 57,
       "missing_samples": 0,
-      "distinct_samples": 50,
+      "distinct_samples": 51,
       "valid_ratio": 1.0,
       "aggregation": "none"
     }
