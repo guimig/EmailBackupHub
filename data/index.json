@@ -1,6 +1,6 @@
 {
   "schema_version": "1.6",
-  "generated_at": "2026-11-25T12:09:27.591162-03:00",
+  "generated_at": "2026-11-26T02:54:45.765920-03:00",
   "api": {
     "reports": "data/reports/<slug>.json",
     "snapshots": "data/snapshots/<slug>/<date>-<hash>.json",
@@ -20,7 +20,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/2024-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 153,
+        "idade_dias": 154,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": null,
@@ -50,7 +50,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/2025-acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 153,
+        "idade_dias": 154,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -80,7 +80,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-data.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7497",
@@ -109,7 +109,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/acompanhamento-das-liquidacoes-e-pagamentos-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 25,
+        "idade_dias": 26,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7322",
@@ -139,7 +139,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/credito-disponivel-mes-lancamento.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7491",
@@ -169,7 +169,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2024.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 48,
+        "idade_dias": 49,
         "periodicidade": "historico",
         "exercicio": 2024,
         "fonte_email_uid": "7051",
@@ -199,7 +199,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-2025.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 55,
+        "idade_dias": 56,
         "periodicidade": "historico",
         "exercicio": 2025,
         "fonte_email_uid": "6965",
@@ -229,7 +229,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-mes-lancamento.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7489",
@@ -259,7 +259,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/despesas-empenhadas-liquidadas-e-pagas-strictu-sensu.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 329,
+        "idade_dias": 330,
         "periodicidade": "mensal",
         "exercicio": 2025,
         "fonte_email_uid": null,
@@ -289,7 +289,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/evolucao-das-despesas-empenhadas.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7496",
@@ -319,7 +319,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/imoveis-por-ug-conta-contabil-e-rip.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 55,
+        "idade_dias": 56,
         "periodicidade": "mensal",
         "exercicio": 2026,
         "fonte_email_uid": "6964",
@@ -348,7 +348,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/limite-de-saque-conta-contabil.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7488",
@@ -377,7 +377,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/provisionamentos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7492",
@@ -407,7 +407,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/recolhimento-proprio-gru.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7494",
@@ -437,7 +437,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/restos-a-pagar-rap.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7490",
@@ -467,7 +467,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldo-de-empenhos-a-liquidar-mes-a-mes.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7495",
@@ -497,7 +497,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldo-patrimonio-e-almoxarifado-conta-contabil.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7487",
@@ -526,7 +526,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldo-por-natureza-de-despesa.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 25,
+        "idade_dias": 26,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7313",
@@ -556,7 +556,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-contas-de-contratos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7486",
@@ -586,7 +586,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/saldos-de-empenhos-do-exercicio-conta-contabil.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-25T12:09:27.591162-03:00",
-        "idade_dias": 0,
+        "idade_dias": 1,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7493",
@@ -616,7 +616,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-empenhos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 25,
+        "idade_dias": 26,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7320",
@@ -646,7 +646,7 @@
       "viewer_path": "report-viewer.html?report=data/reports/suprimento-de-fundos-liquidacoes-e-pagamentos.json",
       "metadata": {
         "ultima_atualizacao": "2026-11-23T10:52:26.938572-03:00",
-        "idade_dias": 25,
+        "idade_dias": 26,
         "periodicidade": "diaria",
         "exercicio": 2026,
         "fonte_email_uid": "7321",
@@ -666,5 +666,5 @@
       }
     }
   ],
-  "history_count": 1110
+  "history_count": 1078
 }
