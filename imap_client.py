@@ -29,16 +29,19 @@ def fetch_unread_emails():
         emails = []
         for email_uid in messages[0].split():
             status, msg_data = mail.uid("fetch", email_uid, "(BODY.PEEK[])")
+            uid = email_uid.decode("ascii")
             if status != "OK":
-                raise RuntimeError("O IMAP recusou a leitura de um relatório.")
+                emails.append({"uid": uid, "fetch_error": "O IMAP recusou a leitura do relatório."})
+                continue
             raw = next(
                 (item[1] for item in (msg_data or [])
                  if isinstance(item, tuple) and len(item) == 2 and isinstance(item[1], bytes)),
                 None,
             )
-            if not raw:
-                raise RuntimeError("O IMAP não retornou o corpo de um relatório.")
-            emails.append({"uid": email_uid.decode("ascii"), "raw": raw})
+            if raw:
+                emails.append({"uid": uid, "raw": raw})
+            else:
+                emails.append({"uid": uid, "fetch_error": "O IMAP não retornou o corpo do relatório."})
         return emails
     finally:
         try:
