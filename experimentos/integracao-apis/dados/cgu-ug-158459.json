@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
   "origem": "CGU - Portal da Transparência",
-  "gerado_em": "2026-11-26T19:15:49.576Z",
+  "gerado_em": "2026-11-27T19:10:21.574Z",
   "unidade_gestora": "158459",
   "unidade_orcamentaria_referencia": "26422",
   "criterio": "Documentos por data de emissão da UG 158459; não são saldos contábeis do Tesouro.",
-  "data_inicial": "19/11/2026",
-  "data_final": "25/11/2026",
+  "data_inicial": "20/11/2026",
+  "data_final": "26/11/2026",
   "qualidade": {
     "completo": true,
     "valores_invalidos": 0,
-    "valores_recuperados_impactos": 8,
+    "valores_recuperados_impactos": 22,
     "observacao": "Valores das NS recuperados de empenhos impactados quando disponíveis. Sem paginação completa e cobertura monetária total, não divulgar somas. Não equivale aos saldos contábeis do SIAFI."
   },
   "fases": [
     {
       "fase": 1,
       "etapa": "Empenho",
-      "quantidade": 7,
-      "total": 117292.4,
+      "quantidade": 5,
+      "total": 45341.05,
       "valores_invalidos": 0,
       "valores_recuperados_impactos": 0,
       "completo": true
@@ -26,158 +26,23 @@
     {
       "fase": 2,
       "etapa": "Liquidação",
-      "quantidade": 8,
-      "total": 6600,
+      "quantidade": 22,
+      "total": 15361.23,
       "valores_invalidos": 0,
-      "valores_recuperados_impactos": 8,
+      "valores_recuperados_impactos": 22,
       "completo": true
     },
     {
       "fase": 3,
       "etapa": "Pagamento",
-      "quantidade": 6,
-      "total": -758.28,
+      "quantidade": 16,
+      "total": 80618.36,
       "valores_invalidos": 0,
       "valores_recuperados_impactos": 0,
       "completo": true
     }
   ],
   "dias": [
-    {
-      "data": "19/11/2026",
-      "fase": 1,
-      "etapa": "Empenho",
-      "quantidade": 7,
-      "total": 117292.4,
-      "completo": true,
-      "valores_invalidos": 0,
-      "valores_recuperados_impactos": 0,
-      "consultas_impactos_sem_valor": 0,
-      "paginas_impactos": 0,
-      "paginas_consultadas": 2,
-      "amostra": [
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000083",
-          "valor": 2056.7
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000124",
-          "valor": 33342.16
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000152",
-          "valor": 519.57
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000172",
-          "valor": 8930
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000264",
-          "valor": 69031.93
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000292",
-          "valor": 267.2
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 1,
-          "documento": "158459264222026NE000293",
-          "valor": 3144.84
-        }
-      ]
-    },
-    {
-      "data": "19/11/2026",
-      "fase": 2,
-      "etapa": "Liquidação",
-      "quantidade": 2,
-      "total": 0,
-      "completo": true,
-      "valores_invalidos": 0,
-      "valores_recuperados_impactos": 2,
-      "consultas_impactos_sem_valor": 0,
-      "paginas_impactos": 4,
-      "paginas_consultadas": 2,
-      "amostra": [
-        {
-          "data": "19/11/2026",
-          "fase": 2,
-          "documento": "158459264222026NS006930",
-          "valor": 0
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 2,
-          "documento": "158459264222026NS006931",
-          "valor": 0
-        }
-      ]
-    },
-    {
-      "data": "19/11/2026",
-      "fase": 3,
-      "etapa": "Pagamento",
-      "quantidade": 6,
-      "total": -758.28,
-      "completo": true,
-      "valores_invalidos": 0,
-      "valores_recuperados_impactos": 0,
-      "consultas_impactos_sem_valor": 0,
-      "paginas_impactos": 0,
-      "paginas_consultadas": 2,
-      "amostra": [
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002893",
-          "valor": -300
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002894",
-          "valor": -500
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002895",
-          "valor": -600
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002896",
-          "valor": -600
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002897",
-          "valor": 27.18
-        },
-        {
-          "data": "19/11/2026",
-          "fase": 3,
-          "documento": "158459264222026OB002898",
-          "valor": 1214.54
-        }
-      ]
-    },
     {
       "data": "20/11/2026",
       "fase": 1,
@@ -387,46 +252,256 @@
       "data": "24/11/2026",
       "fase": 1,
       "etapa": "Empenho",
-      "quantidade": 0,
-      "total": 0,
+      "quantidade": 3,
+      "total": 1253.19,
       "completo": true,
       "valores_invalidos": 0,
       "valores_recuperados_impactos": 0,
       "consultas_impactos_sem_valor": 0,
       "paginas_impactos": 0,
-      "paginas_consultadas": 1,
-      "amostra": []
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "24/11/2026",
+          "fase": 1,
+          "documento": "158459264222026NE000294",
+          "valor": 1000
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 1,
+          "documento": "158459264222026NE000295",
+          "valor": 17.22
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 1,
+          "documento": "158459264222026NE000296",
+          "valor": 235.97
+        }
+      ]
     },
     {
       "data": "24/11/2026",
       "fase": 2,
       "etapa": "Liquidação",
-      "quantidade": 0,
-      "total": 0,
+      "quantidade": 3,
+      "total": 2930.74,
       "completo": true,
       "valores_invalidos": 0,
-      "valores_recuperados_impactos": 0,
+      "valores_recuperados_impactos": 3,
       "consultas_impactos_sem_valor": 0,
-      "paginas_impactos": 0,
-      "paginas_consultadas": 1,
-      "amostra": []
+      "paginas_impactos": 6,
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "24/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006950",
+          "valor": -90
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006956",
+          "valor": 1695.78
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006957",
+          "valor": 1324.96
+        }
+      ]
     },
     {
       "data": "24/11/2026",
       "fase": 3,
       "etapa": "Pagamento",
-      "quantidade": 0,
-      "total": 0,
+      "quantidade": 13,
+      "total": 80496.73,
       "completo": true,
       "valores_invalidos": 0,
       "valores_recuperados_impactos": 0,
       "consultas_impactos_sem_valor": 0,
       "paginas_impactos": 0,
-      "paginas_consultadas": 1,
-      "amostra": []
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026NS006950",
+          "valor": -90
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002899",
+          "valor": 62125.99
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002900",
+          "valor": 4002.55
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002901",
+          "valor": 0.03
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002902",
+          "valor": 0.03
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002903",
+          "valor": 0.01
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002904",
+          "valor": 0.01
+        },
+        {
+          "data": "24/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002905",
+          "valor": 4471.1
+        }
+      ]
     },
     {
       "data": "25/11/2026",
+      "fase": 1,
+      "etapa": "Empenho",
+      "quantidade": 2,
+      "total": 44087.86,
+      "completo": true,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "25/11/2026",
+          "fase": 1,
+          "documento": "158459264222026NE000135",
+          "valor": 43004.34
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 1,
+          "documento": "158459264222026NE000136",
+          "valor": 1083.52
+        }
+      ]
+    },
+    {
+      "data": "25/11/2026",
+      "fase": 2,
+      "etapa": "Liquidação",
+      "quantidade": 13,
+      "total": 5830.49,
+      "completo": true,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 13,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 26,
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006961",
+          "valor": 394.14
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006962",
+          "valor": 955.78
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006963",
+          "valor": 574.14
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006964",
+          "valor": 1547.46
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006965",
+          "valor": 1695.78
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006966",
+          "valor": 3.71
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006967",
+          "valor": 500
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 2,
+          "documento": "158459264222026NS006968",
+          "valor": 13.51
+        }
+      ]
+    },
+    {
+      "data": "25/11/2026",
+      "fase": 3,
+      "etapa": "Pagamento",
+      "quantidade": 3,
+      "total": 121.63,
+      "completo": true,
+      "valores_invalidos": 0,
+      "valores_recuperados_impactos": 0,
+      "consultas_impactos_sem_valor": 0,
+      "paginas_impactos": 0,
+      "paginas_consultadas": 2,
+      "amostra": [
+        {
+          "data": "25/11/2026",
+          "fase": 3,
+          "documento": "158459264222026NS006978",
+          "valor": -90
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002911",
+          "valor": 45.63
+        },
+        {
+          "data": "25/11/2026",
+          "fase": 3,
+          "documento": "158459264222026OB002912",
+          "valor": 166
+        }
+      ]
+    },
+    {
+      "data": "26/11/2026",
       "fase": 1,
       "etapa": "Empenho",
       "quantidade": 0,
@@ -440,7 +515,7 @@
       "amostra": []
     },
     {
-      "data": "25/11/2026",
+      "data": "26/11/2026",
       "fase": 2,
       "etapa": "Liquidação",
       "quantidade": 0,
@@ -454,7 +529,7 @@
       "amostra": []
     },
     {
-      "data": "25/11/2026",
+      "data": "26/11/2026",
       "fase": 3,
       "etapa": "Pagamento",
       "quantidade": 0,
