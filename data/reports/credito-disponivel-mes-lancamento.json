@@ -3,9 +3,9 @@
   "parser_version": "2026-11-23.1",
   "slug": "credito-disponivel-mes-lancamento",
   "title": "Crédito Disponível por Mês de Lançamento",
-  "date": "26/11/2026",
-  "date_iso": "2026-11-26",
-  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_26-11-2026.html",
+  "date": "27/11/2026",
+  "date_iso": "2026-11-27",
+  "html_path": "emails/credito-disponivel-mes-lancamento/credito-disponivel-mes-lancamento_27-11-2026.html",
   "category": "Crédito Disponível por Mês de Lançamento",
   "columns": [
     "Grupo Despesa",
@@ -82,6 +82,19 @@
       "Fonte Recursos Detalhada": "1000000000",
       "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
       "PTRES": "249897",
+      "Métrica / PI": "-8",
+      "Métrica / PI (2)": "SEM INFORMACAO",
+      "Saldo - R$ (Conta Contábil) / NOV/2026": "12.358,74"
+    },
+    {
+      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+      "Natureza Despesa": "339000",
+      "Natureza Despesa (2)": "APLICACOES DIRETAS",
+      "Unidade Orçamentária": "26422",
+      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+      "Fonte Recursos Detalhada": "1000000000",
+      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+      "PTRES": "249897",
       "Métrica / PI": "L21B3P2002N",
       "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
       "Saldo - R$ (Conta Contábil) / NOV/2026": "19.839,77"
@@ -111,19 +124,6 @@
       "Métrica / PI": "-8",
       "Métrica / PI (2)": "SEM INFORMACAO",
       "Saldo - R$ (Conta Contábil) / NOV/2026": "0,11"
-    },
-    {
-      "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-      "Natureza Despesa": "339030",
-      "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-      "Unidade Orçamentária": "26422",
-      "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-      "Fonte Recursos Detalhada": "1000000000",
-      "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-      "PTRES": "249897",
-      "Métrica / PI": "L21B3P2002N",
-      "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
-      "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
     },
     {
       "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -194,7 +194,7 @@
         "Natureza Despesa": 339000.0,
         "Unidade Orçamentária": 26422.0,
         "Fonte Recursos Detalhada": 1000000000.0,
-        "Saldo - R$ (Conta Contábil) / NOV/2026": 30463.64
+        "Saldo - R$ (Conta Contábil) / NOV/2026": 42822.38
       },
       "raw": {
         "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
@@ -207,7 +207,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "30.463,64"
+        "Saldo - R$ (Conta Contábil) / NOV/2026": "42.822,38"
       }
     },
     {
@@ -257,28 +257,6 @@
     {
       "label": "OUTRAS DESPESAS CORRENTES",
       "values": {
-        "Natureza Despesa": 339030.0,
-        "Unidade Orçamentária": 26422.0,
-        "Fonte Recursos Detalhada": 1000000000.0,
-        "Saldo - R$ (Conta Contábil) / NOV/2026": 7053.62
-      },
-      "raw": {
-        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-        "Natureza Despesa": "339030",
-        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-        "Unidade Orçamentária": "26422",
-        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-        "Fonte Recursos Detalhada": "1000000000",
-        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-        "PTRES": "Total",
-        "Métrica / PI": "",
-        "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
-      }
-    },
-    {
-      "label": "OUTRAS DESPESAS CORRENTES",
-      "values": {
         "Natureza Despesa": 339032.0,
         "Unidade Orçamentária": 26298.0,
         "Fonte Recursos Detalhada": 1133000000.0,
@@ -301,7 +279,7 @@
     {
       "label": "Total",
       "values": {
-        "Saldo - R$ (Conta Contábil) / NOV/2026": 92297.4
+        "Saldo - R$ (Conta Contábil) / NOV/2026": 97602.52
       },
       "raw": {
         "Grupo Despesa": "Total",
@@ -314,7 +292,7 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "92.297,40"
+        "Saldo - R$ (Conta Contábil) / NOV/2026": "97.602,52"
       }
     }
   ],
@@ -410,6 +388,22 @@
         "Fonte Recursos Detalhada": "1000000000",
         "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
         "PTRES": "249897",
+        "Métrica / PI": "-8",
+        "Métrica / PI (2)": "SEM INFORMACAO",
+        "Saldo - R$ (Conta Contábil) / NOV/2026": "12.358,74"
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
+        "Natureza Despesa": "339000",
+        "Natureza Despesa (2)": "APLICACOES DIRETAS",
+        "Unidade Orçamentária": "26422",
+        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
+        "Fonte Recursos Detalhada": "1000000000",
+        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
+        "PTRES": "249897",
         "Métrica / PI": "L21B3P2002N",
         "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
         "Saldo - R$ (Conta Contábil) / NOV/2026": "19.839,77"
@@ -428,7 +422,7 @@
         "PTRES": "Total",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "30.463,64"
+        "Saldo - R$ (Conta Contábil) / NOV/2026": "42.822,38"
       }
     },
     {
@@ -493,38 +487,6 @@
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
         "Saldo - R$ (Conta Contábil) / NOV/2026": "0,11"
-      }
-    },
-    {
-      "type": "data",
-      "raw": {
-        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-        "Natureza Despesa": "339030",
-        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-        "Unidade Orçamentária": "26422",
-        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-        "Fonte Recursos Detalhada": "1000000000",
-        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-        "PTRES": "249897",
-        "Métrica / PI": "L21B3P2002N",
-        "Métrica / PI (2)": "FOMENTO - RECURSO DE PESQUISA - STRICTO SENSU",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
-      }
-    },
-    {
-      "type": "total",
-      "raw": {
-        "Grupo Despesa": "OUTRAS DESPESAS CORRENTES",
-        "Natureza Despesa": "339030",
-        "Natureza Despesa (2)": "MATERIAL DE CONSUMO",
-        "Unidade Orçamentária": "26422",
-        "Unidade Orçamentária (2)": "INST.FED.DE EDUC.,CIENC.E TEC.CATARINENSE",
-        "Fonte Recursos Detalhada": "1000000000",
-        "Fonte Recursos Detalhada (2)": "RECURSOS LIVRES DA UNIAO",
-        "PTRES": "Total",
-        "Métrica / PI": "",
-        "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "7.053,62"
       }
     },
     {
@@ -604,17 +566,17 @@
         "PTRES": "",
         "Métrica / PI": "",
         "Métrica / PI (2)": "",
-        "Saldo - R$ (Conta Contábil) / NOV/2026": "92.297,40"
+        "Saldo - R$ (Conta Contábil) / NOV/2026": "97.602,52"
       }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-26T13:03:13.779014-03:00",
+    "ultima_atualizacao": "2026-11-27T06:18:39.409098-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7500",
-    "hash_conteudo": "9c3006ec2367675028a85955bc44f69e66fee237cdf0309be8f970c02bbc924f",
+    "fonte_email_uid": "7510",
+    "hash_conteudo": "65f5d66adf8346021fa3445f7953bec44552bebba9e51e5163d1ceb640a7a339",
     "row_count": 11,
     "column_count": 11,
     "status": "atualizado",
@@ -629,7 +591,7 @@
     ]
   },
   "metrics": {
-    "credito_disponivel": 92297.4
+    "credito_disponivel": 97602.52
   },
   "metrics_meta": {
     "credito_disponivel": {
@@ -662,7 +624,7 @@
       "sampled_rows": 11,
       "nonempty_samples": 11,
       "missing_samples": 0,
-      "distinct_samples": 4,
+      "distinct_samples": 3,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -675,7 +637,7 @@
       "sampled_rows": 11,
       "nonempty_samples": 11,
       "missing_samples": 0,
-      "distinct_samples": 3,
+      "distinct_samples": 2,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },

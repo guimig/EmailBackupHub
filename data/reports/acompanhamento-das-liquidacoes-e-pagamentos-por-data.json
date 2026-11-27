@@ -3,9 +3,9 @@
   "parser_version": "2026-11-23.1",
   "slug": "acompanhamento-das-liquidacoes-e-pagamentos-por-data",
   "title": "Liquidações e Pagamentos por Data",
-  "date": "26/11/2026",
-  "date_iso": "2026-11-26",
-  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_26-11-2026.html",
+  "date": "27/11/2026",
+  "date_iso": "2026-11-27",
+  "html_path": "emails/acompanhamento-das-liquidacoes-e-pagamentos-por-data/acompanhamento-das-liquidacoes-e-pagamentos-por-data_27-11-2026.html",
   "category": "Liquidações e Pagamentos por Data",
   "columns": [
     "Natureza Despesa Detalhada",
@@ -61452,6 +61452,44 @@
       "Doc - Valor": "1023,78",
       "Item Informação / NE CCor": "158459264222026NE000296",
       "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "185,09",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa Detalhada": "33901801",
+      "Natureza Despesa Detalhada (2)": "BOLSAS DE ESTUDO NO PAIS",
+      "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
+      "NE CCor - Favorecido (2)": "158459",
+      "DH - Tipo": "RECIBO DE PAGAMENTO",
+      "Documento Hábil": "158459264222026RP001946",
+      "DH - Observação": "Liquidação ref. bolsas PAE do Campus Araquari, ref. Lista de Espera Editais 16/17/61 - 2ª chamada - Out e Nov de 2026, cfe. MEMO 25_2026_SISAE_ARA. Processo nº 23349.004212/2026-78.",
+      "DH - Dia Emissão": "10/11/2026",
+      "DH - Valor": "600",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002913",
+      "Doc - Observação": "PAGTO REF. BOLSAS PAE DO CAMPUS ARAQUARI, REF. LISTA DE ESPERA EDITAIS 16/17/61 - 2ª CHAMADA - OUT E NOV DE 2026, CFE. MEMO 25_2026_SISAE_ARA. PROCESSO Nº 23349.004212/2026-78.",
+      "Emissão - Dia": "26/11/2026",
+      "Doc - Valor": "600",
+      "Item Informação / NE CCor": "158459264222026NE000258",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "600,00",
+      "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+    },
+    {
+      "Natureza Despesa Detalhada": "33903006",
+      "Natureza Despesa Detalhada (2)": "ALIMENTOS PARA ANIMAIS",
+      "NE CCor - Favorecido": "ANDRASCHKO E ANDRASCHKO LTDA",
+      "NE CCor - Favorecido (2)": "28326512000161",
+      "DH - Tipo": "NOTA DE PAGAMENTO",
+      "Documento Hábil": "158459264222026NP000478",
+      "DH - Observação": "Pgto do(s) Instr.(s) de Cobrança(s) núm.(s): 000.002.190, Contrato nº: 2026NE000226  - 28.326.512/0001-61 - ANDRASCHKO E ANDRASCHKO LTDA, Proc.(s) núm.(s): 23349.004413/2025-94, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 11/2026.",
+      "DH - Dia Emissão": "11/11/2026",
+      "DH - Valor": "9933",
+      "Doc - Tipo": "ORDEM BANCARIA",
+      "Documento": "158459264222026OB002914",
+      "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 000.002.190, CONTRATO Nº: 2026NE000226  - 28.326.512/0001-61 - ANDRASCHKO E ANDRASCHKO LTDA, PROC.(S) NUM.(S): 23349.004413/2025-94, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 11/2026.",
+      "Emissão - Dia": "26/11/2026",
+      "Doc - Valor": "2638,09",
+      "Item Informação / NE CCor": "158459264222026NE000226",
+      "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.638,09",
       "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
     }
   ],
@@ -132582,16 +132620,60 @@
         "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "185,09",
         "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
       }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa Detalhada": "33901801",
+        "Natureza Despesa Detalhada (2)": "BOLSAS DE ESTUDO NO PAIS",
+        "NE CCor - Favorecido": "IF CATARINENSE - CAMPUS ARAQUARI",
+        "NE CCor - Favorecido (2)": "158459",
+        "DH - Tipo": "RECIBO DE PAGAMENTO",
+        "Documento Hábil": "158459264222026RP001946",
+        "DH - Observação": "Liquidação ref. bolsas PAE do Campus Araquari, ref. Lista de Espera Editais 16/17/61 - 2ª chamada - Out e Nov de 2026, cfe. MEMO 25_2026_SISAE_ARA. Processo nº 23349.004212/2026-78.",
+        "DH - Dia Emissão": "10/11/2026",
+        "DH - Valor": "600",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002913",
+        "Doc - Observação": "PAGTO REF. BOLSAS PAE DO CAMPUS ARAQUARI, REF. LISTA DE ESPERA EDITAIS 16/17/61 - 2ª CHAMADA - OUT E NOV DE 2026, CFE. MEMO 25_2026_SISAE_ARA. PROCESSO Nº 23349.004212/2026-78.",
+        "Emissão - Dia": "26/11/2026",
+        "Doc - Valor": "600",
+        "Item Informação / NE CCor": "158459264222026NE000258",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "600,00",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
+    },
+    {
+      "type": "data",
+      "raw": {
+        "Natureza Despesa Detalhada": "33903006",
+        "Natureza Despesa Detalhada (2)": "ALIMENTOS PARA ANIMAIS",
+        "NE CCor - Favorecido": "ANDRASCHKO E ANDRASCHKO LTDA",
+        "NE CCor - Favorecido (2)": "28326512000161",
+        "DH - Tipo": "NOTA DE PAGAMENTO",
+        "Documento Hábil": "158459264222026NP000478",
+        "DH - Observação": "Pgto do(s) Instr.(s) de Cobrança(s) núm.(s): 000.002.190, Contrato nº: 2026NE000226  - 28.326.512/0001-61 - ANDRASCHKO E ANDRASCHKO LTDA, Proc.(s) núm.(s): 23349.004413/2025-94, do(s) fornecimento(s)/serviço(s) prestado(s) ao(s) mês(es): 11/2026.",
+        "DH - Dia Emissão": "11/11/2026",
+        "DH - Valor": "9933",
+        "Doc - Tipo": "ORDEM BANCARIA",
+        "Documento": "158459264222026OB002914",
+        "Doc - Observação": "PGTO DO(S) INSTR.(S) DE COBRANCA(S) NUM.(S): 000.002.190, CONTRATO Nº: 2026NE000226  - 28.326.512/0001-61 - ANDRASCHKO E ANDRASCHKO LTDA, PROC.(S) NUM.(S): 23349.004413/2025-94, DO(S) FORNECIMENTO(S)/SERVICO(S) PRESTADO(S) AO(S) MES(ES): 11/2026.",
+        "Emissão - Dia": "26/11/2026",
+        "Doc - Valor": "2638,09",
+        "Item Informação / NE CCor": "158459264222026NE000226",
+        "34 / DESPESAS PAGAS (CONTROLE EMPENHO) / Saldo - R$ (Item Informação)": "2.638,09",
+        "52 / RESTOS A PAGAR PAGOS (PROC E N PROC) / Saldo - R$ (Item Informação)": ""
+      }
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-26T13:03:13.779014-03:00",
+    "ultima_atualizacao": "2026-11-27T06:18:39.409098-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7509",
-    "hash_conteudo": "0408fef427a02263d249457e74a7808b30ce6ca66083252ddfc8463f722c425b",
-    "row_count": 3233,
+    "fonte_email_uid": "7521",
+    "hash_conteudo": "c9e5ed5e1c3c8b8e1fd265660a8316fd7b17c4f4995771052fab0c5940153f4a",
+    "row_count": 3235,
     "column_count": 17,
     "status": "atualizado",
     "limite_dias": 1
@@ -132616,7 +132698,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 34,
+      "distinct_samples": 35,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132629,7 +132711,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 33,
+      "distinct_samples": 34,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132642,7 +132724,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 42,
+      "distinct_samples": 38,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132655,7 +132737,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 42,
+      "distinct_samples": 38,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132668,7 +132750,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 3,
+      "distinct_samples": 4,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132681,7 +132763,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 247,
+      "distinct_samples": 248,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132694,7 +132776,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 155,
+      "distinct_samples": 150,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132707,7 +132789,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 97,
+      "distinct_samples": 95,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132720,7 +132802,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 92,
+      "distinct_samples": 86,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132759,7 +132841,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 167,
+      "distinct_samples": 164,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132772,7 +132854,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 80,
+      "distinct_samples": 78,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132785,7 +132867,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 103,
+      "distinct_samples": 95,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132798,7 +132880,7 @@
       "sampled_rows": 256,
       "nonempty_samples": 256,
       "missing_samples": 0,
-      "distinct_samples": 78,
+      "distinct_samples": 74,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132809,9 +132891,9 @@
       "confidence": "high",
       "inferred_from": "header_and_values",
       "sampled_rows": 256,
-      "nonempty_samples": 228,
-      "missing_samples": 28,
-      "distinct_samples": 80,
+      "nonempty_samples": 226,
+      "missing_samples": 30,
+      "distinct_samples": 71,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
@@ -132822,9 +132904,9 @@
       "confidence": "high",
       "inferred_from": "header_and_values",
       "sampled_rows": 256,
-      "nonempty_samples": 28,
-      "missing_samples": 228,
-      "distinct_samples": 24,
+      "nonempty_samples": 30,
+      "missing_samples": 226,
+      "distinct_samples": 25,
       "valid_ratio": 1.0,
       "aggregation": "none"
     }
