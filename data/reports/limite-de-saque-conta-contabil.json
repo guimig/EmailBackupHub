@@ -3,9 +3,9 @@
   "parser_version": "2026-11-23.1",
   "slug": "limite-de-saque-conta-contabil",
   "title": "Limite de Saque por Conta Contábil",
-  "date": "27/11/2026",
-  "date_iso": "2026-11-27",
-  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_27-11-2026.html",
+  "date": "28/11/2026",
+  "date_iso": "2026-11-28",
+  "html_path": "emails/limite-de-saque-conta-contabil/limite-de-saque-conta-contabil_28-11-2026.html",
   "category": "Limite de Saque por Conta Contábil",
   "columns": [
     "UG Executora Nome",
@@ -49,7 +49,7 @@
       "Vinculação Pagamento Código": "405",
       "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
       "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
-      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+      "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "19.000,00",
       "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
     },
     {
@@ -159,7 +159,7 @@
         "Vinculação Pagamento Código": "405",
         "Vinculação Pagamento Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
         "Métrica / Conta Contábil Número / Conta Contábil Nome": "CUSTEIO/INVEST.-EMENDAS INDIVIDUAIS - RP6",
-        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "0,00",
+        "Saldo - Moeda Origem (Conta Contábil) / 111122001 / = LIMITE DE SAQUE COM VINCULACAO DE PGTO - OFSS": "19.000,00",
         "Saldo - Moeda Origem (Conta Contábil) / 111122003 / = LIM DE SAQUE C/VINC.PAGTO- ORDEM PAGTO - OFSS": "0,00"
       }
     },
@@ -249,12 +249,12 @@
     }
   ],
   "metadata": {
-    "ultima_atualizacao": "2026-11-27T06:18:39.409098-03:00",
+    "ultima_atualizacao": "2026-11-28T08:06:46.285123-03:00",
     "idade_dias": 0,
     "periodicidade": "diaria",
     "exercicio": 2026,
-    "fonte_email_uid": "7511",
-    "hash_conteudo": "1e9e1f3422a67ea4db4bd57772fe3a31e8014acee7102fb90abe31dce72fd8e0",
+    "fonte_email_uid": "7522",
+    "hash_conteudo": "bdc19a3ba2bd4bdc1e78207b623fc6af102b945f088be08523248c49b288ad28",
     "row_count": 9,
     "column_count": 9,
     "status": "atualizado",
@@ -371,7 +371,7 @@
       "sampled_rows": 9,
       "nonempty_samples": 9,
       "missing_samples": 0,
-      "distinct_samples": 3,
+      "distinct_samples": 4,
       "valid_ratio": 1.0,
       "aggregation": "none"
     },
